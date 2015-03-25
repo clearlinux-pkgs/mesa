@@ -1,0 +1,18 @@
+#
+# This file contains pkgconfig build requirements that get picked up but are 
+# undesirable. One name per line, no whitespace.
+#
+wayland-client
+wayland_scanner
+libdrm_nouveau
+libdrm_radeon
+libdrm_freedreno
+libomxil-bellagio
+libselinux
+vdpau
+libclc
+libelf
+libsha1
+simpenrose
+libglvnd
+libdrm_vc4

@@ -1,0 +1,35 @@
+From 74bbd0631322ef22b08d99c3490d6390a1da5ae5 Mon Sep 17 00:00:00 2001
+From: Adrian Pielech <adrian.pielech@intel.com>
+Date: Mon, 28 Dec 2015 14:29:37 +0100
+Subject: [PATCH 6/8] Fix for eglCreatePbufferSurface causing BadValue in x11.
+
+[mattrope: Changed <= to == according to spec; reformatted comment]
+Signed-off-by: Matt Roper <matthew.d.roper@intel.com>
+---
+ src/egl/drivers/dri2/platform_x11.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/egl/drivers/dri2/platform_x11.c b/src/egl/drivers/dri2/platform_x11.c
+index fd834b4..a315103 100644
+--- a/src/egl/drivers/dri2/platform_x11.c
++++ b/src/egl/drivers/dri2/platform_x11.c
+@@ -235,6 +235,16 @@ dri2_x11_create_surface(_EGLDriver *drv, _EGLDisplay *disp, EGLint type,
+          goto cleanup_surf;
+       }
+ 
++      /*
++       * WA for EGL to avoid attempts to create surface with 0 width or height.
++       * Mainly for eglCreatePbufferSurface, which creation with 0 width or
++       * height causes XServer unstable.
++       */
++      if (dri2_surf->base.Width == 0)
++          dri2_surf->base.Width = 1;
++      if (dri2_surf->base.Height == 0)
++          dri2_surf->base.Height = 1;
++
+       dri2_surf->drawable = xcb_generate_id(dri2_dpy->conn);
+       xcb_create_pixmap(dri2_dpy->conn, conf->BufferSize,
+                        dri2_surf->drawable, screen->root,
+-- 
+2.7.4
+

@@ -1,0 +1,43 @@
+From 1f825ea65bb80a130917f8472a25641d3b5a0431 Mon Sep 17 00:00:00 2001
+From: Matt Roper <matthew.d.roper@intel.com>
+Date: Mon, 4 Jan 2016 15:17:04 -0800
+Subject: [PATCH 3/8] Revert "egl/dri: don't expose configs with an
+ accumulation buffer"
+
+This reverts commit 396cbabbefaae64deac6d33c79898bb07db8a621.
+
+Rejecting configs with accumulation buffers makes UFO unusable since all
+compatible configs UFO has this buffers included.
+
+Signed-off-by: dw kim <dongwon.kim@intel.com>
+Signed-off-by: Matt Roper <matthew.d.roper@intel.com>
+
+Conflicts:
+	src/egl/drivers/dri2/egl_dri2.c
+---
+ src/egl/drivers/dri2/egl_dri2.c | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/src/egl/drivers/dri2/egl_dri2.c b/src/egl/drivers/dri2/egl_dri2.c
+index d8448f4..287eeec 100644
+--- a/src/egl/drivers/dri2/egl_dri2.c
++++ b/src/egl/drivers/dri2/egl_dri2.c
+@@ -227,15 +227,6 @@ dri2_add_config(_EGLDisplay *disp, const __DRIconfig *dri_config, int id,
+          dri_masks[3] = value;
+          break;
+ 
+-      case __DRI_ATTRIB_ACCUM_RED_SIZE:
+-      case __DRI_ATTRIB_ACCUM_GREEN_SIZE:
+-      case __DRI_ATTRIB_ACCUM_BLUE_SIZE:
+-      case __DRI_ATTRIB_ACCUM_ALPHA_SIZE:
+-         /* Don't expose visuals with the accumulation buffer. */
+-         if (value > 0)
+-            return NULL;
+-         break;
+-
+       case __DRI_ATTRIB_FRAMEBUFFER_SRGB_CAPABLE:
+          srgb = value != 0;
+          if (!disp->Extensions.KHR_gl_colorspace && srgb)
+-- 
+2.7.4
+

@@ -1,0 +1,42 @@
+From 170518e356d47f9d8c2d6adf11c1c89b6701ab3a Mon Sep 17 00:00:00 2001
+From: Bernard Kilarski <bernard.r.kilarski@intel.com>
+Date: Wed, 10 Feb 2016 09:36:01 -0800
+Subject: [PATCH 8/8] mapi_abi: Allow more dynamic entries
+
+Signed-off-by: Bernard Kilarski <bernard.r.kilarski@intel.com>
+Signed-off-by: Matt Roper <matthew.d.roper@intel.com>
+Cc: "11.0 11.1" <mesa-stable@lists.freedesktop.org
+---
+ src/mapi/mapi_abi.py | 2 +-
+ src/mapi/u_execmem.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/mapi/mapi_abi.py b/src/mapi/mapi_abi.py
+index 012a5c3..9eafb94 100644
+--- a/src/mapi/mapi_abi.py
++++ b/src/mapi/mapi_abi.py
+@@ -38,7 +38,7 @@ import glX_XML
+ 
+ 
+ # number of dynamic entries
+-ABI_NUM_DYNAMIC_ENTRIES = 256
++ABI_NUM_DYNAMIC_ENTRIES = 512
+ 
+ class ABIEntry(object):
+     """Represent an ABI entry."""
+diff --git a/src/mapi/u_execmem.c b/src/mapi/u_execmem.c
+index 89d5c1d..f8334f9 100644
+--- a/src/mapi/u_execmem.c
++++ b/src/mapi/u_execmem.c
+@@ -37,7 +37,7 @@
+ #include "u_execmem.h"
+ 
+ 
+-#define EXEC_MAP_SIZE (4*1024)
++#define EXEC_MAP_SIZE (8*1024)
+ 
+ static mtx_t exec_mutex = _MTX_INITIALIZER_NP;
+ 
+-- 
+2.7.4
+

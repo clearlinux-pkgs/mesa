@@ -1,0 +1,33 @@
+From 14730b855ee65786618370488cb8a8fb58a6ecc1 Mon Sep 17 00:00:00 2001
+From: Matt Roper <matthew.d.roper@intel.com>
+Date: Wed, 30 Sep 2015 08:55:38 -0700
+Subject: [PATCH 4/8] glx: Don't leak FBConfig list during context creation
+
+Leak was introduced by:
+
+        commit 23bee2354fa71443a3262fbd14cddc651f6b052c
+        Author: Daniel Czarnowski <daniel.czarnowski@intel.com>
+        Date:   Mon Sep 2 06:27:39 2013 -0400
+
+            glXCreateNewContext(...) with bad fbconfig can crash glx driver.
+
+Signed-off-by: Matt Roper <matthew.d.roper@intel.com>
+---
+ src/glx/glxcmds.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/glx/glxcmds.c b/src/glx/glxcmds.c
+index dfb59f5..7ed0c39 100644
+--- a/src/glx/glxcmds.c
++++ b/src/glx/glxcmds.c
+@@ -1649,6 +1649,7 @@ glXCreateNewContext(Display * dpy, GLXFBConfig fbconfig,
+            break;
+        }
+    }
++   free(config_list);
+ 
+    if (i == list_size)
+    {
+-- 
+2.7.4
+

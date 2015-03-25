@@ -1,0 +1,58 @@
+From 4faf9d59d644c1d73b66be464a467efd5681848e Mon Sep 17 00:00:00 2001
+From: Daniel Czarnowski <daniel.czarnowski@intel.com>
+Date: Mon, 2 Sep 2013 06:27:39 -0400
+Subject: [PATCH 2/8] glXCreateNewContext(...) with bad fbconfig can crash glx
+ driver.
+
+Spec says:
+glXCreateNewContext can generate the following errors: (...)
+GLXBadFBConfig if config is not a valid GLXFBConfig
+
+Function checks if the given config is the valid config but do not set
+proper error code.
+
+Signed-off-by: Matt Roper <matthew.d.roper@intel.com>
+---
+ src/glx/glxcmds.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/src/glx/glxcmds.c b/src/glx/glxcmds.c
+index 63f4921..dfb59f5 100644
+--- a/src/glx/glxcmds.c
++++ b/src/glx/glxcmds.c
+@@ -1629,8 +1629,32 @@ _X_EXPORT GLXContext
+ glXCreateNewContext(Display * dpy, GLXFBConfig fbconfig,
+                     int renderType, GLXContext shareList, Bool allowDirect)
+ {
++   int list_size;
+    struct glx_config *config = (struct glx_config *) fbconfig;
+ 
++   if (!config)
++   {
++       return NULL;
++   }
++
++   int screen = XDefaultScreen(dpy);
++   struct glx_config **config_list = (struct glx_config **)
++      glXGetFBConfigs(dpy, screen, &list_size);
++
++   int i;
++   for (i = 0; i < list_size; i++)
++   {
++       if (config_list[i] == config)
++       {
++           break;
++       }
++   }
++
++   if (i == list_size)
++   {
++       return NULL;
++   }
++
+    return CreateContext(dpy, config->fbconfigID, config, shareList,
+ 			allowDirect, X_GLXCreateNewContext, renderType,
+ 			config->screen);
+-- 
+2.7.4
+

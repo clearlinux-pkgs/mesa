@@ -1,0 +1,39 @@
+From 650842e5a8f9632acf0ff9bb731c22ad6389c307 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <michael.i.doherty@intel.com>
+Date: Wed, 20 Jan 2016 15:26:53 +0000
+Subject: [PATCH] Use a stateless implementation for the drirc
+
+Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
+---
+ src/mesa/drivers/dri/common/Makefile.am | 4 +++-
+ src/mesa/drivers/dri/common/xmlconfig.c | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/mesa/drivers/dri/common/Makefile.am b/src/mesa/drivers/dri/common/Makefile.am
+index 2973a06..0d095ce 100644
+--- a/src/mesa/drivers/dri/common/Makefile.am
++++ b/src/mesa/drivers/dri/common/Makefile.am
+@@ -54,4 +54,6 @@ libdri_test_stubs_la_CFLAGS = $(AM_CFLAGS) -DNO_MAIN
+ 
+ libmegadriver_stub_la_SOURCES = $(megadriver_stub_FILES)
+ 
+-sysconf_DATA = drirc
++dridir = $(datadir)/mesa
++dri_DATA = drirc
++ 
+diff --git a/src/mesa/drivers/dri/common/xmlconfig.c b/src/mesa/drivers/dri/common/xmlconfig.c
+index a8f7c9b..a9de962 100644
+--- a/src/mesa/drivers/dri/common/xmlconfig.c
++++ b/src/mesa/drivers/dri/common/xmlconfig.c
+@@ -944,7 +944,7 @@ static void parseOneConfigFile (XML_Parser p) {
+ 
+ void driParseConfigFiles (driOptionCache *cache, const driOptionCache *info,
+ 			  int screenNum, const char *driverName) {
+-    char *filenames[2] = { SYSCONFDIR "/drirc", NULL};
++    char *filenames[2] = {"/usr/share/mesa/drirc", NULL};
+     char *home;
+     uint32_t i;
+     struct OptConfData userData;
+-- 
+2.7.0
+
