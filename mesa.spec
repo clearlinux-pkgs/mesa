@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 38
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2593354643b4bad26cd23b72a5e7073b4cad8cd0.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2593354643b4bad26cd23b72a5e7073b4cad8cd0.tar.gz
+Release  : 39
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ba8a50955d71a750ba36cfba5c26701191ffc011.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ba8a50955d71a750ba36cfba5c26701191ffc011.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -31,6 +31,7 @@ BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
+BuildRequires : pkgconfig(wayland-scanner)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xcb-dri2)
@@ -82,7 +83,7 @@ lib components for the mesa package.
 
 
 %prep
-%setup -q -n 2593354643b4bad26cd23b72a5e7073b4cad8cd0
+%setup -q -n ba8a50955d71a750ba36cfba5c26701191ffc011
 %patch1 -p1
 %patch2 -p1
 
@@ -91,10 +92,10 @@ export LANG=C
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -falign-functions=32 -fno-semantic-interposition -O3 "
-export FCFLAGS="$CFLAGS -falign-functions=32 -fno-semantic-interposition -O3 "
-export FFLAGS="$CFLAGS -falign-functions=32 -fno-semantic-interposition -O3 "
-export CXXFLAGS="$CXXFLAGS -falign-functions=32 -fno-semantic-interposition -O3 "
+export CFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
+export FCFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
+export FFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
+export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -155,6 +156,7 @@ rm -rf %{buildroot}
 /usr/include/GLES2/gl2platform.h
 /usr/include/GLES3/gl3.h
 /usr/include/GLES3/gl31.h
+/usr/include/GLES3/gl32.h
 /usr/include/GLES3/gl3ext.h
 /usr/include/GLES3/gl3platform.h
 /usr/include/KHR/khrplatform.h
