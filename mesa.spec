@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 40
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ba8a50955d71a750ba36cfba5c26701191ffc011.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ba8a50955d71a750ba36cfba5c26701191ffc011.tar.gz
+Release  : 41
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/f7a5c714b304b85fde606a716d47581384cdcf75.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/f7a5c714b304b85fde606a716d47581384cdcf75.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -83,7 +83,7 @@ lib components for the mesa package.
 
 
 %prep
-%setup -q -n ba8a50955d71a750ba36cfba5c26701191ffc011
+%setup -q -n f7a5c714b304b85fde606a716d47581384cdcf75
 %patch1 -p1
 %patch2 -p1
 
