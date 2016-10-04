@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 41
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/f7a5c714b304b85fde606a716d47581384cdcf75.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/f7a5c714b304b85fde606a716d47581384cdcf75.tar.gz
+Release  : 42
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/8b1f9fd3b3e4b7703314278061d7905a6e780ce7.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/8b1f9fd3b3e4b7703314278061d7905a6e780ce7.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -83,7 +83,7 @@ lib components for the mesa package.
 
 
 %prep
-%setup -q -n f7a5c714b304b85fde606a716d47581384cdcf75
+%setup -q -n 8b1f9fd3b3e4b7703314278061d7905a6e780ce7
 %patch1 -p1
 %patch2 -p1
 
@@ -92,10 +92,10 @@ export LANG=C
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
-export FCFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
-export FFLAGS="$CFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
-export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition -O3 -falign-functions=32 "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
