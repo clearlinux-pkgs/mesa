@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 42
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/8b1f9fd3b3e4b7703314278061d7905a6e780ce7.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/8b1f9fd3b3e4b7703314278061d7905a6e780ce7.tar.gz
+Release  : 43
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d8aacc24cc37dc435e250668aba0817c36996ad1.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d8aacc24cc37dc435e250668aba0817c36996ad1.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -83,7 +83,7 @@ lib components for the mesa package.
 
 
 %prep
-%setup -q -n 8b1f9fd3b3e4b7703314278061d7905a6e780ce7
+%setup -q -n d8aacc24cc37dc435e250668aba0817c36996ad1
 %patch1 -p1
 %patch2 -p1
 
@@ -144,9 +144,6 @@ rm -rf %{buildroot}
 /usr/include/GL/glx_mangle.h
 /usr/include/GL/glxext.h
 /usr/include/GL/internal/dri_interface.h
-/usr/include/GL/mesa_glinterop.h
-/usr/include/GL/osmesa.h
-/usr/include/GL/wglext.h
 /usr/include/GLES/egl.h
 /usr/include/GLES/gl.h
 /usr/include/GLES/glext.h
