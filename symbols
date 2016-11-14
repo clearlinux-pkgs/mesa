@@ -1,3 +1,5 @@
+libEGL.so.1:MesaGLInteropEGLExportObject
+libEGL.so.1:MesaGLInteropEGLQueryDeviceInfo
 libEGL.so.1:eglBindAPI
 libEGL.so.1:eglBindTexImage
 libEGL.so.1:eglChooseConfig
@@ -42,6 +44,8 @@ libEGL.so.1:eglWaitClient
 libEGL.so.1:eglWaitGL
 libEGL.so.1:eglWaitNative
 libEGL.so.1:eglWaitSync
+libGL.so.1:MesaGLInteropGLXExportObject
+libGL.so.1:MesaGLInteropGLXQueryDeviceInfo
 libGL.so.1:glAccum
 libGL.so.1:glActiveShaderProgram
 libGL.so.1:glActiveTexture
