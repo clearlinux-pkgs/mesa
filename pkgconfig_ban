@@ -16,3 +16,6 @@ libsha1
 simpenrose
 libglvnd
 libdrm_vc4
+cutils
+hardware
+sync

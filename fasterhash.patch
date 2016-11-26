@@ -1,7 +1,7 @@
 Use Knuth's Multiplicative Method
 
---- mesa-12.0.0-rc4/src/mesa/drivers/dri/i965/brw_state_cache.c~	2016-06-21 12:31:10.000000000 +0000
-+++ mesa-12.0.0-rc4/src/mesa/drivers/dri/i965/brw_state_cache.c	2016-07-04 17:44:31.757345617 +0000
+--- mesa-12.0.0-rc4/src/mesa/drivers/dri/i965/brw_program_cache.c~	2016-06-21 12:31:10.000000000 +0000
++++ mesa-12.0.0-rc4/src/mesa/drivers/dri/i965/brw_program_cache.c	2016-07-04 17:44:31.757345617 +0000
 @@ -67,7 +67,7 @@
      */
     for (i = 0; i < item->key_size/4; i++) {
