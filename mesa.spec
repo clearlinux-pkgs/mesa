@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 48
+Release  : 49
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Summary  : Mesa OpenGL library
@@ -114,13 +114,6 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interpos
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel
 make V=1  %{?_smp_mflags}
-
-%check
-export LANG=C
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
 rm -rf %{buildroot}
