@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 50
+Release  : 51
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Summary  : Mesa OpenGL library
@@ -16,8 +16,35 @@ BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
 BuildRequires : flex
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
 BuildRequires : libgcrypt-dev
 BuildRequires : nettle-dev
+BuildRequires : pkgconfig(32dri2proto)
+BuildRequires : pkgconfig(32dri3proto)
+BuildRequires : pkgconfig(32expat)
+BuildRequires : pkgconfig(32glproto)
+BuildRequires : pkgconfig(32libdrm)
+BuildRequires : pkgconfig(32libdrm_amdgpu)
+BuildRequires : pkgconfig(32libdrm_intel)
+BuildRequires : pkgconfig(32openssl)
+BuildRequires : pkgconfig(32presentproto)
+BuildRequires : pkgconfig(32pthread-stubs)
+BuildRequires : pkgconfig(32x11-xcb)
+BuildRequires : pkgconfig(32xcb)
+BuildRequires : pkgconfig(32xcb-dri2)
+BuildRequires : pkgconfig(32xcb-dri3)
+BuildRequires : pkgconfig(32xcb-present)
+BuildRequires : pkgconfig(32xcb-sync)
+BuildRequires : pkgconfig(32xdamage)
+BuildRequires : pkgconfig(32xext)
+BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xshmfence)
+BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(dri2proto)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
@@ -72,6 +99,16 @@ Provides: mesa-devel
 dev components for the mesa package.
 
 
+%package dev32
+Summary: dev32 components for the mesa package.
+Group: Default
+Requires: mesa-lib32
+Requires: mesa-data
+
+%description dev32
+dev32 components for the mesa package.
+
+
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
@@ -81,10 +118,22 @@ Requires: mesa-data
 lib components for the mesa package.
 
 
+%package lib32
+Summary: lib32 components for the mesa package.
+Group: Default
+Requires: mesa-data
+
+%description lib32
+lib32 components for the mesa package.
+
+
 %prep
 %setup -q -n 2a7db188906b26f83e99ed037fc5537e7139c928
 %patch1 -p1
 %patch2 -p1
+pushd ..
+cp -a 2a7db188906b26f83e99ed037fc5537e7139c928 build32
+popd
 
 %build
 export LANG=C
@@ -114,17 +163,54 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interpos
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel
 make V=1  %{?_smp_mflags}
+pushd ../build32/
+export CFLAGS="$CFLAGS -m32"
+export CXXFLAGS="$CXXFLAGS -m32"
+export LDFLAGS="$LDFLAGS -m32"
+%reconfigure --disable-static --enable-dri \
+--enable-dri3 \
+--enable-glx \
+--with-dri-drivers="i965,swrast" \
+--without-gallium-drivers \
+--disable-gallium-llvm \
+--enable-gles2 \
+--enable-xorg \
+--enable-shared-glapi \
+--enable-xorg \
+--enable-glx-tls \
+--enable-xvmc \
+--enable-va \
+--enable-glx-tls \
+--enable-texture-float \
+--enable-gbm \
+--with-egl-platforms=x11,drm,wayland \
+--with-vulkan-drivers=intel --with-egl-platforms=x11,drm \
+--disable-va --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+make V=1  %{?_smp_mflags}
+popd
 
 %install
 rm -rf %{buildroot}
+pushd ../build32/
+%make_install32
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+pushd %{buildroot}/usr/lib32/pkgconfig
+for i in *.pc ; do mv $i 32$i ; done
+popd
+fi
+popd
 %make_install
 
 %files
 %defattr(-,root,root,-)
+/usr/lib32/dri/i965_dri.so
+/usr/lib32/dri/swrast_dri.so
 
 %files data
 %defattr(-,root,root,-)
 /usr/share/mesa/drirc
+/usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
 
 %files dev
@@ -175,6 +261,22 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/glesv2.pc
 /usr/lib64/pkgconfig/wayland-egl.pc
 
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/libEGL.so
+/usr/lib32/libGL.so
+/usr/lib32/libGLESv1_CM.so
+/usr/lib32/libGLESv2.so
+/usr/lib32/libgbm.so
+/usr/lib32/libglapi.so
+/usr/lib32/libvulkan_intel.so
+/usr/lib32/pkgconfig/32dri.pc
+/usr/lib32/pkgconfig/32egl.pc
+/usr/lib32/pkgconfig/32gbm.pc
+/usr/lib32/pkgconfig/32gl.pc
+/usr/lib32/pkgconfig/32glesv1_cm.pc
+/usr/lib32/pkgconfig/32glesv2.pc
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
@@ -193,3 +295,18 @@ rm -rf %{buildroot}
 /usr/lib64/libglapi.so.0.0.0
 /usr/lib64/libwayland-egl.so.1
 /usr/lib64/libwayland-egl.so.1.0.0
+
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/libEGL.so.1
+/usr/lib32/libEGL.so.1.0.0
+/usr/lib32/libGL.so.1
+/usr/lib32/libGL.so.1.2.0
+/usr/lib32/libGLESv1_CM.so.1
+/usr/lib32/libGLESv1_CM.so.1.1.0
+/usr/lib32/libGLESv2.so.2
+/usr/lib32/libGLESv2.so.2.0.0
+/usr/lib32/libgbm.so.1
+/usr/lib32/libgbm.so.1.0.0
+/usr/lib32/libglapi.so.0
+/usr/lib32/libglapi.so.0.0.0

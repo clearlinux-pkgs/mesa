@@ -6,3 +6,7 @@ xfixes
 xshmfence
 xdamage
 libva
+32xfixes
+32xshmfence
+32xdamage
+32xext

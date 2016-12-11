@@ -37,3 +37,5 @@ sync
 32cutils
 32hardware
 32sync
+32libva
+32wayland-scanner
