@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 49
+Release  : 50
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
 Summary  : Mesa OpenGL library
@@ -159,11 +159,37 @@ rm -rf %{buildroot}
 /usr/include/vulkan/vk_platform.h
 /usr/include/vulkan/vulkan.h
 /usr/include/vulkan/vulkan_intel.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libEGL.so
+/usr/lib64/libGL.so
+/usr/lib64/libGLESv1_CM.so
+/usr/lib64/libGLESv2.so
+/usr/lib64/libgbm.so
+/usr/lib64/libglapi.so
+/usr/lib64/libvulkan_intel.so
+/usr/lib64/libwayland-egl.so
+/usr/lib64/pkgconfig/dri.pc
+/usr/lib64/pkgconfig/egl.pc
+/usr/lib64/pkgconfig/gbm.pc
+/usr/lib64/pkgconfig/gl.pc
+/usr/lib64/pkgconfig/glesv1_cm.pc
+/usr/lib64/pkgconfig/glesv2.pc
+/usr/lib64/pkgconfig/wayland-egl.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/swrast_dri.so
+/usr/lib64/libEGL.so.1
+/usr/lib64/libEGL.so.1.0.0
+/usr/lib64/libGL.so.1
+/usr/lib64/libGL.so.1.2.0
+/usr/lib64/libGLESv1_CM.so.1
+/usr/lib64/libGLESv1_CM.so.1.1.0
+/usr/lib64/libGLESv2.so.2
+/usr/lib64/libGLESv2.so.2.0.0
+/usr/lib64/libgbm.so.1
+/usr/lib64/libgbm.so.1.0.0
+/usr/lib64/libglapi.so.0
+/usr/lib64/libglapi.so.0.0.0
+/usr/lib64/libwayland-egl.so.1
+/usr/lib64/libwayland-egl.so.1.0.0
