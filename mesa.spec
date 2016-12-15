@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 51
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2a7db188906b26f83e99ed037fc5537e7139c928.tar.gz
+Release  : 52
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -22,6 +22,7 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libgcrypt-dev
+BuildRequires : llvm-dev
 BuildRequires : nettle-dev
 BuildRequires : pkgconfig(32dri2proto)
 BuildRequires : pkgconfig(32dri3proto)
@@ -104,6 +105,7 @@ Summary: dev32 components for the mesa package.
 Group: Default
 Requires: mesa-lib32
 Requires: mesa-data
+Requires: mesa-dev
 
 %description dev32
 dev32 components for the mesa package.
@@ -128,11 +130,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 2a7db188906b26f83e99ed037fc5537e7139c928
+%setup -q -n 47351b843a8213e931bbd70cb6a2501b87cb525e
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 2a7db188906b26f83e99ed037fc5537e7139c928 build32
+cp -a 47351b843a8213e931bbd70cb6a2501b87cb525e build32
 popd
 
 %build
@@ -164,6 +166,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interpos
 --with-vulkan-drivers=intel
 make V=1  %{?_smp_mflags}
 pushd ../build32/
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
@@ -196,7 +199,7 @@ pushd ../build32/
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
 then
 pushd %{buildroot}/usr/lib32/pkgconfig
-for i in *.pc ; do mv $i 32$i ; done
+for i in *.pc ; do ln -s $i 32$i ; done
 popd
 fi
 popd
@@ -276,6 +279,12 @@ popd
 /usr/lib32/pkgconfig/32gl.pc
 /usr/lib32/pkgconfig/32glesv1_cm.pc
 /usr/lib32/pkgconfig/32glesv2.pc
+/usr/lib32/pkgconfig/dri.pc
+/usr/lib32/pkgconfig/egl.pc
+/usr/lib32/pkgconfig/gbm.pc
+/usr/lib32/pkgconfig/gl.pc
+/usr/lib32/pkgconfig/glesv1_cm.pc
+/usr/lib32/pkgconfig/glesv2.pc
 
 %files lib
 %defattr(-,root,root,-)

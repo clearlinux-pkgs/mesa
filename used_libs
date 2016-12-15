@@ -5,6 +5,7 @@ libXext.so.6
 libXfixes.so.3
 libXxf86vm.so.1
 libc.so.6
+libcrypto.so.1.0.0
 libdl.so.2
 libdrm.so.2
 libdrm_intel.so.1
