@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 53
+Release  : 54
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
 Summary  : Mesa OpenGL library
@@ -141,7 +141,7 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1483292867
+export SOURCE_DATE_EPOCH=1483295237
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
