@@ -1,2 +1,1 @@
---with-egl-platforms=x11,drm
 --disable-va

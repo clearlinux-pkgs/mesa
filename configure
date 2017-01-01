@@ -1,9 +1,7 @@
 --enable-dri 
 --enable-dri3
 --enable-glx 
---with-dri-drivers="i965,swrast" 
---without-gallium-drivers  
---disable-gallium-llvm 
+--with-dri-drivers="i965,swrast,swr" 
 --enable-gles2 
 --enable-xorg 
 --enable-shared-glapi 

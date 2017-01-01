@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 52
+Release  : 53
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/47351b843a8213e931bbd70cb6a2501b87cb525e.tar.gz
 Summary  : Mesa OpenGL library
@@ -24,6 +24,7 @@ BuildRequires : glibc-libc32
 BuildRequires : libgcrypt-dev
 BuildRequires : llvm-dev
 BuildRequires : nettle-dev
+BuildRequires : nettle-dev32
 BuildRequires : pkgconfig(32dri2proto)
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
@@ -74,6 +75,7 @@ BuildRequires : python-dev
 BuildRequires : scons
 BuildRequires : sed
 BuildRequires : wayland-dev
+BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: stateless.patch
 Patch2: fasterhash.patch
@@ -139,13 +141,14 @@ popd
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1483292867
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -flto -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -187,8 +190,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-texture-float \
 --enable-gbm \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --with-egl-platforms=x11,drm \
---disable-va --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+--with-vulkan-drivers=intel --disable-va --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make V=1  %{?_smp_mflags}
 popd
 
@@ -207,8 +209,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-/usr/lib32/dri/i965_dri.so
-/usr/lib32/dri/swrast_dri.so
 
 %files data
 %defattr(-,root,root,-)
@@ -273,18 +273,21 @@ popd
 /usr/lib32/libgbm.so
 /usr/lib32/libglapi.so
 /usr/lib32/libvulkan_intel.so
+/usr/lib32/libwayland-egl.so
 /usr/lib32/pkgconfig/32dri.pc
 /usr/lib32/pkgconfig/32egl.pc
 /usr/lib32/pkgconfig/32gbm.pc
 /usr/lib32/pkgconfig/32gl.pc
 /usr/lib32/pkgconfig/32glesv1_cm.pc
 /usr/lib32/pkgconfig/32glesv2.pc
+/usr/lib32/pkgconfig/32wayland-egl.pc
 /usr/lib32/pkgconfig/dri.pc
 /usr/lib32/pkgconfig/egl.pc
 /usr/lib32/pkgconfig/gbm.pc
 /usr/lib32/pkgconfig/gl.pc
 /usr/lib32/pkgconfig/glesv1_cm.pc
 /usr/lib32/pkgconfig/glesv2.pc
+/usr/lib32/pkgconfig/wayland-egl.pc
 
 %files lib
 %defattr(-,root,root,-)
@@ -307,6 +310,8 @@ popd
 
 %files lib32
 %defattr(-,root,root,-)
+/usr/lib32/dri/i965_dri.so
+/usr/lib32/dri/swrast_dri.so
 /usr/lib32/libEGL.so.1
 /usr/lib32/libEGL.so.1.0.0
 /usr/lib32/libGL.so.1
@@ -319,3 +324,5 @@ popd
 /usr/lib32/libgbm.so.1.0.0
 /usr/lib32/libglapi.so.0
 /usr/lib32/libglapi.so.0.0.0
+/usr/lib32/libwayland-egl.so.1
+/usr/lib32/libwayland-egl.so.1.0.0

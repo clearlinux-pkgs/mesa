@@ -10,4 +10,6 @@ flex
 libgcrypt-dev
 wayland-dev
 wayland-protocols-dev
-
+wayland-dev32
+nettle-dev32
+llvm-dev
