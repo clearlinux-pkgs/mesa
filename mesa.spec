@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 56
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/36ad8265489fc66ab45b9b74dafa353a93bdb03b.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/36ad8265489fc66ab45b9b74dafa353a93bdb03b.tar.gz
+Release  : 57
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -132,16 +132,16 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 36ad8265489fc66ab45b9b74dafa353a93bdb03b
+%setup -q -n 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 36ad8265489fc66ab45b9b74dafa353a93bdb03b build32
+cp -a 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1483633255
+export SOURCE_DATE_EPOCH=1483801064
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
