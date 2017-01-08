@@ -83,7 +83,6 @@ BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: stateless.patch
 Patch2: fasterhash.patch
-Patch3: fake-externsion.patch
 
 %description
 
@@ -140,8 +139,6 @@ lib32 components for the mesa package.
 %setup -q -n 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-
 pushd ..
 cp -a 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1 build32
 popd
