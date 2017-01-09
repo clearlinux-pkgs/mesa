@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 60
+Release  : 61
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/5b85a6b3f7195080a1b8255bb527c16a1d8ba581.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/5b85a6b3f7195080a1b8255bb527c16a1d8ba581.tar.gz
 Summary  : Mesa OpenGL library
@@ -78,6 +78,7 @@ BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: stateless.patch
+Patch2: better-error.patch
 
 %description
 
@@ -133,13 +134,14 @@ lib32 components for the mesa package.
 %prep
 %setup -q -n 5b85a6b3f7195080a1b8255bb527c16a1d8ba581
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a 5b85a6b3f7195080a1b8255bb527c16a1d8ba581 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1483974956
+export SOURCE_DATE_EPOCH=1483991400
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm

@@ -1,0 +1,16 @@
+--- 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1/src/glx/dri_common.c~	2017-01-07 00:44:29.000000000 +0000
++++ 45912fb908f7a1d2efbce0f1dbe81e5bc975fbe1/src/glx/dri_common.c	2017-01-09 19:17:45.103026092 +0000
+@@ -144,11 +144,11 @@
+       if (handle != NULL)
+          break;
+       else
+-         InfoMessageF("dlopen %s failed (%s)\n", realDriverName, dlerror());
++         ErrorMessageF("dlopen %s failed (%s)\n", realDriverName, dlerror());
+    }
+ 
+    if (!handle)
+-      ErrorMessageF("unable to load driver: %s_dri.so\n", driverName);
++      ErrorMessageF("unable to load driver: %s_dri.so (%s)\n", driverName, dlerror());
+ 
+    if (glhandle)
+       dlclose(glhandle);
