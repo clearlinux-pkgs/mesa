@@ -39,3 +39,5 @@ sync
 32sync
 32libva
 32wayland-scanner
+32libdrm_etnaviv
+libdrm_etnaviv
