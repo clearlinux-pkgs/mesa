@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 63
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/84e3e12b2582f4707a837ebb960ea7ce19e1c263.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/84e3e12b2582f4707a837ebb960ea7ce19e1c263.tar.gz
+Release  : 64
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8e1f9e7b26acecab1fc63a526ce3d10eae4c61.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8e1f9e7b26acecab1fc63a526ce3d10eae4c61.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -74,6 +74,8 @@ BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : python-dev
 BuildRequires : scons
 BuildRequires : sed
+BuildRequires : vulkan-sdk-dev
+BuildRequires : vulkan-sdk-dev32
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
@@ -132,16 +134,16 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 84e3e12b2582f4707a837ebb960ea7ce19e1c263
+%setup -q -n bf8e1f9e7b26acecab1fc63a526ce3d10eae4c61
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 84e3e12b2582f4707a837ebb960ea7ce19e1c263 build32
+cp -a bf8e1f9e7b26acecab1fc63a526ce3d10eae4c61 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484320403
+export SOURCE_DATE_EPOCH=1484503904
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -195,6 +197,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
+export SOURCE_DATE_EPOCH=1484503904
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
