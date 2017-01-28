@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 65
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3a8f316e7b7f7dc5d913d117ec47e26587ce8177.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3a8f316e7b7f7dc5d913d117ec47e26587ce8177.tar.gz
+Release  : 66
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/96c60b7f07e626d9ca0fc5789117f0c725ba1da2.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/96c60b7f07e626d9ca0fc5789117f0c725ba1da2.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -32,7 +32,6 @@ BuildRequires : pkgconfig(32glproto)
 BuildRequires : pkgconfig(32libdrm)
 BuildRequires : pkgconfig(32libdrm_amdgpu)
 BuildRequires : pkgconfig(32libdrm_intel)
-BuildRequires : pkgconfig(32openssl)
 BuildRequires : pkgconfig(32presentproto)
 BuildRequires : pkgconfig(32pthread-stubs)
 BuildRequires : pkgconfig(32x11-xcb)
@@ -55,7 +54,6 @@ BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libdrm_amdgpu)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libva)
-BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
@@ -134,16 +132,16 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 3a8f316e7b7f7dc5d913d117ec47e26587ce8177
+%setup -q -n 96c60b7f07e626d9ca0fc5789117f0c725ba1da2
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 3a8f316e7b7f7dc5d913d117ec47e26587ce8177 build32
+cp -a 96c60b7f07e626d9ca0fc5789117f0c725ba1da2 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484675236
+export SOURCE_DATE_EPOCH=1485620982
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -197,7 +195,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1484675236
+export SOURCE_DATE_EPOCH=1485620982
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -248,8 +246,6 @@ popd
 /usr/include/GLES3/gl3ext.h
 /usr/include/GLES3/gl3platform.h
 /usr/include/KHR/khrplatform.h
-/usr/include/vulkan/vk_platform.h
-/usr/include/vulkan/vulkan.h
 /usr/include/vulkan/vulkan_intel.h
 /usr/lib64/libEGL.so
 /usr/lib64/libGL.so
