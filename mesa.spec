@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 66
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/96c60b7f07e626d9ca0fc5789117f0c725ba1da2.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/96c60b7f07e626d9ca0fc5789117f0c725ba1da2.tar.gz
+Release  : 67
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0a2dcd3a8ac4bf18cd6ec2f778c9ef859ef90a51.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0a2dcd3a8ac4bf18cd6ec2f778c9ef859ef90a51.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -30,8 +30,6 @@ BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
 BuildRequires : pkgconfig(32glproto)
 BuildRequires : pkgconfig(32libdrm)
-BuildRequires : pkgconfig(32libdrm_amdgpu)
-BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32presentproto)
 BuildRequires : pkgconfig(32pthread-stubs)
 BuildRequires : pkgconfig(32x11-xcb)
@@ -51,8 +49,6 @@ BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(glproto)
 BuildRequires : pkgconfig(libdrm)
-BuildRequires : pkgconfig(libdrm_amdgpu)
-BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
@@ -132,16 +128,16 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 96c60b7f07e626d9ca0fc5789117f0c725ba1da2
+%setup -q -n 0a2dcd3a8ac4bf18cd6ec2f778c9ef859ef90a51
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 96c60b7f07e626d9ca0fc5789117f0c725ba1da2 build32
+cp -a 0a2dcd3a8ac4bf18cd6ec2f778c9ef859ef90a51 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485620982
+export SOURCE_DATE_EPOCH=1486142194
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -195,7 +191,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1485620982
+export SOURCE_DATE_EPOCH=1486142194
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
