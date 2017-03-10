@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 72
+Release  : 73
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/f434a60a538bb3b8813f3bdcaa55e34a67279dee.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/f434a60a538bb3b8813f3bdcaa55e34a67279dee.tar.gz
 Summary  : Mesa OpenGL library
