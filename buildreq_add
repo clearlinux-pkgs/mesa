@@ -15,3 +15,4 @@ nettle-dev32
 llvm-dev
 vulkan-sdk-dev
 vulkan-sdk-dev32
+libpthread-stubs-dev

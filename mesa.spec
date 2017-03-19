@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 74
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/f434a60a538bb3b8813f3bdcaa55e34a67279dee.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/f434a60a538bb3b8813f3bdcaa55e34a67279dee.tar.gz
+Release  : 75
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8bc6190e79b4312da08a4a5e8f3c3ec129162f.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8bc6190e79b4312da08a4a5e8f3c3ec129162f.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -22,6 +22,7 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libgcrypt-dev
+BuildRequires : libpthread-stubs-dev
 BuildRequires : llvm-dev
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
@@ -44,6 +45,7 @@ BuildRequires : pkgconfig(32xfixes)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
 BuildRequires : pkgconfig(32xxf86vm)
+BuildRequires : pkgconfig(32zlib)
 BuildRequires : pkgconfig(dri2proto)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
@@ -65,6 +67,7 @@ BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : python-dev
 BuildRequires : scons
 BuildRequires : sed
@@ -73,8 +76,7 @@ BuildRequires : vulkan-sdk-dev32
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
-Patch1: stateless.patch
-Patch2: better-error.patch
+Patch1: better-error.patch
 
 %description
 
@@ -128,16 +130,16 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n f434a60a538bb3b8813f3bdcaa55e34a67279dee
+%setup -q -n bf8bc6190e79b4312da08a4a5e8f3c3ec129162f
 %patch1 -p1
-%patch2 -p1
 pushd ..
-cp -a f434a60a538bb3b8813f3bdcaa55e34a67279dee build32
+cp -a bf8bc6190e79b4312da08a4a5e8f3c3ec129162f build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489171549
+export SOURCE_DATE_EPOCH=1489883425
+unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -161,6 +163,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
+--sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel
 make V=1  %{?_smp_mflags}
@@ -185,13 +188,14 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
+--sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel --disable-va --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1489171549
+export SOURCE_DATE_EPOCH=1489883425
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

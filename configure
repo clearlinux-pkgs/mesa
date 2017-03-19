@@ -14,5 +14,6 @@
 --enable-glx-tls 
 --enable-texture-float 
 --enable-gbm 
+--sysconfdir=/usr/share/mesa
 --with-egl-platforms=x11,drm,wayland 
 --with-vulkan-drivers=intel 
