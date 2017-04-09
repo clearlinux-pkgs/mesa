@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 75
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8bc6190e79b4312da08a4a5e8f3c3ec129162f.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/bf8bc6190e79b4312da08a4a5e8f3c3ec129162f.tar.gz
+Release  : 76
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/b1b189a0abf69530cf55749881baa1b3f7eca17f.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/b1b189a0abf69530cf55749881baa1b3f7eca17f.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -51,6 +51,7 @@ BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(glproto)
 BuildRequires : pkgconfig(libdrm)
+BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
@@ -130,15 +131,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n bf8bc6190e79b4312da08a4a5e8f3c3ec129162f
+%setup -q -n b1b189a0abf69530cf55749881baa1b3f7eca17f
 %patch1 -p1
 pushd ..
-cp -a bf8bc6190e79b4312da08a4a5e8f3c3ec129162f build32
+cp -a b1b189a0abf69530cf55749881baa1b3f7eca17f build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489883425
+export SOURCE_DATE_EPOCH=1491775283
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -150,9 +151,6 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
---with-dri-drivers="i965,swrast" \
---without-gallium-drivers \
---disable-gallium-llvm \
 --enable-gles2 \
 --enable-xorg \
 --enable-shared-glapi \
@@ -165,7 +163,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel
+--with-vulkan-drivers=intel --with-dri-drivers="i965,swrast"   --with-gallium-drivers="swrast"
 make V=1  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -175,9 +173,6 @@ export LDFLAGS="$LDFLAGS -m32"
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
---with-dri-drivers="i965,swrast" \
---without-gallium-drivers \
---disable-gallium-llvm \
 --enable-gles2 \
 --enable-xorg \
 --enable-shared-glapi \
@@ -190,12 +185,15 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --disable-va --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+--with-vulkan-drivers=intel --disable-va \
+--with-dri-drivers="i965,swrast" \
+--without-gallium-drivers \
+--disable-gallium-llvm --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1489883425
+export SOURCE_DATE_EPOCH=1491775283
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -291,6 +289,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
+/usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
