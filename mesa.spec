@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 78
+Release  : 79
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/e20eb91e2bfef045d6806838e6453bc6ddb2e238.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/e20eb91e2bfef045d6806838e6453bc6ddb2e238.tar.gz
 Summary  : Mesa OpenGL library
@@ -139,7 +139,7 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1492188614
+export SOURCE_DATE_EPOCH=1492214576
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -163,7 +163,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --with-dri-drivers="i965"   --with-gallium-drivers="swrast"
+--with-vulkan-drivers=intel --with-dri-drivers="i965,swrast"  --with-gallium-drivers=""
 make V=1  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -193,7 +193,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1492188614
+export SOURCE_DATE_EPOCH=1492214576
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -289,7 +289,6 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
-/usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
