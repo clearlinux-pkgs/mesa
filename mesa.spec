@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 82
+Release  : 83
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Summary  : Mesa OpenGL library
@@ -78,6 +78,7 @@ BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: better-error.patch
+Patch2: swr.patch
 
 %description
 
@@ -133,13 +134,14 @@ lib32 components for the mesa package.
 %prep
 %setup -q -n 9f0dd85aa65b5eba783d6023b51deacd529cf918
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a 9f0dd85aa65b5eba783d6023b51deacd529cf918 build32
 popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1492282998
+export SOURCE_DATE_EPOCH=1492299280
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -163,7 +165,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --with-dri-drivers="i965,swrast"  --with-gallium-drivers=""
+--with-vulkan-drivers=intel --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau"
 make V=1  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -193,7 +195,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1492282998
+export SOURCE_DATE_EPOCH=1492299280
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -249,8 +251,12 @@ popd
 /usr/lib64/libGL.so
 /usr/lib64/libGLESv1_CM.so
 /usr/lib64/libGLESv2.so
+/usr/lib64/libXvMCnouveau.so
+/usr/lib64/libXvMCr600.so
 /usr/lib64/libgbm.so
 /usr/lib64/libglapi.so
+/usr/lib64/libswrAVX.so
+/usr/lib64/libswrAVX2.so
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libwayland-egl.so
 /usr/lib64/pkgconfig/dri.pc
@@ -289,6 +295,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
+/usr/lib64/dri/kms_swrast_dri.so
+/usr/lib64/dri/nouveau_dri.so
+/usr/lib64/dri/nouveau_drv_video.so
+/usr/lib64/dri/r600_dri.so
+/usr/lib64/dri/r600_drv_video.so
+/usr/lib64/dri/radeonsi_dri.so
+/usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
@@ -298,10 +311,20 @@ popd
 /usr/lib64/libGLESv1_CM.so.1.1.0
 /usr/lib64/libGLESv2.so.2
 /usr/lib64/libGLESv2.so.2.0.0
+/usr/lib64/libXvMCnouveau.so.1
+/usr/lib64/libXvMCnouveau.so.1.0
+/usr/lib64/libXvMCnouveau.so.1.0.0
+/usr/lib64/libXvMCr600.so.1
+/usr/lib64/libXvMCr600.so.1.0
+/usr/lib64/libXvMCr600.so.1.0.0
 /usr/lib64/libgbm.so.1
 /usr/lib64/libgbm.so.1.0.0
 /usr/lib64/libglapi.so.0
 /usr/lib64/libglapi.so.0.0.0
+/usr/lib64/libswrAVX.so.0
+/usr/lib64/libswrAVX.so.0.0.0
+/usr/lib64/libswrAVX2.so.0
+/usr/lib64/libswrAVX2.so.0.0.0
 /usr/lib64/libwayland-egl.so.1
 /usr/lib64/libwayland-egl.so.1.0.0
 
