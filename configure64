@@ -1,1 +1,1 @@
---with-dri-drivers="i965,swrast"  --with-gallium-drivers="swr"
+--with-dri-drivers="i965,swrast"  --with-gallium-drivers=""
