@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 84
+Release  : 85
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Summary  : Mesa OpenGL library
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
 Requires: mesa-data
+Requires: mesa-extras
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
