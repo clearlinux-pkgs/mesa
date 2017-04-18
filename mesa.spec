@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 85
+Release  : 86
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Summary  : Mesa OpenGL library
@@ -98,6 +98,7 @@ Group: Development
 Requires: mesa-lib
 Requires: mesa-data
 Provides: mesa-devel
+Requires: mesa-extras
 
 %description dev
 dev components for the mesa package.
