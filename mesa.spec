@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 86
+Release  : 85
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
 Summary  : Mesa OpenGL library
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
 Requires: mesa-data
-Requires: mesa-extras
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
@@ -98,7 +97,6 @@ Group: Development
 Requires: mesa-lib
 Requires: mesa-data
 Provides: mesa-devel
-Requires: mesa-extras
 
 %description dev
 dev components for the mesa package.
@@ -113,14 +111,6 @@ Requires: mesa-dev
 
 %description dev32
 dev32 components for the mesa package.
-
-
-%package extras
-Summary: extras components for the mesa package.
-Group: Default
-
-%description extras
-extras components for the mesa package.
 
 
 %package lib
@@ -150,8 +140,11 @@ cp -a 9f0dd85aa65b5eba783d6023b51deacd529cf918 build32
 popd
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1492455292
+export SOURCE_DATE_EPOCH=1492614552
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -205,7 +198,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1492455292
+export SOURCE_DATE_EPOCH=1492614552
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -229,18 +222,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-%exclude /usr/lib64/libEGL.so
-%exclude /usr/lib64/libGL.so
-%exclude /usr/lib64/libGLESv1_CM.so
-%exclude /usr/lib64/libGLESv2.so
-%exclude /usr/lib64/libXvMCnouveau.so
-%exclude /usr/lib64/libXvMCr600.so
-%exclude /usr/lib64/libgbm.so
-%exclude /usr/lib64/libglapi.so
-%exclude /usr/lib64/libswrAVX.so
-%exclude /usr/lib64/libswrAVX2.so
-%exclude /usr/lib64/libvulkan_intel.so
-%exclude /usr/lib64/libwayland-egl.so
 /usr/include/*.h
 /usr/include/EGL/egl.h
 /usr/include/EGL/eglext.h
@@ -279,14 +260,6 @@ popd
 
 %files dev32
 %defattr(-,root,root,-)
-/usr/lib32/libEGL.so
-/usr/lib32/libGL.so
-/usr/lib32/libGLESv1_CM.so
-/usr/lib32/libGLESv2.so
-/usr/lib32/libgbm.so
-/usr/lib32/libglapi.so
-/usr/lib32/libvulkan_intel.so
-/usr/lib32/libwayland-egl.so
 /usr/lib32/pkgconfig/32dri.pc
 /usr/lib32/pkgconfig/32egl.pc
 /usr/lib32/pkgconfig/32gbm.pc
@@ -302,21 +275,6 @@ popd
 /usr/lib32/pkgconfig/glesv2.pc
 /usr/lib32/pkgconfig/wayland-egl.pc
 
-%files extras
-%defattr(-,root,root,-)
-/usr/lib64/libEGL.so
-/usr/lib64/libGL.so
-/usr/lib64/libGLESv1_CM.so
-/usr/lib64/libGLESv2.so
-/usr/lib64/libXvMCnouveau.so
-/usr/lib64/libXvMCr600.so
-/usr/lib64/libgbm.so
-/usr/lib64/libglapi.so
-/usr/lib64/libswrAVX.so
-/usr/lib64/libswrAVX2.so
-/usr/lib64/libvulkan_intel.so
-/usr/lib64/libwayland-egl.so
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
@@ -328,28 +286,40 @@ popd
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
+/usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
+/usr/lib64/libGL.so
 /usr/lib64/libGL.so.1
 /usr/lib64/libGL.so.1.2.0
+/usr/lib64/libGLESv1_CM.so
 /usr/lib64/libGLESv1_CM.so.1
 /usr/lib64/libGLESv1_CM.so.1.1.0
+/usr/lib64/libGLESv2.so
 /usr/lib64/libGLESv2.so.2
 /usr/lib64/libGLESv2.so.2.0.0
+/usr/lib64/libXvMCnouveau.so
 /usr/lib64/libXvMCnouveau.so.1
 /usr/lib64/libXvMCnouveau.so.1.0
 /usr/lib64/libXvMCnouveau.so.1.0.0
+/usr/lib64/libXvMCr600.so
 /usr/lib64/libXvMCr600.so.1
 /usr/lib64/libXvMCr600.so.1.0
 /usr/lib64/libXvMCr600.so.1.0.0
+/usr/lib64/libgbm.so
 /usr/lib64/libgbm.so.1
 /usr/lib64/libgbm.so.1.0.0
+/usr/lib64/libglapi.so
 /usr/lib64/libglapi.so.0
 /usr/lib64/libglapi.so.0.0.0
+/usr/lib64/libswrAVX.so
 /usr/lib64/libswrAVX.so.0
 /usr/lib64/libswrAVX.so.0.0.0
+/usr/lib64/libswrAVX2.so
 /usr/lib64/libswrAVX2.so.0
 /usr/lib64/libswrAVX2.so.0.0.0
+/usr/lib64/libvulkan_intel.so
+/usr/lib64/libwayland-egl.so
 /usr/lib64/libwayland-egl.so.1
 /usr/lib64/libwayland-egl.so.1.0.0
 
@@ -357,17 +327,25 @@ popd
 %defattr(-,root,root,-)
 /usr/lib32/dri/i965_dri.so
 /usr/lib32/dri/swrast_dri.so
+/usr/lib32/libEGL.so
 /usr/lib32/libEGL.so.1
 /usr/lib32/libEGL.so.1.0.0
+/usr/lib32/libGL.so
 /usr/lib32/libGL.so.1
 /usr/lib32/libGL.so.1.2.0
+/usr/lib32/libGLESv1_CM.so
 /usr/lib32/libGLESv1_CM.so.1
 /usr/lib32/libGLESv1_CM.so.1.1.0
+/usr/lib32/libGLESv2.so
 /usr/lib32/libGLESv2.so.2
 /usr/lib32/libGLESv2.so.2.0.0
+/usr/lib32/libgbm.so
 /usr/lib32/libgbm.so.1
 /usr/lib32/libgbm.so.1.0.0
+/usr/lib32/libglapi.so
 /usr/lib32/libglapi.so.0
 /usr/lib32/libglapi.so.0.0.0
+/usr/lib32/libvulkan_intel.so
+/usr/lib32/libwayland-egl.so
 /usr/lib32/libwayland-egl.so.1
 /usr/lib32/libwayland-egl.so.1.0.0
