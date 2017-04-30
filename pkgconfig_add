@@ -10,3 +10,6 @@ libva
 32xshmfence
 32xdamage
 32xext
+dri3proto
+presentproto
+32dri3proto

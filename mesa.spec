@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 88
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9f0dd85aa65b5eba783d6023b51deacd529cf918.tar.gz
+Release  : 89
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/e5efaeb85c32c5c825c6adc3b394ba0860d81147.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/e5efaeb85c32c5c825c6adc3b394ba0860d81147.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -27,11 +27,9 @@ BuildRequires : llvm-dev
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
 BuildRequires : pkgconfig(32dri2proto)
-BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
 BuildRequires : pkgconfig(32glproto)
 BuildRequires : pkgconfig(32libdrm)
-BuildRequires : pkgconfig(32presentproto)
 BuildRequires : pkgconfig(32pthread-stubs)
 BuildRequires : pkgconfig(32x11-xcb)
 BuildRequires : pkgconfig(32xcb)
@@ -47,13 +45,11 @@ BuildRequires : pkgconfig(32xvmc)
 BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(32zlib)
 BuildRequires : pkgconfig(dri2proto)
-BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(glproto)
 BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libva)
-BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(wayland-scanner)
@@ -132,11 +128,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 9f0dd85aa65b5eba783d6023b51deacd529cf918
+%setup -q -n e5efaeb85c32c5c825c6adc3b394ba0860d81147
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 9f0dd85aa65b5eba783d6023b51deacd529cf918 build32
+cp -a e5efaeb85c32c5c825c6adc3b394ba0860d81147 build32
 popd
 
 %build
@@ -144,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493577115
+export SOURCE_DATE_EPOCH=1493581863
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -198,7 +194,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1493577115
+export SOURCE_DATE_EPOCH=1493581863
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
