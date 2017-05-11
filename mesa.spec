@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 89
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/e5efaeb85c32c5c825c6adc3b394ba0860d81147.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/e5efaeb85c32c5c825c6adc3b394ba0860d81147.tar.gz
+Release  : 90
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/a68d306a1d8f583262e705d347ac860de0a0cd30.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/a68d306a1d8f583262e705d347ac860de0a0cd30.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -27,6 +27,7 @@ BuildRequires : llvm-dev
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
 BuildRequires : pkgconfig(32dri2proto)
+BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
 BuildRequires : pkgconfig(32glproto)
 BuildRequires : pkgconfig(32libdrm)
@@ -45,11 +46,13 @@ BuildRequires : pkgconfig(32xvmc)
 BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(32zlib)
 BuildRequires : pkgconfig(dri2proto)
+BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(glproto)
 BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libva)
+BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(wayland-scanner)
@@ -128,11 +131,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n e5efaeb85c32c5c825c6adc3b394ba0860d81147
+%setup -q -n a68d306a1d8f583262e705d347ac860de0a0cd30
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a e5efaeb85c32c5c825c6adc3b394ba0860d81147 build32
+cp -a a68d306a1d8f583262e705d347ac860de0a0cd30 build32
 popd
 
 %build
@@ -140,7 +143,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493581863
+export SOURCE_DATE_EPOCH=1494516439
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -164,7 +167,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau"
+--with-vulkan-drivers=intel --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
 make V=1  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -194,7 +197,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1493581863
+export SOURCE_DATE_EPOCH=1494516439
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -232,6 +235,7 @@ popd
 /usr/include/GL/glx_mangle.h
 /usr/include/GL/glxext.h
 /usr/include/GL/internal/dri_interface.h
+/usr/include/GL/osmesa.h
 /usr/include/GLES/egl.h
 /usr/include/GLES/gl.h
 /usr/include/GLES/glext.h
@@ -252,6 +256,7 @@ popd
 /usr/lib64/pkgconfig/gl.pc
 /usr/lib64/pkgconfig/glesv1_cm.pc
 /usr/lib64/pkgconfig/glesv2.pc
+/usr/lib64/pkgconfig/osmesa.pc
 /usr/lib64/pkgconfig/wayland-egl.pc
 
 %files dev32
@@ -294,6 +299,9 @@ popd
 /usr/lib64/libGLESv2.so
 /usr/lib64/libGLESv2.so.2
 /usr/lib64/libGLESv2.so.2.0.0
+/usr/lib64/libOSMesa.so
+/usr/lib64/libOSMesa.so.8
+/usr/lib64/libOSMesa.so.8.0.0
 /usr/lib64/libXvMCnouveau.so
 /usr/lib64/libXvMCnouveau.so.1
 /usr/lib64/libXvMCnouveau.so.1.0

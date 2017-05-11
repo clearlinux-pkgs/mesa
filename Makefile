@@ -1,5 +1,5 @@
 PKG_NAME := mesa
-URL := https://cgit.freedesktop.org/mesa/mesa/snapshot/e5efaeb85c32c5c825c6adc3b394ba0860d81147.tar.gz
+URL := https://cgit.freedesktop.org/mesa/mesa/snapshot/a68d306a1d8f583262e705d347ac860de0a0cd30.tar.gz
 
 
 include ../common/Makefile.common
