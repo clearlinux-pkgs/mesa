@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 90
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/a68d306a1d8f583262e705d347ac860de0a0cd30.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/a68d306a1d8f583262e705d347ac860de0a0cd30.tar.gz
+Release  : 91
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e735800a9db412e807ee09a7351e97c03c2dccc.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e735800a9db412e807ee09a7351e97c03c2dccc.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -35,9 +35,6 @@ BuildRequires : pkgconfig(32pthread-stubs)
 BuildRequires : pkgconfig(32x11-xcb)
 BuildRequires : pkgconfig(32xcb)
 BuildRequires : pkgconfig(32xcb-dri2)
-BuildRequires : pkgconfig(32xcb-dri3)
-BuildRequires : pkgconfig(32xcb-present)
-BuildRequires : pkgconfig(32xcb-sync)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
@@ -59,9 +56,6 @@ BuildRequires : pkgconfig(wayland-scanner)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xcb-dri2)
-BuildRequires : pkgconfig(xcb-dri3)
-BuildRequires : pkgconfig(xcb-present)
-BuildRequires : pkgconfig(xcb-sync)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xshmfence)
@@ -131,11 +125,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n a68d306a1d8f583262e705d347ac860de0a0cd30
+%setup -q -n 1e735800a9db412e807ee09a7351e97c03c2dccc
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a a68d306a1d8f583262e705d347ac860de0a0cd30 build32
+cp -a 1e735800a9db412e807ee09a7351e97c03c2dccc build32
 popd
 
 %build
@@ -143,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1494516439
+export SOURCE_DATE_EPOCH=1495726300
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -197,7 +191,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1494516439
+export SOURCE_DATE_EPOCH=1495726300
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
