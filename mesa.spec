@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 93
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ad69b037b1ca38390fad440189541e49b3f48f14.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ad69b037b1ca38390fad440189541e49b3f48f14.tar.gz
+Release  : 94
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2f76b45415b3e12a1080bae12acf762006899083.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2f76b45415b3e12a1080bae12acf762006899083.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -125,11 +125,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n ad69b037b1ca38390fad440189541e49b3f48f14
+%setup -q -n 2f76b45415b3e12a1080bae12acf762006899083
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a ad69b037b1ca38390fad440189541e49b3f48f14 build32
+cp -a 2f76b45415b3e12a1080bae12acf762006899083 build32
 popd
 
 %build
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497455173
+export SOURCE_DATE_EPOCH=1498241189
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -191,7 +191,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1497455173
+export SOURCE_DATE_EPOCH=1498241189
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
