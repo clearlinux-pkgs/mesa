@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 95
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/2f76b45415b3e12a1080bae12acf762006899083.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/2f76b45415b3e12a1080bae12acf762006899083.tar.gz
+Release  : 96
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c7af6d2690386f89993cadb6aabd92b74556ad6a.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c7af6d2690386f89993cadb6aabd92b74556ad6a.tar.gz
 Summary  : Mesa OpenGL library
 Group    : Development/Tools
 License  : MIT
@@ -74,7 +74,10 @@ Patch1: better-error.patch
 Patch2: swr.patch
 
 %description
-
+This local copy of a SHA1 implementation based on the sources below.
+Why:
+- Some libraries suffer from race condition and other issues. For example see
+commit ade3108bb5b0 ("util: Fix race condition on libgcrypt initialization").
 
 %package data
 Summary: data components for the mesa package.
@@ -125,11 +128,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 2f76b45415b3e12a1080bae12acf762006899083
+%setup -q -n c7af6d2690386f89993cadb6aabd92b74556ad6a
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 2f76b45415b3e12a1080bae12acf762006899083 build32
+cp -a c7af6d2690386f89993cadb6aabd92b74556ad6a build32
 popd
 
 %build
@@ -137,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1498241189
+export SOURCE_DATE_EPOCH=1500142208
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -191,7 +194,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1498241189
+export SOURCE_DATE_EPOCH=1500142208
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
