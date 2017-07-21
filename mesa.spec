@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 96
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c7af6d2690386f89993cadb6aabd92b74556ad6a.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c7af6d2690386f89993cadb6aabd92b74556ad6a.tar.gz
-Summary  : Mesa OpenGL library
+Release  : 97
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/069bf7c9078a1b03414a6ace4bbff887e212ab90.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/069bf7c9078a1b03414a6ace4bbff887e212ab90.tar.gz
+Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
@@ -31,10 +31,15 @@ BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
 BuildRequires : pkgconfig(32glproto)
 BuildRequires : pkgconfig(32libdrm)
+BuildRequires : pkgconfig(32libdrm_amdgpu)
+BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32pthread-stubs)
+BuildRequires : pkgconfig(32wayland-protocols)
+BuildRequires : pkgconfig(32wayland-server)
 BuildRequires : pkgconfig(32x11-xcb)
 BuildRequires : pkgconfig(32xcb)
 BuildRequires : pkgconfig(32xcb-dri2)
+BuildRequires : pkgconfig(32xcb-xfixes)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
@@ -47,15 +52,20 @@ BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(glproto)
 BuildRequires : pkgconfig(libdrm)
+BuildRequires : pkgconfig(libdrm_amdgpu)
+BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
+BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(wayland-scanner)
+BuildRequires : pkgconfig(wayland-server)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xcb-dri2)
+BuildRequires : pkgconfig(xcb-xfixes)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xshmfence)
@@ -128,11 +138,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n c7af6d2690386f89993cadb6aabd92b74556ad6a
+%setup -q -n 069bf7c9078a1b03414a6ace4bbff887e212ab90
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a c7af6d2690386f89993cadb6aabd92b74556ad6a build32
+cp -a 069bf7c9078a1b03414a6ace4bbff887e212ab90 build32
 popd
 
 %build
@@ -140,7 +150,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1500142208
+export SOURCE_DATE_EPOCH=1500608221
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -194,7 +204,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1500142208
+export SOURCE_DATE_EPOCH=1500608221
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
