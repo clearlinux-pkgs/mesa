@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 98
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/19c90481d4f0a1aa5b85654d169eab7fdba623da.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/19c90481d4f0a1aa5b85654d169eab7fdba623da.tar.gz
+Release  : 99
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9777c4234b0e78bf79455ff7081068fe3c71a2de.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9777c4234b0e78bf79455ff7081068fe3c71a2de.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -138,11 +138,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 19c90481d4f0a1aa5b85654d169eab7fdba623da
+%setup -q -n 9777c4234b0e78bf79455ff7081068fe3c71a2de
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 19c90481d4f0a1aa5b85654d169eab7fdba623da build32
+cp -a 9777c4234b0e78bf79455ff7081068fe3c71a2de build32
 popd
 
 %build
@@ -150,15 +150,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501449073
+export SOURCE_DATE_EPOCH=1501981885
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -204,7 +204,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1501449073
+export SOURCE_DATE_EPOCH=1501981885
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

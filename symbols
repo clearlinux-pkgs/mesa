@@ -3245,6 +3245,7 @@ libXvMCgallium.so.1:XvMCSyncSurface
 libgbm.so.1:gbm_bo_create
 libgbm.so.1:gbm_bo_create_with_modifiers
 libgbm.so.1:gbm_bo_destroy
+libgbm.so.1:gbm_bo_get_bpp
 libgbm.so.1:gbm_bo_get_device
 libgbm.so.1:gbm_bo_get_fd
 libgbm.so.1:gbm_bo_get_format
