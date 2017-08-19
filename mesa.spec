@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 99
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9777c4234b0e78bf79455ff7081068fe3c71a2de.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9777c4234b0e78bf79455ff7081068fe3c71a2de.tar.gz
+Release  : 100
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/61d2f3f1c24323a1c067595ec78dfbfefdc72b41.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/61d2f3f1c24323a1c067595ec78dfbfefdc72b41.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -138,11 +138,11 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 9777c4234b0e78bf79455ff7081068fe3c71a2de
+%setup -q -n 61d2f3f1c24323a1c067595ec78dfbfefdc72b41
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a 9777c4234b0e78bf79455ff7081068fe3c71a2de build32
+cp -a 61d2f3f1c24323a1c067595ec78dfbfefdc72b41 build32
 popd
 
 %build
@@ -150,7 +150,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501981885
+export SOURCE_DATE_EPOCH=1503167200
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -204,7 +204,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1501981885
+export SOURCE_DATE_EPOCH=1503167200
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
