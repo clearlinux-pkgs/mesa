@@ -17,3 +17,10 @@ Configure miss: xlocale.h usability
 Configure miss: xlocale.h presence
 Configure miss: xlocale.h
 Configure miss: i686-generic-linux-gnu-llvm-config
+Configure miss: if compiling with clang
+Configure miss: whether gcc supports -mpower8-vector
+Configure miss: whether sys/types.h defines makedev
+Configure miss: xlocale.h usability
+Configure miss: xlocale.h presence
+Configure miss: xlocale.h
+Configure miss: x86_64-generic-linux-gnu-llvm-config

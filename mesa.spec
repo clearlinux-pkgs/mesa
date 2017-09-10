@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 104
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/cd48ffc755be333aa718964ded46c0d2cf7842ab.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/cd48ffc755be333aa718964ded46c0d2cf7842ab.tar.gz
+Release  : 105
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a341b0a94d37e2aee5380703d171c422d8550e.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a341b0a94d37e2aee5380703d171c422d8550e.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -138,11 +138,14 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n cd48ffc755be333aa718964ded46c0d2cf7842ab
+%setup -q -n 57a341b0a94d37e2aee5380703d171c422d8550e
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a cd48ffc755be333aa718964ded46c0d2cf7842ab build32
+cp -a 57a341b0a94d37e2aee5380703d171c422d8550e build32
+popd
+pushd ..
+cp -a 57a341b0a94d37e2aee5380703d171c422d8550e buildavx2
 popd
 
 %build
@@ -150,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1504564886
+export SOURCE_DATE_EPOCH=1505002237
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -202,9 +205,34 @@ export LDFLAGS="$LDFLAGS -m32"
 --disable-gallium-llvm --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make V=1  %{?_smp_mflags}
 popd
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=haswell"
+export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
+export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+%reconfigure --disable-static --enable-dri \
+--enable-dri3 \
+--enable-glx \
+--enable-gles2 \
+--enable-xorg \
+--enable-shared-glapi \
+--enable-xorg \
+--enable-glx-tls \
+--enable-xvmc \
+--enable-va \
+--enable-glx-tls \
+--enable-texture-float \
+--enable-gbm \
+--sysconfdir=/usr/share/mesa \
+--with-egl-platforms=x11,drm,wayland \
+--with-vulkan-drivers=intel --disable-va \
+--with-dri-drivers="i965,swrast" \
+--without-gallium-drivers \
+--disable-gallium-llvm  --libdir=/usr/lib64/haswell
+make V=1  %{?_smp_mflags}
+popd
 
 %install
-export SOURCE_DATE_EPOCH=1504564886
+export SOURCE_DATE_EPOCH=1505002237
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -216,9 +244,19 @@ popd
 fi
 popd
 %make_install
+pushd ../buildavx2/
+%make_install
+popd
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/haswell/pkgconfig/dri.pc
+/usr/lib64/haswell/pkgconfig/egl.pc
+/usr/lib64/haswell/pkgconfig/gbm.pc
+/usr/lib64/haswell/pkgconfig/gl.pc
+/usr/lib64/haswell/pkgconfig/glesv1_cm.pc
+/usr/lib64/haswell/pkgconfig/glesv2.pc
+/usr/lib64/haswell/pkgconfig/wayland-egl.pc
 
 %files data
 %defattr(-,root,root,-)
@@ -294,6 +332,30 @@ popd
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
+/usr/lib64/haswell/dri/i965_dri.so
+/usr/lib64/haswell/dri/swrast_dri.so
+/usr/lib64/haswell/libEGL.so
+/usr/lib64/haswell/libEGL.so.1
+/usr/lib64/haswell/libEGL.so.1.0.0
+/usr/lib64/haswell/libGL.so
+/usr/lib64/haswell/libGL.so.1
+/usr/lib64/haswell/libGL.so.1.2.0
+/usr/lib64/haswell/libGLESv1_CM.so
+/usr/lib64/haswell/libGLESv1_CM.so.1
+/usr/lib64/haswell/libGLESv1_CM.so.1.1.0
+/usr/lib64/haswell/libGLESv2.so
+/usr/lib64/haswell/libGLESv2.so.2
+/usr/lib64/haswell/libGLESv2.so.2.0.0
+/usr/lib64/haswell/libgbm.so
+/usr/lib64/haswell/libgbm.so.1
+/usr/lib64/haswell/libgbm.so.1.0.0
+/usr/lib64/haswell/libglapi.so
+/usr/lib64/haswell/libglapi.so.0
+/usr/lib64/haswell/libglapi.so.0.0.0
+/usr/lib64/haswell/libvulkan_intel.so
+/usr/lib64/haswell/libwayland-egl.so
+/usr/lib64/haswell/libwayland-egl.so.1
+/usr/lib64/haswell/libwayland-egl.so.1.0.0
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
