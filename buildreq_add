@@ -17,3 +17,5 @@ vulkan-sdk-dev
 vulkan-sdk-dev32
 libpthread-stubs-dev
 llvm-dev
+expat-dev32
+expat-dev

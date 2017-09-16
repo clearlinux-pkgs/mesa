@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 105
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a341b0a94d37e2aee5380703d171c422d8550e.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a341b0a94d37e2aee5380703d171c422d8550e.tar.gz
+Release  : 106
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/979978ee06867a531b8d56cee252f5c83920a339.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/979978ee06867a531b8d56cee252f5c83920a339.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -82,6 +82,7 @@ BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: better-error.patch
 Patch2: swr.patch
+Patch3: build.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -138,14 +139,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 57a341b0a94d37e2aee5380703d171c422d8550e
+%setup -q -n 979978ee06867a531b8d56cee252f5c83920a339
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 pushd ..
-cp -a 57a341b0a94d37e2aee5380703d171c422d8550e build32
+cp -a 979978ee06867a531b8d56cee252f5c83920a339 build32
 popd
 pushd ..
-cp -a 57a341b0a94d37e2aee5380703d171c422d8550e buildavx2
+cp -a 979978ee06867a531b8d56cee252f5c83920a339 buildavx2
 popd
 
 %build
@@ -153,15 +155,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505002237
+export SOURCE_DATE_EPOCH=1505585222
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -232,7 +234,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1505002237
+export SOURCE_DATE_EPOCH=1505585222
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
