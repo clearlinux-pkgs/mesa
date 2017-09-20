@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 106
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/979978ee06867a531b8d56cee252f5c83920a339.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/979978ee06867a531b8d56cee252f5c83920a339.tar.gz
+Release  : 107
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/704ddbcdf693079d417d831abe073caad008ab01.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/704ddbcdf693079d417d831abe073caad008ab01.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -15,6 +15,8 @@ Requires: mesa-data
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
+BuildRequires : expat-dev
+BuildRequires : expat-dev32
 BuildRequires : flex
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
@@ -139,15 +141,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 979978ee06867a531b8d56cee252f5c83920a339
+%setup -q -n 704ddbcdf693079d417d831abe073caad008ab01
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 979978ee06867a531b8d56cee252f5c83920a339 build32
+cp -a 704ddbcdf693079d417d831abe073caad008ab01 build32
 popd
 pushd ..
-cp -a 979978ee06867a531b8d56cee252f5c83920a339 buildavx2
+cp -a 704ddbcdf693079d417d831abe073caad008ab01 buildavx2
 popd
 
 %build
@@ -155,15 +157,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505585222
+export SOURCE_DATE_EPOCH=1505922946
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-common -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -234,7 +236,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1505585222
+export SOURCE_DATE_EPOCH=1505922946
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -245,10 +247,10 @@ for i in *.pc ; do ln -s $i 32$i ; done
 popd
 fi
 popd
-%make_install
 pushd ../buildavx2/
 %make_install
 popd
+%make_install
 
 %files
 %defattr(-,root,root,-)
