@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 107
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/704ddbcdf693079d417d831abe073caad008ab01.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/704ddbcdf693079d417d831abe073caad008ab01.tar.gz
+Release  : 108
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -141,15 +141,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 704ddbcdf693079d417d831abe073caad008ab01
+%setup -q -n 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 704ddbcdf693079d417d831abe073caad008ab01 build32
+cp -a 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a build32
 popd
 pushd ..
-cp -a 704ddbcdf693079d417d831abe073caad008ab01 buildavx2
+cp -a 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a buildavx2
 popd
 
 %build
@@ -157,7 +157,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505922946
+export SOURCE_DATE_EPOCH=1506365172
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -231,12 +231,12 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-vulkan-drivers=intel --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
---disable-gallium-llvm  --libdir=/usr/lib64/haswell
+--disable-gallium-llvm  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
 make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1505922946
+export SOURCE_DATE_EPOCH=1506365172
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
