@@ -3293,6 +3293,7 @@ libglapi.so.0:_glapi_set_warning_func
 libglapi.so.0:_glthread_GetID
 libswrAVX.so.0:SwrGetInterface
 libswrAVX2.so.0:SwrGetInterface
+libswrSKX.so.0:SwrGetInterface
 libvulkan_intel.so:_Z12setup_imm_dfRKN3brw10fs_builderEd
 libvulkan_intel.so:_Z17brw_abs_immediate12brw_reg_typeP7brw_reg
 libvulkan_intel.so:_Z17brw_math_function6opcode

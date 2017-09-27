@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 108
+Release  : 109
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
 Summary  : Mesa Off-screen Rendering library
@@ -157,7 +157,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506365172
+export SOURCE_DATE_EPOCH=1506528757
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -181,7 +181,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
+--with-vulkan-drivers=intel \
+--with-swr-archs="avx,avx2,skx" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
 make V=1  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -203,7 +204,8 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --disable-va \
+--with-vulkan-drivers=intel \
+--with-swr-archs="avx,avx2,skx" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
@@ -228,7 +230,8 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --enable-gbm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel --disable-va \
+--with-vulkan-drivers=intel \
+--with-swr-archs="avx,avx2,skx" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
@@ -236,7 +239,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1506365172
+export SOURCE_DATE_EPOCH=1506528757
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -395,6 +398,9 @@ popd
 /usr/lib64/libswrAVX2.so
 /usr/lib64/libswrAVX2.so.0
 /usr/lib64/libswrAVX2.so.0.0.0
+/usr/lib64/libswrSKX.so
+/usr/lib64/libswrSKX.so.0
+/usr/lib64/libswrSKX.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libwayland-egl.so
 /usr/lib64/libwayland-egl.so.1

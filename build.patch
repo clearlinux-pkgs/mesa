@@ -42,3 +42,14 @@
  /**
   * flush commands to the hardware
   */
+--- 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a/configure.ac~	2017-09-25 17:01:22.000000000 +0000
++++ 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a/configure.ac	2017-09-27 15:20:24.849455385 +0000
+@@ -2564,7 +2564,7 @@
+                     ;;
+                 xskx)
+                     swr_require_cxx_feature_flags "SKX" "defined(__AVX512F__) && defined(__AVX512BW__)" \
+-                        ",-target-cpu=x86-skylake,-march=skylake-avx512,-xCORE-AVX512" \
++                        ",-target-cpu=skylake,-march=skylake-avx512,-xCORE-AVX512" \
+                         SWR_SKX_CXXFLAGS
+                     AC_SUBST([SWR_SKX_CXXFLAGS])
+                     HAVE_SWR_SKX=yes
