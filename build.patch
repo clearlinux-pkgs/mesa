@@ -53,14 +53,3 @@
                          SWR_SKX_CXXFLAGS
                      AC_SUBST([SWR_SKX_CXXFLAGS])
                      HAVE_SWR_SKX=yes
---- 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a/src/gallium/drivers/swr/rasterizer/core/utils.h~	2017-09-25 17:01:22.000000000 +0000
-+++ 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a/src/gallium/drivers/swr/rasterizer/core/utils.h	2017-09-27 20:18:37.758558671 +0000
-@@ -366,6 +366,8 @@
-     GetEnvironmentVariableA(variableName.c_str(), &output[0], valueSize);
- #else
-     output = getenv(variableName.c_str());
-+    if (!output)
-+	output = strdup("");
- #endif
- 
-     return output;
