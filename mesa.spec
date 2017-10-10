@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 112
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0ac0e32ce1bff834ad09b1926fbf7f4111b3106a.tar.gz
+Release  : 113
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/76997e9133eea8e5c4fcdc935cd279fcf5156ca5.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/76997e9133eea8e5c4fcdc935cd279fcf5156ca5.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -26,8 +26,10 @@ BuildRequires : glibc-libc32
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : llvm-dev
+BuildRequires : meson
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : ninja
 BuildRequires : pkgconfig(32dri2proto)
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
@@ -75,6 +77,7 @@ BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python-dev
+BuildRequires : python3
 BuildRequires : scons
 BuildRequires : sed
 BuildRequires : vulkan-sdk-dev
@@ -141,15 +144,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a
+%setup -q -n 76997e9133eea8e5c4fcdc935cd279fcf5156ca5
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a build32
+cp -a 76997e9133eea8e5c4fcdc935cd279fcf5156ca5 build32
 popd
 pushd ..
-cp -a 0ac0e32ce1bff834ad09b1926fbf7f4111b3106a buildavx2
+cp -a 76997e9133eea8e5c4fcdc935cd279fcf5156ca5 buildavx2
 popd
 
 %build
@@ -157,7 +160,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506528757
+export SOURCE_DATE_EPOCH=1507596170
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -239,7 +242,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1506528757
+export SOURCE_DATE_EPOCH=1507596170
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
