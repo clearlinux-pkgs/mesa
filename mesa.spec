@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 114
+Release  : 115
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a586828f848bea22f801306db5d38e26565524.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a586828f848bea22f801306db5d38e26565524.tar.gz
 Summary  : Mesa Off-screen Rendering library
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
 Requires: mesa-data
-Requires: mesa-extras
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
