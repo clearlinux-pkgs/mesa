@@ -4,14 +4,15 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 113
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/76997e9133eea8e5c4fcdc935cd279fcf5156ca5.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/76997e9133eea8e5c4fcdc935cd279fcf5156ca5.tar.gz
+Release  : 114
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a586828f848bea22f801306db5d38e26565524.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/57a586828f848bea22f801306db5d38e26565524.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
 Requires: mesa-data
+Requires: mesa-extras
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
@@ -144,15 +145,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 76997e9133eea8e5c4fcdc935cd279fcf5156ca5
+%setup -q -n 57a586828f848bea22f801306db5d38e26565524
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 76997e9133eea8e5c4fcdc935cd279fcf5156ca5 build32
+cp -a 57a586828f848bea22f801306db5d38e26565524 build32
 popd
 pushd ..
-cp -a 76997e9133eea8e5c4fcdc935cd279fcf5156ca5 buildavx2
+cp -a 57a586828f848bea22f801306db5d38e26565524 buildavx2
 popd
 
 %build
@@ -160,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507596170
+export SOURCE_DATE_EPOCH=1508512482
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -242,7 +243,7 @@ make V=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1507596170
+export SOURCE_DATE_EPOCH=1508512482
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
