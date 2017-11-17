@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 119
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/9ceb057ebf7484700506fa091316c4db6faf3815.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/9ceb057ebf7484700506fa091316c4db6faf3815.tar.gz
+Release  : 118
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/821ec473a862762b3e9d4004d062293fa27e102b.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/821ec473a862762b3e9d4004d062293fa27e102b.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -144,15 +144,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 9ceb057ebf7484700506fa091316c4db6faf3815
+%setup -q -n 821ec473a862762b3e9d4004d062293fa27e102b
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 9ceb057ebf7484700506fa091316c4db6faf3815 build32
+cp -a 821ec473a862762b3e9d4004d062293fa27e102b build32
 popd
 pushd ..
-cp -a 9ceb057ebf7484700506fa091316c4db6faf3815 buildavx2
+cp -a 821ec473a862762b3e9d4004d062293fa27e102b buildavx2
 popd
 
 %build
@@ -160,7 +160,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1510251558
+export SOURCE_DATE_EPOCH=1510957521
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -186,7 +186,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel \
 --with-swr-archs="avx,avx2,skx" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 export CFLAGS="$CFLAGS -m32"
@@ -212,7 +212,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 popd
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=haswell"
@@ -238,11 +238,11 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1510251558
+export SOURCE_DATE_EPOCH=1510957521
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
