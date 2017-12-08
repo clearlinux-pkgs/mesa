@@ -2,3 +2,5 @@
 --with-dri-drivers="i965,swrast" 
 --without-gallium-drivers
 --disable-gallium-llvm
+--disable-llvm
+--with-vulkan-drivers=intel

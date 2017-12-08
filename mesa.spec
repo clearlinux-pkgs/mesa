@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 118
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/821ec473a862762b3e9d4004d062293fa27e102b.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/821ec473a862762b3e9d4004d062293fa27e102b.tar.gz
+Release  : 119
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/bce489a4ed8a4ffe2a79617dca9402f9f7ded381.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/bce489a4ed8a4ffe2a79617dca9402f9f7ded381.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -144,15 +144,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 821ec473a862762b3e9d4004d062293fa27e102b
+%setup -q -n bce489a4ed8a4ffe2a79617dca9402f9f7ded381
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 821ec473a862762b3e9d4004d062293fa27e102b build32
+cp -a bce489a4ed8a4ffe2a79617dca9402f9f7ded381 build32
 popd
 pushd ..
-cp -a 821ec473a862762b3e9d4004d062293fa27e102b buildavx2
+cp -a bce489a4ed8a4ffe2a79617dca9402f9f7ded381 buildavx2
 popd
 
 %build
@@ -160,7 +160,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1510957521
+export SOURCE_DATE_EPOCH=1512749728
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -182,9 +182,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
+--enable-llvm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel \
+--with-vulkan-drivers=intel,radeon \
 --with-swr-archs="avx,avx2,skx" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
@@ -205,13 +206,16 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
+--enable-llvm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel \
+--with-vulkan-drivers=intel,radeon \
 --with-swr-archs="avx,avx2,skx" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
---disable-gallium-llvm --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+--disable-gallium-llvm \
+--disable-llvm \
+--with-vulkan-drivers=intel --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make  %{?_smp_mflags}
 popd
 pushd ../buildavx2/
@@ -231,18 +235,21 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
+--enable-llvm \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel \
+--with-vulkan-drivers=intel,radeon \
 --with-swr-archs="avx,avx2,skx" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
---disable-gallium-llvm  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
+--disable-gallium-llvm \
+--disable-llvm \
+--with-vulkan-drivers=intel  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1510957521
+export SOURCE_DATE_EPOCH=1512749728
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -273,6 +280,7 @@ popd
 /usr/share/mesa/drirc
 /usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
+/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 
 %files dev
 %defattr(-,root,root,-)
@@ -405,6 +413,7 @@ popd
 /usr/lib64/libswrSKX.so.0
 /usr/lib64/libswrSKX.so.0.0.0
 /usr/lib64/libvulkan_intel.so
+/usr/lib64/libvulkan_radeon.so
 /usr/lib64/libwayland-egl.so
 /usr/lib64/libwayland-egl.so.1
 /usr/lib64/libwayland-egl.so.1.0.0
