@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 129
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/a6accad68fbeccc7dad2c2d6343bcdb4751e90b3.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/a6accad68fbeccc7dad2c2d6343bcdb4751e90b3.tar.gz
+Release  : 130
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c2b13627d9d7973687350cab243ade65115cff0d.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c2b13627d9d7973687350cab243ade65115cff0d.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -144,15 +144,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n a6accad68fbeccc7dad2c2d6343bcdb4751e90b3
+%setup -q -n c2b13627d9d7973687350cab243ade65115cff0d
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a a6accad68fbeccc7dad2c2d6343bcdb4751e90b3 build32
+cp -a c2b13627d9d7973687350cab243ade65115cff0d build32
 popd
 pushd ..
-cp -a a6accad68fbeccc7dad2c2d6343bcdb4751e90b3 buildavx2
+cp -a c2b13627d9d7973687350cab243ade65115cff0d buildavx2
 popd
 
 %build
@@ -160,7 +160,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519232838
+export SOURCE_DATE_EPOCH=1522118685
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -249,7 +249,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1519232838
+export SOURCE_DATE_EPOCH=1522118685
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -267,13 +267,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/haswell/pkgconfig/dri.pc
-/usr/lib64/haswell/pkgconfig/egl.pc
-/usr/lib64/haswell/pkgconfig/gbm.pc
-/usr/lib64/haswell/pkgconfig/gl.pc
-/usr/lib64/haswell/pkgconfig/glesv1_cm.pc
-/usr/lib64/haswell/pkgconfig/glesv2.pc
-/usr/lib64/haswell/pkgconfig/wayland-egl.pc
 
 %files data
 %defattr(-,root,root,-)

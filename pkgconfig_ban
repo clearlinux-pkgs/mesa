@@ -44,3 +44,11 @@ libdrm_etnaviv
 32libunwind
 32v3dv3
 v3dv3
+32libtizonia
+32libtizplatform
+32tizilheaders
+libtizonia
+libtizplatform
+tizilheaders
+libtizcore
+32libtizcore
