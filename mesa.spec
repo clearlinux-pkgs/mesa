@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 130
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c2b13627d9d7973687350cab243ade65115cff0d.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c2b13627d9d7973687350cab243ade65115cff0d.tar.gz
+Release  : 131
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/e8cadb673d6e3a5946e7d9be5811881e99bef952.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/e8cadb673d6e3a5946e7d9be5811881e99bef952.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -144,15 +144,15 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n c2b13627d9d7973687350cab243ade65115cff0d
+%setup -q -n e8cadb673d6e3a5946e7d9be5811881e99bef952
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a c2b13627d9d7973687350cab243ade65115cff0d build32
+cp -a e8cadb673d6e3a5946e7d9be5811881e99bef952 build32
 popd
 pushd ..
-cp -a c2b13627d9d7973687350cab243ade65115cff0d buildavx2
+cp -a e8cadb673d6e3a5946e7d9be5811881e99bef952 buildavx2
 popd
 
 %build
@@ -160,7 +160,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522118685
+export SOURCE_DATE_EPOCH=1522950850
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -249,7 +249,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1522118685
+export SOURCE_DATE_EPOCH=1522950850
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -351,22 +351,7 @@ popd
 /usr/lib64/haswell/libGL.so
 /usr/lib64/haswell/libGL.so.1
 /usr/lib64/haswell/libGL.so.1.2.0
-/usr/lib64/haswell/libGLESv1_CM.so
-/usr/lib64/haswell/libGLESv1_CM.so.1
-/usr/lib64/haswell/libGLESv1_CM.so.1.1.0
-/usr/lib64/haswell/libGLESv2.so
-/usr/lib64/haswell/libGLESv2.so.2
-/usr/lib64/haswell/libGLESv2.so.2.0.0
-/usr/lib64/haswell/libgbm.so
-/usr/lib64/haswell/libgbm.so.1
-/usr/lib64/haswell/libgbm.so.1.0.0
-/usr/lib64/haswell/libglapi.so
-/usr/lib64/haswell/libglapi.so.0
-/usr/lib64/haswell/libglapi.so.0.0.0
 /usr/lib64/haswell/libvulkan_intel.so
-/usr/lib64/haswell/libwayland-egl.so
-/usr/lib64/haswell/libwayland-egl.so.1
-/usr/lib64/haswell/libwayland-egl.so.1.0.0
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
