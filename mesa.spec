@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 133
+Release  : 134
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
 Summary  : Mesa Off-screen Rendering library
@@ -167,7 +167,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523169706
+export SOURCE_DATE_EPOCH=1523204390
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -290,7 +290,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1523169706
+export SOURCE_DATE_EPOCH=1523204390
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -313,6 +313,7 @@ mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i96
 mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
 mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx512
 mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx512
+rm -rf  %{buildroot}/usr/lib64/haswell
 ## make_install_append end
 
 %files
@@ -397,48 +398,6 @@ mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/swrast_dri.so  %{buildroot}/usr/l
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/swrast_dri.so.avx2
 /usr/lib64/dri/swrast_dri.so.avx512
-/usr/lib64/haswell/avx512_1/dri/kms_swrast_dri.so
-/usr/lib64/haswell/avx512_1/dri/nouveau_dri.so
-/usr/lib64/haswell/avx512_1/dri/nouveau_drv_video.so
-/usr/lib64/haswell/avx512_1/dri/r600_dri.so
-/usr/lib64/haswell/avx512_1/dri/r600_drv_video.so
-/usr/lib64/haswell/avx512_1/dri/radeonsi_dri.so
-/usr/lib64/haswell/avx512_1/dri/radeonsi_drv_video.so
-/usr/lib64/haswell/avx512_1/libEGL.so
-/usr/lib64/haswell/avx512_1/libEGL.so.1
-/usr/lib64/haswell/avx512_1/libEGL.so.1.0.0
-/usr/lib64/haswell/avx512_1/libGL.so
-/usr/lib64/haswell/avx512_1/libGL.so.1
-/usr/lib64/haswell/avx512_1/libGL.so.1.2.0
-/usr/lib64/haswell/avx512_1/libOSMesa.so
-/usr/lib64/haswell/avx512_1/libOSMesa.so.8
-/usr/lib64/haswell/avx512_1/libOSMesa.so.8.0.0
-/usr/lib64/haswell/avx512_1/libXvMCnouveau.so
-/usr/lib64/haswell/avx512_1/libXvMCnouveau.so.1
-/usr/lib64/haswell/avx512_1/libXvMCnouveau.so.1.0
-/usr/lib64/haswell/avx512_1/libXvMCnouveau.so.1.0.0
-/usr/lib64/haswell/avx512_1/libXvMCr600.so
-/usr/lib64/haswell/avx512_1/libXvMCr600.so.1
-/usr/lib64/haswell/avx512_1/libXvMCr600.so.1.0
-/usr/lib64/haswell/avx512_1/libXvMCr600.so.1.0.0
-/usr/lib64/haswell/avx512_1/libswrAVX.so
-/usr/lib64/haswell/avx512_1/libswrAVX.so.0
-/usr/lib64/haswell/avx512_1/libswrAVX.so.0.0.0
-/usr/lib64/haswell/avx512_1/libswrAVX2.so
-/usr/lib64/haswell/avx512_1/libswrAVX2.so.0
-/usr/lib64/haswell/avx512_1/libswrAVX2.so.0.0.0
-/usr/lib64/haswell/avx512_1/libswrSKX.so
-/usr/lib64/haswell/avx512_1/libswrSKX.so.0
-/usr/lib64/haswell/avx512_1/libswrSKX.so.0.0.0
-/usr/lib64/haswell/avx512_1/libvulkan_intel.so
-/usr/lib64/haswell/avx512_1/libvulkan_radeon.so
-/usr/lib64/haswell/libEGL.so
-/usr/lib64/haswell/libEGL.so.1
-/usr/lib64/haswell/libEGL.so.1.0.0
-/usr/lib64/haswell/libGL.so
-/usr/lib64/haswell/libGL.so.1
-/usr/lib64/haswell/libGL.so.1.2.0
-/usr/lib64/haswell/libvulkan_intel.so
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
