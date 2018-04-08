@@ -21,3 +21,45 @@
        if (handle == NULL) {
           snprintf(realDriverName, sizeof realDriverName,
                    "%.*s/%s_dri.so", len, p, driverName);
+--- 14cc8c55eadfe66965c81155f8eecdc353df4c14/src/gbm/backends/dri/gbm_dri.c~	2018-04-07 20:45:00.000000000 +0000
++++ 14cc8c55eadfe66965c81155f8eecdc353df4c14/src/gbm/backends/dri/gbm_dri.c	2018-04-08 19:42:56.610385660 +0000
+@@ -348,6 +348,16 @@
+                "%.*s/tls/%s_dri.so", len, p, dri->driver_name);
+       dri->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
+ #endif
++      if (dri->driver == NULL &&  __builtin_cpu_supports("avx512cd")) {
++         snprintf(path, sizeof path,
++                  "%.*s/%s_dri.so.avx512", len, p, dri->driver_name);
++         dri->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
++      }
++      if (dri->driver == NULL &&  __builtin_cpu_supports("avx2")) {
++         snprintf(path, sizeof path,
++                  "%.*s/%s_dri.so.avx2", len, p, dri->driver_name);
++         dri->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
++      }
+       if (dri->driver == NULL) {
+          snprintf(path, sizeof path,
+                   "%.*s/%s_dri.so", len, p, dri->driver_name);
+--- 14cc8c55eadfe66965c81155f8eecdc353df4c14/src/egl/drivers/dri2/egl_dri2.c~	2018-04-07 20:45:00.000000000 +0000
++++ 14cc8c55eadfe66965c81155f8eecdc353df4c14/src/egl/drivers/dri2/egl_dri2.c	2018-04-08 19:44:25.557696532 +0000
+@@ -534,6 +534,20 @@
+                "%.*s/tls/%s_dri.so", len, p, dri2_dpy->driver_name);
+       dri2_dpy->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
+ #endif
++      if (dri2_dpy->driver == NULL __builtin_cpu_supports("avx512cd")) {
++         snprintf(path, sizeof path,
++                  "%.*s/%s_dri.so.avx512", len, p, dri2_dpy->driver_name);
++         dri2_dpy->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
++         if (dri2_dpy->driver == NULL)
++            _eglLog(_EGL_DEBUG, "failed to open %s: %s\n", path, dlerror());
++      }
++      if (dri2_dpy->driver == NULL && __builtin_cpu_supports("avx2") ) {
++         snprintf(path, sizeof path,
++                  "%.*s/%s_dri.so.avx2", len, p, dri2_dpy->driver_name);
++         dri2_dpy->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
++         if (dri2_dpy->driver == NULL)
++            _eglLog(_EGL_DEBUG, "failed to open %s: %s\n", path, dlerror());
++      }
+       if (dri2_dpy->driver == NULL) {
+          snprintf(path, sizeof path,
+                   "%.*s/%s_dri.so", len, p, dri2_dpy->driver_name);
