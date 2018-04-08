@@ -46,7 +46,7 @@
                 "%.*s/tls/%s_dri.so", len, p, dri2_dpy->driver_name);
        dri2_dpy->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
  #endif
-+      if (dri2_dpy->driver == NULL __builtin_cpu_supports("avx512cd")) {
++      if (dri2_dpy->driver == NULL && __builtin_cpu_supports("avx512cd")) {
 +         snprintf(path, sizeof path,
 +                  "%.*s/%s_dri.so.avx512", len, p, dri2_dpy->driver_name);
 +         dri2_dpy->driver = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
