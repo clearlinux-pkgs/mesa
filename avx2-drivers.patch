@@ -1,0 +1,23 @@
+--- e8cadb673d6e3a5946e7d9be5811881e99bef952/src/glx/dri_common.c~	2018-04-05 14:42:45.000000000 +0000
++++ e8cadb673d6e3a5946e7d9be5811881e99bef952/src/glx/dri_common.c	2018-04-07 21:33:44.116659579 +0000
+@@ -134,6 +134,20 @@
+       handle = dlopen(realDriverName, RTLD_NOW | RTLD_GLOBAL);
+ #endif
+ 
++      if (handle == NULL &&  __builtin_cpu_supports("avx512cd")) {
++         snprintf(realDriverName, sizeof realDriverName,
++                  "%.*s/%s_dri.so.avx512", len, p, driverName);
++         InfoMessageF("OpenDriver: trying %s\n", realDriverName);
++         handle = dlopen(realDriverName, RTLD_NOW | RTLD_GLOBAL);
++      }
++
++      if (handle == NULL &&  __builtin_cpu_supports("avx2")) {
++         snprintf(realDriverName, sizeof realDriverName,
++                  "%.*s/%s_dri.so.avx2", len, p, driverName);
++         InfoMessageF("OpenDriver: trying %s\n", realDriverName);
++         handle = dlopen(realDriverName, RTLD_NOW | RTLD_GLOBAL);
++      }
++
+       if (handle == NULL) {
+          snprintf(realDriverName, sizeof realDriverName,
+                   "%.*s/%s_dri.so", len, p, driverName);

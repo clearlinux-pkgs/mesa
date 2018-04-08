@@ -1,0 +1,20 @@
+--- 14cc8c55eadfe66965c81155f8eecdc353df4c14/configure.ac~	2018-04-07 20:45:00.000000000 +0000
++++ 14cc8c55eadfe66965c81155f8eecdc353df4c14/configure.ac	2018-04-07 23:16:39.447269607 +0000
+@@ -333,7 +333,7 @@
+     if test "x$USE_GNU99" = xyes; then
+         CFLAGS="$CFLAGS -std=gnu99"
+     else
+-        CFLAGS="$CFLAGS -std=c99"
++        CFLAGS="$CFLAGS -std=gnu99"
+     fi
+ fi
+ 
+@@ -375,7 +375,7 @@
+ 
+    dnl C++11 not enabled by default, test whether -std=c++11 does the job
+    if test "x$HAVE_CXX11" != "xyes"; then
+-       CXX11_CXXFLAGS=-std=c++11
++       CXX11_CXXFLAGS=-std=gnu++11
+        CXXFLAGS="$CXXFLAGS $CXX11_CXXFLAGS"
+        AC_MSG_CHECKING(whether c++11 is enabled by via $CXX11_CXXFLAGS)
+        check_cxx11_available HAVE_CXX11

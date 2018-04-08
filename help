@@ -1,4 +1,4 @@
-`configure' configures Mesa 12.0.0-rc1 to adapt to many kinds of systems.
+`configure' configures Mesa 18.1.0-devel to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -78,18 +78,20 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
-  --disable-pwr8-inst     disable POWER8-specific instructions
+  --disable-pwr8          disable POWER8-specific instructions
   --enable-debug          use debug compiler flags and macros
                           [default=disabled]
   --enable-profile        enable profiling of code [default=disabled]
-  --enable-libglvnd       Build for libglvnd [default=disabled]
-  --enable-mangling       enable mangled symbols and library name
-                          [default=disabled]
+  --enable-sanitize[=address|undefined]
+                          enable code sanitizer [default=disabled]
   --enable-texture-float  enable floating-point textures and renderbuffers
                           [default=disabled]
   --disable-asm           disable assembly usage [default=enabled on supported
-                          plaforms]
+                          platforms]
   --enable-selinux        Build SELinux-aware Mesa [default=disabled]
+  --enable-llvm-shared-libs
+                          link with LLVM shared libraries [default=enabled]
+  --enable-libunwind      Use libunwind for backtracing (default: auto)
   --disable-opengl        disable support for standard OpenGL API
                           [default=enabled]
   --disable-gles1         disable support for OpenGL ES 1.x API
@@ -97,6 +99,10 @@ Optional Features:
   --disable-gles2         disable support for OpenGL ES 2.x API
                           [default=enabled]
   --enable-dri            enable DRI modules [default=enabled]
+  --enable-gallium-extra-hud
+                          enable HUD block/NIC I/O HUD stats support
+                          [default=disabled]
+  --enable-lmsensors      enable HUD lmsensor support [default=disabled]
   --enable-dri3           enable DRI3 [default=auto]
   --enable-glx[=dri|xlib|gallium-xlib]
                           enable the GLX library and choose an implementation
@@ -107,29 +113,33 @@ Optional Features:
   --disable-egl           disable EGL library [default=enabled]
   --enable-xa             enable build of the XA X Acceleration API
                           [default=disabled]
-  --enable-gbm            enable gbm library [default=auto]
+  --enable-gbm            enable gbm library [default=yes except cygwin and
+                          macOS]
   --enable-nine           enable build of the nine Direct3D9 API [default=no]
   --enable-xvmc           enable xvmc library [default=auto]
   --enable-vdpau          enable vdpau library [default=auto]
-  --enable-omx            enable OpenMAX library [default=disabled]
+  --enable-omx            DEPRECATED: Use --enable-omx-bellagio or
+                          --enable-omx-tizonia instead [default=auto]
+  --enable-omx-bellagio   enable OpenMAX Bellagio library [default=disabled]
+  --enable-omx-tizonia    enable OpenMAX Tizonia library [default=disabled]
   --enable-va             enable va library [default=auto]
   --enable-opencl         enable OpenCL library [default=disabled]
   --enable-opencl-icd     Build an OpenCL ICD library to be loaded by an ICD
-                          implementation [default=disabled]
+                          implementation [default=enabled]
   --enable-gallium-tests  Enable optional Gallium tests) [default=disabled]
+  --enable-libglvnd       Build GLX and EGL for libglvnd [default=disabled]
+  --enable-mangling       enable mangled symbols and library name
+                          [default=disabled]
   --enable-shared-glapi   Enable shared glapi for OpenGL [default=enabled]
-  --disable-shader-cache  Disable binary shader cache
-  --enable-sysfs          enable /sys PCI identification [default=disabled]
   --disable-driglx-direct disable direct rendering in GLX and EGL for DRI
-                          [default=auto]
-  --enable-glx-tls        enable TLS support in GLX [default=disabled]
+                          [default=enabled]
+  --enable-glx-tls        enable TLS support in GLX [default=enabled]
   --enable-glx-read-only-text
                           Disable writable .text section on x86 (decreases
                           performance) [default=disabled]
-  --enable-gallium-llvm   build gallium LLVM support [default=enabled on
+  --enable-gallium-llvm   DEPRECATED: use --enable-llvm instead
+  --enable-llvm           build with LLVM support [default=enabled on
                           x86/x86_64]
-  --enable-llvm-shared-libs
-                          link with LLVM shared libraries [default=enabled]
   --enable-valgrind       Build mesa with valgrind support (default: auto)
 
 Optional Packages:
@@ -143,16 +153,23 @@ Optional Packages:
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
                           compiler's sysroot if not specified).
+  --with-llvm-prefix      Prefix for LLVM installations in non-standard
+                          locations
+  --with-gallium-drivers[=DIRS...]
+                          comma delimited Gallium drivers list, e.g.
+                          "i915,nouveau,r300,r600,radeonsi,freedreno,pl111,svga,swrast,swr,tegra,vc4,vc5,virgl,etnaviv,imx"
+                          [default=r300,r600,svga,swrast]
   --with-gl-lib-name[=NAME]
                           specify GL library name [default=GL]
   --with-osmesa-lib-name[=NAME]
                           specify OSMesa library name [default=OSMesa]
-  --with-gallium-drivers[=DIRS...]
-                          comma delimited Gallium drivers list, e.g.
-                          "i915,ilo,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
-                          [default=r300,r600,svga,swrast]
-  --with-sha1=libc|libmd|libnettle|libgcrypt|libcrypto|libsha1|CommonCrypto|CryptoAPI
-                          choose SHA1 implementation
+  --with-egl-platforms[=DIRS...]
+                          DEPRECATED: use --with-platforms
+                          instead[default=auto]
+  --with-platforms[=DIRS...]
+                          comma delimited native platforms libEGL/Vulkan/other
+                          supports, e.g. "x11,drm,wayland,surfaceless..."
+                          [default=auto]
   --with-dri-driverdir=DIR
                           directory for the DRI drivers [${libdir}/dri]
   --with-dri-searchpath=DIRS...
@@ -160,28 +177,30 @@ Optional Packages:
                           [${libdir}/dri]
   --with-dri-drivers[=DIRS...]
                           comma delimited classic DRI drivers list, e.g.
-                          "swrast,i965,radeon" [default=auto]
+                          "i915,i965,nouveau,radeon,r200,swrast"
+                          [default=auto]
   --with-vulkan-drivers[=DIRS...]
-                          comma delimited Vulkan drivers list, e.g. "intel"
-                          [default=no]
+                          comma delimited Vulkan drivers list, e.g.
+                          "intel,radeon" [default=no]
   --with-vulkan-icddir=DIR
                           directory for the Vulkan driver icd files
-                          [${sysconfdir}/vulkan/icd.d]
+                          [${datarootdir}/vulkan/icd.d]
   --with-osmesa-bits=BITS OSMesa channel bits and library name: 8, 16, 32
                           [default=8]
   --with-clang-libdir     Path to Clang libraries [default=llvm-config
                           --libdir]
-  --with-egl-platforms[=DIRS...]
-                          comma delimited native platforms libEGL supports,
-                          e.g. "x11,drm" [default=auto]
-  --with-llvm-prefix      Prefix for LLVM installations in non-standard
-                          locations
   --with-xvmc-libdir=DIR  directory for the XVMC libraries [default=${libdir}]
   --with-vdpau-libdir=DIR directory for the VDPAU libraries
                           [default=${libdir}/vdpau]
-  --with-omx-libdir=DIR   directory for the OMX libraries
+  --with-omx-bellagio-libdir=DIR
+                          directory for the OMX_BELLAGIO libraries
+  --with-omx-tizonia-libdir=DIR
+                          directory for the OMX_TIZONIA libraries
   --with-va-libdir=DIR    directory for the VA libraries [${libdir}/dri]
   --with-d3d-libdir=DIR   directory for the D3D modules [${libdir}/d3d]
+  --with-swr-archs[=DIRS...]
+                          comma delimited swr architectures list, e.g.
+                          "avx,avx2,knl,skx" [default="avx,avx2"]
 
 Some influential environment variables:
   CC          C compiler command
@@ -194,6 +213,9 @@ Some influential environment variables:
   CPP         C preprocessor
   CXX         C++ compiler command
   CXXFLAGS    C++ compiler flags
+  CXX11_CXXFLAGS
+              Compiler flag to enable C++11 support (only needed if not
+              enabled by default and different from -std=c++11)
   CCAS        assembler compiler command (defaults to CC)
   CCASFLAGS   assembler compiler flags (defaults to CFLAGS)
   LT_SYS_LIBRARY_PATH
@@ -210,6 +232,8 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
+  ZLIB_CFLAGS C compiler flags for ZLIB, overriding pkg-config
+  ZLIB_LIBS   linker flags for ZLIB, overriding pkg-config
   PTHREADSTUBS_CFLAGS
               C compiler flags for PTHREADSTUBS, overriding pkg-config
   PTHREADSTUBS_LIBS
@@ -218,47 +242,30 @@ Some influential environment variables:
               C compiler flags for SELINUX, overriding pkg-config
   SELINUX_LIBS
               linker flags for SELINUX, overriding pkg-config
+  LIBELF_CFLAGS
+              C compiler flags for LIBELF, overriding pkg-config
+  LIBELF_LIBS linker flags for LIBELF, overriding pkg-config
+  LIBUNWIND_CFLAGS
+              C compiler flags for LIBUNWIND, overriding pkg-config
+  LIBUNWIND_LIBS
+              linker flags for LIBUNWIND, overriding pkg-config
   GLVND_CFLAGS
               C compiler flags for GLVND, overriding pkg-config
   GLVND_LIBS  linker flags for GLVND, overriding pkg-config
   LIBDRM_CFLAGS
               C compiler flags for LIBDRM, overriding pkg-config
   LIBDRM_LIBS linker flags for LIBDRM, overriding pkg-config
-  LIBSHA1_CFLAGS
-              C compiler flags for LIBSHA1, overriding pkg-config
-  LIBSHA1_LIBS
-              linker flags for LIBSHA1, overriding pkg-config
-  OPENSSL_CFLAGS
-              C compiler flags for OPENSSL, overriding pkg-config
-  OPENSSL_LIBS
-              linker flags for OPENSSL, overriding pkg-config
-  LIBUDEV_CFLAGS
-              C compiler flags for LIBUDEV, overriding pkg-config
-  LIBUDEV_LIBS
-              linker flags for LIBUDEV, overriding pkg-config
-  XLIBGL_CFLAGS
-              C compiler flags for XLIBGL, overriding pkg-config
-  XLIBGL_LIBS linker flags for XLIBGL, overriding pkg-config
   GLPROTO_CFLAGS
               C compiler flags for GLPROTO, overriding pkg-config
   GLPROTO_LIBS
               linker flags for GLPROTO, overriding pkg-config
+  XLIBGL_CFLAGS
+              C compiler flags for XLIBGL, overriding pkg-config
+  XLIBGL_LIBS linker flags for XLIBGL, overriding pkg-config
   DRI2PROTO_CFLAGS
               C compiler flags for DRI2PROTO, overriding pkg-config
   DRI2PROTO_LIBS
               linker flags for DRI2PROTO, overriding pkg-config
-  DRI3PROTO_CFLAGS
-              C compiler flags for DRI3PROTO, overriding pkg-config
-  DRI3PROTO_LIBS
-              linker flags for DRI3PROTO, overriding pkg-config
-  PRESENTPROTO_CFLAGS
-              C compiler flags for PRESENTPROTO, overriding pkg-config
-  PRESENTPROTO_LIBS
-              linker flags for PRESENTPROTO, overriding pkg-config
-  XCB_DRI3_CFLAGS
-              C compiler flags for XCB_DRI3, overriding pkg-config
-  XCB_DRI3_LIBS
-              linker flags for XCB_DRI3, overriding pkg-config
   XF86VIDMODE_CFLAGS
               C compiler flags for XF86VIDMODE, overriding pkg-config
   XF86VIDMODE_LIBS
@@ -266,12 +273,43 @@ Some influential environment variables:
   DRIGL_CFLAGS
               C compiler flags for DRIGL, overriding pkg-config
   DRIGL_LIBS  linker flags for DRIGL, overriding pkg-config
+  WAYLAND_CLIENT_CFLAGS
+              C compiler flags for WAYLAND_CLIENT, overriding pkg-config
+  WAYLAND_CLIENT_LIBS
+              linker flags for WAYLAND_CLIENT, overriding pkg-config
+  WAYLAND_SERVER_CFLAGS
+              C compiler flags for WAYLAND_SERVER, overriding pkg-config
+  WAYLAND_SERVER_LIBS
+              linker flags for WAYLAND_SERVER, overriding pkg-config
+  WAYLAND_PROTOCOLS_CFLAGS
+              C compiler flags for WAYLAND_PROTOCOLS, overriding pkg-config
+  WAYLAND_PROTOCOLS_LIBS
+              linker flags for WAYLAND_PROTOCOLS, overriding pkg-config
+  WAYLAND_SCANNER_CFLAGS
+              C compiler flags for WAYLAND_SCANNER, overriding pkg-config
+  WAYLAND_SCANNER_LIBS
+              linker flags for WAYLAND_SCANNER, overriding pkg-config
+  XCB_DRI2_CFLAGS
+              C compiler flags for XCB_DRI2, overriding pkg-config
+  XCB_DRI2_LIBS
+              linker flags for XCB_DRI2, overriding pkg-config
+  ANDROID_CFLAGS
+              C compiler flags for ANDROID, overriding pkg-config
+  ANDROID_LIBS
+              linker flags for ANDROID, overriding pkg-config
+  XCB_DRI3_CFLAGS
+              C compiler flags for XCB_DRI3, overriding pkg-config
+  XCB_DRI3_LIBS
+              linker flags for XCB_DRI3, overriding pkg-config
+  XCB_DRI3_MODIFIERS_CFLAGS
+              C compiler flags for XCB_DRI3_MODIFIERS, overriding pkg-config
+  XCB_DRI3_MODIFIERS_LIBS
+              linker flags for XCB_DRI3_MODIFIERS, overriding pkg-config
   EXPAT_CFLAGS
               C compiler flags for EXPAT, overriding pkg-config
   EXPAT_LIBS  linker flags for EXPAT, overriding pkg-config
-  INTEL_CFLAGS
-              C compiler flags for INTEL, overriding pkg-config
-  INTEL_LIBS  linker flags for INTEL, overriding pkg-config
+  I915_CFLAGS C compiler flags for I915, overriding pkg-config
+  I915_LIBS   linker flags for I915, overriding pkg-config
   NVVIEUX_CFLAGS
               C compiler flags for NVVIEUX, overriding pkg-config
   NVVIEUX_LIBS
@@ -279,6 +317,9 @@ Some influential environment variables:
   RADEON_CFLAGS
               C compiler flags for RADEON, overriding pkg-config
   RADEON_LIBS linker flags for RADEON, overriding pkg-config
+  AMDGPU_CFLAGS
+              C compiler flags for AMDGPU, overriding pkg-config
+  AMDGPU_LIBS linker flags for AMDGPU, overriding pkg-config
   VL_CFLAGS   C compiler flags for VL, overriding pkg-config
   VL_LIBS     linker flags for VL, overriding pkg-config
   XVMC_CFLAGS C compiler flags for XVMC, overriding pkg-config
@@ -286,28 +327,16 @@ Some influential environment variables:
   VDPAU_CFLAGS
               C compiler flags for VDPAU, overriding pkg-config
   VDPAU_LIBS  linker flags for VDPAU, overriding pkg-config
-  OMX_CFLAGS  C compiler flags for OMX, overriding pkg-config
-  OMX_LIBS    linker flags for OMX, overriding pkg-config
+  OMX_BELLAGIO_CFLAGS
+              C compiler flags for OMX_BELLAGIO, overriding pkg-config
+  OMX_BELLAGIO_LIBS
+              linker flags for OMX_BELLAGIO, overriding pkg-config
+  OMX_TIZONIA_CFLAGS
+              C compiler flags for OMX_TIZONIA, overriding pkg-config
+  OMX_TIZONIA_LIBS
+              linker flags for OMX_TIZONIA, overriding pkg-config
   VA_CFLAGS   C compiler flags for VA, overriding pkg-config
   VA_LIBS     linker flags for VA, overriding pkg-config
-  LIBELF_CFLAGS
-              C compiler flags for LIBELF, overriding pkg-config
-  LIBELF_LIBS linker flags for LIBELF, overriding pkg-config
-  WAYLAND_SCANNER_CFLAGS
-              C compiler flags for WAYLAND_SCANNER, overriding pkg-config
-  WAYLAND_SCANNER_LIBS
-              linker flags for WAYLAND_SCANNER, overriding pkg-config
-  WAYLAND_CFLAGS
-              C compiler flags for WAYLAND, overriding pkg-config
-  WAYLAND_LIBS
-              linker flags for WAYLAND, overriding pkg-config
-  XCB_DRI2_CFLAGS
-              C compiler flags for XCB_DRI2, overriding pkg-config
-  XCB_DRI2_LIBS
-              linker flags for XCB_DRI2, overriding pkg-config
-  AMDGPU_CFLAGS
-              C compiler flags for AMDGPU, overriding pkg-config
-  AMDGPU_LIBS linker flags for AMDGPU, overriding pkg-config
   NOUVEAU_CFLAGS
               C compiler flags for NOUVEAU, overriding pkg-config
   NOUVEAU_LIBS
@@ -316,10 +345,18 @@ Some influential environment variables:
               C compiler flags for FREEDRENO, overriding pkg-config
   FREEDRENO_LIBS
               linker flags for FREEDRENO, overriding pkg-config
+  ETNAVIV_CFLAGS
+              C compiler flags for ETNAVIV, overriding pkg-config
+  ETNAVIV_LIBS
+              linker flags for ETNAVIV, overriding pkg-config
   SIMPENROSE_CFLAGS
               C compiler flags for SIMPENROSE, overriding pkg-config
   SIMPENROSE_LIBS
               linker flags for SIMPENROSE, overriding pkg-config
+  VC5_SIMULATOR_CFLAGS
+              C compiler flags for VC5_SIMULATOR, overriding pkg-config
+  VC5_SIMULATOR_LIBS
+              linker flags for VC5_SIMULATOR, overriding pkg-config
   VALGRIND_CFLAGS
               C compiler flags for VALGRIND, overriding pkg-config
   VALGRIND_LIBS

@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 131
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/e8cadb673d6e3a5946e7d9be5811881e99bef952.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/e8cadb673d6e3a5946e7d9be5811881e99bef952.tar.gz
+Release  : 132
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -88,6 +88,8 @@ BuildRequires : wayland-protocols-dev
 Patch1: better-error.patch
 Patch2: swr.patch
 Patch3: build.patch
+Patch4: avx2-drivers.patch
+Patch5: gnu11.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -144,15 +146,17 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n e8cadb673d6e3a5946e7d9be5811881e99bef952
+%setup -q -n 14cc8c55eadfe66965c81155f8eecdc353df4c14
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 pushd ..
-cp -a e8cadb673d6e3a5946e7d9be5811881e99bef952 build32
+cp -a 14cc8c55eadfe66965c81155f8eecdc353df4c14 build32
 popd
 pushd ..
-cp -a e8cadb673d6e3a5946e7d9be5811881e99bef952 buildavx2
+cp -a 14cc8c55eadfe66965c81155f8eecdc353df4c14 buildavx2
 popd
 
 %build
@@ -160,7 +164,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522950850
+export SOURCE_DATE_EPOCH=1523163912
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -183,6 +187,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --enable-texture-float \
 --enable-gbm \
 --enable-llvm \
+--disable-omx-tizonia \
+--disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
@@ -207,6 +213,8 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-texture-float \
 --enable-gbm \
 --enable-llvm \
+--disable-omx-tizonia \
+--disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
@@ -218,6 +226,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --with-vulkan-drivers=intel --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make  %{?_smp_mflags}
 popd
+unset PKG_CONFIG_PATH
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
@@ -236,6 +245,8 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --enable-texture-float \
 --enable-gbm \
 --enable-llvm \
+--disable-omx-tizonia \
+--disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
@@ -249,7 +260,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1522950850
+export SOURCE_DATE_EPOCH=1523163912
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -264,6 +275,10 @@ pushd ../buildavx2/
 %make_install
 popd
 %make_install
+## make_install_append content
+mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
+mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -335,6 +350,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
+/usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -343,8 +359,7 @@ popd
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
-/usr/lib64/haswell/dri/i965_dri.so
-/usr/lib64/haswell/dri/swrast_dri.so
+/usr/lib64/dri/swrast_dri.so.avx2
 /usr/lib64/haswell/libEGL.so
 /usr/lib64/haswell/libEGL.so.1
 /usr/lib64/haswell/libEGL.so.1.0.0
