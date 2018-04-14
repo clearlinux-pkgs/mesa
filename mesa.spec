@@ -4,14 +4,15 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 137
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/14cc8c55eadfe66965c81155f8eecdc353df4c14.tar.gz
+Release  : 138
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/201c08c463f95e4906ef9858597d17867b293fd4.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/201c08c463f95e4906ef9858597d17867b293fd4.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
 Requires: mesa-data
+BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : elfutils-dev
@@ -146,20 +147,17 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 14cc8c55eadfe66965c81155f8eecdc353df4c14
+%setup -q -n 201c08c463f95e4906ef9858597d17867b293fd4
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 14cc8c55eadfe66965c81155f8eecdc353df4c14 build32
+cp -a 201c08c463f95e4906ef9858597d17867b293fd4 build32
 popd
 pushd ..
-cp -a 14cc8c55eadfe66965c81155f8eecdc353df4c14 buildavx2
-popd
-pushd ..
-cp -a 14cc8c55eadfe66965c81155f8eecdc353df4c14 buildavx512
+cp -a 201c08c463f95e4906ef9858597d17867b293fd4 buildavx2
 popd
 
 %build
@@ -167,7 +165,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523204390
+export SOURCE_DATE_EPOCH=1523735261
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -261,36 +259,9 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-vulkan-drivers=intel  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
 make  %{?_smp_mflags}
 popd
-unset PKG_CONFIG_PATH
-pushd ../buildavx512/
-export CFLAGS="$CFLAGS -m64 -march=skylake-avx512"
-export CXXFLAGS="$CXXFLAGS -m64 -march=skylake-avx512"
-export LDFLAGS="$LDFLAGS -m64 -march=skylake-avx512"
-%reconfigure --disable-static --enable-dri \
---enable-dri3 \
---enable-glx \
---enable-gles2 \
---enable-xorg \
---enable-shared-glapi \
---enable-xorg \
---enable-glx-tls \
---enable-xvmc \
---enable-va \
---enable-glx-tls \
---enable-texture-float \
---enable-gbm \
---enable-llvm \
---disable-omx-tizonia \
---disable-omx-bellagio \
---sysconfdir=/usr/share/mesa \
---with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2,skx" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa  --libdir=/usr/lib64/haswell/avx512_1 --bindir=/usr/bin/haswell/avx512_1
-make  %{?_smp_mflags}
-popd
 
 %install
-export SOURCE_DATE_EPOCH=1523204390
+export SOURCE_DATE_EPOCH=1523735261
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -304,15 +275,10 @@ popd
 pushd ../buildavx2/
 %make_install
 popd
-pushd ../buildavx512/
-%make_install
-popd
 %make_install
 ## make_install_append content
 mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
 mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
-mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx512
-mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx512
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## make_install_append end
 
@@ -387,7 +353,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %defattr(-,root,root,-)
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/i965_dri.so.avx2
-/usr/lib64/dri/i965_dri.so.avx512
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -397,7 +362,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/swrast_dri.so.avx2
-/usr/lib64/dri/swrast_dri.so.avx512
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0

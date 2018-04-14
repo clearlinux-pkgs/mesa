@@ -13,8 +13,3 @@ Configure miss: whether C compiler accepts -Winitializer-overrides
 Configure miss: whether -latomic is needed
 Configure miss: whether gcc supports -mpower8-vector
 Configure miss: x86_64-generic-linux-gnu-llvm-config
-Configure miss: if compiling with clang
-Configure miss: whether C compiler accepts -Winitializer-overrides
-Configure miss: whether -latomic is needed
-Configure miss: whether gcc supports -mpower8-vector
-Configure miss: x86_64-generic-linux-gnu-llvm-config
