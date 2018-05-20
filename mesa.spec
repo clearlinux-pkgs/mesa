@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 145
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0b1cfd01ff2631465114e0707c9006987f377a8e.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0b1cfd01ff2631465114e0707c9006987f377a8e.tar.gz
+Release  : 146
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/a1c87235a9d077b32094725ad7ea3b9919743c9f.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/a1c87235a9d077b32094725ad7ea3b9919743c9f.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -24,6 +24,7 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : grep
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : llvm-dev
@@ -147,17 +148,17 @@ lib32 components for the mesa package.
 
 
 %prep
-%setup -q -n 0b1cfd01ff2631465114e0707c9006987f377a8e
+%setup -q -n a1c87235a9d077b32094725ad7ea3b9919743c9f
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 0b1cfd01ff2631465114e0707c9006987f377a8e build32
+cp -a a1c87235a9d077b32094725ad7ea3b9919743c9f build32
 popd
 pushd ..
-cp -a 0b1cfd01ff2631465114e0707c9006987f377a8e buildavx2
+cp -a a1c87235a9d077b32094725ad7ea3b9919743c9f buildavx2
 popd
 
 %build
@@ -165,7 +166,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1525713054
+export SOURCE_DATE_EPOCH=1526831159
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -193,7 +194,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2,skx" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
+--with-swr-archs="avx,avx2" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -219,7 +220,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2,skx" --disable-va \
+--with-swr-archs="avx,avx2" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
@@ -251,7 +252,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2,skx" --disable-va \
+--with-swr-archs="avx,avx2" --disable-va \
 --with-dri-drivers="i965,swrast" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
@@ -261,7 +262,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1525713054
+export SOURCE_DATE_EPOCH=1526831159
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -397,9 +398,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libswrAVX2.so
 /usr/lib64/libswrAVX2.so.0
 /usr/lib64/libswrAVX2.so.0.0.0
-/usr/lib64/libswrSKX.so
-/usr/lib64/libswrSKX.so.0
-/usr/lib64/libswrSKX.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libvulkan_radeon.so
 /usr/lib64/libwayland-egl.so
