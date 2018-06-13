@@ -4,13 +4,14 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 146
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/a1c87235a9d077b32094725ad7ea3b9919743c9f.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/a1c87235a9d077b32094725ad7ea3b9919743c9f.tar.gz
+Release  : 147
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-lib
+Requires: mesa-license
 Requires: mesa-data
 BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
@@ -40,6 +41,7 @@ BuildRequires : pkgconfig(32libdrm)
 BuildRequires : pkgconfig(32libdrm_amdgpu)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32pthread-stubs)
+BuildRequires : pkgconfig(32wayland-egl-backend)
 BuildRequires : pkgconfig(32wayland-protocols)
 BuildRequires : pkgconfig(32wayland-server)
 BuildRequires : pkgconfig(32x11-xcb)
@@ -65,6 +67,7 @@ BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
+BuildRequires : pkgconfig(wayland-egl-backend)
 BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(wayland-scanner)
 BuildRequires : pkgconfig(wayland-server)
@@ -133,6 +136,7 @@ dev32 components for the mesa package.
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data
+Requires: mesa-license
 
 %description lib
 lib components for the mesa package.
@@ -142,23 +146,32 @@ lib components for the mesa package.
 Summary: lib32 components for the mesa package.
 Group: Default
 Requires: mesa-data
+Requires: mesa-license
 
 %description lib32
 lib32 components for the mesa package.
 
 
+%package license
+Summary: license components for the mesa package.
+Group: Default
+
+%description license
+license components for the mesa package.
+
+
 %prep
-%setup -q -n a1c87235a9d077b32094725ad7ea3b9919743c9f
+%setup -q -n fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a a1c87235a9d077b32094725ad7ea3b9919743c9f build32
+cp -a fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089 build32
 popd
 pushd ..
-cp -a a1c87235a9d077b32094725ad7ea3b9919743c9f buildavx2
+cp -a fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089 buildavx2
 popd
 
 %build
@@ -166,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526831159
+export SOURCE_DATE_EPOCH=1528857319
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -262,8 +275,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1526831159
+export SOURCE_DATE_EPOCH=1528857319
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/mesa
+cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
+cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -331,7 +347,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/pkgconfig/glesv1_cm.pc
 /usr/lib64/pkgconfig/glesv2.pc
 /usr/lib64/pkgconfig/osmesa.pc
-/usr/lib64/pkgconfig/wayland-egl.pc
 
 %files dev32
 %defattr(-,root,root,-)
@@ -341,14 +356,12 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/pkgconfig/32gl.pc
 /usr/lib32/pkgconfig/32glesv1_cm.pc
 /usr/lib32/pkgconfig/32glesv2.pc
-/usr/lib32/pkgconfig/32wayland-egl.pc
 /usr/lib32/pkgconfig/dri.pc
 /usr/lib32/pkgconfig/egl.pc
 /usr/lib32/pkgconfig/gbm.pc
 /usr/lib32/pkgconfig/gl.pc
 /usr/lib32/pkgconfig/glesv1_cm.pc
 /usr/lib32/pkgconfig/glesv2.pc
-/usr/lib32/pkgconfig/wayland-egl.pc
 
 %files lib
 %defattr(-,root,root,-)
@@ -400,9 +413,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libswrAVX2.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libvulkan_radeon.so
-/usr/lib64/libwayland-egl.so
-/usr/lib64/libwayland-egl.so.1
-/usr/lib64/libwayland-egl.so.1.0.0
 
 %files lib32
 %defattr(-,root,root,-)
@@ -427,6 +437,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/libglapi.so.0
 /usr/lib32/libglapi.so.0.0.0
 /usr/lib32/libvulkan_intel.so
-/usr/lib32/libwayland-egl.so
-/usr/lib32/libwayland-egl.so.1
-/usr/lib32/libwayland-egl.so.1.0.0
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/mesa/__pycache__/src_mapi_glapi_gen_license.cpython-36.pyc
+/usr/share/doc/mesa/docs_license.html
+/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
