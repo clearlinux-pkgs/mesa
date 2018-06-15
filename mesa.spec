@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 148
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
+Release  : 149
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3c454fc84ad6506eecb157f7c62f3efb23acc656.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3c454fc84ad6506eecb157f7c62f3efb23acc656.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -81,7 +81,7 @@ BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
-
+BuildRequires : python-dev
 BuildRequires : python3
 BuildRequires : scons
 BuildRequires : sed
@@ -161,17 +161,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089
+%setup -q -n 3c454fc84ad6506eecb157f7c62f3efb23acc656
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089 build32
+cp -a 3c454fc84ad6506eecb157f7c62f3efb23acc656 build32
 popd
 pushd ..
-cp -a fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089 buildavx2
+cp -a 3c454fc84ad6506eecb157f7c62f3efb23acc656 buildavx2
 popd
 
 %build
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528857319
+export SOURCE_DATE_EPOCH=1529103429
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -275,7 +275,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1528857319
+export SOURCE_DATE_EPOCH=1529103429
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
