@@ -81,7 +81,7 @@ BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python-dev
+
 BuildRequires : python3
 BuildRequires : scons
 BuildRequires : sed
