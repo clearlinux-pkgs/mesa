@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 147
+Release  : 148
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/fb9ab2fbd3a01693bb540560e6bd8d6f3e43a089.tar.gz
 Summary  : Mesa Off-screen Rendering library
