@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 149
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3c454fc84ad6506eecb157f7c62f3efb23acc656.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3c454fc84ad6506eecb157f7c62f3efb23acc656.tar.gz
+Release  : 150
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/4d0d9118756325ea83d254515d4c7a410df96f0e.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/4d0d9118756325ea83d254515d4c7a410df96f0e.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -16,6 +16,7 @@ Requires: mesa-data
 BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : bison
+BuildRequires : buildreq-meson
 BuildRequires : elfutils-dev
 BuildRequires : expat-dev
 BuildRequires : expat-dev32
@@ -29,10 +30,9 @@ BuildRequires : grep
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : llvm-dev
-BuildRequires : meson
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
-BuildRequires : ninja
+BuildRequires : pkg-config
 BuildRequires : pkgconfig(32dri2proto)
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32expat)
@@ -51,6 +51,7 @@ BuildRequires : pkgconfig(32xcb-xfixes)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xrandr)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
 BuildRequires : pkgconfig(32xxf86vm)
@@ -77,12 +78,12 @@ BuildRequires : pkgconfig(xcb-dri2)
 BuildRequires : pkgconfig(xcb-xfixes)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python-dev
-BuildRequires : python3
+BuildRequires : python3-dev
 BuildRequires : scons
 BuildRequires : sed
 BuildRequires : vulkan-sdk-dev
@@ -161,17 +162,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 3c454fc84ad6506eecb157f7c62f3efb23acc656
+%setup -q -n 4d0d9118756325ea83d254515d4c7a410df96f0e
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 3c454fc84ad6506eecb157f7c62f3efb23acc656 build32
+cp -a 4d0d9118756325ea83d254515d4c7a410df96f0e build32
 popd
 pushd ..
-cp -a 3c454fc84ad6506eecb157f7c62f3efb23acc656 buildavx2
+cp -a 4d0d9118756325ea83d254515d4c7a410df96f0e buildavx2
 popd
 
 %build
@@ -179,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1529103429
+export SOURCE_DATE_EPOCH=1531774171
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -270,12 +271,12 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --without-gallium-drivers \
 --disable-gallium-llvm \
 --disable-llvm \
---with-vulkan-drivers=intel  --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
+--with-vulkan-drivers=intel
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1529103429
+export SOURCE_DATE_EPOCH=1531774171
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
@@ -290,12 +291,10 @@ popd
 fi
 popd
 pushd ../buildavx2/
-%make_install
+%make_install_avx2
 popd
 %make_install
 ## make_install_append content
-mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## make_install_append end
 
@@ -365,8 +364,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/dri/haswell/i965_dri.so
+/usr/lib64/dri/haswell/swrast_dri.so
 /usr/lib64/dri/i965_dri.so
-/usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -375,7 +375,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
-/usr/lib64/dri/swrast_dri.so.avx2
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
@@ -440,6 +439,5 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files license
 %defattr(-,root,root,-)
-/usr/share/doc/mesa/__pycache__/src_mapi_glapi_gen_license.cpython-36.pyc
 /usr/share/doc/mesa/docs_license.html
 /usr/share/doc/mesa/src_mapi_glapi_gen_license.py

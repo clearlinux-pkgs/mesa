@@ -1,5 +1,5 @@
-mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
+#mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
+#mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
 #mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx512
 #mv %{buildroot}/usr/lib64/haswell/avx512_1/dri/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx512
 

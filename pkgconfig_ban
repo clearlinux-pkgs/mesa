@@ -52,3 +52,5 @@ libtizplatform
 tizilheaders
 libtizcore
 32libtizcore
+backtrace
+32backtrace
