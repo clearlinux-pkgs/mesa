@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 152
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/4d0d9118756325ea83d254515d4c7a410df96f0e.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/4d0d9118756325ea83d254515d4c7a410df96f0e.tar.gz
+Release  : 153
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/933223db3ceacad9f25a6c74213a54854550315b.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/933223db3ceacad9f25a6c74213a54854550315b.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -162,17 +162,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 4d0d9118756325ea83d254515d4c7a410df96f0e
+%setup -q -n 933223db3ceacad9f25a6c74213a54854550315b
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 4d0d9118756325ea83d254515d4c7a410df96f0e build32
+cp -a 933223db3ceacad9f25a6c74213a54854550315b build32
 popd
 pushd ..
-cp -a 4d0d9118756325ea83d254515d4c7a410df96f0e buildavx2
+cp -a 933223db3ceacad9f25a6c74213a54854550315b buildavx2
 popd
 
 %build
@@ -180,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531774171
+export SOURCE_DATE_EPOCH=1532584901
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -276,7 +276,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1531774171
+export SOURCE_DATE_EPOCH=1532584901
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
