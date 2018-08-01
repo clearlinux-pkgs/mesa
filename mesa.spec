@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 153
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/933223db3ceacad9f25a6c74213a54854550315b.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/933223db3ceacad9f25a6c74213a54854550315b.tar.gz
+Release  : 154
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/91939255a7c556a5d85a57fb6a191e0c8cfd29ce.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/91939255a7c556a5d85a57fb6a191e0c8cfd29ce.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -17,6 +17,7 @@ BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : bison
 BuildRequires : buildreq-meson
+BuildRequires : buildreq-scons
 BuildRequires : elfutils-dev
 BuildRequires : expat-dev
 BuildRequires : expat-dev32
@@ -83,8 +84,6 @@ BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python3-dev
-BuildRequires : scons
 BuildRequires : sed
 BuildRequires : vulkan-sdk-dev
 BuildRequires : vulkan-sdk-dev32
@@ -162,17 +161,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 933223db3ceacad9f25a6c74213a54854550315b
+%setup -q -n 91939255a7c556a5d85a57fb6a191e0c8cfd29ce
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 933223db3ceacad9f25a6c74213a54854550315b build32
+cp -a 91939255a7c556a5d85a57fb6a191e0c8cfd29ce build32
 popd
 pushd ..
-cp -a 933223db3ceacad9f25a6c74213a54854550315b buildavx2
+cp -a 91939255a7c556a5d85a57fb6a191e0c8cfd29ce buildavx2
 popd
 
 %build
@@ -180,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532584901
+export SOURCE_DATE_EPOCH=1533139625
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -276,11 +275,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1532584901
+export SOURCE_DATE_EPOCH=1533139625
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
-cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
+cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -294,9 +293,9 @@ pushd ../buildavx2/
 %make_install_avx2
 popd
 %make_install
-## make_install_append content
+## install_append content
 rm -rf  %{buildroot}/usr/lib64/haswell
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
