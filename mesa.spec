@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 154
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/91939255a7c556a5d85a57fb6a191e0c8cfd29ce.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/91939255a7c556a5d85a57fb6a191e0c8cfd29ce.tar.gz
+Release  : 155
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d5175d21c7e8e205a1ea80644b3cc887a586e6e1.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d5175d21c7e8e205a1ea80644b3cc887a586e6e1.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -161,17 +161,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 91939255a7c556a5d85a57fb6a191e0c8cfd29ce
+%setup -q -n d5175d21c7e8e205a1ea80644b3cc887a586e6e1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a 91939255a7c556a5d85a57fb6a191e0c8cfd29ce build32
+cp -a d5175d21c7e8e205a1ea80644b3cc887a586e6e1 build32
 popd
 pushd ..
-cp -a 91939255a7c556a5d85a57fb6a191e0c8cfd29ce buildavx2
+cp -a d5175d21c7e8e205a1ea80644b3cc887a586e6e1 buildavx2
 popd
 
 %build
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533139625
+export SOURCE_DATE_EPOCH=1533312628
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -275,7 +275,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1533139625
+export SOURCE_DATE_EPOCH=1533312628
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
@@ -294,6 +294,9 @@ pushd ../buildavx2/
 popd
 %make_install
 ## install_append content
+mv %{buildroot}/usr/lib64/dri/haswell/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
+mv %{buildroot}/usr/lib64/dri/haswell/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
+ln -s i965_dri.so %{buildroot}/usr/lib64/dri/i915_dri.so
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## install_append end
 
@@ -363,9 +366,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/dri/haswell/i965_dri.so
-/usr/lib64/dri/haswell/swrast_dri.so
+/usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/i965_dri.so
+/usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -374,6 +377,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
+/usr/lib64/dri/swrast_dri.so.avx2
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
