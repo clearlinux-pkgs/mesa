@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 155
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d5175d21c7e8e205a1ea80644b3cc887a586e6e1.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d5175d21c7e8e205a1ea80644b3cc887a586e6e1.tar.gz
+Release  : 156
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/6ff1c479968819b93c46d24bd898e89ce14ac401.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/6ff1c479968819b93c46d24bd898e89ce14ac401.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -161,17 +161,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n d5175d21c7e8e205a1ea80644b3cc887a586e6e1
+%setup -q -n 6ff1c479968819b93c46d24bd898e89ce14ac401
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a d5175d21c7e8e205a1ea80644b3cc887a586e6e1 build32
+cp -a 6ff1c479968819b93c46d24bd898e89ce14ac401 build32
 popd
 pushd ..
-cp -a d5175d21c7e8e205a1ea80644b3cc887a586e6e1 buildavx2
+cp -a 6ff1c479968819b93c46d24bd898e89ce14ac401 buildavx2
 popd
 
 %build
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533312628
+export SOURCE_DATE_EPOCH=1534868186
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -275,7 +275,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1533312628
+export SOURCE_DATE_EPOCH=1534868186
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
@@ -305,7 +305,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/mesa/drirc
+/usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
