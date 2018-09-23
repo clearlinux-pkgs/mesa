@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 157
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ac0856ae4100a05dcd1fd932d9fd10200f8f7a7c.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ac0856ae4100a05dcd1fd932d9fd10200f8f7a7c.tar.gz
+Release  : 158
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ed797f6597b55c4c0bfd23729a1c29d2f77bed02.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ed797f6597b55c4c0bfd23729a1c29d2f77bed02.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -113,9 +113,9 @@ data components for the mesa package.
 %package dev
 Summary: dev components for the mesa package.
 Group: Development
-Requires: mesa-lib
-Requires: mesa-data
-Provides: mesa-devel
+Requires: mesa-lib = %{version}-%{release}
+Requires: mesa-data = %{version}-%{release}
+Provides: mesa-devel = %{version}-%{release}
 
 %description dev
 dev components for the mesa package.
@@ -124,9 +124,9 @@ dev components for the mesa package.
 %package dev32
 Summary: dev32 components for the mesa package.
 Group: Default
-Requires: mesa-lib32
-Requires: mesa-data
-Requires: mesa-dev
+Requires: mesa-lib32 = %{version}-%{release}
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-dev = %{version}-%{release}
 
 %description dev32
 dev32 components for the mesa package.
@@ -135,8 +135,8 @@ dev32 components for the mesa package.
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
-Requires: mesa-data
-Requires: mesa-license
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -145,8 +145,8 @@ lib components for the mesa package.
 %package lib32
 Summary: lib32 components for the mesa package.
 Group: Default
-Requires: mesa-data
-Requires: mesa-license
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
 
 %description lib32
 lib32 components for the mesa package.
@@ -161,17 +161,17 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n ac0856ae4100a05dcd1fd932d9fd10200f8f7a7c
+%setup -q -n ed797f6597b55c4c0bfd23729a1c29d2f77bed02
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a ac0856ae4100a05dcd1fd932d9fd10200f8f7a7c build32
+cp -a ed797f6597b55c4c0bfd23729a1c29d2f77bed02 build32
 popd
 pushd ..
-cp -a ac0856ae4100a05dcd1fd932d9fd10200f8f7a7c buildavx2
+cp -a ed797f6597b55c4c0bfd23729a1c29d2f77bed02 buildavx2
 popd
 
 %build
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535945916
+export SOURCE_DATE_EPOCH=1537675719
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -207,7 +207,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau" --enable-gallium-osmesa
+--with-swr-archs="avx,avx2" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau,svga" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -275,10 +275,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535945916
+export SOURCE_DATE_EPOCH=1537675719
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
+cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
 cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
@@ -378,6 +379,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/swrast_dri.so.avx2
+/usr/lib64/dri/vmwgfx_dri.so
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
@@ -443,4 +445,5 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %files license
 %defattr(-,root,root,-)
 /usr/share/doc/mesa/docs_license.html
+/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
 /usr/share/doc/mesa/src_mapi_glapi_gen_license.py
