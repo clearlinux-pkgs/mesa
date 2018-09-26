@@ -46,7 +46,7 @@
     struct pipe_screen *screen = NULL;
  
 +#if defined(GALLIUM_SWR)
-+   if (screen == NULL && strcmp(driver, "swr") == 0)
++   if (screen == NULL && strcmp(driver, "swr") == 0  && __builtin_cpu_supports("avx"))
 +      screen = swr_create_screen(winsys);
 +#endif
  #if defined(GALLIUM_LLVMPIPE)
