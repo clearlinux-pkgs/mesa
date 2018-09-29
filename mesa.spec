@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 158
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/ed797f6597b55c4c0bfd23729a1c29d2f77bed02.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/ed797f6597b55c4c0bfd23729a1c29d2f77bed02.tar.gz
+Release  : 159
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -95,6 +95,7 @@ Patch2: swr.patch
 Patch3: build.patch
 Patch4: avx2-drivers.patch
 Patch5: gnu11.patch
+Patch6: swrast-llvm7.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -161,17 +162,18 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n ed797f6597b55c4c0bfd23729a1c29d2f77bed02
+%setup -q -n 3fb4adae83f921bbf529fad8753c7e23b969a41d
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 pushd ..
-cp -a ed797f6597b55c4c0bfd23729a1c29d2f77bed02 build32
+cp -a 3fb4adae83f921bbf529fad8753c7e23b969a41d build32
 popd
 pushd ..
-cp -a ed797f6597b55c4c0bfd23729a1c29d2f77bed02 buildavx2
+cp -a 3fb4adae83f921bbf529fad8753c7e23b969a41d buildavx2
 popd
 
 %build
@@ -179,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537675719
+export SOURCE_DATE_EPOCH=1538244064
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -234,7 +236,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
 --with-swr-archs="avx,avx2" --disable-va \
---with-dri-drivers="i965,swrast" \
+--with-dri-drivers="i965" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
 --disable-llvm \
@@ -266,7 +268,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
 --with-swr-archs="avx,avx2" --disable-va \
---with-dri-drivers="i965,swrast" \
+--with-dri-drivers="i965" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
 --disable-llvm \
@@ -275,7 +277,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1537675719
+export SOURCE_DATE_EPOCH=1538244064
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
@@ -296,7 +298,6 @@ popd
 %make_install
 ## install_append content
 mv %{buildroot}/usr/lib64/dri/haswell/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-mv %{buildroot}/usr/lib64/dri/haswell/swrast_dri.so  %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
 ln -s i965_dri.so %{buildroot}/usr/lib64/dri/i915_dri.so
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## install_append end
@@ -378,7 +379,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
-/usr/lib64/dri/swrast_dri.so.avx2
 /usr/lib64/dri/vmwgfx_dri.so
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
@@ -421,7 +421,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %files lib32
 %defattr(-,root,root,-)
 /usr/lib32/dri/i965_dri.so
-/usr/lib32/dri/swrast_dri.so
 /usr/lib32/libEGL.so
 /usr/lib32/libEGL.so.1
 /usr/lib32/libEGL.so.1.0.0
@@ -443,7 +442,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/libvulkan_intel.so
 
 %files license
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/doc/mesa/docs_license.html
 /usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
 /usr/share/doc/mesa/src_mapi_glapi_gen_license.py

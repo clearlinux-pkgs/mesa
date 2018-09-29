@@ -1,5 +1,5 @@
 --disable-va
---with-dri-drivers="i965,swrast" 
+--with-dri-drivers="i965" 
 --without-gallium-drivers
 --disable-gallium-llvm
 --disable-llvm

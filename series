@@ -4,3 +4,4 @@ swr.patch
 build.patch
 avx2-drivers.patch
 gnu11.patch
+swrast-llvm7.patch
