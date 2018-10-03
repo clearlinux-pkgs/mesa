@@ -4,15 +4,15 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 159
+Release  : 160
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
-Requires: mesa-lib
-Requires: mesa-license
-Requires: mesa-data
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-lib = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
 BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : bison
@@ -91,11 +91,9 @@ BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
 Patch1: better-error.patch
-Patch2: swr.patch
-Patch3: build.patch
-Patch4: avx2-drivers.patch
-Patch5: gnu11.patch
-Patch6: swrast-llvm7.patch
+Patch2: build.patch
+Patch3: avx2-drivers.patch
+Patch4: gnu11.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -167,8 +165,6 @@ license components for the mesa package.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 pushd ..
 cp -a 3fb4adae83f921bbf529fad8753c7e23b969a41d build32
 popd
@@ -181,7 +177,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538244064
+export SOURCE_DATE_EPOCH=1538543822
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -208,11 +204,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2" --with-dri-drivers="i965"  --with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau,svga" --enable-gallium-osmesa
+--with-vulkan-drivers=intel,radeon --with-dri-drivers="i965"  --with-gallium-drivers="swrast,radeonsi,r600,nouveau,svga" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export ASFLAGS="$ASFLAGS --32"
 export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
@@ -234,8 +230,7 @@ export LDFLAGS="$LDFLAGS -m32"
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2" --disable-va \
+--with-vulkan-drivers=intel,radeon --disable-va \
 --with-dri-drivers="i965" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
@@ -266,8 +261,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon \
---with-swr-archs="avx,avx2" --disable-va \
+--with-vulkan-drivers=intel,radeon --disable-va \
 --with-dri-drivers="i965" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
@@ -277,12 +271,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1538244064
+export SOURCE_DATE_EPOCH=1538543822
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/mesa
-cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
-cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
-cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
+mkdir -p %{buildroot}/usr/share/package-licenses/mesa
+cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
+cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
+cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -409,12 +403,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libglapi.so
 /usr/lib64/libglapi.so.0
 /usr/lib64/libglapi.so.0.0.0
-/usr/lib64/libswrAVX.so
-/usr/lib64/libswrAVX.so.0
-/usr/lib64/libswrAVX.so.0.0.0
-/usr/lib64/libswrAVX2.so
-/usr/lib64/libswrAVX2.so.0
-/usr/lib64/libswrAVX2.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libvulkan_radeon.so
 
@@ -442,7 +430,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/libvulkan_intel.so
 
 %files license
-%defattr(0644,root,root,0755)
-/usr/share/doc/mesa/docs_license.html
-/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
-/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
+%defattr(-,root,root,-)
+/usr/share/package-licenses/mesa/docs_license.html
+/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
+/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py

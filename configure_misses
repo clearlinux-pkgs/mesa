@@ -3,6 +3,20 @@ Configure miss: whether C compiler accepts -Winitializer-overrides
 Configure miss: whether gcc supports -mpower8-vector
 Configure miss: whether sys/types.h defines makedev
 Configure miss: x86_64-generic-linux-gnu-llvm-config
+Configure miss: i686-generic-linux-gnu-gcc
+Configure miss: i686-generic-linux-gnu-g++
+Configure miss: i686-generic-linux-gnu-c++
+Configure miss: i686-generic-linux-gnu-gpp
+Configure miss: i686-generic-linux-gnu-aCC
+Configure miss: i686-generic-linux-gnu-CC
+Configure miss: i686-generic-linux-gnu-cxx
+Configure miss: i686-generic-linux-gnu-cc++
+Configure miss: i686-generic-linux-gnu-cl.exe
+Configure miss: i686-generic-linux-gnu-FCC
+Configure miss: i686-generic-linux-gnu-KCC
+Configure miss: i686-generic-linux-gnu-RCC
+Configure miss: i686-generic-linux-gnu-xlC_r
+Configure miss: i686-generic-linux-gnu-xlC
 Configure miss: if compiling with clang
 Configure miss: whether C compiler accepts -Winitializer-overrides
 Configure miss: whether gcc supports -mpower8-vector
