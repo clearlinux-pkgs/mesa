@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 160
+Release  : 161
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
 Summary  : Mesa Off-screen Rendering library
@@ -85,8 +85,10 @@ BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
-BuildRequires : vulkan-sdk-dev
-BuildRequires : vulkan-sdk-dev32
+BuildRequires : Vulkan-Headers-dev
+BuildRequires : Vulkan-Loader-dev
+BuildRequires : Vulkan-Loader-dev32
+BuildRequires : Vulkan-Tools
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
