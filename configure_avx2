@@ -1,0 +1,5 @@
+ 
+--with-dri-drivers="i965"
+--with-gallium-drivers="swrast,swr,radeonsi,r600,nouveau,svga"
+--with-swr-archs=avx2
+--enable-gallium-osmesa

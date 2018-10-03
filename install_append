@@ -1,4 +1,11 @@
-mv %{buildroot}/usr/lib64/dri/haswell/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-#ln -s i965_dri.so %{buildroot}/usr/lib64/dri/i915_dri.so 
+# Copy the AVX2 DRI drivers to the right place (they have a SONAME, so
+# clr-avx2-move.pl thinks they're libraries, not plugins)
+test -d %{buildroot}/usr/lib64/dri/haswell && (
+    cd %{buildroot}/usr/lib64/dri/haswell
+    for f in *.so; do mv $f ../$f.avx2; done
+    cd ..
+    rmdir haswell || :
+)
 
+# Remove AVX2 main libraries, since the interesting stuff is in plugins
 rm -rf  %{buildroot}/usr/lib64/haswell
