@@ -4,17 +4,21 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 161
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/3fb4adae83f921bbf529fad8753c7e23b969a41d.tar.gz
+Release  : 162
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c565eeee0b3ff6f0a63658e50170fc02ade486b0.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c565eeee0b3ff6f0a63658e50170fc02ade486b0.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
-Requires: mesa-data = %{version}-%{release}
-Requires: mesa-lib = %{version}-%{release}
-Requires: mesa-license = %{version}-%{release}
+Requires: mesa-lib
+Requires: mesa-license
+Requires: mesa-data
 BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
+BuildRequires : Vulkan-Headers-dev
+BuildRequires : Vulkan-Loader-dev
+BuildRequires : Vulkan-Loader-dev32
+BuildRequires : Vulkan-Tools
 BuildRequires : bison
 BuildRequires : buildreq-meson
 BuildRequires : buildreq-scons
@@ -85,10 +89,6 @@ BuildRequires : pkgconfig(xvmc)
 BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
-BuildRequires : Vulkan-Headers-dev
-BuildRequires : Vulkan-Loader-dev
-BuildRequires : Vulkan-Loader-dev32
-BuildRequires : Vulkan-Tools
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
@@ -162,16 +162,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 3fb4adae83f921bbf529fad8753c7e23b969a41d
+%setup -q -n c565eeee0b3ff6f0a63658e50170fc02ade486b0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 pushd ..
-cp -a 3fb4adae83f921bbf529fad8753c7e23b969a41d build32
+cp -a c565eeee0b3ff6f0a63658e50170fc02ade486b0 build32
 popd
 pushd ..
-cp -a 3fb4adae83f921bbf529fad8753c7e23b969a41d buildavx2
+cp -a c565eeee0b3ff6f0a63658e50170fc02ade486b0 buildavx2
 popd
 
 %build
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538543822
+export SOURCE_DATE_EPOCH=1538755586
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -210,7 +210,6 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-export ASFLAGS="$ASFLAGS --32"
 export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
@@ -273,12 +272,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1538543822
+export SOURCE_DATE_EPOCH=1538755586
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
-cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
-cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
+mkdir -p %{buildroot}/usr/share/doc/mesa
+cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
+cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
+cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -432,7 +431,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/libvulkan_intel.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/package-licenses/mesa/docs_license.html
-/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
-/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
+%defattr(0644,root,root,0755)
+/usr/share/doc/mesa/docs_license.html
+/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
+/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
