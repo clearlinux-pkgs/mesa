@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 162
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c565eeee0b3ff6f0a63658e50170fc02ade486b0.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c565eeee0b3ff6f0a63658e50170fc02ade486b0.tar.gz
+Release  : 163
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -162,16 +162,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n c565eeee0b3ff6f0a63658e50170fc02ade486b0
+%setup -q -n d3682766f66b69ab636a2b9ca74db48fab68e024
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 pushd ..
-cp -a c565eeee0b3ff6f0a63658e50170fc02ade486b0 build32
+cp -a d3682766f66b69ab636a2b9ca74db48fab68e024 build32
 popd
 pushd ..
-cp -a c565eeee0b3ff6f0a63658e50170fc02ade486b0 buildavx2
+cp -a d3682766f66b69ab636a2b9ca74db48fab68e024 buildavx2
 popd
 
 %build
@@ -179,15 +179,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538755586
+export SOURCE_DATE_EPOCH=1539034665
 unset LD_AS_NEEDED
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -206,7 +203,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon --with-dri-drivers="i965"  --with-gallium-drivers="swrast,radeonsi,r600,nouveau,svga" --enable-gallium-osmesa
+--with-vulkan-drivers=intel,radeon --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -272,7 +269,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1538755586
+export SOURCE_DATE_EPOCH=1539034665
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mesa
 cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
@@ -293,7 +290,6 @@ popd
 %make_install
 ## install_append content
 mv %{buildroot}/usr/lib64/dri/haswell/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-ln -s i965_dri.so %{buildroot}/usr/lib64/dri/i915_dri.so
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## install_append end
 
@@ -369,8 +365,11 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
+/usr/lib64/dri/nouveau_vieux_dri.so
+/usr/lib64/dri/r200_dri.so
 /usr/lib64/dri/r600_dri.so
 /usr/lib64/dri/r600_drv_video.so
+/usr/lib64/dri/radeon_dri.so
 /usr/lib64/dri/radeonsi_dri.so
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
