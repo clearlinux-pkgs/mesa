@@ -4,15 +4,15 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 166
+Release  : 167
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
-Requires: mesa-lib
-Requires: mesa-license
-Requires: mesa-data
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-lib = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
 BuildRequires : Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : Vulkan-Headers-dev
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539034665
+export SOURCE_DATE_EPOCH=1539298097
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -207,6 +207,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export ASFLAGS="$ASFLAGS --32"
 export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
@@ -259,22 +260,17 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon --disable-va \
---with-dri-drivers="i965" \
---without-gallium-drivers \
---disable-gallium-llvm \
---disable-llvm \
---with-vulkan-drivers=intel
+--with-vulkan-drivers=intel,radeon
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539034665
+export SOURCE_DATE_EPOCH=1539298097
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/mesa
-cp docs/license.html %{buildroot}/usr/share/doc/mesa/docs_license.html
-cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
-cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
+mkdir -p %{buildroot}/usr/share/package-licenses/mesa
+cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
+cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
+cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -359,6 +355,16 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/dri/haswell/i915_dri.so
+/usr/lib64/dri/haswell/kms_swrast_dri.so
+/usr/lib64/dri/haswell/nouveau_vieux_dri.so
+/usr/lib64/dri/haswell/r200_dri.so
+/usr/lib64/dri/haswell/r300_dri.so
+/usr/lib64/dri/haswell/r600_dri.so
+/usr/lib64/dri/haswell/r600_drv_video.so
+/usr/lib64/dri/haswell/radeon_dri.so
+/usr/lib64/dri/haswell/swrast_dri.so
+/usr/lib64/dri/haswell/vmwgfx_dri.so
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/i965_dri.so.avx2
@@ -431,6 +437,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/mesa/docs_license.html
-/usr/share/doc/mesa/src_intel_tools_imgui_LICENSE.txt
-/usr/share/doc/mesa/src_mapi_glapi_gen_license.py
+/usr/share/package-licenses/mesa/docs_license.html
+/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
+/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
