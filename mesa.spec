@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 168
+Release  : 169
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/d3682766f66b69ab636a2b9ca74db48fab68e024.tar.gz
 Summary  : Mesa Off-screen Rendering library
@@ -69,7 +69,6 @@ BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libdrm_amdgpu)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libunwind)
-BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(pthread-stubs)
 BuildRequires : pkgconfig(valgrind)
@@ -179,7 +178,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539298097
+export SOURCE_DATE_EPOCH=1539390140
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -194,7 +193,6 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 --enable-xorg \
 --enable-glx-tls \
 --enable-xvmc \
---enable-va \
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
@@ -220,7 +218,6 @@ export LDFLAGS="$LDFLAGS -m32"
 --enable-xorg \
 --enable-glx-tls \
 --enable-xvmc \
---enable-va \
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
@@ -251,7 +248,6 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --enable-xorg \
 --enable-glx-tls \
 --enable-xvmc \
---enable-va \
 --enable-glx-tls \
 --enable-texture-float \
 --enable-gbm \
@@ -265,7 +261,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539298097
+export SOURCE_DATE_EPOCH=1539390140
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
@@ -361,7 +357,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/haswell/r200_dri.so
 /usr/lib64/dri/haswell/r300_dri.so
 /usr/lib64/dri/haswell/r600_dri.so
-/usr/lib64/dri/haswell/r600_drv_video.so
 /usr/lib64/dri/haswell/radeon_dri.so
 /usr/lib64/dri/haswell/swrast_dri.so
 /usr/lib64/dri/haswell/vmwgfx_dri.so
@@ -370,14 +365,11 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
-/usr/lib64/dri/nouveau_drv_video.so
 /usr/lib64/dri/nouveau_vieux_dri.so
 /usr/lib64/dri/r200_dri.so
 /usr/lib64/dri/r600_dri.so
-/usr/lib64/dri/r600_drv_video.so
 /usr/lib64/dri/radeon_dri.so
 /usr/lib64/dri/radeonsi_dri.so
-/usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/vmwgfx_dri.so
 /usr/lib64/libEGL.so

@@ -1,4 +1,4 @@
 1
-pkgconfig(xrandr)
-pkgconfig(32xrandr)
 pkg-config
+pkgconfig(32xrandr)
+pkgconfig(xrandr)

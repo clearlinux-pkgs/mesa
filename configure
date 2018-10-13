@@ -7,7 +7,6 @@
 --enable-xorg  
 --enable-glx-tls 
 --enable-xvmc  
---enable-va  
 --enable-glx-tls 
 --enable-texture-float 
 --enable-gbm 
