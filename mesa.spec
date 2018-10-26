@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 170
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0d380af8097cf85122596041af1a611a8139de18.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0d380af8097cf85122596041af1a611a8139de18.tar.gz
+Release  : 171
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/703271c22a9b3ac85e9aef38be288e4ce9ba5e3a.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/703271c22a9b3ac85e9aef38be288e4ce9ba5e3a.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -161,16 +161,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 0d380af8097cf85122596041af1a611a8139de18
+%setup -q -n 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 pushd ..
-cp -a 0d380af8097cf85122596041af1a611a8139de18 build32
+cp -a 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a build32
 popd
 pushd ..
-cp -a 0d380af8097cf85122596041af1a611a8139de18 buildavx2
+cp -a 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a buildavx2
 popd
 
 %build
@@ -178,7 +178,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539975660
+export SOURCE_DATE_EPOCH=1540523479
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -261,7 +261,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539975660
+export SOURCE_DATE_EPOCH=1540523479
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
