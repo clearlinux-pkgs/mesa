@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 171
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/703271c22a9b3ac85e9aef38be288e4ce9ba5e3a.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/703271c22a9b3ac85e9aef38be288e4ce9ba5e3a.tar.gz
+Release  : 172
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/590fcb50e745a2d8a62dafa157f06d2bb7c590dc.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/590fcb50e745a2d8a62dafa157f06d2bb7c590dc.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -102,6 +102,14 @@ Why:
 - Some libraries suffer from race condition and other issues. For example see
 commit ade3108bb5b0 ("util: Fix race condition on libgcrypt initialization").
 
+%package abi
+Summary: abi components for the mesa package.
+Group: Default
+
+%description abi
+abi components for the mesa package.
+
+
 %package data
 Summary: data components for the mesa package.
 Group: Data
@@ -161,16 +169,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a
+%setup -q -n 590fcb50e745a2d8a62dafa157f06d2bb7c590dc
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 pushd ..
-cp -a 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a build32
+cp -a 590fcb50e745a2d8a62dafa157f06d2bb7c590dc build32
 popd
 pushd ..
-cp -a 703271c22a9b3ac85e9aef38be288e4ce9ba5e3a buildavx2
+cp -a 590fcb50e745a2d8a62dafa157f06d2bb7c590dc buildavx2
 popd
 
 %build
@@ -178,7 +186,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540523479
+export SOURCE_DATE_EPOCH=1541996895
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -261,7 +269,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1540523479
+export SOURCE_DATE_EPOCH=1541996895
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
@@ -287,6 +295,20 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 
 %files
 %defattr(-,root,root,-)
+
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/libEGL.so.1.0.0.abi
+/usr/share/abi/libGL.so.1.2.0.abi
+/usr/share/abi/libGLESv1_CM.so.1.1.0.abi
+/usr/share/abi/libGLESv2.so.2.0.0.abi
+/usr/share/abi/libOSMesa.so.8.0.0.abi
+/usr/share/abi/libXvMCnouveau.so.1.0.0.abi
+/usr/share/abi/libXvMCr600.so.1.0.0.abi
+/usr/share/abi/libgbm.so.1.0.0.abi
+/usr/share/abi/libglapi.so.0.0.0.abi
+/usr/share/abi/libvulkan_intel.so.abi
+/usr/share/abi/libvulkan_radeon.so.abi
 
 %files data
 %defattr(-,root,root,-)
