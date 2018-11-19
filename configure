@@ -14,6 +14,6 @@
 --disable-omx-tizonia
 --disable-omx-bellagio
 --sysconfdir=/usr/share/mesa
---with-egl-platforms=x11,drm,wayland 
+--with-egl-platforms=x11,drm,wayland,surfaceless
 --with-vulkan-drivers=intel,radeon
 --enable-autotools
