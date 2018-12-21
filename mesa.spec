@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 174
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/590fcb50e745a2d8a62dafa157f06d2bb7c590dc.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/590fcb50e745a2d8a62dafa157f06d2bb7c590dc.tar.gz
+Release  : 175
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e872d14865fbe8dddf41b57b79137305144ead1.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e872d14865fbe8dddf41b57b79137305144ead1.tar.gz
 Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
@@ -91,10 +91,9 @@ BuildRequires : sed
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
-Patch1: better-error.patch
-Patch2: build.patch
-Patch3: avx2-drivers.patch
-Patch4: gnu11.patch
+Patch1: build.patch
+Patch2: avx2-drivers.patch
+Patch3: gnu11.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -161,16 +160,15 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 590fcb50e745a2d8a62dafa157f06d2bb7c590dc
+%setup -q -n 1e872d14865fbe8dddf41b57b79137305144ead1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 pushd ..
-cp -a 590fcb50e745a2d8a62dafa157f06d2bb7c590dc build32
+cp -a 1e872d14865fbe8dddf41b57b79137305144ead1 build32
 popd
 pushd ..
-cp -a 590fcb50e745a2d8a62dafa157f06d2bb7c590dc buildavx2
+cp -a 1e872d14865fbe8dddf41b57b79137305144ead1 buildavx2
 popd
 
 %build
@@ -178,7 +176,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543734178
+export SOURCE_DATE_EPOCH=1545427282
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -261,7 +259,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543734178
+export SOURCE_DATE_EPOCH=1545427282
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html

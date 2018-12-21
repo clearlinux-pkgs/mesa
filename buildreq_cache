@@ -1,4 +1,6 @@
 1
 pkg-config
 pkgconfig(32xrandr)
+pkgconfig(32xxf86vm)
 pkgconfig(xrandr)
+pkgconfig(xxf86vm)

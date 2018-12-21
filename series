@@ -1,5 +1,4 @@
 #stateless.patch
-better-error.patch
 build.patch
 avx2-drivers.patch
 gnu11.patch
