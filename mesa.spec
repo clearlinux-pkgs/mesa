@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 176
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e872d14865fbe8dddf41b57b79137305144ead1.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/1e872d14865fbe8dddf41b57b79137305144ead1.tar.gz
-Summary  : Mesa Off-screen Rendering library
+Release  : 177
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
+Summary  : An open-source implementation of the OpenGL specification
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
@@ -96,10 +96,12 @@ Patch2: avx2-drivers.patch
 Patch3: gnu11.patch
 
 %description
-This local copy of a SHA1 implementation based on the sources below.
-Why:
-- Some libraries suffer from race condition and other issues. For example see
-commit ade3108bb5b0 ("util: Fix race condition on libgcrypt initialization").
+New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
+Its design inherits from the various IRs that Mesa has used in the past, as
+well as Direct3D assembly, and it includes a few new ideas as well. It is a
+flat (in terms of using instructions instead of expressions), typeless IR,
+similar to TGSI and Mesa IR.  It also supports SSA (although it doesn't require
+it).
 
 %package data
 Summary: data components for the mesa package.
@@ -160,15 +162,15 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 1e872d14865fbe8dddf41b57b79137305144ead1
+%setup -q -n c8ae891035d12d35496a06afb94ebfdf0e72505a
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a 1e872d14865fbe8dddf41b57b79137305144ead1 build32
+cp -a c8ae891035d12d35496a06afb94ebfdf0e72505a build32
 popd
 pushd ..
-cp -a 1e872d14865fbe8dddf41b57b79137305144ead1 buildavx2
+cp -a c8ae891035d12d35496a06afb94ebfdf0e72505a buildavx2
 popd
 
 %build
@@ -176,7 +178,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545427282
+export SOURCE_DATE_EPOCH=1547222384
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -259,7 +261,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1545427282
+export SOURCE_DATE_EPOCH=1547222384
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
