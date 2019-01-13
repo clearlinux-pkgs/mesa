@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 177
+Release  : 178
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
