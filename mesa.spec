@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 178
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/c8ae891035d12d35496a06afb94ebfdf0e72505a.tar.gz
+Release  : 179
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/36a76b7192707edce540a7db8809df00e8643514.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/36a76b7192707edce540a7db8809df00e8643514.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
 Group    : Development/Tools
 License  : MIT
@@ -94,6 +94,7 @@ BuildRequires : wayland-protocols-dev
 Patch1: build.patch
 Patch2: avx2-drivers.patch
 Patch3: gnu11.patch
+Patch4: memcpy-harder.patch
 
 %description
 New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
@@ -162,15 +163,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n c8ae891035d12d35496a06afb94ebfdf0e72505a
+%setup -q -n 36a76b7192707edce540a7db8809df00e8643514
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 pushd ..
-cp -a c8ae891035d12d35496a06afb94ebfdf0e72505a build32
+cp -a 36a76b7192707edce540a7db8809df00e8643514 build32
 popd
 pushd ..
-cp -a c8ae891035d12d35496a06afb94ebfdf0e72505a buildavx2
+cp -a 36a76b7192707edce540a7db8809df00e8643514 buildavx2
 popd
 
 %build
@@ -178,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547222384
+export SOURCE_DATE_EPOCH=1548010120
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -201,7 +203,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa
+--with-vulkan-drivers=intel,radeon \
+--enable-autotools --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -226,7 +229,8 @@ export LDFLAGS="$LDFLAGS -m32"
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon --disable-va \
+--with-vulkan-drivers=intel,radeon \
+--enable-autotools --disable-va \
 --with-dri-drivers="i965" \
 --without-gallium-drivers \
 --disable-gallium-llvm \
@@ -256,12 +260,13 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
---with-vulkan-drivers=intel,radeon
+--with-vulkan-drivers=intel,radeon \
+--enable-autotools
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547222384
+export SOURCE_DATE_EPOCH=1548010120
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html

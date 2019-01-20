@@ -1,0 +1,13 @@
+sse4 is great, but using this flag causes the compiler to not use avx2 (which is even better).
+
+
+--- c8ae891035d12d35496a06afb94ebfdf0e72505a/src/intel/isl/isl_tiled_memcpy_sse41.c~	2019-01-11 14:37:47.000000000 +0000
++++ c8ae891035d12d35496a06afb94ebfdf0e72505a/src/intel/isl/isl_tiled_memcpy_sse41.c	2019-01-20 18:19:08.156045972 +0000
+@@ -29,7 +29,6 @@
+  *    Frank Henigman <fjhenigman@google.com>
+  */
+ 
+-#define INLINE_SSE41
+ 
+ #include "isl_tiled_memcpy.c"
+ 
