@@ -1495,8 +1495,6 @@ libGLESv1_CM.so.1:glMaterialxv
 libGLESv1_CM.so.1:glMatrixMode
 libGLESv1_CM.so.1:glMultMatrixf
 libGLESv1_CM.so.1:glMultMatrixx
-libGLESv1_CM.so.1:glMultiDrawArraysEXT
-libGLESv1_CM.so.1:glMultiDrawElementsEXT
 libGLESv1_CM.so.1:glMultiTexCoord4f
 libGLESv1_CM.so.1:glMultiTexCoord4x
 libGLESv1_CM.so.1:glNormal3f
@@ -1556,7 +1554,6 @@ libGLESv2.so.2:glBindAttribLocation
 libGLESv2.so.2:glBindBuffer
 libGLESv2.so.2:glBindBufferBase
 libGLESv2.so.2:glBindBufferRange
-libGLESv2.so.2:glBindFragDataLocationEXT
 libGLESv2.so.2:glBindFramebuffer
 libGLESv2.so.2:glBindImageTexture
 libGLESv2.so.2:glBindProgramPipeline
@@ -1720,9 +1717,7 @@ libGLESv2.so.2:glGetSynciv
 libGLESv2.so.2:glGetTexLevelParameterfv
 libGLESv2.so.2:glGetTexLevelParameteriv
 libGLESv2.so.2:glGetTexParameterIiv
-libGLESv2.so.2:glGetTexParameterIivEXT
 libGLESv2.so.2:glGetTexParameterIuiv
-libGLESv2.so.2:glGetTexParameterIuivEXT
 libGLESv2.so.2:glGetTexParameterfv
 libGLESv2.so.2:glGetTexParameteriv
 libGLESv2.so.2:glGetTransformFeedbackVarying
@@ -1763,8 +1758,6 @@ libGLESv2.so.2:glMapBufferRange
 libGLESv2.so.2:glMemoryBarrier
 libGLESv2.so.2:glMemoryBarrierByRegion
 libGLESv2.so.2:glMinSampleShading
-libGLESv2.so.2:glMultiDrawArraysEXT
-libGLESv2.so.2:glMultiDrawElementsEXT
 libGLESv2.so.2:glObjectLabel
 libGLESv2.so.2:glObjectPtrLabel
 libGLESv2.so.2:glPatchParameteri
@@ -1838,9 +1831,7 @@ libGLESv2.so.2:glTexBufferRange
 libGLESv2.so.2:glTexImage2D
 libGLESv2.so.2:glTexImage3D
 libGLESv2.so.2:glTexParameterIiv
-libGLESv2.so.2:glTexParameterIivEXT
 libGLESv2.so.2:glTexParameterIuiv
-libGLESv2.so.2:glTexParameterIuivEXT
 libGLESv2.so.2:glTexParameterf
 libGLESv2.so.2:glTexParameterfv
 libGLESv2.so.2:glTexParameteri
