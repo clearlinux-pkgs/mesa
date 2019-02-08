@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 181
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/48ed2a7bb009618edfde28ee87ae391c1879c35b.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/48ed2a7bb009618edfde28ee87ae391c1879c35b.tar.gz
+Release  : 182
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
 Group    : Development/Tools
 License  : MIT
@@ -163,16 +163,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n 48ed2a7bb009618edfde28ee87ae391c1879c35b
+%setup -q -n b031c643491a92a5574c7a4bd659df33f2d89bb6
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 pushd ..
-cp -a 48ed2a7bb009618edfde28ee87ae391c1879c35b build32
+cp -a b031c643491a92a5574c7a4bd659df33f2d89bb6 build32
 popd
 pushd ..
-cp -a 48ed2a7bb009618edfde28ee87ae391c1879c35b buildavx2
+cp -a b031c643491a92a5574c7a4bd659df33f2d89bb6 buildavx2
 popd
 
 %build
@@ -180,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549127306
+export SOURCE_DATE_EPOCH=1549661926
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -266,7 +266,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549127306
+export SOURCE_DATE_EPOCH=1549661926
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
