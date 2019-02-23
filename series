@@ -2,4 +2,3 @@
 build.patch
 avx2-drivers.patch
 gnu11.patch
-memcpy-harder.patch

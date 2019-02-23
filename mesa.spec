@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 182
+Release  : 183
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
@@ -94,7 +94,6 @@ BuildRequires : wayland-protocols-dev
 Patch1: build.patch
 Patch2: avx2-drivers.patch
 Patch3: gnu11.patch
-Patch4: memcpy-harder.patch
 
 %description
 New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
@@ -167,7 +166,6 @@ license components for the mesa package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 pushd ..
 cp -a b031c643491a92a5574c7a4bd659df33f2d89bb6 build32
 popd
@@ -180,8 +178,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549661926
+export SOURCE_DATE_EPOCH=1550870512
 unset LD_AS_NEEDED
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -208,10 +207,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-export ASFLAGS="$ASFLAGS --32"
-export CFLAGS="$CFLAGS -m32"
-export CXXFLAGS="$CXXFLAGS -m32"
-export LDFLAGS="$LDFLAGS -m32"
+export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
+export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32"
+export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32"
+export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32"
 %reconfigure --disable-static --enable-dri \
 --enable-dri3 \
 --enable-glx \
@@ -266,7 +265,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549661926
+export SOURCE_DATE_EPOCH=1550870512
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
