@@ -4,9 +4,9 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 183
-URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
-Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/b031c643491a92a5574c7a4bd659df33f2d89bb6.tar.gz
+Release  : 184
+URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/47fc359822494935852de1e70e4d840b2fe6a25c.tar.gz
+Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/47fc359822494935852de1e70e4d840b2fe6a25c.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
 Group    : Development/Tools
 License  : MIT
@@ -117,6 +117,7 @@ Group: Development
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
+Requires: mesa = %{version}-%{release}
 
 %description dev
 dev components for the mesa package.
@@ -162,15 +163,15 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n b031c643491a92a5574c7a4bd659df33f2d89bb6
+%setup -q -n 47fc359822494935852de1e70e4d840b2fe6a25c
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 pushd ..
-cp -a b031c643491a92a5574c7a4bd659df33f2d89bb6 build32
+cp -a 47fc359822494935852de1e70e4d840b2fe6a25c build32
 popd
 pushd ..
-cp -a b031c643491a92a5574c7a4bd659df33f2d89bb6 buildavx2
+cp -a 47fc359822494935852de1e70e4d840b2fe6a25c buildavx2
 popd
 
 %build
@@ -178,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550870512
+export SOURCE_DATE_EPOCH=1552320230
 unset LD_AS_NEEDED
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -265,11 +266,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1550870512
+export SOURCE_DATE_EPOCH=1552320230
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
-cp src/intel/tools/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
 cp src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
 pushd ../build32/
 %make_install32
@@ -434,5 +434,4 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/mesa/docs_license.html
-/usr/share/package-licenses/mesa/src_intel_tools_imgui_LICENSE.txt
 /usr/share/package-licenses/mesa/src_mapi_glapi_gen_license.py
