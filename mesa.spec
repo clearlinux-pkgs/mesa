@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 187
+Release  : 188
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/1281368d02a22d08a892fbfda4cecc1219cde895.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/1281368d02a22d08a892fbfda4cecc1219cde895.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
@@ -179,7 +179,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552515641
+export SOURCE_DATE_EPOCH=1553161927
 unset LD_AS_NEEDED
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -204,7 +204,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 --sysconfdir=/usr/share/mesa \
 --with-egl-platforms=x11,drm,wayland \
 --with-vulkan-drivers=intel,radeon \
---enable-autotools --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa
+--enable-autotools --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa --enable-xa
 make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -266,7 +266,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552515641
+export SOURCE_DATE_EPOCH=1553161927
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
@@ -338,6 +338,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/pkgconfig/glesv1_cm.pc
 /usr/lib64/pkgconfig/glesv2.pc
 /usr/lib64/pkgconfig/osmesa.pc
+/usr/lib64/pkgconfig/xatracker.pc
 
 %files dev32
 %defattr(-,root,root,-)
@@ -408,6 +409,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libglapi.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libvulkan_radeon.so
+/usr/lib64/libxatracker.so
+/usr/lib64/libxatracker.so.2
+/usr/lib64/libxatracker.so.2.5.0
 
 %files lib32
 %defattr(-,root,root,-)
