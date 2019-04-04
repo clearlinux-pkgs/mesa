@@ -13,7 +13,7 @@ License  : MIT
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
-BuildRequires : Mako-legacypython
+BuildRequires : deprecated-Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
