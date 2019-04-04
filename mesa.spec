@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 191
+Release  : 192
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0af95f0ffce66a250ffbba254f22e4035e9032dd.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0af95f0ffce66a250ffbba254f22e4035e9032dd.tar.gz
 Summary  : An open-source implementation of the OpenGL specification
@@ -13,7 +13,6 @@ License  : MIT
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
-BuildRequires : deprecated-Mako-legacypython
 BuildRequires : Mako-python
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
@@ -179,7 +178,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554132091
+export SOURCE_DATE_EPOCH=1554386794
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -265,7 +264,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1554132091
+export SOURCE_DATE_EPOCH=1554386794
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html

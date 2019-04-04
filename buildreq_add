@@ -3,7 +3,6 @@
 # desirable. One name per line, no whitespace.
 #
 Mako-python
-deprecated-Mako-legacypython
 elfutils-dev
 nettle-dev
 bison
