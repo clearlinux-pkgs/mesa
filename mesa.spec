@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 1
-Release  : 192
+Release  : 193
 URL      : https://cgit.freedesktop.org/mesa/mesa/snapshot/0af95f0ffce66a250ffbba254f22e4035e9032dd.tar.gz
 Source0  : https://cgit.freedesktop.org/mesa/mesa/snapshot/0af95f0ffce66a250ffbba254f22e4035e9032dd.tar.gz
-Summary  : An open-source implementation of the OpenGL specification
+Summary  : Mesa Off-screen Rendering library
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
@@ -95,12 +95,8 @@ Patch2: avx2-drivers.patch
 Patch3: gnu11.patch
 
 %description
-New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
-Its design inherits from the various IRs that Mesa has used in the past, as
-well as Direct3D assembly, and it includes a few new ideas as well. It is a
-flat (in terms of using instructions instead of expressions), typeless IR,
-similar to TGSI and Mesa IR.  It also supports SSA (although it doesn't require
-it).
+A Vulkan layer to display information about the running application
+using an overlay.
 
 %package data
 Summary: data components for the mesa package.
@@ -178,8 +174,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554386794
+export SOURCE_DATE_EPOCH=1554518887
 unset LD_AS_NEEDED
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -200,7 +197,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 --disable-omx-tizonia \
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
---with-egl-platforms=x11,drm,wayland \
+--with-egl-platforms=x11,drm,wayland,surfaceless \
 --with-vulkan-drivers=intel,radeon \
 --enable-autotools --with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa --enable-xa
 make  %{?_smp_mflags}
@@ -226,7 +223,7 @@ export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32"
 --disable-omx-tizonia \
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
---with-egl-platforms=x11,drm,wayland \
+--with-egl-platforms=x11,drm,wayland,surfaceless \
 --with-vulkan-drivers=intel,radeon \
 --enable-autotools --disable-va \
 --with-dri-drivers="i965" \
@@ -257,14 +254,14 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --disable-omx-tizonia \
 --disable-omx-bellagio \
 --sysconfdir=/usr/share/mesa \
---with-egl-platforms=x11,drm,wayland \
+--with-egl-platforms=x11,drm,wayland,surfaceless \
 --with-vulkan-drivers=intel,radeon \
 --enable-autotools
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1554386794
+export SOURCE_DATE_EPOCH=1554518887
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
 cp docs/license.html %{buildroot}/usr/share/package-licenses/mesa/docs_license.html
