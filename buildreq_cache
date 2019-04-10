@@ -1,4 +1,6 @@
-1
+19.0+2487.g0af95f0ffce
+libXv-dev
+llvm-dev
 pkg-config
 pkgconfig(32xrandr)
 pkgconfig(32xxf86vm)
