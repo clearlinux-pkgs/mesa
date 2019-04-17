@@ -8,6 +8,8 @@ pkgconfig(32xrandr)
 pkgconfig(32xvmc)
 pkgconfig(32xxf86vm)
 pkgconfig(libdrm_intel)
+pkgconfig(valgrind)
 pkgconfig(xrandr)
 pkgconfig(xvmc)
 pkgconfig(xxf86vm)
+valgrind

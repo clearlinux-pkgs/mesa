@@ -23,3 +23,5 @@ Vulkan-Headers-dev
 Vulkan-Loader-dev
 Vulkan-Loader-dev32
 Vulkan-Tools
+zlib-dev32
+zlib-dev
