@@ -14,6 +14,7 @@
 -Degl=true
 -Dglvnd=false
 -Dasm=true
+-Dosmesa=classic
 -Dllvm=true
 -Dshared-llvm=true
 -Dselinux=false

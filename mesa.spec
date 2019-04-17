@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+2886.gbaf59e40cd1
-Release  : 197
+Release  : 198
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/baf59e40cd1c3d19b299e5ac6bdf3af9e241c6b2/mesa-19.0+2886-gbaf59e40cd1.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/baf59e40cd1c3d19b299e5ac6bdf3af9e241c6b2/mesa-19.0+2886-gbaf59e40cd1.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
@@ -151,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555524617
+export SOURCE_DATE_EPOCH=1555527214
 unset LD_AS_NEEDED
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -173,6 +173,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --b
 -Degl=true \
 -Dglvnd=false \
 -Dasm=true \
+-Dosmesa=classic \
 -Dllvm=true \
 -Dshared-llvm=true \
 -Dselinux=false \
@@ -202,6 +203,7 @@ meson --libdir=/usr/lib32 --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wa
 -Degl=true \
 -Dglvnd=false \
 -Dasm=true \
+-Dosmesa=classic \
 -Dllvm=true \
 -Dshared-llvm=true \
 -Dselinux=false \
