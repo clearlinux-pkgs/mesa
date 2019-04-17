@@ -1,1 +1,0 @@
---with-gallium-drivers="radeonsi,r600,nouveau,svga,swrast" --enable-gallium-osmesa --enable-xa

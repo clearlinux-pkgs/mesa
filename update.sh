@@ -24,3 +24,4 @@ echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
 ${MAKE-make} autospec
+make koji

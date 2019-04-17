@@ -1,8 +1,13 @@
-19.0+2714.g604d89c2d10
+19.0+2886.gbaf59e40cd1
 libXv-dev
+libva-dev
 llvm-dev
 pkg-config
+pkgconfig(32libdrm_intel)
 pkgconfig(32xrandr)
+pkgconfig(32xvmc)
 pkgconfig(32xxf86vm)
+pkgconfig(libdrm_intel)
 pkgconfig(xrandr)
+pkgconfig(xvmc)
 pkgconfig(xxf86vm)
