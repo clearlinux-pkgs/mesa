@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+3737.g7b2468bf6e5
-Release  : 200
+Release  : 201
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/7b2468bf6e58b0b178f8f498fca92c9cc0a71edb/mesa-19.0+3737-g7b2468bf6e5.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/7b2468bf6e58b0b178f8f498fca92c9cc0a71edb/mesa-19.0+3737-g7b2468bf6e5.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
@@ -152,7 +152,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557596412
+export SOURCE_DATE_EPOCH=1557599398
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -256,17 +256,13 @@ fi
 popd
 DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
+## install_append content
+mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
+rm -rf  %{buildroot}/usr/lib64/haswell
+## install_append end
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/haswell/pkgconfig/dri.pc
-/usr/lib64/haswell/pkgconfig/egl.pc
-/usr/lib64/haswell/pkgconfig/gbm.pc
-/usr/lib64/haswell/pkgconfig/gl.pc
-/usr/lib64/haswell/pkgconfig/glesv1_cm.pc
-/usr/lib64/haswell/pkgconfig/glesv2.pc
-/usr/lib64/haswell/pkgconfig/osmesa.pc
-/usr/lib64/haswell/pkgconfig/xatracker.pc
 
 %files data
 %defattr(-,root,root,-)
@@ -337,6 +333,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %defattr(-,root,root,-)
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/i965_dri.so
+/usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -349,39 +346,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/vmwgfx_dri.so
-/usr/lib64/haswell/dri/i915_dri.so
-/usr/lib64/haswell/dri/i965_dri.so
-/usr/lib64/haswell/dri/kms_swrast_dri.so
-/usr/lib64/haswell/dri/nouveau_dri.so
-/usr/lib64/haswell/dri/nouveau_drv_video.so
-/usr/lib64/haswell/dri/nouveau_vieux_dri.so
-/usr/lib64/haswell/dri/r200_dri.so
-/usr/lib64/haswell/dri/r600_dri.so
-/usr/lib64/haswell/dri/r600_drv_video.so
-/usr/lib64/haswell/dri/radeon_dri.so
-/usr/lib64/haswell/dri/radeonsi_dri.so
-/usr/lib64/haswell/dri/radeonsi_drv_video.so
-/usr/lib64/haswell/dri/swrast_dri.so
-/usr/lib64/haswell/dri/vmwgfx_dri.so
-/usr/lib64/haswell/libEGL.so
-/usr/lib64/haswell/libEGL.so.1
-/usr/lib64/haswell/libEGL.so.1.0.0
-/usr/lib64/haswell/libGL.so
-/usr/lib64/haswell/libGL.so.1
-/usr/lib64/haswell/libGL.so.1.2.0
-/usr/lib64/haswell/libOSMesa.so
-/usr/lib64/haswell/libOSMesa.so.8
-/usr/lib64/haswell/libOSMesa.so.8.0.0
-/usr/lib64/haswell/libXvMCnouveau.so
-/usr/lib64/haswell/libXvMCr600.so
-/usr/lib64/haswell/libgbm.so
-/usr/lib64/haswell/libgbm.so.1
-/usr/lib64/haswell/libgbm.so.1.0.0
-/usr/lib64/haswell/libvulkan_intel.so
-/usr/lib64/haswell/libvulkan_radeon.so
-/usr/lib64/haswell/libxatracker.so
-/usr/lib64/haswell/libxatracker.so.2
-/usr/lib64/haswell/libxatracker.so.2.5.0
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
