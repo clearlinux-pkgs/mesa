@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4072.g47a10edefb3
-Release  : 206
+Release  : 207
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
@@ -153,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559067195
+export SOURCE_DATE_EPOCH=1559074079
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -259,6 +259,7 @@ DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 ## install_append content
 mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
+mv %{buildroot}/usr/lib64/haswell/dri/iris_dri.so %{buildroot}/usr/lib64/dri/iris_dri.so.avx2
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## install_append end
 
@@ -336,6 +337,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/i965_dri.so.avx2
 /usr/lib64/dri/iris_dri.so
+/usr/lib64/dri/iris_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
