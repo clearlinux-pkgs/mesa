@@ -1,7 +1,7 @@
 -Dplatforms=x11,drm,wayland,surfaceless
 -Ddri3=true
 -Ddri-drivers=i915,i965,nouveau,r100,r200
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris
 -Dcpp_std=gnu++11 
 -Dgallium-va=true
 -Dgallium-xa=true
