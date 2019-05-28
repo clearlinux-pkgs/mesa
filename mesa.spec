@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4072.g47a10edefb3
-Release  : 207
+Release  : 208
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
@@ -153,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559074079
+export SOURCE_DATE_EPOCH=1559082723
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -165,7 +165,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -189,7 +189,7 @@ ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --prefix /usr --libdir=/usr/lib64/haswell --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -219,7 +219,7 @@ export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32"
 meson --libdir=/usr/lib32 --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -259,7 +259,6 @@ DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 ## install_append content
 mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-mv %{buildroot}/usr/lib64/haswell/dri/iris_dri.so %{buildroot}/usr/lib64/dri/iris_dri.so.avx2
 rm -rf  %{buildroot}/usr/lib64/haswell
 ## install_append end
 
@@ -336,8 +335,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/i965_dri.so.avx2
-/usr/lib64/dri/iris_dri.so
-/usr/lib64/dri/iris_dri.so.avx2
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -395,7 +392,6 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %defattr(-,root,root,-)
 /usr/lib32/dri/i915_dri.so
 /usr/lib32/dri/i965_dri.so
-/usr/lib32/dri/iris_dri.so
 /usr/lib32/dri/kms_swrast_dri.so
 /usr/lib32/dri/nouveau_dri.so
 /usr/lib32/dri/nouveau_drv_video.so
