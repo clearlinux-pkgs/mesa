@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4072.g47a10edefb3
-Release  : 204
+Release  : 205
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
