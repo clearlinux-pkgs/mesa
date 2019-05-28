@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4072.g47a10edefb3
-Release  : 203
+Release  : 204
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/47a10edefb3510d1cae071037dac78a46b31949b/mesa-19.0+4072-g47a10edefb3.tar.bz2
 Summary  : An open-source implementation of the OpenGL specification
@@ -31,29 +31,37 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libX11-dev32
+BuildRequires : libXv-dev
 BuildRequires : libXv-dev32
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : libunwind-dev32
 BuildRequires : libva-dev
+BuildRequires : libvdpau-dev
+BuildRequires : llvm-dev
 BuildRequires : llvm-dev32
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : pkg-config
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xrandr)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
+BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : valgrind
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
@@ -145,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559062761
+export SOURCE_DATE_EPOCH=1559067195
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -157,7 +165,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -181,7 +189,7 @@ ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --prefix /usr --libdir=/usr/lib64/haswell --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -211,7 +219,7 @@ export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32"
 meson --libdir=/usr/lib32 --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast \
+-Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -327,6 +335,7 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/i965_dri.so
 /usr/lib64/dri/i965_dri.so.avx2
+/usr/lib64/dri/iris_dri.so
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
 /usr/lib64/dri/nouveau_drv_video.so
@@ -367,11 +376,24 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libxatracker.so
 /usr/lib64/libxatracker.so.2
 /usr/lib64/libxatracker.so.2.5.0
+/usr/lib64/vdpau/libvdpau_nouveau.so
+/usr/lib64/vdpau/libvdpau_nouveau.so.1
+/usr/lib64/vdpau/libvdpau_nouveau.so.1.0
+/usr/lib64/vdpau/libvdpau_nouveau.so.1.0.0
+/usr/lib64/vdpau/libvdpau_r600.so
+/usr/lib64/vdpau/libvdpau_r600.so.1
+/usr/lib64/vdpau/libvdpau_r600.so.1.0
+/usr/lib64/vdpau/libvdpau_r600.so.1.0.0
+/usr/lib64/vdpau/libvdpau_radeonsi.so
+/usr/lib64/vdpau/libvdpau_radeonsi.so.1
+/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
+/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
 
 %files lib32
 %defattr(-,root,root,-)
 /usr/lib32/dri/i915_dri.so
 /usr/lib32/dri/i965_dri.so
+/usr/lib32/dri/iris_dri.so
 /usr/lib32/dri/kms_swrast_dri.so
 /usr/lib32/dri/nouveau_dri.so
 /usr/lib32/dri/nouveau_drv_video.so
@@ -412,6 +434,18 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib32/libxatracker.so
 /usr/lib32/libxatracker.so.2
 /usr/lib32/libxatracker.so.2.5.0
+/usr/lib32/vdpau/libvdpau_nouveau.so
+/usr/lib32/vdpau/libvdpau_nouveau.so.1
+/usr/lib32/vdpau/libvdpau_nouveau.so.1.0
+/usr/lib32/vdpau/libvdpau_nouveau.so.1.0.0
+/usr/lib32/vdpau/libvdpau_r600.so
+/usr/lib32/vdpau/libvdpau_r600.so.1
+/usr/lib32/vdpau/libvdpau_r600.so.1.0
+/usr/lib32/vdpau/libvdpau_r600.so.1.0.0
+/usr/lib32/vdpau/libvdpau_radeonsi.so
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1.0
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1.0.0
 
 %files license
 %defattr(0644,root,root,0755)

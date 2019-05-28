@@ -1,6 +1,7 @@
 19.0+4072.g47a10edefb3
 libXv-dev
 libva-dev
+libvdpau-dev
 llvm-dev
 pkg-config
 pkgconfig(32libdrm_intel)
