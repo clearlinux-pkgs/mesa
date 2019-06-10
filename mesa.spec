@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 19.0+4385.g10895c39c33
-Release  : 209
+Release  : 210
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
-Summary  : An open-source implementation of the OpenGL specification
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
@@ -31,30 +31,37 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libX11-dev32
+BuildRequires : libXv-dev
 BuildRequires : libXv-dev32
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : libunwind-dev32
 BuildRequires : libva-dev
 BuildRequires : libvdpau-dev
+BuildRequires : llvm-dev
 BuildRequires : llvm-dev32
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : pkg-config
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xrandr)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
+BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : valgrind
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
@@ -64,12 +71,8 @@ BuildRequires : zlib-dev32
 Patch1: avx2-drivers.patch
 
 %description
-New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
-Its design inherits from the various IRs that Mesa has used in the past, as
-well as Direct3D assembly, and it includes a few new ideas as well. It is a
-flat (in terms of using instructions instead of expressions), typeless IR,
-similar to TGSI and Mesa IR.  It also supports SSA (although it doesn't require
-it).
+A Vulkan layer to display information about the running application
+using an overlay.
 
 %package data
 Summary: data components for the mesa package.
@@ -85,7 +88,6 @@ Group: Development
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
-Requires: mesa = %{version}-%{release}
 Requires: mesa = %{version}-%{release}
 
 %description dev
@@ -146,15 +148,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559831445
+export SOURCE_DATE_EPOCH=1560195325
 unset LD_AS_NEEDED
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
