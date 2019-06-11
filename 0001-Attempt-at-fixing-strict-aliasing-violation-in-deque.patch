@@ -1,0 +1,32 @@
+From 49607f0524539cb836065b626bb3d3946061c486 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Mon, 10 Jun 2019 19:13:12 -0700
+Subject: [PATCH] Attempt at fixing strict aliasing violation in dequeueing
+ packets
+
+lp_scene_dequeue() calls util_ringbuffer_dequeue() with a payload that
+isn't an array of struct util_packets. When util_ringbuffer_dequeue()
+made the direct copy, the compiler discarded because it wasn't writing
+the right type.
+
+Signed-off-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ src/gallium/auxiliary/util/u_ringbuffer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gallium/auxiliary/util/u_ringbuffer.c b/src/gallium/auxiliary/util/u_ringbuffer.c
+index f6bb910671e..cebb908410c 100644
+--- a/src/gallium/auxiliary/util/u_ringbuffer.c
++++ b/src/gallium/auxiliary/util/u_ringbuffer.c
+@@ -146,7 +146,7 @@ enum pipe_error util_ringbuffer_dequeue( struct util_ringbuffer *ring,
+    /* Copy data from ring:
+     */
+    for (i = 0; i < ring_packet->dwords; i++) {
+-      packet[i] = ring->buf[ring->tail];
++      memcpy(packet + i, ring->buf + ring->tail, sizeof(*packet));
+       ring->tail++;
+       ring->tail &= ring->mask;
+    }
+-- 
+2.22.0
+

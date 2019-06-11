@@ -1,3 +1,4 @@
 #stateless.patch
 avx2-drivers.patch
 #gnu11.patch
+0001-Attempt-at-fixing-strict-aliasing-violation-in-deque.patch

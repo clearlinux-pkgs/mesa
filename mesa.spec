@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4385.g10895c39c33
-Release  : 210
+Release  : 211
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
 Summary  : No detailed summary available
@@ -69,6 +69,7 @@ BuildRequires : wayland-protocols-dev
 BuildRequires : zlib-dev
 BuildRequires : zlib-dev32
 Patch1: avx2-drivers.patch
+Patch2: 0001-Attempt-at-fixing-strict-aliasing-violation-in-deque.patch
 
 %description
 A Vulkan layer to display information about the running application
@@ -136,6 +137,7 @@ license components for the mesa package.
 %prep
 %setup -q -n mesa-10895c39c338d9e4a00c86590bdfd4e30bd2acfe
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a mesa-10895c39c338d9e4a00c86590bdfd4e30bd2acfe build32
 popd
@@ -148,13 +150,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1560195325
+export SOURCE_DATE_EPOCH=1560221068
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
