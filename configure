@@ -5,6 +5,7 @@
 -Dcpp_std=gnu++11 
 -Dgallium-va=true
 -Dgallium-xa=true
+-Dgallium-opencl=icd
 -Dvulkan-drivers=intel,amd
 -Dshared-glapi=true
 -Dgles2=true

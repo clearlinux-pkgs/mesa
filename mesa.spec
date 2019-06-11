@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 19.0+4385.g10895c39c33
-Release  : 211
+Release  : 212
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/10895c39c338d9e4a00c86590bdfd4e30bd2acfe/mesa-19.0+4385-g10895c39c33.tar.bz2
 Summary  : No detailed summary available
@@ -33,6 +33,7 @@ BuildRequires : glibc-libc32
 BuildRequires : libX11-dev32
 BuildRequires : libXv-dev
 BuildRequires : libXv-dev32
+BuildRequires : libclc-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
 BuildRequires : libunwind-dev32
@@ -72,8 +73,8 @@ Patch1: avx2-drivers.patch
 Patch2: 0001-Attempt-at-fixing-strict-aliasing-violation-in-deque.patch
 
 %description
-A Vulkan layer to display information about the running application
-using an overlay.
+This directory is for doxygen (a source code documentation system).
+See http://www.doxygen.org/ for more info.
 
 %package data
 Summary: data components for the mesa package.
@@ -150,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1560221068
+export SOURCE_DATE_EPOCH=1560291625
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -167,6 +168,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --b
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
+-Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd \
 -Dshared-glapi=true \
 -Dgles2=true \
@@ -191,6 +193,7 @@ CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " L
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
+-Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd \
 -Dshared-glapi=true \
 -Dgles2=true \
@@ -221,6 +224,7 @@ meson --libdir=/usr/lib32 --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wa
 -Dcpp_std=gnu++11 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
+-Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd \
 -Dshared-glapi=true \
 -Dgles2=true \
@@ -236,7 +240,8 @@ meson --libdir=/usr/lib32 --prefix /usr --buildtype=plain -Dplatforms=x11,drm,wa
 -Dselinux=false \
 -Dosmesa=gallium \
 -Dgallium-xvmc=true \
--Db_ndebug=true -Dasm=false builddir
+-Db_ndebug=true -Dasm=false \
+-Dgallium-opencl=disabled builddir
 ninja -v -C builddir
 popd
 
@@ -345,6 +350,11 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/vmwgfx_dri.so
+/usr/lib64/gallium-pipe/pipe_nouveau.so
+/usr/lib64/gallium-pipe/pipe_r600.so
+/usr/lib64/gallium-pipe/pipe_radeonsi.so
+/usr/lib64/gallium-pipe/pipe_swrast.so
+/usr/lib64/gallium-pipe/pipe_vmwgfx.so
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
@@ -357,6 +367,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 /usr/lib64/libGLESv2.so
 /usr/lib64/libGLESv2.so.2
 /usr/lib64/libGLESv2.so.2.0.0
+/usr/lib64/libMesaOpenCL.so
+/usr/lib64/libMesaOpenCL.so.1
+/usr/lib64/libMesaOpenCL.so.1.0.0
 /usr/lib64/libOSMesa.so
 /usr/lib64/libOSMesa.so.8
 /usr/lib64/libOSMesa.so.8.0.0

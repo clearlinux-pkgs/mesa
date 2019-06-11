@@ -12,6 +12,7 @@ wayland-dev
 wayland-protocols-dev
 wayland-dev32
 nettle-dev32
+libclc-dev
 libX11-dev32
 libXv-dev32
 llvm-dev32
