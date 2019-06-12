@@ -1903,6 +1903,14 @@ libGLESv2.so.2:glVertexAttribPointer
 libGLESv2.so.2:glVertexBindingDivisor
 libGLESv2.so.2:glViewport
 libGLESv2.so.2:glWaitSync
+libMesaOpenCL.so.1:clGetExtensionFunctionAddress
+libMesaOpenCL.so.1:clGetExtensionFunctionAddressForPlatform
+libMesaOpenCL.so.1:clGetPlatformInfo
+libMesaOpenCL.so.1:clIcdGetPlatformIDsKHR
+libMesaOpenCL.so.1:opencl_dri_event_add_ref
+libMesaOpenCL.so.1:opencl_dri_event_get_fence
+libMesaOpenCL.so.1:opencl_dri_event_release
+libMesaOpenCL.so.1:opencl_dri_event_wait
 libOSMesa.so.8:OSMesaColorClamp
 libOSMesa.so.8:OSMesaCreateContext
 libOSMesa.so.8:OSMesaCreateContextAttribs
