@@ -1,0 +1,18 @@
+--- mesa-baf59e40cd1c3d19b299e5ac6bdf3af9e241c6b2/src/mapi/entry.c~	2019-04-17 13:10:42.000000000 +0000
++++ mesa-baf59e40cd1c3d19b299e5ac6bdf3af9e241c6b2/src/mapi/entry.c	2019-07-15 21:01:30.777194498 +0000
+@@ -45,13 +45,13 @@
+ #define ENTRY_CURRENT_TABLE_GET U_STRINGIFY(u_current_get_table_internal)
+ #endif
+ 
+-#if defined(USE_X86_ASM) && defined(__GNUC__)
++#if defined(__i386__) && defined(__GNUC__)
+ #   ifdef GLX_USE_TLS
+ #      include "entry_x86_tls.h"
+ #   else                 
+ #      include "entry_x86_tsd.h"
+ #   endif
+-#elif defined(USE_X86_64_ASM) && defined(__GNUC__) && defined(GLX_USE_TLS)
++#elif defined(__x86_64__) && defined(__GNUC__) && defined(GLX_USE_TLS)
+ #   include "entry_x86-64_tls.h"
+ #elif defined(USE_PPC64LE_ASM) && defined(__GNUC__) && defined(PIPE_ARCH_LITTLE_ENDIAN)
+ #   ifdef GLX_USE_TLS
