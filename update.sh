@@ -25,3 +25,7 @@ echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
 ${MAKE-make} autospec
 make koji
+sleep 60
+cd ..
+# take care of rebuilds as per README.clear
+for i in  xf86-video-*; do pushd $i ; git pull ; make bump ; make koji-nowait; popd; done
