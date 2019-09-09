@@ -14,43 +14,6 @@ This reverts commit 20294dceebc23236e33b22578245f7e6f41b6997.
  src/mesa/Android.libmesa_st_mesa.mk |  2 +
  6 files changed, 81 insertions(+), 33 deletions(-)
 
-diff --git a/Android.common.mk b/Android.common.mk
-index 825b60381d0..327f13f5a38 100644
---- a/Android.common.mk
-+++ b/Android.common.mk
-@@ -103,9 +103,12 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo true),true)
- LOCAL_CFLAGS += -DHAVE_SYS_SHM_H
- endif
- 
-+ifeq ($(strip $(MESA_ENABLE_ASM)),true)
- ifeq ($(TARGET_ARCH),x86)
- LOCAL_CFLAGS += \
- 	-DUSE_X86_ASM
-+
-+endif
- endif
- ifeq ($(ARCH_ARM_HAVE_NEON),true)
- LOCAL_CFLAGS_arm += -DUSE_ARM_ASM
-diff --git a/Android.mk b/Android.mk
-index 8d274e56836..5fe028c6d19 100644
---- a/Android.mk
-+++ b/Android.mk
-@@ -83,6 +83,13 @@ endif
- 
- $(foreach d, $(MESA_BUILD_CLASSIC) $(MESA_BUILD_GALLIUM), $(eval $(d) := true))
- 
-+# host and target must be the same arch to generate matypes.h
-+ifeq ($(TARGET_ARCH),$(HOST_ARCH))
-+MESA_ENABLE_ASM := true
-+else
-+MESA_ENABLE_ASM := false
-+endif
-+
- ifneq ($(filter true, $(HAVE_GALLIUM_RADEONSI)),)
- MESA_ENABLE_LLVM := true
- endif
-diff --git a/meson.build b/meson.build
-index 13b561f99de..ea876344611 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -49,6 +49,7 @@ with_vulkan_icd_dir = get_option('vulkan-icd-dir')
@@ -180,38 +143,3 @@ index 2a549c7dc37..1f72faabee8 100644
  option(
     'glx-read-only-text',
     type : 'boolean',
-diff --git a/src/mesa/Android.libmesa_dricore.mk b/src/mesa/Android.libmesa_dricore.mk
-index 8eb6aabe836..792117767b4 100644
---- a/src/mesa/Android.libmesa_dricore.mk
-+++ b/src/mesa/Android.libmesa_dricore.mk
-@@ -39,9 +39,11 @@ LOCAL_MODULE_CLASS := STATIC_LIBRARIES
- LOCAL_SRC_FILES := \
- 	$(MESA_FILES)
- 
-+ifeq ($(strip $(MESA_ENABLE_ASM)),true)
- ifeq ($(TARGET_ARCH),x86)
- 	LOCAL_SRC_FILES += $(X86_FILES)
- endif # x86
-+endif # MESA_ENABLE_ASM
- 
- ifeq ($(ARCH_X86_HAVE_SSE4_1),true)
- LOCAL_WHOLE_STATIC_LIBRARIES := \
-diff --git a/src/mesa/Android.libmesa_st_mesa.mk b/src/mesa/Android.libmesa_st_mesa.mk
-index 16153a3c5bd..ddfd03059c5 100644
---- a/src/mesa/Android.libmesa_st_mesa.mk
-+++ b/src/mesa/Android.libmesa_st_mesa.mk
-@@ -42,9 +42,11 @@ LOCAL_GENERATED_SOURCES := \
- 	$(MESA_GEN_GLSL_H) \
- 	$(MESA_GEN_NIR_H)
- 
-+ifeq ($(strip $(MESA_ENABLE_ASM)),true)
- ifeq ($(TARGET_ARCH),x86)
- 	LOCAL_SRC_FILES += $(X86_FILES)
- endif # x86
-+endif # MESA_ENABLE_ASM
- 
- ifeq ($(ARCH_X86_HAVE_SSE4_1),true)
- LOCAL_WHOLE_STATIC_LIBRARIES := \
--- 
-2.20.1
-
