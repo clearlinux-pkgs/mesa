@@ -2,7 +2,7 @@
 -Ddri3=true
 -Ddri-drivers=i915,i965,nouveau,r100,r200
 -Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris
--Dcpp_std=gnu++11 
+-Dcpp_std=gnu++14
 -Dgallium-va=true
 -Dgallium-xa=true
 -Dgallium-opencl=icd
