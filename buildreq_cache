@@ -1,4 +1,4 @@
-19.2+1733.g3bcd54f3fc2
+19.2+2013.g0e4bd261b15
 libXv-dev
 libva-dev
 libvdpau-dev
@@ -13,4 +13,5 @@ pkgconfig(valgrind)
 pkgconfig(xrandr)
 pkgconfig(xvmc)
 pkgconfig(xxf86vm)
+util-linux
 valgrind
