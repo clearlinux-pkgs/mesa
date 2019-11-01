@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 19.2+2470.g163d5fde066
-Release  : 227
+Release  : 228
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/163d5fde06696fed2e69e000a7621087c1636749/mesa-19.2+2470-g163d5fde066.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/163d5fde06696fed2e69e000a7621087c1636749/mesa-19.2+2470-g163d5fde066.tar.bz2
-Summary  : An open-source implementation of the OpenGL specification
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
@@ -31,6 +31,7 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libX11-dev32
+BuildRequires : libXv-dev
 BuildRequires : libXv-dev32
 BuildRequires : libclc-dev
 BuildRequires : libgcrypt-dev
@@ -38,24 +39,30 @@ BuildRequires : libpthread-stubs-dev
 BuildRequires : libunwind-dev32
 BuildRequires : libva-dev
 BuildRequires : libvdpau-dev
+BuildRequires : llvm-dev
 BuildRequires : llvm-dev32
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : pkg-config
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xrandr)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
+BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : util-linux
 BuildRequires : valgrind
 BuildRequires : wayland-dev
@@ -67,12 +74,8 @@ Patch1: avx2-drivers.patch
 Patch2: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
 
 %description
-New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
-Its design inherits from the various IRs that Mesa has used in the past, as
-well as Direct3D assembly, and it includes a few new ideas as well. It is a
-flat (in terms of using instructions instead of expressions), typeless IR,
-similar to TGSI and Mesa IR.  It also supports SSA (although it doesn't require
-it).
+A Vulkan layer to display information about the running application
+using an overlay.
 
 %package data
 Summary: data components for the mesa package.
@@ -88,7 +91,6 @@ Group: Development
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
-Requires: mesa = %{version}-%{release}
 Requires: mesa = %{version}-%{release}
 
 %description dev
@@ -136,6 +138,7 @@ license components for the mesa package.
 
 %prep
 %setup -q -n mesa-163d5fde06696fed2e69e000a7621087c1636749
+cd %{_builddir}/mesa-163d5fde06696fed2e69e000a7621087c1636749
 %patch1 -p1
 %patch2 -p1
 pushd ..
@@ -150,9 +153,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572364754
+export SOURCE_DATE_EPOCH=1572637243
 unset LD_AS_NEEDED
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -184,31 +186,6 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Db_ndebug=true  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
--Ddri3=true \
--Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
--Dcpp_std=gnu++14 \
--Dgallium-va=true \
--Dgallium-xa=true \
--Dgallium-opencl=icd \
--Dvulkan-drivers=intel,amd \
--Dshared-glapi=true \
--Dgles2=true \
--Dgbm=true \
--Dopengl=true \
--Dglx=dri \
--Degl=true \
--Dglvnd=false \
--Dasm=true \
--Dosmesa=classic \
--Dllvm=true \
--Dshared-llvm=true \
--Dselinux=false \
--Dosmesa=gallium \
--Dgallium-xvmc=true \
--Db_ndebug=true  builddiravx2
-ninja -v -C builddiravx2
-CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --prefix /usr --libdir=/usr/lib64/haswell --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
 -Ddri-drivers=i915,i965,nouveau,r100,r200 \
 -Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
@@ -282,12 +259,13 @@ popd
 fi
 popd
 DESTDIR=%{buildroot} ninja -C builddiravx2 install
-DESTDIR=%{buildroot} ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 ## install_append content
 mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
 mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
 rm -rf  %{buildroot}/usr/lib64/haswell
+sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/intel_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/intel_icd.i686.json
+sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.i686.json
 ## install_append end
 
 %files
@@ -296,7 +274,9 @@ rm -rf  %{buildroot}/usr/lib64/haswell
 %files data
 %defattr(-,root,root,-)
 /usr/share/drirc.d/00-mesa-defaults.conf
+/usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
+/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 
 %files dev
