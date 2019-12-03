@@ -1,14 +1,16 @@
-19.3+213.g6469c1a4457
+19.3+968.gdde734030bc
 libXv-dev
 libva-dev
 libvdpau-dev
 llvm-dev
 pkg-config
 pkgconfig(32libdrm_intel)
+pkgconfig(32libzstd)
 pkgconfig(32xrandr)
 pkgconfig(32xvmc)
 pkgconfig(32xxf86vm)
 pkgconfig(libdrm_intel)
+pkgconfig(libzstd)
 pkgconfig(valgrind)
 pkgconfig(xrandr)
 pkgconfig(xvmc)
