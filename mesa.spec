@@ -4,10 +4,10 @@
 #
 Name     : mesa
 Version  : 19.3+1047.gf6a913bb954
-Release  : 232
+Release  : 233
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/f6a913bb9540a9c3fa5a22ad5e08dfe87dafdaaf/mesa-19.3+1047-gf6a913bb954.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/f6a913bb9540a9c3fa5a22ad5e08dfe87dafdaaf/mesa-19.3+1047-gf6a913bb954.tar.bz2
-Summary  : An open-source implementation of the OpenGL specification
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
@@ -31,6 +31,7 @@ BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : libX11-dev32
+BuildRequires : libXv-dev
 BuildRequires : libXv-dev32
 BuildRequires : libclc-dev
 BuildRequires : libgcrypt-dev
@@ -38,24 +39,31 @@ BuildRequires : libpthread-stubs-dev
 BuildRequires : libunwind-dev32
 BuildRequires : libva-dev
 BuildRequires : libvdpau-dev
+BuildRequires : llvm-dev
 BuildRequires : llvm-dev32
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : pkg-config
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32xdamage)
 BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
+BuildRequires : pkgconfig(32xrandr)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(32xxf86vm)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
+BuildRequires : pkgconfig(xxf86vm)
+BuildRequires : util-linux
 BuildRequires : valgrind
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
@@ -66,12 +74,8 @@ Patch1: avx2-drivers.patch
 Patch2: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
 
 %description
-New IR, or NIR, is an IR for Mesa intended to sit below GLSL IR and Mesa IR.
-Its design inherits from the various IRs that Mesa has used in the past, as
-well as Direct3D assembly, and it includes a few new ideas as well. It is a
-flat (in terms of using instructions instead of expressions), typeless IR,
-similar to TGSI and Mesa IR.  It also supports SSA (although it doesn't require
-it).
+A Vulkan layer to display information about the running application
+using an overlay.
 
 %package data
 Summary: data components for the mesa package.
@@ -87,7 +91,6 @@ Group: Development
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
-Requires: mesa = %{version}-%{release}
 Requires: mesa = %{version}-%{release}
 
 %description dev
@@ -150,9 +153,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1575558904
+export SOURCE_DATE_EPOCH=1575577567
 unset LD_AS_NEEDED
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -181,8 +183,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dselinux=false \
 -Dosmesa=gallium \
 -Dgallium-xvmc=true \
--Db_ndebug=true \
--Dprefer-iris=true  builddir
+-Db_ndebug=true  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
 -Ddri3=true \
@@ -207,34 +208,7 @@ CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " L
 -Dselinux=false \
 -Dosmesa=gallium \
 -Dgallium-xvmc=true \
--Db_ndebug=true \
--Dprefer-iris=true  builddiravx2
-ninja -v -C builddiravx2
-CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --prefix /usr --libdir=/usr/lib64/haswell --buildtype=plain -Dplatforms=x11,drm,wayland,surfaceless \
--Ddri3=true \
--Ddri-drivers=i915,i965,nouveau,r100,r200 \
--Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris \
--Dcpp_std=gnu++14 \
--Dgallium-va=true \
--Dgallium-xa=true \
--Dgallium-opencl=icd \
--Dvulkan-drivers=intel,amd \
--Dshared-glapi=true \
--Dgles2=true \
--Dgbm=true \
--Dopengl=true \
--Dglx=dri \
--Degl=true \
--Dglvnd=false \
--Dasm=true \
--Dosmesa=classic \
--Dllvm=true \
--Dshared-llvm=true \
--Dselinux=false \
--Dosmesa=gallium \
--Dgallium-xvmc=true \
--Db_ndebug=true \
--Dprefer-iris=true  builddiravx2
+-Db_ndebug=true  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -265,8 +239,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,drm,wayland
 -Dselinux=false \
 -Dosmesa=gallium \
 -Dgallium-xvmc=true \
--Db_ndebug=true \
--Dprefer-iris=true -Dasm=false \
+-Db_ndebug=true -Dasm=false \
 -Dgallium-opencl=disabled builddir
 ninja -v -C builddir
 popd

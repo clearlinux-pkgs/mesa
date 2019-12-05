@@ -22,4 +22,3 @@
 -Dosmesa=gallium
 -Dgallium-xvmc=true
 -Db_ndebug=true
--Dprefer-iris=true
