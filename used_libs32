@@ -19,3 +19,4 @@ libstdc++.so.6
 libwayland-client.so.0
 libwayland-server.so.0
 libz.so.1
+libzstd.so.1
