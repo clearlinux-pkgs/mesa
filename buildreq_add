@@ -26,3 +26,5 @@ Vulkan-Loader-dev32
 Vulkan-Tools
 zlib-dev32
 zlib-dev
+zstd-dev32
+zstd-dev
