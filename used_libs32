@@ -1,5 +1,5 @@
 ld-linux.so.2
-libLLVM.so.9
+libLLVM.so.10
 libX11.so.6
 libXv.so.1
 libXvMC.so.1

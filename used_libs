@@ -1,10 +1,10 @@
 ld-linux-x86-64.so.2
-libLLVM.so.9
+libLLVM.so.10
 libX11.so.6
 libXv.so.1
 libXvMC.so.1
 libc.so.6
-libclang-cpp.so.9
+libclang-cpp.so.10
 libdl.so.2
 libdrm.so.2
 libdrm_amdgpu.so.1
