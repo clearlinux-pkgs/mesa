@@ -14,7 +14,6 @@ if [ "$VERSION" == "$OLDVERSION" ] ; then
 	echo "Nothing changed $OLDVERSION == $VERSION"
 	exit 0
 fi
-	
 
 echo "Updating from $OLDVERSION to $VERSION"
 
@@ -24,8 +23,11 @@ echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
 ${MAKE-make} autospec
-make koji
-sleep 60
-cd ..
+${MAKE-make} koji
+
 # take care of rebuilds as per README.clear
-for i in  xf86-video-*; do pushd $i ; git pull ; make bump ; make koji-nowait; popd; done
+sleep 60
+for i in ../xf86-video-*; do
+    command git -C $i pull
+    ${MAKE-make} -C $i -j1 bump koji-nowait
+done
