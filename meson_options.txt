@@ -29,6 +29,13 @@ option(
   description : 'window systems to support. If this is set to `auto`, all platforms applicable will be enabled.'
 )
 option(
+  'android-stub',
+  type : 'boolean',
+  value : false,
+  description : 'Build against android-stub',
+)
+
+option(
   'dri3',
   type : 'combo',
   value : 'auto',
@@ -286,7 +293,13 @@ option(
   'build-tests',
   type : 'boolean',
   value : false,
-  description : 'Build unit tests. Currently this will build *all* unit tests, which may build more than expected.'
+  description : 'Build unit tests. Currently this will build *all* unit tests except the ACO tests, which may build more than expected.'
+)
+option(
+  'build-aco-tests',
+  type : 'boolean',
+  value : false,
+  description : 'Build ACO tests. These require RADV and glslang but not an AMD GPU.'
 )
 option(
   'install-intel-gpu-tests',
