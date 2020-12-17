@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 20.3.1
-Release  : 254
+Release  : 255
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-20.3.1/mesa-mesa-20.3.1.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-20.3.1/mesa-mesa-20.3.1.tar.gz
 Summary  : No detailed summary available
