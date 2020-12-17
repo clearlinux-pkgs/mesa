@@ -1,4 +1,4 @@
--Dplatforms=x11,drm,wayland,surfaceless
+-Dplatforms=x11,wayland
 -Ddri3=true
 -Ddri-drivers=i915,i965,nouveau,r100,r200
 -Dgallium-drivers=radeonsi,r600,nouveau,svga,swrast,iris
