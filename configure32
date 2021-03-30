@@ -1,2 +1,3 @@
 -Dasm=false
 -Dgallium-opencl=disabled
+-Dgallium=true

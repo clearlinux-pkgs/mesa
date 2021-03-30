@@ -1,0 +1,11 @@
+--- mesa-mesa-21.0.1/meson.build~	2021-03-24 22:31:31.000000000 +0000
++++ mesa-mesa-21.0.1/meson.build	2021-03-30 16:40:15.204892303 +0000
+@@ -236,7 +236,7 @@
+ with_gallium_zink = gallium_drivers.contains('zink')
+ with_gallium_d3d12 = gallium_drivers.contains('d3d12')
+ 
+-with_gallium = gallium_drivers.length() != 0
++with_gallium = true
+ 
+ if with_gallium and system_has_kms_drm
+   _glx = get_option('glx')
