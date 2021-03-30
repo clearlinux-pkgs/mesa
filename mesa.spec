@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 21.0.1
-Release  : 259
+Release  : 260
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.0.1/mesa-mesa-21.0.1.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.0.1/mesa-mesa-21.0.1.tar.gz
 Summary  : No detailed summary available
@@ -150,7 +150,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1617131217
+export SOURCE_DATE_EPOCH=1617132207
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -172,7 +172,8 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dllvm=true \
 -Dshared-llvm=true \
 -Dselinux=false \
--Dprefer-iris=true  builddir
+-Dprefer-iris=true \
+-Dosmesa=true  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " LDFLAGS="$LDFLAGS -m64 -march=haswell" meson --libdir=lib64/haswell --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Dgallium=true \
@@ -189,7 +190,8 @@ CFLAGS="$CFLAGS -m64 -march=haswell" CXXFLAGS="$CXXFLAGS -m64 -march=haswell " L
 -Dllvm=true \
 -Dshared-llvm=true \
 -Dselinux=false \
--Dprefer-iris=true  builddiravx2
+-Dprefer-iris=true \
+-Dosmesa=true  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -212,7 +214,8 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Dllvm=true \
 -Dshared-llvm=true \
 -Dselinux=false \
--Dprefer-iris=true -Dasm=false \
+-Dprefer-iris=true \
+-Dosmesa=true -Dasm=false \
 -Dgallium-opencl=disabled \
 -Dgallium=true builddir
 ninja -v -C builddir
@@ -270,6 +273,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/include/GL/glx.h
 /usr/include/GL/glxext.h
 /usr/include/GL/internal/dri_interface.h
+/usr/include/GL/osmesa.h
 /usr/include/GLES/egl.h
 /usr/include/GLES/gl.h
 /usr/include/GLES/glext.h
@@ -294,6 +298,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/pkgconfig/gl.pc
 /usr/lib64/pkgconfig/glesv1_cm.pc
 /usr/lib64/pkgconfig/glesv2.pc
+/usr/lib64/pkgconfig/osmesa.pc
 /usr/lib64/pkgconfig/xatracker.pc
 
 %files dev32
@@ -304,6 +309,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/32gl.pc
 /usr/lib32/pkgconfig/32glesv1_cm.pc
 /usr/lib32/pkgconfig/32glesv2.pc
+/usr/lib32/pkgconfig/32osmesa.pc
 /usr/lib32/pkgconfig/32xatracker.pc
 /usr/lib32/pkgconfig/dri.pc
 /usr/lib32/pkgconfig/egl.pc
@@ -311,6 +317,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/gl.pc
 /usr/lib32/pkgconfig/glesv1_cm.pc
 /usr/lib32/pkgconfig/glesv2.pc
+/usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
 %files lib
@@ -356,6 +363,9 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/libMesaOpenCL.so
 /usr/lib64/libMesaOpenCL.so.1
 /usr/lib64/libMesaOpenCL.so.1.0.0
+/usr/lib64/libOSMesa.so
+/usr/lib64/libOSMesa.so.8
+/usr/lib64/libOSMesa.so.8.0.0
 /usr/lib64/libXvMCnouveau.so
 /usr/lib64/libXvMCnouveau.so.1
 /usr/lib64/libXvMCnouveau.so.1.0
@@ -423,6 +433,9 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/libGLESv2.so
 /usr/lib32/libGLESv2.so.2
 /usr/lib32/libGLESv2.so.2.0.0
+/usr/lib32/libOSMesa.so
+/usr/lib32/libOSMesa.so.8
+/usr/lib32/libOSMesa.so.8.0.0
 /usr/lib32/libXvMCnouveau.so
 /usr/lib32/libXvMCnouveau.so.1
 /usr/lib32/libXvMCnouveau.so.1.0
