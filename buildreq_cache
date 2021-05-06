@@ -1,8 +1,10 @@
-21.0.3
+21.1.0
 libva-dev
 libvdpau-dev
 llvm
 pkgconfig(32libdrm_intel)
 pkgconfig(32xvmc)
 pkgconfig(libdrm_intel)
+pkgconfig(valgrind)
 pkgconfig(xvmc)
+valgrind
