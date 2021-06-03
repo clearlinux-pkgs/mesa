@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 21.1.1
-Release  : 265
+Release  : 266
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.1.1/mesa-mesa-21.1.1.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.1.1/mesa-mesa-21.1.1.tar.gz
 Summary  : No detailed summary available
@@ -149,7 +149,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621460607
+export SOURCE_DATE_EPOCH=1622741607
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
