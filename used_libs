@@ -5,7 +5,6 @@ libXv.so.1
 libXvMC.so.1
 libc.so.6
 libclang-cpp.so.11.1
-libdl.so.2
 libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1
@@ -16,7 +15,6 @@ libexpat.so.1
 libgcc_s.so.1
 libm.so.6
 libmvec.so.1
-libpthread.so.0
 libstdc++.so.6
 libwayland-client.so.0
 libwayland-server.so.0

@@ -15,3 +15,5 @@
 -Dselinux=false
 -Dprefer-iris=true
 -Dosmesa=true
+-Dzstd=enabled
+-Dshader-cache=true
