@@ -1,12 +1,10 @@
-21.2.2
+21.2.3
 libva-dev
 libvdpau-dev
 llvm
 pkgconfig(32libdrm_intel)
-pkgconfig(32wayland-protocols)
 pkgconfig(32xvmc)
 pkgconfig(libdrm_intel)
 pkgconfig(valgrind)
-pkgconfig(wayland-protocols)
 pkgconfig(xvmc)
 valgrind

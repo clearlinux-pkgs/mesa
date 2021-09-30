@@ -1,9 +1,3 @@
-mv %{buildroot}/usr/lib64/haswell/dri/i965_dri.so %{buildroot}/usr/lib64/dri/i965_dri.so.avx2
-mv %{buildroot}/usr/lib64/haswell/dri/swrast_dri.so %{buildroot}/usr/lib64/dri/swrast_dri.so.avx2
-#mv %{buildroot}/usr/lib64/haswell/dri/iris_dri.so %{buildroot}/usr/lib64/dri/iris_dri.so.avx2
-#ln -s i965_dri.so %{buildroot}/usr/lib64/dri/i915_dri.so 
-
-rm -rf  %{buildroot}/usr/lib64/haswell
 
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/intel_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/intel_icd.i686.json
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.i686.json
