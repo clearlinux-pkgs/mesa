@@ -4,13 +4,14 @@
 #
 Name     : mesa
 Version  : 21.2.3
-Release  : 278
+Release  : 279
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.2.3/mesa-mesa-21.2.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.2.3/mesa-mesa-21.2.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : Mako-python
@@ -65,9 +66,8 @@ BuildRequires : zlib-dev
 BuildRequires : zlib-dev32
 BuildRequires : zstd-dev
 BuildRequires : zstd-dev32
-Patch1: avx2-drivers.patch
-Patch2: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
-Patch3: 0001-Revert-egl-move-include-of-local-headers-out-of-Khro.patch
+Patch1: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
+Patch2: 0001-Revert-egl-move-include-of-local-headers-out-of-Khro.patch
 
 %description
 A Vulkan layer to display information about the running application
@@ -104,11 +104,20 @@ Requires: mesa-dev = %{version}-%{release}
 dev32 components for the mesa package.
 
 
+%package filemap
+Summary: filemap components for the mesa package.
+Group: Default
+
+%description filemap
+filemap components for the mesa package.
+
+
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -137,9 +146,11 @@ license components for the mesa package.
 cd %{_builddir}/mesa-mesa-21.2.3
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 pushd ..
 cp -a mesa-mesa-21.2.3 build32
+popd
+pushd ..
+cp -a mesa-mesa-21.2.3 buildavx2
 popd
 
 %build
@@ -147,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633011503
+export SOURCE_DATE_EPOCH=1633813236
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -174,6 +185,26 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dzstd=enabled \
 -Dshader-cache=true  builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
+-Dgallium=true \
+-Ddri3=true \
+-Dgallium-drivers=auto \
+-Dcpp_std=gnu++14 \
+-Dgallium-va=true \
+-Dgallium-xa=true \
+-Dgallium-opencl=icd \
+-Dvulkan-drivers=intel,amd \
+-Dshared-glapi=true \
+-Dglvnd=false \
+-Dasm=true \
+-Dllvm=true \
+-Dshared-llvm=true \
+-Dselinux=false \
+-Dprefer-iris=true \
+-Dosmesa=true \
+-Dzstd=enabled \
+-Dshader-cache=true  builddiravx2
+ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
 export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
@@ -224,6 +255,8 @@ for i in *.pc ; do ln -s $i 32$i ; done
 popd
 fi
 popd
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 DESTDIR=%{buildroot} ninja -C builddir install
 ## install_append content
 
@@ -300,6 +333,10 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/glesv2.pc
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
+
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-mesa
 
 %files lib
 %defattr(-,root,root,-)
@@ -381,6 +418,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
+/usr/share/clear/optimized-elf/lib*
 
 %files lib32
 %defattr(-,root,root,-)
