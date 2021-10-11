@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 21.2.3
-Release  : 279
+Release  : 280
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.2.3/mesa-mesa-21.2.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.2.3/mesa-mesa-21.2.3.tar.gz
 Summary  : No detailed summary available
