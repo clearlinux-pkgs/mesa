@@ -1,5 +1,4 @@
 -Dplatforms=x11,wayland
--Dgallium=true
 -Ddri3=true
 -Dgallium-drivers=auto
 -Dcpp_std=gnu++14
