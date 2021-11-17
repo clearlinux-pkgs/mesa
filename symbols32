@@ -3235,6 +3235,7 @@ libXvMCgallium.so.1:XvMCSyncSubpicture
 libXvMCgallium.so.1:XvMCSyncSurface
 libgbm.so.1:gbm_bo_create
 libgbm.so.1:gbm_bo_create_with_modifiers
+libgbm.so.1:gbm_bo_create_with_modifiers2
 libgbm.so.1:gbm_bo_destroy
 libgbm.so.1:gbm_bo_get_bpp
 libgbm.so.1:gbm_bo_get_device
@@ -3265,6 +3266,7 @@ libgbm.so.1:gbm_device_is_format_supported
 libgbm.so.1:gbm_format_get_name
 libgbm.so.1:gbm_surface_create
 libgbm.so.1:gbm_surface_create_with_modifiers
+libgbm.so.1:gbm_surface_create_with_modifiers2
 libgbm.so.1:gbm_surface_destroy
 libgbm.so.1:gbm_surface_has_free_buffers
 libgbm.so.1:gbm_surface_lock_front_buffer

@@ -8,7 +8,6 @@
 -Dvulkan-drivers=intel,amd
 -Dshared-glapi=true
 -Dglvnd=false
--Dasm=true
 -Dllvm=true
 -Dshared-llvm=true
 -Dselinux=false
