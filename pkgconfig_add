@@ -12,3 +12,5 @@ xdamage
 dri3proto
 presentproto
 32dri3proto
+libdrm_intel
+32libdrm_intel
