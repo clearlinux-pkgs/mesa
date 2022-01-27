@@ -1,7 +1,5 @@
-21.3.4
+21.3.5
 libva-dev
 libvdpau-dev
-pkgconfig(32libdrm_intel)
 pkgconfig(32xvmc)
-pkgconfig(libdrm_intel)
 pkgconfig(xvmc)
