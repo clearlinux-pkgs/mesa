@@ -18,7 +18,7 @@ libX11-dev32
 libXv-dev32
 llvm-dev32
 libpthread-stubs-dev
-libunwind-dev32
+#libunwind-dev32
 expat-dev32
 expat-dev
 Vulkan-Headers-dev
