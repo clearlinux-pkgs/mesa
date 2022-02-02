@@ -2,7 +2,7 @@
 -Ddri3=true
 -Dgallium-drivers=auto
 -Dcpp_std=gnu++14
--Dgallium-va=false
+-Dgallium-va=true
 -Dgallium-xa=true
 -Dgallium-opencl=icd
 -Dvulkan-drivers=intel,amd

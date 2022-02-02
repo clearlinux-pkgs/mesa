@@ -4,13 +4,14 @@
 #
 Name     : mesa
 Version  : 21.3.5
-Release  : 296
+Release  : 297
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.5/mesa-mesa-21.3.5.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.5/mesa-mesa-21.3.5.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : Mako-python
@@ -34,6 +35,7 @@ BuildRequires : libXv-dev32
 BuildRequires : libclc-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libpthread-stubs-dev
+BuildRequires : libva-dev
 BuildRequires : libvdpau-dev
 BuildRequires : llvm-dev32
 BuildRequires : nettle-dev
@@ -98,11 +100,20 @@ Requires: mesa-dev = %{version}-%{release}
 dev32 components for the mesa package.
 
 
+%package filemap
+Summary: filemap components for the mesa package.
+Group: Default
+
+%description filemap
+filemap components for the mesa package.
+
+
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -134,13 +145,16 @@ cd %{_builddir}/mesa-mesa-21.3.5
 pushd ..
 cp -a mesa-mesa-21.3.5 build32
 popd
+pushd ..
+cp -a mesa-mesa-21.3.5 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643842446
+export SOURCE_DATE_EPOCH=1643844190
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -151,7 +165,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Ddri3=true \
 -Dgallium-drivers=auto \
 -Dcpp_std=gnu++14 \
--Dgallium-va=false \
+-Dgallium-va=true \
 -Dgallium-xa=true \
 -Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd \
@@ -165,6 +179,24 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dzstd=enabled \
 -Dshader-cache=true  builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
+-Ddri3=true \
+-Dgallium-drivers=auto \
+-Dcpp_std=gnu++14 \
+-Dgallium-va=true \
+-Dgallium-xa=true \
+-Dgallium-opencl=icd \
+-Dvulkan-drivers=intel,amd \
+-Dshared-glapi=true \
+-Dglvnd=false \
+-Dllvm=true \
+-Dshared-llvm=true \
+-Dselinux=false \
+-Dprefer-iris=true \
+-Dosmesa=true \
+-Dzstd=enabled \
+-Dshader-cache=true  builddiravx2
+ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
 export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
@@ -175,7 +207,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
 -Dgallium-drivers=auto \
 -Dcpp_std=gnu++14 \
--Dgallium-va=false \
+-Dgallium-va=true \
 -Dgallium-xa=true \
 -Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd \
@@ -212,12 +244,14 @@ for i in *.pc ; do ln -s $i 32$i ; done
 popd
 fi
 popd
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 ## install_append content
 
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/intel_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/intel_icd.i686.json
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.i686.json
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -289,6 +323,10 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-mesa
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/crocus_dri.so
@@ -298,12 +336,15 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/dri/iris_dri.so
 /usr/lib64/dri/kms_swrast_dri.so
 /usr/lib64/dri/nouveau_dri.so
+/usr/lib64/dri/nouveau_drv_video.so
 /usr/lib64/dri/nouveau_vieux_dri.so
 /usr/lib64/dri/r200_dri.so
 /usr/lib64/dri/r300_dri.so
 /usr/lib64/dri/r600_dri.so
+/usr/lib64/dri/r600_drv_video.so
 /usr/lib64/dri/radeon_dri.so
 /usr/lib64/dri/radeonsi_dri.so
+/usr/lib64/dri/radeonsi_drv_video.so
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/virtio_gpu_dri.so
 /usr/lib64/dri/vmwgfx_dri.so
@@ -368,6 +409,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
+/usr/share/clear/optimized-elf/lib*
 
 %files lib32
 %defattr(-,root,root,-)
@@ -378,12 +420,15 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/dri/iris_dri.so
 /usr/lib32/dri/kms_swrast_dri.so
 /usr/lib32/dri/nouveau_dri.so
+/usr/lib32/dri/nouveau_drv_video.so
 /usr/lib32/dri/nouveau_vieux_dri.so
 /usr/lib32/dri/r200_dri.so
 /usr/lib32/dri/r300_dri.so
 /usr/lib32/dri/r600_dri.so
+/usr/lib32/dri/r600_drv_video.so
 /usr/lib32/dri/radeon_dri.so
 /usr/lib32/dri/radeonsi_dri.so
+/usr/lib32/dri/radeonsi_drv_video.so
 /usr/lib32/dri/swrast_dri.so
 /usr/lib32/dri/virtio_gpu_dri.so
 /usr/lib32/dri/vmwgfx_dri.so

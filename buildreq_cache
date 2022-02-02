@@ -2,5 +2,4 @@
 libva-dev
 libvdpau-dev
 pkgconfig(32xvmc)
-pkgconfig(libunwind)
 pkgconfig(xvmc)
