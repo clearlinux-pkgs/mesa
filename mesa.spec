@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 21.3.5
-Release  : 294
+Release  : 295
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.5/mesa-mesa-21.3.5.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.5/mesa-mesa-21.3.5.tar.gz
 Summary  : No detailed summary available
