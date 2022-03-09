@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 21.3.7
-Release  : 299
+Release  : 300
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.7/mesa-mesa-21.3.7.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-21.3.7/mesa-mesa-21.3.7.tar.gz
 Summary  : No detailed summary available
