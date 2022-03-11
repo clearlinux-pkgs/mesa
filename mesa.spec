@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.0.0
-Release  : 301
+Release  : 302
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.0.0/mesa-mesa-22.0.0.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.0.0/mesa-mesa-22.0.0.tar.gz
 Summary  : No detailed summary available
@@ -14,7 +14,6 @@ Requires: mesa-data = %{version}-%{release}
 Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
-BuildRequires : Mako-python
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
 BuildRequires : Vulkan-Loader-dev32
@@ -56,6 +55,7 @@ BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
+BuildRequires : pypi-mako
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
 BuildRequires : wayland-protocols-dev
@@ -158,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646872964
+export SOURCE_DATE_EPOCH=1647017815
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
