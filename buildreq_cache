@@ -1,4 +1,4 @@
-22.0.0
+22.0.1
 libva-dev
 libvdpau-dev
 pkgconfig(32libudev)
