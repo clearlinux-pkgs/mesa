@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.0.1
-Release  : 303
+Release  : 304
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.0.1/mesa-mesa-22.0.1.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.0.1/mesa-mesa-22.0.1.tar.gz
 Summary  : No detailed summary available
@@ -158,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648655008
+export SOURCE_DATE_EPOCH=1650489520
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
