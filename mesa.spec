@@ -4,14 +4,13 @@
 #
 Name     : mesa
 Version  : 22.1.2
-Release  : 309
+Release  : 310
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.2/mesa-mesa-22.1.2.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.2/mesa-mesa-22.1.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
-Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : Vulkan-Headers-dev
@@ -104,20 +103,11 @@ Requires: mesa-dev = %{version}-%{release}
 dev32 components for the mesa package.
 
 
-%package filemap
-Summary: filemap components for the mesa package.
-Group: Default
-
-%description filemap
-filemap components for the mesa package.
-
-
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
-Requires: mesa-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -158,7 +148,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655407318
+export SOURCE_DATE_EPOCH=1656431165
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -252,7 +242,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/intel_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/intel_icd.i686.json
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.i686.json
 ## install_append end
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -325,10 +315,6 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-mesa
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/crocus_dri.so
@@ -354,6 +340,43 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/gallium-pipe/pipe_radeonsi.so
 /usr/lib64/gallium-pipe/pipe_swrast.so
 /usr/lib64/gallium-pipe/pipe_vmwgfx.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGL.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGL.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGL.so.1.2.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv1_CM.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv1_CM.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv1_CM.so.1.1.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv2.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv2.so.2
+/usr/lib64/glibc-hwcaps/x86-64-v3/libGLESv2.so.2.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so.8
+/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so.8.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCnouveau.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCnouveau.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCnouveau.so.1.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCnouveau.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCr600.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCr600.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCr600.so.1.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libXvMCr600.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so.0.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvulkan_intel.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvulkan_radeon.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so.2
+/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so.2.5.0
 /usr/lib64/libEGL.so
 /usr/lib64/libEGL.so.1
 /usr/lib64/libEGL.so.1.0.0
@@ -407,7 +430,6 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
-/usr/share/clear/optimized-elf/lib*
 
 %files lib32
 %defattr(-,root,root,-)
