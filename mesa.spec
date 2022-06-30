@@ -167,7 +167,7 @@ export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto, d3d12, zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -184,7 +184,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto, d3d12, zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -207,7 +207,7 @@ export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
 export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto, zink, d3d12 \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
