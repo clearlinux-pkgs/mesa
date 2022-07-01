@@ -4,13 +4,14 @@
 #
 Name     : mesa
 Version  : 22.1.3
-Release  : 311
+Release  : 312
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mesa-data = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : Vulkan-Headers-dev
@@ -103,11 +104,20 @@ Requires: mesa-dev = %{version}-%{release}
 dev32 components for the mesa package.
 
 
+%package filemap
+Summary: filemap components for the mesa package.
+Group: Default
+
+%description filemap
+filemap components for the mesa package.
+
+
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
+Requires: mesa-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -148,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656542207
+export SOURCE_DATE_EPOCH=1656699702
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -315,6 +325,10 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-mesa
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/crocus_dri.so
@@ -430,6 +444,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
 /usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
+/usr/share/clear/optimized-elf/other*
 
 %files lib32
 %defattr(-,root,root,-)
