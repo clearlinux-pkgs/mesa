@@ -29,3 +29,5 @@ zlib-dev32
 zlib-dev
 zstd-dev32
 zstd-dev
+directx-headers-staticdev
+directx-headers-staticdev32

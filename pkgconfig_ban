@@ -58,3 +58,5 @@ libva
 32nativewindow
 nativewindow
 libunwind
+32directx-headers
+directx-headers

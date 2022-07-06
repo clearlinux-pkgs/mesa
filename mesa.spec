@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.1.3
-Release  : 313
+Release  : 314
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Summary  : No detailed summary available
@@ -20,6 +20,8 @@ BuildRequires : Vulkan-Loader-dev32
 BuildRequires : Vulkan-Tools
 BuildRequires : bison
 BuildRequires : buildreq-meson
+BuildRequires : directx-headers-staticdev
+BuildRequires : directx-headers-staticdev32
 BuildRequires : elfutils-dev32
 BuildRequires : expat-dev
 BuildRequires : expat-dev32
@@ -47,6 +49,7 @@ BuildRequires : pkgconfig(32xext)
 BuildRequires : pkgconfig(32xfixes)
 BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
+BuildRequires : pkgconfig(DirectX-Headers)
 BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libudev)
@@ -158,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1657118984
+export SOURCE_DATE_EPOCH=1657141687
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -167,7 +170,7 @@ export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto,d3d12,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -184,7 +187,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto,d3d12,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -207,7 +210,7 @@ export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
 export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto,d3d12,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -221,7 +224,8 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Dosmesa=true \
 -Dzstd=enabled \
 -Dshader-cache=true -Dgallium-opencl=disabled \
--Dasm=false builddir
+-Dasm=false \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 builddir
 ninja -v -C builddir
 popd
 
@@ -332,6 +336,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dri/crocus_dri.so
+/usr/lib64/dri/d3d12_dri.so
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/iris_dri.so
 /usr/lib64/dri/kms_swrast_dri.so
@@ -345,6 +350,7 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib64/dri/swrast_dri.so
 /usr/lib64/dri/virtio_gpu_dri.so
 /usr/lib64/dri/vmwgfx_dri.so
+/usr/lib64/dri/zink_dri.so
 /usr/lib64/gallium-pipe/pipe_crocus.so
 /usr/lib64/gallium-pipe/pipe_i915.so
 /usr/lib64/gallium-pipe/pipe_iris.so
