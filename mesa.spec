@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.1.3
-Release  : 312
+Release  : 313
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Summary  : No detailed summary available
@@ -158,7 +158,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656699702
+export SOURCE_DATE_EPOCH=1657118984
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -167,7 +167,7 @@ export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -184,7 +184,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
@@ -207,7 +207,7 @@ export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
 export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
--Dgallium-drivers=auto \
+-Dgallium-drivers=auto,d3d12,zink \
 -Dcpp_std=gnu++14 \
 -Dgallium-va=true \
 -Dgallium-xa=true \
