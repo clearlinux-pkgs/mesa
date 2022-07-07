@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e -o pipefail
 
 BASE_URL=https://gitlab.freedesktop.org/mesa/mesa/-/archive/
 REPO=${1-$HOME/git/mesa}
@@ -22,12 +23,12 @@ echo "URL := $BASE_URL$VERSION/mesa-$DESCRIPTION.tar.bz2" >> Makefile
 echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
-${MAKE-make} autospec
-${MAKE-make} koji
-
+make autospec
+make koji
+nvr=$(rpmspec --srpm --query --queryformat='%{NVR}\n' mesa.spec)
+koji wait-repo --build=$nvr dist-clear-build
 # take care of rebuilds as per README.clear
-sleep 60
 for i in ../xf86-video-*; do
     command git -C $i pull
-    ${MAKE-make} -C $i -j1 bump koji-nowait
+    make -C $i -j1 bump koji-nowait
 done
