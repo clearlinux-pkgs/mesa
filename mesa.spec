@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.1.3
-Release  : 314
+Release  : 315
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.3/mesa-mesa-22.1.3.tar.gz
 Summary  : No detailed summary available
@@ -69,6 +69,7 @@ BuildRequires : zstd-dev
 BuildRequires : zstd-dev32
 Patch1: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
 Patch2: 0001-Revert-egl-move-include-of-local-headers-out-of-Khro.patch
+Patch3: backport-raytracing.patch
 
 %description
 This local copy of a SHA1 implementation based on the sources below.
@@ -149,6 +150,7 @@ license components for the mesa package.
 cd %{_builddir}/mesa-mesa-22.1.3
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 pushd ..
 cp -a mesa-mesa-22.1.3 build32
 popd
@@ -161,7 +163,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1657141687
+export SOURCE_DATE_EPOCH=1658446433
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
