@@ -1,9 +1,7 @@
-22.1.3
+22.1.4
 libva-dev
 libvdpau-dev
-pkgconfig(32directx-headers)
 pkgconfig(32libudev)
 pkgconfig(32xvmc)
-pkgconfig(directx-headers)
 pkgconfig(libudev)
 pkgconfig(xvmc)
