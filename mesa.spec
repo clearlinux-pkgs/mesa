@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.1.7
-Release  : 322
+Release  : 323
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.7/mesa-mesa-22.1.7.tar.gz
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-22.1.7/mesa-mesa-22.1.7.tar.gz
 Summary  : No detailed summary available
