@@ -1,7 +1,0 @@
-22.2.0.rc3
-libva-dev
-libvdpau-dev
-pkgconfig(32libudev)
-pkgconfig(32xvmc)
-pkgconfig(libudev)
-pkgconfig(xvmc)

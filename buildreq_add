@@ -32,3 +32,5 @@ zstd-dev
 directx-headers-staticdev
 directx-headers-staticdev32
 glslang
+libvdpau-dev
+libva-dev

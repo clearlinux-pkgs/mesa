@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e -o pipefail
+set -e -o pipefail -x
 
 BASE_URL=https://gitlab.freedesktop.org/mesa/mesa/-/archive/
 REPO=${1-$HOME/git/mesa}
@@ -8,7 +8,7 @@ function git() { command git -C $REPO "$@"; }
 OLDVERSION=`sed -n -e '/^URL/{s,.*'$BASE_URL',,;s,/.*,,p}' Makefile`
 
 git remote update -p
-VERSION=`git rev-parse origin/master`
+VERSION=`git rev-parse origin/main`
 DESCRIPTION=`git describe $VERSION | sed s/-branchpoint-/+/`
 
 if [ "$VERSION" == "$OLDVERSION" ] ; then

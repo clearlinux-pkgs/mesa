@@ -4,3 +4,4 @@
 #
 libunwind-dev32
 pypi(python_gitlab)
+pypi(gql)

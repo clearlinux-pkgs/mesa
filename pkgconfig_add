@@ -15,3 +15,7 @@ presentproto
 libdrm_intel
 32libdrm_intel
 DirectX-Headers
+libudev
+32libudev
+32xvmc
+xvmc
