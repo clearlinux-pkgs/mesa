@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e -o pipefail -x
 
+if ! test `find "timestamp" -mmin +1500`
+then
+    echo "not old enough"
+    exit
+fi
+touch timestamp
+
 BASE_URL=https://gitlab.freedesktop.org/mesa/mesa/-/archive/
 REPO=${1-$HOME/git/mesa}
 function git() { command git -C $REPO "$@"; }
