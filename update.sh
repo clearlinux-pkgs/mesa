@@ -6,11 +6,12 @@ then
     echo "not old enough"
     exit
 fi
-touch timestamp
 
 BASE_URL=https://gitlab.freedesktop.org/mesa/mesa/-/archive/
 REPO=${1-$HOME/git/mesa}
 function git() { command git -C $REPO "$@"; }
+
+git rev-parse HEAD > timestamp
 
 OLDVERSION=`sed -n -e '/^URL/{s,.*'$BASE_URL',,;s,/.*,,p}' Makefile`
 
@@ -24,6 +25,9 @@ if [ "$VERSION" == "$OLDVERSION" ] ; then
 fi
 
 echo "Updating from $OLDVERSION to $VERSION"
+echo "Updating from $OLDVERSION to $VERSION" > message
+echo "" >> message
+echo `git shortlog $OLDVERSION..$VERSION >> message`
 
 echo "PKG_NAME := mesa" > Makefile
 echo "URL := $BASE_URL$VERSION/mesa-$DESCRIPTION.tar.bz2" >> Makefile
@@ -31,6 +35,7 @@ echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
 make autospec
+git commit --ammend -F message
 make koji
 nvr=$(rpmspec --srpm --query --queryformat='%{NVR}\n' mesa.spec)
 koji wait-repo --build=$nvr dist-clear-build
