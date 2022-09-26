@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.2+2297.ge122d95d736
-Release  : 354
+Release  : 355
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/e122d95d736f06e8c46845741befaaf5e1ecf426/mesa-22.2+2297-ge122d95d736.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/e122d95d736f06e8c46845741befaaf5e1ecf426/mesa-22.2+2297-ge122d95d736.tar.bz2
 Summary  : No detailed summary available
