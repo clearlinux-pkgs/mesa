@@ -99,19 +99,6 @@ option(
   description : 'path to put vdpau libraries. defaults to $libdir/vdpau.'
 )
 option(
-  'gallium-xvmc',
-  type : 'combo',
-  value : 'auto',
-  choices : ['auto', 'true', 'false', 'enabled', 'disabled'],
-  description : 'enable gallium xvmc frontend.',
-)
-option(
-  'xvmc-libs-path',
-  type : 'string',
-  value : '',
-  description : 'path to put xvmc libraries. defaults to $libdir.'
-)
-option(
   'gallium-omx',
   type : 'combo',
   value : 'auto',
@@ -182,12 +169,6 @@ option(
   description : 'build gallium "clover" OpenCL frontend with SPIR-V binary support.',
 )
 option(
-  'opencl-native',
-  type : 'boolean',
-  value : true,
-  description : 'build gallium "clover" OpenCL frontend with native LLVM codegen support.',
-)
-option(
   'static-libclc',
   type : 'array',
   value : [],
@@ -206,6 +187,13 @@ option(
   value : ['auto'],
   choices : ['auto', 'amd', 'broadcom', 'freedreno', 'imagination-experimental', 'intel', 'intel_hasvk', 'microsoft-experimental', 'panfrost', 'swrast', 'virtio-experimental'],
   description : 'List of vulkan drivers to build. If this is set to auto all drivers applicable to the target OS/architecture will be built'
+)
+option(
+  'vulkan-rt-drivers',
+  type : 'array',
+  value : ['auto'],
+  choices : ['auto', 'intel'],
+  description : 'List of vulkan drivers to enable ray-tracing support on. If this is set to auto all drivers applicable to the target OS/architecture will enabled ray-tracing support.'
 )
 option(
   'freedreno-kgsl',
@@ -447,7 +435,7 @@ option(
   'tools',
   type : 'array',
   value : [],
-  choices : ['drm-shim', 'etnaviv', 'freedreno', 'glsl', 'intel', 'intel-ui', 'nir', 'nouveau', 'xvmc', 'lima', 'panfrost', 'asahi', 'imagination', 'all', 'dlclose-skip'],
+  choices : ['drm-shim', 'etnaviv', 'freedreno', 'glsl', 'intel', 'intel-ui', 'nir', 'nouveau', 'lima', 'panfrost', 'asahi', 'imagination', 'all', 'dlclose-skip'],
   description : 'List of tools to build. (Note: `intel-ui` selects `intel`)',
 )
 option(
