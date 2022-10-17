@@ -464,7 +464,6 @@ libGL.so.1:glGetMinmaxParameterfv
 libGL.so.1:glGetMinmaxParameteriv
 libGL.so.1:glGetMultisamplefv
 libGL.so.1:glGetObjectLabel
-libGL.so.1:glGetObjectParameterfvARB
 libGL.so.1:glGetObjectParameterivARB
 libGL.so.1:glGetObjectPtrLabel
 libGL.so.1:glGetPixelMapfv
@@ -616,6 +615,7 @@ libGL.so.1:glIsTexture
 libGL.so.1:glIsTextureEXT
 libGL.so.1:glIsTransformFeedback
 libGL.so.1:glIsVertexArray
+libGL.so.1:glLabelObjectEXT
 libGL.so.1:glLightModelf
 libGL.so.1:glLightModelfv
 libGL.so.1:glLightModeli
@@ -2331,7 +2331,6 @@ libOSMesa.so.8:glGetMinmaxParameterfv
 libOSMesa.so.8:glGetMinmaxParameteriv
 libOSMesa.so.8:glGetMultisamplefv
 libOSMesa.so.8:glGetObjectLabel
-libOSMesa.so.8:glGetObjectParameterfvARB
 libOSMesa.so.8:glGetObjectParameterivARB
 libOSMesa.so.8:glGetObjectPtrLabel
 libOSMesa.so.8:glGetPixelMapfv
@@ -2482,6 +2481,7 @@ libOSMesa.so.8:glIsSync
 libOSMesa.so.8:glIsTexture
 libOSMesa.so.8:glIsTransformFeedback
 libOSMesa.so.8:glIsVertexArray
+libOSMesa.so.8:glLabelObjectEXT
 libOSMesa.so.8:glLightModelf
 libOSMesa.so.8:glLightModelfv
 libOSMesa.so.8:glLightModeli
