@@ -1,0 +1,140 @@
+Updating from 004f431b7f6f6627ca065ab63b0e8afcacb1d27b to 5d040646422b10f489794c5f192757a6861e948e
+
+Alyssa Rosenzweig (7):
+      panfrost,asahi: Support ARB_buffer_storage
+      gallium: Stub support for Asahi + DRM
+      gallium: Only use Asahi's software path on macOS
+      panfrost/ci: Disable trace-based testing
+      panfrost: Enable rendering to 16-bit and 32-bit
+      panfrost: Add lots of perf_debug annotations
+      asahi: Identify counts for compute kernels
+
+Anton Bambura (1):
+      panfrost: Enable Mali-T620
+
+Bas Nieuwenhuizen (8):
+      radv: Add BVH IR header.
+      radv: Make the number of internal nodes be written on the GPU.
+      radv: Add PLOC shader
+      radv: Use PLOC for BVH building
+      radv: Speculatively tune RT pipelines for GFX11.
+      radv: Use correct types for loading the rings with LLVM.
+      radv: Handle GSVS ring intrinsic correctly with LLVM.
+      radv: Handle attribute ring intrinsic correctly with LLVM.
+
+Danylo Piliaiev (1):
+      freedreno/fdl: Increase alignment for UBWC images
+
+Emma Anholt (2):
+      zink: No need to use a 2-sample dummy image for bindless without null descs.
+      zink: Lazily allocate the dummy surfaces.
+
+Filip Gawin (1):
+      r300: update r400 tests
+
+Francisco Jerez (2):
+      nir/lower_int64: Enable lowering of 64-bit float to 64-bit integer conversions.
+      nir/lower_int64: Implement lowering of 64-bit integer to 64-bit float conversions.
+
+Frank Binns (1):
+      pvr: setup buffer and image format feature bits
+
+Friedrich Vock (8):
+      radv: Rename emulated float helpers
+      radv: Use a struct for AABBs
+      radv: Add radv_indirect_unaligned_dispatch
+      radv/rt: Fix internal converter synchronization
+      radv/rt: Dispatch internal converter indirectly
+      radv/rt: Track number of inactive leaf nodes
+      radv: Add global sync utilities
+      radv: Add REF as a typename macro to .clang-format
+
+Georg Lehmann (1):
+      aco: Use opsel for the third operand.
+
+Gert Wollny (4):
+      r600/sfn: Add .clang-format file and apply style
+      r600: declare for counter locally and fix signed/unsigned warning
+      r600: Only count ALU registers that are not clause local
+      r600: Print MOVA_INT dest on Cayman
+
+Giancarlo Devich (2):
+      gallium/pipe: Align allocation size in `pb_cache_manager_create_buffer`
+      d3d12: Don't align already-aligned size in `d3d12_bufmgr_create_buffer`
+
+Jordan Justen (1):
+      ci/d3d12: Update quick_shader results with 24 fixes from !19128
+
+José Roberto de Souza (5):
+      iris: Fix enablement of protected contexts
+      intel/perf: Use intel_device_info functions to compute subslice and eu totals
+      iris: Nuke pci_id from iris_screen
+      iris: Drop duplicated errno handling in iris_bo_wait()
+      iris: Do not export iris_bo_wait()
+
+Karol Herbst (5):
+      rusticl/kernel: fix more 32 bit problems
+      nir/algebraic: add 8 and 64 bit urol and uror lowering
+      nir/algebraic: support CL vector accessors
+      nir/algebraic: generalize vector_cmp lowering
+      nir/algebraic: add vec8/16 cmp lowering
+
+Lionel Landwerlin (1):
+      anv: remove shader fp64 inspection after parsing
+
+Marek Olšák (2):
+      nir: add nir_intrinsic_optimization_barrier_vgpr_amd for LLVM
+      radeonsi: force the MSAA resolve shader to use 1 clause for MSAA loads
+
+Mauro Rossi (1):
+      util: glsl2spirv.py: ensure '#endif' is printed in new line
+
+Mike Blumenkrantz (7):
+      zink: don't double-deref bindless texture arrays in shaders
+      util/tc: split out flush and deferred flush calls
+      util/tc: split out dsa and fs state cso handling
+      util/tc: implement renderpass tracking
+      zink: add a context flag to indicate when blitter is running
+      zink: use tc renderpass tracking to optimize renderpasses
+      zink: enable renderpass optimizing for turnip jobs
+
+Rhys Perry (2):
+      aco: add storage_gds
+      aco: insert waitcnt before/after ds_ordered_count
+
+Rob Clark (15):
+      Revert "mesa/st: ARB_vertex_attrib_64bit depend on glsl>=410"
+      freedreno: Don't advertise TGSI support for GS/tess
+      freedreno/a6xx: Move layer_zero handling to interp state
+      freedreno/ir3: Drop unused view_zero/layer_zero lowering
+      freedreno/a6xx: Fix buffer size clamping
+      freedreno/a6xx: Support AMD_vertex_shader_layer
+      freedreno: support multiple viewports
+      freedreno: Massage scissor state at bind time
+      freedreno: Move guardband calc to bind time
+      freedreno/a6xx: Support GL_ARB_viewport_array + gl43
+      freedreno/a6xx: Enable GL_ARB_texture_mirror_clamp_to_edge
+      freedreno: Enable GL_ARB_enhanced_layouts
+      freedreno/ci: Small bit of xfails cleanup
+      docs: Update features.txt
+      nir: Add way to create passthrough TCS without VS nir
+
+Samuel Pitoiset (6):
+      radv: fix VRS limit when attachmentFragmentShadingRate is disabled
+      radv/llvm: fix dual source blending on GFX11
+      radv: move nir_opt_idiv_const/nir_lower_idiv after NGG lowering
+      ac/nir/ngg: fix emitting streamout output by using packed location
+      radv: implement transform feedback queries with NGG streamout
+      Revert "radv: add a pointer to radv_shader_binary in radv_shader"
+
+Sunil Khatri (1):
+      winsys/amdgpu: clamp up the alignment if zero
+
+Tapani Pälli (2):
+      anv: remove some unused functions
+      hasvk: remove some unused functions
+
+Yusuf Khan (2):
+      gallium/util: add a helper for get_timestamp
+      nouveau: enable PIPE_CAP_UMA when appropriate
+
