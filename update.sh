@@ -35,7 +35,7 @@ echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
 make autospec
-git commit --amend -F message
+git commit --amend -F message || :
 make koji
 nvr=$(rpmspec --srpm --query --queryformat='%{NVR}\n' mesa.spec)
 koji wait-repo --build=$nvr dist-clear-build

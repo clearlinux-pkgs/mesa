@@ -1,140 +1,81 @@
-Updating from 004f431b7f6f6627ca065ab63b0e8afcacb1d27b to 5d040646422b10f489794c5f192757a6861e948e
+Updating from 5d040646422b10f489794c5f192757a6861e948e to 7e3be0b3ce9a62a500155748f36382517d63645f
 
-Alyssa Rosenzweig (7):
-      panfrost,asahi: Support ARB_buffer_storage
-      gallium: Stub support for Asahi + DRM
-      gallium: Only use Asahi's software path on macOS
-      panfrost/ci: Disable trace-based testing
-      panfrost: Enable rendering to 16-bit and 32-bit
-      panfrost: Add lots of perf_debug annotations
-      asahi: Identify counts for compute kernels
+Alyssa Rosenzweig (4):
+      softpipe: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
+      i915g: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
+      etnaviv: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
+      gallium: Default to PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
 
-Anton Bambura (1):
-      panfrost: Enable Mali-T620
+António Monteiro (1):
+      gallium/util: remove network class
 
-Bas Nieuwenhuizen (8):
-      radv: Add BVH IR header.
-      radv: Make the number of internal nodes be written on the GPU.
-      radv: Add PLOC shader
-      radv: Use PLOC for BVH building
-      radv: Speculatively tune RT pipelines for GFX11.
-      radv: Use correct types for loading the rings with LLVM.
-      radv: Handle GSVS ring intrinsic correctly with LLVM.
-      radv: Handle attribute ring intrinsic correctly with LLVM.
-
-Danylo Piliaiev (1):
-      freedreno/fdl: Increase alignment for UBWC images
-
-Emma Anholt (2):
-      zink: No need to use a 2-sample dummy image for bindless without null descs.
-      zink: Lazily allocate the dummy surfaces.
-
-Filip Gawin (1):
-      r300: update r400 tests
-
-Francisco Jerez (2):
-      nir/lower_int64: Enable lowering of 64-bit float to 64-bit integer conversions.
-      nir/lower_int64: Implement lowering of 64-bit integer to 64-bit float conversions.
+Emma Anholt (1):
+      zink: Enable mesa/st frontend shader caching.
 
 Frank Binns (1):
-      pvr: setup buffer and image format feature bits
+      CODEOWNERS: remove rajnesh-kanwal as an Imagination maintainer
 
-Friedrich Vock (8):
-      radv: Rename emulated float helpers
-      radv: Use a struct for AABBs
-      radv: Add radv_indirect_unaligned_dispatch
-      radv/rt: Fix internal converter synchronization
-      radv/rt: Dispatch internal converter indirectly
-      radv/rt: Track number of inactive leaf nodes
-      radv: Add global sync utilities
-      radv: Add REF as a typename macro to .clang-format
+Gert Wollny (3):
+      r600/sfn: Handle load_workgroup_size
+      r600/sfn: lower uniforms to UBOs
+      r600/sfn: remove load_uniform handling
 
-Georg Lehmann (1):
-      aco: Use opsel for the third operand.
+Jason Ekstrand (2):
+      nir/types: Add some asserts to glsl_get_struct_field()
+      nouveau/codegen: Support bindless texture queries
 
-Gert Wollny (4):
-      r600/sfn: Add .clang-format file and apply style
-      r600: declare for counter locally and fix signed/unsigned warning
-      r600: Only count ALU registers that are not clause local
-      r600: Print MOVA_INT dest on Cayman
+Jesse Natalie (2):
+      dzn: Set factory flags before creating device
+      d3d12: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
 
-Giancarlo Devich (2):
-      gallium/pipe: Align allocation size in `pb_cache_manager_create_buffer`
-      d3d12: Don't align already-aligned size in `d3d12_bufmgr_create_buffer`
+Konstantin Seurer (1):
+      radv/rt: Set vars.arg in the traversal shader
 
-Jordan Justen (1):
-      ci/d3d12: Update quick_shader results with 24 fixes from !19128
+Luis Felipe Strano Moraes (1):
+      meson: simplified meson for enabling ray-tracing on Intel
 
-José Roberto de Souza (5):
-      iris: Fix enablement of protected contexts
-      intel/perf: Use intel_device_info functions to compute subslice and eu totals
-      iris: Nuke pci_id from iris_screen
-      iris: Drop duplicated errno handling in iris_bo_wait()
-      iris: Do not export iris_bo_wait()
+Michel Dänzer (1):
+      radeonsi/ci: Test piglit quick_shader profile as well
 
-Karol Herbst (5):
-      rusticl/kernel: fix more 32 bit problems
-      nir/algebraic: add 8 and 64 bit urol and uror lowering
-      nir/algebraic: support CL vector accessors
-      nir/algebraic: generalize vector_cmp lowering
-      nir/algebraic: add vec8/16 cmp lowering
+Nanley Chery (1):
+      iris: Reduce use of RHWO optimization (Wa_1508744258)
 
-Lionel Landwerlin (1):
-      anv: remove shader fp64 inspection after parsing
+Rhys Perry (9):
+      nir,ac/nir,aco,radv: replace has_input_*_amd with more general intrinsics
+      aco: don't split swizzled store_buffer_amd on GFX9+
+      ac/nir: lower gfx11 vertex parameter exports
+      radv/gfx11: don't create fmask copy/expand pipelines
+      radv/gfx11: don't create texop_samples_identical
+      radv,aco: don't use lower_to_fragment_fetch_amd on GFX11+
+      aco: fix typo in branch lowering
+      aco/gfx11: perform FS input loads in WQM
+      aco/gfx11: fix FS input loads in quad-divergent control flow
 
-Marek Olšák (2):
-      nir: add nir_intrinsic_optimization_barrier_vgpr_amd for LLVM
-      radeonsi: force the MSAA resolve shader to use 1 clause for MSAA loads
+Ruijing Dong (1):
+      frontends/va: fixed an av1 dec image corruption.
 
-Mauro Rossi (1):
-      util: glsl2spirv.py: ensure '#endif' is printed in new line
+Samuel Pitoiset (17):
+      aco: create a new builder variant for ds_add_rtn
+      aco: implement NIR intrinsics for NGG streamout
+      aco: remove invalid assertions for NGG streamout
+      radv/llvm: prevent emitting streamout outputs for NGG
+      radv: call nir_io_add_intrinsic_xfb_info() after IO lowering
+      radv: lower NIR intrinsics for NGG streamout
+      radv: do not unconditionally disable NGG streamout lowering in NIR
+      radv: reword an incorrect comment about primitives generated query
+      radv: use 32-bit GDS counters for primitives generated query with NGG
+      radv: suspend/resume primitives generated query separately for legacy/NGG
+      radv: fix primitives generated query with NGG only
+      radv: set the correct buffer size for NGG streamout
+      radv: enable all possible features with NGG streamout
+      radv: allow to enable NGG streamout with RADV_PERFTEST=ngg_streamout
+      radv: enable VK_EXT_transform_feedback with NGG streamout on GFX11
+      ac/nir: stop using nir_gather_xfb_info_from_intrinsics
+      radv: assign IO var locations for VS/TES with NGG streamout
 
-Mike Blumenkrantz (7):
-      zink: don't double-deref bindless texture arrays in shaders
-      util/tc: split out flush and deferred flush calls
-      util/tc: split out dsa and fs state cso handling
-      util/tc: implement renderpass tracking
-      zink: add a context flag to indicate when blitter is running
-      zink: use tc renderpass tracking to optimize renderpasses
-      zink: enable renderpass optimizing for turnip jobs
+Thomas Debesse (1):
+      clover: implement CLOVER_DEVICE_TYPE like RUSTICL_DEVICE_TYPE
 
-Rhys Perry (2):
-      aco: add storage_gds
-      aco: insert waitcnt before/after ds_ordered_count
-
-Rob Clark (15):
-      Revert "mesa/st: ARB_vertex_attrib_64bit depend on glsl>=410"
-      freedreno: Don't advertise TGSI support for GS/tess
-      freedreno/a6xx: Move layer_zero handling to interp state
-      freedreno/ir3: Drop unused view_zero/layer_zero lowering
-      freedreno/a6xx: Fix buffer size clamping
-      freedreno/a6xx: Support AMD_vertex_shader_layer
-      freedreno: support multiple viewports
-      freedreno: Massage scissor state at bind time
-      freedreno: Move guardband calc to bind time
-      freedreno/a6xx: Support GL_ARB_viewport_array + gl43
-      freedreno/a6xx: Enable GL_ARB_texture_mirror_clamp_to_edge
-      freedreno: Enable GL_ARB_enhanced_layouts
-      freedreno/ci: Small bit of xfails cleanup
-      docs: Update features.txt
-      nir: Add way to create passthrough TCS without VS nir
-
-Samuel Pitoiset (6):
-      radv: fix VRS limit when attachmentFragmentShadingRate is disabled
-      radv/llvm: fix dual source blending on GFX11
-      radv: move nir_opt_idiv_const/nir_lower_idiv after NGG lowering
-      ac/nir/ngg: fix emitting streamout output by using packed location
-      radv: implement transform feedback queries with NGG streamout
-      Revert "radv: add a pointer to radv_shader_binary in radv_shader"
-
-Sunil Khatri (1):
-      winsys/amdgpu: clamp up the alignment if zero
-
-Tapani Pälli (2):
-      anv: remove some unused functions
-      hasvk: remove some unused functions
-
-Yusuf Khan (2):
-      gallium/util: add a helper for get_timestamp
-      nouveau: enable PIPE_CAP_UMA when appropriate
+jenneron (1):
+      docs/panfrost: Document Mali-T620 support
 
