@@ -1,81 +1,168 @@
-Updating from 5d040646422b10f489794c5f192757a6861e948e to 7e3be0b3ce9a62a500155748f36382517d63645f
+Updating from 7e3be0b3ce9a62a500155748f36382517d63645f to c2387e6b3c47e4180484ff11fd089487f20f9d0b
 
-Alyssa Rosenzweig (4):
-      softpipe: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
-      i915g: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
-      etnaviv: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
-      gallium: Default to PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
+Adam Jackson (1):
+      rusticl: meson devenv support
 
-António Monteiro (1):
-      gallium/util: remove network class
+Alyssa Rosenzweig (23):
+      nir/opt_algebraic: Fuse c - a * b to FMA
+      pan/bi: Don't lower outputs for compute
+      panfrost: Don't use nir_variable in the compilers
+      pan/mdg: Disassemble the .a32 bit
+      pan/mdg: Don't pair ST_VARY.a32 with other instrs
+      pan/mdg: Use .u32 for flat shading
+      pan/mdg: Use bifrost_nir_lower_store_component
+      panfrost: Don't allocate space for empty varyings
+      panfrost: Don't use nir_variable to link varyings
+      panfrost: Delete set_global_resources
+      panfrost: Move small compute functions to pan_context.c
+      panfrost: Remove bogus assert
+      panfrost: Consolidate all shader compiling code
+      panfrost: Merge pan_assemble.c into pan_shader.c
+      panfrost: Remove unused req_input_mem copy
+      panfrost: Rename structs to panfrost_(un)compiled_shader
+      panfrost: Remove uncompiled_shader->active_variant
+      panfrost: Use u_dynarray for variants
+      panfrost: Make fixed_varying_mask a fragment-only key
+      panfrost: Precompile transform feedback program
+      panfrost: Precompile shaders
+      panfrost: Implement a disk cache
+      docs/new_features: Add Panfrost disk cache
 
-Emma Anholt (1):
-      zink: Enable mesa/st frontend shader caching.
+Chia-I Wu (2):
+      freedreno/pps: use 64-bit reads when possible
+      freedreno/pps: loop countables by references
 
-Frank Binns (1):
-      CODEOWNERS: remove rajnesh-kanwal as an Imagination maintainer
+Christian Gmeiner (8):
+      etnaviv: Remove possibility to force MSAA
+      etnaviv: rs: Color resolve works
+      etnaviv: rs: Directly call etna_try_rs_blit(..)
+      etnaviv: rs: msaa: Set cache mode for SMALL_MSAA
+      etnaviv: Update headers from rnndb
+      etnaviv: blt: Add color resolve support
+      etnaviv: blt: Directly call etna_try_blt_blit(..)
+      Revert "etnaviv: completely turn off MSAA"
 
-Gert Wollny (3):
-      r600/sfn: Handle load_workgroup_size
-      r600/sfn: lower uniforms to UBOs
-      r600/sfn: remove load_uniform handling
+Emma Anholt (3):
+      rusticl: Fix the invalid memory migration flags check.
+      iris: Disable GLSL lower_const_arrays_to_uniforms.
+      gallium: update docs about PIPE_CAP_PREFER_IMM_ARRAYS_AS_CONSTBUF.
 
-Jason Ekstrand (2):
-      nir/types: Add some asserts to glsl_get_struct_field()
-      nouveau/codegen: Support bindless texture queries
+Erik Faye-Lund (32):
+      docs: spell out "distribution"
+      docs: spell out "transform and lighting"
+      docs: de-duplicated -> deduplicated
+      docs: de-nominate -> denominate
+      docs: freedreno -> Freedreno
+      docs: llvmpipe -> LLVMpipe
+      docs: softpipe -> Softpipe
+      docs: panfrost -> Panfrost
+      docs: piglit -> Piglit
+      docs: ini -> INI
+      docs: swr -> OpenSWR
+      docs: yml -> YAML
+      docs: xml -> XML
+      docs: Adreno aXXX -> Adreno XXX
+      docs: remove non-existent directory
+      docs: do not mention classic swrast
+      docs: name correct driver
+      docs: clean up labels
+      docs: add missing link to mesa3d.org
+      docs: add links to usenet groups
+      docs: link to replacement forum
+      docs: Android.mk -> ndk-build
+      docs: gitlab -> GitLab
+      docs: nVidia -> NVIDIA
+      docs: spell ATI codenames in allcaps
+      docs: nfs -> NFS
+      docs: fixup rebase mistake
+      zink: correct depth-bias enable condition
+      zink: only set line-width if drawing lines
+      zink: consider polygon-mode for rast_prim
+      zink: do not read is_generated unless in tcs shader
+      zink: put union fields into structs named by the shader-stages
 
-Jesse Natalie (2):
-      dzn: Set factory flags before creating device
-      d3d12: Advertise PIPE_CAP_BUFFER_MAP_PERSISTENT_COHERENT
+Georg Lehmann (1):
+      aco: Use s_pack_ll_b32_b16 for scalar zero extend.
 
-Konstantin Seurer (1):
-      radv/rt: Set vars.arg in the traversal shader
+Gert Wollny (1):
+      etnaviv: Create MSAA surfaces with PE compatible tiling
 
-Luis Felipe Strano Moraes (1):
-      meson: simplified meson for enabling ray-tracing on Intel
+Illia Abernikhin (2):
+      utils: Move functions from debug.* to u_debug.*
+      utils: Merge util/debug.* into util/u_debug.* and remove util/debug.*
 
-Michel Dänzer (1):
-      radeonsi/ci: Test piglit quick_shader profile as well
+Jesse Natalie (15):
+      include: Add WGL version of GL interop extensions
+      mesa, dri2: Move interop helpers from dri2 to state tracker
+      include: Add a flush interop method
+      mesa: Make fence_sync not static
+      mesa/st: Split interop object lookup from export
+      mesa/st: Implement the new flush method
+      dri: Implement the new flush method
+      glx: Implement the new flush method
+      egl/dri2: Implement the new flush method
+      wgl: Implement interop methods
+      egl/wgl: Implement interop methods
+      include: Add driver data to v2 of mesa_glinterop_device_info
+      gallium: Add screen methods for driver-private data on interop interface
+      mesa/st: Query driver for interop data
+      d3d12: Hook up driver-private interop data
 
-Nanley Chery (1):
-      iris: Reduce use of RHWO optimization (Wa_1508744258)
+Joan Bruguera (1):
+      nv50/ir/nir: ignore sampler for TXF/TXQ ops.
 
-Rhys Perry (9):
-      nir,ac/nir,aco,radv: replace has_input_*_amd with more general intrinsics
-      aco: don't split swizzled store_buffer_amd on GFX9+
-      ac/nir: lower gfx11 vertex parameter exports
-      radv/gfx11: don't create fmask copy/expand pipelines
-      radv/gfx11: don't create texop_samples_identical
-      radv,aco: don't use lower_to_fragment_fetch_amd on GFX11+
-      aco: fix typo in branch lowering
-      aco/gfx11: perform FS input loads in WQM
-      aco/gfx11: fix FS input loads in quad-divergent control flow
+Kenneth Graunke (4):
+      iris: Use nir_intrinsic_load_global_constant for large constants
+      intel/compiler: Run nir_opt_large_constants before scalarizing consts
+      st/mesa: Let nir_opt_access() infer non-readable
+      nir: Drop infer_non_readable option for nir_opt_access()
 
-Ruijing Dong (1):
-      frontends/va: fixed an av1 dec image corruption.
+Marcin Ślusarz (3):
+      intel/genxml: fix width of 3DSTATE_TASK_CONTROL.MaximumNumberofThreadGroups
+      anv: set 3DSTATE_[MESH|TASK]_CONTROL.MaximumNumberofThreadGroups
+      anv: program 3DSTATE_MESH_DISTRIB with the recommended values
 
-Samuel Pitoiset (17):
-      aco: create a new builder variant for ds_add_rtn
-      aco: implement NIR intrinsics for NGG streamout
-      aco: remove invalid assertions for NGG streamout
-      radv/llvm: prevent emitting streamout outputs for NGG
-      radv: call nir_io_add_intrinsic_xfb_info() after IO lowering
-      radv: lower NIR intrinsics for NGG streamout
-      radv: do not unconditionally disable NGG streamout lowering in NIR
-      radv: reword an incorrect comment about primitives generated query
-      radv: use 32-bit GDS counters for primitives generated query with NGG
-      radv: suspend/resume primitives generated query separately for legacy/NGG
-      radv: fix primitives generated query with NGG only
-      radv: set the correct buffer size for NGG streamout
-      radv: enable all possible features with NGG streamout
-      radv: allow to enable NGG streamout with RADV_PERFTEST=ngg_streamout
-      radv: enable VK_EXT_transform_feedback with NGG streamout on GFX11
-      ac/nir: stop using nir_gather_xfb_info_from_intrinsics
-      radv: assign IO var locations for VS/TES with NGG streamout
+Pierre-Eric Pelloux-Prayer (2):
+      radeonsi/gfx11: enable sdma copy DRI_PRIME
+      radeonsi: update db_eqaa even if msaa is disabled
 
-Thomas Debesse (1):
-      clover: implement CLOVER_DEVICE_TYPE like RUSTICL_DEVICE_TYPE
+Rhys Perry (6):
+      radv/llvm: fix GS shaders on GFX8/9
+      docs: update new_features.txt for non-extension additions to RADV
+      radv: increase gfx1100/gfx1101 physical vgprs
+      ac/gpu_info: increase gfx1100/gfx1101 physical vgprs
+      aco/gfx11: increase gfx1100/gfx1101 physical vgprs
+      radeonsi: increase gfx1100/gfx1101 physical vgprs
 
-jenneron (1):
-      docs/panfrost: Document Mali-T620 support
+Rob Clark (14):
+      freedreno: Add ARB_gl_spirv support
+      freedreno/a6xx: Use box to pass 2d clear params
+      freedreno/a6xx: Implement ARB_clear_texture
+      freedreno/a3xx+: Enable ARB_shader_texture_image_samples
+      freedreno/a3xx+: Enable ARB_derivative_control
+      freedreno/ir3: Unconditionally lower subgroup ops
+      freedreno/a6xx: Enable ARB_shader_group_vote
+      freedreno/a6xx: Fix occlusion queries
+      freedreno/a6xx: Remove unused field
+      freedreno/a5xx+a6xx: Add base class for query samples
+      freedreno/batch: Add a global epilogue
+      freedreno: Core ARB_query_buffer_object support
+      freedreno/a6xx: ARB_query_buffer_object support
+      freedreno/a6xx: Mark gl45 supported
+
+Samuel Pitoiset (3):
+      radv/amdgpu: add a kernel GDS management workaround for -ENOMEM
+      radv: use defines instead of magic values for GDS counters offset
+      radv: move GDS counters after reserved GDS offsets for streamout
+
+Thomas Debesse (3):
+      Revert "gallium/clover: pass -no-opaque-pointers to Clang", opaque pointers are now implemented
+      gallium/clover: pass -opaque-pointers to Clang on LLVM 15 and 16
+      crocus: set clear_buffer = u_default_clear_buffer
+
+Yonggang Luo (4):
+      docs:  -Ddri-drivers= option is deprecated, do not use it anymore
+      docs: There is only glx=xlib option now
+      docs: There is no more swrast driver
+      android: -Ddri-drivers= is not needed anymore
 

@@ -1,4 +1,5 @@
 libEGL.so.1:MesaGLInteropEGLExportObject
+libEGL.so.1:MesaGLInteropEGLFlushObjects
 libEGL.so.1:MesaGLInteropEGLQueryDeviceInfo
 libEGL.so.1:eglBindAPI
 libEGL.so.1:eglBindTexImage
