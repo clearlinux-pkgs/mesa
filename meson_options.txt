@@ -523,7 +523,7 @@ option(
 option(
   'intel-clc',
   type : 'feature',
-  value : 'disabled',
+  value : 'enabled',
   description : 'Build the intel-clc compiler (enables Vulkan Intel Ray Tracing on supported hardware).'
 )
 option(
