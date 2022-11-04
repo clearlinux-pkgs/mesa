@@ -1,168 +1,200 @@
-Updating from 7e3be0b3ce9a62a500155748f36382517d63645f to c2387e6b3c47e4180484ff11fd089487f20f9d0b
+Updating from c2387e6b3c47e4180484ff11fd089487f20f9d0b to e9b81c663da8144fd49fc58b97b66718406d0d24
 
-Adam Jackson (1):
-      rusticl: meson devenv support
+Alyssa Rosenzweig (3):
+      panfrost: Don't copy resources if replaced
+      panfrost: Replace resource shadowing flush
+      panfrost: Don't merge workgroups with variable shared mem
 
-Alyssa Rosenzweig (23):
-      nir/opt_algebraic: Fuse c - a * b to FMA
-      pan/bi: Don't lower outputs for compute
-      panfrost: Don't use nir_variable in the compilers
-      pan/mdg: Disassemble the .a32 bit
-      pan/mdg: Don't pair ST_VARY.a32 with other instrs
-      pan/mdg: Use .u32 for flat shading
-      pan/mdg: Use bifrost_nir_lower_store_component
-      panfrost: Don't allocate space for empty varyings
-      panfrost: Don't use nir_variable to link varyings
-      panfrost: Delete set_global_resources
-      panfrost: Move small compute functions to pan_context.c
-      panfrost: Remove bogus assert
-      panfrost: Consolidate all shader compiling code
-      panfrost: Merge pan_assemble.c into pan_shader.c
-      panfrost: Remove unused req_input_mem copy
-      panfrost: Rename structs to panfrost_(un)compiled_shader
-      panfrost: Remove uncompiled_shader->active_variant
-      panfrost: Use u_dynarray for variants
-      panfrost: Make fixed_varying_mask a fragment-only key
-      panfrost: Precompile transform feedback program
-      panfrost: Precompile shaders
-      panfrost: Implement a disk cache
-      docs/new_features: Add Panfrost disk cache
+António Monteiro (3):
+      nouveau/nvc0: Remove unused alternative sample position ms8
+      nouveau/nv50: Remove unused alternative sample position ms8
+      nouveau/nvc0: Remove unused validate_zcull function
 
-Chia-I Wu (2):
-      freedreno/pps: use 64-bit reads when possible
-      freedreno/pps: loop countables by references
+Bas Nieuwenhuizen (3):
+      radv: Style cleanup.
+      radv: Fix compute scratch buffer emission.
+      radv: Make the compute scratch waves per SE as well.
 
-Christian Gmeiner (8):
-      etnaviv: Remove possibility to force MSAA
-      etnaviv: rs: Color resolve works
-      etnaviv: rs: Directly call etna_try_rs_blit(..)
-      etnaviv: rs: msaa: Set cache mode for SMALL_MSAA
-      etnaviv: Update headers from rnndb
-      etnaviv: blt: Add color resolve support
-      etnaviv: blt: Directly call etna_try_blt_blit(..)
-      Revert "etnaviv: completely turn off MSAA"
+Benjamin Tissoires (2):
+      ci: re-enable scheduled pipelines for git cache
+      CI: convert to use the new S3 server instead of the legacy minio
 
-Emma Anholt (3):
-      rusticl: Fix the invalid memory migration flags check.
-      iris: Disable GLSL lower_const_arrays_to_uniforms.
-      gallium: update docs about PIPE_CAP_PREFER_IMM_ARRAYS_AS_CONSTBUF.
+Connor Abbott (30):
+      tu: Clear viewport dirty state with static viewports
+      tu: Ignore line stipple dynamic state
+      tu: tu: Clear patchControlPoints dirty state with static patchControlPoints
+      tu: VK_EXT_extended_dynamic_state3 boilerplate
+      tu: Combine GRAS_SU_CNTL drawstate with rast draw state
+      tu: Implement extendedDynamicState3PolygonMode
+      tu: Implement extendedDynamicState3TessellationDomainOrigin
+      tu: Implement extendedDynamicState3Depth*Enable
+      tu: Implement extendedDynamicState3LogicOpEnable
+      tu: Implement extendedDynamicState3SampleMask
+      tu: Don't use rasterizationSamples when enabling sample shading
+      tu: Split up tu6_update_msaa()
+      tu: Set default sample mask to all 1's
+      tu: Implement extendedDynamicState3RasterizationSamples
+      tu: Implement extendedDynamicState3AlphaToCoverageEnable
+      tu: Implement extendedDynamicState3AlphaToOneEnable
+      tu: Implement extendedDynamicState3DepthClipNegativeOneToOne
+      tu: Rename RASTERIZER_DISCARD state to PC_RASTER_CNTL
+      tu: Impement extendedDynamicState3RasterizationStream
+      tu: Implement extendedDynamicState3LineRasterizationMode
+      tu: Implement extendedDynamicState3ProvokingVertexMode
+      tu: Clamp sample locations
+      tu: Implement extendedDynamicState3SampleLocationsEnable
+      tu: Remove blend dependency on attachment format
+      tu: Implement extendedDynamicState3ColorBlendEnable
+      freedreno: Make BIT() 64-bit
+      tu: Make tu_pipeline::dynamic_state_mask 64-bit
+      tu: Implement extendedDynamicState3ColorBlendEquation
+      tu: Implement extendedDynamicState3ColorWriteMask
+      tu: VK_EXT_extended_dynamic_state3 is finished
 
-Erik Faye-Lund (32):
-      docs: spell out "distribution"
-      docs: spell out "transform and lighting"
-      docs: de-duplicated -> deduplicated
-      docs: de-nominate -> denominate
-      docs: freedreno -> Freedreno
-      docs: llvmpipe -> LLVMpipe
-      docs: softpipe -> Softpipe
-      docs: panfrost -> Panfrost
-      docs: piglit -> Piglit
-      docs: ini -> INI
-      docs: swr -> OpenSWR
-      docs: yml -> YAML
-      docs: xml -> XML
-      docs: Adreno aXXX -> Adreno XXX
-      docs: remove non-existent directory
-      docs: do not mention classic swrast
-      docs: name correct driver
-      docs: clean up labels
-      docs: add missing link to mesa3d.org
-      docs: add links to usenet groups
-      docs: link to replacement forum
-      docs: Android.mk -> ndk-build
-      docs: gitlab -> GitLab
-      docs: nVidia -> NVIDIA
-      docs: spell ATI codenames in allcaps
-      docs: nfs -> NFS
-      docs: fixup rebase mistake
-      zink: correct depth-bias enable condition
-      zink: only set line-width if drawing lines
-      zink: consider polygon-mode for rast_prim
-      zink: do not read is_generated unless in tcs shader
-      zink: put union fields into structs named by the shader-stages
+David Heidelberg (2):
+      ci: Collabora farm maintanance
+      Revert "ci: Collabora farm maintanance"
 
-Georg Lehmann (1):
-      aco: Use s_pack_ll_b32_b16 for scalar zero extend.
+Eric Engestrom (7):
+      VERSION: bump to 22.4
+      docs: reset new_features.txt
+      docs: update calendar for 22.3.0-rc1
+      zink: add missing build_id linker args
+      vk/runtime: drop incorrect UNUSED annotation
+      v3dv: avoid freeing already-freed memory
+      docs: make the "amber" branch's name explicit
 
-Gert Wollny (1):
-      etnaviv: Create MSAA surfaces with PE compatible tiling
+Erik Faye-Lund (11):
+      docs/gallium: use definition-lists for member-lists
+      docs/gallium: use table instead of list
+      docs/gallium: use math-role for zero and one also
+      docs/tgsi: put emphasis on src etc
+      docs/tgsi: use src1 instead of "second arg"
+      docs/tgsi: always use uppercase for instruction names
+      docs/tgsi: mark pseudocode as such
+      docs/tgsi: quote literal numbers
+      docs/isl: correct rst-syntax
+      docs/isl: put emphasis on unit names
+      docs/isl: remove empty headings
 
-Illia Abernikhin (2):
-      utils: Move functions from debug.* to u_debug.*
-      utils: Merge util/debug.* into util/u_debug.* and remove util/debug.*
+Friedrich Vock (1):
+      radv: Use spirv1.5 instead of vulkan1.2
 
-Jesse Natalie (15):
-      include: Add WGL version of GL interop extensions
-      mesa, dri2: Move interop helpers from dri2 to state tracker
-      include: Add a flush interop method
-      mesa: Make fence_sync not static
-      mesa/st: Split interop object lookup from export
-      mesa/st: Implement the new flush method
-      dri: Implement the new flush method
-      glx: Implement the new flush method
-      egl/dri2: Implement the new flush method
-      wgl: Implement interop methods
-      egl/wgl: Implement interop methods
-      include: Add driver data to v2 of mesa_glinterop_device_info
-      gallium: Add screen methods for driver-private data on interop interface
-      mesa/st: Query driver for interop data
-      d3d12: Hook up driver-private interop data
+Guilherme Gallo (3):
+      ci: Update piglit with s3 support
+      ci: Update piglit-traces tests expectations
+      ci: Update ci-fairy in CI, rootfs and containers
 
-Joan Bruguera (1):
-      nv50/ir/nir: ignore sampler for TXF/TXQ ops.
+Iago Toral Quiroga (12):
+      v3dv: remove unnecessary check for NULL
+      v3dv: do a better job at cleaning up the device on init failure
+      v3dv: fix incorrect return type
+      v3dv: handle allocation failure during pipeline initialization
+      v3dv: do better cleanup on failure during pipeline cache operation
+      v3dv: increase limit for active event objects
+      v3dv: always check VK_ACCESS_2_MEMORY_READ_BIT for read accesses
+      v3dv: make the helper to emit pipeline barriers public to other files
+      v3dv: fix event synchronization
+      v3dv: vkCmdWaitEvents2 takes an array of VkDependencyInfo
+      v3dv: use vk_alloc instead of malloc
+      broadcom/compiler: drop unused v3d_compile parameter for nir pass
 
-Kenneth Graunke (4):
-      iris: Use nir_intrinsic_load_global_constant for large constants
-      intel/compiler: Run nir_opt_large_constants before scalarizing consts
-      st/mesa: Let nir_opt_access() infer non-readable
-      nir: Drop infer_non_readable option for nir_opt_access()
+Jesse Natalie (10):
+      microsoft/compiler: Fix feature flag handling for 64-bit bitcasts
+      ci/windows: Download DirectX Agility SDK and copy to piglit/vk-gl-cts
+      ci/windows: Download updated WARP and copy to piglit/vk-gl-cts
+      ci/windows: Get DXIL.dll (and DXCompiler.dll) from GitHub and put it in System32
+      ci/windows: Enable developer mode for test container
+      ci/windows: Bump test image tag
+      d3d12: Set Agility SDK parameters and update test expectations
+      dzn: Set Agility SDK parameters and update test expectations
+      d3d12: Move lower_sample_pos to microsoft/compiler
+      microsoft/spirv2dxil: Lower sample pos for fragment shaders
 
-Marcin Ślusarz (3):
-      intel/genxml: fix width of 3DSTATE_TASK_CONTROL.MaximumNumberofThreadGroups
-      anv: set 3DSTATE_[MESH|TASK]_CONTROL.MaximumNumberofThreadGroups
-      anv: program 3DSTATE_MESH_DISTRIB with the recommended values
+Jordan Justen (1):
+      intel/dev: Set has_lsc in XEHP_FEATURES rather than DG2_FEATURES
 
-Pierre-Eric Pelloux-Prayer (2):
-      radeonsi/gfx11: enable sdma copy DRI_PRIME
-      radeonsi: update db_eqaa even if msaa is disabled
+José Roberto de Souza (7):
+      intel/common: Add and use intel_gem_create_context_ext()
+      iris: Do not set I915_CONTEXT_PARAM_RECOVERABLE twice
+      intel: Refactor intel_gem_create_context_engines()
+      intel: Add and use intel_gem_create_context()
+      intel: Add and use intel_gem_destroy_context()
+      intel: Add and use intel_gem_set_context_param()
+      intel: Add and use intel_gem_get_context_param()
 
-Rhys Perry (6):
-      radv/llvm: fix GS shaders on GFX8/9
-      docs: update new_features.txt for non-extension additions to RADV
-      radv: increase gfx1100/gfx1101 physical vgprs
-      ac/gpu_info: increase gfx1100/gfx1101 physical vgprs
-      aco/gfx11: increase gfx1100/gfx1101 physical vgprs
-      radeonsi: increase gfx1100/gfx1101 physical vgprs
+Karol Herbst (11):
+      gallium/tests: drop compute test
+      gallium: drop pipe_compute_state.req_private_mem
+      nir: set range and base for load_kernel_input
+      rusticl/nir: add load_kernel_input lowering pass
+      rusticl: use real constant buffer for cb0
+      gallium: split up req_local_mem
+      iris: invalidate sysvals if grid dimension changes
+      rusticl: unbind compute state before deleting
+      rusticl: create the CSO ahead of launches
+      rusticl: create the constant buffer ahead of launches
+      rusticl: remove Option from set_global_binding
 
-Rob Clark (14):
-      freedreno: Add ARB_gl_spirv support
-      freedreno/a6xx: Use box to pass 2d clear params
-      freedreno/a6xx: Implement ARB_clear_texture
-      freedreno/a3xx+: Enable ARB_shader_texture_image_samples
-      freedreno/a3xx+: Enable ARB_derivative_control
-      freedreno/ir3: Unconditionally lower subgroup ops
-      freedreno/a6xx: Enable ARB_shader_group_vote
-      freedreno/a6xx: Fix occlusion queries
-      freedreno/a6xx: Remove unused field
-      freedreno/a5xx+a6xx: Add base class for query samples
-      freedreno/batch: Add a global epilogue
-      freedreno: Core ARB_query_buffer_object support
-      freedreno/a6xx: ARB_query_buffer_object support
-      freedreno/a6xx: Mark gl45 supported
+Konstantin Seurer (1):
+      radv/rra: Print invalid node types
+
+Lionel Landwerlin (1):
+      anv: Reduce RHWO optimization (Wa_1508744258)
+
+Lucas Stach (7):
+      etnaviv: correct comment about tile status size
+      etnaviv: rework modifier queries
+      etnaviv: allocate TS memory from KMS when resource bind is SCANOUT
+      drm-uapi: bump headers
+      etnaviv: canonicalize modifier on import
+      etnaviv: add support for sharing the TS buffer
+      etnaviv: warn when imported TS buffer is the same as color buffer
+
+Marek Olšák (6):
+      ac/llvm: remove unnecessary gfx11 condition for nir_intrinsic_store_buffer_amd
+      amd/registers: fix parse_kernel_headers.py warnings by adding missing enums
+      amd/registers: describe allowed register ranges better
+      amd/registers: regenerate gfx11 headers from amd-staging-drm-next
+      ac/gpu_info: simplify how has_accelerated_dot_product is set
+      ac: fix IB parsing for Stoney
+
+Martin Roukala (né Peres) (5):
+      radv/ci: document some VanGogh flakes that came from splitting the job
+      radv/ci: document a flake on VanGogh
+      radv/ci: document a recent regression on VanGogh
+      zink/ci: mark another test as fixed after the frontend caching series
+      zink/ci: add another subtest to the list of known failures for radv
+
+Mauro Rossi (1):
+      hasvk: fix android build and reported API version
+
+Qiang Yu (1):
+      ac/nir: create gs copy shader with scalar outputs
+
+Rob Clark (1):
+      docs: Fix features.txt typo
 
 Samuel Pitoiset (3):
-      radv/amdgpu: add a kernel GDS management workaround for -ENOMEM
-      radv: use defines instead of magic values for GDS counters offset
-      radv: move GDS counters after reserved GDS offsets for streamout
+      radv: fix fallback for extreme geometry with tessellation on GFX11
+      radv: fix setting MIN_LOD for texture descriptors on GFX11
+      ci: uprev vkd3d-proton to v2.7
 
-Thomas Debesse (3):
-      Revert "gallium/clover: pass -no-opaque-pointers to Clang", opaque pointers are now implemented
-      gallium/clover: pass -opaque-pointers to Clang on LLVM 15 and 16
-      crocus: set clear_buffer = u_default_clear_buffer
+Sarah Walker (1):
+      pvr: Fix NULL pointer indirection in pvr_enable_z_replicate()
 
-Yonggang Luo (4):
-      docs:  -Ddri-drivers= option is deprecated, do not use it anymore
-      docs: There is only glx=xlib option now
-      docs: There is no more swrast driver
-      android: -Ddri-drivers= is not needed anymore
+Yonggang Luo (13):
+      glx: Fixes apple/apple_visual.c that include non-exist util/debug.h
+      mesa: Use DEBUG_NAMED_VALUE_END for const struct debug_named_value
+      docs: XFree86 source files in libGL.txt are out date, remove it
+      glapi: Remove duplicated #include "main/glheader.h"
+      util: Prevent glheader.h from including <windows.h> by defining APIENTRY
+      mesa: Remove out-dated comment in common_x86.c
+      mesa: BUILD_GL32 is not used anymore
+      mesa: sync GLAPIENTRY with KHRONOS_APIENTRY in GL/gl.h
+      mesa: Move glheader.h from mesa/main/glheader.h to util/glheader.h
+      glapi: #include "util/glheader.h" in glapi_priv.h and glapitable.h directly
+      mapi: #include "util/glheader.h" instead of #include "GL/gl.h"
+      mesa: #include "util/glheader.h" instead GL/gl.h in shared code
+      mesa: Add test to prevent windows.h to be included in shared headers
 
