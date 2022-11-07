@@ -1,7 +1,7 @@
-libLLVM.so.14
+libLLVM.so.15
 libX11.so.6
 libc.so.6
-libclang-cpp.so.14
+libclang-cpp.so.15
 libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1
