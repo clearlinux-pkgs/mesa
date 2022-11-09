@@ -1,124 +1,70 @@
-Updating from e9b81c663da8144fd49fc58b97b66718406d0d24 to c076aeb865fcfec15928f2470563d37643518e82
+Updating from c076aeb865fcfec15928f2470563d37643518e82 to 2fdc3846e715d3cd822c6d778e78cf069714428d
 
-Alex Brachet (1):
-      nir: Fix qsort comparator function
+Caio Oliveira (3):
+      intel/compiler: Remove unused data members
+      intel/compiler: Remove various unused function declarations
+      intel/compiler: Remove unused fs_visitor::emit_percomp()
 
-Alyssa Rosenzweig (2):
-      asahi: Add drm-shim implementation
-      docs/asahi: Document drm-shim
+Charmaine Lee (1):
+      wgl: fix reference to wgl(Create|Delete)Context function pointers
 
-António Monteiro (19):
-      math: drop invert_matrix_perpective
-      gallium/util: Remove dirty flags class
-      gallium/util: Remove dirty surfaces class
-      gallium/util: Remove linear class
-      gallium/util: Drop unused translate_prim_restart_ib
-      gallium/util: drop unused rect_area
-      gallium/util: drop unused sampler_view_default_dx9_template
-      gallium/util: remove unused macros and their functions from sse class
-      util: remove unused half_to_unorm8
-      util: remove unused set_random_entry
-      util: remove unused debug_print_blob
-      util: remove unused debug_dump_enum_noprefix
-      util: remove fifo class
-      util: remove unused enter debug exit loggers
-      math: remove unused matrix_has_rotation
-      math: remove unused matrix_is_general_scale
-      math: remove unused debug classes
-      math: remove vector class
-      math: remove unused matrix_print & print_matrix_floats
+Connor Abbott (1):
+      tu: Support GMEM with layered rendering and multiview
 
-Bas Nieuwenhuizen (1):
-      radv: Use compares for node type in traversal.
-
-Boris Brezillon (5):
-      dzn: Query D3D12_FEATURE_DATA_D3D12_OPTIONS12
-      vulkan: Automatically generate helpers to retrieve format information
-      vulkan: Provide a vk_image_create_get_format_list() helper
-      dzn: Try to get a ID3D12Device10 object
-      dzn: Hook-up format-casting
-
-David Heidelberg (2):
-      ci/broadcom: juint is already defined in .piglit-traces-test
-      nine: enable on freedreno
+Dylan Baker (3):
+      docs: add release notes for 22.2.3
+      docs: Add sha256 sum for 22.2.3
+      docs: update calendar and link releases notes for 22.2.3
 
 Eric Engestrom (2):
-      VERSION: fix version as it will be a new year
-      docs/amber: fix link to docs on amber branch
+      vc4: add DRM_VC4_CREATE_SHADER_BO support to drm-shim
+      ci: run shaderdb on vc4 as well
 
-Erik Faye-Lund (11):
-      docs: consistently use single-quotes in config
-      docs: use inline-code instead of default role
-      docs: fix a couple of links
-      docs: remove spurious backtick
-      docs/gallium: fixup broken markup
-      docs/gallium: glsl -> GLSL
-      docs: eg -> e.g.
-      docs: use code-block
-      docs/zink: fix and cleanup rst syntax
-      docs: use anonymous links when possible
-      docs: upgrade some links to https
+Gert Wollny (2):
+      r600: fix some border color swizzles on CAYMAN
+      r600: Fix some border color swizzles on Evergreen
 
-Francisco Jerez (2):
-      nir/lower_int64: Fix float16 to int64 conversions.
-      intel/compiler: Run extra fp64 lowering pass on devices that don't support int64.
+Ian Romanick (7):
+      intel/fs: Fix constant propagation into 32x16 integer multiplication
+      intel/fs: Fix bounds checking for integer multiplication lowering
+      intel/fs: Allow constant copy prop from DW to W
+      intel/compiler: Add and use a pass to generate imul_32x16 instructions
+      intel/compiler: Signed integer range analysis for imul_32x16 generation
+      intel/compiler: Teach signed integer range analysis about imax and imin
+      intel/fs: Optimize integer multiplication of large constants by factoring
 
-Jason Ekstrand (1):
-      anv: Rip out shadow surfaces
+José Roberto de Souza (5):
+      intel: Add and use intel_gem_get_param()
+      intel: Add has_mmap_offset to intel_device_info
+      intel: Add has_userptr_probe to intel_device_info
+      intel: Add has_context_isolation to intel_device_info
+      intel: Add and use intel_gem_can_render_on_fd()
 
-Konstantin Seurer (4):
-      radv/rt: Restore prev barycentrics when rejecting hits
-      radv/rra: Rename rra_accel_struct_validation_fail
-      radv/rra: Improve validation message formatting
-      radv/rra: Remove some node type validation
+Lionel Landwerlin (1):
+      anv: fix missing VkPhysicalDeviceExtendedDynamicState3PropertiesEXT handling
 
-Marek Olšák (10):
-      radeonsi: fix the compute wave size - it was always Wave32
-      radeonsi/ci: update CI results
-      radeonsi/gfx11: fix compute scratch buffer - WAVES is always per SE
-      amd: rename enums ARCTURUS -> MI100, ALDEBARAN -> MI200
-      radeonsi: don't load/resolve/store non-existent src/dst channels in blit shaders
-      radeonsi: remove clamping shader code from in-bounds blits
-      radeonsi: allow int16 with FP16 since it no longer hangs
-      ac/llvm: don't use the mbcnt workaround for LLVM 16 and set range metadata
-      ac/surface/tests: add more gfx103 and gfx11 tests
-      amd: add cosmetic gfx10 and gfx11 changes
+Mauro Rossi (1):
+      Android.mk: Fix gnu++14 related build failures
 
-Marek Vasut (1):
-      etnaviv: Use old set of state registers for PE configuration on GC880
+Samuel Pitoiset (3):
+      radv: add support for dynamic color write mask
+      radv: advertise extendedDynamicState3ColorWriteMask
+      radv: stop emulating number of generated primitives by GS on GFX11
 
-Martin Roukala (né Peres) (3):
-      radv/ci: use wildcards for the query_pool.statistics_query flakes on VG
-      zink/ci: document a new fail after a piglit uprev to radv expectations
-      radv/ci: add another test to the navi21 flakes list
+Simon Ser (1):
+      vulkan/wsi/wayland: return VK_ERROR_NATIVE_WINDOW_IN_USE_KHR
 
-Samuel Pitoiset (9):
-      radv: make the GDS/GDS OA buffer objects resident
-      radv: invalidate L2 instead of only writeback L2 when using DCC stores
-      radv: consider allocated command buffers in the initial state.
-      radv: re-emit the guardband state when restoring meta operations
-      radv: remove unused blend parameter to radv_pipeline_init_binning_state()
-      radv: cleanup setting disabled binning state for GFX9
-      radv: always set FLUSH_ON_BINNING_TRANSITION
-      radv: move computing the binning state to the cmdbuf
-      ac/nir,radv: rework and fix NGG queries enables for VS/TES
+Tapani Pälli (2):
+      iris: enable NV_alpha_to_coverage_dither_control
+      crocus: enable NV_alpha_to_coverage_dither_control
 
-Sathishkumar S (3):
-      radeonsi/vcn: enable yuv422 jpeg decode
-      radeonsi/vcn: enable yuv formats supported on jpeg 2.5.0 and 2.6.0
-      gallium/vl: return the buffer plane order for yuv444p format
+Yonggang Luo (4):
+      gallium/util: Remove the EMBEDDED_DEVICE macro because nobody use it
+      util: Move pipe_semaphore to u_thread.h and rename it to util_semaphore
+      util: cleanup os_thread.h
+      util: Remove os/os_thread.h and replace #include "os/os_thread.h" with #include "util/u_thread.h"
 
-Tomeu Vizoso (2):
-      ci: Uprev kernel to 6.0
-      ci: Disable automatic jobs on Chromebooks with Comet Lake
-
-Yonggang Luo (5):
-      util: include gles header instead of hand crafted macros
-      util: It's not thread safe to set initialized=true before get the real GALLIUM_PRINT_OPTIONS
-      util: Fixes debug_get_option_* thread safety by set initialized=true after the value get
-      util: Fixes memory leak in __getProgramName
-      util: Add multi-threaded test for util/u_debug.h and util/perf/u_trace.h
-
-Yusuf Khan (1):
-      r600: enable memory objects
+Yusuf Khan (2):
+      nv50/ir: add prefer_nir flag for getting compiler options
+      nv50/ir: Support fmulz and ffmaz
 
