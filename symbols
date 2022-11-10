@@ -465,6 +465,8 @@ libGL.so.1:glGetMinmaxParameterfv
 libGL.so.1:glGetMinmaxParameteriv
 libGL.so.1:glGetMultisamplefv
 libGL.so.1:glGetObjectLabel
+libGL.so.1:glGetObjectLabelEXT
+libGL.so.1:glGetObjectParameterfvARB
 libGL.so.1:glGetObjectParameterivARB
 libGL.so.1:glGetObjectPtrLabel
 libGL.so.1:glGetPixelMapfv
@@ -2340,6 +2342,8 @@ libOSMesa.so.8:glGetMinmaxParameterfv
 libOSMesa.so.8:glGetMinmaxParameteriv
 libOSMesa.so.8:glGetMultisamplefv
 libOSMesa.so.8:glGetObjectLabel
+libOSMesa.so.8:glGetObjectLabelEXT
+libOSMesa.so.8:glGetObjectParameterfvARB
 libOSMesa.so.8:glGetObjectParameterivARB
 libOSMesa.so.8:glGetObjectPtrLabel
 libOSMesa.so.8:glGetPixelMapfv

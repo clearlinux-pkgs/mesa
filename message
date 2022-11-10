@@ -1,70 +1,163 @@
-Updating from c076aeb865fcfec15928f2470563d37643518e82 to 2fdc3846e715d3cd822c6d778e78cf069714428d
+Updating from 2fdc3846e715d3cd822c6d778e78cf069714428d to 811f8a19469722bea32f3c539b8cf0939fe3b057
 
-Caio Oliveira (3):
-      intel/compiler: Remove unused data members
-      intel/compiler: Remove various unused function declarations
-      intel/compiler: Remove unused fs_visitor::emit_percomp()
+Alyssa Rosenzweig (23):
+      panfrost: Fix build with Perfetto (again)
+      panfrost: Copy resources when necessary
+      panfrost: Remove out-of-band CRC support
+      panfrost: DRY buffer range special case
+      agx: Don't emit writeout 0xC200
+      agx: Refuse to handle discontiguous iter
+      agx: Free dests of splits that are never read
+      agx/ra: Use BITSET_*_RANGE in some places
+      agx/ra: Factor out assign_regs
+      agx: Introduce agx_foreach_ssa_{src,dest} macros
+      agx: Coalesce collects when possible
+      agx: Pass agx_index to agx_copy
+      agx: Use nir_opt_phi_precision
+      agx: Add and use replace_src helper
+      agx: Describe whether instructions may be reordered
+      agx: Add CSE optimization pass
+      agx/ra: Remove index_to_reg
+      agx: Implement nir_op_unpack_64_2x32_split_{x,y}
+      agx: Implement {i,u}mul_2x32_64
+      agx: Implement unary math ops
+      agx: Don't assert on texop twice
+      panfrost: Compile indirect dispatch shader on first use
+      panfrost: Require 64-byte alignment on imports
 
-Charmaine Lee (1):
-      wgl: fix reference to wgl(Create|Delete)Context function pointers
+Ben Skeggs (6):
+      nvc0: lookup supported classes instead of determining from chipset
+      nvc0: properly allocate copy engine class before using it
+      nvc0: recognise ga10x chipsets
+      nvc0: no tex cb mthd on ga10x
+      nvc0: fix ga10x compute launch
+      gv100/ir: noop OP_BAR for now
 
-Connor Abbott (1):
-      tu: Support GMEM with layered rendering and multiview
+Caio Oliveira (1):
+      nir: Don't reorder volatile intrinsics
 
-Dylan Baker (3):
-      docs: add release notes for 22.2.3
-      docs: Add sha256 sum for 22.2.3
-      docs: update calendar and link releases notes for 22.2.3
+Chia-I Wu (2):
+      freedreno/a6xx: set CHROMA_LINEAR
+      freedreno/a6xx: set chroma offsets to MIDPOINT
 
-Eric Engestrom (2):
-      vc4: add DRM_VC4_CREATE_SHADER_BO support to drm-shim
-      ci: run shaderdb on vc4 as well
+Dave Airlie (1):
+      drm-shim/nouveau: fix the shim to work with nvif ioctl.
 
-Gert Wollny (2):
-      r600: fix some border color swizzles on CAYMAN
-      r600: Fix some border color swizzles on Evergreen
+David Heidelberg (1):
+      ci/bare-metal: remove consolidations leftovers
 
-Ian Romanick (7):
-      intel/fs: Fix constant propagation into 32x16 integer multiplication
-      intel/fs: Fix bounds checking for integer multiplication lowering
-      intel/fs: Allow constant copy prop from DW to W
-      intel/compiler: Add and use a pass to generate imul_32x16 instructions
-      intel/compiler: Signed integer range analysis for imul_32x16 generation
-      intel/compiler: Teach signed integer range analysis about imax and imin
-      intel/fs: Optimize integer multiplication of large constants by factoring
+Emma Anholt (2):
+      nir/lower_io_to_vector: Demote the old scalar vars to globals.
+      ci/iris: Add some flakes from the new testing on JSL.
 
-José Roberto de Souza (5):
-      intel: Add and use intel_gem_get_param()
-      intel: Add has_mmap_offset to intel_device_info
-      intel: Add has_userptr_probe to intel_device_info
-      intel: Add has_context_isolation to intel_device_info
-      intel: Add and use intel_gem_can_render_on_fd()
+Eric Engestrom (1):
+      docs: update calendar for 22.3.0-rc2
+
+Erik Faye-Lund (8):
+      docs: make c:expr the default-role
+      docs: remove needless c:expr roles
+      docs: use c:expr role shorthand
+      docs: feeddback -> feedback
+      docs: NV_gpu_shader4 -> NV_gpu_program4
+      docs: drop rogue backtick
+      docs: add ext-role for spec extension links
+      docs: use ext-role for GL / VK extensions
+
+Frank Binns (4):
+      pvr: remove some stale FIXMEs/pvr_finishmes
+      pvr: replace unsupported sub-command type pvr_finishme()s with unreachable()s
+      pvr: move TODO next to related code
+      pvr: conditionally call pvr_finishme() in pvr_csb_copy()
+
+Iago Toral Quiroga (1):
+      broadcom/compiler: avoid using ldvary sequence to hide latency of branching
+
+Ian Romanick (4):
+      intel/compiler: Fix signed integer range analysis of imax and imin
+      intel/eu/validate: Validate integer multiplication source size restrictions
+      intel/fs: Slightly restructure emitting nir_op_imul_32x16 and nir_op_umul_32x16
+      intel/fs: Enable nir_op_imul_32x16 and nir_op_umul_32x16 on pre-Gfx7
+
+Jason Ekstrand (4):
+      intel/lower_mem_access_bit_sizes: Compute alignments automatically
+      intel: Don't cross DWORD boundaries with byte scratch load/store
+      anv: Switch to common code for command buffer lifecycles
+      hasvk: Switch to common code for command buffer lifecycles
+
+Karmjit Mahil (2):
+      pvr: Remove some TODOs.
+      pvr: Address TODO in PVR_PDS_CONST_MAP_ENTRY_TYPE_DESCRIPTOR_SET.
+
+Karol Herbst (12):
+      rusticl/nir: copy alignment info when lowering kernel input loads
+      glsl: fix buffer texture type
+      glsl: add texture subpass variants
+      nir/gather_info: take texture vars into account when counting textures
+      nir: properly handle CL textures
+      radeonsi: do not DCE texture vars
+      rusticl: do not DCE any samplers or textures
+      rusticl: use texture vars for readonly images
+      rusticl/kernel: use binding for filling image channel data and order
+      nir/lower_cl_images: support keeping derefs
+      rusticl: skip lowering image/sampler derefs if drivers tells so
+      rusticl: make image format/order work on radeonsi
+
+Konstantin Seurer (1):
+      radv/rra: Fix node type validation
 
 Lionel Landwerlin (1):
-      anv: fix missing VkPhysicalDeviceExtendedDynamicState3PropertiesEXT handling
+      nir: make ray query load values visible in NIR prints
 
-Mauro Rossi (1):
-      Android.mk: Fix gnu++14 related build failures
+Mario Kleiner (1):
+      vulkan/wsi/display: Reset connector state in vkReleaseDisplay().
 
-Samuel Pitoiset (3):
-      radv: add support for dynamic color write mask
-      radv: advertise extendedDynamicState3ColorWriteMask
-      radv: stop emulating number of generated primitives by GS on GFX11
+Martin Roukala (né Peres) (6):
+      radv/ci: add more subtests to VanGogh's flakes list
+      ci/b2c-test: update the trigger container to the latest version
+      ci/b2c-test: remove a noisy 'ls -l'
+      ci: introduce the VALVE_FARM variable
+      radv/ci: move manual job decision to the jobs
+      radv/ci: enable pre-merge testing for vkcts on navi21
 
-Simon Ser (1):
-      vulkan/wsi/wayland: return VK_ERROR_NATIVE_WINDOW_IN_USE_KHR
+Rob Clark (8):
+      util/disk_cache: Add compression in blob cb path
+      util/disk_cache: Add some blob cache traces
+      freedreno/ir3: Reduce compiler thread pool size
+      freedreno: Use our border-color quirk
+      freedreno/ci: Update a5xx expectations
+      freedreno/a6xx: Move bcolor entry setup
+      freedreno/a6xx: Rename tex cache key/equals fxns
+      freedreno/a6xx: Switch to global bcolor buffer
 
-Tapani Pälli (2):
-      iris: enable NV_alpha_to_coverage_dither_control
-      crocus: enable NV_alpha_to_coverage_dither_control
+Samuel Pitoiset (2):
+      radv: use radv_max_descriptor_set_size() for Vulkan 1.2 properties
+      ac/nir: do not convert GS outputs to the expected variable size on GFX11
 
-Yonggang Luo (4):
-      gallium/util: Remove the EMBEDDED_DEVICE macro because nobody use it
-      util: Move pipe_semaphore to u_thread.h and rename it to util_semaphore
-      util: cleanup os_thread.h
-      util: Remove os/os_thread.h and replace #include "os/os_thread.h" with #include "util/u_thread.h"
+Sarah Walker (1):
+      pvr: Fix segfault in pvr_CreatePipelineLayout when layout has zero bindings
 
-Yusuf Khan (2):
-      nv50/ir: add prefer_nir flag for getting compiler options
-      nv50/ir: Support fmulz and ffmaz
+Timothy Arceri (1):
+      mesa: fix typo from adding glGetObjectLabelEXT
+
+Yonggang Luo (20):
+      vulkan/device-select-layer: Remove the need of call_once by using simple_mtx_t instead mtx_t
+      llvmpipe: Remove the need of _MTX_INITIALIZER_NP by using simple_mtx_t/SIMPLE_MTX_INITIALIZER in lp_texture.c
+      glsl: Remove the need of _MTX_INITIALIZER_NP by using simple_mtx_t/SIMPLE_MTX_INITIALIZER
+      nir: Remove the need of _MTX_INITIALIZER_NP by using simple_mtx_t/SIMPLE_MTX_INITIALIZER in nir/nir_validate.c
+      egl: Remove the need of _MTX_INITIALIZER_NP by using simple_mtx_t/SIMPLE_MTX_INITIALIZER in egllog.c
+      c11: Remove _MTX_INITIALIZER_NP for windows
+      meson: -DVK_ENABLE_BETA_EXTENSIONS at a single place
+      ci: Fixes macos.yml
+      meson: Indent util/meson.build with 2 space
+      meson: Use deps_for_libmesa_util for idep_mesautil instead hand crafted list
+      vulkan: Replace _Alignas with alignas
+      util: Replace the usage of ALIGN16 with alignas(16) and them remove ALIGN16 macro
+      mesa: include <util/*.h> instead macros.h in texcompress_bptc_tmp.h
+      util: Move texcompress template files into util/format
+      util: normalize include files under src/util/*.h with util/ prefix in mesa code base
+      util: Use include_directories('..') instead include_directories('.') for inc_util
+      wgl: Trim trailing spaces in stw_st.c
+      zink: Indent with 3 space in zink/zink_kopper.c
+      zink: struct kopper_surface is not accessed, remove it in kopper_interface.h
+      zink: Only #include <vulkan/vulkan_core.h> instead #include <vulkan/vulkan.h> in kopper_interface.h
 
