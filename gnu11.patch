@@ -14,7 +14,7 @@
     dnl C++11 not enabled by default, test whether -std=c++11 does the job
     if test "x$HAVE_CXX11" != "xyes"; then
 -       CXX11_CXXFLAGS=-std=c++11
-+       CXX11_CXXFLAGS=-std=gnu++11
++       CXX11_CXXFLAGS=-std=gnu++17
         CXXFLAGS="$CXXFLAGS $CXX11_CXXFLAGS"
         AC_MSG_CHECKING(whether c++11 is enabled by via $CXX11_CXXFLAGS)
         check_cxx11_available HAVE_CXX11
