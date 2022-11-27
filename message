@@ -1,228 +1,83 @@
-Updating from b07d57e48105448368c7d0e98fb2eccdb28755cb to ccac91db7bbf3b428ad4138e0982c54636b4b96c
+Updating from ccac91db7bbf3b428ad4138e0982c54636b4b96c to 8fdaa25c54e440698722e4f62d89c1bcc9cf31cd
 
-Alyssa Rosenzweig (18):
-      pan/mdg: Fix out-of-order execution
-      docs/features: Get Asahi on the board
-      zink: Don't check WITH_XMLCONFIG
-      util: Define WITH_XMLCONFIG from Meson
-      util: Add xmlconfig build option
-      util: Gate installing drirc on use_xmlconfig
-      meson: Don't depend on expat for !use_xmlconfig
-      asahi: Label BOs internally
-      asahi: Stop aligning pool allocations to 4KiB
-      asahi: Copy panfrost's bo cache
-      asahi: Allocate/free batch BOs as needed
-      asahi: Allocate smaller scissor/zbias arrays
-      agx: Implement nir_op_pack_64_2x32_split
-      agx: Try to align sources of pack_64_2x32_split
-      agx: Handle vertex shaders that use <= 8 halfregs
-      agx: Fix signedness issues packing
-      agx: Use default SHAREABLE_SHADERS
-      panfrost: Revert "Require 64-byte alignment on imports"
+Alyssa Rosenzweig (8):
+      asahi: Fix UB in union with logic ops
+      asahi: Set GPR count accurately for background/EOT
+      asahi: Fix undefined behaviour with samplers
+      asahi: Don't hardcode is_dmabuf_modifier_supported
+      asahi: Print debug info about unsupported blits
+      asahi: Fix incorrect debug string
+      asahi: Enable framebuffer compression
+      asahi: Add missing #include
 
-Christian Gmeiner (3):
-      etnaviv: Support negative float inline immediates
-      etnaviv: nir: lower extract byte/word
-      etnaviv: Hide MSAA support behind debug flag
+Asahi Lina (5):
+      ail: Introduce support for compression
+      ail: Add unit tests for compression
+      asahi: Identify compression-related XML
+      asahi: Introduce compressed resource support
+      asahi: Hook up compressed Z/S support on macOS
 
-Daniel Stone (1):
-      vulkan/wsi: Add stub interface for VK_KHR_present_wait
+Bas Nieuwenhuizen (5):
+      radv: Use correct init order for ETC2 image views
+      radv: Fix sampler types in ETC2 decode.
+      vulkan: Remove asserts that weren't valid for RADV ETC2 emulation.
+      radv/ci: Add coverage for ETC2 emulation.
+      radv: reserve space for the scissor in vkCmdBeginRendering.
 
-Danylo Piliaiev (6):
-      freedreno/decode: Move rd section parsing to a common header
-      freedreno/decode: Print cmdstream idx
-      freedreno/replay: Add option to override selected cmdstream
-      freedreno/decode: Add 'rddecompiler' tool
-      freedreno/rddecompiler: Add shader disasm/asm support
-      freedreno/replay: Add option to replay specific range of cmdstreams
+David Heidelberg (1):
+      ci/amd: add raven flakes which was previously failing
 
-David Heidelberg (4):
-      ci: split arm_test into arm{hf,64}_test
-      radeonsi/ci: update stoney fail -> flakes
-      ci/alpine: enable Mold linker
-      ci/alpine: bump to 3.17, new GCC 12 and LLVM 15
+Erik Faye-Lund (1):
+      radeonsi: mark glx-multithread-texture as a flake
 
-Dawn Han (4):
-      venus: extend lifetime of push descriptor set layout
-      venus: extend VkPipelineLayout lifetime for batched VkCmdPushConstants()
-      venus: implement vkCmdPushDescriptorSetWithTemplateKHR
-      venus: enable VK_KHR_push_descriptor
+Lucas Stach (7):
+      etnaviv: always use RS align when GPU has TEXTURE_HALIGN feature
+      etnaviv: rs: fix blits with insufficient alignment for dual pipe operation
+      etnaviv: fix stencil operation without Z write
+      etnaviv: fix ZS clear value computation
+      etnaviv: blt: use correct TS offset in clear operations
+      etnaviv: fix wrong surface TS clear size
+      etnaviv: remove copy of resource level in etna_surface
 
-Emma Anholt (13):
-      ci/llvmpipe: Update some flakes/skips from IRC logs.
-      ci/softpipe: Add another blit flake.
-      ci: Add weston to our rootfses for wayland testing.
-      ci/freedreno: Stop segregating reset tests from non-reset tests in EGL.
-      ci/deqp-runner: Drop dead code for DEQP_CASELIST_FILTER.
-      ci/freedreno: Expire an old robustness flake.
-      ci/freedreno: Drop EGL wide_color and create_context flakes.
-      ci/freedreno: Add wayland testing using weston.
-      ci/iris: Add headless Wayland testing using weston.
-      ci/vc4,v3d: Add headless wayland testing using weston.
-      ci/llvmpipe: Drop NIR stress testing from deqp-egl.
-      ci/llvmpipe: Add headless Wayland testing using weston.
-      ci/iris: Drop EGL copyteximage2d.12 xfail.
+Marek Olšák (17):
+      glx,dri: simplify indirect function call syntax
+      dri: move private __DRIDriverVtableExtension out of dri_interface.h
+      frontend/dri: add comments describing drawable invalidation logic
+      frontend/dri: remove __DRIdrawableRec::dri2::stamp
+      frontend/dri: inline __DriverAPIRec
+      frontend/dri: replace the DestroyScreen callback with a direct call
+      frontend/dri: replace the DestroyBuffer callback with a direct call
+      frontend/dri: replace the CopySubBuffer callback with a direct call
+      frontend/dri: inline __DRIdrawable in dri_drawable, make __DRIdrawable opaque
+      frontend/dri: inline __DRIcontext in dri_context, make __DRIcontext opaque
+      frontend/dri: inline __DRIscreen in dri_screen, make __DRIscreen opaque
+      frontend/dri: clean up the hacky implementation of kopper_drawable
+      frontend/dri: move callbacks from the VTable into dri_screen, dri_drawable
+      frontend/dri: clean up updating dri_drawable::refcount
+      frontend/dri: remove the drawable ctx hack, we should always use current context
+      frontend/dri: unduplicate flush_drawable callback
+      frontend/dri: rewrite and comment dri_make_current to make it make sense
 
-Eric Engestrom (6):
-      freedreno: fix HAVE_FREEDRENO_KGSL check
-      freedreno/ir3: fix -Wundef warning
-      freedredno: s/#if/#ifdef/ to fix -Wundef
-      iris: s/#if/#ifdef/ to fix -Wundef
-      i915g: fix typo in #if
-      docs: update calendar for 22.3.0-rc4
+Martin Roukala (né Peres) (2):
+      Revert "glx: Fix drawable refcounting for naked Windows"
+      Revert "glx/dri: Fix DRI drawable release at MakeCurrent time"
 
-Erik Faye-Lund (13):
-      aux/draw: vectorize aaline computations
-      gallium/draw: properly fix short aalines
-      gallium/draw: do not use trig to compute tangent
-      Apply 1 suggestion(s) to 1 file(s)
-      zink: fix json-errors in profile-file
-      zink: remove needless requirements
-      zink: fix incorrect requirements
-      zink: update textureCompressionBC requirement
-      docs/zink: add missing required device-feature
-      mesa: treat unsupported queries as dummies
-      mesa: support dummy queries for ARB_pipeline_statistics_query
-      mesa: do not require optional queries
-      docs/zink: update query requirements
+Matt Coster (8):
+      pvr: util: Add integer digit counting functions
+      pvr: csbgen: Generate enum-to-string functions for debugging
+      pvr: Add pvr_bo_cpu_map_unchanged() helper to load saved vbits on map
+      pvr: debug: Add documentation for PVR_DEBUG environment variable
+      pvr: debug: Add "cs" debug option to dump control stream on job submit
+      pvr: debug: Add option to track pvr_bo allocations
+      pvr: csbgen: Remove TEXTURE_WRAP_VARYING-dependent fields
+      pvr: debug: Add PPP sub-buffer support to CSB dumps.
 
-Filip Gawin (1):
-      r300: fix r300_max_vertex_count
+Sviatoslav Peleshko (1):
+      driconf/intel: Use fake vendor to WA bad detection in Source engine games
 
-Gert Wollny (2):
-      r600/sb: Fix initialization order in sb_shader
-      virgl: Fix injection of double from const mov instruction
+Tapani Pälli (1):
+      nir: fix a leak of ralloc ctx in nir_opt_ray_query_ranges
 
-Hans-Kristian Arntzen (13):
-      vk/runtime: Fix narrowing of timeline signal and wait value to u32.
-      vulkan/wsi: Refactor out wsi_init_pthread_cond_monotonic.
-      vulkan/wsi: Add mechanism to wait for WSI semaphore unsignal.
-      wsi/x11: Implement VK_KHR_present_wait on X11.
-      wsi/display: Implement VK_KHR_present_wait on KHR_display swapchain.
-      driconf: Add DRI configuration for exposing VK_KHR_present_wait.
-      wsi/common: Allow present-wait to be unconditionally enabled.
-      radv: Conditionally expose VK_KHR_present_wait on RADV.
-      anv: Conditionally expose VK_KHR_present_wait on ANV.
-      turnip: Conditionally enable VK_KHR_present_wait on Turnip.
-      wsi/x11: Mention problems with xcb_wait_for_special_event().
-      wsi/x11: Rewrite wait logic for ANI/WaitForPresentKHR.
-      docs: Mark VK_KHR_present_wait as supported.
-
-Iago Toral Quiroga (6):
-      v3dv: reset pending cpu job state once processed
-      v3dv: add a helper to create compute pipelines from nir
-      v3dv: reimplement occlusion queries
-      v3dv: allocate one BO for both occlusion results and availability
-      v3dv: specialize query copy pipelines
-      v3dv: allocate copy query pipelines lazily
-
-Italo Nicola (1):
-      hud: add GALLIUM_HUD_ROTATION option
-
-Jimi Huotari (1):
-      driconf: disable glthread for FINAL FANTASY XI
-
-José Roberto de Souza (1):
-      anv: Set 3DSTATE_RASTER API mode as recomended
-
-LingMan (2):
-      intel/fs: Preserve unsignedness in fs_visitor::split_virtual_grfs
-      intel/fs: Accept an unsigned int in fs_reg::fs_reg
-
-Lionel Landwerlin (8):
-      anv: enable sample location enable dynamic state
-      intel/fs: improve Wa_22013689345 workaround
-      genxml: forbid usage of L1CC_WBP/L1CC_UC for stateless messages
-      blorp: support negative offsets in addresses
-      anv: generate correct addresses for state pool offsets
-      nir/divergence: add missing btd_shader_type_intel
-      docs/perfetto: update section about vulkan app tracing
-      anv: use the anv_state_pool address helper more
-
-Lucas Stach (1):
-      etnaviv: fix NULL pointer dereference in TS allocation
-
-Marek Olšák (2):
-      st/mesa: only call st_manager_validate_framebuffers at FBO change or SwapBuffers
-      st/vdpau: fix interop with GL
-
-Martin Roukala (né Peres) (6):
-      radv/ci: make use of the new VanGogh runners
-      radv/ci: run test automatically only for the mesa namespace
-      radv/ci: do not sync back the install folder
-      radv/ci: set B2C_JOB_VOLUME_EXCLUSIONS in all jobs
-      radv/ci: don't download back the vkd3d-proton.cache files
-      radv/ci: do not create jobs that will fail outside of mesa's namespace
-
-Mauro Rossi (1):
-      r600/sfn: allow building with clang 6 (Android 9)
-
-Pedro J. Estébanez (1):
-      microsoft/nir_to_dxil: Avoid emitting SampleCmpLevel prior to SM 6.7 if possible
-
-Philippe Lecluse (2):
-      intel: Add SUPPORT_INTEL_INTEGRATED_GPUS build argument
-      intel: Disable SSE2 instruction set if building for non x86 architectures
-
-Rhys Perry (2):
-      ac/nir: mask shift operands
-      ac/nir: combine shift translation
-
-Rob Clark (3):
-      freedreno/cffdec: Remove dead code
-      freedreno/cffdec: Remove packet types
-      freedreno/cffdec: Add type0/type4 vs type3/type7 pkt helpers
-
-Samuel Pitoiset (16):
-      radv: stop overallocating LDS for VS/TES when NGG streamout is enabled
-      radv: fix computing the pervertex LDS size with NGG streamout
-      radv: enable NGG XFB queries only if streamout is enabled
-      radv: re-mit streamout buffers to unbind them when NGG streamout is disabled
-      radv: fix NGG streamout when it's never enabled in runtime
-      radv: fix possible hangs with NGG streamout and secondary cmdbuf
-      aco: fix emitting DEALLOC_VGPRS in the discard block
-      radv: fix number of PS samples with VK_AMD_mixed_attachment_samples
-      zink/ci: mark the two remaining GLES3 failures as CTS test bug
-      radv: fix memleak with link time optimizations and GPL
-      radv: re-emit dynamic depth clamp enable if depth clip enable changed
-      radv: re-emit dynamic provoking vertex mode if primitive topology changed
-      radv: fix and rework DISABLE_DUAL_QUAD setting
-      radv: simplify handling logic op when it's not dynamic
-      radv: remove useless parenthesis in radv_cmd_buffer_flush_dynamic_state()
-      radv: make sure to mark DCC as compressed on GFX11
-
-Simon Ser (3):
-      v3dv: drop wayland-protocols dep
-      panfrost: drop wayland-protocols dep
-      vulkan/device-select-layer: drop wayland-protocols dep
-
-Thomas Debesse (1):
-      rusticl: print missing context features
-
-Timur Kristóf (1):
-      ac/nir: Avoid data race with task shader payloads.
-
-Vinson Lee (1):
-      intel/perf: Fix memory leak.
-
-Yonggang Luo (16):
-      mesa: replace tab with 3 space in mesa/program/program_parse.y by tools
-      mesa: indent fixes after replace tab with 3 space by find and replace in program/program_parse.y
-      mesa: fixes -Werror,-Wunused-but-set-variable for clang-15 in program_parse.y
-      aco: Fixes -Werror,-Wbitwise-instead-of-logical for clang-15 in aco_optimizer.cpp
-      r600: Fixes -Werror,-Wunused-but-set-variable for clang-15
-      gallivm: use valid LLVM_VERSION_MAJOR instead of LLVM_VERSION
-      util: Fixes -Wundef in util/compiler.h
-      mesa: Fixes -Wundef in arbprogparse.c
-      util: Fixes -Wundef in u_qsort.h
-      util: Fixes -Wundef in u_debug_stack_test.cpp
-      gallium: Fixes -Wundef in draw_gs.c
-      clover: Fixes -Wundef in memory.cpp
-      util: Remove the latest PIPE_ALIGN_VAR in p_compiler.h
-      util: Move EXCLUSIVE_CACHELINE and CACHE_LINE_SIZE macros into u_memory.h
-      util: Rename PIPE_CDECL to UTIL_CDECL and moved into util/macros.h
-      util: Remove unused WIN32 and MSVC related staff in p_compiler.h
-
-noasakurajin (1):
-      add zink to macos ci
+Tatsuyuki Ishi (1):
+      radv: Enable rayTracingPipelineShaderGroupHandleCaptureReplay[Mixed].
 
