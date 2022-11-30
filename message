@@ -1,83 +1,149 @@
-Updating from ccac91db7bbf3b428ad4138e0982c54636b4b96c to 8fdaa25c54e440698722e4f62d89c1bcc9cf31cd
+Updating from 8fdaa25c54e440698722e4f62d89c1bcc9cf31cd to 863516dd63c9d6b327223feec9c7780960a1f385
 
-Alyssa Rosenzweig (8):
-      asahi: Fix UB in union with logic ops
-      asahi: Set GPR count accurately for background/EOT
-      asahi: Fix undefined behaviour with samplers
-      asahi: Don't hardcode is_dmabuf_modifier_supported
-      asahi: Print debug info about unsupported blits
-      asahi: Fix incorrect debug string
-      asahi: Enable framebuffer compression
-      asahi: Add missing #include
+Aditya Swarup (1):
+      intel/isl: Add MOCS settings for MTL platforms
 
-Asahi Lina (5):
-      ail: Introduce support for compression
-      ail: Add unit tests for compression
-      asahi: Identify compression-related XML
-      asahi: Introduce compressed resource support
-      asahi: Hook up compressed Z/S support on macOS
+Alyssa Rosenzweig (4):
+      agx: Make empty texture pack to all-zeroes
+      agx: Add merge helpers to GenXML
+      agx: Don't depend sampler view on BO
+      asahi: Implement DISCARD_WHOLE_RESOURCE
 
-Bas Nieuwenhuizen (5):
-      radv: Use correct init order for ETC2 image views
-      radv: Fix sampler types in ETC2 decode.
-      vulkan: Remove asserts that weren't valid for RADV ETC2 emulation.
-      radv/ci: Add coverage for ETC2 emulation.
-      radv: reserve space for the scissor in vkCmdBeginRendering.
+Asahi Lina (9):
+      asahi: Fix remaining build issues on macOS
+      ail: Introduce layer_alignment flag
+      asahi: Pass through layer alignment flag to the hardware
+      ail: Fix compression metadata buffer sizing corner cases
+      ail: Fix logic for buffer alignment
+      ail: Add more compression size test cases
+      ail: Rename test-compression.cpp to test-comp-twiddled.cpp
+      ail: Add uncompressed twiddled texture sizing tests
+      ail: Split off test-miptree.cpp from test-layout.cpp
+
+Connor Abbott (2):
+      tu: Fix fault with variable-count inline uniform blocks
+      tu: Use right enum for compute active_shader_stages
 
 David Heidelberg (1):
-      ci/amd: add raven flakes which was previously failing
+      ci/alpine: disable mold on Alpine builds
 
-Erik Faye-Lund (1):
-      radeonsi: mark glx-multithread-texture as a flake
+Emma Anholt (4):
+      turnip: Make tu_emit_cache_flush_ccu manage flush bits like other paths.
+      turnip: Clean up a repeated pattern around tu6_emit_flushes().
+      turnip: Drop the cs argument from tu6_emit_cache_flush*().
+      ci/freedreno: Add another blend_equation_advanced flake.
 
-Lucas Stach (7):
-      etnaviv: always use RS align when GPU has TEXTURE_HALIGN feature
-      etnaviv: rs: fix blits with insufficient alignment for dual pipe operation
-      etnaviv: fix stencil operation without Z write
-      etnaviv: fix ZS clear value computation
-      etnaviv: blt: use correct TS offset in clear operations
-      etnaviv: fix wrong surface TS clear size
-      etnaviv: remove copy of resource level in etna_surface
+Eric Engestrom (1):
+      asahi: add fallback for DRM_FORMAT_MOD_INVALID on macOS
 
-Marek Olšák (17):
-      glx,dri: simplify indirect function call syntax
-      dri: move private __DRIDriverVtableExtension out of dri_interface.h
-      frontend/dri: add comments describing drawable invalidation logic
-      frontend/dri: remove __DRIdrawableRec::dri2::stamp
-      frontend/dri: inline __DriverAPIRec
-      frontend/dri: replace the DestroyScreen callback with a direct call
-      frontend/dri: replace the DestroyBuffer callback with a direct call
-      frontend/dri: replace the CopySubBuffer callback with a direct call
-      frontend/dri: inline __DRIdrawable in dri_drawable, make __DRIdrawable opaque
-      frontend/dri: inline __DRIcontext in dri_context, make __DRIcontext opaque
-      frontend/dri: inline __DRIscreen in dri_screen, make __DRIscreen opaque
-      frontend/dri: clean up the hacky implementation of kopper_drawable
-      frontend/dri: move callbacks from the VTable into dri_screen, dri_drawable
-      frontend/dri: clean up updating dri_drawable::refcount
-      frontend/dri: remove the drawable ctx hack, we should always use current context
-      frontend/dri: unduplicate flush_drawable callback
-      frontend/dri: rewrite and comment dri_make_current to make it make sense
+Erik Faye-Lund (8):
+      freedreno/decode: add missing dependency
+      d3d12: fix max-array-layers
+      d3d12: fix return-value for PIPE_CAP_MAX_TEXTURE_3D_LEVELS
+      freedreno: fix PIPE_CAP_MAX_TEXTURE_ARRAY_LAYERS for a6xx
+      zink: check maxImageDimension1D as well as maxImageDimension2D
+      mesa/main: verify more texture-limits for GL 4.1
+      docs/zink: document missing max-image requirements
+      nir: Add helper to create passthrough GS shader
 
-Martin Roukala (né Peres) (2):
-      Revert "glx: Fix drawable refcounting for naked Windows"
-      Revert "glx/dri: Fix DRI drawable release at MakeCurrent time"
+Georg Lehmann (5):
+      aco/optimizer: Cleanup ctx.uses handling for patterns which use follow_operand(..., true).
+      aco: Ignore instructions with exec operands in follow_operand.
+      aco: Combine s_abs and s_sub/s_add to s_absdiff.
+      aco: Combine bit test to s_bitcmp.
+      aco: Combine constant bit test to s_bitcmp.
 
-Matt Coster (8):
-      pvr: util: Add integer digit counting functions
-      pvr: csbgen: Generate enum-to-string functions for debugging
-      pvr: Add pvr_bo_cpu_map_unchanged() helper to load saved vbits on map
-      pvr: debug: Add documentation for PVR_DEBUG environment variable
-      pvr: debug: Add "cs" debug option to dump control stream on job submit
-      pvr: debug: Add option to track pvr_bo allocations
-      pvr: csbgen: Remove TEXTURE_WRAP_VARYING-dependent fields
-      pvr: debug: Add PPP sub-buffer support to CSB dumps.
+Gert Wollny (2):
+      clover: test for nir fp64 lowering options for cl_khr_fp64
+      r600/sfn: always use four slots for Cayman trans ops
 
-Sviatoslav Peleshko (1):
-      driconf/intel: Use fake vendor to WA bad detection in Source engine games
+Italo Nicola (1):
+      panfrost: add GALLIUM_HUD=draw-calls
 
-Tapani Pälli (1):
-      nir: fix a leak of ralloc ctx in nir_opt_ray_query_ranges
+Jessica Clarke (1):
+      panfrost/blend: Fix invalid const values leading to NIR validation errors
 
-Tatsuyuki Ishi (1):
-      radv: Enable rayTracingPipelineShaderGroupHandleCaptureReplay[Mixed].
+Jianxun Zhang (2):
+      intel/dev: Set 'has_flat_ccs' flag for DG2
+      iris: Use devinfo::has_flat_ccs instead of verx10
+
+Jordan Justen (3):
+      intel/dev: Add devinfo::has_caching_uapi (and disable for dg1 and dg2+)
+      anv, iris: Make use of devinfo::has_caching_uapi
+      intel/isl: Disable CCS on MTL
+
+Karmjit Mahil (9):
+      pvr: Explain why dynamic descriptors are allocated separately.
+      pvr: Print out empty row if dynamic primaries or secondaries are missing.
+      pvr: Don't print inactive bindings.
+      pvr: Change how desc set debug output section dividers are printed.
+      pvr: Use glsl syntax to show set and binding number.
+      pvr: Add '+' before desc offsets in debug output.
+      pvr: Don't print out secondaries if they aren't used.
+      pvr: Setup tile buffers.
+      pvr: Add missing valgrind includes and fix unused return value.
+
+Karol Herbst (1):
+      nir/lower_int64: fix shift lowering
+
+Konstantin Seurer (3):
+      radv/ray_queries: Move some initialization outside a likely branch
+      radv/ray_queries: Fix AABB handling
+      radv/rt: Check space before emitting descriptors
+
+Lionel Landwerlin (5):
+      nir/lower_shader_calls: avoid moving loads into loops
+      nir/lower_shader_calls: add a pass to split load/store into scalars
+      nir/lower_shader_calls: enable vectorizer
+      anv: enable lower_shader_calls vectorizing
+      radv: enable lower shader call vectorizing
+
+Mauro Rossi (1):
+      AOSP: Add intel_hasvk vulkan library suffix
+
+Qiang Yu (1):
+      ac/nir: legacy vs/gs use nir_xfb_info to replace pipe_stream_output_info
+
+Rhys Perry (8):
+      radv/llvm: add clip distance outputs manually if they're missing
+      radv,aco: export legacy vertex outputs in NIR
+      radv: lower streamout in NIR
+      radv: make radv_use_llvm_for_stage device parameter const
+      radv,aco: implement GS copy shaders using NIR
+      radv,aco: remove old GS copy shader code
+      radv,aco: remove old streamout code
+      radv: compile GS copy shader after geometry shader
+
+Roman Stratiienko (1):
+      meson: Enable system_has_kms_drm for android
+
+Sajeesh Sidharthan (1):
+      radeonsi/vcn: set current pic index correctly
+
+Samuel Pitoiset (12):
+      radv: emit DB_RENDER_OVERRIDE2 as part of the framebuffer
+      radv: only install 00-radv-defaults.conf if xmlconfig is used
+      radv: reduce CPU overhead when emitting streamout descriptors
+      radv: do not clear VRS_HTILE_ENCODING on GFX11
+      radv: use HTILE for VRS image only on GFX10.3
+      radv: inline gfx10_emit_streamout_{begin,end}()
+      radv: set missing SPI_SHADER_PGM_xxx registers on GFX11
+      radv: set INTERPOLATE_COMP_Z to 0 on GFX11
+      radv: do not enable DCC for MSAA images without FMASK
+      radv: do not enable NGG culling on GFX11
+      radv: disable VRS entirely on GFX11
+      radv: stop emitting R_00B8A0_COMPUTE_PGM_RSRC3 from the CS preamble
+
+Sarah Walker (1):
+      pvr: Query kernel for free list max size
+
+Thong Thai (2):
+      frontends/va: add ability for encoder to output statistics
+      radeonsi/vcn/enc: add encoder statistics support
+
+Vinson Lee (1):
+      freedreno/rddecompiler: Fix memory leak.
+
+Yiwei Zhang (1):
+      venus: fix android wsi with global fencing disabled
 
