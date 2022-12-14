@@ -1,278 +1,188 @@
-Updating from b6616b036f7e8d88be50d46448890b1dee057cbb to 568fa71ef8d825b735fdbf6747ada3d7cfe95eff
+Updating from 568fa71ef8d825b735fdbf6747ada3d7cfe95eff to 34010a50d4240624caaa3e6c303be80f771181e6
 
 Aleksey Komarov (1):
-      panfrost: implement clear_depth_stencil
+      panfrost: fix sampler_count and unbind samplers in bind_sampler_states
 
-Alyssa Rosenzweig (19):
-      ail: Save level_offsets_compressed_B
-      asahi: Enable dirty tracking
-      asahi: Dirty track blend state
-      asahi: Track batch masks on ZS/blend CSO
-      asahi: Implement invalidate_resource
-      asahi: Separate VS/FS shader keys
-      asahi: Dirty track VS/FS key updates
-      asahi: Wire in 1D (array) textures
-      asahi: Check-box implement rasterizer discard
-      asahi: Identify XML for anisotropic filtering
-      asahi: Identify some more fields used with layered
-      asahi: Model alignment of occlusion query indices
-      asahi: Don't shadow idle resources
-      asahi: Fix Z32S8 harder
-      asahi: Don't reload uninitialized surfaces
-      asahi: Avoid reloads with staging blits
-      asahi: Don't upload samplers for clears/stores
-      asahi: Move query functions to agx_query.c
-      asahi: Implement occlusion queries
+Bas Nieuwenhuizen (1):
+      radv: Improved export conflict bug workaround.
 
-Bas Nieuwenhuizen (2):
-      radv: Rename stack_base to stack_low_watermark.
-      radv: Use correct watermark for early loop exit.
+David Wu (1):
+      radeonsi/vcn: add support for 10bit input and enc 8bit output
 
-Boyuan Zhang (1):
-      radeonsi: disable av1 decode for navi24
-
-Brian Paul (8):
-      gallivm: clean-ups in lp_bld_sample.c
-      gallivm: asst. clean-ups in lp_bld_sample_soa.c
-      gallivm: minor clean-ups in lp_bld_quad.c
-      llvmpipe: misc clean-ups in lp_rast.c
-      llvmpipe: misc clean-ups in lp_scene.c
-      gallivm: misc clean-ups in lp_bld_nir.c
-      gallivm: fix incorrect type for undefined texcoords
-      gallivm: s/unsigned/enum util_format_type/ in lp_build_sample_common()
-
-Caio Oliveira (1):
-      intel/compiler: Remove leftover declarations of old NIR passes
-
-Chia-I Wu (2):
-      freedreno: fix compute shared_size underflow
-      freedreno/a6xx: fix blend all_mrt_write_mask
-
-Christian Gmeiner (1):
-      ci: Allow disabling the whole of austriancoder's farm
-
-Connor Abbott (4):
-      ir3/a6xx: Fix immediate offset stg/ldg path
-      tu: Fall back to ldg for variable-size inline uniform blocks
-      vk/descriptor_set_layout: Add optional destructor
-      tu: Implement VK_EXT_descriptor_buffer
-
-Corentin Noël (1):
-      ci: Bump virglrenderer version
-
-Danylo Piliaiev (1):
-      ir3/freedreno: Find regs for FS inputs when printing info
-
-David Heidelberg (5):
-      ci: fix missing line after adding austraincoder's farm killswitch
-      panfrost: Implement GL_EXT_clip_control
-      panfrost: Handle resources without depth in batch_to_fb_info
-      panfrost: implement clear_render_target
-      nine: enable on panfrost
-
-Emma Anholt (7):
-      egl: Remove silly robustness support checks.
-      egl: Replace the robustness DRI2 ext check with a pipe cap query.
-      egl: Move common eglCreateContext() error checks from backends to core.
-      egl: Replace sRGB support check with a pscreen query.
-      gbm: Don't look up the DRI2_FENCE extension.
-      egl: Drop backwards compat for missing __DRI_ATTRIB_*_SHIFT.
-      zink: Don't set dynamic color attachment state for 0 attachments.
+Emma Anholt (5):
+      ci/docs: Always expose the built docs.
+      freedreno: Clarify that CACHE_FLUSH is pre-5xx.
+      doc/freedreno: Add a bunch of docs of the hardware and drivers.
+      freedreno/registers: Add some docs for PM4 events.
+      zink: Fix reversed cap declarations for ImageBuffer
 
 Eric Engestrom (1):
-      docs/release-calendar: add 22.3.x dates
+      v3dv: skip some invalid tests
 
-Erik Faye-Lund (1):
-      zink: do not leave needless shader temps around
+Gert Wollny (4):
+      r600/sfn: check used channels when evaluating allowed mask
+      r600/sfn: prepare alu split for use of variable length dot
+      r600/sfn: Use variable length DOT on Evergreen and Cayman
+      r600: Lower all bitfield ops on pre-EG
 
-Francisco Jerez (1):
-      intel/fs: Make the result of is_unordered() dependent on devinfo.
+Hans-Kristian Arntzen (2):
+      wsi/x11: Fix possible deadlock with wait_ready.
+      wsi/x11: Rename the present progress objects.
 
-Friedrich Vock (4):
-      nir: Do not consider phis with incompatible dests equal
-      nir/lower_shader_calls: Remove phis after dead control flow
-      radv: Change shaderGroupBaseAlignment to RADV_RT_HANDLE_SIZE
-      radv: Handle NULL miss shaders
+Iago López Galeiras (1):
+      asahi: unbind samplers and fix sampler_count if state is NULL
 
-Georg Lehmann (1):
-      nir/opt_algebraic: Optimize open coded bfm.
+Ian Romanick (19):
+      nir/algebraic: Catch some kinds of copy-and-paste bugs in algebraic patterns
+      nir/algebraic: Remove redundant i2b(-x) pattern
+      nir/algebraic: Remove redundant i2b(b2i(x)) patterns
+      nir/algebraic: Reassociate some iand to eliminate an operation
+      nir/algebraic: Simplify min and max of b2i
+      nir/algebraic: Eliminate unary op on src of integer comparison w/ zero
+      nir/algebraic: Optimize some b2i involved in masking operations
+      nir: Use nir_i2b wrapper everywhere instead of using nir_i2b1 directly
+      nir/builder: Emit x != 0 for nir_i2b
+      microsoft/compiler: Simplify nir_intrinsic_load_front_face handling
+      glsl_to_nir: Fix NIR bit-size of ir_triop_bitfield_extract and ir_quadop_bitfield_insert
+      nir/builder: Add rounding mode parameter to nir_type_convert
+      glsl: Use nir_type_convert instead of nir_type_conversion_op
+      nir: Use nir_type_convert instead of nir_type_conversion_op
+      spirv: Use nir_type_convert instead of nir_type_conversion_op
+      microsoft/compiler: Use nir_type_convert instead of nir_type_conversion_op
+      intel/fs: Use nir_type_convert instead of nir_type_conversion_op
+      nir/builder: Handle i2b conversions specially in nir_type_convert
+      nir: Eliminate nir_op_i2b
 
-Gert Wollny (14):
-      r600/sfn: Allow copy prop into GDS sources values
-      r600/sfn: allow more copy-propagate with dest chan fixed.
-      r600/sfn: allow copy propagation to LDS read dest
-      r600/sfn: No need to pin LDS dests to chan
-      r600/sfn: Don't require assignemnt in same block to copy-propagate
-      r600/sfn: Make use of variable length DOT
-      r600/sfn: scheduler allow more lookahead on ALU instr
-      r600/sfn: Cleanup copy-prop into vec4 source values
-      r600/sfn: clean up TF emission in TCS
-      r600/sfn: implement TF allowed channel mask override
-      r600/sfn: nir_op_vec results don't need channel pinning
-      r600/sfn: allocate pinned registers as SSA
-      r600/sfn: implement GDS op channel mask evaluation
-      Revert "r600/sfn: Make use of variable length DOT"
+Iván Briano (1):
+      hasvk: pipelineStageCreationFeedbackCount is allowed to be 0
 
-Jesse Natalie (2):
-      microsoft/compiler: Handle holes in driver_location when adding sysvals
-      microsoft/compiler: Fix codegen when a loop ends in a jump
+Jan Palus (1):
+      vdpau: allow building vdpau st with virgl only
 
-Jianxun Zhang (5):
-      intel/common: Add an enum of formats of AUX mapping
-      intel/common: Add a new struct to describe AUX mapping format
-      intel/common: fix style of some comments in intel_aux_map.h
-      intel/common: initialize format of aux mapping on GFX12
-      intel/common: use format struct in aux mapping
+Jason Ekstrand (4):
+      intel/genxml: Make some fields Booleans
+      intel/genxml: Add 3DPRIMITIVE_EXTENDED opcodes on Gen11+
+      intel/blorp: Emit a dummy 3DSTATE_VF_SGVS_2
+      anv: Use extended parameters on Gen11+
 
-Jordan Justen (1):
-      intel/genxml: Add genX_rt_pack.h
+Kenneth Graunke (7):
+      iris: Drop batch parameter from iris_update_postdraw_resolve_tracking
+      iris: Pin the clear color BO in use_image()
+      iris: Drop 'isl_' prefix from 'formats_are_fast_clear_compatible'
+      iris: Drop disable_rb_aux_buffer handling for image views
+      iris: Update aux state tracking for image views after draws/dispatches
+      iris: Allow fast clears on compressed image load/store access
+      iris: Enable compression for image load/store in more cases
 
-Kenneth Graunke (12):
-      intel/compiler: Set NoMask on cr0 access for float controls mode
-      intel: Drop compressed_multisample_layout_mask from the compiler keys
-      intel/blorp: Set key->msaa_16 unconditionally on Gfx9+
-      intel/compiler: Delete key->msaa_16
-      intel/compiler: Delete sampler key handling for planar format stuff
-      iris: Delete map->dest_had_defined_contents
-      iris: Use persistent mappings for pinned memory (userptr)
-      iris: Promote DISCARD_RANGE to DISCARD_WHOLE_RESOURCE where possible
-      iris: Don't replace backing storage for exported buffers.
-      iris: Return idle status from iris_invalidate_buffer, skip busy checks
-      iris: Only copy existing data into staging images with PIPE_MAP_READ
-      iris: Improve direct CPU map heuristics
+Konstantin Seurer (1):
+      radv/rt: Handle no-null shader flags
 
-Konstantin Seurer (12):
-      radv: Add nir_foreach_variable_with_modes to .clang-format
-      nir/split_vars: Handle ray hit attributes
-      nir: Add intrinsics for hit attribute io
-      radv/rt: Move load_hit_attrib_amd to the top
-      radv/rt: Lower hit attributes to registers
-      radv/rt: Discard metadata after lowering intersection shaders
-      radv/rt: Work around incorrect NOT_DEFERRED handling in Portal RTX
-      radv/rt: Propagate radv_pipeline_key
-      radv/rt: Hash the pipeline key
-      spirv: Add a debug option to force non uniform texture sampling
-      radv: Add a driconf option to force non uniform texture sampling
-      radv: Force non uniform texture sampling with NV Remix
+Lionel Landwerlin (13):
+      anv: fixup descriptor copies
+      isl: make Wa_1806565034 conditional to non robust access
+      intel/fs: make Wa_1806565034 conditional to non robust access
+      anv: disable Wa_1806565034 when robustImageAccess is enabled
+      intel/ds: trace a couple of more pipe control flags
+      anv/utrace: only record the emitted pipecontrol flags
+      anv: document utrace field
+      anv: add a utility function to ensure command buffer space
+      anv: add helper to get current address of a batch
+      anv: move total_batch_size to anv_batch
+      anv: move draw command helpers to their own file
+      genxml: add gen12/12.5 CS prefetch disable bits
+      anv: move functions around to plan for generated draws
 
-Lionel Landwerlin (4):
-      intel/fs: add a saturation propagation test
-      intel: add MTL performance metrics
-      Revert "anv: compile anv_acceleration_structure.c"
-      intel/nir/rt: fixup primitive id
+Marcin Ślusarz (8):
+      anv,intel/compiler/mesh: drop lowering of gl_Primitive*IndicesEXT
+      anv: simplify EXT_mesh_shader lowering
+      intel/compiler/mesh: extract shared code for offset adjustment
+      intel/compiler: split lower_cs_intrinsics_convert_block
+      intel/compiler: optimize away local_inv_index and local_inv_id if workgroup size is 1
+      intel/compiler/mesh: extract emit_urb_direct_vec4_write
+      anv: handle mesh shaders with max primitives == 0
+      anv: assert when number of primitives is higher than max
 
-Marek Olšák (32):
-      st/mesa: remove alignment code from st_setup_current
-      st/mesa: optimize uploading zero-stride vertex attribs
-      st/mesa: simplify st_setup_current parameters
-      st/mesa: move setting draw_needs_minmax_index into st_update_array_templ
-      mesa: add more cases to the gallium vertex_formats table
-      mesa: add a format table for GL_BGRA vertex format translation too
-      mesa: use the format table for double attrib format translation too
-      mesa: fix typos in gl_array_attrib comments
-      gallium: rename st_manager to pipe_frontend_screen (think dri_screen)
-      gallium: remove duplicated st_context_iface::st_context_private
-      gallium: rename st_context_iface::st_manager_private to frontend_context
-      gallium/hud: don't use st_context_iface, use an explicit callback
-      gallium/pp: don't use st_context_iface, use an explicit callback
-      gallium: remove st_context_iface, use st_context directly
-      st/mesa: remove st_context callbacks for dri/glx/wgl frontends
-      gallium: remove enum st_texture_type
-      gallium: move st function declarations from api.h into st_context.h
-      gallium: use PIPE_CONTEXT_* flags instead of ST_CONTEXT_FLAG_*
-      gallium: remove unnecessary ST_PROFILE_*_MASK definitions
-      gallium: remove st_profile_type in favor of gl_api, move out st_context_attribs
-      gallium: rename st_manager_private -> st_screen
-      gallium: remove unused ST_CONTEXT_ERROR_*
-      frontend/glx: inherit st_framebuffer_iface instead of allocating separately
-      gallium: remove st_framebuffer_iface::st_manager_private
-      gallium: clean up comments in api.h, cosmetic changes
-      gallium: remove pipe_frontend_screen::destroy callback, call it directly
-      gallium: rename st_framebuffer_iface -> pipe_frontend_drawable, etc.
-      gallium: add the u_vbuf pointer into pipe_context
-      gallium/u_vbuf: change u_vbuf_draw_vbo to accept pipe_context as first param
-      cso: unify cso_draw_vbo and cso_multi_draw
-      cso: add a base class cso_context_base holding pipe_context*
-      cso: remove cso_draw_vbo from all draws, call the driver or u_vbuf directly
+Marek Olšák (30):
+      mesa: split _mesa_set_draw_vao into set and update functions
+      mesa: keep the current VAO also set as _DrawVAO
+      mesa: remove unused inline functions from arrayobj.h
+      mesa: merge _mesa_draw_(user_array,nonzero_divisor)_bits into one helper
+      mesa: remove derived _EffEnabled* fields and compute them at their only use
+      mesa: merge 2 switch statements into one in _mesa_get_derived_vao_masks
+      mesa: don't call _mesa_update_vao_derived_arrays for dynamic VAOs
+      mesa: don't call _mesa_set_varying_vp_inputs in set_vertex_processing_mode
+      mesa: completely rewrite the edge flag state update logic
+      mesa: remove per_vertex_edgeflags parameter from DrawGalliumVertexState
+      st/mesa: remove st_context::dirty, use gl_context::NewDirtyState instead
+      st/mesa: remove the switch from st_validate_state by passing state mask directly
+      st/mesa: inline st_validate_state and remove redundant checking in callers
+      st/mesa: move st_atom.c contents into st_context.c
+      mesa: remove the NewVAO flag, set directly what we need to set
+      mesa: move calling _mesa_update_vao_derived_arrays into st_update_array
+      mesa: remove VAO::NewVertexBuffers/Elements, set the dirty flags directly
+      mesa: simplify VBO state flagging in _mesa_update_vao_state
+      mesa: don't AND with VERT_BIT_ALL because it's ~0u
+      mesa: inline _mesa_draw_array_bits & _mesa_draw_current_bits
+      mesa: move _DrawVAOEnabledAttribs determination into st_update_array
+      mesa: move the _mesa_set_varying_vp_inputs call to where the state changes
+      cso: fix a regression from draw_vbo rework
+      nir: add nir_texop_sampler_descriptor_amd
+      nir: remove redundant SLC_AMD in favor of ACCESS_STREAM_CACHE_POLICY
+      nir: replace IS_SWIZZLED flag with ACCESS_IS_SWIZZLED_AMD
+      nir: add ACCESS_USES_FORMAT_AMD for typed buffer opcodes
+      ac/llvm: unify load_buffer_amd and store_buffer_amd code
+      ac/llvm: implement ACCESS_USE_FORMAT_AMD as buffer_load/store_format
+      nir: validate that store_buffer_amd doesn't use a non-trivial writemask
 
-Martin Roukala (né Peres) (1):
-      ci/valve-infra: use a new version of the mesa trigger
+Martin Roukala (né Peres) (3):
+      ci/test-vk: uprev vkd3d
+      radv/ci: bump most jobs to the kernel to 6.1 + latest firmwares
+      ci/venus: add a VKCTS mapping test to the flakes list
 
-Matt Coster (6):
-      pvr: Refactor pvr_compute_pipeline and pvr_compute_pipeline_shader
-      pvr: Track max_shared_regs for compute jobs
-      pvr: Extract common code from pvr_CmdDispatch{,Indirect}
-      pvr: Add stencil support in render job setup
-      pvr: Account for other depth formats in pvr_frag_state_stream_init()
-      pvr: Check depth/stencil attachment is tile-aligned
+Nanley Chery (4):
+      intel: Hook up RENDER_SURFACE_STATE::DecompressInL3
+      intel/isl: Lessen CCS_E-compatibility checks for TGL+
+      intel/isl: Bump format_info entries from 100 to 110
+      intel: Allow CCS_E on R11G11B10_FLOAT for TGL+
 
-Max Lee (1):
-      drm-shim: add __readlink_chk as readlink with overflow check
+Peng Huang (1):
+      intel: Fix crashes for importing drm buffer
 
-Mikhail Korolev (1):
-      radv: fix assertion on gpu hang detection
-
-Oleksii Bozhenko (1):
-      brw: fix saturate propagation region overlap range
-
-Paulo Zanoni (6):
-      intel/compiler: on MTL, DF instructions run in the math pipe
-      intel/compiler: avoid (RegDist, SBID) on DF instructions on MTL
-      intel/compiler: avoid 64bit SEL_EXEC on MTL
-      intel/compiler: export brw_num_sources_from_inst
-      intel/compiler: fix intel_swsb_decode for newer platforms
-      intel: add devinfo->has_64bit_float_via_math_pipe
-
-Rebecca Mckeever (7):
-      vulkan/runtime: Add VK_KHR_device_group provided entrypoints
-      radv: Delete VK_KHR_device_group provided entrypoints
-      v3dv: Delete VK_KHR_device_group provided entrypoints
-      tu: Delete VK_KHR_device_group provided entrypoints
-      anv: Delete VK_KHR_device_group provided entrypoints
-      hasvk: Delete VK_KHR_device_group provided entrypoints
-      panvk: Delete panvk_CmdSetDeviceMask, panvk_GetDeviceGroupPeerMemoryFeatures
-
-Rhys Perry (9):
-      aco/ra: don't swap p_create_vector operand with definition blocker for scc
-      aco/ra: don't swap create_vector operand with definition blocker for SGPRs
-      radv: fix streamout with different streams in the same varying slot
-      radv: remove some unnecessary 64-bit IO handling
-      radv: fix mesh shaders with null winsys
-      radv: fix task payload lowering when shared_memory_explicit_layout=true
-      nir: add task_payload and shader_out to nir_var_vec_indexable_modes
-      vtn: add mesh output and task_payload to vtn_mode_is_cross_invocation
-      nir/gather_info: use nir_ssa_scalar_resolved
-
-Ruijing Dong (6):
-      gallium: add film_grain_target into av1 dec desc
-      frontends/omx: initialize film_grain_target
-      frontneds/va: use current_display_picture from VA for film grain
-      frontends/va: pass in film_grain_target as new output
-      radeonsi/vcn: av1 film_grain output fix
-      frontends/va: fix gst videotestsrc h264 enc fail issue.
+Qiang Yu (7):
+      nir,radv,radeonsi: add nir_atomic_add_gs_invocation_count_amd
+      ac/nir,radeonsi: replace llvm ngg gs invocation query with nir
+      nir: add nir_load_ring_gs2vs_offset_amd
+      ac/llvm,radv,radeonsi: pass instruction to intrinsic_load abi
+      nir,ac/llvm,radv: add stream id index to nir_load_ring_gsvs_amd
+      ac/nir: move ngg_gs_shader_query to a common function
+      ac/nir: add ac_nir_lower_legacy_gs
 
 Samuel Pitoiset (6):
-      radv,aco: rename color output related fields for consistency
-      radv,aco: use 8-bit for color_is_int{8,10} everywhere
-      radv: fix PS epilogs with RADV_PERFTEST=pswave32
-      radv,aco: move radv_ps_epilog_key to the graphics pipeline key
-      radv: fix re-emitting the RB+ state when dynamic color write mask change
-      radv: fix hashing descriptor set layout
+      radv: do not remove the PointSize built-in for polygon mode as points
+      spirv: add support for AMD_shader_early_and_late_fragment_tests
+      radv: implement AMD_shader_early_and_late_fragment_tests
+      radv: advertise VK_AMD_shader_early_and_late_fragment_tests
+      radv: move a conditional check to radv_remove_color_exports()
+      radv: disable more NIR opts in radv_postprocess_nir() with DISABLE_OPTIMIZATIONS
 
-Tapani Pälli (2):
-      intel/fs: implement Wa_14017989577
-      anv: emit sample mask state independent of fragment stage
+Sathishkumar S (2):
+      radeonsi/vcn: fix regression in yuv422 jpeg decode
+      frontends/va: fix crash during grayscale rendering
 
-Tatsuyuki Ishi (1):
-      aco: Migrate RA to use std::optional
+Timothy Arceri (1):
+      glsl: fix function inlining for images
 
-Thong Thai (1):
-      gallium: add new variable for video frame statistics
-
-Väinö Mäkelä (1):
-      hasvk: Allow aliasing with modifiers for WSI images
+Timur Kristóf (5):
+      aco: Don't accept constants on p_bpermute.
+      aco: Split opcodes for GFX6 and GFX10 emulated bpermute.
+      aco: Stylistic changes to emit_gfx10_wave64_bpermute.
+      aco: Emulate Wave64 bpermute on GFX11.
+      radv: Don't lower subgroup shuffle on GFX11.
 
 Yonggang Luo (2):
-      frontend/hgl: inherit pipe_frontend_drawable instead of allocating separately
-      frontend/osmesa: inherit pipe_frontend_drawable instead of allocating separately
+      gallium/hud: typedef and use hud_st_invalidate_state_func to avoid cast
+      gallium/pp: typedef and use pp_st_invalidate_state_func to avoid cast
+
+车扬 (1):
+      intel: fix the wrong function name
 
