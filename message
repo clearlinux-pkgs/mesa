@@ -1,188 +1,66 @@
-Updating from 568fa71ef8d825b735fdbf6747ada3d7cfe95eff to 34010a50d4240624caaa3e6c303be80f771181e6
+Updating from 34010a50d4240624caaa3e6c303be80f771181e6 to 87f0b7d0c1a0a611e6fccef1764b8428d03d84de
 
-Aleksey Komarov (1):
-      panfrost: fix sampler_count and unbind samplers in bind_sampler_states
+Alyssa Rosenzweig (1):
+      panfrost: Add tool to print supported texture formats
 
-Bas Nieuwenhuizen (1):
-      radv: Improved export conflict bug workaround.
+Connor Abbott (5):
+      freedreno: Document various preemption-related registers/packets
+      freedreno/a6xx: Document buffer-specific tex const fields
+      freedreno/fdl: Support texel-aligned iova for buffer views
+      tu: Expose *TexelBufferOffsetSingleTexelAlignment
+      tu: Use start offset for storage buffers
 
-David Wu (1):
-      radeonsi/vcn: add support for 10bit input and enc 8bit output
+Emma Anholt (4):
+      ci/baremetal: Clean the directory we unpack artifacts into.
+      ci/bare-metal: Avoid a bug in armhf stripping causing tempfiles in artifacts.
+      ci/nouveau: Sort some uncategorized gk20a flakes.
+      ci/nouveau: Add a bunch of the top hits of gk20a flakes.
 
-Emma Anholt (5):
-      ci/docs: Always expose the built docs.
-      freedreno: Clarify that CACHE_FLUSH is pre-5xx.
-      doc/freedreno: Add a bunch of docs of the hardware and drivers.
-      freedreno/registers: Add some docs for PM4 events.
-      zink: Fix reversed cap declarations for ImageBuffer
+Eric Engestrom (3):
+      docs: add release notes for 22.3.1
+      docs: update calendar and link releases notes for 22.3.1
+      vc4: replace open-coded F_DUPFD_CLOEXEC with os_dupfd_cloexec()
 
-Eric Engestrom (1):
-      v3dv: skip some invalid tests
+Jianxun Zhang (4):
+      intel/common: Support 1MB granularity AUX mapping format (Bspec 44930)
+      intel/isl: Support 1MB alignment for AUX mapping
+      intel/vulkan: replace AUX macros with interfaces
+      intel/common: clean up AUX macros
 
-Gert Wollny (4):
-      r600/sfn: check used channels when evaluating allowed mask
-      r600/sfn: prepare alu split for use of variable length dot
-      r600/sfn: Use variable length DOT on Evergreen and Cayman
-      r600: Lower all bitfield ops on pre-EG
+Jordan Justen (2):
+      intel/common: Add intel_genX_state.h
+      intel/common/intel_genX_state.h: Add intel_set_ps_dispatch_state()
 
-Hans-Kristian Arntzen (2):
-      wsi/x11: Fix possible deadlock with wait_ready.
-      wsi/x11: Rename the present progress objects.
+Kenneth Graunke (3):
+      nir: Perform 'weak' global value numbering in all GCM passes
+      nir: Allow more than just ALU instructions in 'weak' GVN
+      st/mesa: Enable Alpha writes when writing RGB faked as RGBA
 
-Iago López Galeiras (1):
-      asahi: unbind samplers and fix sampler_count if state is NULL
+Konstantin Seurer (4):
+      radv/rra: Emit leaf node ids for leaf nodes instead of internal nodes
+      radv/rra: Refactor resource management during dumping
+      radv/rra: Validate geometry_id
+      radv/rra: Fix leaf node id order
 
-Ian Romanick (19):
-      nir/algebraic: Catch some kinds of copy-and-paste bugs in algebraic patterns
-      nir/algebraic: Remove redundant i2b(-x) pattern
-      nir/algebraic: Remove redundant i2b(b2i(x)) patterns
-      nir/algebraic: Reassociate some iand to eliminate an operation
-      nir/algebraic: Simplify min and max of b2i
-      nir/algebraic: Eliminate unary op on src of integer comparison w/ zero
-      nir/algebraic: Optimize some b2i involved in masking operations
-      nir: Use nir_i2b wrapper everywhere instead of using nir_i2b1 directly
-      nir/builder: Emit x != 0 for nir_i2b
-      microsoft/compiler: Simplify nir_intrinsic_load_front_face handling
-      glsl_to_nir: Fix NIR bit-size of ir_triop_bitfield_extract and ir_quadop_bitfield_insert
-      nir/builder: Add rounding mode parameter to nir_type_convert
-      glsl: Use nir_type_convert instead of nir_type_conversion_op
-      nir: Use nir_type_convert instead of nir_type_conversion_op
-      spirv: Use nir_type_convert instead of nir_type_conversion_op
-      microsoft/compiler: Use nir_type_convert instead of nir_type_conversion_op
-      intel/fs: Use nir_type_convert instead of nir_type_conversion_op
-      nir/builder: Handle i2b conversions specially in nir_type_convert
-      nir: Eliminate nir_op_i2b
+Patrick Lerda (1):
+      panfrost: fix memory leak related to disk cache
 
-Iván Briano (1):
-      hasvk: pipelineStageCreationFeedbackCount is allowed to be 0
+Paulo Zanoni (5):
+      anv: remove anv_execbuf->surface_states_relocs
+      anv: remove anv_reloc_list->num_relocs
+      anv: remove anv_reloc_list_grow()
+      anv: remove anv_reloc_list->reloc_bos
+      anv: remove anv_reloc_list->array_length
 
-Jan Palus (1):
-      vdpau: allow building vdpau st with virgl only
+Rhys Perry (2):
+      ac/nir: fix ngg culling on gfx11
+      ac/nir: remove num_es_threads_var
 
-Jason Ekstrand (4):
-      intel/genxml: Make some fields Booleans
-      intel/genxml: Add 3DPRIMITIVE_EXTENDED opcodes on Gen11+
-      intel/blorp: Emit a dummy 3DSTATE_VF_SGVS_2
-      anv: Use extended parameters on Gen11+
+Rohan Garg (1):
+      anv: Refactor anv_pipeline to use the anv_pipeline_type
 
-Kenneth Graunke (7):
-      iris: Drop batch parameter from iris_update_postdraw_resolve_tracking
-      iris: Pin the clear color BO in use_image()
-      iris: Drop 'isl_' prefix from 'formats_are_fast_clear_compatible'
-      iris: Drop disable_rb_aux_buffer handling for image views
-      iris: Update aux state tracking for image views after draws/dispatches
-      iris: Allow fast clears on compressed image load/store access
-      iris: Enable compression for image load/store in more cases
-
-Konstantin Seurer (1):
-      radv/rt: Handle no-null shader flags
-
-Lionel Landwerlin (13):
-      anv: fixup descriptor copies
-      isl: make Wa_1806565034 conditional to non robust access
-      intel/fs: make Wa_1806565034 conditional to non robust access
-      anv: disable Wa_1806565034 when robustImageAccess is enabled
-      intel/ds: trace a couple of more pipe control flags
-      anv/utrace: only record the emitted pipecontrol flags
-      anv: document utrace field
-      anv: add a utility function to ensure command buffer space
-      anv: add helper to get current address of a batch
-      anv: move total_batch_size to anv_batch
-      anv: move draw command helpers to their own file
-      genxml: add gen12/12.5 CS prefetch disable bits
-      anv: move functions around to plan for generated draws
-
-Marcin Ślusarz (8):
-      anv,intel/compiler/mesh: drop lowering of gl_Primitive*IndicesEXT
-      anv: simplify EXT_mesh_shader lowering
-      intel/compiler/mesh: extract shared code for offset adjustment
-      intel/compiler: split lower_cs_intrinsics_convert_block
-      intel/compiler: optimize away local_inv_index and local_inv_id if workgroup size is 1
-      intel/compiler/mesh: extract emit_urb_direct_vec4_write
-      anv: handle mesh shaders with max primitives == 0
-      anv: assert when number of primitives is higher than max
-
-Marek Olšák (30):
-      mesa: split _mesa_set_draw_vao into set and update functions
-      mesa: keep the current VAO also set as _DrawVAO
-      mesa: remove unused inline functions from arrayobj.h
-      mesa: merge _mesa_draw_(user_array,nonzero_divisor)_bits into one helper
-      mesa: remove derived _EffEnabled* fields and compute them at their only use
-      mesa: merge 2 switch statements into one in _mesa_get_derived_vao_masks
-      mesa: don't call _mesa_update_vao_derived_arrays for dynamic VAOs
-      mesa: don't call _mesa_set_varying_vp_inputs in set_vertex_processing_mode
-      mesa: completely rewrite the edge flag state update logic
-      mesa: remove per_vertex_edgeflags parameter from DrawGalliumVertexState
-      st/mesa: remove st_context::dirty, use gl_context::NewDirtyState instead
-      st/mesa: remove the switch from st_validate_state by passing state mask directly
-      st/mesa: inline st_validate_state and remove redundant checking in callers
-      st/mesa: move st_atom.c contents into st_context.c
-      mesa: remove the NewVAO flag, set directly what we need to set
-      mesa: move calling _mesa_update_vao_derived_arrays into st_update_array
-      mesa: remove VAO::NewVertexBuffers/Elements, set the dirty flags directly
-      mesa: simplify VBO state flagging in _mesa_update_vao_state
-      mesa: don't AND with VERT_BIT_ALL because it's ~0u
-      mesa: inline _mesa_draw_array_bits & _mesa_draw_current_bits
-      mesa: move _DrawVAOEnabledAttribs determination into st_update_array
-      mesa: move the _mesa_set_varying_vp_inputs call to where the state changes
-      cso: fix a regression from draw_vbo rework
-      nir: add nir_texop_sampler_descriptor_amd
-      nir: remove redundant SLC_AMD in favor of ACCESS_STREAM_CACHE_POLICY
-      nir: replace IS_SWIZZLED flag with ACCESS_IS_SWIZZLED_AMD
-      nir: add ACCESS_USES_FORMAT_AMD for typed buffer opcodes
-      ac/llvm: unify load_buffer_amd and store_buffer_amd code
-      ac/llvm: implement ACCESS_USE_FORMAT_AMD as buffer_load/store_format
-      nir: validate that store_buffer_amd doesn't use a non-trivial writemask
-
-Martin Roukala (né Peres) (3):
-      ci/test-vk: uprev vkd3d
-      radv/ci: bump most jobs to the kernel to 6.1 + latest firmwares
-      ci/venus: add a VKCTS mapping test to the flakes list
-
-Nanley Chery (4):
-      intel: Hook up RENDER_SURFACE_STATE::DecompressInL3
-      intel/isl: Lessen CCS_E-compatibility checks for TGL+
-      intel/isl: Bump format_info entries from 100 to 110
-      intel: Allow CCS_E on R11G11B10_FLOAT for TGL+
-
-Peng Huang (1):
-      intel: Fix crashes for importing drm buffer
-
-Qiang Yu (7):
-      nir,radv,radeonsi: add nir_atomic_add_gs_invocation_count_amd
-      ac/nir,radeonsi: replace llvm ngg gs invocation query with nir
-      nir: add nir_load_ring_gs2vs_offset_amd
-      ac/llvm,radv,radeonsi: pass instruction to intrinsic_load abi
-      nir,ac/llvm,radv: add stream id index to nir_load_ring_gsvs_amd
-      ac/nir: move ngg_gs_shader_query to a common function
-      ac/nir: add ac_nir_lower_legacy_gs
-
-Samuel Pitoiset (6):
-      radv: do not remove the PointSize built-in for polygon mode as points
-      spirv: add support for AMD_shader_early_and_late_fragment_tests
-      radv: implement AMD_shader_early_and_late_fragment_tests
-      radv: advertise VK_AMD_shader_early_and_late_fragment_tests
-      radv: move a conditional check to radv_remove_color_exports()
-      radv: disable more NIR opts in radv_postprocess_nir() with DISABLE_OPTIMIZATIONS
-
-Sathishkumar S (2):
-      radeonsi/vcn: fix regression in yuv422 jpeg decode
-      frontends/va: fix crash during grayscale rendering
-
-Timothy Arceri (1):
-      glsl: fix function inlining for images
-
-Timur Kristóf (5):
-      aco: Don't accept constants on p_bpermute.
-      aco: Split opcodes for GFX6 and GFX10 emulated bpermute.
-      aco: Stylistic changes to emit_gfx10_wave64_bpermute.
-      aco: Emulate Wave64 bpermute on GFX11.
-      radv: Don't lower subgroup shuffle on GFX11.
-
-Yonggang Luo (2):
-      gallium/hud: typedef and use hud_st_invalidate_state_func to avoid cast
-      gallium/pp: typedef and use pp_st_invalidate_state_func to avoid cast
-
-车扬 (1):
-      intel: fix the wrong function name
+Samuel Pitoiset (3):
+      radv/ci: add lists for GFX1100
+      ac/rgp: add missing GFX11 bits for RGP
+      ac/sqtt: bump the maximum number of traces to 6 for GFX11
 
