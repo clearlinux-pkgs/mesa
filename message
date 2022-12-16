@@ -1,66 +1,140 @@
-Updating from 34010a50d4240624caaa3e6c303be80f771181e6 to 87f0b7d0c1a0a611e6fccef1764b8428d03d84de
+Updating from 87f0b7d0c1a0a611e6fccef1764b8428d03d84de to 50b7d36428b2175fe407d3559d06e0a890e94d1b
 
-Alyssa Rosenzweig (1):
-      panfrost: Add tool to print supported texture formats
+Alyssa Rosenzweig (8):
+      asahi: Remove agx_blit_format
+      panfrost: Remove RGTC emulation relic
+      panfrost: Remove panfrost_blit_format
+      panfrost: Align WSI strides for tiled AFBC
+      panfrost: Luminance-alpha AFBC unsupported on v7+
+      panfrost: Introduce pan_afbc_mode
+      panfrost: Allow swizzled AFBC on v9+
+      panfrost: Don't use texture format swizzles on v7
 
-Connor Abbott (5):
-      freedreno: Document various preemption-related registers/packets
-      freedreno/a6xx: Document buffer-specific tex const fields
-      freedreno/fdl: Support texel-aligned iova for buffer views
-      tu: Expose *TexelBufferOffsetSingleTexelAlignment
-      tu: Use start offset for storage buffers
+Benjamin Tissoires (1):
+      CI: Overwrite valve infra's registry
 
-Emma Anholt (4):
-      ci/baremetal: Clean the directory we unpack artifacts into.
-      ci/bare-metal: Avoid a bug in armhf stripping causing tempfiles in artifacts.
-      ci/nouveau: Sort some uncategorized gk20a flakes.
-      ci/nouveau: Add a bunch of the top hits of gk20a flakes.
+Chad Versace (2):
+      util/vma: Track size of free memory in heap
+      anv: Use vma_heap for descriptor pool host allocation
 
-Eric Engestrom (3):
-      docs: add release notes for 22.3.1
-      docs: update calendar and link releases notes for 22.3.1
-      vc4: replace open-coded F_DUPFD_CLOEXEC with os_dupfd_cloexec()
+David Heidelberg (3):
+      ci: restore reliable Alpine 3.16
+      ci: ci_run_n_monitor fix Unicode log parsing
+      ci: allow omitting of --rev for ci_run_n_monitor.py
 
-Jianxun Zhang (4):
-      intel/common: Support 1MB granularity AUX mapping format (Bspec 44930)
-      intel/isl: Support 1MB alignment for AUX mapping
-      intel/vulkan: replace AUX macros with interfaces
-      intel/common: clean up AUX macros
+Erik Faye-Lund (4):
+      zink: fix line-stipple varying allocation
+      zink: add line-smooth lowering passes
+      zink: lower smooth-lines if not supported
+      zink: fix line-smooth interpolation
 
-Jordan Justen (2):
-      intel/common: Add intel_genX_state.h
-      intel/common/intel_genX_state.h: Add intel_set_ps_dispatch_state()
+Gert Wollny (2):
+      r600: don't try to serialized shaders translated from TGSI
+      r600/sfn: Check possibility of channel switching also for trans-slot
 
-Kenneth Graunke (3):
-      nir: Perform 'weak' global value numbering in all GCM passes
-      nir: Allow more than just ALU instructions in 'weak' GVN
-      st/mesa: Enable Alpha writes when writing RGB faked as RGBA
+Iago Toral Quiroga (6):
+      v3dv: always store/restore attachment state during meta operations
+      v3dv: don't resolve by averaging samples on depth/stencil resolves
+      v3dv: handle depth/stencil resolves we can't implement via TLB
+      v3dv: honor render area in subpass resolve fallback
+      v3dv: pipeline creation feedback may not request all stages
+      v3dv: be more careful when restoring dirty state after meta operations
 
-Konstantin Seurer (4):
-      radv/rra: Emit leaf node ids for leaf nodes instead of internal nodes
-      radv/rra: Refactor resource management during dumping
-      radv/rra: Validate geometry_id
-      radv/rra: Fix leaf node id order
+Iván Briano (1):
+      Revert "anv: Refactor anv_pipeline to use the anv_pipeline_type"
 
-Patrick Lerda (1):
-      panfrost: fix memory leak related to disk cache
+Jesse Natalie (11):
+      microsoft/compiler: Handle both input and output clip/cull distances
+      microsoft/compiler: Make nir_var_to_dxil_sysvalue_type static
+      microsoft/compiler: Sort all user varyings before any sysvals
+      microsoft/compiler: Handle cull distance starting fractional with no previous clip
+      dzn: Get options15
+      dzn: Use driver-implemented triangle fans if available
+      dzn: Use ResolveSubresourceRegion to support non-averaging resolve modes
+      dzn: Don't add UAV flag to DSV textures
+      dzn: Pass input clip size to shader compilation
+      dzn: Swizzle SRV access to stencil
+      d3d12/ci: Update expectations
 
-Paulo Zanoni (5):
-      anv: remove anv_execbuf->surface_states_relocs
-      anv: remove anv_reloc_list->num_relocs
-      anv: remove anv_reloc_list_grow()
-      anv: remove anv_reloc_list->reloc_bos
-      anv: remove anv_reloc_list->array_length
+Jianxun Zhang (1):
+      intel/dev: Enable AUX map on MTL
 
-Rhys Perry (2):
-      ac/nir: fix ngg culling on gfx11
-      ac/nir: remove num_es_threads_var
+Jordan Justen (3):
+      iris/resource: Check devinfo::has_local_mem before using BO_ALLOC_LMEM
+      intel/aux_map: Ignore format bits when using tile-4
+      intel/isl: Disable CCS on MTL until B0 (Wa_14017353530)
 
-Rohan Garg (1):
-      anv: Refactor anv_pipeline to use the anv_pipeline_type
+José Roberto de Souza (4):
+      iris: Store intel_device_info in iris_bufmgr
+      iris: Only fetch intel_device_info once per bufmgr
+      iris: Nuke flags from iris_bufmgr that can read from devinfo
+      iris: Nuke dead IRIS_CONTEXT* macros
+
+Karol Herbst (3):
+      nir_lower_io_to_scalar: make use of nir_get_io_offset_src
+      nir_lower_io_to_scalar: handle load/store_global
+      zink: lower mem_global to scalar
+
+Kenneth Graunke (1):
+      iris: Don't reject CPU access for non-invalidating buffer write maps
+
+Lionel Landwerlin (1):
+      anv: fixup another dirty issue with gpu_memcpy
+
+Liviu Prodea (1):
+      OpenCL/draw module: Support linking with LLVM and clang 15 static libraries
+
+Michel Dänzer (4):
+      loader/dri3: Clean up dri3_find_back logic
+      loader/dri3: Find idle buffer with minimum buffer age in dri3_find_back
+      loader/dri3: Simplify new buffer allocation in dri3_find_back
+      egl/wayland: Prefer back buffer with minimum buffer age
+
+Nanley Chery (1):
+      iris: Check for zero in clear color compatibility fn
+
+Rhys Perry (6):
+      aco/gfx11: export mrtz in discard early exit for non-color shaders
+      radv/gfx11: disable mesh shaders
+      aco/gfx11: implement load_input_vertex
+      ac/llvm/gfx11: implement load_input_vertex
+      radv/gfx11: enable VK_AMD_shader_explicit_vertex_parameter
+      radv/ci: add yet another pipeline barrier test as flake
+
+Ryan Neph (11):
+      venus: formatting fixes
+      venus: update venus-protocol for multiple timelines
+      venus: use upstream DRM_IOCTL_VIRTGPU_CONTEXT_INIT
+      venus: bind VkQueue to available ring_idx at creation
+      venus: allow renderer submissions on per-context virtgpu rings
+      venus: remove workaround for empty renderer submissions
+      venus: place wsi submissions on corresponding ring_idx
+      venus: support external fencing with multiple timelines
+      venus: add supports_multiple_timelines capset and enable
+      venus: support vtest+multiple_timelines and enable
+      venus: rename sync_queue -> timeline
 
 Samuel Pitoiset (3):
-      radv/ci: add lists for GFX1100
-      ac/rgp: add missing GFX11 bits for RGP
-      ac/sqtt: bump the maximum number of traces to 6 for GFX11
+      radv: import compiled binaries from libraries only when fast-linking is enabled
+      radv: enable graphicsPipelineLibraryFastLinking
+      radv: enable graphicsPipelineLibraryIndependentInterpolationDecoration
+
+Sil Vilerino (1):
+      d3d12: Add ASSERTED to variables only used in debug builds to fix build MSVC with C4189 errors
+
+Tapani Pälli (1):
+      anv: remove some gen8 specifics handled now in hasvk
+
+Yonggang Luo (11):
+      loader: fixes -Werror,-Wdeprecated-non-prototype for clang-15 in pipe-loader
+      panvk: Fixes -Werror,-Wunused-but-set-variable for clang-15 in panvk_descriptor_set.c
+      glsl: Fixes ident issue in glsl_parser.yy and update editorconfig for it
+      glsl: replace tab with 3 space in glcpp-parse.y
+      glsl: Fixes indent issue after replace tab with 3 space by tools in glcpp-parse.y
+      glsl: fixes -Werror,-Wunused-but-set-variable for clang-15 in glcpp-parse.y and glsl_parser.yy
+      util: Indent u_debug.c with 3 space instead of tab
+      util: Improve prototype of debug_get_num_option and debug_get_flags_option
+      util: Improve os_get_android_option to be thread-safe
+      util: Add function debug_get_option_cached os_get_option_cached
+      util: Fixes thread safety of DEBUG_GET_ONCE_*_OPTION macros
 
