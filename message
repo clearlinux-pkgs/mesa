@@ -1,140 +1,130 @@
-Updating from 87f0b7d0c1a0a611e6fccef1764b8428d03d84de to 50b7d36428b2175fe407d3559d06e0a890e94d1b
+Updating from 50b7d36428b2175fe407d3559d06e0a890e94d1b to a04720dc1c16bee72a18609069387df0862f00bd
 
-Alyssa Rosenzweig (8):
-      asahi: Remove agx_blit_format
-      panfrost: Remove RGTC emulation relic
-      panfrost: Remove panfrost_blit_format
-      panfrost: Align WSI strides for tiled AFBC
-      panfrost: Luminance-alpha AFBC unsupported on v7+
-      panfrost: Introduce pan_afbc_mode
-      panfrost: Allow swizzled AFBC on v9+
-      panfrost: Don't use texture format swizzles on v7
+Alyssa Rosenzweig (14):
+      nir: Add store_zs_agx intrinsic
+      docs/features: Mark panfrost supporting aniso
+      docs/features: Mark ARB_occlusion_query2 as done on asahi
+      ail: Fix tile sizes
+      agx: Coalesce i2i16 and u2u16
+      agx: Fix packing of extension for block image stores
+      asahi: Allow texturing S8 portion of combined Z/S
+      agx: Implement depth and stencil export
+      asahi: Implement depth and stencil export
+      asahi: Identify XML for more flatshading controls
+      asahi: Set flatshading controls appropriately
+      asahi: Identify seamful cube map bit
+      asahi: Implement anisotropy
+      panfrost: Add architecture description XML for v10
 
-Benjamin Tissoires (1):
-      CI: Overwrite valve infra's registry
+Asahi Lina (13):
+      ail: Always allocate the full miptree
+      ail: Fix typo
+      ail: Assert that the mip level is in bounds
+      asahi: Do not leak staging resources for PIPE_MAP_READ
+      asahi: Don't crash on VBOs without resources
+      asahi: Ensure we always have space for stream links + padding
+      asahi: Consider shared resources always valid
+      asahi: Fix off-by-one assert in agx_create_vertex_elements
+      asahi: Allocate enough push ranges for the worst possible case
+      asahi: Fix include guard comment on decode.h
+      asahi: Identify & disable triangle merging for shaders using derivatives
+      asahi: Put meta shader keys into the meta shader itself
+      asahi: Enable VS_INSTANCEID and VERTEX_ELEMENT_INSTANCE_DIVISOR caps
 
-Chad Versace (2):
-      util/vma: Track size of free memory in heap
-      anv: Use vma_heap for descriptor pool host allocation
+David Heidelberg (2):
+      ci: ci_run_n_monitor.py: fix args.rev leftover
+      ci: move the CI handling scripts into bin/ci
 
-David Heidelberg (3):
-      ci: restore reliable Alpine 3.16
-      ci: ci_run_n_monitor fix Unicode log parsing
-      ci: allow omitting of --rev for ci_run_n_monitor.py
+Erico Nunes (1):
+      ci: Lima farm maintenance
 
-Erik Faye-Lund (4):
-      zink: fix line-stipple varying allocation
-      zink: add line-smooth lowering passes
-      zink: lower smooth-lines if not supported
-      zink: fix line-smooth interpolation
+Friedrich Vock (3):
+      radv/rt: PLOC fixes for active_leaf_count
+      radv/rt: Execute memory barrier before updating the phase end count
+      radv/rt: Refactor exiting PLOC
 
 Gert Wollny (2):
-      r600: don't try to serialized shaders translated from TGSI
-      r600/sfn: Check possibility of channel switching also for trans-slot
-
-Iago Toral Quiroga (6):
-      v3dv: always store/restore attachment state during meta operations
-      v3dv: don't resolve by averaging samples on depth/stencil resolves
-      v3dv: handle depth/stencil resolves we can't implement via TLB
-      v3dv: honor render area in subpass resolve fallback
-      v3dv: pipeline creation feedback may not request all stages
-      v3dv: be more careful when restoring dirty state after meta operations
-
-Iván Briano (1):
-      Revert "anv: Refactor anv_pipeline to use the anv_pipeline_type"
-
-Jesse Natalie (11):
-      microsoft/compiler: Handle both input and output clip/cull distances
-      microsoft/compiler: Make nir_var_to_dxil_sysvalue_type static
-      microsoft/compiler: Sort all user varyings before any sysvals
-      microsoft/compiler: Handle cull distance starting fractional with no previous clip
-      dzn: Get options15
-      dzn: Use driver-implemented triangle fans if available
-      dzn: Use ResolveSubresourceRegion to support non-averaging resolve modes
-      dzn: Don't add UAV flag to DSV textures
-      dzn: Pass input clip size to shader compilation
-      dzn: Swizzle SRV access to stencil
-      d3d12/ci: Update expectations
+      r600/sfn: don't use a return register when shader doesn't read it
+      r600/sfn: Fix test for possible dest slot
 
 Jianxun Zhang (1):
-      intel/dev: Enable AUX map on MTL
+      iris: Limit DG2 modifiers to DG2
 
-Jordan Justen (3):
-      iris/resource: Check devinfo::has_local_mem before using BO_ALLOC_LMEM
-      intel/aux_map: Ignore format bits when using tile-4
-      intel/isl: Disable CCS on MTL until B0 (Wa_14017353530)
+José Roberto de Souza (1):
+      iris: Add BO_ALLOC_PLAIN flag
 
-José Roberto de Souza (4):
-      iris: Store intel_device_info in iris_bufmgr
-      iris: Only fetch intel_device_info once per bufmgr
-      iris: Nuke flags from iris_bufmgr that can read from devinfo
-      iris: Nuke dead IRIS_CONTEXT* macros
+Konstantin Seurer (2):
+      radv/bvh: Move leaf node initialization into separate functions
+      radv/bvh: Handle inactive triangles and AABBs
 
-Karol Herbst (3):
-      nir_lower_io_to_scalar: make use of nir_get_io_offset_src
-      nir_lower_io_to_scalar: handle load/store_global
-      zink: lower mem_global to scalar
+Marek Olšák (10):
+      st/mesa: use u_bit_scan64 only for 64-bit CPUs in st_validate_state
+      st/mesa: fold GLThread.enabled into pin_thread_counter to skip that checking
+      mesa: set pipe_draw_info::index::resource directly and remove gl_bo
+      st/mesa: optimize index buffer reference counting in st_indirect_draw_vbo
+      st/mesa: simplify prepare_indexed_draw
+      mesa: change gl_vertex_format::Format to bool Bgra to free bits
+      mesa: move user-specified vertex format fields into gl_vertex_format_user
+      mesa: compute _PipeFormat and _ElementSize after checking if the format changed
+      mesa: optimize _mesa_bytes_per_vertex_attrib using a hash-based translation
+      util/tools: add the tool that generates perfect hash functions for GLenums
 
-Kenneth Graunke (1):
-      iris: Don't reject CPU access for non-invalidating buffer write maps
+Marek Vasut (1):
+      etnaviv: Do expose 2D texture support on pre-halti GPUs
 
-Lionel Landwerlin (1):
-      anv: fixup another dirty issue with gpu_memcpy
+Michał Górny (1):
+      r600/sfn: Fix test compilation with -fno-rtti
 
-Liviu Prodea (1):
-      OpenCL/draw module: Support linking with LLVM and clang 15 static libraries
+Qiang Yu (13):
+      radeonsi: add si_nir_lower_resource pass
+      ac/llvm: check load_ssbo present before call it
+      radeonsi: replace llvm load_ssbo abi with nir lower
+      nir: add image fragment mask load intrinsic
+      nir: lower image add lower_to_fragment_mask_load_amd option
+      ac/llvm: add disable_aniso_single_level abi
+      nir/divergence_analysis: add missing intrinsics
+      radeonsi: replace llvm resource code with nir lower
+      ac/llvm: remove image/texture descriptor_amd nir to llvm code
+      ac/llvm: remove implicite ms texture fmask handling
+      ac/llvm: remove samples_identical nir to llvm code
+      ac,radv,radeonsi: remove unused param of load_sampler_desc abi
+      ac/llvm: remove deref image/texture code
 
-Michel Dänzer (4):
-      loader/dri3: Clean up dri3_find_back logic
-      loader/dri3: Find idle buffer with minimum buffer age in dri3_find_back
-      loader/dri3: Simplify new buffer allocation in dri3_find_back
-      egl/wayland: Prefer back buffer with minimum buffer age
+Rob Clark (30):
+      freedreno: Update obsolete comment
+      freedreno/drm: Remove cpu_fini
+      freedreno/drm: Move no_implicit_sync to base
+      freedreno/drm: Allow submit merging with explicit sync
+      freedreno/drm: Add BO cache stats
+      freedreno/drm: Add bo list iterator macros
+      freedreno/drm: Simplify cleanup_fences()
+      freedreno/drm: Start prying apart table_lock
+      freedreno/drm: Rework batch BO delete
+      freedreno/drm: Get rid of fd_bo_del_locked()
+      freedreno/drm: Drop pipe ref to device
+      freedreno/drm: Shuffle around BO init
+      freedreno/drm: Invert BO destruction
+      freedreno/drm: Reorg BO alloc flags
+      freedreno/drm: Replace shared/nosync fields
+      freedreno/drm: Combine fd_fence and fd_submit_fence
+      freedreno: Rename fd_fence -> fd_pipe_fence
+      freedreno/drm: Return fence from submit flush
+      freedreno/drm: Simplify deferred submit flushing
+      freedreno/drm: Re-enable submit fence merging
+      freedreno/drm: Drop fd_bo_fence
+      freedreno/drm: Move no_implicit_sync accounting
+      freedreno/drm: Merge in_fence_fd's
+      util/vma: Add "nospan"
+      freedreno/drm: Add sub-allocator
+      freedreno/drm/virtio: Remove prealloc_list
+      freedreno: Limit cached staging BOs to PIPE_MAP_READ
+      freedreno/drm/virtio: More tracepoints
+      freedreno/drm/virtio: Guest side fence waits
+      freedreno/drm: Short-circuit kernel for timeout=0 waits
 
-Nanley Chery (1):
-      iris: Check for zero in clear color compatibility fn
-
-Rhys Perry (6):
-      aco/gfx11: export mrtz in discard early exit for non-color shaders
-      radv/gfx11: disable mesh shaders
-      aco/gfx11: implement load_input_vertex
-      ac/llvm/gfx11: implement load_input_vertex
-      radv/gfx11: enable VK_AMD_shader_explicit_vertex_parameter
-      radv/ci: add yet another pipeline barrier test as flake
-
-Ryan Neph (11):
-      venus: formatting fixes
-      venus: update venus-protocol for multiple timelines
-      venus: use upstream DRM_IOCTL_VIRTGPU_CONTEXT_INIT
-      venus: bind VkQueue to available ring_idx at creation
-      venus: allow renderer submissions on per-context virtgpu rings
-      venus: remove workaround for empty renderer submissions
-      venus: place wsi submissions on corresponding ring_idx
-      venus: support external fencing with multiple timelines
-      venus: add supports_multiple_timelines capset and enable
-      venus: support vtest+multiple_timelines and enable
-      venus: rename sync_queue -> timeline
-
-Samuel Pitoiset (3):
-      radv: import compiled binaries from libraries only when fast-linking is enabled
-      radv: enable graphicsPipelineLibraryFastLinking
-      radv: enable graphicsPipelineLibraryIndependentInterpolationDecoration
-
-Sil Vilerino (1):
-      d3d12: Add ASSERTED to variables only used in debug builds to fix build MSVC with C4189 errors
-
-Tapani Pälli (1):
-      anv: remove some gen8 specifics handled now in hasvk
-
-Yonggang Luo (11):
-      loader: fixes -Werror,-Wdeprecated-non-prototype for clang-15 in pipe-loader
-      panvk: Fixes -Werror,-Wunused-but-set-variable for clang-15 in panvk_descriptor_set.c
-      glsl: Fixes ident issue in glsl_parser.yy and update editorconfig for it
-      glsl: replace tab with 3 space in glcpp-parse.y
-      glsl: Fixes indent issue after replace tab with 3 space by tools in glcpp-parse.y
-      glsl: fixes -Werror,-Wunused-but-set-variable for clang-15 in glcpp-parse.y and glsl_parser.yy
-      util: Indent u_debug.c with 3 space instead of tab
-      util: Improve prototype of debug_get_num_option and debug_get_flags_option
-      util: Improve os_get_android_option to be thread-safe
-      util: Add function debug_get_option_cached os_get_option_cached
-      util: Fixes thread safety of DEBUG_GET_ONCE_*_OPTION macros
+Yiwei Zhang (4):
+      venus: fix signaled fence creation under multiple timeline
+      venus: sync protocol fixes and support for VK_EXT_pci_bus_info
+      venus: fix VK_EXT_pci_bus_info support
+      docs: update to latest venus driver support
 
