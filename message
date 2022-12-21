@@ -1,130 +1,74 @@
-Updating from 50b7d36428b2175fe407d3559d06e0a890e94d1b to a04720dc1c16bee72a18609069387df0862f00bd
+Updating from a04720dc1c16bee72a18609069387df0862f00bd to 590f74084d501bf56c850cbcf8610debd9ccbaae
 
-Alyssa Rosenzweig (14):
-      nir: Add store_zs_agx intrinsic
-      docs/features: Mark panfrost supporting aniso
-      docs/features: Mark ARB_occlusion_query2 as done on asahi
-      ail: Fix tile sizes
-      agx: Coalesce i2i16 and u2u16
-      agx: Fix packing of extension for block image stores
-      asahi: Allow texturing S8 portion of combined Z/S
-      agx: Implement depth and stencil export
-      asahi: Implement depth and stencil export
-      asahi: Identify XML for more flatshading controls
-      asahi: Set flatshading controls appropriately
-      asahi: Identify seamful cube map bit
-      asahi: Implement anisotropy
-      panfrost: Add architecture description XML for v10
+Danylo Piliaiev (3):
+      nir/nir_lower_is_helper_invocation: Lower helper invocation if required
+      tu: fix load_helper_invocation not being lowered
+      lvp: fix load_helper_invocation not being lowered
 
-Asahi Lina (13):
-      ail: Always allocate the full miptree
-      ail: Fix typo
-      ail: Assert that the mip level is in bounds
-      asahi: Do not leak staging resources for PIPE_MAP_READ
-      asahi: Don't crash on VBOs without resources
-      asahi: Ensure we always have space for stream links + padding
-      asahi: Consider shared resources always valid
-      asahi: Fix off-by-one assert in agx_create_vertex_elements
-      asahi: Allocate enough push ranges for the worst possible case
-      asahi: Fix include guard comment on decode.h
-      asahi: Identify & disable triangle merging for shaders using derivatives
-      asahi: Put meta shader keys into the meta shader itself
-      asahi: Enable VS_INSTANCEID and VERTEX_ELEMENT_INSTANCE_DIVISOR caps
+Dave Airlie (3):
+      vulkan/cmd_queue: update generator to handle guarded types.
+      vulkan/util: handle LUNARG in the list of special prefixes
+      vulkan: update headers/registry to 1.3.238 for video decode
 
-David Heidelberg (2):
-      ci: ci_run_n_monitor.py: fix args.rev leftover
-      ci: move the CI handling scripts into bin/ci
+Emma Anholt (1):
+      turnip: Lazily call tu6_emit_descriptor_sets() at draw time.
 
 Erico Nunes (1):
-      ci: Lima farm maintenance
+      Revert "ci: Lima farm maintenance"
 
-Friedrich Vock (3):
-      radv/rt: PLOC fixes for active_leaf_count
-      radv/rt: Execute memory barrier before updating the phase end count
-      radv/rt: Refactor exiting PLOC
+Georg Lehmann (1):
+      lavapipe: Enable VK_KHR_shader_non_semantic_info.
 
 Gert Wollny (2):
-      r600/sfn: don't use a return register when shader doesn't read it
-      r600/sfn: Fix test for possible dest slot
+      r600/sfn: Don't try to re-use the iterator when uses is updated
+      r600/sfn: Fix possible dest channels for variable size dot
 
-Jianxun Zhang (1):
-      iris: Limit DG2 modifiers to DG2
+Giancarlo Devich (3):
+      d3d12: Move query structs to header
+      d3d12: Fix race condition when getting query results
+      d3d12: Don't flush indiscriminately for query result accumulation
 
-José Roberto de Souza (1):
-      iris: Add BO_ALLOC_PLAIN flag
+Guilherme Gallo (4):
+      ci/lava: Feed yaml.load with raw bytes data
+      ci/lava: Fix Gitlab section rendering
+      ci/lava: Anticipate overlayfs download
+      ci/lava: Show LAVA job info during fails
 
-Konstantin Seurer (2):
-      radv/bvh: Move leaf node initialization into separate functions
-      radv/bvh: Handle inactive triangles and AABBs
+Marcell Kiss (1):
+      radv: Fix uninitalized struct for trap handler
 
-Marek Olšák (10):
-      st/mesa: use u_bit_scan64 only for 64-bit CPUs in st_validate_state
-      st/mesa: fold GLThread.enabled into pin_thread_counter to skip that checking
-      mesa: set pipe_draw_info::index::resource directly and remove gl_bo
-      st/mesa: optimize index buffer reference counting in st_indirect_draw_vbo
-      st/mesa: simplify prepare_indexed_draw
-      mesa: change gl_vertex_format::Format to bool Bgra to free bits
-      mesa: move user-specified vertex format fields into gl_vertex_format_user
-      mesa: compute _PipeFormat and _ElementSize after checking if the format changed
-      mesa: optimize _mesa_bytes_per_vertex_attrib using a hash-based translation
-      util/tools: add the tool that generates perfect hash functions for GLenums
+Rohan Garg (1):
+      anv: Ensure we clear ANV_PIPE_PSS_STALL_SYNC_BIT on flush
 
-Marek Vasut (1):
-      etnaviv: Do expose 2D texture support on pre-halti GPUs
+Timur Kristóf (24):
+      radv: Remove trailing whitespace again.
+      radv: Destroy mesh shader scratch ring in radv_queue_state_finish.
+      radv: Stylistic changes in radv_queue_submit_normal.
+      radv: Rename uses_perf_counters to use_perf_counters.
+      radv: Determine use_ace in radv_update_preambles.
+      radv: Return correct error code when failed to allocate CS array.
+      radv/amdgpu: Change extra_cs to array in get_bo_list.
+      radv/amdgpu: Set fallback submit request ip_type from the last CS.
+      radv/amdgpu: Introduce a custom struct for submitted BO info.
+      radv/amdgpu: Add IP type to IB info and use it when submitting.
+      radv/amdgpu: Allow using more than 1 preamble with cs_submit.
+      ac: Add has_gang_submit field to ac_gpu_info.
+      radv: Enable gang submit on the null winsys.
+      radv: Remove radv_queue_submit_with_ace and disable task/mesh shaders.
+      radv: Refactor command buffer handling in radv_queue_submit_normal.
+      radv: Update ACE preambles in radv_queue_submit_normal.
+      radv: Implement gang submit in radv_queue_submit_normal.
+      radv: Rename radv_update_ace_preambles to radv_update_gang_preambles.
+      radv: Remove ACE->GFX wait at the end of each command buffer.
+      radv: Add gang wait preambles and postambles to ensure correct behaviour.
+      radv/amdgpu: Remove command submission with scheduled dependencies.
+      radv/amdgpu: Remove cs_add_buffers because it's no longer necessary.
+      radv: Enable EXT_mesh_shader by default on GFX10.3.
+      radv: Don't assume there is always at least 1 preamble.
 
-Michał Górny (1):
-      r600/sfn: Fix test compilation with -fno-rtti
+Yiwei Zhang (1):
+      venus: fallback to passthrough pci bus info when not natively supported
 
-Qiang Yu (13):
-      radeonsi: add si_nir_lower_resource pass
-      ac/llvm: check load_ssbo present before call it
-      radeonsi: replace llvm load_ssbo abi with nir lower
-      nir: add image fragment mask load intrinsic
-      nir: lower image add lower_to_fragment_mask_load_amd option
-      ac/llvm: add disable_aniso_single_level abi
-      nir/divergence_analysis: add missing intrinsics
-      radeonsi: replace llvm resource code with nir lower
-      ac/llvm: remove image/texture descriptor_amd nir to llvm code
-      ac/llvm: remove implicite ms texture fmask handling
-      ac/llvm: remove samples_identical nir to llvm code
-      ac,radv,radeonsi: remove unused param of load_sampler_desc abi
-      ac/llvm: remove deref image/texture code
-
-Rob Clark (30):
-      freedreno: Update obsolete comment
-      freedreno/drm: Remove cpu_fini
-      freedreno/drm: Move no_implicit_sync to base
-      freedreno/drm: Allow submit merging with explicit sync
-      freedreno/drm: Add BO cache stats
-      freedreno/drm: Add bo list iterator macros
-      freedreno/drm: Simplify cleanup_fences()
-      freedreno/drm: Start prying apart table_lock
-      freedreno/drm: Rework batch BO delete
-      freedreno/drm: Get rid of fd_bo_del_locked()
-      freedreno/drm: Drop pipe ref to device
-      freedreno/drm: Shuffle around BO init
-      freedreno/drm: Invert BO destruction
-      freedreno/drm: Reorg BO alloc flags
-      freedreno/drm: Replace shared/nosync fields
-      freedreno/drm: Combine fd_fence and fd_submit_fence
-      freedreno: Rename fd_fence -> fd_pipe_fence
-      freedreno/drm: Return fence from submit flush
-      freedreno/drm: Simplify deferred submit flushing
-      freedreno/drm: Re-enable submit fence merging
-      freedreno/drm: Drop fd_bo_fence
-      freedreno/drm: Move no_implicit_sync accounting
-      freedreno/drm: Merge in_fence_fd's
-      util/vma: Add "nospan"
-      freedreno/drm: Add sub-allocator
-      freedreno/drm/virtio: Remove prealloc_list
-      freedreno: Limit cached staging BOs to PIPE_MAP_READ
-      freedreno/drm/virtio: More tracepoints
-      freedreno/drm/virtio: Guest side fence waits
-      freedreno/drm: Short-circuit kernel for timeout=0 waits
-
-Yiwei Zhang (4):
-      venus: fix signaled fence creation under multiple timeline
-      venus: sync protocol fixes and support for VK_EXT_pci_bus_info
-      venus: fix VK_EXT_pci_bus_info support
-      docs: update to latest venus driver support
+Yonggang Luo (1):
+      util: Fixes os_get_option_cached with bool options_tbl_exited
 
