@@ -1,43 +1,43 @@
-Updating from 590f74084d501bf56c850cbcf8610debd9ccbaae to f6d73ea7b4028008ff64e734dac10c53aafd0e75
+Updating from f6d73ea7b4028008ff64e734dac10c53aafd0e75 to e584447aed4d0ee2730bf58737fec46dad5a06af
 
-Alyssa Rosenzweig (4):
-      panfrost: Remove experimental v7-only indirect draw path
-      panfrost: Remove unused so_mask calculation
-      pan/mdg: Remove unused disassembler functions
-      pan/lower_framebuffer: Remove unused pack
+Alyssa Rosenzweig (12):
+      panfrost,asahi: Set vendor to Mesa
+      panfrost: Upload sysvals to a staging buffer
+      panfrost: Remove rsrc->track
+      panfrost: Don't flush readers for reads
+      pan/va: Pack texture write masks
+      pan/bi: Use write masks on Valhall texture instrs
+      panfrost: Add clang-format file
+      panfrost: Remove perfetto-specific .clang-format
+      panfrost: Add missing #includes
+      panfrost: Fix up some formatting for clang-format
+      panfrost: clang-format the tree
+      panfrost: Clang-format pan_layout.c
 
-Chia-I Wu (1):
-      freedreno: bump up FD6_MAX_BORDER_COLORS
+Asahi Lina (4):
+      kmsro: Fix renderonly_scanout BO aliasing
+      v3d: Fix race condition in BO imports
+      vc4: Fix race condition in BO imports
+      panfrost: Fix race condition in BO imports
 
-Danylo Piliaiev (2):
-      nir/fold_16bit_tex_image: Add type granularity for dst folding
-      ir3: Do 16b tex dst folding only for floats
+Jordan Petridis (1):
+      Revert "ci: Windows runner is experiencing DNS issues; disable Microsoft farm"
 
-David Heidelberg (2):
-      ci: Windows runner is experiencing DNS issues; disable Microsoft farm
-      radeon: drmGetVersion can return NULL
+José Roberto de Souza (4):
+      iris: Make iris_bo_export_gem_handle() static
+      intel/common: Move i915 engine specific code to its own file
+      intel/common: Move i915 gem specific code to its own file
+      anv: Pass anv_bo as parameter to anv_gem_mmap()
 
 Lionel Landwerlin (4):
-      anv: handle null push descriptors in deferred optimization
-      nouveau/ci: temporary disable gk20a-gles
-      nir/divergence: handle shader_record_ptr intrinsic
-      intel/compiler: mark shader_record_ptr as uniform
+      anv: decouple util function from anv_cmd_buffer
+      anv: factor out some indirect draw count entry points
+      anv: implement generated (indexed) indirect draws
+      intel/ds: add missing generate draws perfetto glue
 
-Lucas Stach (1):
-      etnaviv: disable linear PE by default
+Rob Clark (1):
+      freedreno/perfetto: Add grid information for compute jobs
 
-Martin Roukala (né Peres) (2):
-      radv/ci/vkcts: do not sync back the *.qpa
-      radv/ci: remove locally-deleted files from the job bucket
-
-Tapani Pälli (1):
-      intel/dev: setup 1024 GS urb entries for ADL-N
-
-Timur Kristóf (3):
-      radv: Include view index SET_SH_REG in ace_predication_size.
-      ac: Add has_taskmesh_indirect0_bug field to ac_gpu_info struct.
-      radv: Only apply taskmesh indirect 0 bug workaround when necessary.
-
-Väinö Mäkelä (1):
-      intel/blorp: Fix a hang caused by invalid dispatch enables on gfx7
+nihui (1):
+      panvk: Fix null pointer dereference on cmd_buffer->ops
 
