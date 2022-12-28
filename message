@@ -1,43 +1,22 @@
-Updating from f6d73ea7b4028008ff64e734dac10c53aafd0e75 to e584447aed4d0ee2730bf58737fec46dad5a06af
+Updating from e584447aed4d0ee2730bf58737fec46dad5a06af to f603d8ce9e81913ce86c862e087c7ac3c94e744a
 
-Alyssa Rosenzweig (12):
-      panfrost,asahi: Set vendor to Mesa
-      panfrost: Upload sysvals to a staging buffer
-      panfrost: Remove rsrc->track
-      panfrost: Don't flush readers for reads
-      pan/va: Pack texture write masks
-      pan/bi: Use write masks on Valhall texture instrs
-      panfrost: Add clang-format file
-      panfrost: Remove perfetto-specific .clang-format
-      panfrost: Add missing #includes
-      panfrost: Fix up some formatting for clang-format
-      panfrost: clang-format the tree
-      panfrost: Clang-format pan_layout.c
+Alyssa Rosenzweig (7):
+      agx: Undo sed fail
+      asahi: Add .clang-format file
+      asahi: Manually format some parts of the code
+      asahi: Add some clang-format commas
+      asahi: Add missing #include's
+      asahi: Clang-format the twiddled tests
+      asahi: Clang-format the subtree
 
-Asahi Lina (4):
-      kmsro: Fix renderonly_scanout BO aliasing
-      v3d: Fix race condition in BO imports
-      vc4: Fix race condition in BO imports
-      panfrost: Fix race condition in BO imports
+Konstantin Seurer (2):
+      radv: Remove last_primitive_reset_en
+      radv: Use common vkEnumerateDeviceLayerProperties
 
-Jordan Petridis (1):
-      Revert "ci: Windows runner is experiencing DNS issues; disable Microsoft farm"
+Lionel Landwerlin (1):
+      anv: fix potential integer overflow
 
-José Roberto de Souza (4):
-      iris: Make iris_bo_export_gem_handle() static
-      intel/common: Move i915 engine specific code to its own file
-      intel/common: Move i915 gem specific code to its own file
-      anv: Pass anv_bo as parameter to anv_gem_mmap()
-
-Lionel Landwerlin (4):
-      anv: decouple util function from anv_cmd_buffer
-      anv: factor out some indirect draw count entry points
-      anv: implement generated (indexed) indirect draws
-      intel/ds: add missing generate draws perfetto glue
-
-Rob Clark (1):
-      freedreno/perfetto: Add grid information for compute jobs
-
-nihui (1):
-      panvk: Fix null pointer dereference on cmd_buffer->ops
+Tapani Pälli (2):
+      intel/genxml: add disable preemption field for gen125
+      anv: disable preemption for 3DPRIMITIVE during streamout
 
