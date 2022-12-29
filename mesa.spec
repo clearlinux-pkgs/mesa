@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 22.3+2346.g57f73d097ec
-Release  : 394
+Release  : 395
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/57f73d097ec915dde4a49732b5a40ae9ce368b89/mesa-22.3+2346-g57f73d097ec.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/57f73d097ec915dde4a49732b5a40ae9ce368b89/mesa-22.3+2346-g57f73d097ec.tar.bz2
 Summary  : No detailed summary available
@@ -75,9 +75,6 @@ BuildRequires : zlib-dev
 BuildRequires : zlib-dev32
 BuildRequires : zstd-dev
 BuildRequires : zstd-dev32
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 Patch1: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
 
 %description
@@ -170,13 +167,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1672276373
+export SOURCE_DATE_EPOCH=1672329824
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=x11,wayland \
 -Ddri3=true \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
