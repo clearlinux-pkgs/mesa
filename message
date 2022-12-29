@@ -1,22 +1,17 @@
-Updating from e584447aed4d0ee2730bf58737fec46dad5a06af to f603d8ce9e81913ce86c862e087c7ac3c94e744a
+Updating from f603d8ce9e81913ce86c862e087c7ac3c94e744a to 57f73d097ec915dde4a49732b5a40ae9ce368b89
 
-Alyssa Rosenzweig (7):
-      agx: Undo sed fail
-      asahi: Add .clang-format file
-      asahi: Manually format some parts of the code
-      asahi: Add some clang-format commas
-      asahi: Add missing #include's
-      asahi: Clang-format the twiddled tests
-      asahi: Clang-format the subtree
+Aleksey Komarov (3):
+      pan/va: Fix description for constant 0xFAFCFDFE: -2, -3, -4, -6
+      pan/va: Fix d0 description in enum "Load lane (8-bit)"
+      pan/va: Fix MUX.i32 and MUX.v2i16 description. Should be:
 
-Konstantin Seurer (2):
-      radv: Remove last_primitive_reset_en
-      radv: Use common vkEnumerateDeviceLayerProperties
+David Heidelberg (2):
+      ci/amd: decrease number of stoney runners
+      ci/iris: add iris-kbl flake
 
-Lionel Landwerlin (1):
-      anv: fix potential integer overflow
+Erico Nunes (1):
+      ci: Enable gl-renderer in weston for wayland testing
 
-Tapani Pälli (2):
-      intel/genxml: add disable preemption field for gen125
-      anv: disable preemption for 3DPRIMITIVE during streamout
+Patrick Lerda (1):
+      util/xmlconfig: fix memory leak triggered by duplicates
 
