@@ -1,17 +1,24 @@
-Updating from f603d8ce9e81913ce86c862e087c7ac3c94e744a to 57f73d097ec915dde4a49732b5a40ae9ce368b89
+Updating from 57f73d097ec915dde4a49732b5a40ae9ce368b89 to 05ca7d114eabfb3e2a2b82ba06ccb7b152e0e2a5
 
-Aleksey Komarov (3):
-      pan/va: Fix description for constant 0xFAFCFDFE: -2, -3, -4, -6
-      pan/va: Fix d0 description in enum "Load lane (8-bit)"
-      pan/va: Fix MUX.i32 and MUX.v2i16 description. Should be:
+David Heidelberg (1):
+      ci/broadcom: add rpi3 flake color_clears.multi_context.gles2.rgba8888_pbuffer
 
-David Heidelberg (2):
-      ci/amd: decrease number of stoney runners
-      ci/iris: add iris-kbl flake
+Eric Engestrom (3):
+      gen_release_notes: strip second newline in new features
+      docs: add release notes for 22.3.2
+      docs: update calendar for 22.3.2
 
-Erico Nunes (1):
-      ci: Enable gl-renderer in weston for wayland testing
+José Roberto de Souza (2):
+      anv: Add and use emit_pipeline_select()
+      intel/genxml/gen12.5: Pipe_Control::Remove Global Snapshot Count Reset
 
-Patrick Lerda (1):
-      util/xmlconfig: fix memory leak triggered by duplicates
+Konstantin Kharlamov (5):
+      bin/gen_release_notes.py: do not end "features" with "None"
+      bin/gen_release_notes.py: do not fail on confidential features
+      bin/gen_release_notes.py: don't fail if "Closes" refers to an MR
+      bin/gen_release_notes.py: parse "Fixes" tags as well as "Closes"
+      bin/gen_release_notes.py: read Closes/Fixes tags case-insensitively
+
+Rob Clark (1):
+      freedreno/ir3: Allow isam for non-bindless ssbo loads
 
