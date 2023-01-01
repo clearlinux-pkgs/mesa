@@ -1,14 +1,10 @@
-Updating from 05ca7d114eabfb3e2a2b82ba06ccb7b152e0e2a5 to 4429bdd7f5a2e4610d3a8677cfbd3e7e2712751e
+Updating from 4429bdd7f5a2e4610d3a8677cfbd3e7e2712751e to 37cb88288301dec81ab8385824d489bf779a23fc
 
-Jordan Justen (3):
-      drm-shim: Convert nfasprintf and nfvasprintf to functions
-      drm-shim: Add hide_drm_device_path()
-      drm-shim: Use hide_drm_device_path() to hide other drm devices
+Christian Gmeiner (1):
+      isaspec: encode: handle special fieldname properties
 
-Rob Clark (5):
-      freedreno: Remove some impossible NULL checks
-      freedreno: Add some more traces
-      freedreno/drm: Flush deferred submits at context teardown
-      freedreno: Fix use_fence_fd typo
-      freedreno/a6xx: Linewrap
+Konstantin Seurer (3):
+      radv: Add a driconf to advertise rt pipelines
+      radv: Advertise rt pipelines for Quake II RTX
+      radv: Advertise rt pipelines for DOOM Eternal
 
