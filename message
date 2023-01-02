@@ -1,10 +1,18 @@
-Updating from 4429bdd7f5a2e4610d3a8677cfbd3e7e2712751e to 37cb88288301dec81ab8385824d489bf779a23fc
+Updating from 37cb88288301dec81ab8385824d489bf779a23fc to fc0e23b6dd963b6f97e34a2f4b84b87f358fbf92
 
-Christian Gmeiner (1):
-      isaspec: encode: handle special fieldname properties
+Daniel Schürmann (3):
+      aco: fix reset_block_regs() in postRA-optimizer
+      aco/optimizer_postRA: Initialize loop header with preheader information
+      aco: Reassign dead definitions of p_split_vector to associated register
 
-Konstantin Seurer (3):
-      radv: Add a driconf to advertise rt pipelines
-      radv: Advertise rt pipelines for Quake II RTX
-      radv: Advertise rt pipelines for DOOM Eternal
+Gert Wollny (1):
+      aux/trace: Add pipe_context::set_hw_atomic_buffers
+
+Marek Olšák (2):
+      glthread,gallium: add a CAP to disable glBufferSubData optimization in glthread
+      iris: implement PIPE_CAP_MAP_UNSYNCHRONIZED_THREAD_SAFE
+
+Timur Kristóf (2):
+      aco/optimizer_postRA: Distinguish overwritten untrackable and subdword.
+      aco: Try to reassign split vector registers post-RA.
 
