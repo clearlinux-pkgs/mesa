@@ -1,18 +1,40 @@
-Updating from 37cb88288301dec81ab8385824d489bf779a23fc to fc0e23b6dd963b6f97e34a2f4b84b87f358fbf92
+Updating from fc0e23b6dd963b6f97e34a2f4b84b87f358fbf92 to 980df9ede1887c60d9fc82e7e08b3f63c3745d59
 
-Daniel Schürmann (3):
-      aco: fix reset_block_regs() in postRA-optimizer
-      aco/optimizer_postRA: Initialize loop header with preheader information
-      aco: Reassign dead definitions of p_split_vector to associated register
+Alyssa Rosenzweig (3):
+      pan/bi: Rename panfrost/bifrost -> panfrost/compiler
+      pan/bi: Remove standalone compiler
+      pan/bi: Move Bifrost specific C code to src/compiler/bifrost
 
-Gert Wollny (1):
-      aux/trace: Add pipe_context::set_hw_atomic_buffers
+Erico Nunes (1):
+      st/mesa: Fix free of non-shareable shaders on context destroy
 
-Marek Olšák (2):
-      glthread,gallium: add a CAP to disable glBufferSubData optimization in glthread
-      iris: implement PIPE_CAP_MAP_UNSYNCHRONIZED_THREAD_SAFE
+Gert Wollny (8):
+      r600/sfn: move handling of legacy math rules to assembler
+      r600/sfn: pre-evaluate allowed dest mask in Alu instructions
+      r600/sfn: Fix warning for mixed use of enum and integer
+      r600/sfn: Fix FS primid input slot
+      r600: Fix early exit when setting SSBOs
+      r600: enable ARB_gl_spirv
+      r600/sfn: Set minimum required registers based on array allocation
+      r600: Don't merge alu groups with variable length dot using t-slot
 
-Timur Kristóf (2):
-      aco/optimizer_postRA: Distinguish overwritten untrackable and subdword.
-      aco: Try to reassign split vector registers post-RA.
+Konstantin Seurer (5):
+      vulkan: Allow passing NULL dispatch tables to vk_device_init
+      radv: Move dispatch table init into a separate function
+      radv: Use multiple dispatch tables for layers
+      radv: Clean up entrypoints generation
+      radv: Add an app layer driconf and use it for Metro Exodus
+
+Rhys Perry (1):
+      ac/llvm: use amdgpu-color-export/amdgpu-depth-export
+
+Samuel Pitoiset (1):
+      radv: fix missing initialization of radv_resolve_barrier::dst_stage_mask
+
+Sviatoslav Peleshko (2):
+      anv: Add layer with work-around for Doom 64 texture corruption
+      hasvk: Add layer with work-around for Doom 64 texture corruption
+
+Timur Kristóf (1):
+      radv: Decouple radv_before_taskmesh_draw from radv_before_draw.
 
