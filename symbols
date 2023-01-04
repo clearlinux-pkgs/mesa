@@ -1351,7 +1351,6 @@ libGL.so.1:glXCreateContext
 libGL.so.1:glXCreateContextWithConfigSGIX
 libGL.so.1:glXCreateGLXPbufferSGIX
 libGL.so.1:glXCreateGLXPixmap
-libGL.so.1:glXCreateGLXPixmapMESA
 libGL.so.1:glXCreateGLXPixmapWithConfigSGIX
 libGL.so.1:glXCreateNewContext
 libGL.so.1:glXCreatePbuffer

@@ -1,40 +1,94 @@
-Updating from fc0e23b6dd963b6f97e34a2f4b84b87f358fbf92 to 980df9ede1887c60d9fc82e7e08b3f63c3745d59
+Updating from 980df9ede1887c60d9fc82e7e08b3f63c3745d59 to 043508d8f84b5fce258bc7107d999ecbdae4a86e
 
-Alyssa Rosenzweig (3):
-      pan/bi: Rename panfrost/bifrost -> panfrost/compiler
-      pan/bi: Remove standalone compiler
-      pan/bi: Move Bifrost specific C code to src/compiler/bifrost
+Adam Jackson (8):
+      include: Sync <GL/glxext.h> with Khronos
+      glx: Remove dead declarations from <GL/glx.h>
+      glx: Replace FreeB 2.0 text with SPDX-License-Identifier: SGI-B-2.0
+      glx: Drop GLX_MESA_{pixmap_colormap,release_buffers} stubs
+      glx: Remove pointless GLX_INTEL_swap_event paranoia
+      glx: Require GLX 1.3
+      glx: Only compute client GL extensions for indirect contexts
+      glx: Remove the GetProcAddress special case for indirect rendering
 
-Erico Nunes (1):
-      st/mesa: Fix free of non-shareable shaders on context destroy
+Adam Stylinski (1):
+      nv30: Fix an offset for vbos being applied to a buffer twice
 
-Gert Wollny (8):
-      r600/sfn: move handling of legacy math rules to assembler
-      r600/sfn: pre-evaluate allowed dest mask in Alu instructions
-      r600/sfn: Fix warning for mixed use of enum and integer
-      r600/sfn: Fix FS primid input slot
-      r600: Fix early exit when setting SSBOs
-      r600: enable ARB_gl_spirv
-      r600/sfn: Set minimum required registers based on array allocation
-      r600: Don't merge alu groups with variable length dot using t-slot
+Chad Versace (1):
+      vulkan/runtime: Preserve pNext when upgrading to synchronization2 structs
 
-Konstantin Seurer (5):
-      vulkan: Allow passing NULL dispatch tables to vk_device_init
-      radv: Move dispatch table init into a separate function
-      radv: Use multiple dispatch tables for layers
-      radv: Clean up entrypoints generation
-      radv: Add an app layer driconf and use it for Metro Exodus
+David Heidelberg (2):
+      ci: build test LTO
+      postprocess: move the definition of pp_filters into **/pp_init.c
+
+Emma Anholt (4):
+      ci/freedreno: Switch skqp testing to using deqp-runner.
+      ci/amd: Switch raven skqp testing over to deqp-runner.
+      ci/intel: Switch skqp testing over to deqp-runner.
+      ci: Update the skqp testing docs and retire the old runner script.
+
+Georg Lehmann (1):
+      aco: Use v_mov_b16 on GFX11.
+
+Ian Romanick (5):
+      intel/compiler: Enable lower_bitfield_extract_to_shifts and lower_bitfield_insert_to_shifts for pre-Gfx7
+      nir: Don't allow conflicting bitfield lowering passes
+      glsl: Remove bitfield_extract and bitfield_insert lowering
+      glsl: Remove bitfield_reverse lowering
+      glsl: Remove bit_count lowering
+
+Jason Ekstrand (1):
+      util: Drop the ENUM_PACKED macro
+
+Jesse Natalie (5):
+      CI/Windows: Use deqp-runner for D3D12 piglit
+      spirv2dxil: Rename and move prep helper
+      spirv2dxil: Support linking multiple shaders
+      CI/Windows: Update piglit for Waffle fix
+      CI/Windows: Use waffle instead of freeglut for piglit
+
+Konstantin Seurer (1):
+      radv: Use the correct pipeline layout for LBVH IR generation
+
+Mike Blumenkrantz (3):
+      Revert "zink: remove descriptor-mode selection infrastructure"
+      zink: move some descriptor data into a substruct
+      zink: use EXT_descriptor_buffer with ZINK_DESCRIPTORS=db
+
+Pavel Ondračka (6):
+      nir: remove duplicate alu channels in nir_opt_shrink_vectors
+      nir: fix shrinking of load_const for large vectors
+      nir: basic tests for nir_opt_shrink_vectors
+      r300: don't copy propagate constant swizzles to KIL on R300
+      r300: allow copy propagate of RC_FILE_NONE reads to TEX instructions
+      r300: don't convert to constant swizzles when translating from TGSI
 
 Rhys Perry (1):
-      ac/llvm: use amdgpu-color-export/amdgpu-depth-export
+      radeonsi,radv/llvm: fix amdgpu-color/depth-export with epilogs
 
-Samuel Pitoiset (1):
-      radv: fix missing initialization of radv_resolve_barrier::dst_stage_mask
+Rob Clark (6):
+      freedreno/registers: Fix reg64 support
+      freedreno/decode: Add rnn_reginfo_free() helper
+      freedreno/decode: Improved reg64 decoding
+      freedreno/registers: Fix bo fields with low != 0
+      freedreno/registers: Cleanup bindless-base regs
+      docs/freedreno: Add bindless/bindful descriptor docs
 
-Sviatoslav Peleshko (2):
-      anv: Add layer with work-around for Doom 64 texture corruption
-      hasvk: Add layer with work-around for Doom 64 texture corruption
+Samuel Pitoiset (5):
+      radv: flush DFSM on CB_TARGET_MASK changes when it's emitted
+      radv: move emitting the strmout buffer in CmdDrawIndirectByteCountEXT()
+      radv: dirty states when beginning a cmdbuf instead of when a pipeline is bound
+      radv: dirty all dynamic states when beginning a new cmdbuf
+      radv: determine the gfx scratch size at pipeline bind time
 
-Timur Kristóf (1):
-      radv: Decouple radv_before_taskmesh_draw from radv_before_draw.
+Sil Vilerino (2):
+      frontends/va: Update state var frame_num disregarding cap check
+      ci: Update mingw and vs2019 libva build dependency to libva/releases/tag/2.17.0
+
+Tapani Pälli (1):
+      anv: implement Wa_14015814527 for task shaders
+
+Yiwei Zhang (3):
+      lvp: properly ignore sampler write for immutable sampler
+      venus: properly ignore the sampler for immutable sampler
+      ci: update venus-lavapipe test expectations
 
