@@ -1,85 +1,87 @@
-Updating from 043508d8f84b5fce258bc7107d999ecbdae4a86e to a2252adde8235d5c4d78d9347527cd7914bb905a
+Updating from a2252adde8235d5c4d78d9347527cd7914bb905a to 888f5e5aa1d413dd87cc8519d45d7a3c2856b13a
 
-Corentin Noël (2):
-      ci: Bump crosvm and virglrenderer versions
-      ci: Remove MESA_ARM_BUILD_TAG environment variable
+Alyssa Rosenzweig (31):
+      docs/features: Add more missed asahi
+      ail: Support linear 2D arrays
+      ail: Add compression_layer_stride_B field
+      asahi: Check box implement NV_conditional_render
+      asahi: Dump uniforms when decoding
+      asahi: Add XML required for vertex shader side effects
+      asahi: Add XML for linear 2D arrays
+      asahi: Correct acceleration_buffer for layered images
+      asahi: Implement linear 2D array textures
+      asahi: Remove outdated comment
+      asahi/lower_tilebuffer: Avoid loading sample mask
+      agx: Plumb in store instruction
+      agx: Note that textures clobber even masked
+      agx: Use texture write mask
+      agx: Hash agx_instr faster
+      agx: Don't use nir_variable when gathering flat varyings
+      agx: Use metadata for VS varying linking
+      agx: Remove unused idiv const func
+      agx: Pack wait instructions
+      agx: Pack texture scoreboard slots
+      agx: Insert waits post-RA
+      agx: Compact st_tile argument per mask
+      agx: Add agx_read_registers helper
+      agx: Validate widths of vectors
+      agx: Remove logical_end later
+      agx: Optimize waits locally
+      agx: Consider "stop" a control flow instruction
+      agx: Introduce "no_varyings" instruction
+      agx: Fix discard with MRT
+      agx: Lower discard to zs_emit when zs_emit used
+      asahi: Advertise MRT and fbfetch
 
-Danylo Piliaiev (2):
-      docs/freedreno: Extract LRZ docs from tu_lrz
-      docs/freedreno: Extract debug tooling docs and improve gpu dbg docs
+Bas Nieuwenhuizen (2):
+      radv: Support on demand compilation of fmask shaders.
+      radv: Always compile accel structure shaders on demand.
 
-Emma Anholt (7):
-      ci/iris: Add some recent flakes.
-      ci: Set the path to the VK drivers during HWCI_START_XORG/WESTON.
-      ci/zink: Refactor a bit of test configuration yaml.
-      ci/zink: Add a manual full run of CTS+piglit on tgl.
-      ci/zink: Add trace testing on anv TGL.
-      zink: Only expose PIPE_CAP_IMAGE_ATOMIC_FLOAT_ADD if we can actually add.
-      zink: Only expose PIPE_CAP_SHADER_ATOMIC_INT64 if we can do shared and ssbos.
+Jason Ekstrand (4):
+      isaspec: Stop using s and xml from the global namespace
+      isaspec: Use argparse
+      isaspec: Stop depending on glue headers and out-of-folder C files
+      isaspec: Give decode.c/h more descriptive names
 
-Felix DeGrood (2):
-      anv: Emit CS stall on INTEL_MEASURE timestamp
-      hasvk: Emit CS stall on INTEL_MEASURE timestamp
+Max Lee (1):
+      intel_noop_drm_shim: add ability to specify device id
 
-Gert Wollny (1):
-      r600/sfn: make sure we return a non-negative number of registers
+Michel Dänzer (1):
+      radeonsi: Fix amdgpu-color-export with prologues
 
-Jesse Natalie (15):
-      dzn: Delete initial_state which is always COMMON
-      dzn: Create all buffers in COMMON state
-      dzn: Store command list type in the command buffer object
-      dzn: Store valid BARRIER_ACCESS flag masks for a few objects
-      dzn: Respect sharing mode
-      dzn: Remove unnecessary read -> read transition barriers
-      dzn: Fix aspects used for blit barriers
-      dzn: CmdWaitForEvents needs to submit barriers too
-      dzn: Add an enhanced barrier path for internal and fixup barriers
-      dzn: Add an "enhanced" version of CmdPipelineBarrier2
-      dzn: Flip on enhanced barrier code paths based on D3D capability
-      dzn: Remove spammy logging during device create
-      dzn: Don't touch pMultisampleState if rasterizerDiscardEnable
-      dzn: For CmdBindIndexBuffer, look at the graphics pipeline instead of last used
-      dzn: Handle split front/back compare/write masks for dynamic state
+Pavel Ondračka (4):
+      nir: check for x - ffract(x) patterns when lowering f2i32
+      r300: use nir lowering for ffloor
+      r300: move some ftrunc lowering to nir
+      r300: lower fsign in nir
 
-Karmjit Mahil (15):
-      pvr: Change "ID" to "id" in instance_ID_modifier.
-      pvr: Add multi layer passthough vert shader upload in device.
-      pvr: Add pvr_clear.{h,c} .
-      pvr: Add clear rta vert shader pds program.
-      pvr: Move clear VDM state into pvr_clear.h .
-      pvr: Add layer count support to pvr_clear_vdm_state().
-      pvr: Move static clear state into pvr_clear.c .
-      pvr: Add pvr_clear_vertices_upload().
-      pvr: Fix typo in 'err_free_verices_buffer'.
-      pvr: Implement depth/stencil/depth+stencil attachment clear.
-      pvr: Add empty clear attachment usc programs.
-      pvr: Add comments documenting large/normal clear words.
-      pvr: Add clear attachment programs in device.
-      pvr: Implement color/depth/depth+stencil attachment clear.
-      pvr: Remove PVR_STATIC_CLEAR_.*_BIT and use VkImageAspectFlags.
+Pierre-Eric Pelloux-Prayer (3):
+      vbo: simplify current_init since VBO_ATTRIB_POS is 0
+      vbo/save: avoid dangling_attr_ref situation
+      egl: handle NULL loaderPrivate in dri_is_thread_safe
 
-Marek Olšák (1):
-      mesa: set NewVertexElements when changing IsDynamic
+Rob Clark (5):
+      freedreno/drm: Mark ring heap buffers for dumping
+      freedreno: Fix FD_MESA_DEBUG=nohw
+      freedreno/drm: Add nr_suballoc_bos size check
+      freedreno: Limit max draws per batch
+      freedreno/decode: Deal with suballocated buffers
 
-Martin Roukala (né Peres) (1):
-      ci/b2c: start making use of the harbor.fd.o
-
-Maíra Canal (1):
-      v3dv: initialize fd variable for proper error handling
-
-Qiang Yu (3):
-      nir/xfb: save high_16bits output info
-      ac/nir,radv: use ac_nir_gs_output_info
-      ac/nir: handle 16bit varying streamout for legacy vs and gs copy shader
-
-Rhys Perry (1):
-      radv/winsys: set has_3d_cube_border_color_mipmap for null winsys
-
-Samuel Pitoiset (3):
-      radv: fix multiple resolves in the same subpass
-      radv: simplify removing unused color exports
-      radv: rework generating the PS epilog key
-
-Timothy Arceri (1):
-      util/00-mesa-defaults: add Metal Slug XX workaround
+Samuel Pitoiset (16):
+      radv: move viewport pre-computed xform outside of radv_viewport_state
+      radv: use vk_dynamic_graphics_state for the fragment shading rate state
+      radv: use vk_dynamic_graphics_state for the tessellation state
+      radv: use vk_dynamic_graphics_state for the input assembly state
+      radv: use vk_dynamic_graphic_state for the viewport state
+      radv: use vk_dynamic_graphics_state for the discard rectangles state
+      radv: use vk_dynamic_graphics_state for the rasterization state
+      radv: use vk_dynamic_graphics_state for the depth stencil state
+      radv: use vk_dynamic_graphics_state for the multisample state
+      radv: rework some color blend state fields for vk_dynamic_graphics_state
+      radv: use vk_dynamic_graphics_state for the color blend state
+      radv: remove enabling out-of-order rasterization internally
+      radv: remove unused pipeline parameter from radv_emit_binning_state()
+      radv: remove set but unused radv_cmd_state::index_{buffer,offset}
+      radv: flush push descriptors at bind time
+      radv: stop dirtying INDEX_BUFFER for non-indexed draws
 
