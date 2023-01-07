@@ -1,87 +1,63 @@
-Updating from a2252adde8235d5c4d78d9347527cd7914bb905a to 888f5e5aa1d413dd87cc8519d45d7a3c2856b13a
+Updating from 888f5e5aa1d413dd87cc8519d45d7a3c2856b13a to c91a78c03a67afa5f0792669a58a7d19f87c5ba0
 
-Alyssa Rosenzweig (31):
-      docs/features: Add more missed asahi
-      ail: Support linear 2D arrays
-      ail: Add compression_layer_stride_B field
-      asahi: Check box implement NV_conditional_render
-      asahi: Dump uniforms when decoding
-      asahi: Add XML required for vertex shader side effects
-      asahi: Add XML for linear 2D arrays
-      asahi: Correct acceleration_buffer for layered images
-      asahi: Implement linear 2D array textures
-      asahi: Remove outdated comment
-      asahi/lower_tilebuffer: Avoid loading sample mask
-      agx: Plumb in store instruction
-      agx: Note that textures clobber even masked
-      agx: Use texture write mask
-      agx: Hash agx_instr faster
-      agx: Don't use nir_variable when gathering flat varyings
-      agx: Use metadata for VS varying linking
-      agx: Remove unused idiv const func
-      agx: Pack wait instructions
-      agx: Pack texture scoreboard slots
-      agx: Insert waits post-RA
-      agx: Compact st_tile argument per mask
-      agx: Add agx_read_registers helper
-      agx: Validate widths of vectors
-      agx: Remove logical_end later
-      agx: Optimize waits locally
-      agx: Consider "stop" a control flow instruction
-      agx: Introduce "no_varyings" instruction
-      agx: Fix discard with MRT
-      agx: Lower discard to zs_emit when zs_emit used
-      asahi: Advertise MRT and fbfetch
+Corentin Noël (1):
+      venus: Avoid to copy the descriptor sets when it is not required
 
-Bas Nieuwenhuizen (2):
-      radv: Support on demand compilation of fmask shaders.
-      radv: Always compile accel structure shaders on demand.
+David Heidelberg (3):
+      ci/venus: disable for now
+      ci/linker: update mold to 1.9
+      ci/virgl: cover more glx@glx-copy-sub-buffer flakes
 
-Jason Ekstrand (4):
-      isaspec: Stop using s and xml from the global namespace
-      isaspec: Use argparse
-      isaspec: Stop depending on glue headers and out-of-folder C files
-      isaspec: Give decode.c/h more descriptive names
+Emma Anholt (7):
+      ci: Fix VK driver setup for HWCI_START_*.
+      docs/gallium: Explain that MSAA transfer_map must be supported.
+      u_transfer_helpre: Drop !interleave handling from the interleave code.
+      u_transfer_helper: Use common code for interleaved unmap.
+      u_transfer_helper: Merge in-place and split z/s interleaved map handling.
+      zink: Have u_transfer_helper resolve MSAA surfaces when mapping.
+      zink: Add an assert for not seeing any more MSAA image-to-buffer copies.
 
-Max Lee (1):
-      intel_noop_drm_shim: add ability to specify device id
+Eric Engestrom (2):
+      meson: add missing dependency
+      ci_run_n_monitor.py: automatically retry on transient errors
 
-Michel Dänzer (1):
-      radeonsi: Fix amdgpu-color-export with prologues
+Erico Nunes (1):
+      ci: enable wayland platform in more debian builds
 
-Pavel Ondračka (4):
-      nir: check for x - ffract(x) patterns when lowering f2i32
-      r300: use nir lowering for ffloor
-      r300: move some ftrunc lowering to nir
-      r300: lower fsign in nir
+Gert Wollny (1):
+      virgl: Use virgl host side shader stage IDs when reading caps
 
-Pierre-Eric Pelloux-Prayer (3):
-      vbo: simplify current_init since VBO_ATTRIB_POS is 0
-      vbo/save: avoid dangling_attr_ref situation
-      egl: handle NULL loaderPrivate in dri_is_thread_safe
+Lucas Stach (2):
+      etnaviv: split adding resource to context flush set into own function
+      etnaviv: add cleared surfaces to context flush set when necessary
 
-Rob Clark (5):
-      freedreno/drm: Mark ring heap buffers for dumping
-      freedreno: Fix FD_MESA_DEBUG=nohw
-      freedreno/drm: Add nr_suballoc_bos size check
-      freedreno: Limit max draws per batch
-      freedreno/decode: Deal with suballocated buffers
+Martin Roukala (né Peres) (3):
+      radv/ci: merge all the zink jobs into a single one
+      zink/ci: rename zink-radv-* to zink-radv-navi10-*
+      radv/ci: run Zink testing on VanGogh
 
-Samuel Pitoiset (16):
-      radv: move viewport pre-computed xform outside of radv_viewport_state
-      radv: use vk_dynamic_graphics_state for the fragment shading rate state
-      radv: use vk_dynamic_graphics_state for the tessellation state
-      radv: use vk_dynamic_graphics_state for the input assembly state
-      radv: use vk_dynamic_graphic_state for the viewport state
-      radv: use vk_dynamic_graphics_state for the discard rectangles state
-      radv: use vk_dynamic_graphics_state for the rasterization state
-      radv: use vk_dynamic_graphics_state for the depth stencil state
-      radv: use vk_dynamic_graphics_state for the multisample state
-      radv: rework some color blend state fields for vk_dynamic_graphics_state
-      radv: use vk_dynamic_graphics_state for the color blend state
-      radv: remove enabling out-of-order rasterization internally
-      radv: remove unused pipeline parameter from radv_emit_binning_state()
-      radv: remove set but unused radv_cmd_state::index_{buffer,offset}
-      radv: flush push descriptors at bind time
-      radv: stop dirtying INDEX_BUFFER for non-indexed draws
+Mary (1):
+      isaspec: Fix bitmask conversions when isa.bitsize < 64
+
+Rhys Perry (1):
+      aco/gfx11: update s_code_end padding
+
+Rohan Garg (10):
+      anv: constify variables and use early returns
+      anv,hasvk: Use the inbuilt macro from src/util for clamping int64_t
+      anv,hasvk: migrate align32 to the right functions from util
+      anv,hasvk: migrate to align64 from util
+      anv: migrate anv_minify to use u_minify
+      anv,hasvk: migrate to u_minify from util
+      anv,hasvk: migrate to ROUND_DOWN_TO from util
+      anv,hasvk: drop unused function
+      anv: Drop useless FIXME
+      anv,hasvk: move the null check into the function call and drop null check copies
+
+Ryan Neph (2):
+      ci: Bump crosvm and virglrenderer versions
+      Revert "ci/venus: disable for now"
+
+Samuel Pitoiset (1):
+      radv: fix returning VK_PIPELINE_COMPILE_REQUIRED from library
 
