@@ -1,63 +1,31 @@
-Updating from 888f5e5aa1d413dd87cc8519d45d7a3c2856b13a to c91a78c03a67afa5f0792669a58a7d19f87c5ba0
+Updating from c91a78c03a67afa5f0792669a58a7d19f87c5ba0 to 32fe60e8c429a070f890840422a64f1e7795eb5a
 
-Corentin Noël (1):
-      venus: Avoid to copy the descriptor sets when it is not required
-
-David Heidelberg (3):
-      ci/venus: disable for now
-      ci/linker: update mold to 1.9
-      ci/virgl: cover more glx@glx-copy-sub-buffer flakes
-
-Emma Anholt (7):
-      ci: Fix VK driver setup for HWCI_START_*.
-      docs/gallium: Explain that MSAA transfer_map must be supported.
-      u_transfer_helpre: Drop !interleave handling from the interleave code.
-      u_transfer_helper: Use common code for interleaved unmap.
-      u_transfer_helper: Merge in-place and split z/s interleaved map handling.
-      zink: Have u_transfer_helper resolve MSAA surfaces when mapping.
-      zink: Add an assert for not seeing any more MSAA image-to-buffer copies.
-
-Eric Engestrom (2):
-      meson: add missing dependency
-      ci_run_n_monitor.py: automatically retry on transient errors
+Dmitry Osipenko (3):
+      util/fossilize_db: Fix resource leaks in foz_prepare() error paths
+      util/disk_cache: Store environment variable values in disk_cache struct
+      util/disk_cache: Support combined foz ro and non-foz rw caches
 
 Erico Nunes (1):
-      ci: enable wayland platform in more debian builds
+      ci: Start weston with Xwayland
 
-Gert Wollny (1):
-      virgl: Use virgl host side shader stage IDs when reading caps
+Lionel Landwerlin (1):
+      intel/fs: only avoid SIMD32 if strictly inferior in throughput
 
-Lucas Stach (2):
-      etnaviv: split adding resource to context flush set into own function
-      etnaviv: add cleared surfaces to context flush set when necessary
+Samuel Pitoiset (7):
+      radv: remove unused parameter in radv_init_multisample_state()
+      radv: adjust CB_SHADER_MASK right after SPI_SHADER_COL_FORMAT is compacted
+      radv: simplify uses of color_write_mask/color_blend_enable
+      radv: determine DISABLE_DUAL_QUAD directly from the command buffer
+      radv: replace blend_enable_4bit by radv_pipeline_is_blend_enabled()
+      radv: initialize blend state after compiling shaders
+      radv: remove unused radv_is_raster_enabled()
 
-Martin Roukala (né Peres) (3):
-      radv/ci: merge all the zink jobs into a single one
-      zink/ci: rename zink-radv-* to zink-radv-navi10-*
-      radv/ci: run Zink testing on VanGogh
+SoroushIMG (1):
+      zink: fix disappearing smooth lines after workaround
 
-Mary (1):
-      isaspec: Fix bitmask conversions when isa.bitsize < 64
+Vinson Lee (1):
+      spirv2dxil: Fix memory leak on error path.
 
-Rhys Perry (1):
-      aco/gfx11: update s_code_end padding
-
-Rohan Garg (10):
-      anv: constify variables and use early returns
-      anv,hasvk: Use the inbuilt macro from src/util for clamping int64_t
-      anv,hasvk: migrate align32 to the right functions from util
-      anv,hasvk: migrate to align64 from util
-      anv: migrate anv_minify to use u_minify
-      anv,hasvk: migrate to u_minify from util
-      anv,hasvk: migrate to ROUND_DOWN_TO from util
-      anv,hasvk: drop unused function
-      anv: Drop useless FIXME
-      anv,hasvk: move the null check into the function call and drop null check copies
-
-Ryan Neph (2):
-      ci: Bump crosvm and virglrenderer versions
-      Revert "ci/venus: disable for now"
-
-Samuel Pitoiset (1):
-      radv: fix returning VK_PIPELINE_COMPILE_REQUIRED from library
+Xaver Hugl (1):
+      driconf: add a workaround for plasmashell freezing
 
