@@ -1,31 +1,146 @@
-Updating from c91a78c03a67afa5f0792669a58a7d19f87c5ba0 to 32fe60e8c429a070f890840422a64f1e7795eb5a
+Updating from 32fe60e8c429a070f890840422a64f1e7795eb5a to 6481805e0007d2bf53390e1af25c75b1507c2a92
 
-Dmitry Osipenko (3):
-      util/fossilize_db: Fix resource leaks in foz_prepare() error paths
-      util/disk_cache: Store environment variable values in disk_cache struct
-      util/disk_cache: Support combined foz ro and non-foz rw caches
+Alyssa Rosenzweig (10):
+      asahi: Implement GL_CLAMP natively
+      asahi: Implement ARB_texture_mirror_clamp_to_edge
+      agx: Fix missing #include
+      asahi: Fix segfault with null drawbuffer
+      agx: Remove dead code
+      agx: Use agx_subdivide_to for umul_high
+      agx: Get rid of emit_alu_bool
+      agx: Use i0/i1 variables
+      agx: Remove dead arg
+      agx: Remove obsolete comment
 
-Erico Nunes (1):
-      ci: Start weston with Xwayland
+Daniel Stone (1):
+      Return 'Mesa' for GL_VENDOR for community drivers
 
-Lionel Landwerlin (1):
-      intel/fs: only avoid SIMD32 if strictly inferior in throughput
+Danylo Piliaiev (3):
+      tu: Fix varyings interpolation reading stale values
+      ir3: Force flat.b sources to be equal
+      ir3/print: Consider the size of input when matching it to a reg
 
-Samuel Pitoiset (7):
-      radv: remove unused parameter in radv_init_multisample_state()
-      radv: adjust CB_SHADER_MASK right after SPI_SHADER_COL_FORMAT is compacted
-      radv: simplify uses of color_write_mask/color_blend_enable
-      radv: determine DISABLE_DUAL_QUAD directly from the command buffer
-      radv: replace blend_enable_4bit by radv_pipeline_is_blend_enabled()
-      radv: initialize blend state after compiling shaders
-      radv: remove unused radv_is_raster_enabled()
+Dmitry Osipenko (2):
+      util/disk_cache: Fix rw cache lookup when using combined ro+rw caches
+      docs/envvars: Document MESA_DISK_CACHE_COMBINE_RW_WITH_RO_FOZ
 
-SoroushIMG (1):
-      zink: fix disappearing smooth lines after workaround
+Eric Engestrom (3):
+      meson/zink: use vk_api_xml variable instead of re-constructing the file path
+      ci/rpi3: add another test variant (draw-copypixels-sync) as flaky
+      ci/rpi4: add a couple of tests as flaky
 
-Vinson Lee (1):
-      spirv2dxil: Fix memory leak on error path.
+Erik Faye-Lund (2):
+      gallium/draw: use nir_shader_instructions_pass for nir_lower_aaline_fs
+      gallium/draw: assert shader-stage
 
-Xaver Hugl (1):
-      driconf: add a workaround for plasmashell freezing
+Georg Lehmann (1):
+      aco: Mark more instructions as 16bit on GFX10.
+
+Giancarlo Devich (1):
+      d3d12: Update hard-coded heap sizes and batch limit
+
+Ian Romanick (7):
+      intel/compiler: Validate 3-source instruction sources have same base type
+      intel/compiler: Validate 3-source instruction source strides
+      intel/compiler: Assert that ARF used is the accumulator
+      intel/eu/validate: More validation for logic ops
+      intel/eu/validate: Add validation for bfi2
+      intel/eu/validate: Add validation for csel
+      intel/eu/validate: Check predication and cmod for SEL, CMP, and CMPN
+
+Jesse Natalie (10):
+      nir_lower_fragcoord_wtrans: Support Vulkan shaders
+      microsoft/compiler: For Vulkan, when shading at sample rate, pos is sample pos
+      microsoft/compiler: For Vulkan, centroid should be ignored on position
+      microsoft/compiler: Fill out and sort the shader/module flags
+      microsoft/compiler: Set the advanced texture ops flag correctly
+      dzn: Use the right variable for heap slots when prepping resolves
+      dzn: Lower fragcoord wtrans
+      dzn: Implement point coord
+      dzn: Lower tg4 offsets
+      dzn: No need to add another bind flag for clears if one is already present
+
+José Roberto de Souza (2):
+      iris: Update PIPELINE_CONTROL flush when switching pipeline mode in TGL+
+      anv: Update PIPELINE_CONTROL flush when switching pipeline mode in TGL+
+
+Lionel Landwerlin (5):
+      anv: don't nullify entries
+      anv: check that push range actually match binding considered
+      anv: return properly typed value for no ubo promoted
+      anv: use the null surface with unused push descriptor binding table entries
+      ci/zink+anv: remove dEQP-GLES31.functional.layout_binding.ubo.*
+
+Lucas Stach (2):
+      etnaviv: blt: properly use upper half of clear value
+      etnaviv: properly check for new clear value in sampler TS setup
+
+Michel Dänzer (3):
+      loader/dri3: Move NULL handling into dri3_free_render_buffer
+      loader/dri3: Add dri3_set_render_buffer helper
+      loader/dri3: Overhaul draw->cur_num_back handling
+
+Mike Blumenkrantz (16):
+      zink: only update framebuffer object during swapchain update if framebuffer exists
+      zink: protect against invalid scissored renderpass clears
+      zink: split out swapchain render update fixups into separate function
+      zink: catch a potential corner case with dynamic render and swapchain updates
+      zink: re-clamp dynamic render area when doing swapchain fixups
+      zink: add a bunch of asserts for starting dynamic render
+      zink: delete dead code
+      zink: only flag modules_changed in optimal path if a change has occurred
+      zink: put line emulation stuff behind optimal_keys check in draw
+      zink: simplify some depth texturing spv
+      zink: fix some weird indentation in zink_set_sampler_views
+      zink: unify some shadow tex code in match_tex_dests_instr()
+      zink: use optimal key for pipeline library hash
+      zink: add a fs base key, fix optimal fs key packing
+      lavapipe: add some safety asserts when beginning rendering
+      zink: stop using VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT
+
+Pierre-Eric Pelloux-Prayer (6):
+      hud: check GALLIUM_HUD_DUMP_DIR value only once
+      hud: add "stdout" option to print values to console
+      hud,dri: emulate LIBGL_SHOW_FPS using hud
+      dri: get rid of LIBGL_SHOW_FPS
+      hud: extract float printf modifer selection logic to helper
+      util/00-mesa-defaults: add Limbo workaround
+
+Qiu Wenbo (2):
+      vc4: Fix RADDR_A field extraction of branch instruction
+      vc4: Fix running process_mux_deps on irrelevant type of instructions
+
+Rhys Perry (6):
+      aco: improve parse_delay_alu
+      aco: add more dependency instructions under waitcnt class
+      aco: use s_delay_alu skip field
+      aco/gfx11: reduce scratch allocation alignment
+      aco: align scratch size during assembly
+      radv/rt: use a smaller value to enable scratch
+
+Samuel Pitoiset (11):
+      radv: fix re-emitting tessellation domain origin when it's dynamic
+      radv: configure VGT_TF_PARAM directly from the command buffer
+      radv/winsys: fill real info for CHIP_GFX1100
+      radv: add a new dirty flag for the RB+ state
+      radv: add support for a PS epilogs cache in the device
+      radv: enable the PS epilogs cache when some ds3 states are enabled
+      radv: keep track of SPI_SHADER_COL_FORMAT for PS epilogs
+      radv: rework PS epilog emission
+      radv: copy the non-compacted color format at pipeline bind time
+      radv: add support for compiling PS epilogs on-demand
+      radv: enable PS epilogs on-demand for some dynamic states
+
+Tapani Pälli (1):
+      iris: let isl set tiling mode for external resources
+
+Timothy Arceri (1):
+      util/driconf: add Dune: Spice Wars workaround
+
+WebsterEndymion (2):
+      zink: add a condition to needs_write_s
+      zink: fix the stencil write
+
+Yiwei Zhang (1):
+      lvp: avoid redundant sampler views and image views
 
