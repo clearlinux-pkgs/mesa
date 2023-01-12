@@ -1,113 +1,120 @@
-Updating from 6481805e0007d2bf53390e1af25c75b1507c2a92 to 38d6185432d1f19a5653b3892069cd350187f5b8
+Updating from 38d6185432d1f19a5653b3892069cd350187f5b8 to fa227969a31d37a726539990bb819d1835e805d8
 
-Boris Brezillon (9):
-      vulkan/wsi: Indent fixes in ws_common_win32.c
-      vulkan/wsi: Simplify wsi_win32_surface_create_swapchain() error path
-      vulkan/wsi: Don't set use_buffer_blit manually in the win32 WSI logic
-      vulkan/wsi: Prepare things for image to image blits
-      vulkan/wsi: Dissociate the blit context and image configuration steps
-      vulkan/wsi: Add support for image -> image blits
-      vulkan/wsi: Allow platform code to define extra dependencies
-      vulkan/wsi: Hook-up DXGI swapchains and DComp
-      dzn: Use DXGI swapchains
+Alyssa Rosenzweig (8):
+      nir: Add store_agx intrinsic
+      agx: Lower global loads/stores to AGX versions
+      agx: Use load_global_constant for UBO lowering
+      agx: Remove load_global(_constant) support
+      agx: Wire up nir_intrinsic_store_agx
+      nir/gather_info: Handle store_zs_agx
+      agx: Use BITFIELD64_BIT for outputs_written
+      agx: Don't crash trying to encoding minifloats
 
-Charmaine Lee (1):
-      svga: fix max number of texture cube levels
+Corentin Noël (5):
+      gbm: Avoid leaks on screen creation failures
+      dri: Do not free the given screen in initScreen implementation
+      dri: Free the already allocated optionCache and optionInfo on failure
+      docs: debugging: Fix path to dlist.c
+      docs: utilities: Update list of development utilities
 
-David Heidelberg (1):
-      ci: debian-build-testing, build only the LTO variant
+Daniel Almeida (7):
+      gallium: pipe: add get_decoder_fence vfunc
+      gallium: pipe: add PIPE_DEFAULT_DECODER_FEEDBACK_TIMEOUT_NS
+      frontends: va: fix vaQuerySurfaceStatus and vaSyncSurface for decode
+      virgl: video: implement the get_decoder_fence vfunc
+      r600: uvd: implement the get_decoder_fence vfunc
+      radeonsi: uvd: implement the get_decoder_fence vfunc
+      radeonsi: vcn: implement the get_decoder_fence vfunc
 
-Dylan Baker (1):
-      docs: Add calendar entries for 23.0 release candidates.
+Dave Airlie (7):
+      lavapipe: drop unused macro
+      lavapipe: fix descriptor set layout reference counting in layout merge
+      lavapipe: fix merged layout ref counting
+      llvmpipe: unref images correctly in the fragment shader path
+      vk_cmd_queue: add a callback to free push descriptors set khr
+      ci/lvp: cleanup asan fails
+      lavapipe: fix one more descriptor set reference issue
 
-Emma Anholt (3):
-      anv: Add an aperture space summary to INTEL_DEBUG=submit.
-      anv: Fix the size/aperture space debug printouts to consider _ccs_size.
-      anv: Print the BO sizes in KB instead of hex bytes.
+David Heidelberg (4):
+      ci/amd: increase number of stoney runners
+      ci: when downgrading from Alpine 3.17 to 3.16, the tag was kept on 3.17
+      ci: propagete robust wgetrc into lava rootfs
+      ci: make wget even more robust
 
-Eric Engestrom (3):
-      broadcom/ci: drop duplicate job definition
-      egl: inline _eglReportError(), and drop this and all the other unused defines
-      egl: const display & config pointers in eglGetConfigAttrib()
+Emma Anholt (2):
+      gallium: Add a unit test for util_can_blit_via_copy_region().
+      gallium: Allow copy_region blits with matching formats.
 
-Erik Faye-Lund (3):
-      gallium/draw: support lowering stipple + smooth
-      zink: lower stipple + smooth
-      docs: fixup envvar-directive syntax
+Eric Engestrom (7):
+      wsi/meson: add missing dep
+      docs: add release notes for 22.3.3
+      docs: update calendar for 22.3.3
+      gen_release_notes: stop the script if we can't generate the release note
+      gen_release_notes: avoid crashing when none of the commits mention closing an issue
+      gen_release_notes: allow using the script from another checkout
+      gen_release_notes: include links in relnotes.rst when generating the new release note
 
-Friedrich Vock (9):
-      vulkan: Add RMV token definitions
-      vulkan: Add common RMV tracing infrastructure
-      vulkan: Add RMV file exporter
-      radv: Use internal allocation helpers for internal allocations
-      radv: Add RMV tracing utilities
-      radv: Add RMV tracing layer
-      radv: Add RMV resource tracking
-      radv: Enable RMV tracing
-      docs: Add short documentation about RMV tracing variables
+Erico Nunes (2):
+      lima/ci: change lima jobs to use deqp-runner suite
+      lima/ci: add deqp-egl run to the deqp suite
 
-Georg Lehmann (3):
-      aco: Handle NSA with vectors in get_mimg_nsa_dwords.
-      aco: Validate GFX11 NSA correctly.
-      aco: Use NSA on GFX11 with more than 5 vaddr registers.
+Erik Faye-Lund (1):
+      docs: move note on other drivers to the bottom
 
-Giancarlo Devich (3):
-      d3d12: Reuse sampler tables inside of a batch
-      d3d12: Unionize shader variables in d3d12_shader_key to reduce size
-      Fix incorrect stage reference
+Filip Gawin (2):
+      r300: don't cache abs in fragment shader
+      nv30: add nv49 results
 
-Guilherme Gallo (2):
-      ci/lava: Update lavacli version
-      ci/lava: Tweak LAVA jobs timeouts
+Gert Wollny (2):
+      gallium: Add cap to request state validation for all dirty state
+      r600: Request that state validation is emitted for all changed states
 
-Iago Toral Quiroga (4):
-      v3d: add a debug option to optimize shader compile times
-      v3dv: fix alpha-to-one for single sample setup
-      v3d/compiler: remove unused sample_coverage field from fs key.
-      v3dv: expose VK_KHR_shader_integer_dot_product
+Jan Beich (1):
+      drm-uapi/dma-buf.h: unbreak on non-Linux via local typedefs
 
-Jesse Natalie (3):
-      meson: Define VK_USE_PLATFORM_WIN32_KHR for C++
-      vulkan/wsi: Port Win32 WSI to C++
-      dzn: Allow multiple graphics queues
+Jason Ekstrand (2):
+      drm-uapi/dma-buf.h: Update from drm-misc-next (2022-06-10)
+      vulkan/wsi: Use the newly imported dma-buf.h
 
-Lucas Stach (1):
-      etnaviv: hide TS sharing behind debug option
+Nico Cortes (1):
+      Revert "intel/compiler: fine-grained control of dispatch widths"
 
-Marcin Ślusarz (2):
-      intel/compiler: fine-grained control of dispatch widths
-      docs: use envvar directive more
+Qiang Yu (8):
+      ac/nir/ngg: gs save data type of outputs
+      ac/nir/ngg: gs store output use nir_ssa_def instead of nir_variable
+      ac/nir/ngg: assert no offset for nogs/gs output handling
+      ac/nir/ngg: always reset output when gs emit vertex
+      ac/nir/ngg: fix gs store output for no param offset slot when gfx11
+      ac/nir/ngg: fix gs 16bit output uninitialized channel when gfx11
+      ac/nir/ngg: refine nogs outputs handling
+      ac/nir/ngg: implement 16bit output streamout
 
-Marek Olšák (1):
-      radeonsi: rewrite si_update_ps_colorbuf0_slot to fix crashes and recursions
+Rhys Perry (1):
+      radv/gfx11: increase radeon_check_space for occlusion query begin
 
-Mike Blumenkrantz (1):
-      zink: set surface->dt when updating swapchain
-
-Pavel Ondračka (1):
-      r300: allow more copy propagation with relative addressing
-
-Pedro J. Estébanez (1):
-      microsoft/spirv_to_dxil: Let linking report the need of runtime data
-
-Pierre-Eric Pelloux-Prayer (2):
-      mesa: add missing count_scale attribute
-      mesa: add missing count_scale attributes
-
-Rhys Perry (6):
-      aco/gfx11: fix discard early exit removal optimization
-      aco: allow Builder::Result to be dereferenced
-      aco: add more opcodes to can_use_DPP()
-      aco: disallow SGPRS/constants with interpolation instructions
-      aco/gfx11: allow true 16-bit instructions to access v128+
-      aco/gfx11: increase vgpr_limit to 256
+Rob Clark (9):
+      freedreno/a6xx: Rename fd6_emit_3d_state()
+      freedreno/a6xx: Split out fd6_state
+      freedreno/a6xx: Move fb_read descriptor to fd6_gmem
+      freedreno/a6xx: Tighten up fd6_emit
+      freedreno/a6xx: Avoid zero-init fd6_emit
+      freedreno/a6xx: Remove shader key from fd6_emit
+      mesa/st: Track complete access qualifier for images
+      gallium: Add image volatile/coherent flags
+      freedreno/a6xx: Demote coherent img access to uncompressed
 
 Samuel Pitoiset (1):
-      docs: update new_features.txt for additional work with RADV
+      radv,aco: fix enable_mrt_output_nan_fixup for RAGE2 again
 
-Yiwei Zhang (4):
-      ci/venus: temporarily disable due to instability
-      ci: uprev virglrenderer
-      ci/venus: specify render server path to enable server config
-      ci/venus: re-enable venus-lavapipe
+Sil Vilerino (1):
+      d3d12: implement the get_decoder_fence vfunc
+
+Simon Ser (1):
+      zink: fix PIPE_RESOURCE_PARAM_NPLANES with format modifier
+
+Thong Thai (4):
+      gallium/auxiliary/vl: fix scale and translate parameters
+      frontends/va/postproc: default to weave when deinterlacing
+      gallium/auxiliary/vl: compute shaders for progressive yuv
+      frontends/va/postproc: yuv422 to nv12
 
