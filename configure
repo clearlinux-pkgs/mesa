@@ -1,4 +1,4 @@
--Dplatforms=x11,wayland
+-Dplatforms=wayland,x11
 -Ddri3=true
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink
 -Dcpp_std=gnu++17
@@ -14,3 +14,4 @@
 -Dosmesa=true
 -Dzstd=enabled
 -Dshader-cache=true
+-Dopengl=true

@@ -1,120 +1,79 @@
-Updating from 38d6185432d1f19a5653b3892069cd350187f5b8 to fa227969a31d37a726539990bb819d1835e805d8
+Updating from fa227969a31d37a726539990bb819d1835e805d8 to 267dd1f4d571ee606141aa66f1665aa152b4e911
 
-Alyssa Rosenzweig (8):
-      nir: Add store_agx intrinsic
-      agx: Lower global loads/stores to AGX versions
-      agx: Use load_global_constant for UBO lowering
-      agx: Remove load_global(_constant) support
-      agx: Wire up nir_intrinsic_store_agx
-      nir/gather_info: Handle store_zs_agx
-      agx: Use BITFIELD64_BIT for outputs_written
-      agx: Don't crash trying to encoding minifloats
+Adam Jackson (1):
+      ci: build hasvk if we're building anv
 
-Corentin Noël (5):
-      gbm: Avoid leaks on screen creation failures
-      dri: Do not free the given screen in initScreen implementation
-      dri: Free the already allocated optionCache and optionInfo on failure
-      docs: debugging: Fix path to dlist.c
-      docs: utilities: Update list of development utilities
+Alyssa Rosenzweig (2):
+      nir/peephole_select: Allow load_preamble
+      agx: Peephole select after opt_preamble
 
-Daniel Almeida (7):
-      gallium: pipe: add get_decoder_fence vfunc
-      gallium: pipe: add PIPE_DEFAULT_DECODER_FEEDBACK_TIMEOUT_NS
-      frontends: va: fix vaQuerySurfaceStatus and vaSyncSurface for decode
-      virgl: video: implement the get_decoder_fence vfunc
-      r600: uvd: implement the get_decoder_fence vfunc
-      radeonsi: uvd: implement the get_decoder_fence vfunc
-      radeonsi: vcn: implement the get_decoder_fence vfunc
+Dylan Baker (2):
+      VERSION: bump to 23.1.0-devel for further development
+      docs: reset new_features.txt
 
-Dave Airlie (7):
-      lavapipe: drop unused macro
-      lavapipe: fix descriptor set layout reference counting in layout merge
-      lavapipe: fix merged layout ref counting
-      llvmpipe: unref images correctly in the fragment shader path
-      vk_cmd_queue: add a callback to free push descriptors set khr
-      ci/lvp: cleanup asan fails
-      lavapipe: fix one more descriptor set reference issue
+Emma Anholt (3):
+      docs/perfetto: Fix the name of the i915 render stages data sources.
+      perfetto: Add the intel data sources to system.cfg.
+      anv: Add a tracepoint for the fallback implicit sync wait path.
 
-David Heidelberg (4):
-      ci/amd: increase number of stoney runners
-      ci: when downgrading from Alpine 3.17 to 3.16, the tag was kept on 3.17
-      ci: propagete robust wgetrc into lava rootfs
-      ci: make wget even more robust
+Friedrich Vock (2):
+      radv/rmv: Fix resource ids for name tokens
+      radv/rmv: Capture names of pipelines but not command buffers
 
-Emma Anholt (2):
-      gallium: Add a unit test for util_can_blit_via_copy_region().
-      gallium: Allow copy_region blits with matching formats.
+GH Cao (1):
+      dzn: Declare debug only root_dwords as ASSERTED
 
-Eric Engestrom (7):
-      wsi/meson: add missing dep
-      docs: add release notes for 22.3.3
-      docs: update calendar for 22.3.3
-      gen_release_notes: stop the script if we can't generate the release note
-      gen_release_notes: avoid crashing when none of the commits mention closing an issue
-      gen_release_notes: allow using the script from another checkout
-      gen_release_notes: include links in relnotes.rst when generating the new release note
+Ian Romanick (4):
+      ntt: Add support for fcsel_gt and fcsel_ge opcodes
+      nir/lower_int_to_float: Add support for i32csel opcodes
+      r300: Enable generation of fcsel_gt and fcsel_ge opcodes
+      i915: Enable generation of fcsel_gt and fcsel_ge opcodes
 
-Erico Nunes (2):
-      lima/ci: change lima jobs to use deqp-runner suite
-      lima/ci: add deqp-egl run to the deqp suite
+Kenneth Graunke (1):
+      intel/genxml: Drop CACHE_MODE_SS definition.
 
-Erik Faye-Lund (1):
-      docs: move note on other drivers to the bottom
+Konstantin Seurer (2):
+      vulkan/rmv: Only trace on the n-th frame
+      radv: Fix deadlock in radv_rmv_log_event_create
 
-Filip Gawin (2):
-      r300: don't cache abs in fragment shader
-      nv30: add nv49 results
+Lionel Landwerlin (10):
+      pps: print out message when we get the first counters
+      anv: record secondaries' traces into primaries
+      intel/ds: track secondary cmdbuffers in perfetto
+      intel/ds: move event_id access to perfetto lambda
+      util/u_trace: add support for variable length trace points
+      vulkan/debug_utils: copy debug util labels
+      anv: add support for command buffer tagging in traces
+      intel/ds: add INTEL_GPU_TRACEPOINT envvar to toggle tracepoints
+      intel/ds: remove unused trace point
+      intel/utrace: document tracepoints
 
-Gert Wollny (2):
-      gallium: Add cap to request state validation for all dirty state
-      r600: Request that state validation is emitted for all changed states
+Martin Roukala (né Peres) (5):
+      ci/deqp-runner: compress results.csv before uploading it to GitLab
+      ci/piglit: compress results.csv before uploading it to GitLab
+      zink/ci/radv: remove a test from the fails list
+      zink/ci: add a fail to the VG flake list
+      zink/ci: relocate radv testing from radv's gitlab-ci.yml
 
-Jan Beich (1):
-      drm-uapi/dma-buf.h: unbreak on non-Linux via local typedefs
+Mike Blumenkrantz (1):
+      zink: simplify get_slot_components() for xfb emission
 
-Jason Ekstrand (2):
-      drm-uapi/dma-buf.h: Update from drm-misc-next (2022-06-10)
-      vulkan/wsi: Use the newly imported dma-buf.h
+Pavel Ondračka (1):
+      nir/lower_bool: ntt: Generate a good opcode for bcsel
 
-Nico Cortes (1):
-      Revert "intel/compiler: fine-grained control of dispatch widths"
+Pierre-Eric Pelloux-Prayer (2):
+      util: add a return value to util_sprintf
+      hud: fix values printing
 
-Qiang Yu (8):
-      ac/nir/ngg: gs save data type of outputs
-      ac/nir/ngg: gs store output use nir_ssa_def instead of nir_variable
-      ac/nir/ngg: assert no offset for nogs/gs output handling
-      ac/nir/ngg: always reset output when gs emit vertex
-      ac/nir/ngg: fix gs store output for no param offset slot when gfx11
-      ac/nir/ngg: fix gs 16bit output uninitialized channel when gfx11
-      ac/nir/ngg: refine nogs outputs handling
-      ac/nir/ngg: implement 16bit output streamout
+Samuel Pitoiset (3):
+      radv: fix missing implementation of creating images from swapchains
+      radv: fix hashing pipeline keys if RADV_PERFTEST=ngg_streamout is used
+      radv: fix re-emitting RB+ when the non-compacted color format changes
 
-Rhys Perry (1):
-      radv/gfx11: increase radeon_check_space for occlusion query begin
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: Collabora's LAVA lab for maintance"
 
-Rob Clark (9):
-      freedreno/a6xx: Rename fd6_emit_3d_state()
-      freedreno/a6xx: Split out fd6_state
-      freedreno/a6xx: Move fb_read descriptor to fd6_gmem
-      freedreno/a6xx: Tighten up fd6_emit
-      freedreno/a6xx: Avoid zero-init fd6_emit
-      freedreno/a6xx: Remove shader key from fd6_emit
-      mesa/st: Track complete access qualifier for images
-      gallium: Add image volatile/coherent flags
-      freedreno/a6xx: Demote coherent img access to uncompressed
-
-Samuel Pitoiset (1):
-      radv,aco: fix enable_mrt_output_nan_fixup for RAGE2 again
-
-Sil Vilerino (1):
-      d3d12: implement the get_decoder_fence vfunc
-
-Simon Ser (1):
-      zink: fix PIPE_RESOURCE_PARAM_NPLANES with format modifier
-
-Thong Thai (4):
-      gallium/auxiliary/vl: fix scale and translate parameters
-      frontends/va/postproc: default to weave when deinterlacing
-      gallium/auxiliary/vl: compute shaders for progressive yuv
-      frontends/va/postproc: yuv422 to nv12
+t0b3 (1):
+      nir/nir_opt_move: fix ALWAYS_INLINE compiler error
 
