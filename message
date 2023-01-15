@@ -1,49 +1,16 @@
-Updating from 267dd1f4d571ee606141aa66f1665aa152b4e911 to 7e52bd7b18245bab3e722300c715e30932bb59ac
-
-Adam Jackson (13):
-      glx/dri3: Simplify protocol version tracking
-      glx: Remove glx_context::screen
-      glx: Remove a can't-happen NULL check
-      glx: Remove support for glXGetDriverConfig for old drivers
-      glx: Clean up some funny business from context bind/unbind
-      glx: Reflow MakeContextCurrent a little
-      glx: Check for initial "glX" first in glXGetProcAddress
-      glx: Move 1.2 GLXPixmap code into glx_pbuffer.c
-      glx: Inline a few single-use constant strings into their user
-      glx: Fix drawable type inference in visual/fbconfig setup
-      glx: Harmonize glXCreateGLXPixmap with glXCreatePixmap
-      mesa: Fix extension table formatting
-      mesa: Trivially advertise NV_generate_mipmap_sRGB
+Updating from 7e52bd7b18245bab3e722300c715e30932bb59ac to 274e1d5a39e258ff64637f9113c36e0b10bf6a1c
 
 Alyssa Rosenzweig (1):
-      asahi: Handle sampler->compare_mode
+      panfrost: Don't use AFBC of sRGB luminance-alpha
 
-Bas Nieuwenhuizen (1):
-      aco: Pass correct number of coords to Vega 1D LOD instruction.
+Christian Gmeiner (1):
+      etnaviv: nir: use lower_fround_even
 
-Jason Ekstrand (3):
-      nir: Add more opcodes to nir_tex_instr_is_query()
-      nir/builder: Add some texture helpers
-      radv: Use the new NIR builder tex helpers for meta
+Mike Blumenkrantz (1):
+      zink: add renderdoc handling
 
-Jesse Natalie (4):
-      ci/windows: Download updated WARP 1.0.4 package
-      dzn/ci: Remove flakes/fails that don't hit anymore
-      dzn/ci: Add image test group, which is all passing now
-      dzn: Fix clear bind flag logic
-
-Juston Li (10):
-      venus: refactor out vn_feedback_event_cmd_record2
-      venus: refactor VK_KHR_synchronization2 ext sync fd requirements
-      venus: require importable external semaphores for WSI
-      venus: require exportable bit for ext fence sync fd
-      venus: require exportable/importable bit for ext semaphores sync fd
-      venus: remove filtering external semaphores for QueueSubmit
-      venus: drop VkQueueBindSparse
-      venus: append fence feedback batch
-      venus: refactor QueueSubmit/QueueSubmit2
-      venus: vn_queue: align vulkan object variable naming
-
-Vincent Davis Jr (1):
-      gbm/backend: fix gbm compile without dri
+Rob Clark (3):
+      freedreno/ci: Switch a630 jobs over to manual
+      freedreno/ci: Cleanup a618 yaml
+      freedreno/ci: Add a618 egl/skqp/piglit jobs
 
