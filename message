@@ -1,16 +1,105 @@
-Updating from 7e52bd7b18245bab3e722300c715e30932bb59ac to 274e1d5a39e258ff64637f9113c36e0b10bf6a1c
+Updating from 274e1d5a39e258ff64637f9113c36e0b10bf6a1c to e86c7ac9f4b23769f3dcbaf3267d46436749315b
 
-Alyssa Rosenzweig (1):
-      panfrost: Don't use AFBC of sRGB luminance-alpha
+Adam Jackson (3):
+      wsi/x11: Make get_sorted_vk_formats handle varying channel widths
+      wsi/x11: Infer the default surface format from the root window's visual
+      wsi/x11: Support depth 16 visuals
 
-Christian Gmeiner (1):
-      etnaviv: nir: use lower_fround_even
+Alejandro Piñeiro (6):
+      vulkan/wsi: check if image info was already freed
+      v3dv/format: remove unused v3dv_get_tex_return_size
+      v3dv/pipeline: rename lower_tex_src_to_offset to lower_tex_src
+      v3dv: pass alignment to v3dv_buffer_init
+      v3dv/image: use 64-byte alingment for linear images if needed
+      v3dv: skip two ycbcr tests
 
-Mike Blumenkrantz (1):
-      zink: add renderdoc handling
+Alyssa Rosenzweig (9):
+      pan/bi: Fix incorrect compilation of fsat(reg.yx)
+      pan/bi: Add a unit test for fsat(reg.yx)
+      panfrost: Enable NV_primitive_restart on Valhall
+      panfrost: Fix logic ops on Bifrost
+      panfrost: Stop testing CAP_INT16
+      panfrost: Remove PAN_MESA_DEBUG=deqp
+      panfrost: Remove unused debug parameter
+      panfrost: Fix clears with conditional rendering
+      panfrost: Document render_condition_check contract
 
-Rob Clark (3):
-      freedreno/ci: Switch a630 jobs over to manual
-      freedreno/ci: Cleanup a618 yaml
-      freedreno/ci: Add a618 egl/skqp/piglit jobs
+David Heidelberg (2):
+      ci/zink: Penumbra is now fixed.
+      freedreno/ci: Switch also performance a630 job to manual
+
+Ella Stanforth (1):
+      v3dv: add support for multi-planar formats, enable YCbCr
+
+Eric Engestrom (1):
+      bin/ci: add gitlab_gql.py.cache to the .gitignore
+
+Friedrich Vock (2):
+      radv/rt: Divide by the correct workgroup size
+      radv/bvh: Prevent NANs when computing node cost
+
+Gert Wollny (1):
+      glsl/nir: only set uses_sample_shading when the output is a fbfetch
+
+Iago Toral Quiroga (2):
+      broadcom/compiler: produce better code for f2f16 with RTZ rounding
+      v3dv: add paths to handle partial copies of linear images
+
+Jason Ekstrand (9):
+      anv: Refactor Android externalFormat handling in CreateYcbcrConversion
+      anv/android: Use VkFormat for externalFormat
+      util/format: YUYV and UYVY have 4 8-bit channels
+      vulkan/formats: Add YCbCr format information
+      vulkan: Add a common vk_ycbcr_conversion struct
+      anv: Use the common vk_ycbcr_conversion object
+      anv: Use the YCbCr format info from common code
+      nir: Add copyright and include guards to nir_vulkan.h
+      anv,nir: Move the ANV YCbCr lowering pass to common code
+
+Juston Li (4):
+      docs/envvars: add missing mesa disk cache envvars
+      util/fossilize_db: don't destroy foz on RO load fail
+      utils/fossilize_db: refactor out loading RO foz dbs
+      util/fossilize_db: add runtime RO foz db loading via FOZ_DBS_DYNAMIC_LIST
+
+Konstantin Seurer (5):
+      vulkan: Track the nullDescriptor feature
+      radv: Add a helper for finding memory indices
+      radv: Create a null TLAS as meta state
+      radv: Use the null accel struct instead of emitting 0
+      radv/rt: Get rid of accel struct null checks
+
+Lionel Landwerlin (1):
+      Revert "ci: build hasvk if we're building anv"
+
+Lucas Stach (1):
+      etnaviv: don't drop TS capability on GPUs with MMUv2
+
+Matt Coster (2):
+      pvr: Extract setup of winsys job submit flags into separate functions
+      pvr: Add support for geometry-only render jobs
+
+Pavel Ondračka (3):
+      r300: update rv515 ci failures list
+      r300: skip sin/cos input range transformation for nine and ntt
+      r300: remove backend input range transformation for sin and cos
+
+Pierre-Eric Pelloux-Prayer (4):
+      radeonsi: simplify dpbb settings
+      ac/info: move pci bus info in a struct
+      ac: add ac_query_pci_bus_info helper
+      ac: don't call ac_query_pci_bus_info from ac_query_gpu_info
+
+Rhys Perry (4):
+      radv: implement GS load_ring_gsvs_amd/load_ring_gs2vs_offset_amd
+      radv,aco: use ac_nir_lower_legacy_gs
+      aco: restore semantic_can_reorder for GS output stores
+      ac/nir: use store_buffer_amd's base index
+
+Timur Kristóf (2):
+      aco/optimizer: Add missing v_lshlrev condition to can_apply_extract.
+      aco/optimizer: Optimize p_extract + v_mul_u32_u24 to v_mad_u32_u16.
+
+Vinson Lee (1):
+      radv: Fix memory leak.
 
