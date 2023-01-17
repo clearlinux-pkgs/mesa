@@ -1,105 +1,94 @@
-Updating from 274e1d5a39e258ff64637f9113c36e0b10bf6a1c to e86c7ac9f4b23769f3dcbaf3267d46436749315b
+Updating from e86c7ac9f4b23769f3dcbaf3267d46436749315b to ca8c8f2fc1f72cff286ddd0dec4e62e0720bd835
 
-Adam Jackson (3):
-      wsi/x11: Make get_sorted_vk_formats handle varying channel widths
-      wsi/x11: Infer the default surface format from the root window's visual
-      wsi/x11: Support depth 16 visuals
+Alyssa Rosenzweig (5):
+      nir: Add Midgard-specific fsin/fcos ops
+      nir: Optimize vendored sin/cos the same way
+      pan/mdg: Use special NIR ops for trig scaling
+      pan/mdg: Scalarize LUT instructions in NIR
+      pan/mdg: Remove MSGS debug
 
-Alejandro Piñeiro (6):
-      vulkan/wsi: check if image info was already freed
-      v3dv/format: remove unused v3dv_get_tex_return_size
-      v3dv/pipeline: rename lower_tex_src_to_offset to lower_tex_src
-      v3dv: pass alignment to v3dv_buffer_init
-      v3dv/image: use 64-byte alingment for linear images if needed
-      v3dv: skip two ycbcr tests
+Dave Airlie (1):
+      ci: bump vk cts to 1.3.3.1 + and a crash fix.
 
-Alyssa Rosenzweig (9):
-      pan/bi: Fix incorrect compilation of fsat(reg.yx)
-      pan/bi: Add a unit test for fsat(reg.yx)
-      panfrost: Enable NV_primitive_restart on Valhall
-      panfrost: Fix logic ops on Bifrost
-      panfrost: Stop testing CAP_INT16
-      panfrost: Remove PAN_MESA_DEBUG=deqp
-      panfrost: Remove unused debug parameter
-      panfrost: Fix clears with conditional rendering
-      panfrost: Document render_condition_check contract
+EmperorPenguin18 (1):
+      v3d: expose more drm formats with SAND128 modifier
 
-David Heidelberg (2):
-      ci/zink: Penumbra is now fixed.
-      freedreno/ci: Switch also performance a630 job to manual
+Gert Wollny (9):
+      nir: Add possibility to store image var offset in range_base
+      nir: Add range_base to atomic_counter and an option to use it
+      ntt: handle the image intrinsic range_base when translating to TGSI
+      ntt: Make use of the range_base offset when translating atomics in NTT
+      virgl: lower image variable offsets into the intrinsic range_base value
+      virgl: Request setting the atomic offset in the range_base
+      virgl: drop the separable flag for cases that can't be handled
+      r600/sfn: Fix readport check
+      r600/sfn: Do a bit of cleanup with the secondary read port validation
 
-Ella Stanforth (1):
-      v3dv: add support for multi-planar formats, enable YCbCr
+Illia Polishchuk (2):
+      ANV: Add extra memory types for ANV driver instead of a single one
+      hasvk: Add extra memory types for hasvk driver instead of a single one
 
-Eric Engestrom (1):
-      bin/ci: add gitlab_gql.py.cache to the .gitignore
+Jesse Natalie (27):
+      microsoft/compiler: Lower pack_[u/s]norm_2x16
+      microsoft/compiler: Implement texture sample count query
+      microsoft/compiler: Remove arrays when testing for structs in I/O
+      microsoft/compiler: Always emit float types in the I/O signature for structs
+      microsoft/compiler: Re-work the logic for adding SV_SampleIndex to force sample-rate
+      microsoft/compiler: Use nir info.fs.uses_sample_shading to force sample-rate
+      microsoft/compiler: Set num_components to 4 when updating pos write instructions
+      spirv2dxil: For removing unused vars, consider the whole I/O var size
+      spirv2dxil: When removing unused inputs, make sure they're actually inputs
+      spirv2dxil: Allow killing position as an undef varying
+      spirv2dxil: Replace not-provided inputs with zero instead of undef
+      dzn: Get options13
+      dzn: Support alpha blend factor
+      dzn: When changing root signature, dirty descriptors too
+      dzn: Use R24G8_TYPELESS for 24/8 depth resources
+      dzn: Support int border colors
+      dzn: Storage buffer sizes need to be 4-byte-aligned
+      dzn: Set MultisampleEnable to enable MSAA lines
+      dzn: Use typeless format for creation of depth-only or stencil-only D24S8
+      dzn: Define a symbol that was present in older D3D headers
+      dzn: Support root signature 1.2
+      dzn: Support unnormalized coordinate samplers
+      dzn: Always align cached pipeline header size to input element align
+      dzn: Add a zeroed zsa state when depth or raster is disabled
+      dzn: Disable depth when the rasterizer is disabled due to no position output
+      dzn: Fix format support checks for storage/uniform texel buffers
+      dzn: Remove cmdbuf query 'wait' list
 
-Friedrich Vock (2):
-      radv/rt: Divide by the correct workgroup size
-      radv/bvh: Prevent NANs when computing node cost
-
-Gert Wollny (1):
-      glsl/nir: only set uses_sample_shading when the output is a fbfetch
-
-Iago Toral Quiroga (2):
-      broadcom/compiler: produce better code for f2f16 with RTZ rounding
-      v3dv: add paths to handle partial copies of linear images
-
-Jason Ekstrand (9):
-      anv: Refactor Android externalFormat handling in CreateYcbcrConversion
-      anv/android: Use VkFormat for externalFormat
-      util/format: YUYV and UYVY have 4 8-bit channels
-      vulkan/formats: Add YCbCr format information
-      vulkan: Add a common vk_ycbcr_conversion struct
-      anv: Use the common vk_ycbcr_conversion object
-      anv: Use the YCbCr format info from common code
-      nir: Add copyright and include guards to nir_vulkan.h
-      anv,nir: Move the ANV YCbCr lowering pass to common code
-
-Juston Li (4):
-      docs/envvars: add missing mesa disk cache envvars
-      util/fossilize_db: don't destroy foz on RO load fail
-      utils/fossilize_db: refactor out loading RO foz dbs
-      util/fossilize_db: add runtime RO foz db loading via FOZ_DBS_DYNAMIC_LIST
-
-Konstantin Seurer (5):
-      vulkan: Track the nullDescriptor feature
-      radv: Add a helper for finding memory indices
-      radv: Create a null TLAS as meta state
-      radv: Use the null accel struct instead of emitting 0
-      radv/rt: Get rid of accel struct null checks
+José Roberto de Souza (4):
+      anv: Start to move i915 specific code from anv_device to i915/anv_device
+      anv: Export anv_exec_batch_debug() and chain_command_buffers()
+      anv: Split i915 code from anv_batch_chain.c
+      anv: Move anv_device_check_status() code to i915/anv_device.c
 
 Lionel Landwerlin (1):
-      Revert "ci: build hasvk if we're building anv"
-
-Lucas Stach (1):
-      etnaviv: don't drop TS capability on GPUs with MMUv2
-
-Matt Coster (2):
-      pvr: Extract setup of winsys job submit flags into separate functions
-      pvr: Add support for geometry-only render jobs
-
-Pavel Ondračka (3):
-      r300: update rv515 ci failures list
-      r300: skip sin/cos input range transformation for nine and ntt
-      r300: remove backend input range transformation for sin and cos
-
-Pierre-Eric Pelloux-Prayer (4):
-      radeonsi: simplify dpbb settings
-      ac/info: move pci bus info in a struct
-      ac: add ac_query_pci_bus_info helper
-      ac: don't call ac_query_pci_bus_info from ac_query_gpu_info
+      intel: use a shared UUID with other drivers
 
 Rhys Perry (4):
-      radv: implement GS load_ring_gsvs_amd/load_ring_gs2vs_offset_amd
-      radv,aco: use ac_nir_lower_legacy_gs
-      aco: restore semantic_can_reorder for GS output stores
-      ac/nir: use store_buffer_amd's base index
+      ac/llvm: add support for fp32 addition atomics
+      aco: add support for fp32 addition atomics
+      radv: load ssbo_atomic_fadd descriptor
+      radv/gfx11: expose shaderBufferFloat32AtomicAdd
 
-Timur Kristóf (2):
-      aco/optimizer: Add missing v_lshlrev condition to can_apply_extract.
-      aco/optimizer: Optimize p_extract + v_mul_u32_u24 to v_mad_u32_u16.
+Rob Clark (8):
+      Revert "freedreno/ci: Switch also performance a630 job to manual"
+      Revert "freedreno/ci: Switch a630 jobs over to manual"
+      freedreno/ci: Add an a618 flake
+      freedreno/drm: Remove assert
+      freedreno: Fix tracking of enabled SSBOs
+      freedreno/a6xx: Workaround for no pos/psize
+      freedreno: Don't re-install a flushed batch
+      freedreno/a6xx: Rework barrier handling
 
-Vinson Lee (1):
-      radv: Fix memory leak.
+Simon Fels (2):
+      venus: allow vtest socket being specified by env variable
+      virgl/vtest: allow socket being specified by env variable
+
+Tapani Pälli (1):
+      intel/compiler: add cpp_std=c++17 when building tests
+
+Thong Thai (1):
+      gallium/auxiliary/vl: clean-up progressive shader
 
