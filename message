@@ -1,118 +1,74 @@
-Updating from ca8c8f2fc1f72cff286ddd0dec4e62e0720bd835 to 7e68cf91d74e6bd9a88c2b52417451d9afec4782
+Updating from c489b3eadb1570762fe2362b9c0e78090ee8c127 to 9b0c688f515444bdd03d0a1ba619707877ad535c
 
-Alejandro Piñeiro (3):
-      broadcom/compiler: v3d_nir_lower_txf_ms doesn't need v3d_compile
-      broadcom/compiler: treat PIPE_FORMAT_NONE as 32-bit formats for output type
-      v3dv: enable shaderStorageImageReadWithoutFormat
+Alyssa Rosenzweig (4):
+      nir/opt_preamble: Treat *size as an input
+      nir/opt_preamble: Consider load_preamble as movable
+      agx: Lower system values in NIR in the driver
+      agx: Bump preamble_storage_size to 512
 
-Alyssa Rosenzweig (1):
-      mesa: Set info.separate_shader for ARB programs
+Dmitry Osipenko (6):
+      util/cache_test: Unset env vars left after Cache.List test
+      util/mesa-db: Don't account header size
+      util/mesa-db: Support removal of cache entries
+      util/cache_test: Remove dummy cache entry added by cache_exists()
+      util/mesa-db: Introduce multipart mesa-db cache
+      util/disk_cache: Switch to multipart mesa-db cache
 
-Amber (2):
-      util/u_trace: pass utrace context to marker functions.
-      freedreno: add support for markers.
+Eric Engestrom (1):
+      meson: turn android-libbacktrace into a feature option
 
-Caleb Cornett (1):
-      d3d12: Lower minimum supported Shader Model to 6.0
-
-Corentin Noël (1):
-      ci/venus: Remove failure now passing
-
-Dave Airlie (2):
-      vulkan/video: add common h264/h265 parameter set management code.
-      vulkan/format: add a 10-bit video format
-
-Emma Anholt (10):
-      dri2: Fix exposing robustness with swkms.
-      ci/llvmpipe: Drop dEQP-EGL.functional.sharing.*.link.7 flakes.
-      ci/iris: Add known flakes for skqp.
-      ci/iris: Generalize the 8888_pbuffer EGL known flakes and share with GLK.
-      ci/zink: Add more blit conversion xfails for a618.
-      freedreno: Skip CPU/GPU timestamp sync when not supported.
-      ci/freedreno: Add glx-swap-event-async as a flake.
-      freedreno/pps: Fix a signed/unsigned complaint.
-      ci: Enable building the testing drivers with perfetto.
-      ci: Add some new folks to the restricted-traces access list.
-
-Erik Faye-Lund (3):
-      zink: whitespace fixup
-      zink: fix depth-clip disable cap
-      zink: remove depth_clip_control_missing workaround
-
-Ikshwaku Chauhan (1):
-      radeonsi: Fix distortion for yuv422 format for GFX10.
-
-Isaac Bosompem (1):
-      tool/pps: Fix 32-bit build issue with format string
-
-Jason Ekstrand (1):
-      gallium,util: Pull u_indices and u_primconvert back into gallium
-
-Kenneth Graunke (1):
-      intel/blorp: Lower base_workgroup_id to zero
+Illia Polishchuk (1):
+      nir: Add sha1 hash for nir shaders converted from spir-v
 
 Konstantin Seurer (1):
-      radv: Advertise rt pipelines for Control (DX12)
+      radv: Improve the BVH size estimation
 
-Luigi Santivetti (2):
-      pvr: fix uses_tile_buffers in clear color attachment
-      pvr: add support for tile buffer output clear
+Lina Versace (1):
+      mailmap: Lina is Chad's new name
+
+Lionel Landwerlin (2):
+      docs: list anv in EXT_extended_dynamic_state3 support
+      intel: add missing PS restriction on BDW+
+
+Marcin Ślusarz (4):
+      nir: add nir_mod_analysis & its tests
+      intel/compiler/mesh: optimize indirect writes
+      intel/compiler/mesh: support longer write messages
+      intel/compiler/mesh: remove dead code path supporting >4 dword writes
 
 Mike Blumenkrantz (6):
-      zink: prune old swapchains on present
-      zink: break out implicit feedback loop detection into separate function
-      zink: set textures_used in analyze_io
-      zink: outdent code in add_implicit_color_feedback_loop()
-      zink: make implicit feedback loop application stricter
-      zink: skip implicit feedback loop layout changes if feedback loop not present
+      zink: don't add dmabuf export type if dmabuf isn't supported
+      zink: stop leaking push descriptor templates
+      zink: always unref old images when adding new binds
+      zink: hook up VK_EXT_multisampled_render_to_single_sampled
+      zink: shrink zink_render_pass_state::msaa_expand_mask
+      zink: use VK_EXT_multisampled_render_to_single_sampled for EXT_multisample_render_to_texture
 
-Patrick Lerda (1):
-      lima: fix memory leak related to u_transfer_helper_create()
+Nicolas Dufresne (1):
+      util/format: Fix wrong colors when importing YUYV and UYVY
 
-Pavel Ondračka (3):
-      ntt: pass ubo_vec4_max nir_opt_offsets flag through ntt options
-      r300: set ubo_vec4_max ntt option properly
-      r300: remove backend negative addressing emulation
+Rob Clark (1):
+      freedreno/gmem: Fix for partial z/s fast-clear
 
-Pierre-Eric Pelloux-Prayer (4):
-      radeonsi/sqtt: don't read results for disabled SEs
-      radeonsi/sqtt: disable SE1+ on GFX11
-      radeonsi/sqtt: update registers for gfx11
-      radeonsi/sqtt: implement offset workaround for gfx11
+Ryan Neph (4):
+      ci: fix directory existence racing in parallel test execution
+      util/u_process: add MESA_PROCESS_NAME override to util_get_process_name()
+      util/u_process: remove util_get_process_name_may_override()
+      util/xmlconfig: add MESA_DRICONF_EXECUTABLE_OVERRIDE
 
-Qiang Yu (14):
-      radeonsi: implement nir_load_ring_gsvs_amd
-      radeonsi: implement nir_load_ring_gs2vs_offset_amd
-      radeonsi: lower nir streamout intrinsics in abi
-      radeonsi: use nir_print_xfb_info to replace si_dump_streamout
-      radeonsi: use ac_nir_lower_legacy_vs to replace si_llvm_vs_build_end
-      radeonsi: add nir implementation of gs copy shader generation
-      radeonsi: build legacy gs output info when shader compile
-      radeonsi: replace llvm gs copy shader generation with nir
-      radeonsi: remove llvm gs copy shader generate
-      radeonsi: replace llvm legacy gs code with nir lowering
-      radeonsi: move gfx10_ngg_export_vertex to si_shader_llvm.c
-      gallium/aux: remove nir_helpers
-      nir/xfb_info: nir_gather_xfb_info_from_intrinsics update nir xfb_info
-      radeonsi: update nir xfb info after medium io lowering
+Samuel Pitoiset (5):
+      radv: stop setting INTERPOLATE_COMP_Z
+      radv: fix RB+ for SRGB formats
+      radv: adjust ACCUM tessellation fields on GFX11+
+      radv: fix GPL fast-linking with libs that have retained NIR shaders
+      radv: skip shaders cache for fast-linked pipelines with GPL
 
-Rob Clark (14):
-      freedreno/ir3: Stop copying options
-      freedreno/ir3: Let driver specify fb-read descriptor
-      freedreno: Track image/SSBO usage for all stages
-      freedreno/ir3: Add descriptor set lowering
-      freedreno/a6xx: Pre-bake IBO descriptor sets
-      freedreno/a6xx: Add bindless state
-      freedreno/a6xx: Switch over to bindless IBO
-      freedreno/a6xx: Remove bindfull IBO state
-      freedreno/a6xx: Removing munging of tex state for IBO
-      freedreno/a6xx: Remove tex fb_read state
-      freedreno/a6xx: Move compute to tex state group
-      freedreno/a6xx: Move tex state building
-      freedreno/a6xx: Expose SSBO/image for all shader stages
-      freedreno: Restore GL_VENDOR string
+Tapani Pälli (1):
+      intel: enable existing workaround for ICL platform
 
-Samuel Pitoiset (2):
-      ac/nir: clear unused components before storing XFB outputs to LDS
-      ac: add TC_OP_ATOMIC_SUB_32
+Thong Thai (1):
+      radeonsi/vcn: use encoder/decoder caps reported by kernel
+
+Val Packett (1):
+      mailmap: Remap name and email for Val Packett
 
