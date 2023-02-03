@@ -1,124 +1,134 @@
-Updating from 9b0c688f515444bdd03d0a1ba619707877ad535c to 68e914a4caad5132d728b9e98ef67c43c4cc4355
+Updating from 68e914a4caad5132d728b9e98ef67c43c4cc4355 to 4397c166c01b641c57348d9e0d881a4a1f351455
 
-Alyssa Rosenzweig (2):
-      agx: Centralize texture lowering
-      asahi: Use non-UAPI specific BO create flags
+Constantine Shablya (1):
+      anv: handle ATTACHMENT_OPTIMAL layout
 
-Amber (3):
-      nir: support lowering nir_intrinsic_image_samples to a constant load
-      ir3: use lower_image_samples_to_one
-      intel/compiler: use lower_image_samples_to_one
+David Heidelberg (2):
+      ci: uprev piglit (etag md5 checksumming support)
+      ci/lavapipe: use dxvk for the traces
 
-Asahi Lina (2):
-      asahi: Split off common BO code into its own file
-      asahi: Split off macOS support into its own file
+Emma Anholt (5):
+      ci: Drop the itoral-gl-terrain demo from traces.
+      tu: Mark tiling impossible if we couldn't lay out gmem in the first place.
+      turnip: Optimize tile sizes to reduce the number of bins.
+      tu: Only emit the conditional gmem subpass resolves when gmem is possible.
+      turnip: Make the tiling-impossible case have an impossible tile layout.
 
-Chia-I Wu (2):
-      freedreno: add has_implicit_modifier helper
-      freedreno: support UBWC scanout
+Eric Engestrom (1):
+      v3dv: mark dEQP-VK.api.command_buffers.record_many_draws_secondary_2 as flaky
 
-Emma Anholt (2):
-      ci: Fix perf jobs blocking Marge pipelines.
-      ci: Fix perf job condition.
+Erik Faye-Lund (1):
+      anv, hasvk: remove stale TODO-files
 
-Erico Nunes (1):
-      Revert "CI: Lima farm is offline"
-
-Faith Ekstrand (3):
-      vtn: Set alignment on initial UBO/SSBO casts
-      anv: Let spirv_to_nir() set UBO/SSBO base cast alignments
-      hasvk: Let spirv_to_nir() set UBO/SSBO base cast alignments
-
-Georg Lehmann (2):
-      aco: use s_bfm_64 for constant copies
-      aco: use s_pack_ll_b32_b16 for constant copies
+Georg Lehmann (1):
+      aco: Improve wave64 cycle estimates.
 
 Jesse Natalie (2):
-      vulkan/wsi: Add a wsi_device param to get_present_modes
-      vulkan/wsi/win32: Support tearing (immediate) and VSync (FIFO) present modes
+      wsi/win32: Don't require buffer blits for software drivers
+      wsi/win32: We don't need a window DC for DXGI
 
-José Roberto de Souza (1):
-      intel/ds: Fix crash when allocating more intel_ds_queues than u_vector was initialized
-
-Kenneth Graunke (2):
-      iris: Perform load_constant address math in 32-bit rather than 64-bit
-      anv: Perform load_constant address math in 32-bit rather than 64-bit
+Juston Li (1):
+      anv: check initial cmd_buffer is chainable
 
 Konstantin Seurer (1):
-      radv: Fix creating accel structs with unbound buffers
+      radv: Work around shader_call_data variables in raygen shaders
 
-Lionel Landwerlin (1):
-      anv: expose EXT_load_store_op_none
+Lucas Stach (1):
+      etnaviv: fix double scanout import of multiplanar resources
 
-Marek Olšák (2):
-      amd: update amdgpu_drm.h
-      ac/gpu_info: add PCIe info
+Marek Olšák (34):
+      radeonsi/ci: update gfx10.3 results
+      radeonsi/ci: add gfx1100 results
+      radeonsi: fix RB+ blending with sRGB formats
+      radeonsi/gfx11: unset SAMPLE_MASK_TRACKER_WATERMARK to fix hangs
+      amd: split GFX1103 into GFX1103_R1 and GFX1103_R2
+      amd: fix tile_swizzle on gfx11 - should be shifted by 10 bits, not 8
+      amd: update SX_BLEND_OPT_EPSILON.MRT0_EPSILON enum definitions
+      amd: update shadowed register tables for gfx11
+      amd: improve RB+ blending precision
+      radeonsi: implement RB+ depth-only rendering for better perf
+      radeonsi/gfx11: remove the INST_PREF_SIZE workaround
+      radeonsi/gfx11: add a comment why we use PRIM_GRP_SIZE <= 252
+      radeonsi/gfx11: adjust ACCUM_* fields for tessellation
+      radeonsi/gfx11: fix blend->cb_target_mask dependency for shader keys
+      radeonsi/gfx11: move the PIXEL_PIPE_STAT_CONTROL event into the GFX preambles
+      radeonsi/gfx11: use new packet EVENT_WRITE_ZPASS
+      radeonsi: deduplicate VS/TES/GS update code
+      radeonsi/gfx11: always set MSAA_NUM_SAMPLES=0 for DCC_DECOMPRESS
+      radeonsi: merge si_ps_key_update_framebuffer_blend & .._update_blend_rasterizer
+      radeonsi: determine alpha_to_coverage robustly in si_update_framebuffer_blend_rasterizer
+      radeonsi: never set INTERPOLATE_COMP_Z
+      amd: unify and tune the attribute ring size for gfx11
+      amd: change pbb_max_alloc_count for gfx11
+      amd: update the cache size for gfx1103_r1
+      amd: update late_alloc_wave64 for gfx11
+      amd: sort and re-indent packet definitions
+      amd: fix typo in shadowed uconfig registers on gfx11
+      amd: document OOB behavior on gfx11
+      amd/registers: remove confusing definitions from gfx10-rsrc.json
+      radeonsi: set NEVER as the depth compare func if depth compare is disabled
+      amd/llvm: fix LLVM 15 & 16 crashes in SelectionDAG.cpp
+      radeonsi: call ac_init_llvm_once before any util_queue initialization
+      radeonsi: set sampler COMPAT_MODE in the corresponding branch
+      amd/ci: update sanctuary trace sha1
 
-Martin Roukala (né Peres) (2):
-      ci/core-manual-rules: enclose the whole condition in quotes
-      zink/ci: allow running manual jobs again on RADV
+Mike Blumenkrantz (10):
+      Revert "zink: fix zink_mem_type_idx_from_bits()"
+      zink: enable PIPE_CAP_ALLOW_GLTHREAD_BUFFER_SUBDATA_OPT
+      zink: make bindless buffer_infos a union
+      zink: fix bindless struct member comments
+      zink: skip updating descriptor buffer sets that aren't active
+      zink: set VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT on compute pipelines
+      zink: break out descriptor binding into separate function
+      zink: add a flag to indicate whether a descriptor buffer is bound
+      zink: implement descriptor buffer handling of bindless texture
+      zink: enable bindless texture with ZINK_DESCRIPTORS=db
 
-Mike Blumenkrantz (11):
-      lavapipe: move noop fs creation to device
-      lavapipe: add refcounting for shader nir
-      lavapipe: refcount nir shaders instead of cloning
-      lavapipe: break out (and slightly refactor) gallium shader cso creation
-      lavapipe: create gfx gallium csos at pipeline bind
-      lavapipe: delete unused pipelines immediately
-      lavapipe: delete lvp_pipeline::mem_ctx
-      lavapipe: try harder to reuse pipeline layouts during merge
-      zink: only set VkPipelineColorBlendStateCreateInfo::attachmentCount without full ds3
-      zink: fix zink_mem_type_idx_from_bits()
-      zink: rework descriptor buffer templating to use offsets
+Qiang Yu (23):
+      nir: add nir_export_amd intrinsic
+      ac/llvm: implement nir_export_amd
+      aco: implement nir_export_amd
+      ac/nir: gs and nogs use ac_nir_export_primitive
+      ac/nir: add ac_nir_export_position
+      ac/nir: add ac_nir_export_parameter
+      ac/nir: add force_vrs to ac_nir_export_position
+      amd,radeonsi: implement nir_load_force_vrs_rates_amd in driver abi
+      radeonsi: clamp vertex color in legacy gs instead of gs copy shader
+      radeonsi: update outputs written nir info
+      radeonsi: remove the extra handling for VS/TES primitive id
+      radeonsi: set nr_pos_exports outside of llvm translation
+      ac/nir,radv,radeonsi: legacy vs use ac_nir_export_(position|parameter)
+      ac/nir,radv,radeonsi: gs copy shader use ac_nir_export_(position|parameter)
+      ac/nir/ngg: fix clip dist culling mask uninitialized
+      ac/nir/ngg: change clipdist_neg_mask_var type to uint32
+      ac/nir/ngg,radv,radeonsi: nogs use ac_nir_export_(position|parameter)
+      ac/nir/ngg: prepare gather_vs_outputs to be used by gs
+      ac/nir/ngg: gs use ac_nir_export_(position|parameter)
+      ac/nir/ngg,radv: ms use ac_nir_export_(primitive|position|parameter)
+      nir,ac/llvm,aco: remove nir_export_primitive_amd
+      nir,ac/llvm,aco,radv,radeonsi: remove nir_export_vertex_amd
+      aco: remove early_rast wait insert
 
-Pavel Ondračka (3):
-      nir: nir opt_shrink_vectors whitespace fix
-      nir: mark progress when removing trailing unused alu channels
-      nir: mark progress when removing trailing unused load_const channels
-
-Rhys Perry (4):
-      aco: end reduce tmp after control flow, when used within control flow
-      aco/tests: add setup_reduce_temp.divergent_if_phi
-      aco/spill: always end spill vgpr after control flow
-      aco: limit VALUPartialForwardingHazard search
-
-Rob Clark (12):
-      freedreno/decode: Increase size of offsets table
-      freedreno/a6xx: LRZ for MSAA
-      freedreno/ir3: Scalarize load_ssbo
-      freedreno/a6xx: Add missing CS_BINDLESS mapping
-      freedreno/a6xx: Add CS instrlen workaround
-      freedreno: nondraw-batch
-      freedreno: Skip flush_resource with explicit sync
-      freedreno/a6xx: Don't double-write SP_CS_OBJ_START
-      freedreno: Don't open-code setting dirty CS state
-      freedreno/a6xx: Make shader state independent of grid info
-      freedreno/a6xx: Also FLUSH_CACHE on image barrier
-      freedreno/a6xx: Remove excess CS flushing
+Rose Hudson (1):
+      asahi: wire up shader disk cache support
 
 Sagar Ghuge (1):
-      intel/fs: Always stall between the fences on Gen11+
+      nir: Handle other variants of image_samples properly while lowering
 
-Samuel Pitoiset (10):
-      radv: remove useless check about CS in radv_lower_io()
-      radv: simplify pipeline_has_ngg during graphics shaders compilation
-      radv: add helpers for capturing shaders and statistics
-      radv: pass radv_graphics_pipeline to radv_graphics_pipeline_compile()
-      radv: move retained shaders info to radv_graphics_pipeline
-      radv: pass radv_compute_pipeline to radv_compute_pipeline_compile()
-      radv: pass pCreateInfo to radv_graphics_pipeline_compile()
-      radv: optimize radv_pipeline_layout_add_set() slightly
-      radv: remove redundant zero initialization of pipeline layout
-      radv: remove radv_pipeline_stage::spirv::sha1
+Samuel Pitoiset (8):
+      radv: allow to create a noop FS in a library with GPL
+      radv: remove one unused variable in radv_graphics_lib_pipeline_init()
+      radv: pass the lib flags for generating the pipeline key
+      radv: return a boolean value in radv_pipeline_needs_dynamic_ps_epilog()
+      radv: stop using the graphics pipeline key after compilation
+      radv: determine the last VGT API stage earlier
+      radv: skip compilation when possible with GPL fast-linking
+      radv: simplify an assertion after considering RADV_FORCE_VRS
 
-Sil Vilerino (1):
-      d3d12: Honor suggested driver profile/level for H264/HEVC encode
+Timur Kristóf (2):
+      radv: Disable NGG culling when conservative overestimation is used.
+      ac/nir/cull: Alway remove zero-area triangles in face culling.
 
-Timur Kristóf (3):
-      ac/gpu_info: Add has_pcie_bandwidth_info.
-      radv: Don't place CS in VRAM when bandwidth is too low.
-      nir/opt_algebraic: Add optimization for ieq/ine and right-shift.
-
-Yiwei Zhang (1):
-      venus: log upon device creation
+Yonggang Luo (1):
+      util: Implement util_iround with lrintf unconditionally
 
