@@ -1,78 +1,50 @@
-Updating from 4397c166c01b641c57348d9e0d881a4a1f351455 to e765ec21ec60340feec244bfafd67757e1069f2a
+Updating from e765ec21ec60340feec244bfafd67757e1069f2a to b481e3ae57b1bdd841e95b0dd4a49ac873616998
 
-Alyssa Rosenzweig (29):
-      nir: Add a late texcoord replacement pass
-      asahi: Run nir_lower_fragcolor during preprocessing
-      asahi: Lower texcoords late
-      panfrost: Implement GL_EXT_render_snorm on Bifrost+
-      ail: Add layout->mipmapped_z input
-      ail: Test mipmapped_z behaviour
-      ail: Test 63x63 cube map
-      asahi: Set layout->mipmapped_z for 3D textures
-      asahi: Fix encoding of uniform size
-      asahi: Strengthen agx_usc_uniform contract
-      asahi/nir_lower_sysvals: Split large ranges
-      asahi: Correct alignment for USC Uniform packets
-      agx: Support uniform registers as LODs
-      asahi: Use writeback when it looks beneficial
-      asahi: Make STAGING resources linear
-      asahi: Prefer blit-based texture transfer
-      asahi: Implement nontrivial rasterizer discard
-      asahi: DRY dirty tracking conditions
-      asahi: Remove redundant tri merge disable bit
-      asahi: Merge fragment control XML
-      agx: Keep varyings forwarded to texture as fp32
-      asahi: Don't use 16-bit inputs to 32-bit st_tile
-      docs/asahi: Document clip distance varyings
-      agx: Fix storing to varying arrays
-      agx: Handle constant-offset in address matching
-      asahi: Add XML for custom border colours
-      agx/decode: Add a data parameter to stateful
-      agx/decode: Handle extended samplers
-      asahi: Implement custom border colours
+Alyssa Rosenzweig (20):
+      asahi: Fix delete_vs_state implementation
+      asahi: Add compute kernel scaffolding
+      asahi: Don't leak shader NIR
+      asahi: Add hooks for SSBO and images
+      asahi: Fake more caps for dEQP-GLES31
+      asahi: Advertise seamless cube maps
+      asahi: Stub out MSAA for dEQP
+      asahi: Bump PIPE_CAP_MAX_TEXTURE_ARRAY_LAYERS
+      asahi: Add compute batches
+      asahi: Implement load_ssbo_address/get_ssbo_size
+      asahi: Identify more compute-related XML
+      agx: Implement compute ID intrinsics
+      agx: Implement barriers
+      nir/print: Extract get_location_str
+      nir/print: Pretty-print I/O semantic locations
+      nir/print: Pretty-print color0/1_interp
+      agx: Allow uniform sources on phis
+      agx: Run DCE twice
+      agx: Lower uniform sources with a dedicated pass
+      agx: Don't scalarize preambles in NIR
 
 Asahi Lina (1):
-      asahi: Refuse to transfer out-of-bounds mip levels
+      meson: Fix Asahi build on macOS
 
-Dylan Baker (1):
-      meson: combine checks for linker --gc-sections support
+Hampus Linander (4):
+      nir: Add extr_agx opcode
+      agx: Add extr instruction to AGX backend
+      agx: Use AGX extr for tex lowering
+      agx: Optimize lower_resinfo for cube maps
 
-Emma Anholt (13):
-      gallivm: Optimize emit_read_invocation's first-invocation loop.
-      gallivm: Refactor out a shared "get the first active invocation" loop.
-      gallivm: Return 0 first_active_invocation when we know that up front.
-      gallivm: Use cttz instead of a loop for first_active_invocation().
-      gallivm: Use first active invocation in some image/ssbo accesses.
-      ci/lvp: Drop the subgroupbroadcast skips.
-      llvmpipe: Enable LP_DEBUG on normal builds.
-      gallivm: Enable GALLIVM_DEBUG (mostly) on non-DEBUG builds.
-      gallivm: Fix the type of array nir_registers.
-      gallivm: Fix codegen performance for constant-index register array stores.
-      gallivm: Do the same codegen improvement for constant-index array loads.
-      ci/swrast: Drop skips for tests whose perf had been fixed.
-      ci/llvmpipe: Drop skip of InteractionFunctionCalls2.
+Konstantin Seurer (4):
+      radv/rq: Use 16 stack entries if there is only one ray query
+      radv/llvm: Use the shader names as module name
+      ac/llvm: Fix validation error with global io
+      radv: Scalarize global IO with LLVM enabled
 
-Ian Romanick (3):
-      nir/builder: Eliminate nir_f2b helper (and use of nir_f2b32 helper)
-      nir/builder: Handle f2b conversions specially in nir_type_convert
-      nir: Eliminate nir_op_f2b
+Luc Ma (1):
+      xlib: fix glXDestroyContext in Gallium frontends
 
-Mike Blumenkrantz (5):
-      zink: free descriptor buffer maps on batch state destroy
-      zink: fix more cases of heap/memtype suballocator mismatch
-      zink: cache and reuse dummy inputattachment for fbfetch
-      zink: handle missing line rasterization modes with ds3
-      zink: add back VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT for bindless
-
-Sergi Blanch Torne (1):
-      ci: disable Collabora's LAVA lab for maintance
+Mike Blumenkrantz (3):
+      gallium: add PIPE_CAP_NULL_TEXTURES
+      radeonsi: set PIPE_CAP_NULL_TEXTURES
+      zink: conditionally enable PIPE_CAP_NULL_TEXTURES
 
 SoroushIMG (1):
-      zink: fix sparse residency query and minLOD feature checks
-
-Timur Kristóf (1):
-      ac/nir/ngg: Include culled primitives in query.
-
-Yiwei Zhang (1):
-      venus: lazily query and cache gralloc front rendering usage
+      zink: fix cap check for arb sparse texture2
 
