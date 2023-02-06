@@ -1,50 +1,69 @@
-Updating from e765ec21ec60340feec244bfafd67757e1069f2a to b481e3ae57b1bdd841e95b0dd4a49ac873616998
+Updating from b481e3ae57b1bdd841e95b0dd4a49ac873616998 to 26754f658e4f1b4a021447d78b0c8804fe5ca457
 
-Alyssa Rosenzweig (20):
-      asahi: Fix delete_vs_state implementation
-      asahi: Add compute kernel scaffolding
-      asahi: Don't leak shader NIR
-      asahi: Add hooks for SSBO and images
-      asahi: Fake more caps for dEQP-GLES31
-      asahi: Advertise seamless cube maps
-      asahi: Stub out MSAA for dEQP
-      asahi: Bump PIPE_CAP_MAX_TEXTURE_ARRAY_LAYERS
-      asahi: Add compute batches
-      asahi: Implement load_ssbo_address/get_ssbo_size
-      asahi: Identify more compute-related XML
-      agx: Implement compute ID intrinsics
-      agx: Implement barriers
-      nir/print: Extract get_location_str
-      nir/print: Pretty-print I/O semantic locations
-      nir/print: Pretty-print color0/1_interp
-      agx: Allow uniform sources on phis
-      agx: Run DCE twice
-      agx: Lower uniform sources with a dedicated pass
-      agx: Don't scalarize preambles in NIR
+Alyssa Rosenzweig (1):
+      nir/lower_clip: Only emit 1 discard
 
-Asahi Lina (1):
-      meson: Fix Asahi build on macOS
+Guilherme Gallo (3):
+      radeonsi/ci: Update stoney test expectations
+      radeonsi/ci: Skip slow traces on raven
+      Revert "ci: disable Collabora's LAVA lab for maintance"
 
-Hampus Linander (4):
-      nir: Add extr_agx opcode
-      agx: Add extr instruction to AGX backend
-      agx: Use AGX extr for tex lowering
-      agx: Optimize lower_resinfo for cube maps
+Jason Ekstrand (12):
+      intel/compiler: Document wm_prog_key::persample_interp
+      intel/nir: Lower barycentrics to per-sample in a dedicated pass
+      nir: Remove nir_lower_io_force_sample_interpolation
+      intel/compiler: Use SHADER_OPCODE_SEND for PI messages
+      intel/fs: Return early in a couple builtin setup helpers
+      intel/compiler: Convert brw_wm_aa_enable to brw_sometimes
+      intel/fs: Make per-sample and coarse dispatch tri-state
+      intel/compiler: Convert wm_prog_key::persample_interp to a tri-state
+      intel/compiler: Convert wm_prog_key::multisample_fbo to a tri-state
+      intel/fs/validate: Assert SEND [extended] descriptors are uniform
+      intel/fs: Break out yet another FB write helper
+      intel/fs: Rework dynamic coarse handling
 
-Konstantin Seurer (4):
-      radv/rq: Use 16 stack entries if there is only one ray query
-      radv/llvm: Use the shader names as module name
-      ac/llvm: Fix validation error with global io
-      radv: Scalarize global IO with LLVM enabled
+Jonathan Gray (2):
+      intel/dev: remove invalid EHL pci id
+      intel/dev: Add another EHL pci id
 
-Luc Ma (1):
-      xlib: fix glXDestroyContext in Gallium frontends
+Karmjit Mahil (4):
+      pvr: Add SPM scratch buffer infrastructure.
+      pvr: Acquire scratch buffer on framebuffer creation.
+      pvr: Update comment about ZS and MSAA buffers for pvrsrvkm submission.
+      pvr: Set SPMSCRATCHBUFFER flag.
 
-Mike Blumenkrantz (3):
-      gallium: add PIPE_CAP_NULL_TEXTURES
-      radeonsi: set PIPE_CAP_NULL_TEXTURES
-      zink: conditionally enable PIPE_CAP_NULL_TEXTURES
+Lionel Landwerlin (4):
+      intel/fs: make alpha_to_coverage a tristate
+      anv: rename RT pipeline function helper
+      anv: rename a few internal functions to highlight gfx use
+      intel/ds: track end of pipe bits
 
-SoroushIMG (1):
-      zink: fix cap check for arb sparse texture2
+Luigi Santivetti (1):
+      pvr: add padding bytes when allocating buffer memory
+
+Marek Olšák (7):
+      radeonsi/gfx11: don't add mrt0 export for alpha-to-coverage if mrtz is present
+      radeonsi/gfx11: don't add alpha to mrt0 format for A2C if exporting via mrtz
+      amd: define new SET_*_REG_PAIRS packets
+      radeonsi: clean up si_set_mutable_tex_desc_fields
+      amd/surface: clean up is_dcc_supported_by_L2
+      amd,util: fix how lod bias is converted to fixed-point
+      amd: don't hardcode real VGPR allocation granularity on gfx10.3 and gfx11
+
+Mike Blumenkrantz (1):
+      zink: fix max acquired image count
+
+Rhys Perry (4):
+      radv: set state.vbo_misaligned_mask_invalid in radv_bind_vs_input_state
+      ac: move ring_offsets to ac_shader_args
+      ac/llvm: let ring_offsets be accessed like a normal arg
+      radv/llvm: use the ring_offsets shader arg
+
+Samuel Pitoiset (1):
+      radv: do not insert fast-linked libraries to the shaders cache
+
+SoroushIMG (3):
+      zink: only save frag const buffers when used by blit
+      zink: fix leak when rebinding same image surface
+      zink: clear null image surfaces to 0
 
