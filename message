@@ -1,69 +1,85 @@
-Updating from b481e3ae57b1bdd841e95b0dd4a49ac873616998 to 26754f658e4f1b4a021447d78b0c8804fe5ca457
+Updating from 26754f658e4f1b4a021447d78b0c8804fe5ca457 to 6d37f7f5ac9dbfd28874c24bbb67d14e932b2dac
 
-Alyssa Rosenzweig (1):
-      nir/lower_clip: Only emit 1 discard
+Alejandro Piñeiro (4):
+      nir: track if var copies lowering was called
+      radv: use shader_info->var_copies_lowered
+      anv: use shader_info->var_copies_lowered
+      v3d/v3dv: use shader_info->var_copies_lowered
 
-Guilherme Gallo (3):
-      radeonsi/ci: Update stoney test expectations
-      radeonsi/ci: Skip slow traces on raven
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Boyuan Zhang (1):
+      virgl/video: disable decoder fence
 
-Jason Ekstrand (12):
-      intel/compiler: Document wm_prog_key::persample_interp
-      intel/nir: Lower barycentrics to per-sample in a dedicated pass
-      nir: Remove nir_lower_io_force_sample_interpolation
-      intel/compiler: Use SHADER_OPCODE_SEND for PI messages
-      intel/fs: Return early in a couple builtin setup helpers
-      intel/compiler: Convert brw_wm_aa_enable to brw_sometimes
-      intel/fs: Make per-sample and coarse dispatch tri-state
-      intel/compiler: Convert wm_prog_key::persample_interp to a tri-state
-      intel/compiler: Convert wm_prog_key::multisample_fbo to a tri-state
-      intel/fs/validate: Assert SEND [extended] descriptors are uniform
-      intel/fs: Break out yet another FB write helper
-      intel/fs: Rework dynamic coarse handling
+Dave Airlie (11):
+      radv: remove the status query mark it unsupported.
+      radv: add new upload alloc aligned api
+      ac: add name to codec info struct
+      radv: adding video decode queue support
+      radv: add video decoder register setup.
+      radv/video: add initial frameworking.
+      radv/video: add initial h264 decoder for VCN
+      radv/video: add h264 support for uvd
+      radv: add vcn h265 decode.
+      radv/video: add h265 decode UVD support
+      radv/vcn: enable dynamic dpb tier 2 for h264/h265 on navi21+
 
-Jonathan Gray (2):
-      intel/dev: remove invalid EHL pci id
-      intel/dev: Add another EHL pci id
+Eric Engestrom (6):
+      ci/android: move common config to common job
+      ci/android: move virgl-specific gpu_mode to virgl-defined variables
+      ci/android: move virgl-specific fails/flakes/skips lists to virgl-defined variables
+      ci/android: move virgl-specific deqp suite to virgl-defined variables
+      ci/android: move virgl-specific so lib name to virgl-defined variables
+      ci/android: add missing line terminator at the end of the file
 
-Karmjit Mahil (4):
-      pvr: Add SPM scratch buffer infrastructure.
-      pvr: Acquire scratch buffer on framebuffer creation.
-      pvr: Update comment about ZS and MSAA buffers for pvrsrvkm submission.
-      pvr: Set SPMSCRATCHBUFFER flag.
+Frank Binns (1):
+      pvr: remove start/stop transfer flags
 
-Lionel Landwerlin (4):
-      intel/fs: make alpha_to_coverage a tristate
-      anv: rename RT pipeline function helper
-      anv: rename a few internal functions to highlight gfx use
-      intel/ds: track end of pipe bits
+Iago Toral Quiroga (2):
+      v3dv: ensure at least V3D_CL_MAX_INSTR_SIZE bytes in last CL instruction
+      v3dv: ensure we apply binning syncs to secondary command buffers
 
-Luigi Santivetti (1):
-      pvr: add padding bytes when allocating buffer memory
+José Roberto de Souza (2):
+      intel/genxml/gen125: Add walker configuration fields to 3DSTATE_WM
+      intel/genxml/gen125: Tune 3DSTATE_WM Walker direction
 
-Marek Olšák (7):
-      radeonsi/gfx11: don't add mrt0 export for alpha-to-coverage if mrtz is present
-      radeonsi/gfx11: don't add alpha to mrt0 format for A2C if exporting via mrtz
-      amd: define new SET_*_REG_PAIRS packets
-      radeonsi: clean up si_set_mutable_tex_desc_fields
-      amd/surface: clean up is_dcc_supported_by_L2
-      amd,util: fix how lod bias is converted to fixed-point
-      amd: don't hardcode real VGPR allocation granularity on gfx10.3 and gfx11
+Kai Wasserbäch (1):
+      fix: gallivm: limit usage of LLVMContextSetOpaquePointers() to LLVM 15
+
+Kenneth Graunke (1):
+      anv: Make a batch decoder for each queue family
+
+Konstantin Seurer (6):
+      radv: Make radv_compute_dispatch non-static
+      radv: Implement ordered compute dispatches
+      radv: Use an ordered dispatch for BVH encoding
+      radv: Remove radv_indirect_unaligned_dispatch
+      vulkan,nir: Refactor ycbcr conversion state into a struct
+      radv: Use common ycbcr conversion lowering
+
+Lionel Landwerlin (1):
+      anv: use malloc for host only descriptor sets
+
+Liviu Prodea (1):
+      meson: Ignore unused variables when assertions are disabled
 
 Mike Blumenkrantz (1):
-      zink: fix max acquired image count
+      lavapipe: disable VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT for int formats
 
-Rhys Perry (4):
-      radv: set state.vbo_misaligned_mask_invalid in radv_bind_vs_input_state
-      ac: move ring_offsets to ac_shader_args
-      ac/llvm: let ring_offsets be accessed like a normal arg
-      radv/llvm: use the ring_offsets shader arg
+Pavel Ondračka (1):
+      r300: set register file to none if swizzles are constant only
 
-Samuel Pitoiset (1):
-      radv: do not insert fast-linked libraries to the shaders cache
+Qiang Yu (2):
+      radv: move radv_consider_force_vrs above radv_fill_shader_info
+      radv: use amd common force_vrs option
 
-SoroushIMG (3):
-      zink: only save frag const buffers when used by blit
-      zink: fix leak when rebinding same image surface
-      zink: clear null image surfaces to 0
+Rhys Perry (1):
+      aco: fix out-of-bounds access when moving s_mem(real)time across SMEM
+
+Rob Clark (1):
+      freedreno+ir3: Move storage_16bit to compiler options
+
+SoroushIMG (1):
+      zink: fix pointcoord y inversion
+
+Yuxuan Shui (1):
+      loader: unregister special event in loader_dri3_drawable_fini
 
