@@ -1,85 +1,143 @@
-Updating from 26754f658e4f1b4a021447d78b0c8804fe5ca457 to 6d37f7f5ac9dbfd28874c24bbb67d14e932b2dac
+Updating from 6d37f7f5ac9dbfd28874c24bbb67d14e932b2dac to b4383821e7ec10d2d6c3cfec6eb8fe54dddb0d38
 
-Alejandro Piñeiro (4):
-      nir: track if var copies lowering was called
-      radv: use shader_info->var_copies_lowered
-      anv: use shader_info->var_copies_lowered
-      v3d/v3dv: use shader_info->var_copies_lowered
+Chia-I Wu (10):
+      turnip: add a comment to tu_format_for_aspect
+      turnip: move a comment about FMT6_Z24_UNORM_S8_UINT_AS_R8G8B8A8
+      turnip: remove tu_native_format::tile_mode
+      turnip: make tu6_format_*_supported static
+      turnip: let tu6_format_vtx* take pipe format
+      turnip: add blit_format_texture
+      turnip: add blit_format_color and blit_base_format
+      turnip: handle ubwc in blit_base_format
+      turnip: reorder tu6_format_*
+      freedreno/registers: correct WFM bit in CP_REG_TEST
 
-Boyuan Zhang (1):
-      virgl/video: disable decoder fence
+Daniel Schürmann (1):
+      radv: CSE ray_launch_{size|id}
 
 Dave Airlie (11):
-      radv: remove the status query mark it unsupported.
-      radv: add new upload alloc aligned api
-      ac: add name to codec info struct
-      radv: adding video decode queue support
-      radv: add video decoder register setup.
-      radv/video: add initial frameworking.
-      radv/video: add initial h264 decoder for VCN
-      radv/video: add h264 support for uvd
-      radv: add vcn h265 decode.
-      radv/video: add h265 decode UVD support
-      radv/vcn: enable dynamic dpb tier 2 for h264/h265 on navi21+
+      anv: add video engine support in various places
+      anv: set Y/4 tiling for video decode images
+      anv: add video format features for the one supported video output format
+      anv/format: handle video extensions structs by ignoring them
+      intel/genxml: align some of the fields with the media driver
+      intel/genxml: add missing power well control bits
+      anv/image: allocate some memory for mv storage after video images.
+      anv: add initial video decode support for h264.
+      anv/query: add query status report
+      anv: enable video decode extensions.
+      anv/video: fix video memory bindings.
 
-Eric Engestrom (6):
-      ci/android: move common config to common job
-      ci/android: move virgl-specific gpu_mode to virgl-defined variables
-      ci/android: move virgl-specific fails/flakes/skips lists to virgl-defined variables
-      ci/android: move virgl-specific deqp suite to virgl-defined variables
-      ci/android: move virgl-specific so lib name to virgl-defined variables
-      ci/android: add missing line terminator at the end of the file
+Francisco Jerez (1):
+      intel/eu/gfx8-9: Fix execution with all channels disabled due to HW bug #220160235.
 
-Frank Binns (1):
-      pvr: remove start/stop transfer flags
+Georg Lehmann (6):
+      aco: fix imod/omod for gfx11 VOP3 opcodes
+      aco: add mov/cndmask opcodes to does_fp_op_flush_denorms
+      aco: don't allow output modifiers for v_cvt_pkrtz_f16_f32
+      aco: allow output modifiers for ldexp_f16
+      aco: don't list imod/omod support v_fmaak_f32/v_fmamk_f32
+      aco: support omod/imod for v_fmac_f16
 
-Iago Toral Quiroga (2):
-      v3dv: ensure at least V3D_CL_MAX_INSTR_SIZE bytes in last CL instruction
-      v3dv: ensure we apply binning syncs to secondary command buffers
+Ian Romanick (2):
+      lavapipe: Fix bad array index scale factor in lvp_inline_uniforms pass
+      lavapipe: Only check NULL pointers in one place in src_only_uses_uniforms
 
-José Roberto de Souza (2):
-      intel/genxml/gen125: Add walker configuration fields to 3DSTATE_WM
-      intel/genxml/gen125: Tune 3DSTATE_WM Walker direction
-
-Kai Wasserbäch (1):
-      fix: gallivm: limit usage of LLVMContextSetOpaquePointers() to LLVM 15
-
-Kenneth Graunke (1):
-      anv: Make a batch decoder for each queue family
-
-Konstantin Seurer (6):
-      radv: Make radv_compute_dispatch non-static
-      radv: Implement ordered compute dispatches
-      radv: Use an ordered dispatch for BVH encoding
-      radv: Remove radv_indirect_unaligned_dispatch
-      vulkan,nir: Refactor ycbcr conversion state into a struct
-      radv: Use common ycbcr conversion lowering
+Juston Li (6):
+      venus: refactor semaphore helper functions
+      venus: refactor batch submission fixup
+      venus: add NO_TIMELINE_SEM_FEEDBACK perf option
+      venus: add timeline semaphore feedback cmds
+      venus: enable timeline semaphore feedback
+      venus: add SHADER_DEVICE_ADDRESS_BIT to buffer cache
 
 Lionel Landwerlin (1):
-      anv: use malloc for host only descriptor sets
+      anv: put the video extension behind a variable
 
-Liviu Prodea (1):
-      meson: Ignore unused variables when assertions are disabled
+Matt Coster (1):
+      pvr: Add firmware stream support for transfer submit
 
-Mike Blumenkrantz (1):
-      lavapipe: disable VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT for int formats
+Michel Dänzer (2):
+      mesa/st: Fix GL_EXT_texture_type_2_10_10_10_REV name in comment
+      mesa/st: Handle all 10 bpc types in st_choose_format
 
-Pavel Ondračka (1):
-      r300: set register file to none if swizzles are constant only
+Mike Blumenkrantz (21):
+      zink: set PIPE_CAP_VALIDATE_ALL_DIRTY_STATES
+      zink: move bindless_layout to screen and init on creation
+      zink: take screen param in init_db_template_entry()
+      zink: const-ify a bunch of shader key inlines
+      zink: move gpl usability checks to static inline for reuse
+      zink: remove duplicated gpl output blend initializations
+      zink: store last pipeline directly for zink_gfx_program::last_pipeline
+      zink: pass screen to descriptor_util_pool_key_get()
+      zink: delete zink_screen::framebuffer_cache
+      zink: make last_vertex_stage the first bit in zink_vs_key_base
+      zink: ralloc zink_shader structs
+      zink: add a define for the "default" optimal key
+      zink: add a define for testing that an optimal key is the default
+      zink: add VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT for gpl libs
+      zink: don't set blend_id with full_ds3
+      zink: set gfx feedback loop bit in pipeline state for driver workaround
+      zink: set zs feedback loop bit from driver workaround on ctx create
+      zink: fix gpl lib hashing
+      zink: use screen indexing for bindless descriptor set in db bind
+      zink: use screen indexing for bindless descriptor set in template bind
+      util/vbuf: fix multidraw unrolling
 
-Qiang Yu (2):
-      radv: move radv_consider_force_vrs above radv_fill_shader_info
-      radv: use amd common force_vrs option
+Patrick Lerda (1):
+      mesa/program: fix memory leak triggered by parser errors
 
 Rhys Perry (1):
-      aco: fix out-of-bounds access when moving s_mem(real)time across SMEM
+      aco: don't modify exec in p_interp_gfx11
 
-Rob Clark (1):
-      freedreno+ir3: Move storage_16bit to compiler options
+Rob Clark (7):
+      freedreno/a6xx: Move CS state to PROG state group
+      freedreno/drm: Move sa_cpu_prep() to core
+      freedreno/drm/virtio: Limit guest handles passed to virtgpu
+      ir3: Quiet unused variable warning
+      freedreno: Quiet unused variable warnings
+      freedreno/a2xx: Move pack_rgba()
+      freedreno: Indent fixes
 
-SoroushIMG (1):
-      zink: fix pointcoord y inversion
+Sarah Walker (1):
+      pvr: Update FWIF transfer queue register structures
 
-Yuxuan Shui (1):
-      loader: unregister special event in loader_dri3_drawable_fini
+Sidney Just (1):
+      loader: Add missing brace to fix compile
+
+Sil Vilerino (2):
+      d3d12: Video processing - Fix out of bounds array access
+      d3d12: Video Encode - Fix ID3D12CommandAllocator leak
+
+Simon Perretta (10):
+      pvr: Add new Rogue compiler framework
+      pvr: Add support for optional instruction params
+      pvr: Support dual-destination ALU instructions
+      pvr: Commonise some instruction member defs
+      pvr: Drop the ENUM_PACKED macro
+      pvr: Keep NIR SSA defs instead of registers
+      pvr: Adjust instruction repeat offset
+      pvr: Validate instruction repeat and src/dst sizes
+      pvr: Add block printing support during validation
+      pvr: Clarify unreachable text
+
+Tatsuyuki Ishi (1):
+      radv: Fix noop FS not getting constructed for GPL pipelines.
+
+Thong Thai (1):
+      gallium/auxiliary/vl: add crop to compute shader
+
+Timur Kristóf (5):
+      radv: Don't change LDS_SIZE for NGG culling shaders.
+      radv: Move checking primitive topology to radv_get_ngg_culling_settings.
+      radv: Use shader code to skip NGG culling in small workgroups.
+      radv: Remove NGG culling skip from command buffer.
+      radv: Refactor radv_emit_ngg_culling_state so it's based on dirty flags.
+
+Yiwei Zhang (5):
+      venus: disable non AHB external memory bits on Android
+      venus: fix formating
+      venus: fix tracing init to include instance creation
+      venus: render server enforces blob_id_0
+      venus: move exp features init back to use ring submit
 
