@@ -1,143 +1,64 @@
-Updating from 6d37f7f5ac9dbfd28874c24bbb67d14e932b2dac to b4383821e7ec10d2d6c3cfec6eb8fe54dddb0d38
+Updating from b4383821e7ec10d2d6c3cfec6eb8fe54dddb0d38 to ebc4893947c187c1a3f28508053633edf7d314a2
 
-Chia-I Wu (10):
-      turnip: add a comment to tu_format_for_aspect
-      turnip: move a comment about FMT6_Z24_UNORM_S8_UINT_AS_R8G8B8A8
-      turnip: remove tu_native_format::tile_mode
-      turnip: make tu6_format_*_supported static
-      turnip: let tu6_format_vtx* take pipe format
-      turnip: add blit_format_texture
-      turnip: add blit_format_color and blit_base_format
-      turnip: handle ubwc in blit_base_format
-      turnip: reorder tu6_format_*
-      freedreno/registers: correct WFM bit in CP_REG_TEST
+Amber (1):
+      freedreno: make sure depth/stencil layouts are always tiled
 
-Daniel Schürmann (1):
-      radv: CSE ray_launch_{size|id}
+Emma Anholt (3):
+      ci/freedreno: Don't forget to report flakes on a618, too.
+      u_trace: Add an interface for checking trace enablement outside a context.
+      zink: Add tracing of blit operations.
 
-Dave Airlie (11):
-      anv: add video engine support in various places
-      anv: set Y/4 tiling for video decode images
-      anv: add video format features for the one supported video output format
-      anv/format: handle video extensions structs by ignoring them
-      intel/genxml: align some of the fields with the media driver
-      intel/genxml: add missing power well control bits
-      anv/image: allocate some memory for mv storage after video images.
-      anv: add initial video decode support for h264.
-      anv/query: add query status report
-      anv: enable video decode extensions.
-      anv/video: fix video memory bindings.
+Eric Engestrom (2):
+      docs: add release notes for 22.3.5
+      docs: update calendar for 22.3.5
 
-Francisco Jerez (1):
-      intel/eu/gfx8-9: Fix execution with all channels disabled due to HW bug #220160235.
-
-Georg Lehmann (6):
-      aco: fix imod/omod for gfx11 VOP3 opcodes
-      aco: add mov/cndmask opcodes to does_fp_op_flush_denorms
-      aco: don't allow output modifiers for v_cvt_pkrtz_f16_f32
-      aco: allow output modifiers for ldexp_f16
-      aco: don't list imod/omod support v_fmaak_f32/v_fmamk_f32
-      aco: support omod/imod for v_fmac_f16
-
-Ian Romanick (2):
-      lavapipe: Fix bad array index scale factor in lvp_inline_uniforms pass
-      lavapipe: Only check NULL pointers in one place in src_only_uses_uniforms
-
-Juston Li (6):
-      venus: refactor semaphore helper functions
-      venus: refactor batch submission fixup
-      venus: add NO_TIMELINE_SEM_FEEDBACK perf option
-      venus: add timeline semaphore feedback cmds
-      venus: enable timeline semaphore feedback
-      venus: add SHADER_DEVICE_ADDRESS_BIT to buffer cache
+José Roberto de Souza (7):
+      intel: Add intel_memory_class_instance
+      anv: Convert drm_i915_gem_memory_class_instance to intel_memory_class_instance
+      anv: Use DRM_IOCTL_I915_GEM_CREATE_EXT in all supported kernels
+      anv: Add basic KMD backend infrastructure
+      anv: Start to move anv_gem_stubs.c to kmd backend
+      anv: Remove remaining bits of anv_i915_query()
+      hasvk: Remove remaining bits of anv_i915_query()
 
 Lionel Landwerlin (1):
-      anv: put the video extension behind a variable
+      intel/fs: fix mesh indirect movs
 
-Matt Coster (1):
-      pvr: Add firmware stream support for transfer submit
+Mike Blumenkrantz (11):
+      zink: flag bindless_init before calling zink_batch_bind_db() in init
+      zink: avoid the descriptor set multiplier for bindless buffers
+      zink: split out VkShaderModule creation
+      zink: add flags param to zink_pipeline_layout_create()
+      zink: split out gfx pipeline library creation
+      zink: add gpl flags for libraries based on shaders passed
+      zink: allow multiple gpl libraries in zink_create_gfx_pipeline_combined()
+      zink: move gpl input/output funcs to zink_pipeline.c
+      zink: enable combining intermediate gpl libs from combine function
+      zink: use GPL to handle (simple) separate shader objects
+      zink: set PIPE_CAP_SURFACE_REINTERPRET_BLOCKS
 
-Michel Dänzer (2):
-      mesa/st: Fix GL_EXT_texture_type_2_10_10_10_REV name in comment
-      mesa/st: Handle all 10 bpc types in st_choose_format
+Samuel Pitoiset (10):
+      radv: fix skipping graphics pipeline compilation when the FS is NULL
+      radv: cleanup graphics pipeline library flags uses
+      radv: simplify determining when the fragment shader needs an epilog
+      radv: regroup PS epilog info when generating the graphics pipeline key
+      radv: fix disabling MRT compaction for on-demand PS epilogs
+      radv: make sure to disable MRT compaction when compiling a PS epilog with GPL
+      radv: simplify creating a FS epilog from a library
+      radv: stop skipping the cache for compute/raytracing pipelines with GPL
+      radv: stop skipping the cache for monolithic graphics pipelines with GPL
+      docs: add missing RADV_PERFTEST=video_decode
 
-Mike Blumenkrantz (21):
-      zink: set PIPE_CAP_VALIDATE_ALL_DIRTY_STATES
-      zink: move bindless_layout to screen and init on creation
-      zink: take screen param in init_db_template_entry()
-      zink: const-ify a bunch of shader key inlines
-      zink: move gpl usability checks to static inline for reuse
-      zink: remove duplicated gpl output blend initializations
-      zink: store last pipeline directly for zink_gfx_program::last_pipeline
-      zink: pass screen to descriptor_util_pool_key_get()
-      zink: delete zink_screen::framebuffer_cache
-      zink: make last_vertex_stage the first bit in zink_vs_key_base
-      zink: ralloc zink_shader structs
-      zink: add a define for the "default" optimal key
-      zink: add a define for testing that an optimal key is the default
-      zink: add VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT for gpl libs
-      zink: don't set blend_id with full_ds3
-      zink: set gfx feedback loop bit in pipeline state for driver workaround
-      zink: set zs feedback loop bit from driver workaround on ctx create
-      zink: fix gpl lib hashing
-      zink: use screen indexing for bindless descriptor set in db bind
-      zink: use screen indexing for bindless descriptor set in template bind
-      util/vbuf: fix multidraw unrolling
+SoroushIMG (1):
+      zink: relax bresenhamLines requirement for non-strictLine drivers
 
-Patrick Lerda (1):
-      mesa/program: fix memory leak triggered by parser errors
+Tapani Pälli (1):
+      intel/blorp: disable REP16 for gfx12+ with R10G10B10_FLOAT_A2
 
-Rhys Perry (1):
-      aco: don't modify exec in p_interp_gfx11
+Tatsuyuki Ishi (2):
+      radv: Fix missing rbplus_allowed check for dynamic PS epilogs.
+      radv: Assert the hardware support rbplus when emitting rbplus state.
 
-Rob Clark (7):
-      freedreno/a6xx: Move CS state to PROG state group
-      freedreno/drm: Move sa_cpu_prep() to core
-      freedreno/drm/virtio: Limit guest handles passed to virtgpu
-      ir3: Quiet unused variable warning
-      freedreno: Quiet unused variable warnings
-      freedreno/a2xx: Move pack_rgba()
-      freedreno: Indent fixes
-
-Sarah Walker (1):
-      pvr: Update FWIF transfer queue register structures
-
-Sidney Just (1):
-      loader: Add missing brace to fix compile
-
-Sil Vilerino (2):
-      d3d12: Video processing - Fix out of bounds array access
-      d3d12: Video Encode - Fix ID3D12CommandAllocator leak
-
-Simon Perretta (10):
-      pvr: Add new Rogue compiler framework
-      pvr: Add support for optional instruction params
-      pvr: Support dual-destination ALU instructions
-      pvr: Commonise some instruction member defs
-      pvr: Drop the ENUM_PACKED macro
-      pvr: Keep NIR SSA defs instead of registers
-      pvr: Adjust instruction repeat offset
-      pvr: Validate instruction repeat and src/dst sizes
-      pvr: Add block printing support during validation
-      pvr: Clarify unreachable text
-
-Tatsuyuki Ishi (1):
-      radv: Fix noop FS not getting constructed for GPL pipelines.
-
-Thong Thai (1):
-      gallium/auxiliary/vl: add crop to compute shader
-
-Timur Kristóf (5):
-      radv: Don't change LDS_SIZE for NGG culling shaders.
-      radv: Move checking primitive topology to radv_get_ngg_culling_settings.
-      radv: Use shader code to skip NGG culling in small workgroups.
-      radv: Remove NGG culling skip from command buffer.
-      radv: Refactor radv_emit_ngg_culling_state so it's based on dirty flags.
-
-Yiwei Zhang (5):
-      venus: disable non AHB external memory bits on Android
-      venus: fix formating
-      venus: fix tracing init to include instance creation
-      venus: render server enforces blob_id_0
-      venus: move exp features init back to use ring submit
+Yonggang Luo (1):
+      util: Fixes error: no previous prototype for 'mesa_cache_db_entry_remove' Fixes: c92c99481fd ("util/mesa-db: Support removal of cache entries")
 
