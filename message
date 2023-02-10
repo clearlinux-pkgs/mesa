@@ -1,64 +1,101 @@
-Updating from b4383821e7ec10d2d6c3cfec6eb8fe54dddb0d38 to ebc4893947c187c1a3f28508053633edf7d314a2
+Updating from ebc4893947c187c1a3f28508053633edf7d314a2 to 9b2ddd2c5ecd6b60752db3bb6d507611c8b6d9d8
 
-Amber (1):
-      freedreno: make sure depth/stencil layouts are always tiled
+Amber (3):
+      freedreno: use A6XX_GRAS_SC_CNTL_SINGLE_PRIM_MODE with fb readback
+      gallium: make BlendCoherent usable from gallium drivers
+      freedreno: use blendcoherent to set FLUSH_PER_OVERLAP
 
-Emma Anholt (3):
-      ci/freedreno: Don't forget to report flakes on a618, too.
-      u_trace: Add an interface for checking trace enablement outside a context.
-      zink: Add tracing of blit operations.
+Chia-I Wu (4):
+      turnip: add a comment to tu_render_pass_cond_config
+      turnip: skip unnecessary CP_REG_TEST for cond load/store
+      freedreno/registers: document more bits of CP_REG_TEST
+      freedreno: avoid conditional ib in fd6_emit_tile
 
-Eric Engestrom (2):
-      docs: add release notes for 22.3.5
-      docs: update calendar for 22.3.5
+Danylo Piliaiev (5):
+      tu: Prevent using stale value of RB_UNKNOWN_88D0 on BLIT
+      tu: Prevent using stale value of GRAS_SC_CNTL in sysmem clear
+      freedreno: Document A6XX_GRAS_SC_CNTL::rotation field
+      turnip: Ensure that there is no renderpass rotation in binning
+      turnip: Disable draw states after dyn renderpass in all cases
 
-José Roberto de Souza (7):
-      intel: Add intel_memory_class_instance
-      anv: Convert drm_i915_gem_memory_class_instance to intel_memory_class_instance
-      anv: Use DRM_IOCTL_I915_GEM_CREATE_EXT in all supported kernels
-      anv: Add basic KMD backend infrastructure
-      anv: Start to move anv_gem_stubs.c to kmd backend
-      anv: Remove remaining bits of anv_i915_query()
-      hasvk: Remove remaining bits of anv_i915_query()
+Dave Airlie (1):
+      crocus: disable Y tiling for render targets properly.
 
-Lionel Landwerlin (1):
-      intel/fs: fix mesh indirect movs
+Emma Anholt (9):
+      ci: Disable systems in my farm that haven't recovered.
+      ci/zink: Update TGL full-run xfails.
+      ci/freedreno: Disable the a306_piglit_gl job.
+      ci/freedreno: Update a530 manual-run xfails.
+      ci/freedreno: Add an xfail for a618 VK full run.
+      ci/freedreno: Update a3xx piglit_shader xfails.
+      ci/nouveau: Disable the gm20b jobs entirely.
+      ci/radv: Update navi21 llvm xfails.
+      ci/crocus: Update HSW expectations.
 
-Mike Blumenkrantz (11):
-      zink: flag bindless_init before calling zink_batch_bind_db() in init
-      zink: avoid the descriptor set multiplier for bindless buffers
-      zink: split out VkShaderModule creation
-      zink: add flags param to zink_pipeline_layout_create()
-      zink: split out gfx pipeline library creation
-      zink: add gpl flags for libraries based on shaders passed
-      zink: allow multiple gpl libraries in zink_create_gfx_pipeline_combined()
-      zink: move gpl input/output funcs to zink_pipeline.c
-      zink: enable combining intermediate gpl libs from combine function
-      zink: use GPL to handle (simple) separate shader objects
-      zink: set PIPE_CAP_SURFACE_REINTERPRET_BLOCKS
+Eric Engestrom (1):
+      panfrost: drop no-longer-needed libglsl
 
-Samuel Pitoiset (10):
-      radv: fix skipping graphics pipeline compilation when the FS is NULL
-      radv: cleanup graphics pipeline library flags uses
-      radv: simplify determining when the fragment shader needs an epilog
-      radv: regroup PS epilog info when generating the graphics pipeline key
-      radv: fix disabling MRT compaction for on-demand PS epilogs
-      radv: make sure to disable MRT compaction when compiling a PS epilog with GPL
-      radv: simplify creating a FS epilog from a library
-      radv: stop skipping the cache for compute/raytracing pipelines with GPL
-      radv: stop skipping the cache for monolithic graphics pipelines with GPL
-      docs: add missing RADV_PERFTEST=video_decode
+Georg Lehmann (1):
+      aco: remove stale TODOs about v_interp opsel
 
-SoroushIMG (1):
-      zink: relax bresenhamLines requirement for non-strictLine drivers
+Ian Romanick (7):
+      nir/inline_uniforms: Change num_offsets type to uint8_t
+      nir/inline_uniforms: Pass max_num_bo and max_offset around as parameters
+      nir/inline_uniforms: Allow possibility of more than one UBO
+      nir/inline_uniforms: Allow possibility of uni_offsets and num_offsets being NULL
+      nir/inline_uniforms: Make src_only_uses_uniforms public, change name
+      nir/inline_uniforms: Make add_inlinable_uniforms public
+      nir/inline_uniforms: Add inot condition support
+
+Marcin Ślusarz (1):
+      intel/compiler/mesh: use U888X packed index format
+
+Mike Blumenkrantz (4):
+      zink: store gfx_hash on zink_gfx_program
+      zink: break out zink_gfx_program::libs into refcounted object
+      zink: implement cross-program pipeline library sharing
+      zink: add newlines to some debug printfs
+
+Nanley Chery (10):
+      docs: Document the implicit barriers around blits
+      glsl: Add compute shaders to encode DXT5/BC3
+      glsl: Modify the #includes in the DXT5 shaders
+      mesa: Create _mesa_CreateShaderProgramv_impl
+      mesa/st: Add get_compute_program
+      mesa/st: Add and use create_bc1_endpoint_ssbo
+      mesa/st: Add st_compute_transcode_astc_to_dxt5
+      mesa/st: Add st_texture_image_resource_level
+      mesa/st: Enable compute-based transcoding to DXT5
+      mesa/st: Measure compressed fallback unmap paths
+
+Patrick Lerda (1):
+      mesa/st: fix possible crash related to arb invalid memory access
+
+Pavel Ondračka (1):
+      nir: shrink phi nodes in nir_opt_shrink_vectors
+
+Philipp Zabel (1):
+      vulkan/wsi/wayland: fix acquire_next_image to report timeouts properly
+
+Samuel Pitoiset (5):
+      docs: stop reporting RADV_PERFTEST=gpl as experimental/suboptimal
+      radv/ci: set RADV_PERFTEST=GPL for all VKCTS jobs
+      radv/ci: bump the number of runners to 3 for vkcts-navi21-valve
+      radv: restore uploading shaders individually instead of consecutively
+      radv: implement graphics shaders relocation for a RGP workaround
+
+Sviatoslav Peleshko (1):
+      anv: Handle VkAccelerationStructureBuildRangeInfoKHR::transformOffset
 
 Tapani Pälli (1):
-      intel/blorp: disable REP16 for gfx12+ with R10G10B10_FLOAT_A2
+      iris: disable preemption for 3DPRIMITIVE during streamout
 
-Tatsuyuki Ishi (2):
-      radv: Fix missing rbplus_allowed check for dynamic PS epilogs.
-      radv: Assert the hardware support rbplus when emitting rbplus state.
+Väinö Mäkelä (4):
+      intel/vec4: Set the rounding mode
+      intel/vec4: Don't optimize multiply by 1.0 away
+      hasvk: Don't claim shaderDenormPreserveFloat32 on gfx7
+      hasvk: Tell spirv_to_nir float controls are always supported
 
 Yonggang Luo (1):
-      util: Fixes error: no previous prototype for 'mesa_cache_db_entry_remove' Fixes: c92c99481fd ("util/mesa-db: Support removal of cache entries")
+      vulkan: Use static_assert for check HWVULKAN_DISPATCH_MAGIC == ICD_LOADER_MAGIC
 
