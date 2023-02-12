@@ -1,101 +1,48 @@
-Updating from ebc4893947c187c1a3f28508053633edf7d314a2 to 9b2ddd2c5ecd6b60752db3bb6d507611c8b6d9d8
+Updating from 9b2ddd2c5ecd6b60752db3bb6d507611c8b6d9d8 to c0bc0ecf9eaf964ceb4a1573595da8b8b4585cc4
 
-Amber (3):
-      freedreno: use A6XX_GRAS_SC_CNTL_SINGLE_PRIM_MODE with fb readback
-      gallium: make BlendCoherent usable from gallium drivers
-      freedreno: use blendcoherent to set FLUSH_PER_OVERLAP
+Bas Nieuwenhuizen (1):
+      nir: Apply a maximum stack depth to avoid stack overflows.
 
-Chia-I Wu (4):
-      turnip: add a comment to tu_render_pass_cond_config
-      turnip: skip unnecessary CP_REG_TEST for cond load/store
-      freedreno/registers: document more bits of CP_REG_TEST
-      freedreno: avoid conditional ib in fd6_emit_tile
+Faith Ekstrand (1):
+      nir/deref: Preserve alignments in opt_remove_cast_cast()
 
-Danylo Piliaiev (5):
-      tu: Prevent using stale value of RB_UNKNOWN_88D0 on BLIT
-      tu: Prevent using stale value of GRAS_SC_CNTL in sysmem clear
-      freedreno: Document A6XX_GRAS_SC_CNTL::rotation field
-      turnip: Ensure that there is no renderpass rotation in binning
-      turnip: Disable draw states after dyn renderpass in all cases
+Jesse Natalie (24):
+      clc: Include opencl-c-base.h with LLVM 15 (using builtins)
+      microsoft/clc: Set features that are used by CL tests
+      ci/windows: Update LLVM to 15
+      nir: Add alignment to load_push_constant
+      nir_lower_fp16_casts: Allow opting out of lowering certain rounding modes
+      microsoft/compiler: Handle struct consts in DXIL module dumper
+      microsoft/compiler: Handle frcp for float16/float64
+      microsoft/compiler: Ensure native_low_precision is set for 16-bit bitcasts/stores
+      microsoft/compiler: Handle undef-rounding f2f16 as rtz
+      microsoft/compiler: Move unaligned load/store pass from CL
+      microsoft/compiler: Pass deref modes to unaligned pass and handle push const
+      microsoft/compiler: Simplify bitpacking for load/store lowering with nir_extract_bits
+      microsoft/compiler: Pass an alignment to constant buffer load lowering
+      microsoft/compiler: Handle 48-bit stores to SSBO/shared
+      microsoft/compiler: Support raw buffer load/store intrinsics with 16bit alignment
+      microsoft/compiler: Support lowering SSBO accesses to 16bit vectors
+      spirv2dxil: Set min UBO/SSBO alignments
+      spirv2dxil: Lower unaligned loads and stores
+      spirv2dxil: Move shader model into runtime conf struct
+      spirv2dxil: Support 16bit types
+      dzn: Enable get_surface_capabilities2
+      dzn: Delete unused extensions table
+      dzn: Get options4
+      dzn: Enable 16bit types when supported
 
-Dave Airlie (1):
-      crocus: disable Y tiling for render targets properly.
+Jonathan Marek (1):
+      turnip: fix use of align() instead of util_align_npot() with tile_align_w
 
-Emma Anholt (9):
-      ci: Disable systems in my farm that haven't recovered.
-      ci/zink: Update TGL full-run xfails.
-      ci/freedreno: Disable the a306_piglit_gl job.
-      ci/freedreno: Update a530 manual-run xfails.
-      ci/freedreno: Add an xfail for a618 VK full run.
-      ci/freedreno: Update a3xx piglit_shader xfails.
-      ci/nouveau: Disable the gm20b jobs entirely.
-      ci/radv: Update navi21 llvm xfails.
-      ci/crocus: Update HSW expectations.
+Karol Herbst (2):
+      rusticl/util: extract offset_of macro
+      rusticl/icd: Make it work in case Rustc shuffles struct around
 
-Eric Engestrom (1):
-      panfrost: drop no-longer-needed libglsl
-
-Georg Lehmann (1):
-      aco: remove stale TODOs about v_interp opsel
-
-Ian Romanick (7):
-      nir/inline_uniforms: Change num_offsets type to uint8_t
-      nir/inline_uniforms: Pass max_num_bo and max_offset around as parameters
-      nir/inline_uniforms: Allow possibility of more than one UBO
-      nir/inline_uniforms: Allow possibility of uni_offsets and num_offsets being NULL
-      nir/inline_uniforms: Make src_only_uses_uniforms public, change name
-      nir/inline_uniforms: Make add_inlinable_uniforms public
-      nir/inline_uniforms: Add inot condition support
-
-Marcin Ślusarz (1):
-      intel/compiler/mesh: use U888X packed index format
-
-Mike Blumenkrantz (4):
-      zink: store gfx_hash on zink_gfx_program
-      zink: break out zink_gfx_program::libs into refcounted object
-      zink: implement cross-program pipeline library sharing
-      zink: add newlines to some debug printfs
-
-Nanley Chery (10):
-      docs: Document the implicit barriers around blits
-      glsl: Add compute shaders to encode DXT5/BC3
-      glsl: Modify the #includes in the DXT5 shaders
-      mesa: Create _mesa_CreateShaderProgramv_impl
-      mesa/st: Add get_compute_program
-      mesa/st: Add and use create_bc1_endpoint_ssbo
-      mesa/st: Add st_compute_transcode_astc_to_dxt5
-      mesa/st: Add st_texture_image_resource_level
-      mesa/st: Enable compute-based transcoding to DXT5
-      mesa/st: Measure compressed fallback unmap paths
-
-Patrick Lerda (1):
-      mesa/st: fix possible crash related to arb invalid memory access
-
-Pavel Ondračka (1):
-      nir: shrink phi nodes in nir_opt_shrink_vectors
-
-Philipp Zabel (1):
-      vulkan/wsi/wayland: fix acquire_next_image to report timeouts properly
-
-Samuel Pitoiset (5):
-      docs: stop reporting RADV_PERFTEST=gpl as experimental/suboptimal
-      radv/ci: set RADV_PERFTEST=GPL for all VKCTS jobs
-      radv/ci: bump the number of runners to 3 for vkcts-navi21-valve
-      radv: restore uploading shaders individually instead of consecutively
-      radv: implement graphics shaders relocation for a RGP workaround
-
-Sviatoslav Peleshko (1):
-      anv: Handle VkAccelerationStructureBuildRangeInfoKHR::transformOffset
-
-Tapani Pälli (1):
-      iris: disable preemption for 3DPRIMITIVE during streamout
-
-Väinö Mäkelä (4):
-      intel/vec4: Set the rounding mode
-      intel/vec4: Don't optimize multiply by 1.0 away
-      hasvk: Don't claim shaderDenormPreserveFloat32 on gfx7
-      hasvk: Tell spirv_to_nir float controls are always supported
-
-Yonggang Luo (1):
-      vulkan: Use static_assert for check HWVULKAN_DISPATCH_MAGIC == ICD_LOADER_MAGIC
+Rob Clark (5):
+      freedreno/a6xx: Move num_driver_params to program state
+      freedreno: Move num_vertices calc to backend
+      freedreno: Remove impossible NULL check
+      freedreno: Add FD_DIRTY_QUERY
+      freedreno: Avoid screen lock when no rsc tracking needed
 
