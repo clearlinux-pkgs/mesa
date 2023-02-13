@@ -1,2 +1,23 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/include/EGL/egl.h
+/usr/include/EGL/eglext.h
+/usr/include/GLES/egl.h
+/usr/include/GLES/gl.h
+/usr/include/GLES/glext.h
+/usr/include/GLES/glplatform.h
+/usr/include/GLES2/gl2.h
+/usr/include/GLES2/gl2ext.h
+/usr/include/GLES2/gl2platform.h
+/usr/include/GLES3/gl3.h
+/usr/include/GLES3/gl31.h
+/usr/include/GLES3/gl32.h
+/usr/include/GLES3/gl3ext.h
+/usr/include/GLES3/gl3platform.h
+/usr/include/KHR/khrplatform.h
+/usr/include/EGL/eglplatform.h
+/usr/include/GL/gl.h
+/usr/include/GL/glcorearb.h
+/usr/include/GL/glext.h
+/usr/include/GL/glx.h
+/usr/include/GL/glxext.h

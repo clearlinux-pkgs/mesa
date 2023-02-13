@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 23.0+1390.gefcb63938c1
-Release  : 429
+Release  : 430
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/efcb63938c195b765c530e6e6eff1d712bfc6e74/mesa-23.0+1390-gefcb63938c1.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/efcb63938c195b765c530e6e6eff1d712bfc6e74/mesa-23.0+1390-gefcb63938c1.tar.bz2
 Summary  : No detailed summary available
@@ -170,7 +170,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676331783
+export SOURCE_DATE_EPOCH=1676332556
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -265,6 +265,28 @@ fi
 popd
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
+## Remove excluded files
+rm -f %{buildroot}*/usr/include/EGL/egl.h
+rm -f %{buildroot}*/usr/include/EGL/eglext.h
+rm -f %{buildroot}*/usr/include/GLES/egl.h
+rm -f %{buildroot}*/usr/include/GLES/gl.h
+rm -f %{buildroot}*/usr/include/GLES/glext.h
+rm -f %{buildroot}*/usr/include/GLES/glplatform.h
+rm -f %{buildroot}*/usr/include/GLES2/gl2.h
+rm -f %{buildroot}*/usr/include/GLES2/gl2ext.h
+rm -f %{buildroot}*/usr/include/GLES2/gl2platform.h
+rm -f %{buildroot}*/usr/include/GLES3/gl3.h
+rm -f %{buildroot}*/usr/include/GLES3/gl31.h
+rm -f %{buildroot}*/usr/include/GLES3/gl32.h
+rm -f %{buildroot}*/usr/include/GLES3/gl3ext.h
+rm -f %{buildroot}*/usr/include/GLES3/gl3platform.h
+rm -f %{buildroot}*/usr/include/KHR/khrplatform.h
+rm -f %{buildroot}*/usr/include/EGL/eglplatform.h
+rm -f %{buildroot}*/usr/include/GL/gl.h
+rm -f %{buildroot}*/usr/include/GL/glcorearb.h
+rm -f %{buildroot}*/usr/include/GL/glext.h
+rm -f %{buildroot}*/usr/include/GL/glx.h
+rm -f %{buildroot}*/usr/include/GL/glxext.h
 ## install_append content
 
 sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/intel_icd.x86_64.json > %{buildroot}/usr/share/vulkan/icd.d/intel_icd.i686.json
@@ -287,31 +309,10 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/EGL/egl.h
-/usr/include/EGL/eglext.h
 /usr/include/EGL/eglext_angle.h
 /usr/include/EGL/eglmesaext.h
-/usr/include/EGL/eglplatform.h
-/usr/include/GL/gl.h
-/usr/include/GL/glcorearb.h
-/usr/include/GL/glext.h
-/usr/include/GL/glx.h
-/usr/include/GL/glxext.h
 /usr/include/GL/internal/dri_interface.h
 /usr/include/GL/osmesa.h
-/usr/include/GLES/egl.h
-/usr/include/GLES/gl.h
-/usr/include/GLES/glext.h
-/usr/include/GLES/glplatform.h
-/usr/include/GLES2/gl2.h
-/usr/include/GLES2/gl2ext.h
-/usr/include/GLES2/gl2platform.h
-/usr/include/GLES3/gl3.h
-/usr/include/GLES3/gl31.h
-/usr/include/GLES3/gl32.h
-/usr/include/GLES3/gl3ext.h
-/usr/include/GLES3/gl3platform.h
-/usr/include/KHR/khrplatform.h
 /usr/include/gbm.h
 /usr/include/xa_composite.h
 /usr/include/xa_context.h
