@@ -1,48 +1,28 @@
-Updating from 9b2ddd2c5ecd6b60752db3bb6d507611c8b6d9d8 to c0bc0ecf9eaf964ceb4a1573595da8b8b4585cc4
+Updating from c0bc0ecf9eaf964ceb4a1573595da8b8b4585cc4 to efcb63938c195b765c530e6e6eff1d712bfc6e74
 
-Bas Nieuwenhuizen (1):
-      nir: Apply a maximum stack depth to avoid stack overflows.
+Eric Engestrom (11):
+      gallium/u_screen.h: add missing stdint.h include
+      util: avoid calling kcmp on Android
+      etnaviv: use simple_mtx to avoid breaking windows in the next commit
+      gallium: move etnaviv screen_lookup_or_create function to common code
+      freedreno: replace custom code with u_pipe_screen_lookup_or_create()
+      lima: replace custom code with u_pipe_screen_lookup_or_create()
+      v3d: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
+      vc4: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
+      panfrost: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
+      asahi: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
+      u_pipe_screen_lookup_or_create: avoid re-querying the fd to have a consistent hash key
 
-Faith Ekstrand (1):
-      nir/deref: Preserve alignments in opt_remove_cast_cast()
+Hans-Kristian Arntzen (3):
+      radv: Fix invalid 64-bit shift.
+      radv: Fix missing VK_ACCESS_2_SHADER_SAMPLED_READ_BIT.
+      radv: Implement VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT.
 
-Jesse Natalie (24):
-      clc: Include opencl-c-base.h with LLVM 15 (using builtins)
-      microsoft/clc: Set features that are used by CL tests
-      ci/windows: Update LLVM to 15
-      nir: Add alignment to load_push_constant
-      nir_lower_fp16_casts: Allow opting out of lowering certain rounding modes
-      microsoft/compiler: Handle struct consts in DXIL module dumper
-      microsoft/compiler: Handle frcp for float16/float64
-      microsoft/compiler: Ensure native_low_precision is set for 16-bit bitcasts/stores
-      microsoft/compiler: Handle undef-rounding f2f16 as rtz
-      microsoft/compiler: Move unaligned load/store pass from CL
-      microsoft/compiler: Pass deref modes to unaligned pass and handle push const
-      microsoft/compiler: Simplify bitpacking for load/store lowering with nir_extract_bits
-      microsoft/compiler: Pass an alignment to constant buffer load lowering
-      microsoft/compiler: Handle 48-bit stores to SSBO/shared
-      microsoft/compiler: Support raw buffer load/store intrinsics with 16bit alignment
-      microsoft/compiler: Support lowering SSBO accesses to 16bit vectors
-      spirv2dxil: Set min UBO/SSBO alignments
-      spirv2dxil: Lower unaligned loads and stores
-      spirv2dxil: Move shader model into runtime conf struct
-      spirv2dxil: Support 16bit types
-      dzn: Enable get_surface_capabilities2
-      dzn: Delete unused extensions table
-      dzn: Get options4
-      dzn: Enable 16bit types when supported
+Kai Wasserbäch (2):
+      fix(FTBFS): gallivm: fix LLVM #include of Triple.h, moved to TargetParser
+      fix(FTBFS): clover: fix LLVM #include of Triple.h, moved to TargetParser
 
-Jonathan Marek (1):
-      turnip: fix use of align() instead of util_align_npot() with tile_align_w
-
-Karol Herbst (2):
-      rusticl/util: extract offset_of macro
-      rusticl/icd: Make it work in case Rustc shuffles struct around
-
-Rob Clark (5):
-      freedreno/a6xx: Move num_driver_params to program state
-      freedreno: Move num_vertices calc to backend
-      freedreno: Remove impossible NULL check
-      freedreno: Add FD_DIRTY_QUERY
-      freedreno: Avoid screen lock when no rsc tracking needed
+Michel Dänzer (2):
+      glsl/standalone: Fix up _mesa_reference_shader_program_data signature
+      glsl/standalone: Do not pass memory allocated with ralloc_size to free
 
