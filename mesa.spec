@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 23.0+1390.gefcb63938c1
-Release  : 428
+Release  : 429
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/efcb63938c195b765c530e6e6eff1d712bfc6e74/mesa-23.0+1390-gefcb63938c1.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/efcb63938c195b765c530e6e6eff1d712bfc6e74/mesa-23.0+1390-gefcb63938c1.tar.bz2
 Summary  : No detailed summary available
@@ -170,7 +170,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676329865
+export SOURCE_DATE_EPOCH=1676331783
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -237,7 +237,8 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dshader-cache=enabled \
 -Dopengl=true -Dgallium-opencl=disabled \
 -Dasm=false \
--Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 builddir
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
+-Dglvnd=false builddir
 ninja -v -C builddir
 popd
 
@@ -286,10 +287,31 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/EGL/egl.h
+/usr/include/EGL/eglext.h
 /usr/include/EGL/eglext_angle.h
 /usr/include/EGL/eglmesaext.h
+/usr/include/EGL/eglplatform.h
+/usr/include/GL/gl.h
+/usr/include/GL/glcorearb.h
+/usr/include/GL/glext.h
+/usr/include/GL/glx.h
+/usr/include/GL/glxext.h
 /usr/include/GL/internal/dri_interface.h
 /usr/include/GL/osmesa.h
+/usr/include/GLES/egl.h
+/usr/include/GLES/gl.h
+/usr/include/GLES/glext.h
+/usr/include/GLES/glplatform.h
+/usr/include/GLES2/gl2.h
+/usr/include/GLES2/gl2ext.h
+/usr/include/GLES2/gl2platform.h
+/usr/include/GLES3/gl3.h
+/usr/include/GLES3/gl31.h
+/usr/include/GLES3/gl32.h
+/usr/include/GLES3/gl3ext.h
+/usr/include/GLES3/gl3platform.h
+/usr/include/KHR/khrplatform.h
 /usr/include/gbm.h
 /usr/include/xa_composite.h
 /usr/include/xa_context.h
@@ -302,11 +324,19 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 %files dev32
 %defattr(-,root,root,-)
 /usr/lib32/pkgconfig/32dri.pc
+/usr/lib32/pkgconfig/32egl.pc
 /usr/lib32/pkgconfig/32gbm.pc
+/usr/lib32/pkgconfig/32gl.pc
+/usr/lib32/pkgconfig/32glesv1_cm.pc
+/usr/lib32/pkgconfig/32glesv2.pc
 /usr/lib32/pkgconfig/32osmesa.pc
 /usr/lib32/pkgconfig/32xatracker.pc
 /usr/lib32/pkgconfig/dri.pc
+/usr/lib32/pkgconfig/egl.pc
 /usr/lib32/pkgconfig/gbm.pc
+/usr/lib32/pkgconfig/gl.pc
+/usr/lib32/pkgconfig/glesv1_cm.pc
+/usr/lib32/pkgconfig/glesv2.pc
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
@@ -426,12 +456,18 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/lib32/dri/virtio_gpu_dri.so
 /usr/lib32/dri/virtio_gpu_drv_video.so
 /usr/lib32/dri/vmwgfx_dri.so
-/usr/lib32/libEGL_mesa.so
-/usr/lib32/libEGL_mesa.so.0
-/usr/lib32/libEGL_mesa.so.0.0.0
-/usr/lib32/libGLX_mesa.so
-/usr/lib32/libGLX_mesa.so.0
-/usr/lib32/libGLX_mesa.so.0.0.0
+/usr/lib32/libEGL.so
+/usr/lib32/libEGL.so.1
+/usr/lib32/libEGL.so.1.0.0
+/usr/lib32/libGL.so
+/usr/lib32/libGL.so.1
+/usr/lib32/libGL.so.1.2.0
+/usr/lib32/libGLESv1_CM.so
+/usr/lib32/libGLESv1_CM.so.1
+/usr/lib32/libGLESv1_CM.so.1.1.0
+/usr/lib32/libGLESv2.so
+/usr/lib32/libGLESv2.so.2
+/usr/lib32/libGLESv2.so.2.0.0
 /usr/lib32/libOSMesa.so
 /usr/lib32/libOSMesa.so.8
 /usr/lib32/libOSMesa.so.8.0.0
