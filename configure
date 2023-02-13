@@ -7,7 +7,7 @@
 -Dgallium-opencl=icd
 -Dvulkan-drivers=intel,amd
 -Dshared-glapi=enabled
--Dglvnd=false
+-Dglvnd=true
 -Dllvm=enabled
 -Dshared-llvm=enabled
 -Dselinux=false
