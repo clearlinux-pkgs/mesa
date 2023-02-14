@@ -1,28 +1,112 @@
-Updating from c0bc0ecf9eaf964ceb4a1573595da8b8b4585cc4 to efcb63938c195b765c530e6e6eff1d712bfc6e74
+Updating from efcb63938c195b765c530e6e6eff1d712bfc6e74 to 6d3c79fa4c8d539b5ad133996632cbe6c1137477
 
-Eric Engestrom (11):
-      gallium/u_screen.h: add missing stdint.h include
-      util: avoid calling kcmp on Android
-      etnaviv: use simple_mtx to avoid breaking windows in the next commit
-      gallium: move etnaviv screen_lookup_or_create function to common code
-      freedreno: replace custom code with u_pipe_screen_lookup_or_create()
-      lima: replace custom code with u_pipe_screen_lookup_or_create()
-      v3d: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
-      vc4: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
-      panfrost: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
-      asahi: use u_pipe_screen_lookup_or_create() to keep track of and reuse screens
-      u_pipe_screen_lookup_or_create: avoid re-querying the fd to have a consistent hash key
+Alan Coopersmith (1):
+      util/disk_cache: Handle OS'es without d_type in struct dirent
 
-Hans-Kristian Arntzen (3):
-      radv: Fix invalid 64-bit shift.
-      radv: Fix missing VK_ACCESS_2_SHADER_SAMPLED_READ_BIT.
-      radv: Implement VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT.
+Alyssa Rosenzweig (20):
+      tu,vulkan: Add common Get*OpaqueCaptureDescriptorDataEXT
+      radv: Use common Get*OpaqueCaptureDescriptorDataEXT
+      agx: Remove unused AGX_MAX_VARYINGS
+      agx: Respect component in frag load_input
+      agx: Fix AGX_MAX_CF_BINDINGS
+      agx: Remove bogus gl_Position assertion
+      agx: Implement load_helper_invocation
+      agx: Write sample mask even with no colour output
+      asahi: Submit batches that don't touch RTs
+      asahi: Add XML for indirect dispatch
+      asahi: Add XML for indirect draws
+      asahi: Add XML for VDM memory barriers
+      panvk: Take lock when tracing
+      panvk: Fix varying linking
+      panvk: Disable SNORM rendering
+      asahi: Remove default=true on index list values
+      asahi: Refactor index buffer upload for indirect
+      asahi: Implement indirect draws
+      panfrost: Fix some fields in v10.xml
+      pan/decode: Add support for decoding CSF
 
-Kai Wasserbäch (2):
-      fix(FTBFS): gallivm: fix LLVM #include of Triple.h, moved to TargetParser
-      fix(FTBFS): clover: fix LLVM #include of Triple.h, moved to TargetParser
+Chia-I Wu (1):
+      radv: fix a hang with binning on CHIP_RENOIR
 
-Michel Dänzer (2):
-      glsl/standalone: Fix up _mesa_reference_shader_program_data signature
-      glsl/standalone: Do not pass memory allocated with ralloc_size to free
+Dave Airlie (1):
+      crocus: switch gen4/5 tiling flags to follow suggestions.
+
+Emma Anholt (2):
+      ci/freedreno: Update manual-run xfails for a530.
+      Revert "freedreno/a5xx: Fix clip_mask"
+
+Eric Engestrom (1):
+      broadcom/ci: mark test as flaky
+
+Giancarlo Devich (4):
+      d3d12: Use varying comparison function for TESS stage key compare
+      d3d12: Add unions to encompass shader key stage vars, use in hashing
+      nir: Check sampler_binding is valid when lowering tex shadow
+      d3d12: Don't clear d3d12_shader_key
+
+Karol Herbst (2):
+      rusticl/kernel: fix clGetKernelInfo CL_KERNEL_ATTRIBUTES for non source programs
+      rusticl/program: enable spirv
+
+Konstantin Seurer (2):
+      radv/rra: Find copy memory index when initializing the trace state
+      radv/rra: Hide deferred accel struct data destruction behind an env var
+
+Lionel Landwerlin (2):
+      intel/dev: add a default urb value for intel_stub_gpu on dg2
+      anv/hasvk: handle a SAMPLED_READ/STORAGE_READ access flags
+
+Marcin Ślusarz (1):
+      anv: bump ANV_MAX_QUEUE_FAMILIES
+
+Michel Zou (1):
+      ci/mingw: drop useless -Wno-error flags
+
+Mike Blumenkrantz (25):
+      zink: rename some variables in zink_set_shader_images()
+      zink: unset gfx shader read when unbinding shader images
+      zink: remove stale comment
+      zink: unref image buffer descriptors on unbind
+      zink: rework set_shader_images() hook
+      zink: pull out image descriptor updating in set_shader_images
+      zink: add a local is_compute var for set_shader_images
+      zink: allocate all batch command buffers in one call
+      zink: sync LTO compiles for GPL pipelines on shader free
+      zink: fix descriptor pool free iterating
+      zink: don't fetch/update pipeline cache for separate shader programs
+      zink: assert that the found program matches the expected one in shader_free
+      zink: flag gfx programs as removed-from-cache by default
+      zink: rework separate shader descriptor iterating
+      zink: use a single descriptor buffer for all non-bindless types
+      zink: add an io assignment pass for separate shaders
+      zink: rename a struct member for clarity
+      zink: move zink_batch_state::db_bound reset to zink_batch_descriptor_reset()
+      zink: move db_bound to batch descriptor data
+      zink: ensure db is bound before separate shader update
+      zink: store base descriptor size on the screen
+      zink: implement a scaling descriptor buffer size
+      zink: calloc separable program zink_gfx_library_key struct
+      zink: also replace hash_entry::key when replacing separable program
+      zink: always use NEAREST for zs blits
+
+Samuel Pitoiset (4):
+      radv: fix importing retained NIR shaders when a lib uses the RETAIN bit
+      radv: use last_vgt_api_stage for determining the last stage with XFB
+      radv: only initialize shader arguments for the active stages
+      radv simplify compiling graphics shaders with a mask of active NIR stages
+
+SoroushIMG (4):
+      zink: fix compute shader leaks
+      zink: allocate program shader caches from the program's mem ctx
+      zink: stop creating pipeline library cache for non-optimal_key drivers
+      zink: free resource objects' views array during destruction
+
+Tapani Pälli (1):
+      iris: handle error in iris_resource_from_handle
+
+Yusuf Khan (1):
+      nvc0/nv50: support and enable EXT_memory_object*
+
+osy (1):
+      virgl: enable timer queries only if host supports it
 
