@@ -1,112 +1,82 @@
-Updating from efcb63938c195b765c530e6e6eff1d712bfc6e74 to 6d3c79fa4c8d539b5ad133996632cbe6c1137477
+Updating from 6d3c79fa4c8d539b5ad133996632cbe6c1137477 to 0337acad150a091614f0b56355bab2061f279109
 
-Alan Coopersmith (1):
-      util/disk_cache: Handle OS'es without d_type in struct dirent
+Corentin Noël (1):
+      ci/venus: Skip tests risking out of memory issues
 
-Alyssa Rosenzweig (20):
-      tu,vulkan: Add common Get*OpaqueCaptureDescriptorDataEXT
-      radv: Use common Get*OpaqueCaptureDescriptorDataEXT
-      agx: Remove unused AGX_MAX_VARYINGS
-      agx: Respect component in frag load_input
-      agx: Fix AGX_MAX_CF_BINDINGS
-      agx: Remove bogus gl_Position assertion
-      agx: Implement load_helper_invocation
-      agx: Write sample mask even with no colour output
-      asahi: Submit batches that don't touch RTs
-      asahi: Add XML for indirect dispatch
-      asahi: Add XML for indirect draws
-      asahi: Add XML for VDM memory barriers
-      panvk: Take lock when tracing
-      panvk: Fix varying linking
-      panvk: Disable SNORM rendering
-      asahi: Remove default=true on index list values
-      asahi: Refactor index buffer upload for indirect
-      asahi: Implement indirect draws
-      panfrost: Fix some fields in v10.xml
-      pan/decode: Add support for decoding CSF
+Emma Anholt (3):
+      ci/radv: Add a skip for navi21-llvm for a test that consistently timeouts.
+      ci/etnaviv: Drop stale xfails from gc7000.
+      ci/etnaviv: Update deqp xfails for gc2000.
 
-Chia-I Wu (1):
-      radv: fix a hang with binning on CHIP_RENOIR
+Eric Engestrom (3):
+      vk/util: keep track of extension requirements
+      vk/runtime: keep track of supported instance extensions
+      vk/runtime: turn vk.xml extension requirements into asserts
 
-Dave Airlie (1):
-      crocus: switch gen4/5 tiling flags to follow suggestions.
+Erik Faye-Lund (3):
+      zink: correct companies in requirements
+      zink: remove incorrect trailing comma
+      meson: remove unused USE_FOO_ASM defines
 
-Emma Anholt (2):
-      ci/freedreno: Update manual-run xfails for a530.
-      Revert "freedreno/a5xx: Fix clip_mask"
+Faith Ekstrand (1):
+      nir/from_ssa: Use more helpers in resolve_parallel_copies
 
-Eric Engestrom (1):
-      broadcom/ci: mark test as flaky
+Georg Lehmann (2):
+      aco: new 16bit VOP3 opcodes can use opsel
+      aco: Don't use vcmpx with DPP.
 
-Giancarlo Devich (4):
-      d3d12: Use varying comparison function for TESS stage key compare
-      d3d12: Add unions to encompass shader key stage vars, use in hashing
-      nir: Check sampler_binding is valid when lowering tex shadow
-      d3d12: Don't clear d3d12_shader_key
+Jesse Natalie (1):
+      dzn: Enable KHR_storage_buffer_storage_class
 
-Karol Herbst (2):
-      rusticl/kernel: fix clGetKernelInfo CL_KERNEL_ATTRIBUTES for non source programs
-      rusticl/program: enable spirv
+Kenneth Graunke (3):
+      nir: Print divergence information for registers as well as SSA defs
+      nir: Fix merge_set_dump() to compile again
+      nir: Fix typos in the from-SSA pass comments
 
-Konstantin Seurer (2):
-      radv/rra: Find copy memory index when initializing the trace state
-      radv/rra: Hide deferred accel struct data destruction behind an env var
+Lionel Landwerlin (4):
+      anv: remove copied information from runtime graphics state
+      anv: move 3DSTATE_VERTEX_ELEMENT emission to dynamic path
+      anv: implement VK_EXT_vertex_input_dynamic_state
+      intel/fs: bound subgroup invocation read to dispatch size
 
-Lionel Landwerlin (2):
-      intel/dev: add a default urb value for intel_stub_gpu on dg2
-      anv/hasvk: handle a SAMPLED_READ/STORAGE_READ access flags
+Marcin Ślusarz (4):
+      intel/compiler: replace gl_Layer & gl_ViewportIndex by 0 in fs if ms doesn't write it
+      anv: fix how unset gl_Viewport & gl_Layer are handled in mesh case
+      intel/compiler/mesh: use slice id of task urb handles in mesh shaders
+      anv: enable task redistribution
 
-Marcin Ślusarz (1):
-      anv: bump ANV_MAX_QUEUE_FAMILIES
+Mark Janes (1):
+      intel: Implement Wa_16011448509
 
-Michel Zou (1):
-      ci/mingw: drop useless -Wno-error flags
+Michel Dänzer (6):
+      anv/grl: Use union for reinterpreting integer as float
+      clover: Reserve vector memory in make_text_section
+      ci: Update Fedora image to 36
+      ci: Re-enable intel-clc in fedora-release job
+      ci: Enable i915 Gallium driver in fedora-release job
+      ci: Enable the hasvk Vulkan driver in the fedora-release job
 
-Mike Blumenkrantz (25):
-      zink: rename some variables in zink_set_shader_images()
-      zink: unset gfx shader read when unbinding shader images
-      zink: remove stale comment
-      zink: unref image buffer descriptors on unbind
-      zink: rework set_shader_images() hook
-      zink: pull out image descriptor updating in set_shader_images
-      zink: add a local is_compute var for set_shader_images
-      zink: allocate all batch command buffers in one call
-      zink: sync LTO compiles for GPL pipelines on shader free
-      zink: fix descriptor pool free iterating
-      zink: don't fetch/update pipeline cache for separate shader programs
-      zink: assert that the found program matches the expected one in shader_free
-      zink: flag gfx programs as removed-from-cache by default
-      zink: rework separate shader descriptor iterating
-      zink: use a single descriptor buffer for all non-bindless types
-      zink: add an io assignment pass for separate shaders
-      zink: rename a struct member for clarity
-      zink: move zink_batch_state::db_bound reset to zink_batch_descriptor_reset()
-      zink: move db_bound to batch descriptor data
-      zink: ensure db is bound before separate shader update
-      zink: store base descriptor size on the screen
-      zink: implement a scaling descriptor buffer size
-      zink: calloc separable program zink_gfx_library_key struct
-      zink: also replace hash_entry::key when replacing separable program
-      zink: always use NEAREST for zs blits
+Mike Blumenkrantz (12):
+      zink: fix indentation of rebind_image()
+      zink: only try for a fb rebind if fb binds exist in rebind_image()
+      zink: account for null surface when trying to retain clears on fb bind
+      zink: break out pipe_surface init for new surface creation
+      zink: const-ify a surface param
+      zink: don't handle mutable init on surface creation with tc enabled
+      zink: verify compressed format layer count when creating surfaces
+      zink: set ZINK_DESCRIPTORS=db for radv jobs
+      zink: enable renderpass optimizations by default for selected drivers
+      Revert "zink: always use NEAREST for zs blits"
+      zink: block LINEAR filtered blits for zs formats
+      lavapipe: enable linear filtering for depth formats
 
-Samuel Pitoiset (4):
-      radv: fix importing retained NIR shaders when a lib uses the RETAIN bit
-      radv: use last_vgt_api_stage for determining the last stage with XFB
-      radv: only initialize shader arguments for the active stages
-      radv simplify compiling graphics shaders with a mask of active NIR stages
+Rohan Garg (4):
+      anv: drop unused headers
+      anv: reuse the VK_IMAGE_ASPECT_PLANES_BITS_ANV macro
+      isl: fix some documentation
+      anv/blorp: use existing function to convert the op to a string
 
-SoroushIMG (4):
-      zink: fix compute shader leaks
-      zink: allocate program shader caches from the program's mem ctx
-      zink: stop creating pipeline library cache for non-optimal_key drivers
-      zink: free resource objects' views array during destruction
-
-Tapani Pälli (1):
-      iris: handle error in iris_resource_from_handle
-
-Yusuf Khan (1):
-      nvc0/nv50: support and enable EXT_memory_object*
-
-osy (1):
-      virgl: enable timer queries only if host supports it
+Samuel Pitoiset (2):
+      radv: disable DCC for mipmaps on GFX11
+      radv: ignore registering pipeline libaries with SQTT
 
