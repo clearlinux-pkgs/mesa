@@ -1,82 +1,77 @@
-Updating from 6d3c79fa4c8d539b5ad133996632cbe6c1137477 to 0337acad150a091614f0b56355bab2061f279109
+Updating from 0337acad150a091614f0b56355bab2061f279109 to 28d0ddead0a913900e210097c583c0cf506529f9
 
-Corentin Noël (1):
-      ci/venus: Skip tests risking out of memory issues
+Asahi Lina (3):
+      asahi: Fix shader key cloning overreads
+      asahi: Do not use memctx for pools / meta cache
+      asahi: Drop agx_device.memctx
 
-Emma Anholt (3):
-      ci/radv: Add a skip for navi21-llvm for a test that consistently timeouts.
-      ci/etnaviv: Drop stale xfails from gc7000.
-      ci/etnaviv: Update deqp xfails for gc2000.
+Chia-I Wu (3):
+      turnip: fix a major leak with GPL LTO
+      turnip: fix a null descriptor set dereference
+      turnip: avoid FMT6_Z24_UNORM_S8_UINT_AS_R8G8B8A8 for event blits
 
-Eric Engestrom (3):
-      vk/util: keep track of extension requirements
-      vk/runtime: keep track of supported instance extensions
-      vk/runtime: turn vk.xml extension requirements into asserts
+Constantine Shablya (3):
+      anv: use Vulkan runtime's robust buffer access
+      hasvk: use Vulkan runtime's robust buffer access
+      anv,hasvk: flush what UNIFORM_READ flushes on SHADER_READ
+
+Danylo Piliaiev (2):
+      ir3: Consider dst type in ubo_vec4 to ldc lowering
+      tu: Don't expose KHR_present_id,KHR_present_wait without KHR_swapchain
+
+David Rosca (1):
+      frontends/va: Map VAEncCodedBufferType buffer as PIPE_MAP_READ
+
+Emma Anholt (4):
+      egl/kopper: Add assert for no kopper in dri2_copy_region.
+      egl: Add a note explaining the swapBuffers badness in dri2_x11_copy_buffers().
+      egl/kopper: Use the kopper private interface for swapBuffers.
+      egl/kopper: Pass ancillary invalidate flush flags down to gallium.
+
+Eric Engestrom (6):
+      meson: move float64_glsl_file one meson.build up
+      meson: only build mapi when needed
+      meson: only build the loader when needed
+      meson: only build libglsl_util when needed
+      meson: only build glsl when needed
+      meson: drop `TODO: opengl`, it's done
 
 Erik Faye-Lund (3):
-      zink: correct companies in requirements
-      zink: remove incorrect trailing comma
-      meson: remove unused USE_FOO_ASM defines
+      vulkan: prefer vulkan_core.h over vulkan.h
+      meson: don't pass vk wsi args where they don't belong
+      Revert "meson: Fix Asahi build on macOS"
 
-Faith Ekstrand (1):
-      nir/from_ssa: Use more helpers in resolve_parallel_copies
+José Roberto de Souza (3):
+      anv: Add gem_close to kmd backend
+      anv: Add gem_mmap to kmd backend
+      anv: Move execute_simple_batch() and queue_exec_locked() to kmd backend
 
-Georg Lehmann (2):
-      aco: new 16bit VOP3 opcodes can use opsel
-      aco: Don't use vcmpx with DPP.
+Kai Wasserbäch (1):
+      fix: clover/llvm: replace llvm::None with std::nullopt for LLVM 17+
 
-Jesse Natalie (1):
-      dzn: Enable KHR_storage_buffer_storage_class
+Karmjit Mahil (3):
+      pvr: Add SPM load usc empty programs
+      pvr: Upload spm load programs to device.
+      pvr: Add support for VK_ATTACHMENT_LOAD_OP_LOAD.
 
-Kenneth Graunke (3):
-      nir: Print divergence information for registers as well as SSA defs
-      nir: Fix merge_set_dump() to compile again
-      nir: Fix typos in the from-SSA pass comments
+Lionel Landwerlin (1):
+      hasvk: fix KHR_shader_float_controls reporting
 
-Lionel Landwerlin (4):
-      anv: remove copied information from runtime graphics state
-      anv: move 3DSTATE_VERTEX_ELEMENT emission to dynamic path
-      anv: implement VK_EXT_vertex_input_dynamic_state
-      intel/fs: bound subgroup invocation read to dispatch size
+Mike Blumenkrantz (1):
+      gallium: plumb resolve attachments through from frontends -> pipe_framebuffer_state
 
-Marcin Ślusarz (4):
-      intel/compiler: replace gl_Layer & gl_ViewportIndex by 0 in fs if ms doesn't write it
-      anv: fix how unset gl_Viewport & gl_Layer are handled in mesh case
-      intel/compiler/mesh: use slice id of task urb handles in mesh shaders
-      anv: enable task redistribution
+Nanley Chery (3):
+      iris: Update comment in iris_cache_flush_for_render
+      iris: Flush caches for aux-mode changes more often
+      iris: Drop iris_cache_flush_for_render
 
-Mark Janes (1):
-      intel: Implement Wa_16011448509
+Ryan Neph (1):
+      venus: update venus-protocol headers to partially fix WA1
 
-Michel Dänzer (6):
-      anv/grl: Use union for reinterpreting integer as float
-      clover: Reserve vector memory in make_text_section
-      ci: Update Fedora image to 36
-      ci: Re-enable intel-clc in fedora-release job
-      ci: Enable i915 Gallium driver in fedora-release job
-      ci: Enable the hasvk Vulkan driver in the fedora-release job
+Samuel Pitoiset (1):
+      radv/ci: add missing expected failures with RADV_PERFTEST=gpl on GFX1100
 
-Mike Blumenkrantz (12):
-      zink: fix indentation of rebind_image()
-      zink: only try for a fb rebind if fb binds exist in rebind_image()
-      zink: account for null surface when trying to retain clears on fb bind
-      zink: break out pipe_surface init for new surface creation
-      zink: const-ify a surface param
-      zink: don't handle mutable init on surface creation with tc enabled
-      zink: verify compressed format layer count when creating surfaces
-      zink: set ZINK_DESCRIPTORS=db for radv jobs
-      zink: enable renderpass optimizations by default for selected drivers
-      Revert "zink: always use NEAREST for zs blits"
-      zink: block LINEAR filtered blits for zs formats
-      lavapipe: enable linear filtering for depth formats
-
-Rohan Garg (4):
-      anv: drop unused headers
-      anv: reuse the VK_IMAGE_ASPECT_PLANES_BITS_ANV macro
-      isl: fix some documentation
-      anv/blorp: use existing function to convert the op to a string
-
-Samuel Pitoiset (2):
-      radv: disable DCC for mipmaps on GFX11
-      radv: ignore registering pipeline libaries with SQTT
+Yonggang Luo (2):
+      meson: Split c_cpp_args from pre_args
+      meson: Combine duplicated c_args and cpp_args
 
