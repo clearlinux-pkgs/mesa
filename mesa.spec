@@ -4,7 +4,7 @@
 #
 Name     : mesa
 Version  : 23.0+1555.g28d0ddead0a
-Release  : 433
+Release  : 434
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/28d0ddead0a913900e210097c583c0cf506529f9/mesa-23.0+1555-g28d0ddead0a.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/28d0ddead0a913900e210097c583c0cf506529f9/mesa-23.0+1555-g28d0ddead0a.tar.bz2
 Summary  : No detailed summary available
@@ -101,6 +101,7 @@ Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
 Requires: mesa = %{version}-%{release}
+Requires: libglvnd-dev
 
 %description dev
 dev components for the mesa package.
@@ -170,7 +171,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676521389
+export SOURCE_DATE_EPOCH=1676672814
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
