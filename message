@@ -1,77 +1,118 @@
-Updating from 0337acad150a091614f0b56355bab2061f279109 to 28d0ddead0a913900e210097c583c0cf506529f9
+Updating from 10622ccc730e6ed44c4b54e21d5b9d2044f6171f to 5082b6b034f457a925e585717adc20bfc8cf86e1
 
-Asahi Lina (3):
-      asahi: Fix shader key cloning overreads
-      asahi: Do not use memctx for pools / meta cache
-      asahi: Drop agx_device.memctx
+Benjamin Cheng (1):
+      radv: initialize cmd_buffer upload list earlier
 
-Chia-I Wu (3):
-      turnip: fix a major leak with GPL LTO
-      turnip: fix a null descriptor set dereference
-      turnip: avoid FMT6_Z24_UNORM_S8_UINT_AS_R8G8B8A8 for event blits
+Emma Anholt (10):
+      glsl: Simplify vector constructors from scalars.
+      glsl/lower_precision: Add a unit test that I thought we might fail at.
+      glsl/lower_precision: Add a cut-down testcase for #8124
+      glsl: Set the precisions of builtin function arguments and returns.
+      glsl: Handle highp promotion of builtin function args in the builtins.
+      glsl: Set the precision of function return value temporaries.
+      glsl/lower_precision: Drop most special-casing of builtin arg precision.
+      glsl: Fix the precision of atomic counter builtin function args.
+      glsl/lower_precision: Add actual spec quotes for "check_parameters"
+      nir/lower_mediump: Fix assertion about copy_deref lowering matching.
 
-Constantine Shablya (3):
-      anv: use Vulkan runtime's robust buffer access
-      hasvk: use Vulkan runtime's robust buffer access
-      anv,hasvk: flush what UNIFORM_READ flushes on SHADER_READ
+Eric Engestrom (1):
+      v3d/ci: add another depthstencil-default_fb-drawpixels-* to the flakes
 
-Danylo Piliaiev (2):
-      ir3: Consider dst type in ubo_vec4 to ldc lowering
-      tu: Don't expose KHR_present_id,KHR_present_wait without KHR_swapchain
+Erik Faye-Lund (4):
+      ci: move docs-stuff out of root .gitlab-ci.yml
+      docs: fixup broken envvar-role syntax
+      docs: escape a few more strings
+      docs: fixup broken indentation
 
-David Rosca (1):
-      frontends/va: Map VAEncCodedBufferType buffer as PIPE_MAP_READ
+Faith Ekstrand (4):
+      vulkan: Update XML and headers to 1.3.244
+      vulkan: Provide wrappers for VK_EXT_map_memory2 functions
+      anv: Limit memory maps to the client-allocated size
+      anv: Implement VK_KHR_map_memory2
 
-Emma Anholt (4):
-      egl/kopper: Add assert for no kopper in dri2_copy_region.
-      egl: Add a note explaining the swapBuffers badness in dri2_x11_copy_buffers().
-      egl/kopper: Use the kopper private interface for swapBuffers.
-      egl/kopper: Pass ancillary invalidate flush flags down to gallium.
+Iago Toral Quiroga (1):
+      broadcom/compiler: track pending ldtmu count with each TMU lookup
 
-Eric Engestrom (6):
-      meson: move float64_glsl_file one meson.build up
-      meson: only build mapi when needed
-      meson: only build the loader when needed
-      meson: only build libglsl_util when needed
-      meson: only build glsl when needed
-      meson: drop `TODO: opengl`, it's done
+Jarred Davies (5):
+      pvr: Generate EOT program at runtime
+      pvr: Generate dummy emit for renders without any emits
+      pvr: Add support for multiple emits from EOT program
+      pvr: Select a single aspect format for the texture state of DS image views
+      pvr: Add initial support for VK_FORMAT_S8_UINT
 
-Erik Faye-Lund (3):
-      vulkan: prefer vulkan_core.h over vulkan.h
-      meson: don't pass vk wsi args where they don't belong
-      Revert "meson: Fix Asahi build on macOS"
+José Roberto de Souza (5):
+      intel: Move memory aligment information to intel_device_info
+      anv: Use intel_device_info memory alignment
+      intel: Set mem_alignment in Xe kmd
+      anv: Apply memory alignment requirements in Xe kmd
+      intel: Add TODO about removal of 2Mb alignment in i915
 
-José Roberto de Souza (3):
-      anv: Add gem_close to kmd backend
-      anv: Add gem_mmap to kmd backend
-      anv: Move execute_simple_batch() and queue_exec_locked() to kmd backend
+Juan A. Suarez Romero (3):
+      v3d: cache pipe query results
+      v3d: include offset as part of streamout target
+      v3d: implement NV_conditional_render extension
 
-Kai Wasserbäch (1):
-      fix: clover/llvm: replace llvm::None with std::nullopt for LLVM 17+
+Konstantin Seurer (1):
+      radv/rt: Handle load_constant instructions when inlining shaders
 
-Karmjit Mahil (3):
-      pvr: Add SPM load usc empty programs
-      pvr: Upload spm load programs to device.
-      pvr: Add support for VK_ATTACHMENT_LOAD_OP_LOAD.
+Lang Yu (1):
+      amd/common: fix a typo
 
-Lionel Landwerlin (1):
-      hasvk: fix KHR_shader_float_controls reporting
+Lionel Landwerlin (2):
+      intel/compiler: report max dispatch width statistic
+      anv: report shader max dispatch width in pipeline props
 
-Mike Blumenkrantz (1):
-      gallium: plumb resolve attachments through from frontends -> pipe_framebuffer_state
+Mike Blumenkrantz (26):
+      zink: track zsbuf info even when rp optimizing is disabled
+      zink: fix dsa state parsing for tc info
+      zink: track whether the fb zsbuf is readonly
+      zink: add a fixup case for readonly zsbuf clears
+      zink: improve no-oping of write -> readonly zsbuf layouts
+      zink: don't flag rp layout check on next draw when rp optimizing
+      zink: allow zink_is_zsbuf_used() without tc / rp optimizing
+      zink: rename add_implicit_color_feedback_loop()
+      zink: explicitly eliminate feedback loops for unused zsbufs
+      zink: further eliminate zs implicit feedback loops for read-only access
+      zink: split out luminance/alpha clear conversion code for reuse
+      zink: convert luminance/alpha clear colors in dynamic texture clear
+      zink: handle swapchain creation failure less lazily
+      zink: simplify resource_check_defer_buffer_barrier()
+      zink: delete unused barrier api
+      zink: never split a renderpass for a loadop change
+      zink: flag some rp ends as unsafe
+      zink: add batch refs for framebuffer surfaces on bind and ref update
+      zink: fix unordered access for image descriptors
+      zink: force unordered_write=false when binding image descriptors
+      zink: add an assert to ensure zsbuf invalidation doesn't break rendering
+      zink: only run post-fb-unbind layout stuff if the resource isn't being destroyed
+      zink: always set sampler layouts when unbinding fb images while rp optimizing
+      zink: rework handling of unordered->ordered write buffer barriers
+      zink: don't update fbfetch in db mode if inputAttachmentDescriptorSize==0
+      zink: add ZINK_DEBUG=flushsync
 
-Nanley Chery (3):
-      iris: Update comment in iris_cache_flush_for_render
-      iris: Flush caches for aux-mode changes more often
-      iris: Drop iris_cache_flush_for_render
+Patrick Lerda (1):
+      glx: fix memory leak related to __glXCloseDisplay()
 
-Ryan Neph (1):
-      venus: update venus-protocol headers to partially fix WA1
+Samuel Pitoiset (17):
+      radv: rename RADV_PIPELINE_LIBRARY to RADV_PIPELINE_RAY_TRACING_LIB
+      radv: add helpers for destroying various pipeline types
+      radv: fix NGG streamout with VS and GPL on GFX11
+      spirv: add SpvCapabilityFragmentFullyCoveredEXT
+      spirv,nir: add support for SpvBuiltInFullyCoveredEXT
+      radv: lower nir_intrinsic_load_fully_covered
+      radv: enable SAMPLE_COVERAGE_ENA if the fully covered built-in is used
+      radv: implement fullyCoveredFragmentShaderInputVariable
+      radv: enable fullyCoveredFragmentShaderInputVariable on GFX9+
+      radv: remove set but never used num_preserved_sgprs
+      radv: stop storing the binary as part of radv_shader_part
+      radv: store spi_shader_col_format to radv_shader_part_binary
+      radv: store the total radv_shader_part_binary size
+      radv: upload prologs/epilogs as part of radv_shader_part_create()
+      radv: allow to return the PS epilog binary to the pipeline
+      radv: make radv_shader_part_create() non-static
+      radv: add support for caching PS epilogs
 
-Samuel Pitoiset (1):
-      radv/ci: add missing expected failures with RADV_PERFTEST=gpl on GFX1100
-
-Yonggang Luo (2):
-      meson: Split c_cpp_args from pre_args
-      meson: Combine duplicated c_args and cpp_args
+Tapani Pälli (2):
+      anv: implement occlusion query related Wa_14017076903
+      iris: implement occlusion query related Wa_14017076903
 
