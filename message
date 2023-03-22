@@ -1,118 +1,90 @@
-Updating from 10622ccc730e6ed44c4b54e21d5b9d2044f6171f to 5082b6b034f457a925e585717adc20bfc8cf86e1
+Updating from 5082b6b034f457a925e585717adc20bfc8cf86e1 to 5e8866a35a2594588b6c9937125eb9a70b02afeb
 
-Benjamin Cheng (1):
-      radv: initialize cmd_buffer upload list earlier
+Alyssa Rosenzweig (6):
+      gallium: Fix u_stream_outputs_for_vertices with QUADS
+      nir/builder: Add nir_umod_imm helper
+      blorp,anv,hasvk: Use umod_imm
+      v3d,v3dv: Use udiv_imm/umod_imm
+      radv: Use umod_imm
+      ir3: Use umod_imm
 
-Emma Anholt (10):
-      glsl: Simplify vector constructors from scalars.
-      glsl/lower_precision: Add a unit test that I thought we might fail at.
-      glsl/lower_precision: Add a cut-down testcase for #8124
-      glsl: Set the precisions of builtin function arguments and returns.
-      glsl: Handle highp promotion of builtin function args in the builtins.
-      glsl: Set the precision of function return value temporaries.
-      glsl/lower_precision: Drop most special-casing of builtin arg precision.
-      glsl: Fix the precision of atomic counter builtin function args.
-      glsl/lower_precision: Add actual spec quotes for "check_parameters"
-      nir/lower_mediump: Fix assertion about copy_deref lowering matching.
+Constantine Shablya (2):
+      vulkan: fix building with python3.8
+      vulkan: depend idep_vulkan_runtime_headers on vk_physical_device_features.h
+
+David Heidelberg (1):
+      aco: drop leftover variable
+
+Emma Anholt (4):
+      ci/iris: Update more manual job xfails from the Wayland build change.
+      ci/crocus: Update expectations from VK CTS 1.3.5.0.
+      ci/hasvk: Update some xfails from the 8-sample fast clear disable.
+      ci/etnaviv: Get the gc2000_piglit manual job mostly working.
 
 Eric Engestrom (1):
-      v3d/ci: add another depthstencil-default_fb-drawpixels-* to the flakes
+      v3d/ci: group dEQP-GLES3.functional.texture.specification.teximage2d_pbo.* flakes and add another one
+
+Erico Nunes (1):
+      lima/ci: restore swap buffers egl tests
 
 Erik Faye-Lund (4):
-      ci: move docs-stuff out of root .gitlab-ci.yml
-      docs: fixup broken envvar-role syntax
-      docs: escape a few more strings
-      docs: fixup broken indentation
+      docs/zink: mention vk1.2 mirror-clamp feature option
+      docs/zink: clean up requirements-language
+      docs: move developers article to main website
+      docs: remove old thanks-article
 
-Faith Ekstrand (4):
-      vulkan: Update XML and headers to 1.3.244
-      vulkan: Provide wrappers for VK_EXT_map_memory2 functions
-      anv: Limit memory maps to the client-allocated size
-      anv: Implement VK_KHR_map_memory2
+Frank Binns (1):
+      pvr: fix clang-format issue
 
-Iago Toral Quiroga (1):
-      broadcom/compiler: track pending ldtmu count with each TMU lookup
+Georg Lehmann (1):
+      nir: optimize i2f(f2i(fsign))
 
-Jarred Davies (5):
-      pvr: Generate EOT program at runtime
-      pvr: Generate dummy emit for renders without any emits
-      pvr: Add support for multiple emits from EOT program
-      pvr: Select a single aspect format for the texture state of DS image views
-      pvr: Add initial support for VK_FORMAT_S8_UINT
+Italo Nicola (1):
+      panfrost: fix strict-aliasing violations when packing fb ptrs
 
-José Roberto de Souza (5):
-      intel: Move memory aligment information to intel_device_info
-      anv: Use intel_device_info memory alignment
-      intel: Set mem_alignment in Xe kmd
-      anv: Apply memory alignment requirements in Xe kmd
-      intel: Add TODO about removal of 2Mb alignment in i915
+Jarred Davies (1):
+      pvr: Don't allocate/upload 0 size coeff programs
 
-Juan A. Suarez Romero (3):
-      v3d: cache pipe query results
-      v3d: include offset as part of streamout target
-      v3d: implement NV_conditional_render extension
+Jason Ekstrand (1):
+      intel/isl: Support Yf/Ys/Tile-64 in isl_surf_get_image_offset_sa
 
-Konstantin Seurer (1):
-      radv/rt: Handle load_constant instructions when inlining shaders
+Mike Blumenkrantz (1):
+      zink: track whether zsbuf is unused
 
-Lang Yu (1):
-      amd/common: fix a typo
+Pierre-Eric Pelloux-Prayer (1):
+      ac/llvm: fix build with LLVM 17
 
-Lionel Landwerlin (2):
-      intel/compiler: report max dispatch width statistic
-      anv: report shader max dispatch width in pipeline props
+Rhys Perry (5):
+      util/dynarray: allow an initial stack allocation to be used
+      nir/range_analysis: add missing masking of shift amounts
+      nir/range_analysis: add helpers for limiting stack usage
+      nir/range_analysis: use perform_analysis() in nir_unsigned_upper_bound()
+      nir/range_analysis: use perform_analysis() in nir_analyze_range()
 
-Mike Blumenkrantz (26):
-      zink: track zsbuf info even when rp optimizing is disabled
-      zink: fix dsa state parsing for tc info
-      zink: track whether the fb zsbuf is readonly
-      zink: add a fixup case for readonly zsbuf clears
-      zink: improve no-oping of write -> readonly zsbuf layouts
-      zink: don't flag rp layout check on next draw when rp optimizing
-      zink: allow zink_is_zsbuf_used() without tc / rp optimizing
-      zink: rename add_implicit_color_feedback_loop()
-      zink: explicitly eliminate feedback loops for unused zsbufs
-      zink: further eliminate zs implicit feedback loops for read-only access
-      zink: split out luminance/alpha clear conversion code for reuse
-      zink: convert luminance/alpha clear colors in dynamic texture clear
-      zink: handle swapchain creation failure less lazily
-      zink: simplify resource_check_defer_buffer_barrier()
-      zink: delete unused barrier api
-      zink: never split a renderpass for a loadop change
-      zink: flag some rp ends as unsafe
-      zink: add batch refs for framebuffer surfaces on bind and ref update
-      zink: fix unordered access for image descriptors
-      zink: force unordered_write=false when binding image descriptors
-      zink: add an assert to ensure zsbuf invalidation doesn't break rendering
-      zink: only run post-fb-unbind layout stuff if the resource isn't being destroyed
-      zink: always set sampler layouts when unbinding fb images while rp optimizing
-      zink: rework handling of unordered->ordered write buffer barriers
-      zink: don't update fbfetch in db mode if inputAttachmentDescriptorSize==0
-      zink: add ZINK_DEBUG=flushsync
+Rohan Garg (1):
+      anv,hasvk: cleanup unused enum
 
-Patrick Lerda (1):
-      glx: fix memory leak related to __glXCloseDisplay()
+Samuel Pitoiset (12):
+      radv: stop using radv_get_shader_shader() for task shaders
+      radv: replace radv_lookup_user_sgpr() by radv_get_user_sgpr()
+      radv: pass shader/base_reg to radv_emit_descriptor_pointers()
+      radv: pass shader/base_reg to radv_emit_inline_push_consts()
+      radv: pass shader/base_reg to radv_emit_userdata_address()
+      radv: use a separate compute path in radv_flush_constants()
+      radv: pass radv_shader to radv_dump_shader_stats()
+      radv: rework dumping shaders when a GPU hang is reported
+      radv: pass radv_ray_tracing_pipeline to radv_rt_pipeline_compile()
+      radv: pass radv_shader to radv_shader_need_indirect_descriptor_sets()
+      radv: implement VK_KHR_map_memory2
+      radv: use common GetBufferMemoryRequirements2()
 
-Samuel Pitoiset (17):
-      radv: rename RADV_PIPELINE_LIBRARY to RADV_PIPELINE_RAY_TRACING_LIB
-      radv: add helpers for destroying various pipeline types
-      radv: fix NGG streamout with VS and GPL on GFX11
-      spirv: add SpvCapabilityFragmentFullyCoveredEXT
-      spirv,nir: add support for SpvBuiltInFullyCoveredEXT
-      radv: lower nir_intrinsic_load_fully_covered
-      radv: enable SAMPLE_COVERAGE_ENA if the fully covered built-in is used
-      radv: implement fullyCoveredFragmentShaderInputVariable
-      radv: enable fullyCoveredFragmentShaderInputVariable on GFX9+
-      radv: remove set but never used num_preserved_sgprs
-      radv: stop storing the binary as part of radv_shader_part
-      radv: store spi_shader_col_format to radv_shader_part_binary
-      radv: store the total radv_shader_part_binary size
-      radv: upload prologs/epilogs as part of radv_shader_part_create()
-      radv: allow to return the PS epilog binary to the pipeline
-      radv: make radv_shader_part_create() non-static
-      radv: add support for caching PS epilogs
-
-Tapani Pälli (2):
-      anv: implement occlusion query related Wa_14017076903
-      iris: implement occlusion query related Wa_14017076903
+Timur Kristóf (8):
+      ac/nir/ngg: Remove usused lds_es enum values.
+      ac/nir/ngg: Rename saved_uniform to reusable_nondeferred_variable.
+      ac/nir/ngg: Split some functions out of save_reusable_variables.
+      ac/nir/ngg: Move divergence analysis call to analyze_shader_before_culling.
+      ac/nir/ngg: Rename state variables to "s".
+      ac/nir/ngg: Remove some superfluous variables.
+      ac/nir/ngg: Create separate variable for repacked rel_patch_id.
+      ac/nir/ngg: Rename repacked variables to clarify their name.
 
