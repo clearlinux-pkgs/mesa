@@ -1,90 +1,83 @@
-Updating from 5082b6b034f457a925e585717adc20bfc8cf86e1 to 5e8866a35a2594588b6c9937125eb9a70b02afeb
+Updating from 5e8866a35a2594588b6c9937125eb9a70b02afeb to c54b8dfe672455d9334f66506b2331a270a73899
 
-Alyssa Rosenzweig (6):
-      gallium: Fix u_stream_outputs_for_vertices with QUADS
-      nir/builder: Add nir_umod_imm helper
-      blorp,anv,hasvk: Use umod_imm
-      v3d,v3dv: Use udiv_imm/umod_imm
-      radv: Use umod_imm
-      ir3: Use umod_imm
+Boyuan Zhang (1):
+      frontends/va: check decoder in va surface call
 
-Constantine Shablya (2):
-      vulkan: fix building with python3.8
-      vulkan: depend idep_vulkan_runtime_headers on vk_physical_device_features.h
+Connor Abbott (1):
+      tu: Fix tile_align_h on a650
 
 David Heidelberg (1):
-      aco: drop leftover variable
+      ci: bump Alpine to 3.17 (again)
 
 Emma Anholt (4):
-      ci/iris: Update more manual job xfails from the Wayland build change.
-      ci/crocus: Update expectations from VK CTS 1.3.5.0.
-      ci/hasvk: Update some xfails from the 8-sample fast clear disable.
-      ci/etnaviv: Get the gc2000_piglit manual job mostly working.
+      glsl/standalone: Pull program create/destroy out to a public function.
+      glsl/standalone: Pull out a helper function for adding GLSL source shaders.
+      glsl/standalone: Make all standalone contexts have NewProgram set.
+      glsl: Write a new test for GLSL and NIR mediump lowering.
 
-Eric Engestrom (1):
-      v3d/ci: group dEQP-GLES3.functional.texture.specification.teximage2d_pbo.* flakes and add another one
+Eric Engestrom (6):
+      ci: centralize detection of ccache in link-werror wrapper
+      ci: add linker wrapper for clang
+      ci: always use the -Werror wrapper
+      ci: deduplicate compiler wrappers
+      ci/docs: start documenting ci_run_n_monitor.py
+      v3d: add link to issue investigating failure
 
-Erico Nunes (1):
-      lima/ci: restore swap buffers egl tests
+Jesse Natalie (1):
+      ci/windows: Update warp to 1.0.5
 
-Erik Faye-Lund (4):
-      docs/zink: mention vk1.2 mirror-clamp feature option
-      docs/zink: clean up requirements-language
-      docs: move developers article to main website
-      docs: remove old thanks-article
+José Roberto de Souza (5):
+      anv: Replace I915_ENGINE_CLASS_VIDEO by INTEL_ENGINE_CLASS_VIDEO
+      anv: Create Xe engines
+      anv: Implement Xe version of check_status()
+      anv: Handle Xe queue/engine priority
+      anv: Implement Xe version of execute_simple_batch()
 
-Frank Binns (1):
-      pvr: fix clang-format issue
+Juan A. Suarez Romero (1):
+      v3d: fix condition for EZ disabling when stencil on
 
-Georg Lehmann (1):
-      nir: optimize i2f(f2i(fsign))
+Lionel Landwerlin (6):
+      intel/devinfo: add an option to pick platform to print
+      intel/devinfo: printout URB entries
+      intel/dev: use generated WA helpers for Wa_22012575642
+      intel/devinfo: dedicated entries for XeHP
+      intel/devinfo: initialize pci_device_id with from_pci_id()
+      intel/dev: fold Gfx12 URB entries in Gfx12 HW info
 
-Italo Nicola (1):
-      panfrost: fix strict-aliasing violations when packing fb ptrs
+Marek Olšák (2):
+      egl: reorder code in _eglQueryDevicesEXT, add *swrast variable
+      egl: don't expose swrast device if swrast is not built
 
-Jarred Davies (1):
-      pvr: Don't allocate/upload 0 size coeff programs
+Martin Roukala (né Peres) (2):
+      radv/ci: update the navi10 expectations
+      zink/ci: add a test to the fails list
 
-Jason Ekstrand (1):
-      intel/isl: Support Yf/Ys/Tile-64 in isl_surf_get_image_offset_sa
+Oleksii Bozhenko (1):
+      Move combining clip and cull optimization before linking
 
-Mike Blumenkrantz (1):
-      zink: track whether zsbuf is unused
+Qiang Yu (2):
+      ac/llvm: respect channel_type when ac_build_buffer_load
+      ac/llvm: add missing type convert for nir_load_buffer_amd
 
-Pierre-Eric Pelloux-Prayer (1):
-      ac/llvm: fix build with LLVM 17
+Rob Clark (1):
+      freedreno/a6xx: Restore mode
 
-Rhys Perry (5):
-      util/dynarray: allow an initial stack allocation to be used
-      nir/range_analysis: add missing masking of shift amounts
-      nir/range_analysis: add helpers for limiting stack usage
-      nir/range_analysis: use perform_analysis() in nir_unsigned_upper_bound()
-      nir/range_analysis: use perform_analysis() in nir_analyze_range()
+Tapani Pälli (1):
+      intel/fs: restore message layout changes for cube array
 
-Rohan Garg (1):
-      anv,hasvk: cleanup unused enum
-
-Samuel Pitoiset (12):
-      radv: stop using radv_get_shader_shader() for task shaders
-      radv: replace radv_lookup_user_sgpr() by radv_get_user_sgpr()
-      radv: pass shader/base_reg to radv_emit_descriptor_pointers()
-      radv: pass shader/base_reg to radv_emit_inline_push_consts()
-      radv: pass shader/base_reg to radv_emit_userdata_address()
-      radv: use a separate compute path in radv_flush_constants()
-      radv: pass radv_shader to radv_dump_shader_stats()
-      radv: rework dumping shaders when a GPU hang is reported
-      radv: pass radv_ray_tracing_pipeline to radv_rt_pipeline_compile()
-      radv: pass radv_shader to radv_shader_need_indirect_descriptor_sets()
-      radv: implement VK_KHR_map_memory2
-      radv: use common GetBufferMemoryRequirements2()
-
-Timur Kristóf (8):
-      ac/nir/ngg: Remove usused lds_es enum values.
-      ac/nir/ngg: Rename saved_uniform to reusable_nondeferred_variable.
-      ac/nir/ngg: Split some functions out of save_reusable_variables.
-      ac/nir/ngg: Move divergence analysis call to analyze_shader_before_culling.
-      ac/nir/ngg: Rename state variables to "s".
-      ac/nir/ngg: Remove some superfluous variables.
-      ac/nir/ngg: Create separate variable for repacked rel_patch_id.
-      ac/nir/ngg: Rename repacked variables to clarify their name.
+Timur Kristóf (14):
+      ac: Add more defines for mesh shading packets.
+      radv: Use new mesh shading packet defines.
+      radv: Add per-prim attributes to ring_attr stride.
+      radv: Use per-prim params in has_param_exports.
+      radv: Add extra offset to per-prim params.
+      radv: Use PRIM_ATTR for PS inputs on GFX11.
+      radv: Include per-prim params in NUM_INTERP on GFX11.
+      radv: Adjust mesh draw packets for GFX11.
+      ac/nir/ngg: Clarify mesh shader scratch ring.
+      ac/nir/ngg: Use attribute ring for mesh shader params.
+      ac/nir/ngg: Split legacy workgroup index function.
+      ac/nir/ngg: Fix mesh shader layer on GFX11.
+      ac/nir/ngg: Store special MS outputs in attribute ring for PS to read.
+      radv: Enable mesh shading on GFX11.
 
