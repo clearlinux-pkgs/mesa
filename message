@@ -1,83 +1,179 @@
-Updating from 5e8866a35a2594588b6c9937125eb9a70b02afeb to c54b8dfe672455d9334f66506b2331a270a73899
+Updating from c54b8dfe672455d9334f66506b2331a270a73899 to 68babdd2271d9aa87d4a294b0a7322c837b606f0
 
-Boyuan Zhang (1):
-      frontends/va: check decoder in va surface call
+Alyssa Rosenzweig (38):
+      nir: Add Panfrost intrinsics to lower sample mask
+      nir: Add Mali load_output taking converison
+      panfrost: Use 0/~0 boolean for MSAA sysval
+      pan/bi: Don't duplicate texture op cases
+      pan/bi: Lower sample mask writes in NIR
+      pan/bi: Lower load_output to make sysval explicit
+      pan/bi: Allow specializing bifrost_nir_options by arch
+      pan/bi: Lower gl_VertexID in NIR
+      pan/bi: Remove bi_load_sysval
+      pan/mdg: Use I/O semantics for MRT blend stores
+      panfrost: Remove inputs->blend.rt
+      panfrost: Remove unused inputs.nr_cbufs
+      pan/bi: Only lower once
+      pan/mdg: Only lower once
+      pan/bi: Split out early preprocessing from late
+      pan/mdg: Split out early preprocessing from late
+      pan/lower_framebuffer: Only call for FS
+      pan/lower_framebuffer: Use nir_shader_instructions_pass
+      pan/blit: Lower load_sampler_lod_parameters_pan
+      panfrost: Preprocess shaders in the driver
+      pan/lower_framebuffer: Lower MSAA blend shaders
+      panfrost: Lower clip_fs late
+      panfrost: Lower texcoords late
+      panfrost: Effectively lower gl_FragColor late
+      panfrost: Preprocess shaders at CSO create time
+      panfrost: Remove stale TODO
+      panvk: Lower sysvals in NIR
+      panvk: Don't use vec4 for vertex_instance_offsets
+      panvk: Inline blend constants as syvals
+      panfrost: Add NIR-based sysval lowering pass
+      panfrost: Lower sysvals in GL
+      panfrost: Move sysvals to GL driver struct
+      panvk: Remove unused function
+      panfrost: Move panfrost_sysvals to GL driver
+      pan/bi: Export bifrost_nir_lower_load_output
+      pan/bi: Call pan_nir_lower_zs_store late
+      panvk: Lower blending late
+      panfrost: Remove Midgard RSD fields from Bifrost
 
-Connor Abbott (1):
-      tu: Fix tile_align_h on a650
+Amber (3):
+      nir: allow nir_lower_fb_read to support multiple render targets
+      nir: Add memory coherency information to shaders.
+      freedreno, nir, ir3: implement GL_EXT_shader_framebuffer_fetch
 
-David Heidelberg (1):
-      ci: bump Alpine to 3.17 (again)
+Danylo Piliaiev (26):
+      util/perf: C++-proof util/perf
+      util/format: Make format_table compatible with C++
+      spirv: sort spirv_supported_capabilities
+      vk/vk_extension_gen: Make table struct initializable in C++ on older gcc
+      vk/wsi: C++-proof wsi_common_drm.h
+      vk/util: remove (void *) casts from vk_foreach_multi_draw macros
+      vk/util: Generate defines to help casting structs with vk_find_struct
+      freedreno/common: C++-proof freedreno_uuid.h
+      ir3: C++-proofing
+      tu: C++-proofing: fix offsetof with dynamic array index
+      tu: C++-proofing: fix struct initializers
+      tu: C++-proofing: various enum fixes
+      tu: C++-proof: do not goto over variables initialization
+      tu: C++-proofing: fix designator initializer order
+      tu: C++-proofing: fix extension table initialization
+      tu: C++-proofing: Initialize tu_reg_value in-order by pack funcs
+      tu: C++-proofing: fix casting from void * fpermissive warnings
+      tu: C++-proofing: ease access to global bo struct
+      tu: C++-proofing: prevent taking address from rvalue
+      tu: C++-proofing: cast result when extracting field from reg value
+      tu: C++-proofing: misc fixes
+      freedreno/msm: Rename drm_msm_gem_submit_reloc::or in C++ code
+      tu: compile as C++
+      vk/entry_points: Add option to generate template entrypoints
+      freedreno/regs: Include assert.h in generated headers
+      tu: Generate entrypoints for each gen
 
-Emma Anholt (4):
-      glsl/standalone: Pull program create/destroy out to a public function.
-      glsl/standalone: Pull out a helper function for adding GLSL source shaders.
-      glsl/standalone: Make all standalone contexts have NewProgram set.
-      glsl: Write a new test for GLSL and NIR mediump lowering.
+David Heidelberg (2):
+      ci/freedreno: do not build tools executables without explicitly enabling them
+      freedreno/decode: fix possible overflow
 
-Eric Engestrom (6):
-      ci: centralize detection of ccache in link-werror wrapper
-      ci: add linker wrapper for clang
-      ci: always use the -Werror wrapper
-      ci: deduplicate compiler wrappers
-      ci/docs: start documenting ci_run_n_monitor.py
-      v3d: add link to issue investigating failure
+Georg Lehmann (2):
+      aco: remove duplicates from .clang-format
+      amd: remove duplicate from .clang-format
 
-Jesse Natalie (1):
-      ci/windows: Update warp to 1.0.5
+Jesse Natalie (42):
+      microsoft/compiler: Handle writable buffer UAV size queries
+      d3d12: Report correct texel buffer max size
+      d3d12: Fix buffer SRV/UAV creation
+      d3d12: Remove now-unused UAV format from shader info
+      microsoft/compiler: Fix setting bit 31 in feature flags
+      microsoft/compiler: Only set typed UAV load feature bit for multi-comp loads
+      microsoft/compiler: Refactor type -> resource kind helper
+      microsoft/compiler: Add helpers for getting res_props structs
+      microsoft/compiler: Split handle annotation into two parts
+      microsoft/compiler: Handle "bindless" image/tex sources as heap indices
+      microsoft/compiler: Support descriptor heap indexing for UBO/SSBO
+      microsoft/compiler: Use store_dest instead of store_dest_value more
+      microsoft/compiler: Update header docs for binding modes supported by compiler
+      spirv2dxil: Add a pass to lower deref tex/image and vulkan ubo/ssbo to bindless
+      spirv2dxil: Only lower readonly images to SRVs when the option is set
+      spirv2dxil: Support descriptor indexing capabilities
+      dzn: Remove device pointers from descriptor heaps
+      dzn: Remove descriptor heap type from descriptor heap wrapper
+      dzn: Fix a leak in descriptor set layout creation
+      dzn: Add some docs around descriptor sets and remove redundant/unused data
+      dzn: Put UAVs first for storage images/buffers in descriptor tables
+      dzn: Consistently order depth formats before stencil
+      dzn: Don't use plane slice 1 for depth+stencil SRVs
+      dzn: Set up SRV descs for 3D textures correctly
+      dzn: Skip setting up UAVs for depth resources
+      dzn: Add initial bindless infrastructure
+      dzn: When bindless, only allocate one descriptor per layout entry
+      dzn: Remove defragmenting of descriptor pools
+      dzn: Delete unused function
+      dzn: Allocate descriptor sets in buffers for bindless mode
+      dzn: Don't dirty bindings if root signature doesn't change
+      dzn: Use separate dirty bits for descriptor sets/dynamic buffers
+      dzn: Bind buffers for bindless descriptor sets
+      dzn: Add a binding classification in the pipeline layout remapping
+      dzn: When binding a bindless root signature, bind descriptor heaps first
+      dzn: Ensure root signatures are re-bound after a meta op
+      dzn: Only bind descriptor sets up to the used amount of the current layout
+      dzn: Apply bindless lowering when compiling pipelines
+      dzn: Add a debug option for enabling bindless mode
+      dzn: Support descriptor indexing via bindless
+      dzn: Enable variable size bindings
+      dzn: Use mesa_loge for DXIL validation errors
 
-José Roberto de Souza (5):
-      anv: Replace I915_ENGINE_CLASS_VIDEO by INTEL_ENGINE_CLASS_VIDEO
-      anv: Create Xe engines
-      anv: Implement Xe version of check_status()
-      anv: Handle Xe queue/engine priority
-      anv: Implement Xe version of execute_simple_batch()
+José Roberto de Souza (4):
+      iris: Prepare iris_bufmgr functions for vm bind error paths
+      iris: Add vm bind and unbind to kmd backend
+      iris: Implement gem_vm_bind() and gem_vm_unbind() in Xe kmd backend
+      iris: Ajust gem buffer allocation size in Xe kmd
 
-Juan A. Suarez Romero (1):
-      v3d: fix condition for EZ disabling when stencil on
+Konstantin Seurer (1):
+      nir/lower_shader_calls: Remat derefs before lowering resumes
 
-Lionel Landwerlin (6):
-      intel/devinfo: add an option to pick platform to print
-      intel/devinfo: printout URB entries
-      intel/dev: use generated WA helpers for Wa_22012575642
-      intel/devinfo: dedicated entries for XeHP
-      intel/devinfo: initialize pci_device_id with from_pci_id()
-      intel/dev: fold Gfx12 URB entries in Gfx12 HW info
+Lionel Landwerlin (7):
+      util/u_trace: move needs_cs_param option to tracepoints
+      vulkan/runtime: also copy strings on queue debug utils
+      intel/ds: rename frame timeline row to queue
+      anv: fix incorrect utrace bo release
+      anv: fixup locking for utrace submission increments
+      anv: rename anv_utrace_flush_copy in anv_utrace_submit
+      anv: add utrace support for queue debug utils
 
-Marek Olšák (2):
-      egl: reorder code in _eglQueryDevicesEXT, add *swrast variable
-      egl: don't expose swrast device if swrast is not built
+Mark Janes (4):
+      intel/fs: use generated helpers for Wa_14013363432 / Wa_14012688258
+      intel/dev: fix macro string concatenation for INTEL_WA_{id}_GFX_VER
+      intel/dev: fix macro naming convention in gen_wa_helpers.py
+      intel/dev: use GFX_VERx10 to detect genX compilation
 
-Martin Roukala (né Peres) (2):
-      radv/ci: update the navi10 expectations
-      zink/ci: add a test to the fails list
+Mike Blumenkrantz (1):
+      zink: flag rp layout change if zsbuf usedness changes on dsa/fs state bind
 
-Oleksii Bozhenko (1):
-      Move combining clip and cull optimization before linking
-
-Qiang Yu (2):
-      ac/llvm: respect channel_type when ac_build_buffer_load
-      ac/llvm: add missing type convert for nir_load_buffer_amd
+Patrick Lerda (1):
+      r600: fix refcnt imbalance related to shader
 
 Rob Clark (1):
-      freedreno/a6xx: Restore mode
+      freedreno/rnn: Fix reg names for regs with variants
 
-Tapani Pälli (1):
-      intel/fs: restore message layout changes for cube array
+Samuel Pitoiset (4):
+      radv: move cs_regalloc_hang_bug to radv_shader_info
+      radv: pass a radv_shader to radv_emit_dispatch_packets()
+      radv: remove radv_pipeline::device completely
+      radv: rework binding shaders to cmdbuf by introducing new helpers
 
-Timur Kristóf (14):
-      ac: Add more defines for mesh shading packets.
-      radv: Use new mesh shading packet defines.
-      radv: Add per-prim attributes to ring_attr stride.
-      radv: Use per-prim params in has_param_exports.
-      radv: Add extra offset to per-prim params.
-      radv: Use PRIM_ATTR for PS inputs on GFX11.
-      radv: Include per-prim params in NUM_INTERP on GFX11.
-      radv: Adjust mesh draw packets for GFX11.
-      ac/nir/ngg: Clarify mesh shader scratch ring.
-      ac/nir/ngg: Use attribute ring for mesh shader params.
-      ac/nir/ngg: Split legacy workgroup index function.
-      ac/nir/ngg: Fix mesh shader layer on GFX11.
-      ac/nir/ngg: Store special MS outputs in attribute ring for PS to read.
-      radv: Enable mesh shading on GFX11.
+Sil Vilerino (3):
+      d3d12: H264/HEVC Encode - Set both VBV InitialCapacity/Size in CBR Rate Control to same value when requested
+      d3d12: Encode H264/HEVC - Do not write PPS unless different from active
+      d3d12: Encode - Only upload headers when written headers size is > 0
+
+Teng, Jin Chung (2):
+      frontend/va: Add large_scale_tile from VADecPictureParameterBufferAV1
+      d3d12: AV1 Dec - Set anchor_frame_idx only when large_scale_tile equals 1
+
+antonino (2):
+      mesa: correctly allocate space for converted primtives
+      gallium: decompose quad strips into quads if supported
 
