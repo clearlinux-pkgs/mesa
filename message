@@ -1,179 +1,100 @@
-Updating from c54b8dfe672455d9334f66506b2331a270a73899 to 68babdd2271d9aa87d4a294b0a7322c837b606f0
+Updating from 68babdd2271d9aa87d4a294b0a7322c837b606f0 to 5e9ea154849ebe19b96a243b9716bd264545bf8b
 
-Alyssa Rosenzweig (38):
-      nir: Add Panfrost intrinsics to lower sample mask
-      nir: Add Mali load_output taking converison
-      panfrost: Use 0/~0 boolean for MSAA sysval
-      pan/bi: Don't duplicate texture op cases
-      pan/bi: Lower sample mask writes in NIR
-      pan/bi: Lower load_output to make sysval explicit
-      pan/bi: Allow specializing bifrost_nir_options by arch
-      pan/bi: Lower gl_VertexID in NIR
-      pan/bi: Remove bi_load_sysval
-      pan/mdg: Use I/O semantics for MRT blend stores
-      panfrost: Remove inputs->blend.rt
-      panfrost: Remove unused inputs.nr_cbufs
-      pan/bi: Only lower once
-      pan/mdg: Only lower once
-      pan/bi: Split out early preprocessing from late
-      pan/mdg: Split out early preprocessing from late
-      pan/lower_framebuffer: Only call for FS
-      pan/lower_framebuffer: Use nir_shader_instructions_pass
-      pan/blit: Lower load_sampler_lod_parameters_pan
-      panfrost: Preprocess shaders in the driver
-      pan/lower_framebuffer: Lower MSAA blend shaders
-      panfrost: Lower clip_fs late
-      panfrost: Lower texcoords late
-      panfrost: Effectively lower gl_FragColor late
-      panfrost: Preprocess shaders at CSO create time
-      panfrost: Remove stale TODO
-      panvk: Lower sysvals in NIR
-      panvk: Don't use vec4 for vertex_instance_offsets
-      panvk: Inline blend constants as syvals
-      panfrost: Add NIR-based sysval lowering pass
-      panfrost: Lower sysvals in GL
-      panfrost: Move sysvals to GL driver struct
-      panvk: Remove unused function
-      panfrost: Move panfrost_sysvals to GL driver
-      pan/bi: Export bifrost_nir_lower_load_output
-      pan/bi: Call pan_nir_lower_zs_store late
-      panvk: Lower blending late
-      panfrost: Remove Midgard RSD fields from Bifrost
+Bas Nieuwenhuizen (3):
+      ac/surface,radv: Avoid pitch weirdness if image not used for rendertarget.
+      ac/surface: Only allow stencil pitch adjustment for mipmaps.
+      ac/surface,radv: Opt out of stencil adjust.
 
-Amber (3):
-      nir: allow nir_lower_fb_read to support multiple render targets
-      nir: Add memory coherency information to shaders.
-      freedreno, nir, ir3: implement GL_EXT_shader_framebuffer_fetch
+Daniel Schürmann (11):
+      radv: remove unused parameter from radv_open_rtld_binary()
+      radv: separate radv_postprocess_binary_config() from radv_shader_create()
+      radv: remove unnecessary copy of binary->config
+      radv: inline radv_postprocess_config()
+      radv: separate radv_capture_shader_executable_info() from radv_shader_create()
+      radv: move gl_shader_stage from radv_binary to radv_shader_info
+      radv: remove radv_create_gs_copy_shader()
+      radv: refactor shader_compile()
+      radv: skip pipeline caching with RADV_DEBUG=shaders
+      radv: fix radv_shader_binary member fields to 32 bit.
+      radv/rt: Fix VK_KHR_pipeline_executable_properties
 
-Danylo Piliaiev (26):
-      util/perf: C++-proof util/perf
-      util/format: Make format_table compatible with C++
-      spirv: sort spirv_supported_capabilities
-      vk/vk_extension_gen: Make table struct initializable in C++ on older gcc
-      vk/wsi: C++-proof wsi_common_drm.h
-      vk/util: remove (void *) casts from vk_foreach_multi_draw macros
-      vk/util: Generate defines to help casting structs with vk_find_struct
-      freedreno/common: C++-proof freedreno_uuid.h
-      ir3: C++-proofing
-      tu: C++-proofing: fix offsetof with dynamic array index
-      tu: C++-proofing: fix struct initializers
-      tu: C++-proofing: various enum fixes
-      tu: C++-proof: do not goto over variables initialization
-      tu: C++-proofing: fix designator initializer order
-      tu: C++-proofing: fix extension table initialization
-      tu: C++-proofing: Initialize tu_reg_value in-order by pack funcs
-      tu: C++-proofing: fix casting from void * fpermissive warnings
-      tu: C++-proofing: ease access to global bo struct
-      tu: C++-proofing: prevent taking address from rvalue
-      tu: C++-proofing: cast result when extracting field from reg value
-      tu: C++-proofing: misc fixes
-      freedreno/msm: Rename drm_msm_gem_submit_reloc::or in C++ code
-      tu: compile as C++
-      vk/entry_points: Add option to generate template entrypoints
-      freedreno/regs: Include assert.h in generated headers
-      tu: Generate entrypoints for each gen
+David Heidelberg (7):
+      ci: rename .lava-test to .lava-test-deqp to describe it correctly
+      ci: create lava-test without deqp HWCI_TEST_SCRIPT
+      ci: remove deqp from lava piglit and traces runs
+      ci/freedreno: split deqp from other jobs
+      ci/freedreno: define Google farm specific includes
+      ci/freedreno: Make traces work on LAVA caching proxy
+      ci/broadcom: test occasionally fails, but typically passes
 
-David Heidelberg (2):
-      ci/freedreno: do not build tools executables without explicitly enabling them
-      freedreno/decode: fix possible overflow
+Erik Faye-Lund (2):
+      docs: prefer http-links over ftp
+      docs/freedreno: fix turnip-heading level
+
+Faith Ekstrand (9):
+      intel/blorp: Drop the TODO file
+      docs: Fix Faith's name in relnotes
+      nir: Drop a bunch of Authors tags
+      spirv: Drop a bunch of Authors tags
+      intel: Drop some author comments and update Faith's name
+      util,mesa,panfrost: Drop some author tags
+      vulkan: vk_android.c should be copyright Intel
+      util: Update some copyright tags
+      CODEOWNERS: s/jekstrand/gfxstrand
 
 Georg Lehmann (2):
-      aco: remove duplicates from .clang-format
-      amd: remove duplicate from .clang-format
+      aco: don't check usesModifiers for pseudo instructions
+      aco: fix p_interp_gfx11 comment
 
-Jesse Natalie (42):
-      microsoft/compiler: Handle writable buffer UAV size queries
-      d3d12: Report correct texel buffer max size
-      d3d12: Fix buffer SRV/UAV creation
-      d3d12: Remove now-unused UAV format from shader info
-      microsoft/compiler: Fix setting bit 31 in feature flags
-      microsoft/compiler: Only set typed UAV load feature bit for multi-comp loads
-      microsoft/compiler: Refactor type -> resource kind helper
-      microsoft/compiler: Add helpers for getting res_props structs
-      microsoft/compiler: Split handle annotation into two parts
-      microsoft/compiler: Handle "bindless" image/tex sources as heap indices
-      microsoft/compiler: Support descriptor heap indexing for UBO/SSBO
-      microsoft/compiler: Use store_dest instead of store_dest_value more
-      microsoft/compiler: Update header docs for binding modes supported by compiler
-      spirv2dxil: Add a pass to lower deref tex/image and vulkan ubo/ssbo to bindless
-      spirv2dxil: Only lower readonly images to SRVs when the option is set
-      spirv2dxil: Support descriptor indexing capabilities
-      dzn: Remove device pointers from descriptor heaps
-      dzn: Remove descriptor heap type from descriptor heap wrapper
-      dzn: Fix a leak in descriptor set layout creation
-      dzn: Add some docs around descriptor sets and remove redundant/unused data
-      dzn: Put UAVs first for storage images/buffers in descriptor tables
-      dzn: Consistently order depth formats before stencil
-      dzn: Don't use plane slice 1 for depth+stencil SRVs
-      dzn: Set up SRV descs for 3D textures correctly
-      dzn: Skip setting up UAVs for depth resources
-      dzn: Add initial bindless infrastructure
-      dzn: When bindless, only allocate one descriptor per layout entry
-      dzn: Remove defragmenting of descriptor pools
-      dzn: Delete unused function
-      dzn: Allocate descriptor sets in buffers for bindless mode
-      dzn: Don't dirty bindings if root signature doesn't change
-      dzn: Use separate dirty bits for descriptor sets/dynamic buffers
-      dzn: Bind buffers for bindless descriptor sets
-      dzn: Add a binding classification in the pipeline layout remapping
-      dzn: When binding a bindless root signature, bind descriptor heaps first
-      dzn: Ensure root signatures are re-bound after a meta op
-      dzn: Only bind descriptor sets up to the used amount of the current layout
-      dzn: Apply bindless lowering when compiling pipelines
-      dzn: Add a debug option for enabling bindless mode
-      dzn: Support descriptor indexing via bindless
-      dzn: Enable variable size bindings
-      dzn: Use mesa_loge for DXIL validation errors
+Guilherme Gallo (7):
+      ci: Improve piglit-traces "no-perf" filter
+      ci: Fix freedreno-rules-performance
+      ci: Add piglit traces hidden jobs
+      ci/freedreno: create a618-traces and perf jobs
+      ci/zink: Add zink-a618 trace jobs
+      ci/zink: Add zink-turnip-manual-rules
+      ci/zink: Add zink-tu-a618-traces-performance job
 
-José Roberto de Souza (4):
-      iris: Prepare iris_bufmgr functions for vm bind error paths
-      iris: Add vm bind and unbind to kmd backend
-      iris: Implement gem_vm_bind() and gem_vm_unbind() in Xe kmd backend
-      iris: Ajust gem buffer allocation size in Xe kmd
+José Roberto de Souza (3):
+      intel: Sync xe_drm.h
+      anv: Partialy import drm-uapi/gpu_scheduler.h and use it
+      anv: Fetch max_context_priority from drm_xe_query_config
 
-Konstantin Seurer (1):
-      nir/lower_shader_calls: Remat derefs before lowering resumes
+Lucas Stach (2):
+      etnaviv: flush VS texture cache when texture data is changed
+      etnaviv: fix texture barrier implementation
 
-Lionel Landwerlin (7):
-      util/u_trace: move needs_cs_param option to tracepoints
-      vulkan/runtime: also copy strings on queue debug utils
-      intel/ds: rename frame timeline row to queue
-      anv: fix incorrect utrace bo release
-      anv: fixup locking for utrace submission increments
-      anv: rename anv_utrace_flush_copy in anv_utrace_submit
-      anv: add utrace support for queue debug utils
-
-Mark Janes (4):
-      intel/fs: use generated helpers for Wa_14013363432 / Wa_14012688258
-      intel/dev: fix macro string concatenation for INTEL_WA_{id}_GFX_VER
-      intel/dev: fix macro naming convention in gen_wa_helpers.py
-      intel/dev: use GFX_VERx10 to detect genX compilation
+Marcin Ślusarz (1):
+      anv,hasvk: remove stale comments
 
 Mike Blumenkrantz (1):
-      zink: flag rp layout change if zsbuf usedness changes on dsa/fs state bind
+      driconf: make glthread=true default for source games
 
-Patrick Lerda (1):
-      r600: fix refcnt imbalance related to shader
+Nicolas F (1):
+      driconf: remove the adaptive sync special case for mpv
 
-Rob Clark (1):
-      freedreno/rnn: Fix reg names for regs with variants
+Rob Clark (2):
+      freedreno/afuc: Add raw mode for disasm
+      freedreno/registers: Add control reg for zap fw base
+
+Ryan Neph (5):
+      venus: add vn_relax_init/_fini()
+      venus: set/check ring status bits independently
+      venus: init exp features before ring init again
+      venus: update to latest protocol for ringMonitoring
+      venus: check and configure new ringMonitoring feature
+
+Sagar Ghuge (3):
+      anv: Implement Wa_14015297576
+      iris: Implement Wa_14015297576
+      intel/compiler: Add Wa_14014063774 for slm_fence
 
 Samuel Pitoiset (4):
-      radv: move cs_regalloc_hang_bug to radv_shader_info
-      radv: pass a radv_shader to radv_emit_dispatch_packets()
-      radv: remove radv_pipeline::device completely
-      radv: rework binding shaders to cmdbuf by introducing new helpers
+      radv: move radv_meta_* to a new folder
+      radv: copy the multisample state to radv_cmd_state
+      radv: move uses_user_sample_locations to radv_multisample_state
+      radv: separate the sample shading state between FS and graphics pipeline
 
-Sil Vilerino (3):
-      d3d12: H264/HEVC Encode - Set both VBV InitialCapacity/Size in CBR Rate Control to same value when requested
-      d3d12: Encode H264/HEVC - Do not write PPS unless different from active
-      d3d12: Encode - Only upload headers when written headers size is > 0
-
-Teng, Jin Chung (2):
-      frontend/va: Add large_scale_tile from VADecPictureParameterBufferAV1
-      d3d12: AV1 Dec - Set anchor_frame_idx only when large_scale_tile equals 1
-
-antonino (2):
-      mesa: correctly allocate space for converted primtives
-      gallium: decompose quad strips into quads if supported
+Tatsuyuki Ishi (1):
+      amd: Add radv_foreach_stage to ForEachMacros.
 
