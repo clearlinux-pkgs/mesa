@@ -1,100 +1,70 @@
-Updating from 68babdd2271d9aa87d4a294b0a7322c837b606f0 to 5e9ea154849ebe19b96a243b9716bd264545bf8b
+Updating from 5e9ea154849ebe19b96a243b9716bd264545bf8b to 83929f99557ad9d4eaf59938a927d85cfb37d351
 
-Bas Nieuwenhuizen (3):
-      ac/surface,radv: Avoid pitch weirdness if image not used for rendertarget.
-      ac/surface: Only allow stencil pitch adjustment for mipmaps.
-      ac/surface,radv: Opt out of stencil adjust.
+Alyssa Rosenzweig (1):
+      asahi: Convert to SPDX headers
 
-Daniel Schürmann (11):
-      radv: remove unused parameter from radv_open_rtld_binary()
-      radv: separate radv_postprocess_binary_config() from radv_shader_create()
-      radv: remove unnecessary copy of binary->config
-      radv: inline radv_postprocess_config()
-      radv: separate radv_capture_shader_executable_info() from radv_shader_create()
-      radv: move gl_shader_stage from radv_binary to radv_shader_info
-      radv: remove radv_create_gs_copy_shader()
-      radv: refactor shader_compile()
-      radv: skip pipeline caching with RADV_DEBUG=shaders
-      radv: fix radv_shader_binary member fields to 32 bit.
-      radv/rt: Fix VK_KHR_pipeline_executable_properties
+Daniel Stone (1):
+      CI: Disable freedreno
 
-David Heidelberg (7):
-      ci: rename .lava-test to .lava-test-deqp to describe it correctly
-      ci: create lava-test without deqp HWCI_TEST_SCRIPT
-      ci: remove deqp from lava piglit and traces runs
-      ci/freedreno: split deqp from other jobs
-      ci/freedreno: define Google farm specific includes
-      ci/freedreno: Make traces work on LAVA caching proxy
-      ci/broadcom: test occasionally fails, but typically passes
+Filip Gawin (1):
+      crocus: don't quantize the clear value
 
-Erik Faye-Lund (2):
-      docs: prefer http-links over ftp
-      docs/freedreno: fix turnip-heading level
+Friedrich Vock (1):
+      aco: Swap operands for v_and_b32 in RT prolog
 
-Faith Ekstrand (9):
-      intel/blorp: Drop the TODO file
-      docs: Fix Faith's name in relnotes
-      nir: Drop a bunch of Authors tags
-      spirv: Drop a bunch of Authors tags
-      intel: Drop some author comments and update Faith's name
-      util,mesa,panfrost: Drop some author tags
-      vulkan: vk_android.c should be copyright Intel
-      util: Update some copyright tags
-      CODEOWNERS: s/jekstrand/gfxstrand
+Georg Lehmann (3):
+      aco: make .clang-format usable with tests
+      aco/ir: fix copy paste bug in convert_to_SDWA
+      aco/util: override default assignment operator for bitfield helpers
 
-Georg Lehmann (2):
-      aco: don't check usesModifiers for pseudo instructions
-      aco: fix p_interp_gfx11 comment
+Harri Nieminen (5):
+      docs/specs: Fix typos
+      docs/gallium: Fix typos
+      docs/freedreno: Fix typos
+      docs/panfrost: Fix typo
+      docs/svga3d: Fix typo
 
-Guilherme Gallo (7):
-      ci: Improve piglit-traces "no-perf" filter
-      ci: Fix freedreno-rules-performance
-      ci: Add piglit traces hidden jobs
-      ci/freedreno: create a618-traces and perf jobs
-      ci/zink: Add zink-a618 trace jobs
-      ci/zink: Add zink-turnip-manual-rules
-      ci/zink: Add zink-tu-a618-traces-performance job
+Iago Toral Quiroga (2):
+      v3dv: pause occlusion queries during vkCmdClearAttachments
+      v3dv: fix format swizzle for buffer views
 
-José Roberto de Souza (3):
-      intel: Sync xe_drm.h
-      anv: Partialy import drm-uapi/gpu_scheduler.h and use it
-      anv: Fetch max_context_priority from drm_xe_query_config
+Ilya K (1):
+      intel/vk/grl: don't install libgrl.a
 
-Lucas Stach (2):
-      etnaviv: flush VS texture cache when texture data is changed
-      etnaviv: fix texture barrier implementation
+Jarred Davies (3):
+      pvr: Always mark robustBufferAccess as supported
+      pvr: Rename pvr_xgl_pds.c to pvr_pipeline_pds.c
+      pvr: Add robustness buffer support
+
+Lina Versace (1):
+      mailmap: Add Lina's new google.com address
 
 Marcin Ślusarz (1):
-      anv,hasvk: remove stale comments
+      anv: call nir_shader_gather_info early
 
-Mike Blumenkrantz (1):
-      driconf: make glthread=true default for source games
+Marek Olšák (2):
+      amd/llvm: fix handling of unsupported vec3 loads on gfx6
+      amd/llvm: remove no-op code for vec3 loads in ac_build_tbuffer_load
 
-Nicolas F (1):
-      driconf: remove the adaptive sync special case for mpv
+Mike Blumenkrantz (2):
+      aux/trace: dump blend states with enums
+      aux/trace: fix GALLIUM_TRACE_NIR handling
 
-Rob Clark (2):
-      freedreno/afuc: Add raw mode for disasm
-      freedreno/registers: Add control reg for zap fw base
+Pierre-Eric Pelloux-Prayer (6):
+      mesa: fix CopyImageSubDataOES with GL_TEXTURE_EXTERNAL_OES
+      amd/surface: rename metadata functions
+      ac/surface: introduce umd metadata v2
+      radeonsi: add AMD_DEBUG=extra_md
+      radeonsi: don't use si_decompress_dcc if the blitter is running
+      radv: add RADV_DEBUG=extra_md
 
-Ryan Neph (5):
-      venus: add vn_relax_init/_fini()
-      venus: set/check ring status bits independently
-      venus: init exp features before ring init again
-      venus: update to latest protocol for ringMonitoring
-      venus: check and configure new ringMonitoring feature
+Samuel Pitoiset (5):
+      radv: add DI_PT_RECTLIST to si_conv_prim_to_gs_out()
+      radv: stop checking dynamic states when emitting the guardband state
+      radv: rename gfx9_gs_info to radv_legacy_gs_info
+      radv: move {esgs,gsvs}_ring_size to radv_legacy_gs_info
+      radv/rt: bind the pipeline stack when it's not dynamic
 
-Sagar Ghuge (3):
-      anv: Implement Wa_14015297576
-      iris: Implement Wa_14015297576
-      intel/compiler: Add Wa_14014063774 for slm_fence
-
-Samuel Pitoiset (4):
-      radv: move radv_meta_* to a new folder
-      radv: copy the multisample state to radv_cmd_state
-      radv: move uses_user_sample_locations to radv_multisample_state
-      radv: separate the sample shading state between FS and graphics pipeline
-
-Tatsuyuki Ishi (1):
-      amd: Add radv_foreach_stage to ForEachMacros.
+Timur Kristóf (1):
+      radv: Fix swizzled VS input loads when some components are unused.
 
