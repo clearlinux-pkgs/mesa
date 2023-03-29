@@ -1,70 +1,119 @@
-Updating from 5e9ea154849ebe19b96a243b9716bd264545bf8b to 83929f99557ad9d4eaf59938a927d85cfb37d351
+Updating from 83929f99557ad9d4eaf59938a927d85cfb37d351 to f113b55e25da880d2ee846ce37564186bd67b2da
 
-Alyssa Rosenzweig (1):
-      asahi: Convert to SPDX headers
+Alyssa Rosenzweig (3):
+      mesa/st: Only set seamless for GLES3
+      mesa/st: Normalize wrap modes for seamless cubes
+      asahi: Don't lie about seamless cube maps
 
-Daniel Stone (1):
-      CI: Disable freedreno
+Emma Anholt (11):
+      ci/crocus: Fix 1.3.5.0 xfails.
+      ci/etnaviv: Polish the gc2000 xfails a bit.
+      ci/zink: Update the tgl manual run xfails.
+      gallivm: Skip loads/stores that are definitely outside of compact vars.
+      nir/lower_sysvals: Add support for un-lowered tess_level_inner/outer.
+      nir_to_tgsi: Handle stores to compact outputs.
+      glsl: Delete the lower_tess_level pass.
+      glsl: Remove the TessLevel lowering special case from xfb.
+      glsl: Drop dead prototype.
+      ci/freedreno: Flake KHR-GL45.shader_image_load_store.basic-allTargets-store
+      ci/broadcom: Skip another texelfetch case.
 
-Filip Gawin (1):
-      crocus: don't quantize the clear value
+Eric Engestrom (9):
+      asahi: change create_renderonly signature to uniformize it
+      etnaviv: change create_renderonly signature to uniformize it
+      freedreno: change create_renderonly signature to uniformize it
+      lima: change create_renderonly signature to uniformize it
+      panfrost: change create_renderonly signature to uniformize it
+      v3d: change create_renderonly signature to uniformize it
+      vc4: change create_renderonly signature to uniformize it
+      kmsro: uniformize renderonly creation
+      kmsro: sort drivers alphabetically
 
-Friedrich Vock (1):
-      aco: Swap operands for v_and_b32 in RT prolog
+Erik Faye-Lund (1):
+      docs: drop reference to modindex
 
-Georg Lehmann (3):
-      aco: make .clang-format usable with tests
-      aco/ir: fix copy paste bug in convert_to_SDWA
-      aco/util: override default assignment operator for bitfield helpers
+Georg Lehmann (1):
+      aco: clean up to_mad_mix
 
-Harri Nieminen (5):
-      docs/specs: Fix typos
-      docs/gallium: Fix typos
-      docs/freedreno: Fix typos
-      docs/panfrost: Fix typo
-      docs/svga3d: Fix typo
+Jarred Davies (1):
+      pvr: Mark all normalized formats as supporting with_packed_usc_channel
 
-Iago Toral Quiroga (2):
-      v3dv: pause occlusion queries during vkCmdClearAttachments
-      v3dv: fix format swizzle for buffer views
+José Roberto de Souza (1):
+      intel: Allocate mesh shader URB space before task shader
 
-Ilya K (1):
-      intel/vk/grl: don't install libgrl.a
+Konstantin Seurer (1):
+      radv/rt: Refactor rq_load lowering
 
-Jarred Davies (3):
-      pvr: Always mark robustBufferAccess as supported
-      pvr: Rename pvr_xgl_pds.c to pvr_pipeline_pds.c
-      pvr: Add robustness buffer support
+Lionel Landwerlin (2):
+      anv: implement recommended flush/wait of AUX-TT invalidation
+      iris: implement recommended flush/wait of AUX-TT invalidation
 
-Lina Versace (1):
-      mailmap: Add Lina's new google.com address
+Luigi Santivetti (1):
+      pvr: fix segfault in dEQP-VK.ycbcr.query.*
 
-Marcin Ślusarz (1):
-      anv: call nir_shader_gather_info early
+Mike Blumenkrantz (7):
+      zink: fix some type mismatches for c++ compilation
+      zink: break out a src region barrier check for reuse
+      zink: move all barrier-related functions to c++
+      zink: use c++ template to deduplicate all the buffer barrier code
+      zink: minor tweaks for image barriers
+      zink: use c++ template to deduplicate image barrier functions
+      zink: stop leaking separate shader nir
 
-Marek Olšák (2):
-      amd/llvm: fix handling of unsupported vec3 loads on gfx6
-      amd/llvm: remove no-op code for vec3 loads in ac_build_tbuffer_load
+Paul Gofman (1):
+      driconf: add a workaround for Kaiju-A-Gogo
 
-Mike Blumenkrantz (2):
-      aux/trace: dump blend states with enums
-      aux/trace: fix GALLIUM_TRACE_NIR handling
+Qiang Yu (7):
+      nir: pack_(s|u)norm_2x16 support float16 as input
+      ac/llvm: implement float16 nir_op_pack_(s|u)norm_2x16
+      aco: implement float16 nir_op_pack_(s|u)norm_2x16
+      nir,radeonsi: add and implement nir_load_alpha_reference_amd
+      nir: add nir_fisnan helper function
+      ac/nir: add ac_nir_lower_ps
+      radeonsi: monolithic PS emit epilog in nir directly
 
-Pierre-Eric Pelloux-Prayer (6):
-      mesa: fix CopyImageSubDataOES with GL_TEXTURE_EXTERNAL_OES
-      amd/surface: rename metadata functions
-      ac/surface: introduce umd metadata v2
-      radeonsi: add AMD_DEBUG=extra_md
-      radeonsi: don't use si_decompress_dcc if the blitter is running
-      radv: add RADV_DEBUG=extra_md
+Ryan Neph (1):
+      venus: re-use VN_DEBUG_NO_ABORT to disable ring monitoring abort()
 
-Samuel Pitoiset (5):
-      radv: add DI_PT_RECTLIST to si_conv_prim_to_gs_out()
-      radv: stop checking dynamic states when emitting the guardband state
-      radv: rename gfx9_gs_info to radv_legacy_gs_info
-      radv: move {esgs,gsvs}_ring_size to radv_legacy_gs_info
-      radv/rt: bind the pipeline stack when it's not dynamic
+Sai Teja Pottumuttu (1):
+      anv: Fix stride mismatch in mesa and minigbm
 
-Timur Kristóf (1):
-      radv: Fix swizzled VS input loads when some components are unused.
+Samuel Pitoiset (22):
+      radv/ci: update CI lists for Polaris10 and Pitcairn
+      radv: stop using get_vs_output_info() when emitting VS/NGG shaders
+      radv: emit the GS copy shader outside of radv_pipeline_emit_hw_gs()
+      radv: add radv_get_last_vgt_shader() helper
+      radv: stop using the pipeline for emitting PS inputs
+      radv: use the shader info stage to simplify  emitting NGG shaders
+      radv: use the ES type to apply a workaround for NGG on GFX10
+      radv: pass the ES shader to radv_pipeline_emit_hw_ngg()
+      radv: stop using the pipeline for emitting shaders
+      radv: pass shader/base_reg to radv_emit_view_index_per_stage
+      radv: pass a shaders array to radv_get_shader()
+      radv: add radv_bind_shader() helper
+      radv: add an assertion about shader stage to radv_bind_pre_rast_shader()
+      radv: keep track of active stages as part of the cmdbuf state
+      radv: determine the last VGT shader at pipeline bind time
+      radv: stop using last_vgt_api_stage_{locs} during cmdbuf recording
+      radv: move dirtying flags for mesh shading to radv_bind_pre_rast_shader()
+      radv: copy bound shaders to the cmdbuf state
+      radv: determine and store the next graphics stage to radv_shader_info
+      radv: move user_data_0 to the shader info pass
+      radv: replace pipeline->is_ngg occurrences during cmdbuf recording
+      radv: replace pipeline->force_vrs_per_vertex during cmdbuf recording
+
+Sil Vilerino (1):
+      nir: Fix use of alloca() without #include c99_alloca.h
+
+Tapani Pälli (1):
+      anv: use primitive ID override when shader does not supply it
+
+Timur Kristóf (7):
+      radv: Don't expose NV_mesh_shader and don't use it in CI.
+      radv: Remove NV_mesh_shader API entrypoints.
+      radv: Remove first_task and ib_addr/ib_stride.
+      radv: Clean up emitting zero mesh shader draw id.
+      ac/nir/ngg: Remove NV_mesh_shader support.
+      ac/nir: Remove ac_nir_apply_first_task_to_task_shader.
+      nir: Remove IB address and stride intrinsics.
 
