@@ -1,119 +1,208 @@
-Updating from 83929f99557ad9d4eaf59938a927d85cfb37d351 to f113b55e25da880d2ee846ce37564186bd67b2da
+Updating from f113b55e25da880d2ee846ce37564186bd67b2da to 816f434efc0eaa44f1a0a67b8c789f484eeebad0
 
-Alyssa Rosenzweig (3):
-      mesa/st: Only set seamless for GLES3
-      mesa/st: Normalize wrap modes for seamless cubes
-      asahi: Don't lie about seamless cube maps
+Daniel Stone (2):
+      ci/radeonsi: sort and dedup stoney skips
+      ci/radeonsi: Skip really slow tests on stoney
 
-Emma Anholt (11):
-      ci/crocus: Fix 1.3.5.0 xfails.
-      ci/etnaviv: Polish the gc2000 xfails a bit.
-      ci/zink: Update the tgl manual run xfails.
-      gallivm: Skip loads/stores that are definitely outside of compact vars.
-      nir/lower_sysvals: Add support for un-lowered tess_level_inner/outer.
-      nir_to_tgsi: Handle stores to compact outputs.
-      glsl: Delete the lower_tess_level pass.
-      glsl: Remove the TessLevel lowering special case from xfb.
-      glsl: Drop dead prototype.
-      ci/freedreno: Flake KHR-GL45.shader_image_load_store.basic-allTargets-store
-      ci/broadcom: Skip another texelfetch case.
+Danylo Piliaiev (2):
+      turnip: add cached and cached-coherent memory types
+      tu/drm: Support cached non-coherent memory
 
-Eric Engestrom (9):
-      asahi: change create_renderonly signature to uniformize it
-      etnaviv: change create_renderonly signature to uniformize it
-      freedreno: change create_renderonly signature to uniformize it
-      lima: change create_renderonly signature to uniformize it
-      panfrost: change create_renderonly signature to uniformize it
-      v3d: change create_renderonly signature to uniformize it
-      vc4: change create_renderonly signature to uniformize it
-      kmsro: uniformize renderonly creation
-      kmsro: sort drivers alphabetically
+Emma Anholt (5):
+      perfetto: Add a .clang-format for the directory.
+      intel/perfetto: Drop unused "pipelined" field.
+      perfetto: Make a MesaRenderpassDataSource with common setup/start/stop.
+      perfetto: Deduplicate clock sync packet emit from renderstage sources.
+      perfetto: Move intel's cmdbuf/queue annotation code to the shared util.
 
-Erik Faye-Lund (1):
-      docs: drop reference to modindex
+Eric Engestrom (3):
+      ci/broadcom: consolidate vc4-rpi3* jobs into a single vc4-rpi3-gl:armhf
+      ci/broadcom: consolidate v3d-rpi4* jobs into a single v3d-rpi4-gl:armhf
+      ci/broadcom: slightly increase coverage of vk tests
 
-Georg Lehmann (1):
-      aco: clean up to_mad_mix
+Erik Faye-Lund (6):
+      docs: move old relnotes to _extra directory
+      docs: use version-number as toctree-title for relnotes
+      zink: emit terminate for spir-v 1.6
+      zink: use demote from spir-v 1.6 when possible
+      zink: use spir-v 1.6 local-size when needed
+      zink: enable spir-v 1.6 for vulkan 1.3
 
-Jarred Davies (1):
-      pvr: Mark all normalized formats as supporting with_packed_usc_channel
+Friedrich Vock (2):
+      radv/rt: Also adjust the SGPR count in postprocess_rt_config
+      aco: Un-swap addressable VGPRs/SGPRs in RT prolog
 
-José Roberto de Souza (1):
-      intel: Allocate mesh shader URB space before task shader
+Georg Lehmann (28):
+      aco/ra: don't reallocate VOP3 instruction for non-vcc lane mask
+      aco/vn: hash opsel for VOP12C
+      aco/assembler: support VOP12C opsel
+      aco: validate VOP12C opsel
+      aco/to_hw_instr: use VOP1 opsel for v_mov_b16
+      aco/ra: prepare for VOP12C opsel
+      aco/optimizer: preserve opsel when fusing fma
+      aco: handle opsel in combine_comparison_ordering
+      aco: handle opsel in combine_ordering_test
+      aco: handle opsel in combine_constant_comparison_ordering
+      aco: update match_op3_for_vop3 for VOP12C opsel
+      aco: support v_cvt_f32_f16 with opsel in combine_mad_mix
+      aco: support neg(mul)/abs(mul) optimization in more cases
+      aco: return true in usesModifiers for VOP12C with opsel
+      aco: swap opsel when swapping VOP2/C operands
+      aco/ir: copy opsel when converting to DPP
+      aco: don't label mul with opsel as abs/neg
+      aco/gfx11: allow opsel for VOP12C
+      aco/optimizer: use opsel for VOP12C
+      aco: keep label_mul/usedef/minmax in apply_extract
+      aco/optimizer: remove to_SDWA
+      aco: add tests for fma with opsel
+      aco: add tests for dpp with opsel
+      aco: add tests for swap operand with opsel
+      aco: add tests for cmp ordering with opsel
+      aco: add test for min/max combining with opsel
+      aco/tests: run optimize.mad_mix.input_conv.modifiers on gfx11
+      aco: add tests for neg(mul) with opsel
+
+Guilherme Gallo (2):
+      ci/zink: Fix zink-tu-a618-traces perf job rules
+      ci/zink: Reduce zink-tu-a618-traces parallelism
+
+Ian Romanick (2):
+      intel/fs: Don't copy propagate from saturate to sel
+      nir/algebraic: Undistribute fsat from fmax
+
+José Roberto de Souza (4):
+      anv: Move to a function code to clflush batch buffers
+      anv: Implement Xe version of anv_queue_exec_locked() and queue_exec_trace()
+      anv: Disable anv_bo_sync_type for Xe kmd
+      anv: Add assert in functions not supported by Xe kmd
+
+Juston Li (1):
+      util/disk_cache: use posix_fallocate() for index files
+
+Karol Herbst (1):
+      nvc0: enable fp helper invocation memory loads on Turing+
 
 Konstantin Seurer (1):
-      radv/rt: Refactor rq_load lowering
+      radv/rq: Rematerialize inv_dir before proceed
 
-Lionel Landwerlin (2):
-      anv: implement recommended flush/wait of AUX-TT invalidation
-      iris: implement recommended flush/wait of AUX-TT invalidation
+Lina Versace (4):
+      venus: Update protocol for VK_EXT_memory_budget
+      venus: Delete vn_renderer_info::has_cache_management
+      venus: Refactor vn_physical_device_init_memory_properties
+      venus: Enable VK_EXT_memory_budget
 
-Luigi Santivetti (1):
-      pvr: fix segfault in dEQP-VK.ycbcr.query.*
+Lionel Landwerlin (1):
+      anv: hash immutable sampler conversion data not pointers
 
-Mike Blumenkrantz (7):
-      zink: fix some type mismatches for c++ compilation
-      zink: break out a src region barrier check for reuse
-      zink: move all barrier-related functions to c++
-      zink: use c++ template to deduplicate all the buffer barrier code
-      zink: minor tweaks for image barriers
-      zink: use c++ template to deduplicate image barrier functions
-      zink: stop leaking separate shader nir
+Marcin Ślusarz (2):
+      anv: work around for per-prim attributes corruption
+      intel/compiler: compactify locations of mesh outputs
 
-Paul Gofman (1):
-      driconf: add a workaround for Kaiju-A-Gogo
+Marek Olšák (5):
+      amd: update addrlib
+      amd: rename GFX1036 -> RAPHAEL_MENDOCINO
+      amd: set the correct LLVM processor name for gfx1036
+      radeonsi/gfx11: reduce MSAA samples to 8 for no-attachment framebuffer
+      radeonsi: simplify binning settings to work around GPU hangs
 
-Qiang Yu (7):
-      nir: pack_(s|u)norm_2x16 support float16 as input
-      ac/llvm: implement float16 nir_op_pack_(s|u)norm_2x16
-      aco: implement float16 nir_op_pack_(s|u)norm_2x16
-      nir,radeonsi: add and implement nir_load_alpha_reference_amd
-      nir: add nir_fisnan helper function
-      ac/nir: add ac_nir_lower_ps
-      radeonsi: monolithic PS emit epilog in nir directly
+Mike Blumenkrantz (30):
+      lavapipe: always copy streamout info when creating shaders
+      lavapipe: don't memcpy tess_ccw when copying pipeline library shaders
+      lavapipe: refactor shader compile functions to not take pipeline params
+      lavapipe: track bound shader stages on rendering_state
+      lavapipe: add a device member to rendering_state
+      lavapipe: stop using rendering_state::pipeline
+      lavapipe: refactor compute shader binding
+      lavapipe: merge some loops in handle_graphics_pipeline()
+      lavapipe: PIPE_SHADER_ -> MESA_SHADER_
+      lavapipe: don't access pipeline shader structs as much during bind
+      lavapipe: pull out dynamic tess origin check in gfx pipeline bind
+      lavapipe: break out all the important parts of gfx pipeline setting for reuse
+      lavapipe: delete unused struct member
+      lavapipe: refactor pipeline destroy a bit
+      lavapipe: add a ref for the tess_ccw nir on creation
+      lavapipe: unify lvp_pipeline_nir creation
+      lavapipe: dynamically bind noop fs at draw time when needed
+      lavapipe: don't double unbind gfx stages on pipeline bind
+      lavapipe: split out gfx stage unbinding
+      lavapipe: only update shader access for bind/unbind stages
+      lavapipe: only unset tess_states pointers on tes bind
+      lavapipe: avoid uniformly unsetting gs_output_lines
+      lavapipe: move default rasterizer state values to rendering_state init
+      mapi: add InternalInvalidateFramebufferAncillaryMESA
+      glthread: add _mesa_glthread_invalidate_zsbuf()
+      kopper: apply ancillary invalidation through glthread on swapbuffers
+      llvmpipe: fix linear fs analysis with nonzero fs outputs
+      llvmpipe: fix handling of unused color attachments
+      zink: add spirv builder function for terminate
+      zink: set src access when rebinding buffers, unset unordered_*
 
-Ryan Neph (1):
-      venus: re-use VN_DEBUG_NO_ABORT to disable ring monitoring abort()
+Patrick Lerda (1):
+      intel: fix memory leak related to brw_nir_create_passthrough_tcs()
 
-Sai Teja Pottumuttu (1):
-      anv: Fix stride mismatch in mesa and minigbm
+Pierre-Eric Pelloux-Prayer (1):
+      radeonsi: don't use alignment_log2 of imported buffers
 
-Samuel Pitoiset (22):
-      radv/ci: update CI lists for Polaris10 and Pitcairn
-      radv: stop using get_vs_output_info() when emitting VS/NGG shaders
-      radv: emit the GS copy shader outside of radv_pipeline_emit_hw_gs()
-      radv: add radv_get_last_vgt_shader() helper
-      radv: stop using the pipeline for emitting PS inputs
-      radv: use the shader info stage to simplify  emitting NGG shaders
-      radv: use the ES type to apply a workaround for NGG on GFX10
-      radv: pass the ES shader to radv_pipeline_emit_hw_ngg()
-      radv: stop using the pipeline for emitting shaders
-      radv: pass shader/base_reg to radv_emit_view_index_per_stage
-      radv: pass a shaders array to radv_get_shader()
-      radv: add radv_bind_shader() helper
-      radv: add an assertion about shader stage to radv_bind_pre_rast_shader()
-      radv: keep track of active stages as part of the cmdbuf state
-      radv: determine the last VGT shader at pipeline bind time
-      radv: stop using last_vgt_api_stage_{locs} during cmdbuf recording
-      radv: move dirtying flags for mesh shading to radv_bind_pre_rast_shader()
-      radv: copy bound shaders to the cmdbuf state
-      radv: determine and store the next graphics stage to radv_shader_info
-      radv: move user_data_0 to the shader info pass
-      radv: replace pipeline->is_ngg occurrences during cmdbuf recording
-      radv: replace pipeline->force_vrs_per_vertex during cmdbuf recording
+Rhys Perry (1):
+      radv: fix setting radv_shader_info::user_data_0 with rt
 
-Sil Vilerino (1):
-      nir: Fix use of alloca() without #include c99_alloca.h
+Rob Clark (1):
+      Revert "CI: Disable freedreno"
 
-Tapani Pälli (1):
-      anv: use primitive ID override when shader does not supply it
+Samuel Pitoiset (15):
+      radv: use serialized NIR for graphics libs with the RETAIN flag
+      radv: remove radv_graphics_pipeline::use_per_attribute_vb_descs
+      radv: remove radv_graphics_pipeline::last_vertex_attrib_bit
+      radv: remove radv_graphics_pipeline::next_vertex_stage
+      radv: remove radv_graphics_pipeline::can_use_simple_input
+      aco: remove unused aco_shader_info::vb_desc_usage_mask
+      radv: adjust vb_desc_usage_mask for dynamic VS inputs in the info pass
+      radv: remove radv_graphics_pipeline::vb_desc_usage_mask
+      radv: remove radv_graphics_pipeline::vb_desc_alloc_size
+      radv: rework emitting inner coverage when a fragment shader is bound
+      radv: copy custom blend mode to the cmdbuf state
+      radv: add a helper that returns the current rasterized primitive
+      radv: copy rast_prim to the cmdbuf state
+      radv: copy uses_{drawid,baseinstance} to the cmdbuf state
+      radv: copy ia_multi_vgt_param to the cmdbuf state
 
-Timur Kristóf (7):
-      radv: Don't expose NV_mesh_shader and don't use it in CI.
-      radv: Remove NV_mesh_shader API entrypoints.
-      radv: Remove first_task and ib_addr/ib_stride.
-      radv: Clean up emitting zero mesh shader draw id.
-      ac/nir/ngg: Remove NV_mesh_shader support.
-      ac/nir: Remove ac_nir_apply_first_task_to_task_shader.
-      nir: Remove IB address and stride intrinsics.
+Timur Kristóf (9):
+      radv: Move radv_nir_* to a new folder.
+      radv: Move radv_nir_lower_primitive_shading_rate to new file.
+      radv: Move radv_nir_lower_fs_intrinsics to new file.
+      radv: Move radv_nir_lower_intrinsics_early to new file.
+      radv: Move radv_nir_lower_view_index to new file.
+      radv: Move radv_nir_lower_viewport_to_zero to new file.
+      radv: Move radv_nir_export_multiview to new file.
+      radv, ac/nir: Move sin/cos lowering to a common pass.
+      radv: Move I/O lowering functions into a new file.
+
+antonino (27):
+      zink: handle switching between primitives
+      nir: handle primitives with adjacency
+      nir: avoid generating conflicting output variables
+      nir: calculate number of vertices in nir_create_passthrough_gs
+      nir: handle edge flags in nir_create_passthrough_gs
+      zink: add `has_edgeflags` flag to zink_shader and zink_gfx_program
+      zink: handle edgeflags
+      nir: allow to force line strip out in nir_create_passthrough_gs
+      zink: force line strip out when emulating stipple
+      zink: filled quad emulation gs generation function
+      zink: add `zink_rast_prim` enum
+      zink: handle quads
+      zink: fix flat shading on filled quads
+      zink: add flags to `zink_gfx_program` and `zink_context`
+      zink: add `needs_inlining` to `zink_shader`
+      zink: implement flat shading using inlined uniforms
+      nir/zink: handle provoking vertex mode in `nir_create_passthrough_gs`
+      zink: handle provoking vertex mode for filled quads
+      nir: keep xfb properties in nir_create_passthrough_gs
+      zink: keep xfb properties in quad emulation gs
+      zink: advertise support for the quad primitive
+      zink: prevent crash when freeing
+      zink: unified `zink_set_primitive_emulation_keys` and `zink_create_primitive_emulation_gs`
+      zink: zink: add `parent` to `zink_shader::non_fs`
+      zink: improve generated gs unbinding
+      zink: unbind generated gs in `bind_last_vertex_stage`
+      zink/ci: remove `primitive-id-no-gs-quads` from radv-vangogh-fails
 
