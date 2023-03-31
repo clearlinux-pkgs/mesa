@@ -297,9 +297,9 @@ sed 's/lib64/lib32/' %{buildroot}/usr/share/vulkan/icd.d/radeon_icd.x86_64.json 
 /usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/drirc.d/00-radv-defaults.conf
 /usr/share/glvnd/egl_vendor.d/50_mesa.json
-/usr/share/vulkan/icd.d/intel_icd.i686.json
+%exclude /usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
-/usr/share/vulkan/icd.d/radeon_icd.i686.json
+%exclude /usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 
 %files dev
