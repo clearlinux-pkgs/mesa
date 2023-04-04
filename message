@@ -1,152 +1,65 @@
-Updating from 816f434efc0eaa44f1a0a67b8c789f484eeebad0 to 0f60c18f298bc809c37c9fb917c42c37b5061c13
+Updating from b40e7dcf827fffbcb907ee0ce533a222e702c335 to 2016d9f46c6c009d8367c656e26239a2905e6c76
 
-Alyssa Rosenzweig (10):
-      panfrost: Print perf debug when flushing everything
-      panfrost: Print perf debug on seqnum overflow
-      panfrost: Don't redundantly call emit_const_buf
-      panfrost: Mark packs as ALWAYS_INLINE
-      panfrost: Don't update access with a single batch
-      panfrost: Add a v9 fast path for no images
-      panfrost: Clean up tiler calculations
-      panfrost: Estimate vertex count for hier mask
-      panfrost: Choose hierarchy masks by vertex count
-      docs: Remove docs about macOS hardware drivers
+Connor Abbott (2):
+      tu: Use vk_pipeline_get_renderpass_flags()
+      vk/render_pass: Support VK_EXT_fragment_density_map
 
-Charlie Birks (1):
-      docs: add a few vulkan extensions supported by multiple drivers
+David Heidelberg (1):
+      ci: disable lima farm, currently out-of-space, needs to be fixed
 
-Corentin Noël (2):
-      ci: Uprev crosvm and virglrenderer
-      venus/ci: Only run one crosvm instance
+Faith Ekstrand (5):
+      vulkan: Plumb rendering flags through vk_graphics_pipeline_state
+      anv/pipeline: Use feedback loop flags for self-dependencies
+      hasvk/pipeline: Use feedback loop flags for self-dependencies
+      vulkan: Drop vk_render_pass_state::*self_dependenc*
+      vulkan: Drop VkRenderingSelfDependencyInfoMESA
 
-Danylo Piliaiev (9):
-      freedreno/registers: Document new CP_EVENT_WRITE::SEQNO
-      freedreno/registers: More a7xx regs
-      freedreno/computerator: C++ proofing
-      freedreno: C++ fixes for computerator to compile
-      freedreno/computerator: Convert to C++
-      freedreno: Move fd6_pack.h to common code accessible by computerator
-      freedreno: Add dummy a730/a740 definition
-      freedreno/computerator: Templatize a6xx backend
-      freedreno/computerator: Add support for a7xx
+Ian Romanick (3):
+      intel/fs: Output opt_combine_constants debug to stderr
+      intel/fs: Refactor part of opt_combine_constants to a separate function
+      intel/fs: Rework the loop of opt_combine_constants that collects constants
 
-Erik Faye-Lund (3):
-      docs: format code-block as ini
-      docs: format code-block as toml
-      docs: make code-block indents consistent
+Iván Briano (1):
+      vulkan/wsi/display: do not dereference a NULL pointer
 
-Faith Ekstrand (8):
-      vulkan,anv,hasvk,radv: Add a common vk_image_usage_to_ahb_usage helper
-      vulkan/android: Fix hardware buffer usage flags
-      vulkan: Add an ahardware_buffer_format field to vk_image
-      anv,hasvk: Set vk_image.ahardware_buffer_format
-      radv: Set vk_image.ahardware_buffer_format
-      vulkan,anv,hasvk,radv: Unify Android hardware buffer creation
-      vulkan: Add a vk_device_memory base struct
-      anv: Use the new vk_device_memory base struct
-
-Felix DeGrood (3):
-      anv: cs_stall during compute state flush on < gen12.5
-      anv: only emit CFE_STATE when scratch space increases
-      anv: set CFE_STATE.OverDispatchControl to default
-
-Friedrich Vock (1):
-      radv: Work around use-after-free compiler errors
-
-Harri Nieminen (1):
-      bin: Fix typos
-
-Jesse Natalie (1):
-      microsoft/clc: Add shader model / validator to compiler API
-
-José Roberto de Souza (4):
-      iris: Add BO_ALLOC_SHARED
-      iris: Handle allocation of exported buffers in Xe kmd
-      iris: Handle allocation of scanout buffers in Xe
-      iris: Implement Xe version of bo_madvise() and bo_set_caching()
-
-Konstantin Seurer (3):
-      radv: Set user SGPR locations when declaring args
-      radv: Stop counting user SGPRS separately
-      radv/ci: Update ray tracing pipeline fail/skip lists
+Jason Ekstrand (1):
+      vulkan: Record pipeline flags in the render pass
 
 Lionel Landwerlin (2):
-      anv: compute the largest GRL kernel scratch size
-      anv: move queue check helpers to anv_private
+      anv: take care of maxStorageBufferRange being uint32_t
+      isl: update max buffer size for SKL+
 
-Lucas Fryzek (11):
-      crocus: Add support for `get_screen_fd`
-      tegra: Add support for `get_screen_fd`
-      nouveau: Add support for `get_screen_fd`
-      zink: Add support for `get_screen_fd`
-      iris: Add support for `get_screen_fd`
-      i915: Add support for `get_screen_fd`
-      svga: Add support for `get_screen_fd`
-      virgl: Add support for `get_screen_fd`
-      r300/r600/radeon_si: Add support for `get_screen_fd`
-      d3d12/llvmpipe/softpipe: Add support for `get_screen_fd`
-      gallium: Modify default path for DMABUF to use DRM
+Nataraj Deshpande (1):
+      anv: Bump VkDeviceMemory objects limit to 4GB
 
-Maarten Lankhorst (1):
-      iris: Place scanout buffers only into lmem for discrete GPUs
-
-Mike Blumenkrantz (14):
-      zink: fix quads emulation gs with array variables
-      zink: block resolves where src extents > dst extents
-      zink: omit VkPipelineVertexInputStateCreateInfo with dynamic vinput
-      zink: flag vertex buffers for rebind after vstate draws
-      zink: use search_or_add for masking vstate
-      zink: bind vertex state directly from draw hook
-      zink: add another vstate draw template for popcnt presence
-      zink: explicitly pass null velems when creating pipelines with dynamic vinput
-      zink: don't swizzle velems state for vstate draws
-      zink: use fast popcnt for vstate draws
-      zink: stop caching vertex states
-      lavapipe: break out pipeline layout creation for reuse
-      lavapipe: implement EXT_shader_object
-      lavapipe: advertise EXT_shader_object
+Qiang Yu (8):
+      radeonsi: expose si_nir_load_internal_binding
+      ac/nir: add ac_nir_load_arg_at_offset
+      radeonsi: add si_nir_lower_vs_inputs
+      ac/llvm: vs_rel_patch_id can also be fixed up
+      ac/llvm: move ac_fixup_ls_hs_input_vgprs to amd common
+      radeonsi: monolithic VS emit prolog in nir directly
+      ac/llvm,radeonsi: remove abi->load_inputs implementation
+      ac/llvm: remove ac_build_opencoded_load_format
 
 Rhys Perry (1):
-      aco: don't optimize s_or_b64(v_cmp_u_f32(a, b), cmp(a, a))
+      radv/gfx11: improve RT scratch allocation
 
-Rob Clark (7):
-      dri2/android: Bypass throttling
-      freedreno/drm: Fast path for idle check
-      freedreno/drm: Stop cleanup at first active BO
-      mesa: Add a few more function traces
-      freedreno/drm: Make threaded-submit optional
-      freedreno/drm: Disable threaded-submit for msm
-      freedreno: Optimize repeated finishes
+Samuel Pitoiset (2):
+      zink/ci: remove primitive-id-no-gs-quads from the NAVI10 fail list
+      radv/ci: add one more flake
 
-Sagar Ghuge (1):
-      intel/decoder: Bump the binding table guess value to 32
+Tatsuyuki Ishi (1):
+      radv: Pre-compute descriptor set layout hash.
 
-Samuel Pitoiset (12):
-      radv: add a helper to convert a VkPipelineBindPoint
-      radv: copy need_indirect_descriptor_sets to radv_cmd_state
-      radv: add push constant state to the cmdbuf state
-      radv: fix sample shading when a new fragment shader is bound
-      vulkan: add dynamic support for rectangles enable/mode
-      radv: add dynamic support for rectangles enable/mode
-      vulkan: Update XML and headers to 1.3.246
-      radv: copy db_render_control to the cmdbuf state
-      radv: set PS_ITER_SAMPLE(1) for sample shading during cmdbuf recording
-      radv: configure PA_SC_MODE_CNTL_1 during cmdbuf recording
-      radv: add the raygen shader BO to the cmdbuf list
-      radv: fix binding raytracing/compute pipelines
-
-Timur Kristóf (2):
-      radv: Use radv_get_shader to get vertex shader when binding pipeline.
-      ac/nir/ngg: Slightly improve attribute ring offset calculation.
-
-antonino (6):
-      nir: only handle flat interpolation when needed in `nir_create_passthrough_gs`
-      zink: simplify logic to call `zink_set_primitive_emulation_keys`
-      zink: add field to 'zink_gs_key' and enum
-      zink: add provoking vertex mode lowering
-      zink: always advertize provoking vertex mode support
-      zink: update requirements now that pv mode can be emulated
-
-xurui (1):
-      panfrost: Check the return value of drmGetVersion
+Timur Kristóf (9):
+      aco: Consider p_cbranch_nz as divergent branch too.
+      aco: Don't remove exec writes that also write other registers.
+      aco: Simplify get_phi_operand using Operand::c32_or_c64.
+      aco: Don't verify branch exec read when eliminating exec writes.
+      aco: Pop branch operands when targets are same in SSA elimination.
+      aco: Call dominator_tree before lower_phis.
+      aco: Better phi lowering for merge block when else-side is const.
+      nir: Gather compile time constant task->mesh dispatch size.
+      radv: Use linear_dispatch info in GFX11 task/mesh draw packet.
 
