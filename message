@@ -1,65 +1,101 @@
-Updating from b40e7dcf827fffbcb907ee0ce533a222e702c335 to 2016d9f46c6c009d8367c656e26239a2905e6c76
+Updating from 2016d9f46c6c009d8367c656e26239a2905e6c76 to 72cd7e0079fc19a760a8bf76385392b604e46ea6
 
-Connor Abbott (2):
-      tu: Use vk_pipeline_get_renderpass_flags()
-      vk/render_pass: Support VK_EXT_fragment_density_map
+Alejandro Piñeiro (1):
+      v3dv/pipeline: use pipeline depth bias enabled to fill up CFG packet
 
-David Heidelberg (1):
-      ci: disable lima farm, currently out-of-space, needs to be fixed
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 2391a83d1639a7ab7bbea02853b922878687b0e5
 
-Faith Ekstrand (5):
-      vulkan: Plumb rendering flags through vk_graphics_pipeline_state
-      anv/pipeline: Use feedback loop flags for self-dependencies
-      hasvk/pipeline: Use feedback loop flags for self-dependencies
-      vulkan: Drop vk_render_pass_state::*self_dependenc*
-      vulkan: Drop VkRenderingSelfDependencyInfoMESA
+Connor Abbott (1):
+      nir, spirv: Add support for VK_EXT_fragment_density_map
 
-Ian Romanick (3):
-      intel/fs: Output opt_combine_constants debug to stderr
-      intel/fs: Refactor part of opt_combine_constants to a separate function
-      intel/fs: Rework the loop of opt_combine_constants that collects constants
+Daniel Schürmann (4):
+      aco: split ps_epilog args before exporting them
+      aco/ra: adjust_max_used_regs() for fixed Operands
+      aco: don't use shared VGPRs for shaders consisting of multiple binaries
+      radv: update PS num_vgprs in case of epilogs rather than overallocating VGPRs
 
-Iván Briano (1):
-      vulkan/wsi/display: do not dereference a NULL pointer
+Emma Anholt (5):
+      ci/zink: Drop validation exception for leaks at device destroy.
+      ci/zink: Disable godot-tps-gles3 on a630.
+      docs: Update Vulkan renderpass docs for !22191
+      ci: Add missing dependency on doxygen sources for docs-generation jobs.
+      docs: Claim less functionality for glsl_compiler.
 
-Jason Ekstrand (1):
-      vulkan: Record pipeline flags in the render pass
+Eric Engestrom (1):
+      vc4/ci: add arm64 failure to flakes as it works on armhf
+
+Erik Faye-Lund (3):
+      ci: move virgl-rules after intel-rules
+      virgl/ci: clean up manual rules for virgl
+      ci: remove unused rules
+
+Jesse Natalie (5):
+      d3d12: Move forward-front-face pass to common DXIL code
+      spirv2dxil: Expose yz flip pass to external callers
+      dzn: Add a helper to generate triangle->point GS
+      dzn: Handle polygon point mode
+      dzn: Claim fillModeNonSolid
 
 Lionel Landwerlin (2):
-      anv: take care of maxStorageBufferRange being uint32_t
-      isl: update max buffer size for SKL+
+      intel/dev: set a default valid kmd_type
+      intel/perf: fix OA format selection on MTL
 
-Nataraj Deshpande (1):
-      anv: Bump VkDeviceMemory objects limit to 4GB
+Mike Blumenkrantz (18):
+      zink: delete shader reordering in assign_io()
+      zink: add and populate a shader_info struct to zink_shader
+      zink: pass nir_shader to update_so_info()
+      zink: generate flat_flags during shader creation
+      zink: use zink_shader::info instead of zink_shader::nir::info
+      zink: simplify fbfetch output detection from fs
+      zink: pass nir directly to zink_shader_tcs_create()
+      zink: swap nir pointers when compiling compute shaders
+      zink: directly return nir from zink_shader_tcs_create
+      zink: streamline nir cloning for assign_io
+      zink: store nir as serialized on zink_shader structs
+      zink: simplify assign_io() further
+      zink: break out nir blob deserializing
+      zink: move nir cloning out to callers of zink_shader_compile
+      zink: store num_inlinable_uniforms separately for cs programs
+      zink: always store nir serialized
+      zink: be explicit about separate shader dsl indexing during creation
+      zink: rework choose_pdev (again)
 
-Qiang Yu (8):
-      radeonsi: expose si_nir_load_internal_binding
-      ac/nir: add ac_nir_load_arg_at_offset
-      radeonsi: add si_nir_lower_vs_inputs
-      ac/llvm: vs_rel_patch_id can also be fixed up
-      ac/llvm: move ac_fixup_ls_hs_input_vgprs to amd common
-      radeonsi: monolithic VS emit prolog in nir directly
-      ac/llvm,radeonsi: remove abi->load_inputs implementation
-      ac/llvm: remove ac_build_opencoded_load_format
+Patrick Lerda (1):
+      r600: fix typo that could lead to a possible crash
 
-Rhys Perry (1):
-      radv/gfx11: improve RT scratch allocation
+Pedro J. Estébanez (3):
+      spirv2dxil: Split read-only image as SRV logic into declared and inferred
+      spirv: Assume input attachments are read-only
+      Revert "microsoft/compiler: Use SRVs for read-only images"
 
-Samuel Pitoiset (2):
-      zink/ci: remove primitive-id-no-gs-quads from the NAVI10 fail list
-      radv/ci: add one more flake
+Pierre-Eric Pelloux-Prayer (4):
+      mesa: fix invalid index_bo refcounting
+      util/vbuf: clarify indirect draws handling
+      util/vbuf: fix index_bo leak
+      radeonsi: update test results
 
-Tatsuyuki Ishi (1):
-      radv: Pre-compute descriptor set layout hash.
+Ryan Neph (2):
+      virgl: hook new get_fd proc for drm winsys
+      i915: hook new get_fd proc for drm winsys
 
-Timur Kristóf (9):
-      aco: Consider p_cbranch_nz as divergent branch too.
-      aco: Don't remove exec writes that also write other registers.
-      aco: Simplify get_phi_operand using Operand::c32_or_c64.
-      aco: Don't verify branch exec read when eliminating exec writes.
-      aco: Pop branch operands when targets are same in SSA elimination.
-      aco: Call dominator_tree before lower_phis.
-      aco: Better phi lowering for merge block when else-side is const.
-      nir: Gather compile time constant task->mesh dispatch size.
-      radv: Use linear_dispatch info in GFX11 task/mesh draw packet.
+Sagar Ghuge (2):
+      anv: Drop unused param from add_surface_reloc
+      anv: Drop dead code that sets the L3BypassDisable field
+
+Samuel Pitoiset (7):
+      radv: only copy non-NULL shaders when loaded from the cache
+      radv: rely on non-NULL binaries when inserting shaders to the cache
+      radv: allow to create/insert PS epilogs from/to the cache for libs
+      radv: remove dead code in radv_pipeline_get_nir()
+      radv: add VkGraphicsPipelineLibraryFlag to the graphics pipeline key
+      radv: ensure to retain NIR shaders for GPL libs found in the cache
+      radv: enable shaders cache for libraries with GPL
+
+Sonny Jiang (1):
+      gallium/pipe: change PIPE_DEFAULT_DECODER_FEEDBACK_TIMEOUT_NS to 1 second
+
+Tapani Pälli (2):
+      anv: take primitive ID override to account Wa_14015297576
+      anv: check for MESA_SHADER_TESS_CTRL with get_tcs_prog_data
 
