@@ -1,162 +1,125 @@
-Updating from e6c84b8a00f15b1e90fe379e22f94b8865eb9b82 to d1b569d26f879fd606c666692db73ef5dfe43043
+Updating from d1b569d26f879fd606c666692db73ef5dfe43043 to 98bcf650f15f7d6b05b4fd7c6ecf20468e6aaea8
 
-Adam Jackson (5):
-      glx/dri: Use X/GLX error codes for our create_context_attribs
-      dri: Validate more of the context version in validate_context_version
-      glx/dri: Fix error generation for invalid GLX_RENDER_TYPE
-      glx: Disable the indirect fallback in CreateContextAttribs
-      glx: Fix error handling yet again in CreateContextAttribs
+Alyssa Rosenzweig (43):
+      asahi: Support more renderable formats
+      agx: DCE even with noopt
+      agx: Assert that we don't overflow registers
+      agx: Constify agx_{read,write}_registers
+      agx: Don't allow uniform source to local_atomic
+      agx: Don't destroy usub_sat with constant
+      asahi: Add perf debug for generate_mipmap
+      asahi: Add perf debug for shader variants
+      agx: Set loads_varying accurately
+      agx: Add helper for calculating occupancy
+      asahi/decode: Remove agxdecode_dump_bo
+      asahi/decode: Print VDM barriers
+      asahi: Set PIPE_CAP_LOAD_CONSTBUF
+      agx: Coalesce more collects
+      agx: Don't overallocate registers
+      asahi: Honour sampler count
+      asahi: Implement null textures
+      asahi: Lower 1D to 2D
+      asahi: Dirty track depth bias uploads
+      asahi: Clamp texture buffer sizes
+      agx: Tease apart some sample_mask packing magic
+      agx: Rename writeout to wait_pix
+      agx: Make signal_pix instructions explicit
+      vulkan: Add common features2_to_features
+      radv: Use vk_features2_to_features
+      v3dv: Use vk_features2_to_features
+      lavapipe: Use vk_features2_to_features
+      pvr: Use vk_features2_to_features
+      anv,hasvk: Use vk_features2_to_features
+      tu: Use vk_features2_to_features
+      nir: Combine if_uses with instruction uses
+      nir/opt_ray_queries: Don't use list_length
+      nir/opt_loop_unroll: Avoid list_length
+      nir: Remove 2nd argument from nir_before_src
+      nir/validate: Don't treat if-uses specially
+      dxil: Avoid list_length
+      nir: Reduce indirection
+      nir: Factor out nir_src_rewrite_ssa helper
+      nir: Use nir_src_rewrite_ssa
+      dxil: Use nir_src_rewrite_ssa
+      nir: Remove nir_if_rewrite_condition_ssa
+      nir/repair_ssa: Refactor some use handling
+      nir/validate: Only walk uses once
 
-Alyssa Rosenzweig (7):
-      nv50,nvc0: Use u_pipe_screen_get_param_defaults
-      panfrost: Always upload a workaround sampler
-      pan/{mdg,bi}: Always use sampler 0 for txf
-      panfrost: Unset TEXTURE_BUFFER_SAMPLERS
-      gallium: Remove PIPE_CAP_TEXTURE_BUFFER_SAMPLER
-      docs/gallium: Note samplers are not used for txf
-      nir/print: Don't print sampler_index for txf
+Asahi Lina (13):
+      Revert "asahi: Advertise dual-source blending"
+      asahi: Make agx_alloc_staging() take a screen instead of a context
+      asahi: Enable glthread
+      asahi: Locate low VA BOs correctly
+      asahi: Fix style nits
+      asahi: Implement valid buffer range tracking
+      asahi: Make BO import path failures more robust
+      asahi: Add a helper macro for debug/error messages
+      asahi: Add resource debugging
+      asahi: Print reasons why compression is disabled
+      asahi: Fix compressed ZS support
+      asahi: Flip kmsro around to allocate on the GPU
+      asahi: Allow explicit non-LINEAR modifiers for scanout
 
-Anuj Phogat (1):
-      intel/genxml/125: Add preferred SLM allocation size field
+Felix DeGrood (4):
+      anv/blorp: support surf generation for addresses
+      anv/blorp: implement anv_cmd_buffer_fill_area
+      anv/blorp: add flush reasons to RT flushes
+      anv: reset query pools using blorp
 
-Chia-I Wu (3):
-      radv: rework radv_layout_fmask_compressed
-      radv: add RADV_FMASK_COMPRESSION_PARTIAL
-      radv: disable tc_compatible_cmask on GFX9 in some cases
+Jesse Natalie (7):
+      dzn: Early-out on no-op barriers
+      dzn: Clean up ABI helpers now that we require DirectX-Headers 606
+      dzn: Use GetResourceAllocationInfo3 for castable formats
+      dzn: Don't leave deleted physical devices in the instance pdev list
+      dzn: Remove skips now that WARP is faster
+      dzn: Support >2K samplers with bindless
+      dzn: Remove xfail for test that passes (if run)
 
-Emma Anholt (19):
-      glsl: Move ForceGLSLAbsSqrt handling to glsl-to-nir.
-      zink: Add mapping for nir_op_ldexp, but disable it for 64-bit's sake.
-      glsl: Retire ldexp lowering in favor of the nir lowering flag.
-      glsl/softfp64: GC the temp vars after we lower them to SSA.
-      glsl/softfp64: Add fisfinite lowering.
-      state_tracker: Lower frexp before lowering doubles.
-      intel: Always call nir_lower_frexp.
-      ir3: Move turnip's nir_lower_frexp to the shared compiler.
-      nouveau: Add missing nir_opt_algebraic_late.
-      nouveau: Enable frexp lowering in the backend.
-      zink: Enable nir_lower_frexp.
-      v3d: Lower frexp in the GL compiler like we do in Vulkan.
-      agx: Enable nir_lower_frexp.
-      panfrost/midgard: Enable nir_lower_frexp.
-      nir_to_tgsi: Always lower frexp_exp/sig.
-      glsl: Drop frontend lowering of 32-bit frexp.
-      glsl: Drop PIPE_SHADER_CAP_DFRACEXP_DLDEXP_SUPPORTED.
-      tgsi: Drop TGSI_OPCODE_DFRACEXP.
-      ci/zink: Disable a630 portal-2-v2 due to kernel OOMs.
+Kenneth Graunke (1):
+      intel/compiler: Use nir_dest_bit_size() for ballot bit size check
 
-Eric Engestrom (1):
-      Revert "broadcom/ci: run gl jobs on arm64, just like vk"
+Lionel Landwerlin (2):
+      anv: pass steam output as argument for anv_dump_pipe_bits
+      anv: replace query flush before gpu copy by semaphore wait
 
-Ganesh Belgur Ramachandra (1):
-      ac/nir: fix CDNA image lowering for array textures
+Mike Blumenkrantz (6):
+      zink: more explicitly track/check rp optimizing per-context
+      zink: don't access non_fs part of zink_shader from fs
+      zink: reuse d3d12 variable copying to make passthrough gs more robust
+      zink: reuse copy_vars for generated tcs
+      zink: don't trigger shader variants on pcp change if driver supports dynamic pcp
+      Revert "zink: don't trigger shader variants on pcp change if driver supports dynamic pcp"
 
-Guilherme Gallo (1):
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Qiang Yu (4):
+      radeonsi: fix max scrach lds size calculation when ngg
+      ac/nir/ngg: fix gs culling vertex liveness check for odd vertices
+      ac/nir/ngg: fix store shared alignment
+      ac/llvm: remove some unused code replaced by nir
 
-Ian Romanick (16):
-      intel/compiler: Remove one overload of backend_instruction::insert_before
-      intel/compiler: Use NIR_PASS instead of NIR_PASS_V
-      intel/compiler: Micro optimize inst_is_in_block
-      intel/fs: Use specialized version of regions_overlap in opt_copy_propagation
-      intel/compiler: Micro optimize regions_overlap
-      intel/fs: Linked list micro optimizations in brw_nir_move_interpolation_to_top
-      intel/fs: Preserve meta data more often in brw_nir_move_interpolation_to_top
-      intel/fs: White space fixes
-      nir/tests: Add many loop analysis tests for induction vars updated by shifts
-      nir/tests: Add more loop analysis tests for induction vars updated by shifts
-      nir/tests: Add many loop analysis tests for induction variables modified by imul
-      nir/loop_analyze: Add a function to evaluate an ALU as constant
-      nir/loop_analyze: Track induction variable basis information
-      nir/loop_analyze: Change invert_cond instead of changing the condition
-      nir/loop_analyze: Use try_eval_const_alu and induction variable basis info
-      nir/tests: Port almost all loop_analyze tests to new macro-based infastructure
-
-Italo Nicola (5):
-      etnaviv: abort() instead of assert(0) on compiler error
-      etnaviv: use stderr for compiler error logging
-      etnaviv: add default clear_buffer and clear_texture APIS
-      etnaviv: lower (un)pack_{2x16,2x32}_split and extract_{byte,word}
-      etnaviv: implement nir_op_uclz and lower find_{msb,lsb} to uclz
-
-Jesse Natalie (20):
-      CI/windows: Update headers and Agility redist to 1.710.0-preview
-      CI/windows: Increase timeout for build container job
-      microsoft/compiler: Fix 8-bit loads and stores when supporting 16-bit DXIL
-      microsoft/compiler: Fix barrier for wave ID computation
-      microsoft/compiler: Assign 1D wave IDs based on local thread ID
-      microsoft/compiler: Fix large shifts
-      spirv2dxil: Add some more supported caps
-      dzn: Add a driconf entry for enabling 8bit loads and stores
-      dzn: Add a driconf option for enabling subgroup ops in VS/GS
-      dzn: Fix SRV barrier state on compute command lists
-      dzn: Raise max number of descriptor sets to 8
-      dzn: Report some more caps correctly that are supported
-      dzn: Align descriptor sets in the bindless buffer
-      dzn: Ensure pipeline variants are used for dynamic stencil masks
-      dzn: Don't use write-combine memory for cache-coherent UMA
-      dzn: Ensure buffer offsets are aligned
-      dzn: Attempt to force depth write states for depth access in LAYOUT_GENERIC
-      dzn: Don't do initial-layout barriers for simultaneous-access resources
-      dzn: Batch command lists together
-      dzn: Fix bindless descriptor sets with multiple dynamic buffers that need custom descriptors
-
-Marek Olšák (12):
-      amd: add gfx940 register definitions
-      amd: add initial code for gfx940
-      radeonsi: use COMPUTE_DISPATCH_SCRATCH_BASE on gfx940
-      radeonsi: always use ffma32 on gfx940
-      ac/surface: force linear image layout for chips not supporting image opcodes
-      radeonsi: add an emulated image descriptor for gfx940
-      ac/nir: implement image opcode emulation for CDNA, enable it in radeonsi
-      radeonsi: don't set registers that don't exist on gfx940
-      amd/registers: simplify integer division by 0x1000 in the parser
-      amd/registers: fix the parser to include CP_COHER registers for gfx940
-      amd/registers: update gfx940.json
-      amd/registers: use gfx9 packet definitions for gfx940
-
-Mike Blumenkrantz (2):
-      radv: fix leak of nir from retained shaders
-      zink: don't try copying multiple results for conditional render copy
-
-Rohan Garg (2):
-      intel/genxml: Add the preferred slm size enum for gen125
-      anv,blorp,iris: Set PreferredSLMAllocationSize on gfx125+
+Raun (2):
+      dzn: Enable VK_KHR_bind_memory2
+      dzn: Enable VK_KHR_get_memory_requirements2
 
 Sajeesh Sidharthan (1):
-      radeonsi/vcn: set bitstream buffer size to encoded bitstream size
+      radeonsi/vcn: optimize bitstream buffer resize logic
 
-Sathishkumar S (8):
-      radeonsi/vcn: add register definitions for JPEG 4.0.3
-      radeonsi/vcn: use register versions for jpeg
-      radeonsi/vcn: add support for picture crop on JPEG 4.0.3
-      radeonsi/vcn: support ARGB/RGBA conversion on JPEG 4.0.3
-      radeonsi/vcn: set jpeg reg version for gfx940
-      radeonsi/vcn: reset to default value when ROI/FC is not used
-      frontends/va: support crop region in jpeg decode
-      radeonsi/vcn: enable RGBA/ARGB formats on gfx940 jpeg
+Samuel Pitoiset (8):
+      radv: add a helper for retaining NIR shaders
+      radv: move the serialized NIR to radv_graphics_lib_pipeline
+      radv: simplify a check when retaining NIR shaders
+      radv: do not retain noop FS for libs when a cache hit happened
+      radv: import retained NIR shaders later in the compilation process
+      radv/rt: stop storing unused hashes/identifiers
+      radv: create a helper for copying VkPipelineShaderStageCreateInfo
+      radv: copy stages instead of serializing NIR for GPL with the RETAIN flag
 
-Sergi Blanch Torne (1):
-      ci: disable Collabora's LAVA lab for maintance
+Yiwei Zhang (4):
+      venus: sync latest protocol for layering extensions
+      venus: add VK_EXT_load_store_op_none support
+      venus: add VK_EXT_rasterization_order_attachment_access support
+      venus/docs: sync to latest venus supported extensions
 
-Sonny Jiang (3):
-      amd/common: Add gfx940 codec query support
-      radeonsi/vcn: Add video capabilities support for gfx940
-      radeonsi/vcn: Add decode support for gfx940
-
-Tapani Pälli (1):
-      intel/common: limit the amount of SLM with Wa_14017341140
-
-Timothy Arceri (2):
-      mesa: add _mesa_is_api_gles2() helper
-      glsl: move some GL ES checks to the NIR linker
-
-Tomeu Vizoso (3):
-      etnaviv: handle missing alu conversion opcodes
-      etnaviv: print writemask of store operations
-      etnaviv: don't read too much from uniform arrays
-
-Yevhenii Kolesnikov (2):
-      nir/loop_analyze: Track induction variables incremented by more operations
-      nir/loop_analyze: Determine iteration counts for more kinds of loops
+antonino (2):
+      zink: add `descriptor_bindless_id` to `zink_shader_info`
+      zink: fix sampler array collision in `nir_to_spirv`
 
