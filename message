@@ -1,11 +1,82 @@
-Updating from 98bcf650f15f7d6b05b4fd7c6ecf20468e6aaea8 to 4ac56e3e5a4e95469f0de749c1b5c69006a2bd4b
+Updating from 4ac56e3e5a4e95469f0de749c1b5c69006a2bd4b to 8391639b5f3cec8b4d48c0e78ed581b56a7f51cc
 
-Adam Jackson (1):
-      mesa: Enable NV_texture_barrier in GLES2+
+Alyssa Rosenzweig (11):
+      mailmap: Update my e-mail
+      panfrost: Symlink gallium .clang-format to common
+      panfrost/winsys: Add .clang-format for winsys folder
+      panfrost/winsys: Clang-format
+      pan/decode: Move comment out of designated initializer
+      panfrost: Re-run clang-format
+      panvk: Clang-format
+      ci: Run clang-format on panfrost
+      mesa/st: Set uses_sample_shading when forcing per-sample
+      nir/lower_blend: Set uses_fbfetch_output conservatively
+      nir/lower_blend: Enable per-sample shading
 
-David Heidelberg (1):
-      ci/v3d: add flaking spec@ext_framebuffer_blit@fbo-sys-blit
+André Almeida (2):
+      radv: Implement vk.check_status
+      winsys/amdgpu: Fix amdgpu_cs_query_reset_state2 error log
 
-Timur Kristóf (1):
-      ac/llvm: Cover runtime 0 in GFX10 gs_alloc_req workaround.
+Daniel Schürmann (6):
+      vulkan/pipeline_cache: remove vk_device from vk_pipeline_cache_object
+      vulkan/pipeline_cache: Don't re-insert disk-cache hits into disk-cache
+      vulkan/pipeline_cache: implement vk_pipeline_cache_create_and_insert_object()
+      vulkan/pipeline_cache: use vk_pipeline_cache_create_and_insert_object() during vk_pipeline_cache_load()
+      vulkan/pipeline_cache: add cache parameter to deserialize() function
+      vulkan/pipeline_cache: move vk_log on failed deserialization to vk_pipeline_cache_load()
+
+David Heidelberg (3):
+      Revert "mesa: Enable NV_texture_barrier in GLES2+"
+      ci/amd: update device status
+      ci/amd: raven is currently downgraded to 2 machines only, adapt
+
+Friedrich Vock (1):
+      radv: Add RT stages to radv_mesa_to_rgp_shader_stages
+
+Jesse Natalie (7):
+      microsoft/compiler: Don't split loads/stores that will be split by lower_explicit_io
+      dzn: Changes to descriptor set dirty flag handling
+      dzn: Use a linear allocator for upload data on command buffers
+      dzn: Ignore unnormalized sampling flag if driver doesn't support it
+      dzn: Never set STATE_RENDER_TARGET on a compute command list
+      dzn: Don't enable bindless by default
+      d3d12: Support creating PSOs with no attachments with MSAA without TIR
+
+Konstantin Seurer (4):
+      radv: Add radv_shader_type to fix gs_copy and trap handler handling
+      radv: Remove some dead radv_shader_args setup
+      aco: Remove is_gs_copy_shader
+      radv: Remove has_previous_stage
+
+Mike Blumenkrantz (5):
+      zink: try to prune resources from barrier jit on fb unbind
+      lavapipe: copy fragment shader when merging GPL pipelines
+      lavapipe: refactor/consolidate GPL shader copying
+      lavapipe: don't double-inline ubo0
+      lavapipe: implement inline variant caching
+
+Rhys Perry (1):
+      nir: make nir_fisnan helper exact
+
+Samuel Pitoiset (5):
+      radv: enable VK_EXT_graphics_pipeline_library by default
+      radv/ci: update expected failures for PITCAIRN
+      radv/ci: remove no longer existing tests for PITCAIRN
+      radv/ci: update expected failures with BONAIRE
+      docs: add more release notes for RADV
+
+Timur Kristóf (4):
+      aco: Fix optimization of v_cmp with subgroup invocation.
+      aco: Don't use nir_selection_control in aco_ir.
+      aco: Only include nir.h in instruction selection.
+      radv: Don't include nir.h in radv_shader.h
+
+Vitaliy Triang3l Kuzmin (1):
+      radv: Set DB_Z_INFO.NUM_SAMPLES to MSAA_EXPOSED_SAMPLES without Z/S
+
+Yiwei Zhang (4):
+      venus: requires asyncRoundtrip
+      venus: requires ringMonitoring
+      venus: move exp feature init back to ring and remove unused function
+      venus: forward ARM driverVersion for ANGLE workarounds
 
