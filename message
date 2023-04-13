@@ -1,97 +1,107 @@
-Updating from 8391639b5f3cec8b4d48c0e78ed581b56a7f51cc to 8f76a6a26ecdbb5fd4ce0c852532a274c50f2643
+Updating from 8f76a6a26ecdbb5fd4ce0c852532a274c50f2643 to 0b4e7491f3f7528f251458f4e84657b16af6df12
 
-Bas Nieuwenhuizen (3):
-      util: Add aligned int64_t types for x86(non 64).
-      util/disk_cache: Align atomic size.
-      radv: Align atomic values.
+Alyssa Rosenzweig (5):
+      pan/bi: Lower swizzles for 8-bit CSEL
+      pan/bi: Respect swizzles for more vector ops
+      pan/bi: Use nir_lower_mem_access_bit_sizes
+      panfrost: Allocate shared memory in OpenCL
+      pan/decode: Print compute job payloads
 
-Corentin Noël (3):
-      mesa: OpenGL ES 3.0 requires EXT_instanced_arrays
-      glapi: Make EXT_draw_instanced functions available for GLES 2.0
-      mesa: Add EXT_instanced_arrays support
+Bas Nieuwenhuizen (6):
+      radv: Reserve space in framebuffer emission.
+      radv: Reserve space in various streamout functions.
+      radv: Reserve space in conditional rendering functions.
+      radv: Reserve space in si_cs_emit_cache_flush.
+      radv: Reserve space for updating DCC metadata.
+      radv: Reserve space for fast clear related writes.
 
-Daniel Schürmann (8):
-      radv: derive struct radv_shader from vk_pipeline_cache_object
-      radv: unconditionally store the binary code in radv_shader
-      radv: add radv_shader_serialize() and radv_shader_deserialize() functions
-      radv: add struct radv_pipeline_cache_object
-      radv: implement radv_shader_create_cached()
-      radv: use vk_pipeline_cache
-      radv: clean up pipeline-cache interface
-      radv/ci: add 2 more Flakes for Navi21
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 355ad6bcb2cb3d9e030b7c6eef2b076b0dfb4d63
 
-Danylo Piliaiev (1):
-      vulkan: Sanitize pSampleMask in CmdSetSampleMaskEXT
+Dmitry Baryshkov (2):
+      freedreno/a5xx: reorder GPMU registers
+      freedreno/a5xx: add SP clock control register
 
-David Heidelberg (1):
-      ci/amd: add draw.dynamic_rendering flake
+Emma Anholt (1):
+      etnaviv: Fix regression from if_uses change.
 
-Eric Engestrom (1):
-      v3dv/ci: mark known dEQP-VK.wsi.xlib.surface.query_formats failure
+Eric Engestrom (3):
+      ci/rustfmt: make sure to only check each file once
+      VERSION: bump to 23.2
+      docs: reset new_features.txt
 
-Jesse Natalie (2):
-      d3d12: Fix buffer reference leak for SO count staging buffer
-      dzn: Handle mismatches in bound descriptor set vs pipeline layout
+Erik Faye-Lund (1):
+      zink: do not use sampled-image for buffers
 
-Karol Herbst (3):
-      radeonsi: implement get_compute_state_info
-      radeonsi: use default float mode for CL
-      rusticl: enable radeonsi
+Georg Lehmann (1):
+      aco/tests: add missing dependency on generated header
 
-Kenneth Graunke (2):
-      iris: Extend resource creation helpers to allow for explicit strides
-      iris: Hack around gbm_gralloc stride restrictions
+José Roberto de Souza (4):
+      anv: Fix vm bind of imported buffers
+      iris: Add function to close gem bos
+      iris: Handle Xe syncronization with syncobjs
+      loader: Add Xe KMD support
 
-Konstantin Seurer (3):
-      radv: Pack and encode geometry id and flags on the CPU
-      radv/bvh: Remove calculate_node_bounds
-      radv: Remove radv_bvh_aabb_node::aabb
+Karol Herbst (10):
+      rusticl: split platform into core and api parts
+      rusticl/platform: rename _cl_platform_id to Platform
+      rusticl/platform: move getter into the type
+      rusticl/platform: move device initialization to the platform
+      rusticl/program: allow dumping compilation logs through RUSTICL_DEBUG
+      rusticl/program: make IL programs look closer to CLC ones
+      clc: add clc_validate_spirv
+      rusticl/program: validate the SPIR-V when created from IL
+      rusticl/program: extract common code of compile and build
+      rusticl/program: rework source code tracking
 
-Lionel Landwerlin (2):
-      anv: fixup streamout write barriers
-      intel/fs: use nomask for setting cr0 for float controls
+Lionel Landwerlin (3):
+      anv: exclude performance queries from blorp clears
+      intel/ds: add a new timeline row for frames
+      anv: add utrace tracking of frame boundaries
 
-Mike Blumenkrantz (4):
-      zink: block oom flushes during unordered blits
-      zink: unroll array loop when copying vars for passthrough shaders
-      zink: free GPL input/output libs on context destroy to avoid leaking
-      zink: fix GPL lib leaking
+Mike Blumenkrantz (7):
+      zink: remove redundant 'blitting' check in zink_prep_fb_attachment()
+      zink: break out feedback loop pipeline state flagging for reuse
+      zink: pre-convert attachment id to attachment idx
+      zink: eliminate implicit feedback loops on rp begin
+      zink: track per-image swapchain layouts
+      zink: handle swapchain handoffs around makecurrent
+      zink: remove a fixed validation error for ci
 
-Patrick Lerda (1):
-      egl: fix memory leak related to _eglRefreshDeviceList()
+Oleksii Bozhenko (2):
+      wsi: add rgb_component_bits_are_equal
+      wsi: remove get_sorted_vk_formats duplication
 
-Samuel Pitoiset (2):
-      radv: fix re-emitting vertex user SGPRs when binding a graphics pipeline
-      radv/ci: remove one RT test from the expected failures on RDNA3
+Qiang Yu (1):
+      ac,aco: move gfx10 ngg prim count zero workaround to nir
 
-Sil Vilerino (1):
-      d3d12: Video processor to only promote resources to permanent residency when there is work to be flushed
+Rob Clark (1):
+      freedreno/a6xx: Allow z24s8 format casts
 
-Timur Kristóf (23):
-      radv: Create continue preamble on GFX6 even when no shader rings are used.
-      ac: Add maximum number of submitted IBs.
-      radv/amdgpu: Fix mismatching return type of radv_amdgpu_cs_submit.
-      radv/amdgpu: Only allow IB BOs on graphics and compute queues.
-      radv/amdgpu: Use correct alignment when creating CS BOs.
-      radv/amdgpu: Extract radv_amdgpu_cs_add_old_ib_buffer.
-      radv/amdgpu: Add a few assertions during submit.
-      radv/amdgpu: Remove hw_can_chain in favour of use_ib.
-      radv/amdgpu: Rewrite fallback code path so it can split submissions.
-      radv/amdgpu: Allow multiple continue preambles.
-      radv/amdgpu: Add continue preambles to fallback submit.
-      radv/amdgpu: Add postambles to fallback submit.
-      radv/amdgpu: Add ability to submit non-chained CS to fallback.
-      radv/amdgpu: Split gang submissions correctly when not chained.
-      radv: Fill continue preambles and postambles properly.
-      radv: Split submission in winsys instead of radv_queue.
-      radv/amdgpu: Use fallback submit for queues that can't use IBs.
-      radv/amdgpu: Clean up submission functions.
-      radv/amdgpu: Respect maximum number of submitted IBs per IP type.
-      radv: Allow task/mesh shaders with RADV_DEBUG=noibs.
-      radv/amdgpu: Add bool is_secondary argument to cs_create function.
-      radv/amdgpu: Extract radv_amdgpu_cs_bo_create function.
-      radv/amdgpu: Place secondary CS without IB2 in non-WC GTT.
+Ruijing Dong (1):
+      frontends/va: disable skip_frame_enable in vaapi interface.
 
-xurui (1):
-      zink: bs->dd.push_pool[1].pool should be freed
+Samuel Pitoiset (4):
+      radv: split radv_pipeline.c into radv_pipeline_{compute,graphics}.c
+      radv: fix pipeline creation feedback with imported graphics libs
+      radv: cleanup after splitting radv_pipeline.c
+      radv: fix detecting FMASK_DECOMPRESS/DCC_DECOMPRESS meta pipelines
+
+Tapani Pälli (2):
+      intel/fs: use intel_needs_workaround for Wa_22013689345
+      intel/compiler: use intel_needs_workaround for Wa_14012437816
+
+Tatsuyuki Ishi (1):
+      ci/android: Make armv8's arch aarch64 instead of arm.
+
+Timur Kristóf (6):
+      ac, aco, radv: Clarify LDS size on GFX6, and NGG shaders.
+      radv: Don't hardcode LDS granularity in gfx9_get_gs_info.
+      aco: Remove setup_*_variables and add setup_lds_size instead.
+      aco, radv: Remove "key" from aco_compiler_options.
+      aco, radv: Remove redundant enable_mrt_output_nan_fixup from PS epilog info.
+      ac/nir/ngg: Don't store primitive IDs from culled primitives.
+
+Vitaliy Triang3l Kuzmin (1):
+      r600: Alpha to coverage dithering on Evergreen+
 
