@@ -1,107 +1,91 @@
-Updating from 8f76a6a26ecdbb5fd4ce0c852532a274c50f2643 to 0b4e7491f3f7528f251458f4e84657b16af6df12
+Updating from 0b4e7491f3f7528f251458f4e84657b16af6df12 to 54d01db8a8453091dd113c037b6e98f6c100ff41
 
-Alyssa Rosenzweig (5):
-      pan/bi: Lower swizzles for 8-bit CSEL
-      pan/bi: Respect swizzles for more vector ops
-      pan/bi: Use nir_lower_mem_access_bit_sizes
-      panfrost: Allocate shared memory in OpenCL
-      pan/decode: Print compute job payloads
+Alyssa Rosenzweig (6):
+      gallium: Add u_default_get_sample_position
+      zink: Use u_default_get_sample_position
+      panfrost: Use u_default_get_sample_position
+      freedreno: Use u_default_get_sample_position
+      d3d12: Use u_default_get_sample_position
+      nir: Add more system values for lowering XFB
 
-Bas Nieuwenhuizen (6):
-      radv: Reserve space in framebuffer emission.
-      radv: Reserve space in various streamout functions.
-      radv: Reserve space in conditional rendering functions.
-      radv: Reserve space in si_cs_emit_cache_flush.
-      radv: Reserve space for updating DCC metadata.
-      radv: Reserve space for fast clear related writes.
+Brian Paul (2):
+      llvmpipe: remove lp_setup_alloc_triangle()'s unneeded tri_size param
+      llvmpipe: code clean-ups in llvmpipe_get_query_result_resource()
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 355ad6bcb2cb3d9e030b7c6eef2b076b0dfb4d63
+Emma Anholt (2):
+      zink: Avoid infinite loop finding no var in update_so_info.
+      ci/crocus: Update checksum for STK.
 
-Dmitry Baryshkov (2):
-      freedreno/a5xx: reorder GPMU registers
-      freedreno/a5xx: add SP clock control register
+Eric Engestrom (1):
+      v3d: add flake spec@ext_framebuffer_blit@fbo-sys-sub-blit
 
-Emma Anholt (1):
-      etnaviv: Fix regression from if_uses change.
+Felix DeGrood (1):
+      anv: disable reset query pools using blorp opt on MTL
 
-Eric Engestrom (3):
-      ci/rustfmt: make sure to only check each file once
-      VERSION: bump to 23.2
-      docs: reset new_features.txt
+Giancarlo Devich (5):
+      d3d12: Update and require DirectX-Headers 1.610.0
+      d3d12: Query device for D3D12_FEATURE_D3D12_OPTIONS14
+      d3d12: Update PSO creation to use CreatePipelineState
+      d3d12: Add ID3D12GraphicsCommandList8 to the context
+      d3d12: Support separate front/back stencils
 
-Erik Faye-Lund (1):
-      zink: do not use sampled-image for buffers
+Harri Nieminen (8):
+      amd: fix typos
+      amd: fix typos in code
+      r300: fix typos
+      radeonsi: fix typos
+      r600: fix typos
+      r600/sb: fix typo
+      r600/sfn: fix typos
+      r600/sfn: fix typos in code
 
-Georg Lehmann (1):
-      aco/tests: add missing dependency on generated header
+José Roberto de Souza (6):
+      iris: Move i915 batch destroy logic to iris_i915_destroy_batch()
+      iris: Initialize batch screen in iris_init_batch()
+      iris: Move iris_batch i915 specific variables to union
+      iris: Create, destroy and replace Xe engines
+      iris: Implement batch_check_for_reset() in Xe kmd backend
+      iris: Set priority to Xe engines
 
-José Roberto de Souza (4):
-      anv: Fix vm bind of imported buffers
-      iris: Add function to close gem bos
-      iris: Handle Xe syncronization with syncobjs
-      loader: Add Xe KMD support
+Karol Herbst (11):
+      rusticl: rework CLVec helper function to calculate bounds
+      rusticl/mem: fix Mem::copy_rect
+      rusticl/mem: replace buffer_offset_size with CLVec::calc_offset_size
+      gallium: correctly name the flags of svm_migrate
+      rusticl/context: add helper to get the max mem alloc size for all devices
+      rusticl/memory: Rework mapping of memory located in system RAM
+      rusticl/mem: add get_parent helper
+      rusticl: add support for fine-grained system SVM
+      nv50/ir: ignore CL system values
+      nouveau: allow to enable SVM without having to enable CL
+      nouveau: nouveau_copy_buffer can deal with user_ptrs just fine
 
-Karol Herbst (10):
-      rusticl: split platform into core and api parts
-      rusticl/platform: rename _cl_platform_id to Platform
-      rusticl/platform: move getter into the type
-      rusticl/platform: move device initialization to the platform
-      rusticl/program: allow dumping compilation logs through RUSTICL_DEBUG
-      rusticl/program: make IL programs look closer to CLC ones
-      clc: add clc_validate_spirv
-      rusticl/program: validate the SPIR-V when created from IL
-      rusticl/program: extract common code of compile and build
-      rusticl/program: rework source code tracking
+Lionel Landwerlin (2):
+      docs: add missing MESA_VK_WSI_HEADLESS_SWAPCHAIN variable
+      vulkan/runtime: discard unused graphics stages in libraries
 
-Lionel Landwerlin (3):
-      anv: exclude performance queries from blorp clears
-      intel/ds: add a new timeline row for frames
-      anv: add utrace tracking of frame boundaries
+Mike Blumenkrantz (5):
+      mesa/st/program: don't init xfb info if there are no outputs
+      zink: remove atomics from zink_query
+      zink: pass ctx through query destroy paths
+      zink: always defer query pool deletion
+      zink: remove screen param from zink_prune_query()
 
-Mike Blumenkrantz (7):
-      zink: remove redundant 'blitting' check in zink_prep_fb_attachment()
-      zink: break out feedback loop pipeline state flagging for reuse
-      zink: pre-convert attachment id to attachment idx
-      zink: eliminate implicit feedback loops on rp begin
-      zink: track per-image swapchain layouts
-      zink: handle swapchain handoffs around makecurrent
-      zink: remove a fixed validation error for ci
+Thong Thai (3):
+      gallium/pipe: add min width and min height video cap enums
+      radeonsi: return min width and min height video cap values
+      frontends/va: report min width and min height values if available
 
-Oleksii Bozhenko (2):
-      wsi: add rgb_component_bits_are_equal
-      wsi: remove get_sorted_vk_formats duplication
+Timur Kristóf (5):
+      radv/amdgpu: Remove unnecessary assertions from chaining.
+      radv: Disallow IB2 on GFX6 when using draw_indirect_multi.
+      radv: Use IB BOs (chaining) by default on GFX6.
+      radv: Chain command buffers on GFX6 in radv_queue.
+      amd: Rename INDIRECT_BUFFER_CIK to just INDIRECT_BUFFER.
 
-Qiang Yu (1):
-      ac,aco: move gfx10 ngg prim count zero workaround to nir
+i509VCB (1):
+      docs/asahi: Add hardware glossary
 
-Rob Clark (1):
-      freedreno/a6xx: Allow z24s8 format casts
-
-Ruijing Dong (1):
-      frontends/va: disable skip_frame_enable in vaapi interface.
-
-Samuel Pitoiset (4):
-      radv: split radv_pipeline.c into radv_pipeline_{compute,graphics}.c
-      radv: fix pipeline creation feedback with imported graphics libs
-      radv: cleanup after splitting radv_pipeline.c
-      radv: fix detecting FMASK_DECOMPRESS/DCC_DECOMPRESS meta pipelines
-
-Tapani Pälli (2):
-      intel/fs: use intel_needs_workaround for Wa_22013689345
-      intel/compiler: use intel_needs_workaround for Wa_14012437816
-
-Tatsuyuki Ishi (1):
-      ci/android: Make armv8's arch aarch64 instead of arm.
-
-Timur Kristóf (6):
-      ac, aco, radv: Clarify LDS size on GFX6, and NGG shaders.
-      radv: Don't hardcode LDS granularity in gfx9_get_gs_info.
-      aco: Remove setup_*_variables and add setup_lds_size instead.
-      aco, radv: Remove "key" from aco_compiler_options.
-      aco, radv: Remove redundant enable_mrt_output_nan_fixup from PS epilog info.
-      ac/nir/ngg: Don't store primitive IDs from culled primitives.
-
-Vitaliy Triang3l Kuzmin (1):
-      r600: Alpha to coverage dithering on Evergreen+
+xurui (1):
+      zink: Some return values of malloc should be checked
 
