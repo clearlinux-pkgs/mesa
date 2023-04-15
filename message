@@ -1,91 +1,83 @@
-Updating from 0b4e7491f3f7528f251458f4e84657b16af6df12 to 54d01db8a8453091dd113c037b6e98f6c100ff41
+Updating from 54d01db8a8453091dd113c037b6e98f6c100ff41 to a78772890628f70668950bb4524a9d8e29a9bac5
 
-Alyssa Rosenzweig (6):
-      gallium: Add u_default_get_sample_position
-      zink: Use u_default_get_sample_position
-      panfrost: Use u_default_get_sample_position
-      freedreno: Use u_default_get_sample_position
-      d3d12: Use u_default_get_sample_position
-      nir: Add more system values for lowering XFB
+Caio Oliveira (1):
+      spirv/tests: Add test for single-block loop
 
-Brian Paul (2):
-      llvmpipe: remove lp_setup_alloc_triangle()'s unneeded tri_size param
-      llvmpipe: code clean-ups in llvmpipe_get_query_result_resource()
+David (Ming Qiang) Wu (1):
+      radeonsi/vcn: add an exception of field case for h264 decoding
 
-Emma Anholt (2):
-      zink: Avoid infinite loop finding no var in update_so_info.
-      ci/crocus: Update checksum for STK.
+Eric Engestrom (7):
+      ci: stop removing -x11 suffix for x11 build of deqp-egl
+      ci: add -android suffix for android build of deqp-egl
+      ci: move deqp-egl instead of copying it
+      ci: start documenting which image tags need to be bumped
+      ci: bump tags
+      ci: update shebang to make it more portable
+      broadcom/ci: deduplicate script definition
 
-Eric Engestrom (1):
-      v3d: add flake spec@ext_framebuffer_blit@fbo-sys-sub-blit
+Felix DeGrood (8):
+      anv: Add END_OF_PIPE_SYNC reporting to INTEL_DEBUG=pc
+      anv: Add flush reasons to raytracing flushes
+      anv: Add flush reason to NEEDS_END_OF_PIPE_SYNC
+      anv: split INTEL_MEASURE multi events
+      intel: INTEL_MEASURE cpu mode
+      anv: Enable INTEL_MEASURE=cpu
+      iris: Enable INTEL_MEASURE=cpu
+      docs: add INTEL_MEASURE=cpu
 
-Felix DeGrood (1):
-      anv: disable reset query pools using blorp opt on MTL
+James Knight (1):
+      meson: ensure i915 Gallium driver includes Intel sources
 
-Giancarlo Devich (5):
-      d3d12: Update and require DirectX-Headers 1.610.0
-      d3d12: Query device for D3D12_FEATURE_D3D12_OPTIONS14
-      d3d12: Update PSO creation to use CreatePipelineState
-      d3d12: Add ID3D12GraphicsCommandList8 to the context
-      d3d12: Support separate front/back stencils
+Jesse Natalie (4):
+      d3d12: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
+      microsoft/clc: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
+      dzn: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
+      util: Delete Offset() macro from u_memory.h
 
-Harri Nieminen (8):
-      amd: fix typos
-      amd: fix typos in code
-      r300: fix typos
-      radeonsi: fix typos
-      r600: fix typos
-      r600/sb: fix typo
-      r600/sfn: fix typos
-      r600/sfn: fix typos in code
-
-José Roberto de Souza (6):
-      iris: Move i915 batch destroy logic to iris_i915_destroy_batch()
-      iris: Initialize batch screen in iris_init_batch()
-      iris: Move iris_batch i915 specific variables to union
-      iris: Create, destroy and replace Xe engines
-      iris: Implement batch_check_for_reset() in Xe kmd backend
-      iris: Set priority to Xe engines
-
-Karol Herbst (11):
-      rusticl: rework CLVec helper function to calculate bounds
-      rusticl/mem: fix Mem::copy_rect
-      rusticl/mem: replace buffer_offset_size with CLVec::calc_offset_size
-      gallium: correctly name the flags of svm_migrate
-      rusticl/context: add helper to get the max mem alloc size for all devices
-      rusticl/memory: Rework mapping of memory located in system RAM
-      rusticl/mem: add get_parent helper
-      rusticl: add support for fine-grained system SVM
-      nv50/ir: ignore CL system values
-      nouveau: allow to enable SVM without having to enable CL
-      nouveau: nouveau_copy_buffer can deal with user_ptrs just fine
+Juan A. Suarez Romero (1):
+      v3d: set depth compare function correctly
 
 Lionel Landwerlin (2):
-      docs: add missing MESA_VK_WSI_HEADLESS_SWAPCHAIN variable
-      vulkan/runtime: discard unused graphics stages in libraries
+      intel/vec4: force exec_all on float control instruction
+      anv: enable blorp query reset for performance queries
 
-Mike Blumenkrantz (5):
-      mesa/st/program: don't init xfb info if there are no outputs
-      zink: remove atomics from zink_query
-      zink: pass ctx through query destroy paths
-      zink: always defer query pool deletion
-      zink: remove screen param from zink_prune_query()
+Luc Ma (1):
+      meson: keep Mako version checking in accord with build msg
 
-Thong Thai (3):
-      gallium/pipe: add min width and min height video cap enums
-      radeonsi: return min width and min height video cap values
-      frontends/va: report min width and min height values if available
+Marcin Ślusarz (1):
+      intel: split URB space between task and mesh proportionally to entry sizes
 
-Timur Kristóf (5):
-      radv/amdgpu: Remove unnecessary assertions from chaining.
-      radv: Disallow IB2 on GFX6 when using draw_indirect_multi.
-      radv: Use IB BOs (chaining) by default on GFX6.
-      radv: Chain command buffers on GFX6 in radv_queue.
-      amd: Rename INDIRECT_BUFFER_CIK to just INDIRECT_BUFFER.
+Michel Dänzer (4):
+      ci: Explicitly test for meson feature checks in compiler wrapper
+      ci: Use set -e in frontend compiler wrapper scripts.
+      ci: Remove shebang from backend compiler wrapper script
+      ci: Drop executable permissions from backend compiler wrapper script
 
-i509VCB (1):
-      docs/asahi: Add hardware glossary
+Mike Blumenkrantz (3):
+      util/cpu: add big.LITTLE cpu detection
+      driconf: rework glthread enablement
+      glthread: disable by default with fewer than 4 (big) CPUs
 
-xurui (1):
-      zink: Some return values of malloc should be checked
+Patrick Lerda (1):
+      r600: fix refcnt imbalance related to r600_set_vertex_buffers()
+
+Roland Scheidegger (2):
+      llvmpipe: minor cleanups in line rendering code
+      llvmpipe: fix some corner cases with line rendering
+
+Samuel Pitoiset (4):
+      vulkan: ignore rasterizationSamples when the state is dynamic
+      radv: try to keep HTILE compressed for READ_ONLY_OPTIMAL layout
+      radv: re-emit the guardband state when related PSO are bound
+      radv: tidy up dirtying RBPLUS state in radv_bind_dynamic_state()
+
+Sathishkumar S (4):
+      util/format: add planar3 r8_g8_b8_unorm pipe format
+      frontends/va: add support for RGBP rt_format
+      radeonsi/vcn: enable RGBP format on gfx940 jpeg
+      radeonsi/vcn: engage all jpeg engines on gfx940 for mjpeg decode
+
+antonino (2):
+      zink: don't emulate edgeflags for patches
+      zink: use correct primitives for passthrough gs with tess
 
