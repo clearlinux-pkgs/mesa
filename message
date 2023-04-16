@@ -1,83 +1,16 @@
-Updating from 54d01db8a8453091dd113c037b6e98f6c100ff41 to a78772890628f70668950bb4524a9d8e29a9bac5
+Updating from a78772890628f70668950bb4524a9d8e29a9bac5 to 60cfe15d799fdc5a57a691844cc30e49b3f74a47
 
-Caio Oliveira (1):
-      spirv/tests: Add test for single-block loop
+David Heidelberg (3):
+      ci/amd: 4/5 runners TPad-C13 runners are online, restore most of the tests
+      ci/dxvk: uprev to 2.1
+      ci/amd: update checksums after DXVK 2.1 update
 
-David (Ming Qiang) Wu (1):
-      radeonsi/vcn: add an exception of field case for h264 decoding
+Emma Anholt (4):
+      symbol_table: Store the symbol name in the same allocation as the symbol entry.
+      symbol_table: Don't maintain the HT as we're destroying the table.
+      symbol_table: Don't bother resetting the key on popping scope.
+      symbol_table: Prehash the key on insert, and reuse the entry on shadowing.
 
-Eric Engestrom (7):
-      ci: stop removing -x11 suffix for x11 build of deqp-egl
-      ci: add -android suffix for android build of deqp-egl
-      ci: move deqp-egl instead of copying it
-      ci: start documenting which image tags need to be bumped
-      ci: bump tags
-      ci: update shebang to make it more portable
-      broadcom/ci: deduplicate script definition
-
-Felix DeGrood (8):
-      anv: Add END_OF_PIPE_SYNC reporting to INTEL_DEBUG=pc
-      anv: Add flush reasons to raytracing flushes
-      anv: Add flush reason to NEEDS_END_OF_PIPE_SYNC
-      anv: split INTEL_MEASURE multi events
-      intel: INTEL_MEASURE cpu mode
-      anv: Enable INTEL_MEASURE=cpu
-      iris: Enable INTEL_MEASURE=cpu
-      docs: add INTEL_MEASURE=cpu
-
-James Knight (1):
-      meson: ensure i915 Gallium driver includes Intel sources
-
-Jesse Natalie (4):
-      d3d12: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
-      microsoft/clc: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
-      dzn: Remove #if D3D12_SDK_VERSION blocks now that 610 is required
-      util: Delete Offset() macro from u_memory.h
-
-Juan A. Suarez Romero (1):
-      v3d: set depth compare function correctly
-
-Lionel Landwerlin (2):
-      intel/vec4: force exec_all on float control instruction
-      anv: enable blorp query reset for performance queries
-
-Luc Ma (1):
-      meson: keep Mako version checking in accord with build msg
-
-Marcin Ślusarz (1):
-      intel: split URB space between task and mesh proportionally to entry sizes
-
-Michel Dänzer (4):
-      ci: Explicitly test for meson feature checks in compiler wrapper
-      ci: Use set -e in frontend compiler wrapper scripts.
-      ci: Remove shebang from backend compiler wrapper script
-      ci: Drop executable permissions from backend compiler wrapper script
-
-Mike Blumenkrantz (3):
-      util/cpu: add big.LITTLE cpu detection
-      driconf: rework glthread enablement
-      glthread: disable by default with fewer than 4 (big) CPUs
-
-Patrick Lerda (1):
-      r600: fix refcnt imbalance related to r600_set_vertex_buffers()
-
-Roland Scheidegger (2):
-      llvmpipe: minor cleanups in line rendering code
-      llvmpipe: fix some corner cases with line rendering
-
-Samuel Pitoiset (4):
-      vulkan: ignore rasterizationSamples when the state is dynamic
-      radv: try to keep HTILE compressed for READ_ONLY_OPTIMAL layout
-      radv: re-emit the guardband state when related PSO are bound
-      radv: tidy up dirtying RBPLUS state in radv_bind_dynamic_state()
-
-Sathishkumar S (4):
-      util/format: add planar3 r8_g8_b8_unorm pipe format
-      frontends/va: add support for RGBP rt_format
-      radeonsi/vcn: enable RGBP format on gfx940 jpeg
-      radeonsi/vcn: engage all jpeg engines on gfx940 for mjpeg decode
-
-antonino (2):
-      zink: don't emulate edgeflags for patches
-      zink: use correct primitives for passthrough gs with tess
+Karol Herbst (1):
+      rusticl/event: drop work item before updating status
 
