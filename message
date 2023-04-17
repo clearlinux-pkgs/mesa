@@ -1,16 +1,61 @@
-Updating from a78772890628f70668950bb4524a9d8e29a9bac5 to 60cfe15d799fdc5a57a691844cc30e49b3f74a47
+Updating from 60cfe15d799fdc5a57a691844cc30e49b3f74a47 to b30a75a195fea9013fc912b84cd776aaa76f4692
 
-David Heidelberg (3):
-      ci/amd: 4/5 runners TPad-C13 runners are online, restore most of the tests
-      ci/dxvk: uprev to 2.1
-      ci/amd: update checksums after DXVK 2.1 update
+Andres Calderon Jaramillo (1):
+      r600: Report multi-plane formats as unsupported
 
-Emma Anholt (4):
-      symbol_table: Store the symbol name in the same allocation as the symbol entry.
-      symbol_table: Don't maintain the HT as we're destroying the table.
-      symbol_table: Don't bother resetting the key on popping scope.
-      symbol_table: Prehash the key on insert, and reuse the entry on shadowing.
+David Heidelberg (8):
+      ci: bump kernel to the 6.3, support HDK 888 based on sm8350
+      ci/freedreno: do not restrict to 2 cpus on a530
+      ci: drop overriding new a530 firmware due to preemption issues with older kernel
+      ci/freedreno: a530 behaves stable in 6.3
+      ci/freedreno: update a530 flakes, fails and skips
+      ci/freedreno: fix the a530_piglit job and switch to Weston
+      ci: polish deqp-runner a bit
+      ci: uninstall libdrm from the GL and VK containers
 
-Karol Herbst (1):
-      rusticl/event: drop work item before updating status
+David Redondo (1):
+      egl/wayland: fix oob buffer access during buffer_fds clean up
+
+Emma Anholt (5):
+      tu/perfetto: Refactor code out of the macro, to stage_end.
+      tu/perfetto: Clean up an extra token paste to just use the arg being passed.
+      tu/perfetto: Use tu_CmdBeginDebugUtilsLabelEXT as a stage event in perfetto.
+      tu/perfetto: Drop unused arg to send_descriptors().
+      tu/perfetto: s/MRTs/attachment_count/ in traces.
+
+Eric Engestrom (1):
+      v3dv/ci: drop fixed failure from fails.txt
+
+Erico Nunes (2):
+      Revert "ci: disable lima farm, currently out-of-space, needs to be fixed"
+      lima: fix stringop-overflow warning
+
+Lionel Landwerlin (1):
+      vulkan/overlay: deal with unknown pNext structures
+
+Mike Blumenkrantz (4):
+      zink: move memoryTypeIndex selection down in general bo allocation
+      zink: slightly rework memoryTypeIndex selection to pre-determine heap
+      zink: restore BAR allocation failure demotion
+      zink: make general bo allocation more robust by iterating
+
+Patrick Lerda (1):
+      r600: fix refcnt imbalance related to evergreen_set_shader_images()
+
+Qiang Yu (12):
+      nir: add nir_load_barycentric_optimize_amd intrinsic
+      radeonsi: implement nir_load_barycentric_optimize_amd
+      ac/nir/ps: lower barycentric load when bc_optimize
+      ac/nir/ps: add force lower barycentric load options
+      ac/nir/ps: lower sample mask input when needed
+      ac/llvm,radeonsi: lower ps color load in nir
+      radeonsi: add si_nir_lower_ps_color_input
+      radeonsi: add si_nir_emit_polygon_stipple
+      radeonsi: handle lowered ps in scan_io_usage
+      radeonsi: monolithic ps emit prolog in nir directly
+      radeonsi: restructure mono merged shader build
+      radeonsi: remove separate_prolog parameter
+
+Samuel Pitoiset (1):
+      radv: disable fast-clears with CMASK for 128-bit formats
 
