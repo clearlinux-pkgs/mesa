@@ -1,61 +1,91 @@
-Updating from 60cfe15d799fdc5a57a691844cc30e49b3f74a47 to b30a75a195fea9013fc912b84cd776aaa76f4692
+Updating from b30a75a195fea9013fc912b84cd776aaa76f4692 to 2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b
 
-Andres Calderon Jaramillo (1):
-      r600: Report multi-plane formats as unsupported
+Emma Anholt (2):
+      anv: Only enable GPL if ANV_GPL=true, or if zink or DXVK are the engine.
+      anv: Refactor repeated pipeline creation feedback output code.
 
-David Heidelberg (8):
-      ci: bump kernel to the 6.3, support HDK 888 based on sm8350
-      ci/freedreno: do not restrict to 2 cpus on a530
-      ci: drop overriding new a530 firmware due to preemption issues with older kernel
-      ci/freedreno: a530 behaves stable in 6.3
-      ci/freedreno: update a530 flakes, fails and skips
-      ci/freedreno: fix the a530_piglit job and switch to Weston
-      ci: polish deqp-runner a bit
-      ci: uninstall libdrm from the GL and VK containers
+Eric Engestrom (5):
+      amd: fix buggy usage of unreachable()
+      compiler: fix buggy usage of unreachable()
+      pvr: fix buggy usage of unreachable()
+      vk/util: fix buggy usage of unreachable()
+      util: enforce unreachable()'s argument being a literal string
 
-David Redondo (1):
-      egl/wayland: fix oob buffer access during buffer_fds clean up
+Erico Nunes (1):
+      lima/ci: temporarily disable deqp-egl tests due to timeouts
 
-Emma Anholt (5):
-      tu/perfetto: Refactor code out of the macro, to stage_end.
-      tu/perfetto: Clean up an extra token paste to just use the arg being passed.
-      tu/perfetto: Use tu_CmdBeginDebugUtilsLabelEXT as a stage event in perfetto.
-      tu/perfetto: Drop unused arg to send_descriptors().
-      tu/perfetto: s/MRTs/attachment_count/ in traces.
+Jesse Natalie (2):
+      d3d12: Respect buffer offsets for sampler views
+      d3d12: Support blit texture uploads
 
-Eric Engestrom (1):
-      v3dv/ci: drop fixed failure from fails.txt
+José Roberto de Souza (5):
+      iris: Fix close of exported bos
+      intel/common: Add gt_id to intel_engine_class
+      iris: Implement batch_submit() in Xe kmd backend
+      iris: Fix vm bind of imported bos from other GPUs
+      build: Add Iris and ANV to ARM's auto-generated drivers
 
-Erico Nunes (2):
-      Revert "ci: disable lima farm, currently out-of-space, needs to be fixed"
-      lima: fix stringop-overflow warning
+Karol Herbst (2):
+      rusticl: add create_pipe_box to better deal with pipe_box restrictions
+      rusticl/mem: more region and origin validation
 
-Lionel Landwerlin (1):
-      vulkan/overlay: deal with unknown pNext structures
+Leo Liu (1):
+      radeonsi: create a new context for transcode with multiple video engines
 
-Mike Blumenkrantz (4):
-      zink: move memoryTypeIndex selection down in general bo allocation
-      zink: slightly rework memoryTypeIndex selection to pre-determine heap
-      zink: restore BAR allocation failure demotion
-      zink: make general bo allocation more robust by iterating
+Lionel Landwerlin (11):
+      isl: don't set inconsistent fields for depth when using stencil only
+      anv: introduce a base graphics pipeline object
+      anv: move force shading rate writes checks
+      anv: make input attachments available through bindless
+      anv: move preprocessing of NIR right before compilation
+      anv: add dynamic buffer offsets support with independent sets
+      anv: implement VK_EXT_graphics_pipeline_library
+      anv: Work around the spec question about pipeline feedback vs GPL.
+      isl: fix a number of errors on storage format support on Gfx9/12.5
+      intel/nir: add options to storage image lowering
+      anv: drop lowered storage images code
+
+Michel Dänzer (5):
+      tgsi: Make ureg_DECL_output_masked definition match its declaration
+      llvmpipe: Make lp_build_interp_soa declaration match its definition
+      mesa/st: Make st_convert_image(_from_unit) declaration match definition
+      vulkan: Fix GetPhysicalDeviceSparseImageFormatProperties definition
+      anv/format: Fix GetPhysicalDeviceSparseImageFormatProperties definition
+
+Nanley Chery (3):
+      iris: Allocate ZEROED BOs for shared resources
+      iris/bufmgr: Add and use zero_bo
+      iris/bufmgr: Handle flat_ccs for BO_ALLOC_ZEROED
 
 Patrick Lerda (1):
-      r600: fix refcnt imbalance related to evergreen_set_shader_images()
+      lima: fix refcnt imbalance related to framebuffer
 
-Qiang Yu (12):
-      nir: add nir_load_barycentric_optimize_amd intrinsic
-      radeonsi: implement nir_load_barycentric_optimize_amd
-      ac/nir/ps: lower barycentric load when bc_optimize
-      ac/nir/ps: add force lower barycentric load options
-      ac/nir/ps: lower sample mask input when needed
-      ac/llvm,radeonsi: lower ps color load in nir
-      radeonsi: add si_nir_lower_ps_color_input
-      radeonsi: add si_nir_emit_polygon_stipple
-      radeonsi: handle lowered ps in scan_io_usage
-      radeonsi: monolithic ps emit prolog in nir directly
-      radeonsi: restructure mono merged shader build
-      radeonsi: remove separate_prolog parameter
+Rhys Perry (4):
+      nir: add is_gather_implicit_lod
+      vtn: set is_gather_implicit_lod
+      aco: support implicit LOD for nir_texop_tg4
+      ac/llvm: support implicit LOD for nir_texop_tg4
 
-Samuel Pitoiset (1):
-      radv: disable fast-clears with CMASK for 128-bit formats
+Samuel Pitoiset (3):
+      radv: require DRM 3.27
+      radv/amdgpu: remove legacy code path for creating the BO list
+      radv/amdgpu: remove legacy code for querying context status
+
+Sil Vilerino (10):
+      d3d12: Do not fail d3d12_screen creation if D3D12_FEATURE_D3D12_OPTIONS14 not available
+      frontend/va: Support QVBR rate control mode
+      frontend/va: Allow distinction for HRD params sent from app and frontend defaults
+      frontend/va: Allow distinction for Min/MaxQP params sent from app and frontend defaults
+      d3d12: Support QVBR rate control mode
+      d3d12: Support rate control HRD and MaxFrameSize app params
+      d3d12: Support QPMin/QPMax app params
+      d3d12: Support PIPE_VIDEO_CAP_MIN_WIDTH/HEIGHT caps
+      d3d12: Support PIPE_VIDEO_CAP_ENC_QUALITY_LEVEL
+      frontend/va: Add VAProfileH264High10
+
+Tapani Pälli (1):
+      isl: disable mcs (and mcs+ccs) for color msaa on gfxver 125
+
+Weibin Wu (1):
+      winsys/gdi: GDI B5G6R5 display target support
 

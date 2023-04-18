@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mesa
-Version  : 23.1+154.gb30a75a195f
-Release  : 460
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/b30a75a195fea9013fc912b84cd776aaa76f4692/mesa-23.1+154-gb30a75a195f.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/b30a75a195fea9013fc912b84cd776aaa76f4692/mesa-23.1+154-gb30a75a195f.tar.bz2
+Version  : 23.1+211.g2dcd6bed6a9
+Release  : 461
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/mesa-23.1+211-g2dcd6bed6a9.tar.bz2
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/mesa-23.1+211-g2dcd6bed6a9.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
@@ -150,14 +150,14 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-b30a75a195fea9013fc912b84cd776aaa76f4692
-cd %{_builddir}/mesa-b30a75a195fea9013fc912b84cd776aaa76f4692
+%setup -q -n mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b
+cd %{_builddir}/mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b
 %patch1 -p1
 pushd ..
-cp -a mesa-b30a75a195fea9013fc912b84cd776aaa76f4692 build32
+cp -a mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b build32
 popd
 pushd ..
-cp -a mesa-b30a75a195fea9013fc912b84cd776aaa76f4692 buildavx2
+cp -a mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b buildavx2
 popd
 
 %build
@@ -165,7 +165,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681742147
+export SOURCE_DATE_EPOCH=1681832399
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -239,10 +239,10 @@ popd
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-b30a75a195fea9013fc912b84cd776aaa76f4692/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
-cp %{_builddir}/mesa-b30a75a195fea9013fc912b84cd776aaa76f4692/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-b30a75a195fea9013fc912b84cd776aaa76f4692/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-b30a75a195fea9013fc912b84cd776aaa76f4692/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
+cp %{_builddir}/mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
 pushd ../build32/
 DESTDIR=%{buildroot} ninja -C builddir install
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
