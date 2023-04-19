@@ -1,91 +1,121 @@
-Updating from b30a75a195fea9013fc912b84cd776aaa76f4692 to 2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b
+Updating from 2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b to d6b30d42b05a93aa80c93c7fcc1782f9c59a6f1a
 
-Emma Anholt (2):
-      anv: Only enable GPL if ANV_GPL=true, or if zink or DXVK are the engine.
-      anv: Refactor repeated pipeline creation feedback output code.
+Aleksey Komarov (2):
+      pan/va: Fix MUX.v2i16 and MUX.v4i8 description
+      pan/va: fix typo in IADD_IMM.i32 description
 
-Eric Engestrom (5):
-      amd: fix buggy usage of unreachable()
-      compiler: fix buggy usage of unreachable()
-      pvr: fix buggy usage of unreachable()
-      vk/util: fix buggy usage of unreachable()
-      util: enforce unreachable()'s argument being a literal string
+Daniel Schürmann (1):
+      radv/rt: fix total stack size computation
 
-Erico Nunes (1):
-      lima/ci: temporarily disable deqp-egl tests due to timeouts
+David Heidelberg (1):
+      ci: do not retry on forks to get the upstream kernel and rootfs
 
-Jesse Natalie (2):
-      d3d12: Respect buffer offsets for sampler views
-      d3d12: Support blit texture uploads
+Eric Engestrom (1):
+      egl: inline driver.GetProcAddress() as it's always _glapi_get_proc_address()
 
-José Roberto de Souza (5):
-      iris: Fix close of exported bos
-      intel/common: Add gt_id to intel_engine_class
-      iris: Implement batch_submit() in Xe kmd backend
-      iris: Fix vm bind of imported bos from other GPUs
-      build: Add Iris and ANV to ARM's auto-generated drivers
+Frank Binns (3):
+      pvr: add missing explicit check against VK_SUCCESS
+      pvr: use util_dynarray_begin() in more places
+      pvr: replace transfer EOT binary shaders with run-time compiled shaders
 
-Karol Herbst (2):
-      rusticl: add create_pipe_box to better deal with pipe_box restrictions
-      rusticl/mem: more region and origin validation
+Guilherme Gallo (11):
+      ci/lava: Move job definition stuff to another file
+      ci/lava: Extract LAVA proxy and LAVAJob abstractions
+      ci/lava: Use python-fire in job submitter
+      ci/lava: Update LogFollower for better section handling and history
+      ci/lava: Add a simple Structural Logger into submitter
+      bin/ci: Add StructuredLogger to improve log handling
+      ci/lava: Integrate StructuralLogger with AutoSaveDict
+      ci/lava: Force use of UTC timezones
+      ci/lava: Refactor LAVAJobSubmitter and add tests
+      ci/lava: Use f-strings in job definition
+      ci/lava: Skip regression test if LAVA log file is not present
 
-Leo Liu (1):
-      radeonsi: create a new context for transcode with multiple video engines
+Ikshwaku Chauhan (2):
+      radeonsi/gfx11: updated si_is_format_supported
+      radeonsi/gfx11: updated vertex format changes
 
-Lionel Landwerlin (11):
-      isl: don't set inconsistent fields for depth when using stencil only
-      anv: introduce a base graphics pipeline object
-      anv: move force shading rate writes checks
-      anv: make input attachments available through bindless
-      anv: move preprocessing of NIR right before compilation
-      anv: add dynamic buffer offsets support with independent sets
-      anv: implement VK_EXT_graphics_pipeline_library
-      anv: Work around the spec question about pipeline feedback vs GPL.
-      isl: fix a number of errors on storage format support on Gfx9/12.5
-      intel/nir: add options to storage image lowering
-      anv: drop lowered storage images code
+Karmjit Mahil (9):
+      pvr: Add missing includes in pvr_common.h
+      pvr: Implement vkCmdUpdateBuffer().
+      pvr: Implement simple internal format v2 transfer paths.
+      pvr: Add deferred RTA clears for cores without gs_rta_support.
+      pvr: Finish pvr_perform_start_of_render_attachment_clear().
+      pvr: Collect vertex input data and fill info struct.
+      pvr: Fix a comment in the PDS code
+      pvr: Fix typo in PDS function name
+      pvr: Add handling for missing entries in pvr_setup_vertex_buffers()
 
-Michel Dänzer (5):
-      tgsi: Make ureg_DECL_output_masked definition match its declaration
-      llvmpipe: Make lp_build_interp_soa declaration match its definition
-      mesa/st: Make st_convert_image(_from_unit) declaration match definition
-      vulkan: Fix GetPhysicalDeviceSparseImageFormatProperties definition
-      anv/format: Fix GetPhysicalDeviceSparseImageFormatProperties definition
+Lionel Landwerlin (1):
+      anv: enable shaderStorageImageReadWithoutFormat on Gfx12.5+
 
-Nanley Chery (3):
-      iris: Allocate ZEROED BOs for shared resources
-      iris/bufmgr: Add and use zero_bo
-      iris/bufmgr: Handle flat_ccs for BO_ALLOC_ZEROED
+Matt Coster (1):
+      pvr: Complete pvr_isp_ctrl_stream()
 
-Patrick Lerda (1):
-      lima: fix refcnt imbalance related to framebuffer
+Mike Blumenkrantz (4):
+      zink: avoid zero-sized memcmp for descriptor layouts
+      iris: use util_framebuffer_get_num_samples when setting ps dispatch samples
+      nir/lower_alpha_test: rzalloc state slots
+      zink: fix non-db bindless texture buffers
 
-Rhys Perry (4):
-      nir: add is_gather_implicit_lod
-      vtn: set is_gather_implicit_lod
-      aco: support implicit LOD for nir_texop_tg4
-      ac/llvm: support implicit LOD for nir_texop_tg4
+Qiang Yu (9):
+      radeonsi: add si_mark_divergent_texture_non_uniform
+      ac/llvm,radeonsi: use texture non-uniform flag as waterfall switch
+      nir,ac/llvm,radeonsi: replace nir_load_smem_buffer_amd with nir_load_ubo
+      ac/llvm,radeonsi: lower nir_load_point_coord_maybe_flipped in nir
+      ac,radv: move ps arg compation to common place
+      aco: support 32bit address in nir_load_smem_amd
+      nir: add missing image atomic_inc/dec_wrap intrinsic
+      aco: implement nir_bindless_image_atomic_inc/dec_wrap
+      aco: skip scratch buffer init when its arg is not used
 
-Samuel Pitoiset (3):
-      radv: require DRM 3.27
-      radv/amdgpu: remove legacy code path for creating the BO list
-      radv/amdgpu: remove legacy code for querying context status
+Rajnesh Kanwal (9):
+      pvr: Add support to process transfer and blit cmds
+      pvr: Implement vkCmdCopyBufferToImage API.
+      pvr: Implement vkCmdCopyImage2KHR API.
+      pvr: Implement vkCmdBlitImage API.
+      pvr: Implement vkCmdClearColorImage API.
+      pvr: Implement vkCmdCopyImageToBuffer2 API.
+      pvr: Implement vkCmdFillBuffer API.
+      pvr: Implement vkCmdResolveImage2KHR API.
+      pvr: Implement vkCmdClearDepthStencilImage API.
 
-Sil Vilerino (10):
-      d3d12: Do not fail d3d12_screen creation if D3D12_FEATURE_D3D12_OPTIONS14 not available
-      frontend/va: Support QVBR rate control mode
-      frontend/va: Allow distinction for HRD params sent from app and frontend defaults
-      frontend/va: Allow distinction for Min/MaxQP params sent from app and frontend defaults
-      d3d12: Support QVBR rate control mode
-      d3d12: Support rate control HRD and MaxFrameSize app params
-      d3d12: Support QPMin/QPMax app params
-      d3d12: Support PIPE_VIDEO_CAP_MIN_WIDTH/HEIGHT caps
-      d3d12: Support PIPE_VIDEO_CAP_ENC_QUALITY_LEVEL
-      frontend/va: Add VAProfileH264High10
+Ryan Neph (1):
+      virgl: add debug flag to force synchronous GL shader compilation
 
-Tapani Pälli (1):
-      isl: disable mcs (and mcs+ccs) for color msaa on gfxver 125
+Sarah Walker (11):
+      pvr: Support single core transfer queue commands on multicore GPUs
+      pvr: Implement pvr_pbe_setup_modify_defaults()
+      pvr: Complete pvr_modify_command()
+      pvr: Complete pvr_unwind_rects()
+      pvr: Complete pvr_double_stride()
+      pvr: Implement pvr_isp_scan_direction()
+      pvr: Implement pvr_reroute_to_clip()
+      pvr: Support ipf_creq_pf in pvr_isp_ctrl_stream()
+      pvr: Complete pvr_3d_validate_addr()
+      pvr: Support multiple sources per pass in TQ job submission
+      pvr: Complete pvr_generate_custom_mapping()
 
-Weibin Wu (1):
-      winsys/gdi: GDI B5G6R5 display target support
+Simon Perretta (5):
+      pvr: Amend validation when checking multiple supported types
+      pvr: Use movc for reading special registers
+      pvr: Add support for generating transfer fragment programs
+      pvr: Add support for generating transfer EOT programs
+      pvr: Use driver vertex input data in the compiler
+
+Tatsuyuki Ishi (2):
+      util: Add dedicated hex conversion functions and use it.
+      util: Call mesa_bytes_to_hex directly instead of disk_cache_format_hex_id.
+
+Timur Kristóf (3):
+      radv: Simplify IB2 workaround.
+      radv: Remove IB2 workaround from mesh shader draws.
+      radv: Enable IB2 workaround on all indirect draws.
+
+Viktoriia Palianytsia (1):
+      iris,crocus: Add proper way of assigning num_levels value
+
+xurui (2):
+      zink: Use malloc instead of ralloc
+      zink: Use malloc to allocate libs
 
