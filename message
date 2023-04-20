@@ -1,121 +1,105 @@
-Updating from 2dcd6bed6a97a5b8f6a1de36c176e7424170fa9b to d6b30d42b05a93aa80c93c7fcc1782f9c59a6f1a
+Updating from d6b30d42b05a93aa80c93c7fcc1782f9c59a6f1a to 6bc2dce228d60994b72de9a32c14747816557fec
 
-Aleksey Komarov (2):
-      pan/va: Fix MUX.v2i16 and MUX.v4i8 description
-      pan/va: fix typo in IADD_IMM.i32 description
+Caio Oliveira (3):
+      spirv: Output spirv2nir tool result to stdout
+      spirv: Add --optimize flag to spirv2nir tool
+      spirv: Rework structured control flow handling
 
-Daniel Schürmann (1):
-      radv/rt: fix total stack size computation
+Charmaine Lee (1):
+      translate: do not clamp element index in generic_run
 
-David Heidelberg (1):
-      ci: do not retry on forks to get the upstream kernel and rootfs
+Dmitry Baryshkov (1):
+      freedreno/registers: updte HDMI registers to include CEC details
 
-Eric Engestrom (1):
-      egl: inline driver.GetProcAddress() as it's always _glapi_get_proc_address()
+Emma Anholt (7):
+      ci/lvp: Update sanctuary trace hash.
+      ci/radv: Demote navi21 to manual until recent flakiness resolves.
+      ci/zink+tu: Drop some intermittently failing a630 traces.
+      ci/freedreno: Drop portal-2-v2 trace.
+      ci/radv: Add known flakes for #8817
+      ci: Crank up the yamllint line length limit.
+      ci/freedreno: Demote a530 to manual again.
 
-Frank Binns (3):
-      pvr: add missing explicit check against VK_SUCCESS
-      pvr: use util_dynarray_begin() in more places
-      pvr: replace transfer EOT binary shaders with run-time compiled shaders
+Filip Gawin (1):
+      nine: add fallback for D3DFMT_D16 in d3d9_to_pipe_format_checked
 
-Guilherme Gallo (11):
-      ci/lava: Move job definition stuff to another file
-      ci/lava: Extract LAVA proxy and LAVAJob abstractions
-      ci/lava: Use python-fire in job submitter
-      ci/lava: Update LogFollower for better section handling and history
-      ci/lava: Add a simple Structural Logger into submitter
-      bin/ci: Add StructuredLogger to improve log handling
-      ci/lava: Integrate StructuralLogger with AutoSaveDict
-      ci/lava: Force use of UTC timezones
-      ci/lava: Refactor LAVAJobSubmitter and add tests
-      ci/lava: Use f-strings in job definition
-      ci/lava: Skip regression test if LAVA log file is not present
+Frank Binns (1):
+      pvr: fix typo in pvr_rt_get_region_headers_stride_size()
 
-Ikshwaku Chauhan (2):
-      radeonsi/gfx11: updated si_is_format_supported
-      radeonsi/gfx11: updated vertex format changes
+Guilherme Gallo (1):
+      ci/freedreno: Fix a618-traces-performance rules
 
-Karmjit Mahil (9):
-      pvr: Add missing includes in pvr_common.h
-      pvr: Implement vkCmdUpdateBuffer().
-      pvr: Implement simple internal format v2 transfer paths.
-      pvr: Add deferred RTA clears for cores without gs_rta_support.
-      pvr: Finish pvr_perform_start_of_render_attachment_clear().
-      pvr: Collect vertex input data and fill info struct.
-      pvr: Fix a comment in the PDS code
-      pvr: Fix typo in PDS function name
-      pvr: Add handling for missing entries in pvr_setup_vertex_buffers()
+Karmjit Mahil (1):
+      pvr: Handle special built-in variable loading in vertex shader
 
-Lionel Landwerlin (1):
-      anv: enable shaderStorageImageReadWithoutFormat on Gfx12.5+
+Leo Liu (1):
+      radeonsi/vcn: AV1 skip the redundant bs resize
 
-Matt Coster (1):
-      pvr: Complete pvr_isp_ctrl_stream()
+Marek Olšák (14):
+      nir: fix 2 bugs in nir_create_passthrough_tcs
+      nir: lower load_barycentric_at_offset in lower_wpos_ytransform
+      nir: assign IO bases in nir_lower_io_passes
+      nir: skip nir_lower_io_passes for compute shaders
+      nir: extend nir_opt_fragdepth to handle lowered IO
+      nir: handle more opcodes in nir_lower_io_to_scalar
+      nir: handle all varying slots in gl_varying_slot_name_for_stage
+      nir: don't remove dead IO variables in nir_lower_io_passes for st_link_nir
+      nir: rework nir_lower_color_inputs to work with lowered IO intrinsics
+      nir: return a status from nir_remove_varying whether it removed the instruction
+      nir: remove an obsolete comment from nir_gather_xfb_info_from_intrinsics
+      nir: add next_stage parameter to nir_slot_is_sysval_output to return better info
+      nir: add next_stage parameter to nir_remove_varying
+      nir: set uses_wide_subgroup_intrinsics for all shader stages
 
-Mike Blumenkrantz (4):
-      zink: avoid zero-sized memcmp for descriptor layouts
-      iris: use util_framebuffer_get_num_samples when setting ps dispatch samples
-      nir/lower_alpha_test: rzalloc state slots
-      zink: fix non-db bindless texture buffers
+Michel Zou (1):
+      vulkan/wsi: fix -Wnarrowing warning
 
-Qiang Yu (9):
-      radeonsi: add si_mark_divergent_texture_non_uniform
-      ac/llvm,radeonsi: use texture non-uniform flag as waterfall switch
-      nir,ac/llvm,radeonsi: replace nir_load_smem_buffer_amd with nir_load_ubo
-      ac/llvm,radeonsi: lower nir_load_point_coord_maybe_flipped in nir
-      ac,radv: move ps arg compation to common place
-      aco: support 32bit address in nir_load_smem_amd
-      nir: add missing image atomic_inc/dec_wrap intrinsic
-      aco: implement nir_bindless_image_atomic_inc/dec_wrap
-      aco: skip scratch buffer init when its arg is not used
+Mihai Preda (1):
+      nir: update nir->num_inputs, num_outputs in nir_recompute_io_bases()
 
-Rajnesh Kanwal (9):
-      pvr: Add support to process transfer and blit cmds
-      pvr: Implement vkCmdCopyBufferToImage API.
-      pvr: Implement vkCmdCopyImage2KHR API.
-      pvr: Implement vkCmdBlitImage API.
-      pvr: Implement vkCmdClearColorImage API.
-      pvr: Implement vkCmdCopyImageToBuffer2 API.
-      pvr: Implement vkCmdFillBuffer API.
-      pvr: Implement vkCmdResolveImage2KHR API.
-      pvr: Implement vkCmdClearDepthStencilImage API.
+Mike Blumenkrantz (20):
+      util/blitter: fix line wrapping on error to avoid giving wrong line number
+      glthread: add newline to env override
+      zink: emit demote cap when using demote
+      zink: only print copy box warning once per resource
+      zink: hook up debug callback
+      zink: use a perf_debug() macro for debug message logging of copy box warning
+      util/debug: move null checks out of debug message macro
+      zink: manually re-set framebuffer after msrtss replicate blit
+      zink: handle 'blitting' flag better in msrtss replication
+      zink: skip msrtss replicate if the attachment will be full-cleared
+      zink: avoid recursion during msrtss blits from flushing clears
+      zink: don't bitcast bool deref loads/stores
+      zink: zink_shader_free -> zink_gfx_shader_free
+      zink: split out generic shader destruction for reuse
+      zink: always wait on precompile fence at start of zink_gfx_shader_free()
+      zink: call zink_shader_free for compute shaders
+      zink: add a util function for printing shaders
+      zink: don't create separate shader dsls if there are no bindings
+      drisw: don't leak the winsys
+      zink: check for extendedDynamicState3DepthClipNegativeOneToOne for ds3 support
 
-Ryan Neph (1):
-      virgl: add debug flag to force synchronous GL shader compilation
+Qiang Yu (1):
+      aco: fix nir_f2u64 translation
 
-Sarah Walker (11):
-      pvr: Support single core transfer queue commands on multicore GPUs
-      pvr: Implement pvr_pbe_setup_modify_defaults()
-      pvr: Complete pvr_modify_command()
-      pvr: Complete pvr_unwind_rects()
-      pvr: Complete pvr_double_stride()
-      pvr: Implement pvr_isp_scan_direction()
-      pvr: Implement pvr_reroute_to_clip()
-      pvr: Support ipf_creq_pf in pvr_isp_ctrl_stream()
-      pvr: Complete pvr_3d_validate_addr()
-      pvr: Support multiple sources per pass in TQ job submission
-      pvr: Complete pvr_generate_custom_mapping()
+Rhys Perry (2):
+      aco: remove SMEM_instruction::prevent_overflow
+      aco: use apply_nuw_to_ssa() with load_smem_amd
 
-Simon Perretta (5):
-      pvr: Amend validation when checking multiple supported types
-      pvr: Use movc for reading special registers
-      pvr: Add support for generating transfer fragment programs
-      pvr: Add support for generating transfer EOT programs
-      pvr: Use driver vertex input data in the compiler
+Samuel Pitoiset (7):
+      radv: do not allow 1D block-compressed images with (extended) storage on GFX6
+      radv: fix usage flag for 3D compressed 128 bpp images on GFX9
+      radv: wait for occlusion queries in the resolve query shader
+      radv: delay enabling/disabling occlusion queries at draw time
+      radv: track DB_COUNT_CONTROL changes to avoid context rolls
+      radv: emit PIXEL_PIPE_STAT_CONTROL in the gfx preamble for GFX11
+      radv: use gfx_level in radv_flush_occlusion_query_state()
 
-Tatsuyuki Ishi (2):
-      util: Add dedicated hex conversion functions and use it.
-      util: Call mesa_bytes_to_hex directly instead of disk_cache_format_hex_id.
+Sil Vilerino (3):
+      frontend/va: Add H264 decode slice data
+      d3d12: Use frontend H264 decode slice offsets and sizes instead of parsing buffer
+      d3d12: Clean unused code for parsing slices
 
-Timur Kristóf (3):
-      radv: Simplify IB2 workaround.
-      radv: Remove IB2 workaround from mesh shader draws.
-      radv: Enable IB2 workaround on all indirect draws.
-
-Viktoriia Palianytsia (1):
-      iris,crocus: Add proper way of assigning num_levels value
-
-xurui (2):
-      zink: Use malloc instead of ralloc
-      zink: Use malloc to allocate libs
+Timur Kristóf (1):
+      radv: Fix dword alignment in SDMA buffer copy.
 
