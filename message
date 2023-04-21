@@ -1,105 +1,66 @@
-Updating from d6b30d42b05a93aa80c93c7fcc1782f9c59a6f1a to 6bc2dce228d60994b72de9a32c14747816557fec
+Updating from 6bc2dce228d60994b72de9a32c14747816557fec to c3c63cb1d89e328506c366cded845ae200c7d9f9
 
-Caio Oliveira (3):
-      spirv: Output spirv2nir tool result to stdout
-      spirv: Add --optimize flag to spirv2nir tool
-      spirv: Rework structured control flow handling
+André Almeida (1):
+      radv: debug: Update decode ring umr command
 
-Charmaine Lee (1):
-      translate: do not clamp element index in generic_run
+Eric Engestrom (1):
+      ci: rework vulkan validation layer build script
 
-Dmitry Baryshkov (1):
-      freedreno/registers: updte HDMI registers to include CEC details
+Harri Nieminen (1):
+      broadcom: fix typos
 
-Emma Anholt (7):
-      ci/lvp: Update sanctuary trace hash.
-      ci/radv: Demote navi21 to manual until recent flakiness resolves.
-      ci/zink+tu: Drop some intermittently failing a630 traces.
-      ci/freedreno: Drop portal-2-v2 trace.
-      ci/radv: Add known flakes for #8817
-      ci: Crank up the yamllint line length limit.
-      ci/freedreno: Demote a530 to manual again.
+Jesse Natalie (6):
+      spirv2dxil: Lower quad ops in non-fragment/compute stages
+      dzn: Remove driconf for quad ops in vertex stages
+      dzn: Add physical device arg to format lookup
+      dzn: Support dynamic depth bias via command list instead of PSO
+      dzn: Use narrow quadrilateral lines when supported
+      dzn: Support aniso-with-point-mip samplers
 
-Filip Gawin (1):
-      nine: add fallback for D3DFMT_D16 in d3d9_to_pipe_format_checked
+Jordan Justen (1):
+      intel/compiler/gfx12.5+: Lower 64-bit cluster_broadcast with 32-bit ops
 
-Frank Binns (1):
-      pvr: fix typo in pvr_rt_get_region_headers_stride_size()
+Juan A. Suarez Romero (2):
+      v3d: use primitive type to get stream output offset
+      v3d/ci: annotate failure
 
-Guilherme Gallo (1):
-      ci/freedreno: Fix a618-traces-performance rules
+Lionel Landwerlin (1):
+      anv: rework Wa_14017076903 to only apply with occlusion queries
 
-Karmjit Mahil (1):
-      pvr: Handle special built-in variable loading in vertex shader
+Martin Roukala (né Peres) (5):
+      radv/ci: disable the vkcts-navi21-llvm-valve job
+      radv/ci: document all the flakes we hit while I was away
+      ci/b2c: allow not specifying a reboot condition
+      radv/ci: only reboot on hangs for vkcts-navi10-valve
+      zink/ci: document that some tests no longer fail
 
-Leo Liu (1):
-      radeonsi/vcn: AV1 skip the redundant bs resize
+Michel Zou (2):
+      vk/entry_points:: fix mingw build
+      mesa/draw: fix -Wformat warning
 
-Marek Olšák (14):
-      nir: fix 2 bugs in nir_create_passthrough_tcs
-      nir: lower load_barycentric_at_offset in lower_wpos_ytransform
-      nir: assign IO bases in nir_lower_io_passes
-      nir: skip nir_lower_io_passes for compute shaders
-      nir: extend nir_opt_fragdepth to handle lowered IO
-      nir: handle more opcodes in nir_lower_io_to_scalar
-      nir: handle all varying slots in gl_varying_slot_name_for_stage
-      nir: don't remove dead IO variables in nir_lower_io_passes for st_link_nir
-      nir: rework nir_lower_color_inputs to work with lowered IO intrinsics
-      nir: return a status from nir_remove_varying whether it removed the instruction
-      nir: remove an obsolete comment from nir_gather_xfb_info_from_intrinsics
-      nir: add next_stage parameter to nir_slot_is_sysval_output to return better info
-      nir: add next_stage parameter to nir_remove_varying
-      nir: set uses_wide_subgroup_intrinsics for all shader stages
+Mike Blumenkrantz (2):
+      mesa/st: try to block multisampled texsubimage from doing cpu writes
+      mesa: fix ms fallback texture creation
 
-Michel Zou (1):
-      vulkan/wsi: fix -Wnarrowing warning
+Patrick Lerda (1):
+      r600/sfn: fix memory leak related to sh_info->arrays
 
-Mihai Preda (1):
-      nir: update nir->num_inputs, num_outputs in nir_recompute_io_bases()
+Rob Clark (1):
+      freedreno/a6xx: Fix valid_format_cast logic for newer a6xx
 
-Mike Blumenkrantz (20):
-      util/blitter: fix line wrapping on error to avoid giving wrong line number
-      glthread: add newline to env override
-      zink: emit demote cap when using demote
-      zink: only print copy box warning once per resource
-      zink: hook up debug callback
-      zink: use a perf_debug() macro for debug message logging of copy box warning
-      util/debug: move null checks out of debug message macro
-      zink: manually re-set framebuffer after msrtss replicate blit
-      zink: handle 'blitting' flag better in msrtss replication
-      zink: skip msrtss replicate if the attachment will be full-cleared
-      zink: avoid recursion during msrtss blits from flushing clears
-      zink: don't bitcast bool deref loads/stores
-      zink: zink_shader_free -> zink_gfx_shader_free
-      zink: split out generic shader destruction for reuse
-      zink: always wait on precompile fence at start of zink_gfx_shader_free()
-      zink: call zink_shader_free for compute shaders
-      zink: add a util function for printing shaders
-      zink: don't create separate shader dsls if there are no bindings
-      drisw: don't leak the winsys
-      zink: check for extendedDynamicState3DepthClipNegativeOneToOne for ds3 support
+Samuel Pitoiset (2):
+      radv: update binning settings to work around GPU hangs
+      radv/ci: remove one expected test failure on PITCAIRN
 
-Qiang Yu (1):
-      aco: fix nir_f2u64 translation
+Sergi Blanch Torne (1):
+      ci: Move Vulkan CTS patches to their own directory
 
-Rhys Perry (2):
-      aco: remove SMEM_instruction::prevent_overflow
-      aco: use apply_nuw_to_ssa() with load_smem_amd
+antonino (4):
+      zink: add `single_sample` to fs key
+      zink: add to multisample field to `zink_gfx_pipeline_state`
+      zink: don't render with multisampling when it is disabled
+      zink/ci: remove xt_framebuffer_multisample-interpolation fail
 
-Samuel Pitoiset (7):
-      radv: do not allow 1D block-compressed images with (extended) storage on GFX6
-      radv: fix usage flag for 3D compressed 128 bpp images on GFX9
-      radv: wait for occlusion queries in the resolve query shader
-      radv: delay enabling/disabling occlusion queries at draw time
-      radv: track DB_COUNT_CONTROL changes to avoid context rolls
-      radv: emit PIXEL_PIPE_STAT_CONTROL in the gfx preamble for GFX11
-      radv: use gfx_level in radv_flush_occlusion_query_state()
-
-Sil Vilerino (3):
-      frontend/va: Add H264 decode slice data
-      d3d12: Use frontend H264 decode slice offsets and sizes instead of parsing buffer
-      d3d12: Clean unused code for parsing slices
-
-Timur Kristóf (1):
-      radv: Fix dword alignment in SDMA buffer copy.
+xurui (1):
+      zink: Add some printfs when initialization fails
 
