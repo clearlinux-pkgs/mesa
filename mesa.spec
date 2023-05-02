@@ -5,14 +5,13 @@
 #
 Name     : mesa
 Version  : 23.1+389.3c63cb1d89
-Release  : 464
+Release  : 465
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/c3c63cb1d89e328506c366cded845ae200c7d9f9/mesa-23.1+389-gc3c63cb1d89.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/c3c63cb1d89e328506c366cded845ae200c7d9f9/mesa-23.1+389-gc3c63cb1d89.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
 Requires: mesa-data = %{version}-%{release}
-Requires: mesa-filemap = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : Vulkan-Headers-dev
@@ -112,20 +111,11 @@ Requires: mesa-dev = %{version}-%{release}
 dev32 components for the mesa package.
 
 
-%package filemap
-Summary: filemap components for the mesa package.
-Group: Default
-
-%description filemap
-filemap components for the mesa package.
-
-
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
-Requires: mesa-filemap = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
@@ -165,7 +155,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682102953
+export SOURCE_DATE_EPOCH=1683057908
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -336,12 +326,72 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib32/pkgconfig/osmesa.pc
 /usr/lib32/pkgconfig/xatracker.pc
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-mesa
-
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/dri/crocus_dri.so
+/V3/usr/lib64/dri/i915_dri.so
+/V3/usr/lib64/dri/iris_dri.so
+/V3/usr/lib64/dri/kms_swrast_dri.so
+/V3/usr/lib64/dri/nouveau_dri.so
+/V3/usr/lib64/dri/nouveau_drv_video.so
+/V3/usr/lib64/dri/r300_dri.so
+/V3/usr/lib64/dri/r600_dri.so
+/V3/usr/lib64/dri/r600_drv_video.so
+/V3/usr/lib64/dri/radeonsi_dri.so
+/V3/usr/lib64/dri/radeonsi_drv_video.so
+/V3/usr/lib64/dri/swrast_dri.so
+/V3/usr/lib64/dri/virtio_gpu_dri.so
+/V3/usr/lib64/dri/virtio_gpu_drv_video.so
+/V3/usr/lib64/dri/vmwgfx_dri.so
+/V3/usr/lib64/dri/zink_dri.so
+/V3/usr/lib64/gallium-pipe/pipe_crocus.so
+/V3/usr/lib64/gallium-pipe/pipe_i915.so
+/V3/usr/lib64/gallium-pipe/pipe_iris.so
+/V3/usr/lib64/gallium-pipe/pipe_nouveau.so
+/V3/usr/lib64/gallium-pipe/pipe_r300.so
+/V3/usr/lib64/gallium-pipe/pipe_r600.so
+/V3/usr/lib64/gallium-pipe/pipe_radeonsi.so
+/V3/usr/lib64/gallium-pipe/pipe_swrast.so
+/V3/usr/lib64/gallium-pipe/pipe_vmwgfx.so
+/V3/usr/lib64/libEGL_mesa.so
+/V3/usr/lib64/libEGL_mesa.so.0
+/V3/usr/lib64/libEGL_mesa.so.0.0.0
+/V3/usr/lib64/libGLX_mesa.so
+/V3/usr/lib64/libGLX_mesa.so.0
+/V3/usr/lib64/libGLX_mesa.so.0.0.0
+/V3/usr/lib64/libMesaOpenCL.so
+/V3/usr/lib64/libMesaOpenCL.so.1
+/V3/usr/lib64/libMesaOpenCL.so.1.0.0
+/V3/usr/lib64/libOSMesa.so
+/V3/usr/lib64/libOSMesa.so.8
+/V3/usr/lib64/libOSMesa.so.8.0.0
+/V3/usr/lib64/libgbm.so
+/V3/usr/lib64/libgbm.so.1
+/V3/usr/lib64/libgbm.so.1.0.0
+/V3/usr/lib64/libglapi.so
+/V3/usr/lib64/libglapi.so.0
+/V3/usr/lib64/libglapi.so.0.0.0
+/V3/usr/lib64/libvulkan_intel.so
+/V3/usr/lib64/libvulkan_radeon.so
+/V3/usr/lib64/libxatracker.so
+/V3/usr/lib64/libxatracker.so.2
+/V3/usr/lib64/libxatracker.so.2.5.0
+/V3/usr/lib64/vdpau/libvdpau_nouveau.so
+/V3/usr/lib64/vdpau/libvdpau_nouveau.so.1
+/V3/usr/lib64/vdpau/libvdpau_nouveau.so.1.0
+/V3/usr/lib64/vdpau/libvdpau_nouveau.so.1.0.0
+/V3/usr/lib64/vdpau/libvdpau_r600.so
+/V3/usr/lib64/vdpau/libvdpau_r600.so.1
+/V3/usr/lib64/vdpau/libvdpau_r600.so.1.0
+/V3/usr/lib64/vdpau/libvdpau_r600.so.1.0.0
+/V3/usr/lib64/vdpau/libvdpau_radeonsi.so
+/V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1
+/V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
+/V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
+/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so
+/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1
+/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0
+/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/lib64/dri/crocus_dri.so
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/iris_dri.so
@@ -367,29 +417,6 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib64/gallium-pipe/pipe_radeonsi.so
 /usr/lib64/gallium-pipe/pipe_swrast.so
 /usr/lib64/gallium-pipe/pipe_vmwgfx.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL_mesa.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL_mesa.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libEGL_mesa.so.0.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libGLX_mesa.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libGLX_mesa.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libGLX_mesa.so.0.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so.1
-/usr/lib64/glibc-hwcaps/x86-64-v3/libMesaOpenCL.so.1.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so.8
-/usr/lib64/glibc-hwcaps/x86-64-v3/libOSMesa.so.8.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so.1
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgbm.so.1.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libglapi.so.0.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvulkan_intel.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvulkan_radeon.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so.2
-/usr/lib64/glibc-hwcaps/x86-64-v3/libxatracker.so.2.5.0
 /usr/lib64/libEGL_mesa.so
 /usr/lib64/libEGL_mesa.so.0
 /usr/lib64/libEGL_mesa.so.0.0.0
@@ -429,7 +456,6 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0.0
-/usr/share/clear/optimized-elf/other*
 
 %files lib32
 %defattr(-,root,root,-)
