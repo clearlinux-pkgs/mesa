@@ -1,0 +1,11 @@
+--- mesa-32b150344e035dd0badf8c83813358ec3d045fb7/src/util/blake3/meson.build~	2023-05-22 13:41:40.000000000 +0000
++++ mesa-32b150344e035dd0badf8c83813358ec3d045fb7/src/util/blake3/meson.build	2023-05-22 15:46:21.455235587 +0000
+@@ -11,7 +11,7 @@
+ 
+ blake3_x86_no_simd_defs = ['-DBLAKE3_NO_SSE2', '-DBLAKE3_NO_SSE41', '-DBLAKE3_NO_AVX2', '-DBLAKE3_NO_AVX512']
+ 
+-if cpu_family == 'x86_64'
++if cpu_family == 'x86_64v'
+   if is_windows
+     if is_msvc
+       # An up-to-date version of Meson, not using the VS backend is needed.
