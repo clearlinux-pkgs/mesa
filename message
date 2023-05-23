@@ -1,35 +1,107 @@
-Updating from 8e53b293f88cd30e2780d73adcf7da314ce811d1 to 32b150344e035dd0badf8c83813358ec3d045fb7
+Updating from 32b150344e035dd0badf8c83813358ec3d045fb7 to aedbc3585781269a12cdb0fa54bd9e2cdcfa39e7
 
-David Heidelberg (2):
-      r300: workaround GCC 12+ warning, declare NULL value as unreachable
-      docs: use meson instead invoking ninja directly
+Alejandro Piñeiro (5):
+      v3dv/pipeline: don't prepack up early-z configuration
+      v3d: use more an auxiliar devinfo
+      v3d: remove v3d_create_texture_shader_state_bo
+      v3d: remove v3d_tfu_supports_tex_format
+      v3d: remove v3d_get_internal_type_bpp_for_output_format
+
+Alyssa Rosenzweig (8):
+      nir: Document extra image source
+      nir: Add image_texel_address intrinsics
+      nir: Add pass to lower image atomics
+      pan/bi: Fix atomic exchange on Valhall
+      pan/bi: Use nir_lower_image_atomics_to_global
+      pan/mdg: Use nir_lower_image_atomics_to_global
+      gallium: Add pipe_image_view::single_layer_view
+      mesa/st: Set pipe_shader_image::single_layer_view
+
+Caio Oliveira (1):
+      mesa/spirv: Provide more specific error message for glSpecializeShader()
+
+Chia-I Wu (3):
+      amd/drm-shim: add raven2
+      ac/surface: print tile_swizzle as well
+      radv: do not use a pipe offset for aliased images
+
+Dave Airlie (10):
+      gallivm/draw: refactor vertex header jit type out
+      llvmpipe: convert a bunch of shader_type ifs to switches.
+      llvmpipe/cs: start making variant generator less compute specific
+      llvmpipe/cs: support passing a csctx instead of using implicit one
+      lavapipe: add lavapipe specific shader stages define.
+      lvp: explictly skip compute shader stage.
+      gallivm: fix whitespace in get_deref_offset
+      gallivm/nir: refactor the local invocation index calc.
+      lvp: use stage mask
+      lvp: use stage iterator macros instead of explicit loops
+
+Eric Engestrom (1):
+      ci: disable anholt's farm
+
+Erik Faye-Lund (1):
+      panfrost: expose PIPE_CAP_POLYGON_OFFSET_CLAMP
+
+Gert Wollny (3):
+      virgl: Make query result resource as dirty before requesting result
+      virgl: Add support for ARB_pipeline_statistics
+      virgl/ci: uprev virglrenderer
 
 Iago Toral Quiroga (1):
-      broadcom/compiler: skip jumps in non-uniform if/then when block cost is small
+      v3dv: simplify too small Z viewport scale workaround
+
+Juan A. Suarez Romero (2):
+      v3d/ci: run GPU piglit profile
+      v3d/ci: make traces test mandatory
+
+Karol Herbst (1):
+      rusticl/spirv: skip printing info messages
 
 Lionel Landwerlin (1):
-      anv: fix push descriptor deferred surface state packing
+      intel/fs: fix size_read() for LOAD_PAYLOAD
 
-Mike Blumenkrantz (1):
-      zink: try update fb resource refs when starting new renderpass
+Martin Roukala (né Peres) (1):
+      radv/ci: switch to b2c v0.9.10
 
-Samuel Pitoiset (12):
-      radv: bump the global VRS image size to maximum supported FB dimensions
-      radv: disable IMAGE_USAGE_STORAGE with depth-only and stencil-only formats
-      radv: remove useless check about USAGE_STORAGE for TC-compat HTILE
-      nir: add nir_intrinsic_load_poly_line_smooth_enabled
-      radeonsi: lower nir_intrinsic_load_poly_line_smooth_enabled_amd
-      nir: lower smooth lines conditionally using the new intrinsic
-      radv: track if the smoothLines features is enabled in the device
-      radv: determine if smooth lines can be used in the pipeline key
-      radv: declare a new user SGPR for the dynamic line rasterization mode
-      radv: lower nir_intrinsic_load_poly_line_smooth_enabled_amd
-      radv: add support for smooth lines
-      radv: enable smoothLines
+Mike Blumenkrantz (22):
+      zink: add special-casing for (not) reordering certain image barriers
+      zink: use batch usage function for a simple case
+      zink: move zink_batch_state::submit_count to zink_batch_usage
+      zink: move batch usage to substruct on zink_bo objects
+      zink: track/check submit info on resource batch usage
+      zink: disable unordered blits when swapchain images need aqcuire
+      zink: explicitly disable reordering after restricted swapchain readback blits
+      zink: explicitly disable promotion on images that are both unflushed and non-reorderable
+      zink: flag 'has_work' on batch when promoting a cmd
+      lavapipe: more correctly handle null pipeline states
+      anv: more correctly handle null pipeline states
+      vk/graphics_state: handle null pipeline state structs in creation
+      zink: promote flushed clears to unordered cmdbuf when possible
+      zink: also declare int size caps inline with signed int type usage
+      zink: delete unnecessary bitcast in load_shared/scratch
+      zink: use void return for store_dest
+      zink: move get_alu_type() up in file
+      zink: manually memcpy the spirv instruction buffer
+      zink: write out register variables to a separate spirv buffer
+      zink: dynamically emit non-bool register values using local_vars spirv buffer
+      zink: store and use alu types for ntv defs
+      zink: infer types from load_const instrs to avoid more bitcasts
 
-Timothy Arceri (1):
-      util: add Pixel Game Maker MV workaround
+Nanley Chery (5):
+      intel/blorp: Use the depth copy format more on BDW+
+      intel/blorp: Add depth usage check for copy format
+      intel/blorp: Change condition for CCS_E copy formats
+      intel/blorp: Add and use blorp_copy_get_formats
+      iris: Use known formats for tex_cache_flush_hack
 
-Yiwei Zhang (1):
-      radv: fix radv_emit_userdata_vertex for vertex offset -1
+Samuel Pitoiset (1):
+      radv: apply a bug workaround for smoothing on GFX6
+
+Tatsuyuki Ishi (1):
+      nir: Fix serializing pointer initializers.
+
+norablackcat (2):
+      rusticl/screen: implement uuid wrapper funcs
+      rusticl/device: implement cl_khr_device_uuid
 
