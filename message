@@ -1,89 +1,153 @@
-Updating from aedbc3585781269a12cdb0fa54bd9e2cdcfa39e7 to 6875f97618bc82fcf7315ae22d8ab91e082d3924
+Updating from 6875f97618bc82fcf7315ae22d8ab91e082d3924 to 170e2fa11e0f66f47c658899148ce32680db4b71
 
-Alejandro Piñeiro (3):
-      broadcom/compiler: return NULL if we fail to register allocate
-      v3d: assert if v3d_compile returns NULL
-      broadcom/compiler: disable tmu pipelining when needed
+Alyssa Rosenzweig (7):
+      treewide: Avoid nir_lower_regs_to_ssa calls
+      nir/opt_barriers: Add a default callback
+      agx: Use common combine_all_barriers callback
+      nir: Drop stale comments
+      zink: Switch to scoped barriers
+      panfrost/ci: Skip Piglit tests known to crash
+      panfrost/ci: Skip hanging test
 
-Alyssa Rosenzweig (1):
-      dxil: Rely on scoped_barrier
+Caleb Cornett (3):
+      d3d12: Fix Xbox GDK build errors
+      wgl: Add BITMAPV5HEADER to stw_gdishim.h
+      d3d12: Fix Xbox frame scheduling for interval != 1
 
 Corentin Noël (1):
-      nir: Propagate the type sampler type change to the used variable.
+      build-crosvm: Use the pkg-config crate 0.3.27
 
-Dave Airlie (2):
-      ci: reenable lavapipe
-      radv/video: add missing space checks for video.
+Dave Airlie (1):
+      radv/video: use correct h264 levels
 
-Eric Engestrom (6):
-      ci: only execute capture-devcoredump.sh when it's present
-      util/bitset: ensure the sets compared have the same size at compile time
-      docs: add release notes for 23.1.0
-      docs: update calendar for 23.1.0
-      ci/b2c: increase timeout to 5 minutes
-      ci/amd: don't override the b2c timeout in the steamdeck config
+David Heidelberg (25):
+      ci/freedreno: disable 3 jobs to match our farm 3 devices down
+      ci/freedreno: rename piglit job to respresent the real testing it does
+      ci: move from pkg-config to pkgconf
+      ci: use meson setup and meson install instead of meson and invoking ninja directly
+      ci: bump libdrm from 2.4.110 to 2.4.114 present in Debian 12
+      ci: install stock android-libext4-utils (available in 12, bookworm)
+      ci: bump gfxreconstruct revision up to compatible version with Debian 12
+      ci: libwayland from 1.18 to 1.21 and wayland protocols from 1.24 to 1.31
+      ci: VVL uprev (temporary until new release will be published)
+      ci: bump from Debian 11 (bullseye) to 12 (bookworm)
+      ci/apitrace: install win64 apitrace only on x86_64
+      ci/crosvm: install libelogind0 and sysvinit-core for poweroff functionality
+      ci: add clang-15 and clang++-15 wrapper script
+      ci/skqp: skqp can't live with compiler named clang-15, provide symlink
+      ci: drop gallium-aux test on msan builds, renable freedreno
+      ci/mingw: disable as it's broken
+      ci/venus: add fail after CI uprev to the Debian 12
+      ci/virpipe: add flakes introduced with CI uprev to Debian 12
+      ci/zink: disable flaking anv traces
+      ci: enable shellcheck on whole .gitlab-ci
+      ci: disable bogus GCC warning with -Warray-bounds
+      ci: do not fail when SHA1 impl. produce stringop-overreads warning
+      ci/lavapipe: document subgroups.shuffle.compute.subgroupshuffleup_double_constant crash
+      ci/lavapipe: zink failures
+      ci/llvmpipe: document intel_shader_atomic_float_minmax@execution@ssbo-atomic*
 
-Erik Faye-Lund (1):
-      util: mark externally-unused functions as static
+Eric Engestrom (4):
+      ci/zink: add new zink-radv-navi10-valve flakes
+      mailmap: update @mupuf's name
+      docs: fix release date of 23.1.0
+      ci/zink: document new zink-radv-navi10-valve failures
 
-Filip Gawin (1):
-      ac/nir: fix slots in clamping legacy colors
+Erik Faye-Lund (13):
+      nir: use more nir_fmul_imm
+      nir: use more nir_fadd_imm
+      nir: fsub -> fadd_imm
+      nir: use more nir_ffma_imm variants
+      nir: add nir_fsub_imm
+      nir: use nir_fsub_imm
+      radeonsi,radv: use nir_format_linear_to_srgb
+      docs: explicitly mark extensions as obsolete
+      docs: mark MESA_multithread_makecurrent as obsolete
+      docs: mark MESA_shader_debug as obsolete
+      docs: mark MESA_swap_frame_usage as obsolete
+      docs: mark MESA_texture_array as obsolete
+      docs: move obsolete extensions to their own list
 
-Gert Wollny (1):
-      docs/features: fix empty line error
+Frank Binns (1):
+      pvr: fix invalid read reported by valgrind
 
-Iago Toral Quiroga (3):
-      v3dv: store slice dimensions in pixels
-      v3dv: allow TFU transfers for mip levels other than 0
-      v3dv: align compressed image regions to block size
+Georg Lehmann (1):
+      util: fix stack dynarray used by multiple tus
 
-José Roberto de Souza (1):
-      iris: Replace aperture_bytes by sram size in iris_resource_create_for_image() for PIPE_USAGE_STAGING
+Iago Toral Quiroga (2):
+      broadcom/compiler: flag use of control barriers
+      broadcom/compiler: use scoped barriers
+
+Jesse Natalie (5):
+      dzn: Add a no-bindless debug flag
+      dzn: Fix inverted assert
+      dzn: Partial revert of 8887852d
+      dzn: Don't expose copy queues
+      dzn: Fix src/dest confusion for some non-bindless descriptor copies
 
 Julia Tatz (1):
-      zink: Implement PIPE_CAP_OPENCL_INTEGER_FUNCTIONS and PIPE_CAP_INTEGER_MULTIPLY_32X16.
+      zink: Implement PIPE_CAP_RESOURCE_FROM_USER_MEMORY
 
 Lionel Landwerlin (3):
-      anv: move timestamp vfunc initialization to genX code
-      anv: use COMPUTE_WALKER post sync field to track compute work
-      iris: use COMPUTE_WALKER post sync field to track compute work
+      intel/fs: make tcs input_vertices dynamic
+      anv: implement EDS2.extendedDynamicState2PatchControlPoints
+      iris: rework Wa_14017076903 to only apply with occlusion queries
 
-Lucas Fryzek (2):
-      broadcom: Add support for VK_FORMAT_A2R10G10B10_UNORM_PACK32
-      broadcom: Fix slice memory allocation logic for compressed textures
+Marek Olšák (5):
+      mesa: fix a VBO buffer reference leak in _mesa_bind_vertex_buffer
+      ac,radeonsi,winsyses: switch to SPDX-License-Identifier: MIT
+      winsys/radeon: set has_image_opcodes to unbreak gfx6-7
+      winsys/radeon: fix the scratch buffer on gfx6-7
+      winsys/radeon: set more radeon_info fields
 
-Mike Blumenkrantz (6):
-      lavapipe: bump memory allocation heap to 3GiB
-      lavapipe: report full memory in heap for 64bit processes
-      lavapipe: EXT_memory_budget
-      lavapipe: EXT_memory_priority
-      lavapipe: store memory allocation size onto lvp_device_memory
-      lavapipe: VK_EXT_pageable_device_local_memory
+Mike Blumenkrantz (2):
+      zink: don't wait on queue thread if disabled
+      zink: use the per-context track_renderpasses flag in more places
 
 Patrick Lerda (1):
-      mesa: fix refcnt imbalance related to egl_image_target_texture()
+      glthread: fix typo related to upload_vertices()
 
-Rob Clark (5):
-      mesa: Skip update_gl_clamp() if samplers need clamp
-      freedreno/a6xx: Template specialization for draw type
-      freedreno/a6xx: Template specialization for pipeline type
-      freedreno/a6xx: Optimize max_indices calculation
-      freedreno/batch: Move submit bo tracking to batch
+Rhys Perry (17):
+      aco: add get_op_fixed_to_def() helper
+      aco: consider how definitions fixed to operands can change register demand
+      nir/fold_16bit_tex_image: skip tex instructions with backend1
+      nir,vtn,aco,ac/llvm: make cube_face_coord_amd more direct
+      ac/nir: add pass for lowering 1d/cube coordinates
+      ac/nir: round layer in ac_nir_lower_tex
+      radv,radeonsi: use ac_nir_lower_tex
+      nir/lower_tex: remove lower_array_layer_round_even
+      ac/nir: add fix_derivs_in_divergent_cf
+      aco: remove unused RegType
+      aco: let p_start_linear_vgpr take an operand
+      aco: add MIMG_instruction::strict_wqm
+      aco: implement strict_wqm_coord_amd
+      aco: implement texture samples with strict WQM coordinates
+      radv: use fix_derivs_in_divergent_cf
+      aco/tests: improve performance of declaration parsing
+      aco/tests: add fix_derivs_in_divergent_cf tests
 
-Ruijing Dong (3):
-      gallium/pipe: add interface update_decoder_target
-      radeonsi/vcn: apply update_decoder_target logic
-      frontends/va: remove private member and update target buffer
+Samuel Pitoiset (2):
+      zink/ci: update VANGOGH expected list of failures
+      vulkan/pipeline_cache: remove a bogus assert when inserting objects
 
-Ryan Houdek (1):
-      util: move check for AVX512
-
-Samuel Pitoiset (1):
-      radv: do not enable VRS flat shading if the VRS builtin is read
-
-Tapani Pälli (4):
-      intel/dev: provide helper to check if devinfo is ATS-M
-      anv: add required invalidate/flush for Wa_14014427904
-      iris: add required invalidate/flush for Wa_14014427904
-      mesa: validate shader binary format in _mesa_spirv_shader_binary
+Thomas H.P. Andersen (19):
+      tgsi: delete unused functions
+      aux: remove unused tgsi includes
+      d3d12: remove unused tgsi includes
+      etnaviv: remove unused tgsi includes
+      freedreno: remove unused tgsi includes
+      i915: remove unused tgsi includes
+      llvmpipe: remove unused tgsi includes
+      nouveau: remove unused tgsi includes
+      r300: remove unused tgsi includes
+      r600: remove unused tgsi includes
+      radeonsi: remove unused tgsi includes
+      softpipe: remove unused tgsi includes
+      svga: remove unused tgsi includes
+      v3d: remove unused tgsi includes
+      vc4: remove unused tgsi includes
+      virgl: remove unused tgsi includes
+      zink: remove unused tgsi includes
+      lavapipe: remove unused tgsi includes
+      st: remove unused tgsi includes
 
