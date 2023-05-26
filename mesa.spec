@@ -5,7 +5,7 @@
 #
 Name     : mesa
 Version  : 23.1+1989.g170e2fa11e0
-Release  : 469
+Release  : 470
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/170e2fa11e0f66f47c658899148ce32680db4b71/mesa-23.1+1989-g170e2fa11e0.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/170e2fa11e0f66f47c658899148ce32680db4b71/mesa-23.1+1989-g170e2fa11e0.tar.bz2
 Summary  : No detailed summary available
@@ -157,7 +157,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685039057
+export SOURCE_DATE_EPOCH=1685117755
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -171,7 +171,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
--Dvulkan-drivers=intel,amd \
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast \
 -Dshared-glapi=enabled \
 -Dglvnd=true \
 -Dllvm=enabled \
@@ -189,7 +189,7 @@ CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS 
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
--Dvulkan-drivers=intel,amd \
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast \
 -Dshared-glapi=enabled \
 -Dglvnd=true \
 -Dllvm=enabled \
@@ -213,7 +213,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
--Dvulkan-drivers=intel,amd \
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast \
 -Dshared-glapi=enabled \
 -Dglvnd=true \
 -Dllvm=enabled \
@@ -291,7 +291,9 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/drirc.d/00-radv-defaults.conf
 /usr/share/glvnd/egl_vendor.d/50_mesa.json
+/usr/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
+/usr/share/vulkan/icd.d/lvp_icd.x86_64.json
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 
 %files dev
@@ -374,6 +376,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /V3/usr/lib64/libglapi.so.0
 /V3/usr/lib64/libglapi.so.0.0.0
 /V3/usr/lib64/libvulkan_intel.so
+/V3/usr/lib64/libvulkan_intel_hasvk.so
+/V3/usr/lib64/libvulkan_lvp.so
 /V3/usr/lib64/libvulkan_radeon.so
 /V3/usr/lib64/libxatracker.so
 /V3/usr/lib64/libxatracker.so.2
@@ -438,6 +442,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib64/libglapi.so.0
 /usr/lib64/libglapi.so.0.0.0
 /usr/lib64/libvulkan_intel.so
+/usr/lib64/libvulkan_intel_hasvk.so
+/usr/lib64/libvulkan_lvp.so
 /usr/lib64/libvulkan_radeon.so
 /usr/lib64/libxatracker.so
 /usr/lib64/libxatracker.so.2
@@ -498,6 +504,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib32/libglapi.so.0
 /usr/lib32/libglapi.so.0.0.0
 /usr/lib32/libvulkan_intel.so
+/usr/lib32/libvulkan_intel_hasvk.so
+/usr/lib32/libvulkan_lvp.so
 /usr/lib32/libvulkan_radeon.so
 /usr/lib32/libxatracker.so
 /usr/lib32/libxatracker.so.2
