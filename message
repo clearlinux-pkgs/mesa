@@ -1,153 +1,71 @@
-Updating from 6875f97618bc82fcf7315ae22d8ab91e082d3924 to 170e2fa11e0f66f47c658899148ce32680db4b71
+Updating from 170e2fa11e0f66f47c658899148ce32680db4b71 to a1b27c364ffdf8cc39399d4f10dac4206e64cb6c
 
-Alyssa Rosenzweig (7):
-      treewide: Avoid nir_lower_regs_to_ssa calls
-      nir/opt_barriers: Add a default callback
-      agx: Use common combine_all_barriers callback
-      nir: Drop stale comments
-      zink: Switch to scoped barriers
-      panfrost/ci: Skip Piglit tests known to crash
-      panfrost/ci: Skip hanging test
+Alyssa Rosenzweig (1):
+      nir: Add intrinsics for multisampling on AGX
 
-Caleb Cornett (3):
-      d3d12: Fix Xbox GDK build errors
-      wgl: Add BITMAPV5HEADER to stw_gdishim.h
-      d3d12: Fix Xbox frame scheduling for interval != 1
+Boyuan Zhang (1):
+      frontends/va: add default intra idr period
 
-Corentin Noël (1):
-      build-crosvm: Use the pkg-config crate 0.3.27
+Eric Engestrom (15):
+      v3dv: fix align() computation for pixel formats with non-POT block sizes
+      docs: update calendar for 23.1.1
+      docs: add release notes for 23.1.1
+      docs/relnotes: add sha256sum for 23.1.1
+      ci_run_n_monitor: add ability to specify the pipeline to use, instead of auto-detecting it
+      ci/amd: move AMD-specific LD_PRELOAD to AMD config
+      ci/amd: only define AMDGPU_GPU_ID for the duration of the call
+      bin/ci: fix mistakenly hardcoded repo name in get_gitlab_project()
+      ci/intel: reuse iris_file_list instead of copying its definition
+      meson: simplify another "any of" check
+      wsi/display: drop unused parameters from local functions
+      ci: split clang-format list of folders for easier maintenance
+      ci: show diff when clang-format check fails
+      panfrost: fix formatting of a couple of files that were missed
+      panfrost: rename *.cc files to *.cpp
 
-Dave Airlie (1):
-      radv/video: use correct h264 levels
+Gert Wollny (6):
+      virgl: Fix IB upload when a start >0 is given
+      virgl: Submit drawid_offset if is not zero
+      virgl: signal support for group vote and draw parameters
+      virgl: enable ARB_gl_spirv
+      features: Update virgl features
+      ci: uprev virglrenderer to include changes needed for GL 4.6 support
 
-David Heidelberg (25):
-      ci/freedreno: disable 3 jobs to match our farm 3 devices down
-      ci/freedreno: rename piglit job to respresent the real testing it does
-      ci: move from pkg-config to pkgconf
-      ci: use meson setup and meson install instead of meson and invoking ninja directly
-      ci: bump libdrm from 2.4.110 to 2.4.114 present in Debian 12
-      ci: install stock android-libext4-utils (available in 12, bookworm)
-      ci: bump gfxreconstruct revision up to compatible version with Debian 12
-      ci: libwayland from 1.18 to 1.21 and wayland protocols from 1.24 to 1.31
-      ci: VVL uprev (temporary until new release will be published)
-      ci: bump from Debian 11 (bullseye) to 12 (bookworm)
-      ci/apitrace: install win64 apitrace only on x86_64
-      ci/crosvm: install libelogind0 and sysvinit-core for poweroff functionality
-      ci: add clang-15 and clang++-15 wrapper script
-      ci/skqp: skqp can't live with compiler named clang-15, provide symlink
-      ci: drop gallium-aux test on msan builds, renable freedreno
-      ci/mingw: disable as it's broken
-      ci/venus: add fail after CI uprev to the Debian 12
-      ci/virpipe: add flakes introduced with CI uprev to Debian 12
-      ci/zink: disable flaking anv traces
-      ci: enable shellcheck on whole .gitlab-ci
-      ci: disable bogus GCC warning with -Warray-bounds
-      ci: do not fail when SHA1 impl. produce stringop-overreads warning
-      ci/lavapipe: document subgroups.shuffle.compute.subgroupshuffleup_double_constant crash
-      ci/lavapipe: zink failures
-      ci/llvmpipe: document intel_shader_atomic_float_minmax@execution@ssbo-atomic*
+Jesse Natalie (1):
+      wsi/win32: Handle acquiring an image while one is already acquired
 
-Eric Engestrom (4):
-      ci/zink: add new zink-radv-navi10-valve flakes
-      mailmap: update @mupuf's name
-      docs: fix release date of 23.1.0
-      ci/zink: document new zink-radv-navi10-valve failures
+Konstantin Seurer (1):
+      radv: Stop using radv_get_int_debug_option
 
-Erik Faye-Lund (13):
-      nir: use more nir_fmul_imm
-      nir: use more nir_fadd_imm
-      nir: fsub -> fadd_imm
-      nir: use more nir_ffma_imm variants
-      nir: add nir_fsub_imm
-      nir: use nir_fsub_imm
-      radeonsi,radv: use nir_format_linear_to_srgb
-      docs: explicitly mark extensions as obsolete
-      docs: mark MESA_multithread_makecurrent as obsolete
-      docs: mark MESA_shader_debug as obsolete
-      docs: mark MESA_swap_frame_usage as obsolete
-      docs: mark MESA_texture_array as obsolete
-      docs: move obsolete extensions to their own list
-
-Frank Binns (1):
-      pvr: fix invalid read reported by valgrind
-
-Georg Lehmann (1):
-      util: fix stack dynarray used by multiple tus
-
-Iago Toral Quiroga (2):
-      broadcom/compiler: flag use of control barriers
-      broadcom/compiler: use scoped barriers
-
-Jesse Natalie (5):
-      dzn: Add a no-bindless debug flag
-      dzn: Fix inverted assert
-      dzn: Partial revert of 8887852d
-      dzn: Don't expose copy queues
-      dzn: Fix src/dest confusion for some non-bindless descriptor copies
-
-Julia Tatz (1):
-      zink: Implement PIPE_CAP_RESOURCE_FROM_USER_MEMORY
-
-Lionel Landwerlin (3):
-      intel/fs: make tcs input_vertices dynamic
-      anv: implement EDS2.extendedDynamicState2PatchControlPoints
-      iris: rework Wa_14017076903 to only apply with occlusion queries
-
-Marek Olšák (5):
-      mesa: fix a VBO buffer reference leak in _mesa_bind_vertex_buffer
-      ac,radeonsi,winsyses: switch to SPDX-License-Identifier: MIT
-      winsys/radeon: set has_image_opcodes to unbreak gfx6-7
-      winsys/radeon: fix the scratch buffer on gfx6-7
-      winsys/radeon: set more radeon_info fields
+Lionel Landwerlin (6):
+      intel: add alignment helper for aux map
+      iris: add a comment about aux-tt alignment requirements
+      anv: update aux-tt alignment requirements for MTL
+      intel: reduce minimum memory alignment on Gfx12.5
+      anv: further reduce pool alignments
+      anv: opportunistically align VMA to 2Mb
 
 Mike Blumenkrantz (2):
-      zink: don't wait on queue thread if disabled
-      zink: use the per-context track_renderpasses flag in more places
+      zink: don't remove psiz from linked shaders if the consumer reads it
+      zink: don't propagate psiz in quads emulation gs
 
-Patrick Lerda (1):
-      glthread: fix typo related to upload_vertices()
+Mykhailo Skorokhodov (1):
+      mesa: Implement GL_CLEAR_TEXTURE flag
 
-Rhys Perry (17):
-      aco: add get_op_fixed_to_def() helper
-      aco: consider how definitions fixed to operands can change register demand
-      nir/fold_16bit_tex_image: skip tex instructions with backend1
-      nir,vtn,aco,ac/llvm: make cube_face_coord_amd more direct
-      ac/nir: add pass for lowering 1d/cube coordinates
-      ac/nir: round layer in ac_nir_lower_tex
-      radv,radeonsi: use ac_nir_lower_tex
-      nir/lower_tex: remove lower_array_layer_round_even
-      ac/nir: add fix_derivs_in_divergent_cf
-      aco: remove unused RegType
-      aco: let p_start_linear_vgpr take an operand
-      aco: add MIMG_instruction::strict_wqm
-      aco: implement strict_wqm_coord_amd
-      aco: implement texture samples with strict WQM coordinates
-      radv: use fix_derivs_in_divergent_cf
-      aco/tests: improve performance of declaration parsing
-      aco/tests: add fix_derivs_in_divergent_cf tests
+Rohan Garg (7):
+      iris: correctly set alignment to next power of two for struct size
+      ac/surface: make sure alignment is a POT
+      freedreno: set alignment to next POT
+      util: fix ROUND_DOWN_TO alignment type
+      util: migrate alignment functions and macros to use ALIGN_POT
+      util: revert back to ALIGN since it moved to util
+      util: move pot functions to use existing macros
 
-Samuel Pitoiset (2):
-      zink/ci: update VANGOGH expected list of failures
-      vulkan/pipeline_cache: remove a bogus assert when inserting objects
+Samuel Pitoiset (3):
+      zink/ci: skip arb_texture_buffer_object@texture-buffer-size-clamp* with RADV
+      radv: fix copying 2D to 3D images
+      ci: uprev vkd3d-proton to 2.9
 
-Thomas H.P. Andersen (19):
-      tgsi: delete unused functions
-      aux: remove unused tgsi includes
-      d3d12: remove unused tgsi includes
-      etnaviv: remove unused tgsi includes
-      freedreno: remove unused tgsi includes
-      i915: remove unused tgsi includes
-      llvmpipe: remove unused tgsi includes
-      nouveau: remove unused tgsi includes
-      r300: remove unused tgsi includes
-      r600: remove unused tgsi includes
-      radeonsi: remove unused tgsi includes
-      softpipe: remove unused tgsi includes
-      svga: remove unused tgsi includes
-      v3d: remove unused tgsi includes
-      vc4: remove unused tgsi includes
-      virgl: remove unused tgsi includes
-      zink: remove unused tgsi includes
-      lavapipe: remove unused tgsi includes
-      st: remove unused tgsi includes
+Sergi Blanch Torne (1):
+      ci: Allow zink-radv jobs to be manual when uprev piglit
 
