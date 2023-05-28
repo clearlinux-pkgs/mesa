@@ -1,30 +1,6 @@
-Updating from a1b27c364ffdf8cc39399d4f10dac4206e64cb6c to 92a7cba4f2642b46e22c017cb2a191c1a34ca491
+Updating from 92a7cba4f2642b46e22c017cb2a191c1a34ca491 to 744e9cb21326426c851b731393c84bb2e1fef382
 
-Christopher Snowhill (1):
-      intel: Sync xe_drm.h
-
-Jesse Natalie (5):
-      nir_lower_returns: Optimize phis before beginning the pass
-      nir: Add undef phi srcs when adding successors
-      radv: Don't run opt_remove_phis before lower_returns
-      dxil: Don't run opt_remove_phis before lower_returns
-      ci/windows: Update WARP to 1.0.7
-
-Marek Olšák (16):
-      ac/gpu_info: give has_msaa_sample_loc_bug a more accurate name
-      ac/surface: move CB format translation helpers here
-      ac/surface: move determing ADDR_FMT_* into a helper function
-      ac/llvm: clean up translation of nir_intrinsic_load_invocation_id
-      ac/llvm: clean up visit_load_local_invocation_index and visit_load_subgroup_id
-      ac/llvm: use LLVM 0/1 constants from ac_llvm_context instead of LLVMConstInt
-      radeonsi/gfx11: fix alpha-to-coverage with blending
-      radeonsi: reorder code in si_texture_create_object as preparation for the future
-      radeonsi: cosmetic changes in si_shader.h
-      radeonsi: remove the gl_SampleMask FS output if MSAA is disabled
-      radeonsi: don't enable WGP_MODE because of high cost of workgroup mem coherency
-      radeonsi: move emitting draws states out of si_emit_all_states
-      radeonsi/gfx11: use DISABLE_FOR_AUTO_INDEX to disable non-indexed prim restart
-      radeonsi: reduce the supported compute grid size
-      radeonsi: update test results and flakes
-      radeonsi: re-enable fp16_rtz for compute blits to fix PBO tests on gfx11
+David Heidelberg (2):
+      bin/ci: mention requirements.txt
+      gitlab: add template for merge requests
 
