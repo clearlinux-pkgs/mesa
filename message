@@ -1,6 +1,69 @@
-Updating from 92a7cba4f2642b46e22c017cb2a191c1a34ca491 to 744e9cb21326426c851b731393c84bb2e1fef382
+Updating from 744e9cb21326426c851b731393c84bb2e1fef382 to 6439edd6443fd2a9271ddd3754550edde1c46d0c
 
-David Heidelberg (2):
-      bin/ci: mention requirements.txt
-      gitlab: add template for merge requests
+David Heidelberg (3):
+      ci/zink: add KHR-GL46.limits.max_fragment_interpolation_offset flake
+      ci/amd: previously missed raven flake
+      ci/panfrost: add largest possible eglcreatepbuffersurface and then glclear flake
+
+Eric Engestrom (7):
+      ci/zink+radv: fix flakes definition
+      ci/zink+radv: mark all spec@arb_copy_image@arb_copy_image-targets* as flaky after getting a bunch more of them
+      ci/zink+radv: document recent regressions
+      ci: color the diff for clang-format
+      meson: enable the clang-format target
+      ci: use meson to run clang-format
+      docs: document clang-format and how to use it
+
+Francisco Jerez (1):
+      anv: Fix calculation of guardband clipping region.
+
+Juan A. Suarez Romero (7):
+      v3d: enable NIR compact arrays
+      vc4: set blit mask correctly
+      vc4: call blit paths in chain
+      vc4: allow tile-based blit for Z/S
+      vc4: add specific stencil blit path
+      v3d/v3dv/ci: adjust job fractions
+      v3dv/vc4/ci: update expected results
+
+Konstantin Seurer (12):
+      treewide: Add a .clang-format file
+      amd: Use the Mesa base style
+      asahi: Use the Mesa base style
+      freedreno: Use the Mesa base style
+      d3d12: Use the Mesa base style
+      i915: Use the Mesa base style
+      r600/sfn: Use the Mesa base style
+      panfrost: Use the Mesa base style
+      util/perf: Use the Mesa base style
+      venus: Use the Mesa base style
+      asahi: Reformat using the new style
+      panfrost: Reformat using the new style
+
+Mike Blumenkrantz (2):
+      lavapipe: VK_EXT_dynamic_rendering_unused_attachments
+      zink: require EXT_dynamic_rendering_unused_attachments for dynamic rendering
+
+Rohan Garg (4):
+      anv: enable single texel alignment
+      isl: add helper to check if aux usage is CCS_E
+      anv: set aux usage to GFX12_CCS_E if a platform needs WA 14010672564
+      anv: limit non zero fast clear check to GFX12_CCS_E
+
+Samuel Pitoiset (6):
+      amd: fix 64-bit integer color image clears
+      radv: rework configuring VGT_SHADER_STAGES_EN
+      radv/ci: update list of expected failures since Vulkan loader 1.3
+      radv/ci: skip tests that timeout since Vulkan loader 1.3
+      vulkan: Update XML and headers to 1.3.251
+      radv: advertise VK_EXT_dynamic_rendering_unused_attachments
+
+SureshGuttula (1):
+      va/surface : Add Nv12 support for PRIME_2 imports
+
+Tatsuyuki Ishi (1):
+      radv: Make shader related destruction happen before hw_ctx.
+
+Víctor Manuel Jáquez Leal (1):
+      vulkan: complete the usage flags for video layouts
 
