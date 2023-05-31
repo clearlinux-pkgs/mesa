@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : mesa
-Version  : 23.1+2103.g6439edd6443
-Release  : 474
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/6439edd6443fd2a9271ddd3754550edde1c46d0c/mesa-23.1+2103-g6439edd6443.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/6439edd6443fd2a9271ddd3754550edde1c46d0c/mesa-23.1+2103-g6439edd6443.tar.bz2
+Version  : 23.1+2220.g112e16b14da
+Release  : 475
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/112e16b14daa608127c6ef0f027f0c38899093d1/mesa-23.1+2220-g112e16b14da.tar.bz2
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/112e16b14daa608127c6ef0f027f0c38899093d1/mesa-23.1+2220-g112e16b14da.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
@@ -141,15 +141,15 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c
-cd %{_builddir}/mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c
+%setup -q -n mesa-112e16b14daa608127c6ef0f027f0c38899093d1
+cd %{_builddir}/mesa-112e16b14daa608127c6ef0f027f0c38899093d1
 %patch1 -p1
 %patch2 -p1
 pushd ..
-cp -a mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c build32
+cp -a mesa-112e16b14daa608127c6ef0f027f0c38899093d1 build32
 popd
 pushd ..
-cp -a mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c buildavx2
+cp -a mesa-112e16b14daa608127c6ef0f027f0c38899093d1 buildavx2
 popd
 
 %build
@@ -157,7 +157,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685400139
+export SOURCE_DATE_EPOCH=1685491404
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -231,10 +231,10 @@ popd
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
-cp %{_builddir}/mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-6439edd6443fd2a9271ddd3754550edde1c46d0c/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-112e16b14daa608127c6ef0f027f0c38899093d1/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
+cp %{_builddir}/mesa-112e16b14daa608127c6ef0f027f0c38899093d1/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-112e16b14daa608127c6ef0f027f0c38899093d1/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-112e16b14daa608127c6ef0f027f0c38899093d1/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
 pushd ../build32/
 DESTDIR=%{buildroot} ninja -C builddir install
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -357,46 +357,20 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /V3/usr/lib64/gallium-pipe/pipe_radeonsi.so
 /V3/usr/lib64/gallium-pipe/pipe_swrast.so
 /V3/usr/lib64/gallium-pipe/pipe_vmwgfx.so
-/V3/usr/lib64/libEGL_mesa.so
-/V3/usr/lib64/libEGL_mesa.so.0
 /V3/usr/lib64/libEGL_mesa.so.0.0.0
-/V3/usr/lib64/libGLX_mesa.so
-/V3/usr/lib64/libGLX_mesa.so.0
 /V3/usr/lib64/libGLX_mesa.so.0.0.0
-/V3/usr/lib64/libMesaOpenCL.so
-/V3/usr/lib64/libMesaOpenCL.so.1
 /V3/usr/lib64/libMesaOpenCL.so.1.0.0
-/V3/usr/lib64/libOSMesa.so
-/V3/usr/lib64/libOSMesa.so.8
 /V3/usr/lib64/libOSMesa.so.8.0.0
-/V3/usr/lib64/libgbm.so
-/V3/usr/lib64/libgbm.so.1
 /V3/usr/lib64/libgbm.so.1.0.0
-/V3/usr/lib64/libglapi.so
-/V3/usr/lib64/libglapi.so.0
 /V3/usr/lib64/libglapi.so.0.0.0
 /V3/usr/lib64/libvulkan_intel.so
 /V3/usr/lib64/libvulkan_intel_hasvk.so
 /V3/usr/lib64/libvulkan_lvp.so
 /V3/usr/lib64/libvulkan_radeon.so
-/V3/usr/lib64/libxatracker.so
-/V3/usr/lib64/libxatracker.so.2
 /V3/usr/lib64/libxatracker.so.2.5.0
-/V3/usr/lib64/vdpau/libvdpau_nouveau.so
-/V3/usr/lib64/vdpau/libvdpau_nouveau.so.1
-/V3/usr/lib64/vdpau/libvdpau_nouveau.so.1.0
 /V3/usr/lib64/vdpau/libvdpau_nouveau.so.1.0.0
-/V3/usr/lib64/vdpau/libvdpau_r600.so
-/V3/usr/lib64/vdpau/libvdpau_r600.so.1
-/V3/usr/lib64/vdpau/libvdpau_r600.so.1.0
 /V3/usr/lib64/vdpau/libvdpau_r600.so.1.0.0
-/V3/usr/lib64/vdpau/libvdpau_radeonsi.so
-/V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1
-/V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0
 /V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
-/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so
-/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1
-/V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0
 /V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/lib64/dri/crocus_dri.so
 /usr/lib64/dri/i915_dri.so
