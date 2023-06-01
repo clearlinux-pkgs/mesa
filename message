@@ -1,169 +1,100 @@
-Updating from 6439edd6443fd2a9271ddd3754550edde1c46d0c to 112e16b14daa608127c6ef0f027f0c38899093d1
+Updating from 112e16b14daa608127c6ef0f027f0c38899093d1 to 44b960a6453ec78d3cbb6624e6daaf8345d99dc4
 
-Alyssa Rosenzweig (6):
-      nir/builder: Add nir_replicate helper
-      treewide: Use nir_replicate
-      pan/lower_framebuffer: Use nir_replicate
-      radv/query: Use nir_trim_vector
-      intel/blorp: Use nir_trim_vector
-      nir/print: Print locations for geometry shader inputs
+Blisto (1):
+      driconf: set vk_x11_strict_image_count for Wolfenstein II
 
-Chia-I Wu (3):
-      aco: fix alignment check in emit_load
-      ac, radeonsi: add and use ac_get_ps_iter_mask
-      radv: fix gl_SampleMaskIn for sample shading
+Caio Oliveira (2):
+      spirv: Validate Dim of OpTypeSampledImage and OpSampledImage
+      spirv: Assert sampler_dim is valid when building nir_tex_instr
 
-Dave Airlie (9):
-      radv/video: fix h264/265 dpb usage.
-      radv/video: add missing offset to the dpb binding.
-      radv/video: rework stream handle generation.
-      radv/video: fix some whitespace.
-      radv/video: add debug flag to enable dpb image array on newer GPUs.
-      radv/video: fix physical device format property count.
-      vk/video: add a common function to get block alignments for profiles
-      radv: align video images internal width/height inside the driver.
-      anv/video: move format properties to outarray.
+Chia-I Wu (1):
+      radv: fix msaa feedback loop without tc-compat cmask
 
-Dylan Baker (3):
-      docs: add release notes for 23.0.4
-      docs: Add sha256 sum for 23.0.4
-      docs: update calendar for 23.0.4
+Christian Gmeiner (1):
+      etnaviv: nir: improve uniform usage for ALU opc
+
+Dave Airlie (1):
+      radv/meta: fix uninitialised stack memory usage.
+
+Dor Askayo (2):
+      meson: add feature option for use of system Clang headers at runtime
+      ci: Disable "opencl-external-clang-headers" when "microsoft-clc" is enabled
 
 Eric Engestrom (1):
-      docs/calendar: add 23.2 branchpoint and release candidates
+      ci/zink+radv: mark flakes as such
 
-Erik Faye-Lund (4):
-      zink: update profiles schema
-      zink: keep gl46_optimal extensions/features sorted
-      zink: compute correct location for line-smooth gs
-      zink: do not lower line-smooth for non-lines
-
-Felix DeGrood (1):
-      anv: override vendorID for Cyberpunk 2077
+Erik Faye-Lund (1):
+      docs: increase contrast in dark-theme
 
 Georg Lehmann (1):
-      nir/opt_if: use nir_alu_instr_is_comparison directly
+      aco: cleanup v_cmp_class usage
 
 Hans-Kristian Arntzen (1):
-      radv/amdgpu: Report 48-bit VAs in bo logs.
+      Fix DGC bug where indirect count > maxSequencesCount.
 
-Iago Toral Quiroga (1):
-      v3d: only warn about bining sync for indirect draw once
+Jesse Natalie (1):
+      ci/windows: Update WARP to 1.0.7.1
 
-Jesse Natalie (4):
-      microsoft/compiler: Enable emitting type info for textures with <4 comps
-      microsoft/compiler: Add a pass to assign image formats based on number of components
-      spirv2dxil: Assign formats to image vars before lowering to bindless
-      microsoft/compiler: Use image formats to determine texture types
+José Roberto de Souza (1):
+      intel: Fix support of kernel versions without DRM_I915_QUERY_ENGINE_INFO
 
-Karmjit Mahil (1):
-      pvr: Handle barrier load and store flags.
+Juan A. Suarez Romero (1):
+      v3d/ci: update traces
 
-Konstantin Seurer (1):
-      gallivm: Fix gather/scatter types for newer llvm
+Julia Tatz (2):
+      zink: fix layout(local_size_variable) for vk1.3+
+      zink/ci: update expected results
 
-Lionel Landwerlin (50):
-      anv: update internal address space to have 4Gb of dynamic state
-      anv: fix push range for descriptor offsets
-      intel/fs: reuse descriptor helper
-      intel/fs: lower get_buffer_size like other logical sends
-      nir/lower_shader_calls: add ability to force remat of instructions
-      nir: add a new intrinsic to describe resources accessed on intel
-      nir: teach nir_chase_binding about resource_intel
-      nir/opt_gcm: allow resource_intel to be moved anywhere
-      intel/fs: add a pass to move resource_intel closer to user
-      intel/fs: teach ubo range analysis pass about resource_intel
-      intel/fs: keep track of new resource_intel information
-      intel/fs: enable SSBO accesses through the bindless heap
-      intel/fs: enable UBO accesses through bindless heap
-      intel/fs: enable get_buffer_size on bindless heap
-      intel/fs: enable extended bindless surface offset
-      intel/fs: enable bindless sampler state offsets
-      intel/fs: enable uniform block accesses through bindless heap
-      intel/fs: try to rematerialize surface computation code
-      anv: remove unused define
-      anv: fix null descriptor handling with A64 messages
-      anv: remove incorrect ifdef
-      anv: bail flush_gfx_state when not gfx push constant is dirty
-      anv: track pipeline in anv_cmd_pipeline_state
-      anv: move pipeline active_stages to common structure
-      anv: increase workaround BO so that we can hold a full 4Kb page of 0s
-      anv: toggle extended bindless surface state on Gfx12.5+
-      docs/anv: some binding table explanations
-      anv: add an option for using indirect descriptors
-      anv: introduce a new descriptor set layout type
-      anv: create a pool for indirect descriptors
-      anv: reduce push constant size for descriptor sets
-      anv: new structure to hold surface states
-      anv: add a pass to partially lower resource_intel
-      nir: expose a couple of address format add helpers
-      anv: bound load descriptor mem better
-      anv: prepare image/buffer views for non indirect descriptors
-      anv: add support for direct descriptor in allocation/writes
-      anv: add helpers to build pipeline bindings
-      anv: handle null surface in the binding table with direct descriptors
-      anv: factor out dynamic buffer bti emission
-      anv: implement binding table emission for direct descriptors
-      anv: simplify ycbcr bti computations
-      anv: track descriptor data size
-      anv: add direct descriptor support to apply_layout
-      anv: bring back the max number of sets to 8
-      anv: descriptor binding for direct descriptors
-      anv: ensure descriptor addresses are used with bindless stages
-      anv: enable direct descriptors on platforms with extended bindless offset
-      anv: add support for VK_EXT_dynamic_rendering_unused_attachments
-      anv: remove unused functions
+Lucas Fryzek (2):
+      v3d: Add support for ASTC texture compression
+      v3dv: Update texture padding logic to match v3d changes
 
-Mark Janes (1):
-      intel/dev: switch defect identifiers to use lineage numbers
+Lucas Stach (2):
+      etnaviv: update derived state after forced commandstream flush
+      etnaviv: don't flush implicit flush resources when forced
 
-Matt Coster (10):
-      pvr: Fix allocation scopes in vkCreateRenderPass2() code path
-      pvr: Fix memory leaks on realloc failure in pvr_pipeline.c
-      pvr: Correct error flow in pvr_graphics_pipeline_compile()
-      pvr: Correct error flow in pvr_compute_pipeline_compile()
-      pvr: Use correct surface for deferred RTA clear
-      pvr: Rename shadowing loop variable in pvr_add_deferred_rta_clear()
-      pvr: Do not free deferred pvr_transfer_cmd instances
-      pvr: Fix out of range stream errors for geometry-only jobs on pvrsrvkm
-      pvr: Reorder execution in pvr_cmd_buffer_end_sub_cmd()
-      pvr: Fix page faults in occlusion query tests
+Matt Coster (3):
+      pvr: Fix rect splitting logic in pvr_unwind_rects()
+      pvr: Use correct pbe format for VK_FORMAT_A8B8G8R8_UNORM_PACK32
+      pvr: Use common vkGetPhysicalDeviceFeatures2() implementation
 
-Mike Blumenkrantz (1):
-      zink: explicitly avoid ci errors due to unrecognized extensions in VVL
+Mike Blumenkrantz (4):
+      vulkan: reorder vk_cmd_queue_entry
+      vulkan/cmd_queue: allocate cmds based on the size of the cmd
+      vulkan/cmd_queue: expose cmd sizes
+      vulkan: use cmd size array for queued cmd allocations
 
-Patrick Lerda (1):
-      mesa: fix refcnt imbalance related to _mesa_delete_semaphore_object()
+Patrick Lerda (2):
+      mesa/st: fix refcnt imbalance related to st_feedback_draw_vbo()
+      mesa/st: fix buffer overflow related to set_program_string()
 
-Rhys Perry (4):
-      aco: fix update_alu(clear=true) for exports
-      aco: use pass_flags to recover s_delay_alu cycles
-      aco: insert s_delay_alu on the linear CFG
-      aco: improve printing of s_delay_alu
+Rohan Garg (2):
+      anv: fix incorrect asserts when combining CPS and per sample interpolation
+      hasvk: enable single texel alignment
 
-Rob Clark (4):
-      freedreno/drm: Don't try to export suballoc bo
-      freedreno: Handle export error handling
-      freedreno: Add aux-context support
-      freedreno: Reallocate on unshared export
+Samuel Pitoiset (1):
+      aco: remove nir_intrinsic_load_barycentric_at_sample occurences
 
-Teng, Jin Chung (1):
-      d3d12: HEVC Encode - Fix num_subregions_per_scanline rounding
+Vinson Lee (1):
+      r600/sfn: Initialize BlockScheduler member m_chip_family.
 
-Timothy Arceri (1):
-      util: add Jamestown+ workaround
-
-Veerabadhran Gopalakrishnan (2):
-      radeonsi: return kernel queried video capability for HEVC and JPEG
-      radeonsi: return kernel queried video capability for HEVC and JPEG
-
-Yiwei Zhang (5):
-      venus: silence -Wuninitialized
-      venus: sync to latest protocol from header v1.3.248
-      venus: sync protocol for VK_EXT_image_2d_view_of_3d
-      venus: enable VK_EXT_image_2d_view_of_3d
-      docs/venus: advertise VK_EXT_image_2d_view_of_3d
-
-norablackcat (1):
-      rusticl/screen: fix driver_uuid on non x86
+Yonggang Luo (18):
+      loader: Replace usage of mtx_t with simple_mtx_t in loader/loader_dri3_helper.c
+      v3d: Replace usage of mtx_t with simple_mtx_t in v3d_simulator.c
+      vc4: Replace usage of mtx_t with simple_mtx_t in vc4/vc4_simulator.c
+      drm-shim: Replace usage of mtx_t with simple_mtx_t in drm_shim.c
+      drm: Replace usage of mtx_t with simple_mtx_t in virgl/drm/virgl_drm_winsys.c
+      drm: Replace usage of mtx_t with simple_mtx_t in drm/radeon_drm_winsys.c
+      drm: Replace usage of mtx_t with simple_mtx_t in nouveau_drm_winsys.c
+      hud: Replace usage of mtx_t with simple_mtx_t in hud_cpufreq.c
+      hud: Replace usage of mtx_t with simple_mtx_t in hud_diskstat.c
+      hud: Replace usage of mtx_t with simple_mtx_t in hud_nic.c
+      hud: Replace usage of mtx_t with simple_mtx_t in hud_sensors_temp.c
+      xlib: Replace usage of mtx_t with simple_mtx_t in xm_api.c
+      rtasm: Trim trailing spaces and replace tab with 3 space
+      rtasm: Replace usage of mtx_t with simple_mtx_t in rtasm_execmem.c
+      nine: Replace usage of mtx_t with simple_mtx_t in nine_lock.c
+      omx: Replace usage of mtx_t with simple_mtx_t in vid_omx_common.c
+      vdpau: Replace usage of mtx_t with simple_mtx_t in htab.c
+      c11: Remove _MTX_INITIALIZER_NP as it's not used anymore
 
