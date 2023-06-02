@@ -1,100 +1,128 @@
-Updating from 112e16b14daa608127c6ef0f027f0c38899093d1 to 44b960a6453ec78d3cbb6624e6daaf8345d99dc4
+Updating from 44b960a6453ec78d3cbb6624e6daaf8345d99dc4 to 900deea4cf7e8b9a28a904e8c6e21dd82dba2a85
 
-Blisto (1):
-      driconf: set vk_x11_strict_image_count for Wolfenstein II
+Alyssa Rosenzweig (2):
+      gallium: Add util_image_to_sampler_view helper
+      panfrost: Use util_pipe_image_to_sampler_view
 
-Caio Oliveira (2):
-      spirv: Validate Dim of OpTypeSampledImage and OpSampledImage
-      spirv: Assert sampler_dim is valid when building nir_tex_instr
+Corentin Noël (1):
+      util: Use the gcc_struct attribute for packed structures in mingw
 
-Chia-I Wu (1):
-      radv: fix msaa feedback loop without tc-compat cmask
+Dave Airlie (12):
+      gallium: add task/mesh shader query types to stats interface.
+      gallium: expand pipe_grid_info to handle task/mesh.
+      gallium: add a new PIPE_SHADER_MESH_TYPES
+      freedreno: don't report task/mesh.
+      gallium: add task/mesh shader entrypoints in context
+      iris: don't return shader params for task/mesh.
+      crocus: don't report mesh/task limits
+      radeonsi: don't report shader params for task/mesh
+      svga: don't report mesh/task shader limits
+      d3d12: don't report mesh/task limits
+      gallium/cso: add task/mesh shaders to the cso cache
+      gallium/nir/tgsi: add various support for task/mesh bits
 
-Christian Gmeiner (1):
-      etnaviv: nir: improve uniform usage for ALU opc
+David Heidelberg (3):
+      gitlab: prefill MR template with first multiline commit message
+      ci: bump Alpine to 3.18
+      ci/ccache: recent ccache changed a output a bit, adapt script
 
-Dave Airlie (1):
-      radv/meta: fix uninitialised stack memory usage.
+Emma Anholt (23):
+      drm-shim: Avoid assertion fail if someone does close(-1).
+      glsl: Allow invariant flags on sysvals, such as gl_PointCoord.
+      nir/lower_texcoord_replace: Flag SYSTEM_VALUE_POINT_COORD read when we load it.
+      zink: Use PIPE_CAP_FS_POINT_IS_SYSVAL.
+      mesa: Use find_state_var in lower_builtin.
+      nir: Use find_state_var in lower_atomics_to_ssbo.
+      nir,mesa: Add helpers for creating uniform state variables.
+      mesa: Move ATI_fragment_shader fog code emit to a NIR lowering pass.
+      mesa/ARB_fp: Drop an extra enum for fog mode.
+      mesa/ARB_fp: Use the NIR pass for adding fog code instead of ARB instrs.
+      mesa: Move ARB_vp position invariant option handling to NIR.
+      mesa: Drop ARB program helper functions that are no longer used.
+      mesa: Drop unused control flow instructions for ARB programs.
+      mesa: Drop remaining unused ARB program instructions.
+      mesa: Move st_prog_to_nir_postprocess out of prog_to_nir.
+      mesa/ati_fs: Move sampler dim adjustment to a separate NIR pass.
+      mesa/ati_fs: Move NIR translation to ATI_fs compile time.
+      mesa/ati_fs: Move prog->SamplersUsed/TexturesUsed setup to EndFragmentShader.
+      mesa: Use the NIR pass for fixed function fog.
+      mesa/ffvs: Fix mvp_with_dp4 position transformation.
+      mesa: Use shared NIR code for ARB_vp and FF VS position transformation.
+      ci/freedreno: Update minetest hash.
+      Revert "ci: disable anholt's farm"
 
-Dor Askayo (2):
-      meson: add feature option for use of system Clang headers at runtime
-      ci: Disable "opencl-external-clang-headers" when "microsoft-clc" is enabled
-
-Eric Engestrom (1):
-      ci/zink+radv: mark flakes as such
-
-Erik Faye-Lund (1):
-      docs: increase contrast in dark-theme
+Eric Engestrom (4):
+      ci/radv: fix flakes definition
+      ci/crocus: fix flakes definition
+      ci/zink+anv: fix flakes definition
+      ci/b2c: also detect non-soft GPU hangs with AMDGPU
 
 Georg Lehmann (1):
-      aco: cleanup v_cmp_class usage
+      aco: p_start_linear_vgpr doesn't always need exec mask
 
-Hans-Kristian Arntzen (1):
-      Fix DGC bug where indirect count > maxSequencesCount.
+Italo Nicola (2):
+      egl: disable partial redraw when gallium hud is active
+      egl: fix comments alignment
 
-Jesse Natalie (1):
-      ci/windows: Update WARP to 1.0.7.1
+Jesse Natalie (10):
+      nir_opt_algebraic: Don't shrink 64-bit bitwise ops if pack_split is going to be lowered
+      nir: Add preserve_mediump as a shader compiler option
+      microsoft/compiler: Always set support_16bit_alu
+      microsoft/compiler: Handle mediump
+      spirv2dxil: Enable mediump
+      dzn: Don't lower away mediump
+      microsoft/compiler: Fix the int->uint pass for arrayed I/O
+      microsoft/compiler: Fix usage of type var in semantic asserts
+      microsoft/compiler: Viewport/layer as input to GS/HS needs to set feature bit
+      d3d12: Support PIPE_CAP_VS_LAYER_VIEWPORT
 
-José Roberto de Souza (1):
-      intel: Fix support of kernel versions without DRM_I915_QUERY_ENGINE_INFO
+Karol Herbst (1):
+      rusticl/device: limit MAX_PARAMETER_SIZE to 32k
 
-Juan A. Suarez Romero (1):
-      v3d/ci: update traces
+Kenneth Graunke (1):
+      intel/compiler: Fix a fallthrough in components_read() for atomics
 
-Julia Tatz (2):
-      zink: fix layout(local_size_variable) for vk1.3+
-      zink/ci: update expected results
+Lionel Landwerlin (1):
+      intel/fs: fix a couple of descriptor mistakes
 
-Lucas Fryzek (2):
-      v3d: Add support for ASTC texture compression
-      v3dv: Update texture padding logic to match v3d changes
+Marek Olšák (7):
+      amd/addrlib: switch the license to the SPDX identifier MIT
+      amd/addrlib: add ADDR_FMT_BG_RG_16_16_16_16
+      ac/surface: fix is_linear for stencil-only surfaces
+      ac/nir: handle DEPTH as PITCH in ac_nir_lower_resinfo
+      radeonsi: implement setting a custom pitch to any multiple of 256B on gfx10.3+
+      radv: implement setting a custom pitch to any multiple of 256B on gfx10.3+
+      ac/surface: relax custom pitch requirements to any multiple of 256B on gfx10.3+
 
-Lucas Stach (2):
-      etnaviv: update derived state after forced commandstream flush
-      etnaviv: don't flush implicit flush resources when forced
+Mike Blumenkrantz (1):
+      ci: uprev VVL to 1.3.251
 
-Matt Coster (3):
-      pvr: Fix rect splitting logic in pvr_unwind_rects()
-      pvr: Use correct pbe format for VK_FORMAT_A8B8G8R8_UNORM_PACK32
-      pvr: Use common vkGetPhysicalDeviceFeatures2() implementation
+Mykhailo Skorokhodov (1):
+      mesa: Fallthrough GL_SRB_DECODE_ARB pname
 
-Mike Blumenkrantz (4):
-      vulkan: reorder vk_cmd_queue_entry
-      vulkan/cmd_queue: allocate cmds based on the size of the cmd
-      vulkan/cmd_queue: expose cmd sizes
-      vulkan: use cmd size array for queued cmd allocations
+Rhys Perry (1):
+      radv: allow wave32 for geometry shaders
 
-Patrick Lerda (2):
-      mesa/st: fix refcnt imbalance related to st_feedback_draw_vbo()
-      mesa/st: fix buffer overflow related to set_program_string()
+Rob Clark (11):
+      freedreno/a6xx: Clean up open coded flushes
+      freedreno/a6xx: Stop using fd_wfi()
+      freedreno/a6xx: Add missing cap
+      freedreno/a6xx: Fix xfb stream configuration
+      freedreno/a6xx: Remove primitives_relocw()
+      freedreno/a6xx: GL_ARB_transform_feedback_overflow_query
+      freedreno/a6xx: Split primitives and pipeline-stats queries
+      freedreno/a6xx: Handle nested pipeline stats queries
+      freedreno: Handle compute queries
+      freedreno/a6xx: GL_ARB_pipeline_statistics_query
+      freedreno/a6xx: Enable gl46
 
-Rohan Garg (2):
-      anv: fix incorrect asserts when combining CPS and per sample interpolation
-      hasvk: enable single texel alignment
-
-Samuel Pitoiset (1):
-      aco: remove nir_intrinsic_load_barycentric_at_sample occurences
+Samuel Pitoiset (5):
+      radv/ci: removed expected failures that are skipped now
+      radv/nir: use ac_nir_unpack_arg() for packed shader input user SGPRS
+      radv: introduce SHIFT/MASK for unpacking shader input args
+      radv: regroup fragment shader user SGPRs emission
+      radv: merge all FS user SGPRs into one using packed arguments
 
 Vinson Lee (1):
-      r600/sfn: Initialize BlockScheduler member m_chip_family.
-
-Yonggang Luo (18):
-      loader: Replace usage of mtx_t with simple_mtx_t in loader/loader_dri3_helper.c
-      v3d: Replace usage of mtx_t with simple_mtx_t in v3d_simulator.c
-      vc4: Replace usage of mtx_t with simple_mtx_t in vc4/vc4_simulator.c
-      drm-shim: Replace usage of mtx_t with simple_mtx_t in drm_shim.c
-      drm: Replace usage of mtx_t with simple_mtx_t in virgl/drm/virgl_drm_winsys.c
-      drm: Replace usage of mtx_t with simple_mtx_t in drm/radeon_drm_winsys.c
-      drm: Replace usage of mtx_t with simple_mtx_t in nouveau_drm_winsys.c
-      hud: Replace usage of mtx_t with simple_mtx_t in hud_cpufreq.c
-      hud: Replace usage of mtx_t with simple_mtx_t in hud_diskstat.c
-      hud: Replace usage of mtx_t with simple_mtx_t in hud_nic.c
-      hud: Replace usage of mtx_t with simple_mtx_t in hud_sensors_temp.c
-      xlib: Replace usage of mtx_t with simple_mtx_t in xm_api.c
-      rtasm: Trim trailing spaces and replace tab with 3 space
-      rtasm: Replace usage of mtx_t with simple_mtx_t in rtasm_execmem.c
-      nine: Replace usage of mtx_t with simple_mtx_t in nine_lock.c
-      omx: Replace usage of mtx_t with simple_mtx_t in vid_omx_common.c
-      vdpau: Replace usage of mtx_t with simple_mtx_t in htab.c
-      c11: Remove _MTX_INITIALIZER_NP as it's not used anymore
+      freedreno/a6xx: Fix memory leak on error path.
 
