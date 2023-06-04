@@ -1,111 +1,16 @@
-Updating from 900deea4cf7e8b9a28a904e8c6e21dd82dba2a85 to 9ca0bdba01b46207d671f179abfe20f91531ab9a
+Updating from 9ca0bdba01b46207d671f179abfe20f91531ab9a to 87ac5d7d0a14be1457385ccf3e11059aedd95acb
 
-Daniel Stone (1):
-      ci: Respect $HTTP_PROXY for ci_run_n_monitor
+Eric Engestrom (1):
+      amd/ci: run gl(es) cts & piglit on radeonsi on vangogh
 
-David Heidelberg (1):
-      ci: rename x86 and amd64 to x86_64, armhf to arm32, and i386 to x86_32
+Friedrich Vock (2):
+      nir: Rematerialize derefs in use blocks before repairing SSA
+      nir: Remove unnecessary assert in nir_before_src
 
-Dmitry Osipenko (4):
-      iris/bufmgr: Use intel_ioctl() helper for GEM_SET_TILING
-      intel/dev: Use intel_ioctl() helper for GEM_SET_TILING
-      anv: Use intel_ioctl() helper for GEM_SET_TILING
-      hasvk: Use intel_ioctl() helper for GEM_SET_TILING
-
-Dylan Baker (1):
-      intel/tools/error2aub: Fix potential out of bounds read
-
-Emma Anholt (3):
-      crocus: Fix regression from !20153
-      ci/crocus: Add a missing xfail.
-      ci/turnip: Update full-run xfails.
-
-Erik Faye-Lund (1):
-      zink: update profiles schema
-
-Iván Briano (1):
-      vulkan/wsi: fix double free on error condition
-
-Jesse Natalie (2):
-      dzn: Don't create D3D objects for secondary command buffers
-      dzn: Fix incremental binding of VBs
-
-José Roberto de Souza (2):
-      iris: Attach a dma-buf to bo flink
-      iris: Implement external object implicit syncronization for Xe kmd
-
-Karol Herbst (1):
-      rusticl/device: set preferred vector size of doubles if fp64 is enabled
-
-Konstantin Seurer (1):
-      radv/rt: Fix pipeline libraries
-
-Mark Janes (1):
-      isl: use generated workaround helpers for Wa_1806565034
-
-Matt Coster (9):
-      pvr: Fix segfault in pvr_physical_device_init()
-      pvr: Move pvr_get_isp_num_tiles_xy() to rogue_hw_utils.h
-      pvr: Use pvr_sub_cmd_event union members directly
-      pvr: Add wait_on_previous_transfer flag to graphics subcommand
-      pvr: Cleanup in pvr_process_cmd_buffer()
-      pvr: Add pvr_image_view_get_image()
-      pvr: Publicise some static functions from pvr_blit.c
-      pvr: Rename ds_{image,iview} in pvr_gfx_sub_cmd_job_init()
-      pvr: Implement ZLS subtile alignment
-
-Mike Blumenkrantz (5):
-      lavapipe: fix DS3 min sample setting
-      lavapipe: bump max push constant size
-      lavapipe: stop setting patch vertices constantly
-      lavapipe: don't pass indirect info in streamout draws
-      draw: add (disabled) vertex dumping for non-linear emit
-
-Paulo Zanoni (4):
-      iris: Store prime fd of external bos for Xe KMD
-      iris: Add functions to import and export implicit sync state
-      iris: Extend iris_bo_wait_syncobj() to wait on external implicit syncobj
-      iris: Add iris_implicit_sync struct and functions to do implicit synchronization for Xe kmd
-
-Qiang Yu (25):
-      aco: implement two load lds ngg intrininsic for radeonsi
-      aco,radv: remove unused aco_shader_info fields
-      ac/nir/ngg: don't use 8bit alu ops
-      aco: implement load buffer with ACCESS_USES_FORMAT_AMD
-      aco/assembler: handle ds_(add|sub)_gs_reg_rtn encoding
-      aco: use gds reg when ordered xfb counter add
-      aco: implement nir_xfb_counter_sub_amd
-      aco: implement nir_bindless_image_fragment_mask_load_amd
-      aco: use ac_get_image_dim for array check when image intrinsic
-      radeonsi: resolve lds ngg aco symbols
-      radeonsi: add scratch offset vs args explicitly for aco
-      ac/llvm,radeonsi: lower nir_load_gs_vertex_offset_amd in abi
-      ac/llvm,radeonsi: lower nir_load_merged_wave_info_amd in abi
-      ac/llvm,radeonsi: lower load_workgroup_num_input_(vertices|primitives) in abi
-      ac/llvm,radeonsi: lower nir_load_initial_edgeflags_amd in abi
-      ac/llvm,radeonsi: lower nir_load_packed_passthrough_primitive_amd in abi
-      ac/llvm,radeonsi: lower nir_load_ordered_id_amd in abi
-      ac/llvm,radeonsi: lower nir_load_ring_esgs_amd in abi
-      nir,ac/llvm,radeonsi: replace nir_buffer_atomic_add_amd with ssbo atomic
-      radeonsi: fill aco shader info for mono standalone vs
-      radeonsi: calculate needed lds size when upload raw binary for vs
-      radeonsi: use nir_umul_high for fast udiv
-      radeonsi: always use scoped barrier
-      ac/llvm: remove unused barrier implementation
-      radeonsi: enable aco for mono standalone vs
-
-Samuel Pitoiset (5):
-      spirv: add support for SpvCapabilityFragmentBarycentricKHR
-      spirv,nir: add support for BaryCoord{NoPersp}KHR builtins
-      spirv,nir: add support for SpvDecorationPerVertexKHR
-      nir/lower_io: add nir_intrinsic_load_input_vertex to is_input()
-      nir: print locations for per-vertex fragment shader inputs
-
-Tatsuyuki Ishi (2):
-      radv: Add RGP barrier markers for render pass transition and copy.
-      radv: Guard against misplaced RGP barrier markers.
-
-Zhang, Jianxun (2):
-      anv: Support 1MB AUX mapping (MTL)
-      anv: Remove alignment to aux ratio on size of main surface
+Yonggang Luo (5):
+      microsoft/compiler: Getting function impl to be consistence with decl in dxil_enums.*
+      compiler: Getting shader_prim to be PACKED that consistence with pipe_prim_type
+      compiler: Add SHADER_PRIM_COUNT to be SHADER_PRIM_MAX + 1
+      compiler: Rename shader_prim to mesa_prim and replace all usage of pipe_prim_type with mesa_prim
+      docs: Update document about pipe_prim_type with mesa_prim
 
