@@ -1,16 +1,9 @@
-Updating from 9ca0bdba01b46207d671f179abfe20f91531ab9a to 87ac5d7d0a14be1457385ccf3e11059aedd95acb
+Updating from 87ac5d7d0a14be1457385ccf3e11059aedd95acb to 6d013d1f13a0040b65ef9a76234e80865d966b2a
 
-Eric Engestrom (1):
-      amd/ci: run gl(es) cts & piglit on radeonsi on vangogh
+David Heidelberg (2):
+      ci: use bash arrays in Fedora script + shebang change
+      ci/fedora: re-enable ccache
 
-Friedrich Vock (2):
-      nir: Rematerialize derefs in use blocks before repairing SSA
-      nir: Remove unnecessary assert in nir_before_src
-
-Yonggang Luo (5):
-      microsoft/compiler: Getting function impl to be consistence with decl in dxil_enums.*
-      compiler: Getting shader_prim to be PACKED that consistence with pipe_prim_type
-      compiler: Add SHADER_PRIM_COUNT to be SHADER_PRIM_MAX + 1
-      compiler: Rename shader_prim to mesa_prim and replace all usage of pipe_prim_type with mesa_prim
-      docs: Update document about pipe_prim_type with mesa_prim
+Vinson Lee (1):
+      nv50: Fix memory leak in error path
 
