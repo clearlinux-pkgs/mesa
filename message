@@ -1,9 +1,83 @@
-Updating from 87ac5d7d0a14be1457385ccf3e11059aedd95acb to 6d013d1f13a0040b65ef9a76234e80865d966b2a
+Updating from 6d013d1f13a0040b65ef9a76234e80865d966b2a to 60a00f246b9094a12774bc515ca8a90775920fb5
 
-David Heidelberg (2):
-      ci: use bash arrays in Fedora script + shebang change
-      ci/fedora: re-enable ccache
+Caio Oliveira (1):
+      nir/print: Print 0 when mem_modes or resource_intel have no values
+
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 5036601c43fff63f7be5cd8ad7b319a5c1f6652c
+
+Dave Airlie (31):
+      lavapipe: when in doubt, swizzle the swizzle
+      lavapipe: fix pipeline sanitizing.
+      lavapipe: fix indentation whitespace
+      draw: add mesh shader infrastructure
+      draw: move draw_vertex_info and draw_prim_info to public header.
+      draw: add a mesh primitive assembler.
+      draw: add mesh pipeline middle end.
+      draw: add support for per primitive aos emission
+      gallivm: add support for payload access
+      gallivm/nir: add launch mesh workgroups
+      gallivm/nir: add a mesh interface and vert/prim count setting.
+      gallivm/nir: call task shader lowering.
+      gallivm/nir: add support for mesh shader outputs.
+      llvmpipe: resize arrays to handle mesh shaders.
+      llvmpipe: start adding task/mesh support.
+      llvmpipe: bump dirty tracker to 64-bits.
+      llvmpipe: add dirty bits for mesh and task shaders.
+      llvmpipe: add debug bit for mesh shaders
+      llvmpipe: add query support for task/mesh shaders
+      llvmpipe: bind task/mesh resources and dirty bits
+      gallivm/cs: add payload ptr to the cs thread data.
+      llvmpipe/cs: add task/mesh shader support to compute shader builder.
+      llvmpipe/cs: add multiple stride indirect to fill_grid_info.
+      llvmpipe: add mesh shader drawing.
+      llvmpipe: enable task/mesh shader support.
+      lavapipe: handle some mesh shader stage differences.
+      lavapipe: add mesh query support
+      lavapipe: add support for task/mesh shader stages in various places
+      lavapipe: add execution backends for mesh shader draw apis
+      lavapipe: enable task/mesh shaders.
+      docs: update docs for lavapipe mesh shading
+
+David Heidelberg (1):
+      traces: update sir-f720 trace expectations for zink on anv and freedreno
+
+Erik Faye-Lund (4):
+      d3d12, dozen: make sure we pass float to fge
+      nir: use nir_i{ne,eq}_imm helpers
+      nir: generate nir_{cmp}_imm variants
+      nir: use generated immediate comparison helpers
+
+Jesse Natalie (1):
+      d3d12: Fully initialize UAV desc for null SSBOs
+
+Juan A. Suarez Romero (2):
+      v3d: Z/S blit require Z/S formats
+      broadcom/ci: update expected results
+
+Karmjit Mahil (1):
+      pvr: Fix typo causing seg faults copying immutable samplers
+
+Pavel Ondračka (4):
+      r300: fuse ROUND and ARL to ARR
+      r300: remove nir round lowering
+      r300: enable PIPE_CAP_TGSI_TEXCOORD
+      r300: fail linking instead of using dummy shaders
+
+Rhys Perry (2):
+      aco: fix has_color_exports=true for mrtz exports
+      aco/tests: add discard export target tests
+
+Samuel Pitoiset (1):
+      zink/ci: remove useless RADV_PERFTEST=gpl
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: disable Collabora's LAVA lab for maintance"
 
 Vinson Lee (1):
-      nv50: Fix memory leak in error path
+      pvr: Fix signed comparison
+
+Yonggang Luo (1):
+      util: Replace all usage of PIPE_TIMEOUT_INFINITE with OS_TIMEOUT_INFINITE
 
