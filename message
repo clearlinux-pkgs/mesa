@@ -1,83 +1,175 @@
-Updating from 6d013d1f13a0040b65ef9a76234e80865d966b2a to 60a00f246b9094a12774bc515ca8a90775920fb5
+Updating from 60a00f246b9094a12774bc515ca8a90775920fb5 to b222b34e789812301f4f7b79911f9edc599937e2
 
-Caio Oliveira (1):
-      nir/print: Print 0 when mem_modes or resource_intel have no values
+Alyssa Rosenzweig (32):
+      nir: Add and use nir_tex_src_ssa
+      treewide: Use nir_tex_src_for_ssa
+      treewide: Use nir_trim_vector more
+      agx: Set support_16bit_alu
+      agx: Constant fold when optimizing int64
+      agx: Use textures_used, not num_textures
+      asahi: Add passes to lower MSAA
+      asahi: Add passes to lower sample intrinsics
+      asahi: Add alpha-to-coverage (and alpha-to-one) lowering
+      agx: Assert that sample shading is lowered
+      asahi: Set uses_sample_shading for background program
+      asahi: Plumb API sample mask into shaders
+      asahi: Plumb ppp_multisamplectl into shaders
+      agx: Model both sources of sample_mask
+      agx: Plumb in nir_intrinsic_load_sample_mask_in
+      agx: Handle sample_mask_agx
+      agx: Enable tag writes when sample mask written
+      agx: Lower discard in NIR
+      asahi,agx: Call lower_discard_zs_emit in the driver
+      agx: Split iter and iterproj instructions
+      agx: Model interpolation for iter instructions
+      agx: Handle centroid and sample interpolation
+      asahi: Lower MSAA
+      asahi: Use nonempty tib for MSAA
+      agx: Emit shader info late
+      asahi: Advertise GL 3.1
+      agx: Stop bit-inexact conversion propagation
+      asahi: Add ASAHI_MESA_DEBUG=nowc flag
+      asahi: Extract transition_resource helper
+      asahi: Decompress writable images
+      asahi: Decompress with format reinterpretation
+      asahi: Remove stale comments
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 5036601c43fff63f7be5cd8ad7b319a5c1f6652c
+Asahi Lina (3):
+      asahi: Use os_dupfd_cloexec() instead of dup()
+      asahi: Fix memory leak in agx_nir_lower_sysvals()
+      asahi: Do not leak meta shader NIR
 
-Dave Airlie (31):
-      lavapipe: when in doubt, swizzle the swizzle
-      lavapipe: fix pipeline sanitizing.
-      lavapipe: fix indentation whitespace
-      draw: add mesh shader infrastructure
-      draw: move draw_vertex_info and draw_prim_info to public header.
-      draw: add a mesh primitive assembler.
-      draw: add mesh pipeline middle end.
-      draw: add support for per primitive aos emission
-      gallivm: add support for payload access
-      gallivm/nir: add launch mesh workgroups
-      gallivm/nir: add a mesh interface and vert/prim count setting.
-      gallivm/nir: call task shader lowering.
-      gallivm/nir: add support for mesh shader outputs.
-      llvmpipe: resize arrays to handle mesh shaders.
-      llvmpipe: start adding task/mesh support.
-      llvmpipe: bump dirty tracker to 64-bits.
-      llvmpipe: add dirty bits for mesh and task shaders.
-      llvmpipe: add debug bit for mesh shaders
-      llvmpipe: add query support for task/mesh shaders
-      llvmpipe: bind task/mesh resources and dirty bits
-      gallivm/cs: add payload ptr to the cs thread data.
-      llvmpipe/cs: add task/mesh shader support to compute shader builder.
-      llvmpipe/cs: add multiple stride indirect to fill_grid_info.
-      llvmpipe: add mesh shader drawing.
-      llvmpipe: enable task/mesh shader support.
-      lavapipe: handle some mesh shader stage differences.
-      lavapipe: add mesh query support
-      lavapipe: add support for task/mesh shader stages in various places
-      lavapipe: add execution backends for mesh shader draw apis
-      lavapipe: enable task/mesh shaders.
-      docs: update docs for lavapipe mesh shading
+Benjamin Lee (1):
+      intel: Fix stack overflow in intel_dump_gpu
 
-David Heidelberg (1):
-      traces: update sir-f720 trace expectations for zink on anv and freedreno
+Caio Oliveira (2):
+      nir/print: Do not print raw values
+      spirv: Add workaround for OpImageQueryLevels with Multi-sampled images
 
-Erik Faye-Lund (4):
-      d3d12, dozen: make sure we pass float to fge
-      nir: use nir_i{ne,eq}_imm helpers
-      nir: generate nir_{cmp}_imm variants
-      nir: use generated immediate comparison helpers
+Charmaine Lee (1):
+      mesa/main: fix distance attenuation calculation in ffvertex
 
-Jesse Natalie (1):
-      d3d12: Fully initialize UAV desc for null SSBOs
+Dave Airlie (2):
+      llvmpipe: emit fences for barrier.
+      lavapipe: don't remove queue family barriers.
 
-Juan A. Suarez Romero (2):
-      v3d: Z/S blit require Z/S formats
-      broadcom/ci: update expected results
+David Heidelberg (2):
+      ci: missed variable inside the big rename and split ARCH and DEBIAN_ARCH
+      ci: fix KVM module modprobe code
 
-Karmjit Mahil (1):
-      pvr: Fix typo causing seg faults copying immutable samplers
+Emma Anholt (4):
+      tu: Ignore unused shader stages in pipeline library creation.
+      anv: Drop unused ALL_GRAPHICS_LIB_FLAGS.
+      ci/crocus: Update trace hash for the neverball regression.
+      ci/etnaviv: Update some xfails common between the last 3 nightly runs.
 
-Pavel Ondračka (4):
-      r300: fuse ROUND and ARL to ARR
-      r300: remove nir round lowering
-      r300: enable PIPE_CAP_TGSI_TEXCOORD
-      r300: fail linking instead of using dummy shaders
+Eric Engestrom (2):
+      ci/radv: update expectations
+      ci/zink+radv: update expectations
 
-Rhys Perry (2):
-      aco: fix has_color_exports=true for mrtz exports
-      aco/tests: add discard export target tests
+Gert Wollny (2):
+      r600/sfn: assert that group barrier is not emitted in divergent code flow
+      r600/sfn: Switch to scoped barriers
+
+Ian Romanick (8):
+      intel/fs: Don't munge source order of 3-src instructions in opt_algebraic
+      intel/fs: Fix handling of W, UW, and HF constants in combine_constants
+      intel/fs: Allow HF const in MAD on Gfx12.5 if all sources are HF
+      nir/algebraic: Fixup iadd3 related patterns
+      intel/fs: Add constant propagation for ADD3
+      intel/eu/validate: Use a single macro define half_float_conversion cases
+      intel/eu/validate: Add Gfx12.5
+      intel/eu/validate: Add some validation of ADD3
+
+Lionel Landwerlin (2):
+      intel/stub_gpu: add an option to launch valgrind
+      intel/fs: fix pull-constant-load prior to gfx7
+
+Marek Olšák (35):
+      ac/surface: fix R32G3B32 image format regression for gfx6-8
+      ac/nir/ngg: always use load_initial_edgeflags_amd, choose the value in drivers
+      amd: add radeon_info* into ac_llvm_context and radv_nir_compiler_options
+      radeonsi: define si_shader_io_get_unique_index() values as SI_UNIQUE_SLOT_*
+      radeonsi: remove gl_BackColor VS outputs on demand if color_two_side is disabled
+      radeonsi: export non-zero edgeflags for GS and tess
+      radeonsi/gfx11: extend DB_Z_INFO.NUM_SAMPLES programming to > GFX11
+      radeonsi: print shader-db stats with AMD_DEBUG=vs,ps,stats
+      radeonsi: use nir_lower_alu_to_scalar correctly
+      radeonsi: remove a useless depth texture function call in a fast color clear
+      radeonsi: add a gfx11 version of si_decompress_textures, add assertions < GFX11
+      radeonsi: remove RADEON_FLAG_MALL_NOALLOC due to no use
+      radeonsi: completely rewrite how VGT_SHADER_STAGES_EN is set
+      radeonsi: unduplicate si_translate_format_to_hw
+      radeonsi: decompress DCC for SDMA if we're really going to use SDMA
+      radeonsi: increase SDMA gfx9+ limits
+      radeonsi: split tracked_regs masks into context registers and other registers
+      radeonsi: reorder and comment tracked registers
+      radeonsi: move PA_CL_NGG_CNTL emission into rasterizer state
+      radeonsi: always set sample locations even for 1x MSAA for simplicity
+      radeonsi: adjust 16x EQAA sample locs to make PA_SU_PRIM_FILTER_CNTL immutable
+      radeonsi: move PA_SU_SMALL_PRIM_FILTER_CNTL to the preamble when possible
+      radeonsi: merge si_emit_msaa_sample_locs with si_emit_sample_locations
+      radeonsi: rename the msaa_sample_locs state to sample locations
+      radeonsi: optimize no-op primitive restart index changes thanks to index masking
+      radeonsi: don't program COMPUTE_MAX_WAVE_ID (GDS register) on gfx6
+      radeonsi: add helpers to create and clone a sized pm4 state
+      radeonsi: add a separate gfx10_init_gfx_preamble_state function
+      radeonsi: don't set registers set by CLEAR_STATE in the preamble for gfx10-11
+      radeonsi: add a separate cdna_init_compute_preamble_state function
+      radeonsi/ci: add gfx6 failures
+      radeonsi: re-indent gfx10_create_sh_query_result_cs
+      radeonsi: don't use SET_SH_REG_INDEX on gfx7-9
+      radeonsi: don't use SET_SH_REG_INDEX if the kernel doesn't use CU reservation
+      amd: remove unused PKT0 definitions
+
+Mike Blumenkrantz (1):
+      lavapipe: fix memory budget reporting
+
+Mykhailo Skorokhodov (1):
+      iris: Fix memory size with disabled resizable bar
+
+Patrick Lerda (1):
+      r600: fix r600_draw_vbo() buffer overflow
+
+Qiang Yu (1):
+      aco,radv: remove unused gs aco shader info
+
+Rhys Perry (3):
+      aco: fix ds_sub_gs_reg_rtn validation
+      radv: initialize aco_compiler_options::is_opengl
+      radv: correctly skip vertex loads with packed formats
+
+Rob Clark (4):
+      freedreno: Add extra assert
+      freedreno/batch: Add driver-thread assert
+      freedreno/a6xx: Directly invalidate on samp view update
+      freedreno/a6xx: Use idalloc for samp/view seqno's
 
 Samuel Pitoiset (1):
-      zink/ci: remove useless RADV_PERFTEST=gpl
+      radv: initialize the device cache UUID even if on-disk cache is disabled
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Tapani Pälli (2):
+      iris: make Wa_16013994831 to use intel_needs_workaround
+      anv: make Wa_16013994831 to use intel_needs_workaround
 
 Vinson Lee (1):
-      pvr: Fix signed comparison
+      dzn: Fix qpool->queries_lock double lock
 
-Yonggang Luo (1):
-      util: Replace all usage of PIPE_TIMEOUT_INFINITE with OS_TIMEOUT_INFINITE
+Yiwei Zhang (6):
+      venus: temporarily disable VK_EXT_memory_budget
+      venus: refactor vn_device_memory to track VkMemoryType
+      venus: handle device memory report requests
+      venus: emit device memory report for device memory events
+      venus: enable VK_EXT_device_memory_report
+      docs: update venus VK_EXT_device_memory_report support
+
+Yonggang Luo (8):
+      r300: Replace usage of os_get_process_name with util_get_process_name in r300_chipset.c
+      virgl: Array cmdline on stack should initialized to 0
+      virgl: Replace the usage of os_get_process_name with util_get_process_name
+      compiler: Combine duplicated implementation of is_gl_identifier into glsl_types.h
+      compiler: Move can_implicitly_convert_to helper to glsl module from glsl_types.h
+      mesa, compiler: Move gl_texture_index to glsl_types.h
+      compiler: Remove the need include "util/glheader.h" and "util/ralloc.h" in glsl_types.h
+      compiler: Remove redundant struct glsl_type in nir_types.h
 
