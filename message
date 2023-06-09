@@ -1,197 +1,112 @@
-Updating from b222b34e789812301f4f7b79911f9edc599937e2 to cb41ef0d3f537f8d1fb345cf5bdcc30070333c8b
+Updating from cb41ef0d3f537f8d1fb345cf5bdcc30070333c8b to c39521a9290cb1846bf6d5950aa5fdaeebdf5652
 
-Andres Gomez (2):
-      .mailmap: add an alias for Miguel Casas-Sanchez
-      .mailmap: add an alias for Clayton Craft
+Andres Gomez (1):
+      .mailmap: add an alias for Christian Gmeiner
 
-Caio Oliveira (2):
-      compiler/types: Make key in subroutine_name more effective
-      r600/sfn: Fix warning about overloads hiding virtual functions
-
-Chia-I Wu (1):
-      radv: fix non-square compressed image copy on gfx9
+Caio Oliveira (3):
+      spirv: Refactor and rename scope translation helper
+      spirv: Use vtn_translate_scope for OpReadClockKHR
+      intel/compiler: Refactor dump_instruction(s)
 
 Christian Gmeiner (3):
-      etnaviv: correct number of instructions in dump_shader_info(..)
-      etnaviv: move printing of final shader out of etna_link_shaders(..)
-      etnaviv: nir: do not call nir_lower_idiv(..) unconditionally
+      etnaviv: make wider use of DBG_ENABLED(..)
+      ci: add debian-arm32-asan
+      ci/etnaviv: add asan run
 
-Corentin Noël (2):
-      ci: Bump base tag to rebuild piglit
-      ci: uprev virglrenderer and crosvm
+Dave Airlie (2):
+      radv/video: report bad profile operation if h264 profile isn't supported.
+      radv/video: fix hevc scaling list order.
 
-Daniel Schürmann (24):
-      radv: add remaining RT shader args for separate compilation
-      nir,amd: add nir_intrinsic_store_[scalar|vector]_arg_amd to overwrite inputs
-      nir: add nir_intrinsic_resume_shader_address_amd
-      aco: implement nir_intrinsic_load_resume_shader_address_amd
-      aco: implement select_program_rt()
-      radv/rt: adjust shared_size when lowering hit_attribs
-      radv/rt: extend radv_pipeline_group_handle with shader VAs
-      radv/shader_info: add RT stages to radv_get_user_data_0()
-      radv/rt: implement radv_nir_lower_rt_abi to lower RT shaders for separate compilation
-      radv/rt: implement radv_rt_nir_to_asm()
-      radv/rt: change RT main shader to MESA_SHADER_INTERSECTION
-      radv/rt: replace pCreateInfo with VkPipelineCreateFlags in rt_variables
-      radv/rt: pass radv_ray_tracing_pipeline to RT shader creation
-      radv/rt: add and use specialized cache search/insert functions
-      radv/rt: reference library shaders during radv_rt_fill_stage_info()
-      radv/rt: don't write cache hit feedback per stage.
-      radv/rt: create compile_rt_prolog() function
-      radv/rt: set up RT shader args for separate compilation
-      radv/rt: adjust lower_rt_instructions() for shader functions [disables RT]
-      aco: adjust RT prolog for shader functions [disables RT]
-      radv/rt: separate shader compilation
-      radv/debug: dump ray tracing shaders in case of a hang
-      radv/rt: use priorities to select the next shader
-      radv/rt: remove now dead code
+Eric Engestrom (4):
+      docs/relnotes/23.1.1: clear "new features"
+      docs: add release notes for 23.1.2
+      docs/relnotes: add sha256sum for 23.1.2
+      docs: update calendar for 23.1.2
 
-Dave Airlie (14):
-      gallivm/nir: fix shuffleup tests.
-      draw: rename jit to vs_jit in lots of places.
-      draw/tess: drop unused tgsi bits.
-      gallium/tgsi/draw/softpipe: remodel shader const/buffer bindings.
-      draw: refactor resources to use arrays instead of explicit structs.
-      draw: add a max stage define and use it in a few places
-      draw: repack some members of context.
-      radv/video: convert video format properties to an outarray
-      radv/video: convert session memory requirements to outarray.
-      radv/video: don't supply an 8-bit format for a 10-bit dpb.
-      radv/video: rework h265 reference frame bindings.
-      radv/video: fix hevc st rps programming
-      radv/video: fix hevc scaling lists.
-      lavapipe: ignore another yuv format.
+Gert Wollny (6):
+      r600/sfn: add read instruction for unused but required LDS op results
+      r600/sfn: Don't rewrite TESS_EVAL inner tess level outputs
+      r600/sfn: Add experimental support for load/store_global
+      r600/sfn: Handle store_global when lowering 64 bit ops to vec2
+      r600/sfn: Handle load_global in 64 to vec2 lowering
+      rusticl: compile r600 driver
 
-Friedrich Vock (1):
-      radv: Disable capture/replay handles
+Hyunjun Ko (1):
+      anv/video: move video requirements to outarray.
 
-Georg Lehmann (4):
-      aco/ir: return true in hasRegClass for Operand(reg, rc)
-      aco/statistics: improve v_fma_mix dual issuing detection
-      aco: use v_add_f{16,32} with clamp for fsat
-      aco: use v_fma_mix for f2f32 and f2f16 on gfx11 if wave64
+Juston Li (10):
+      venus: sync to latest protocol header from v1.3.252
+      venus: sync protocol for multiple extensions for zink
+      venus: enable VK_EXT_non_seamless_cube_map
+      venus: enable VK_EXT_dynamic_rendering_unused_attachments
+      venus: enable VK_KHR_shader_clock
+      venus: enable VK_EXT_border_color_swizzle
+      venus: enable VK_EXT_fragment_shader_interlock
+      venus: enable VK_EXT_shader_subgroup_ballot
+      venus: enable VK_EXT_color_write_enable
+      docs: venus: update extension support
 
-Gert Wollny (1):
-      util/driconf: pin minImageCount to three for "Path of Exile"
+Karmjit Mahil (1):
+      pvr: HWRT creation simplifications.
 
-Iago Toral Quiroga (4):
-      v3dv: remove bogus viewport code
-      v3dv: simplify scissor setup for negative viewport height
-      broadcom/cle: fix up viewport offset packet definition for V3D 4.1+
-      v3d,v3dv: fix viewport offset for negative viewport center
-
-Juan A. Suarez Romero (1):
-      v3d: handle samplerExternalOES
-
-Karmjit Mahil (3):
-      pvr: Fix draw indirect page faults due to missing index list buffer
-      pvr: Rename temps_count to pds_temps_count
-      pvr: Fix PDS temps allocation on fragment stage
-
-Karol Herbst (4):
-      nv50/ir: convert to scoped_barrier
-      doc/rusticl: add Rust Update Policy
-      rusticl: bump rust req to 1.60
-      rusticl/event: flush queues from dependencies
-
-Kenneth Graunke (1):
-      intel/genxml: Drop Tiled Resource Mode fields
-
-Konstantin Seurer (9):
-      gallivm: Fix anisotropic sampling with num_mips=1
-      gallivm: Cast read_first_invocation source to an int
-      llvmpipe: refactor out the pipe->lp_jit structure fillers.
-      llvmpipe: Add lp_storage_image_format_supported
-      llvmpipe: Add lp_storage_render_image_format_supported
-      gallivm: Add lp_build_nir_sample_key
-      gallivm: Add lp_img_op_from_intrinsic
-      gallivm: Handle invalid image format/op combinations
-      gallivm: Zero initialize param structs
+Karol Herbst (3):
+      ci: add and use clippy for rusticl
+      rusticl: fix clippy errors on image_slice_pitch change to usize
+      clc: relax spec constant validation
 
 Lionel Landwerlin (1):
-      anv: allow binding tables allocations on compute only queues
+      intel/nir: switch ray query state tracking to local variables uint16_t
 
-Lucas Fryzek (1):
-      mailmap: Add Lucas Fryzek to mailmap
+Luigi Santivetti (1):
+      pvr: fixup assert in pvr_cmd_buffer_alloc_mem
 
-Marek Olšák (5):
-      treewide: use uint64_t / (u)intptr_t in image address calculations
-      amd: drop support for LLVM 11
-      amd: drop support for LLVM 12
-      amd: drop support for LLVM 13
-      amd: drop support for LLVM 14
+Marek Olšák (1):
+      mesa: fix glBitmap in display lists when width <= 0 || height <= 0
 
-Mark Janes (2):
-      iris: convert Wa_14010455700 to use workaround mechanism
-      anv: convert Wa_14010455700 to use workaround mechanism
+Martin Roukala (né Peres) (1):
+      ci/b2c: update to mesa-trigger:2023-03-08.1
 
-Matt Coster (4):
-      pvr: Correct calculations in pvr_unwind_rects()
-      pvr: Refactor pvr_unwind_rects()
-      pvr: Allow S8_UINT to be used as a stencil attachment format
-      pvr: Don't overwrite PDS vertex input flags
+Matt Coster (2):
+      pvr: Declare dependency on idep_mesautil
+      pvr: Add support for sampler border colors
 
-Matt Turner (1):
-      u_format: Use memcpy to avoid unaligned accesses
+Mike Blumenkrantz (6):
+      zink: combine some rast state draw conditionals
+      zink: don't check prog->shaders when creating gfx pipeline
+      zink: check for cached mem correctly when mapping buffer
+      zink: remove assert for dt in zink_kopper_update
+      zink: stop swizzling conditional render during batch flush
+      zink: update some radv qbo fails
 
-Mike Blumenkrantz (10):
-      zink: also disable bg compile for compute with nobgc
-      zink: hook up VK_EXT_attachment_feedback_loop_dynamic_state
-      zink: use dynamic state for feedback loops when available
-      zink: enable EXT_shader_object globally with have_EXT_attachment_feedback_loop_dynamic_state
-      zink: add a ci flake
-      lavapipe: pass list to cmdbuf exec, not cmdbuf
-      lavapipe: add a mapping for BDA
-      lavapipe: add a zeroed buffer that can be bound in place of an index buffer
-      lavapipe: handle index buffers with offsets for indirect draws
-      lavapipe: NV_device_generated_commands
+Qiang Yu (14):
+      ac/nir,radv: add 1 dword to LS/HS vertex stride
+      ac/nir,radv: add 1 dword to ES/GS item size
+      radeonsi: add scratch_offset arg for aco tcs
+      radeonsi: lower nir_load_tess_rel_patch_id_amd in abi for aco
+      ac/llvm,radeonsi: lower nir_load_ring_tess_offchip_amd in abi
+      radeonsi: enable aco support for mono standalone tcs
+      radeonsi: add scratch_offset arg for aco tes
+      radeonsi: init tes aco shader info fields
+      radeonsi: update lds size for tes
+      radeonsi: enable aco support for standalone tes
+      radeonsi: add scratch_offset arg for aco gs
+      ac/llvm,radeonsi: lower nir_load_ring_gsvs_amd in abi
+      radeonsi: enable aco for standalone gs
+      radeonsi: enable aco support for gs copy shader
 
-Nanley Chery (5):
-      iris: Drop a GFX12_CCS_E check in can_fast_clear_color
-      intel: Rename the GFX12_CCS_E aux-usage to FCV_CCS_E
-      iris: Avoid extra CCS_E flushes for aux mode changes
-      iris: Avoid FCV_CCS_E for shader image accesses
-      iris: Assert against FCV_CCS_E for blitter writes
+Rhys Perry (4):
+      aco: mask bits source of s_bfe
+      aco/tests: test that s_bfe bits is masked
+      util: fix gc_alloc_size alignment
+      util/tests: add gc_alloc_size alignment tests
 
-Oskar Rundgren (1):
-      pvr: add block compressed formats blit support
+SoroushIMG (1):
+      pvr: fix infinite recursion in pvr_cmd_buffer_{start,end}_sub_cmd
 
-Pierre-Eric Pelloux-Prayer (1):
-      Revert "gallium/u_threaded: buffer sharedness tracking"
+Timur Kristóf (1):
+      radv: Clarify gang submit terminology.
 
-Rhys Perry (3):
-      aco: consider position/primitive exports around memory barriers
-      ac/nir: use scoped barriers to finish stores before exports
-      aco: remove memory_barrier_buffer implementation
-
-Samuel Pitoiset (11):
-      nir: add nir_intrinsic_load_provoking_vtx_amd
-      radv: add support for nir_intrinsic_load_provoking_vtx_amd
-      radv: track if the rasterization primitive is known at compile time
-      nir: add nir_intrinsic_load_rasterization_primitive_amd
-      radv: add support for nir_intrinsic_load_rasterization_primitive_amd
-      radv: handle per_vertex variables when gathering FS inputs
-      radv: set ROTATE_PC_PTR for custom interpolations
-      radv: configure RSRC1.LOAD_PROVOKING_VTX for the fragment shader
-      radv: add a NIR pass that lower fragment shader barycentric intrinsics
-      radv: gather info about nir_intrinsic_load_sample_positions_amd
-      radv: advertise VK_KHR_fragment_shader_barycentric on GFX10.3+
-
-Simon Ser (1):
-      Update OpenGL headers
-
-Vinson Lee (2):
-      tu: Fix missing unlock
-      vulkan/wsi: Remove duplicate NULL check
-
-Yogesh Mohan Marimuthu (2):
-      ac/gpu_info: num_cu = 4 and gfx11 enable dcc with retile
-      ac/gpu_info: rearrange if checks for dcc config
-
-Yonggang Luo (5):
-      vulkan: move nir_convert_ycbcr into vulkan runtime
-      util: Remove redundant type cast in function align64
-      util: use uint32_t as the parameter of align function
-      util: Do not use align as variable name
-      compiler: use align instead glsl_align and remove glsl_align
+norablackcat (2):
+      rusticl: add cl_khr_create_command_queue
+      docs/features update opencl extensions add rusticl
 
