@@ -1,112 +1,72 @@
-Updating from cb41ef0d3f537f8d1fb345cf5bdcc30070333c8b to c39521a9290cb1846bf6d5950aa5fdaeebdf5652
+Updating from c39521a9290cb1846bf6d5950aa5fdaeebdf5652 to 51cd2965c71986d904997c15981217a6270943c0
 
-Andres Gomez (1):
-      .mailmap: add an alias for Christian Gmeiner
+Alyssa Rosenzweig (6):
+      pan/mdg: Drop lower_locals_to_regs call
+      lima: Drop lower_locals_to_regs call
+      ir2: Drop lower_locals_to_regs call
+      nir: Add AGX atomic intrinsics
+      agx: Refactor expressions in agx_nir_lower_address
+      agx: Fold addressing math into atomics
 
-Caio Oliveira (3):
-      spirv: Refactor and rename scope translation helper
-      spirv: Use vtn_translate_scope for OpReadClockKHR
-      intel/compiler: Refactor dump_instruction(s)
+Caio Oliveira (1):
+      intel/compiler: Remove unused functions and declarations
 
-Christian Gmeiner (3):
-      etnaviv: make wider use of DBG_ENABLED(..)
-      ci: add debian-arm32-asan
-      ci/etnaviv: add asan run
+Chia-I Wu (1):
+      radv: disable calibrated timestamps on raven/raven2
 
-Dave Airlie (2):
-      radv/video: report bad profile operation if h264 profile isn't supported.
-      radv/video: fix hevc scaling list order.
+Christian Gmeiner (1):
+      etnaviv: Add support for conditional rendering
 
-Eric Engestrom (4):
-      docs/relnotes/23.1.1: clear "new features"
-      docs: add release notes for 23.1.2
-      docs/relnotes: add sha256sum for 23.1.2
-      docs: update calendar for 23.1.2
+David Heidelberg (8):
+      ci: explicitely state BUILDTYPE
+      ci: rename S3 artifacts according to scheme mesa-$arch-$config-$buildtype
+      ci: rename MINIO to S3
+      ci: rename MINIO_HOST variable to S3_HOST
+      ci: replace MINIO_RESULTS_UPLOAD with S3_RESULTS_UPLOAD
+      ci: remove BUILD_PATH, always use S3_ARTIFACT_NAME
+      ci/lava: rename rest local MINIO_ variables to S3_
+      ci/android: remove the artifact file just as we unpack it
 
-Gert Wollny (6):
-      r600/sfn: add read instruction for unused but required LDS op results
-      r600/sfn: Don't rewrite TESS_EVAL inner tess level outputs
-      r600/sfn: Add experimental support for load/store_global
-      r600/sfn: Handle store_global when lowering 64 bit ops to vec2
-      r600/sfn: Handle load_global in 64 to vec2 lowering
-      rusticl: compile r600 driver
+Filip Gawin (1):
+      anv: allow intel_clflush_range only on igpu
 
-Hyunjun Ko (1):
-      anv/video: move video requirements to outarray.
+Friedrich Vock (1):
+      aco: Lower divergent bool phis iteratively
 
-Juston Li (10):
-      venus: sync to latest protocol header from v1.3.252
-      venus: sync protocol for multiple extensions for zink
-      venus: enable VK_EXT_non_seamless_cube_map
-      venus: enable VK_EXT_dynamic_rendering_unused_attachments
-      venus: enable VK_KHR_shader_clock
-      venus: enable VK_EXT_border_color_swizzle
-      venus: enable VK_EXT_fragment_shader_interlock
-      venus: enable VK_EXT_shader_subgroup_ballot
-      venus: enable VK_EXT_color_write_enable
-      docs: venus: update extension support
+Karol Herbst (5):
+      rusticl: add proc macro module for generating API stubs
+      rusticl/icd: make release return nothing
+      rusticl/icd: use new proc macros
+      ac/llvm: support vec2 on b2i16
+      ac/llvm: replace MESA_SHADER_COMPUTE checks with gl_shader_stage_is_compute
 
-Karmjit Mahil (1):
-      pvr: HWRT creation simplifications.
+Konstantin Seurer (3):
+      radv/rt: Do not guard the raygen shader
+      radv/rt: Clear NIR metadata after lowering the ABI
+      aco/rt: Do not initialize the next shader addr
 
-Karol Herbst (3):
-      ci: add and use clippy for rusticl
-      rusticl: fix clippy errors on image_slice_pitch change to usize
-      clc: relax spec constant validation
+Lucas Stach (3):
+      etnaviv: rs: flush TS cache before making configuration changes
+      etnaviv: rs: unconditionally flush color and depth cache before using RS
+      etnaviv: optimize transfer flushes
 
-Lionel Landwerlin (1):
-      intel/nir: switch ray query state tracking to local variables uint16_t
+Mark Janes (1):
+      intel: use generated helpers for Wa_1508744258
 
-Luigi Santivetti (1):
-      pvr: fixup assert in pvr_cmd_buffer_alloc_mem
+Martin Roukala (né Peres) (3):
+      zink/ci: add more QBO-related fails on RADV
+      amd/ci: add another test to the vkcts-vega10 flake list
+      zink/ci: remove spec@nv_shader_atomic_int64@* from the fail lists
 
-Marek Olšák (1):
-      mesa: fix glBitmap in display lists when width <= 0 || height <= 0
+Mykhailo Skorokhodov (1):
+      nir: Rematerialize derefs after opt_dead_cf
 
-Martin Roukala (né Peres) (1):
-      ci/b2c: update to mesa-trigger:2023-03-08.1
+Pavel Ondračka (1):
+      CODEOWNERS: add r300 driver
 
-Matt Coster (2):
-      pvr: Declare dependency on idep_mesautil
-      pvr: Add support for sampler border colors
+Rhys Perry (1):
+      aco: run nir_lower_int64 after nir_opt_uniform_atomics
 
-Mike Blumenkrantz (6):
-      zink: combine some rast state draw conditionals
-      zink: don't check prog->shaders when creating gfx pipeline
-      zink: check for cached mem correctly when mapping buffer
-      zink: remove assert for dt in zink_kopper_update
-      zink: stop swizzling conditional render during batch flush
-      zink: update some radv qbo fails
-
-Qiang Yu (14):
-      ac/nir,radv: add 1 dword to LS/HS vertex stride
-      ac/nir,radv: add 1 dword to ES/GS item size
-      radeonsi: add scratch_offset arg for aco tcs
-      radeonsi: lower nir_load_tess_rel_patch_id_amd in abi for aco
-      ac/llvm,radeonsi: lower nir_load_ring_tess_offchip_amd in abi
-      radeonsi: enable aco support for mono standalone tcs
-      radeonsi: add scratch_offset arg for aco tes
-      radeonsi: init tes aco shader info fields
-      radeonsi: update lds size for tes
-      radeonsi: enable aco support for standalone tes
-      radeonsi: add scratch_offset arg for aco gs
-      ac/llvm,radeonsi: lower nir_load_ring_gsvs_amd in abi
-      radeonsi: enable aco for standalone gs
-      radeonsi: enable aco support for gs copy shader
-
-Rhys Perry (4):
-      aco: mask bits source of s_bfe
-      aco/tests: test that s_bfe bits is masked
-      util: fix gc_alloc_size alignment
-      util/tests: add gc_alloc_size alignment tests
-
-SoroushIMG (1):
-      pvr: fix infinite recursion in pvr_cmd_buffer_{start,end}_sub_cmd
-
-Timur Kristóf (1):
-      radv: Clarify gang submit terminology.
-
-norablackcat (2):
-      rusticl: add cl_khr_create_command_queue
-      docs/features update opencl extensions add rusticl
+Vinson Lee (1):
+      frontends/va: Fix missing unlock
 
