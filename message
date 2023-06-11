@@ -1,72 +1,27 @@
-Updating from c39521a9290cb1846bf6d5950aa5fdaeebdf5652 to 51cd2965c71986d904997c15981217a6270943c0
+Updating from 51cd2965c71986d904997c15981217a6270943c0 to 4181e144eff4dae4b84821e2a8b195d16ad393d6
 
-Alyssa Rosenzweig (6):
-      pan/mdg: Drop lower_locals_to_regs call
-      lima: Drop lower_locals_to_regs call
-      ir2: Drop lower_locals_to_regs call
-      nir: Add AGX atomic intrinsics
-      agx: Refactor expressions in agx_nir_lower_address
-      agx: Fold addressing math into atomics
-
-Caio Oliveira (1):
-      intel/compiler: Remove unused functions and declarations
-
-Chia-I Wu (1):
-      radv: disable calibrated timestamps on raven/raven2
-
-Christian Gmeiner (1):
-      etnaviv: Add support for conditional rendering
-
-David Heidelberg (8):
-      ci: explicitely state BUILDTYPE
-      ci: rename S3 artifacts according to scheme mesa-$arch-$config-$buildtype
-      ci: rename MINIO to S3
-      ci: rename MINIO_HOST variable to S3_HOST
-      ci: replace MINIO_RESULTS_UPLOAD with S3_RESULTS_UPLOAD
-      ci: remove BUILD_PATH, always use S3_ARTIFACT_NAME
-      ci/lava: rename rest local MINIO_ variables to S3_
-      ci/android: remove the artifact file just as we unpack it
-
-Filip Gawin (1):
-      anv: allow intel_clflush_range only on igpu
+David Heidelberg (1):
+      ci: valve and freedreno farm is down
 
 Friedrich Vock (1):
-      aco: Lower divergent bool phis iteratively
+      radv: Always flush before writing acceleration structure properties
 
-Karol Herbst (5):
-      rusticl: add proc macro module for generating API stubs
-      rusticl/icd: make release return nothing
-      rusticl/icd: use new proc macros
-      ac/llvm: support vec2 on b2i16
-      ac/llvm: replace MESA_SHADER_COMPUTE checks with gl_shader_stage_is_compute
+Karol Herbst (1):
+      ac/llvm: set +cumode for radeonsi
 
-Konstantin Seurer (3):
-      radv/rt: Do not guard the raygen shader
-      radv/rt: Clear NIR metadata after lowering the ABI
-      aco/rt: Do not initialize the next shader addr
+Konrad Dybcio (1):
+      freedreno: Partially decode CP_PROTECT_CNTL
 
-Lucas Stach (3):
-      etnaviv: rs: flush TS cache before making configuration changes
-      etnaviv: rs: unconditionally flush color and depth cache before using RS
-      etnaviv: optimize transfer flushes
+Martin Roukala (né Peres) (1):
+      ci: bring back the valve farm
 
-Mark Janes (1):
-      intel: use generated helpers for Wa_1508744258
+Sviatoslav Peleshko (1):
+      nir/lower_shader_calls: Fix cursor if broken after nir_cf_extract() call
 
-Martin Roukala (né Peres) (3):
-      zink/ci: add more QBO-related fails on RADV
-      amd/ci: add another test to the vkcts-vega10 flake list
-      zink/ci: remove spec@nv_shader_atomic_int64@* from the fail lists
+Yonggang Luo (2):
+      panfrost: Replace the usage of PIPE_BIND_* with PAN_BIND_*
+      ac: Replace the usage of pipe_compare_func with compare_func
 
-Mykhailo Skorokhodov (1):
-      nir: Rematerialize derefs after opt_dead_cf
-
-Pavel Ondračka (1):
-      CODEOWNERS: add r300 driver
-
-Rhys Perry (1):
-      aco: run nir_lower_int64 after nir_opt_uniform_atomics
-
-Vinson Lee (1):
-      frontends/va: Fix missing unlock
+norablackcat (1):
+      docs: rusticl envvars list supported drivers
 
