@@ -59,6 +59,14 @@ option(
 )
 
 option(
+  'expat',
+  type : 'feature',
+  value : 'auto',
+  description : 'Controls the use of expat. ' +
+                'Cannot be disabled if xmlconfig is enabled.'
+)
+
+option(
   'gallium-drivers',
   type : 'array',
   value : ['auto'],
@@ -461,18 +469,6 @@ option(
 )
 
 option(
-  'execmem',
-  type : 'boolean',
-  value : true,
-  description : 'Enable execmem support.  Without execmem, glapi will fail ' +
-                'to generate dynamic glapi stubs when entrypoints unknown ' +
-                'to glapi but known to DRI drivers are requested in ' +
-                'eglGetProcAddress or glXGetProcAddress.  This should be ' +
-                'enabled unless the platform can guarantee glapi and DRI ' +
-                'drivers are always built from the same source tree.'
-)
-
-option(
   'osmesa',
   type : 'boolean',
   value : false,
@@ -661,6 +657,7 @@ option(
                 'the default driconf file is hardcoded into Mesa. ' +
                 'Requires expat.'
 )
+
 option (
   'intel-xe-kmd',
   type : 'feature',

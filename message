@@ -1,34 +1,140 @@
-Updating from 4181e144eff4dae4b84821e2a8b195d16ad393d6 to da4b27452b3cd169298012cc88d5ed19bbaa30b9
+Updating from da4b27452b3cd169298012cc88d5ed19bbaa30b9 to 4c28c5b074383b25802ba8744db37a814f616c27
 
-Alan Previn (2):
-      drm-uapi: bump headers (except AMD)
-      iris: Add GET_PARAM for protected context capability support
+Alyssa Rosenzweig (4):
+      nir/builder: Add steal_tex_src helper
+      nir/lower_tex: Use nir_steal_tex_src
+      agx: Use common nir_steal_tex_src
+      nir: Add interleave_agx instruction
 
-Karol Herbst (4):
-      lp: align memory for long16 CL types
-      rusticl/icd: fix ReferenceCountedAPIPointer::from_ptr for NULL pointers
-      rusticl/api: remove some repr(C)
-      rusticl/event: ensure even status is updated in order
+Corentin Noël (7):
+      gallium: Incorporate the device release in dri_destroy_screen_helper
+      gallium: Rename dri_destroy_screen_helper into dri_release_screen
+      pipe-loader: Document the behavior regarding screen creating failures
+      pipe-loader: Do not destroy the winsys on screen creation failure
+      gallium: Only call dri_init_options when the screen is actually created
+      gallium: Use the common destroy function on screen initialization failure
+      gallium: Rename dri_init_screen_helper into dri_init_screen
 
-Lucas Stach (7):
-      etnaviv: query: move sample counter manipulation into query providers
-      etnaviv: query: reset sample count on begin_query
-      etnaviv: query: remove incorrect comment
-      etnaviv: query: correct max number of perfmon samples
-      etnaviv: query: correct max number of occlusion query samples
-      etnaviv: query: optimize context flushes
-      mesa/st: discard whole resource when mapping drawpixels texture
+Dylan Baker (1):
+      meson: Key whether to build batch decoder on expat
 
-Martin Roukala (né Peres) (2):
-      ci/b2c: select the DUT to run on by name
-      radv/ci: use the low-priority runners for vangogh jobs
+Emma Anholt (26):
+      v3d: Respect nir_intrinsic_store_output's write_mask.
+      mesa: Emit full output write in st_pbo_create_vs().
+      mesa: Port the pbo.use_gs path to NIR and let it get used on NIR drivers.
+      softpipe: Drop the use_tgsi debug flag.
+      llvmpipe: Drop the LP_DEBUG=tgsi_ir debug option.
+      virgl: Drop the VIRGL_DEBUG=use_tgsi debug var.
+      r600: Drop docs for use_tgsi debug var.
+      r300: Drop RADEON_DEBUG=use_tgsi.
+      nouveau: Delete the NV50_PROG_USE_TGSI env var.
+      svga: Switch to preferring NIR by default.
+      nine: Drop the nir_vs/nir_ps env vars.
+      gallium: Drop PIPE_SHADER_CAP_PREFERRED_IR.
+      mesa/drawtex: Cut out the TGSI semantic translation.
+      svga: Stop asserting that compute params are queried against TGSI.
+      mesa: Always query our compute params against IR_NIR.
+      mesa: Drop TGSI token handling
+      mesa: Simplify st_get_nir_compiler_options().
+      mesa: Drop dead TGSI serialization prototypes.
+      mesa/atifs: Rename the header guard.
+      mapi: clang-format _glapi_add_dispatch().
+      mapi: Delete dynamic stub generation.
+      mesa: Drop the function parameter spec from the remap table.
+      mapi: Clean up mapi_stub struct.
+      mesa: Drop the aliases from the remap table.
+      mapi: Drop the unused_functions table.
+      mapi: Delete execmem support code.
 
-Tapani Pälli (1):
-      anv: remove BDW specific WA for CS stall enable
+Friedrich Vock (4):
+      aco: Reset scratch_rsrc on blocks without predecessors
+      aco: Fix live_var_analysis assert
+      aco: Fix assert in insert_exec_mask
+      radv: Add driconf to force wave64 for RT
+
+Georg Lehmann (4):
+      aco: make validation work without SSA temps
+      aco: move cfg validation to its own function
+      aco: don't validate p_constaddr_addlo/p_resumeaddr_addlo operands
+      aco: validate ir for prologs and after lower_to_hw_instr
+
+Jesse Natalie (27):
+      dzn: Don't support VK R4G4B4A4_UNORM_PACK16 unless we have B4G4R4A4
+      nir_opt_constant_folding: Fix nir_deref_path leak
+      nir: Add is_null_constant to nir_constant
+      vtn: Set is_null_constant
+      nir_split_struct_vars: Support more modes and constant initializers
+      nir: Allow atomics as non-complex uses for var-splitting passes
+      nir_lower_ubo_vec4: Delete an invalid assert
+      nir_lower_mem_access_bit_sizes: Add a bit_size input to the callback
+      nir_lower_mem_access_bit_sizes: Move options into a struct
+      nir_lower_mem_access_bit_sizes: Support unaligned stores via a pair of atomics
+      nir: Fix constant expression for unpack_64_4x16
+      nir: Optimize unpacking 16 bit values that were originally packed
+      microsoft/clc: Try harder to optimize memcpys before lowering them
+      microsoft/clc: Fix progress reporting for some lowering
+      microsoft/compiler: Support vec/struct const vals
+      microsoft/compiler: Improvements to constant -> shader_temp pass used for CL
+      microsoft/compiler: Add some more lowering passes for derefs
+      microsoft/compiler: Emit const accesses as load_deref
+      microsoft/compiler: Use mem_constant instead of shader_temp for consts
+      microsoft/compiler: Un-lower shared/scratch to derefs
+      spirv2dxil: Don't lower shared/temp to explicit I/O
+      microsoft/compiler: Support load_ubo_vec4
+      dxil: Don't generate load_ubo_dxil directly
+      dxil: Delete load_ubo_dxil intrinsic
+      microsoft/compiler: Don't lower bit sizes for movs
+      microsoft/compiler: Don't over-align raw buffer load/store intrinsics
+      dxil: Remove custom SSBO lowering
+
+Juan A. Suarez Romero (1):
+      broadcom/ci: update expected results
+
+Konstantin Seurer (1):
+      radv/ci: Test ray tracing on vkd3d-proton
+
+Lionel Landwerlin (1):
+      anv: add query tracepoints
+
+Martin Roukala (né Peres) (3):
+      ci/b2c: change the default first-console-activity timeout to 2 minutes
+      zink/ci: add more tests to the flake list of vangogh
+      zink/ci: enable zink-radv-vangogh-valve for pre-merge testing
+
+Patrick Lerda (2):
+      nouveau: fix nouveau_heap_destroy() memory leak
+      r600: fix cayman_convert_border_color() swizzle behavior
+
+Pavel Ondračka (6):
+      r300: move nir stuff to r300_nir file
+      r300: move the ARL merging pass up in the opt loop
+      r300: move the ROUND+ARL->ARR fusing to main optimization loop
+      r300: optimize the load A0 pattern from wined3d
+      r300: remove duplicate ARRs
+      r300: be more agressive when merging A0 loads
+
+Qiang Yu (4):
+      radeonsi: add scratch_offset arg for aco cs
+      ac/llvm,radeonsi: lower nir_load_user_data_amd in abi
+      radeonsi: fix crash when AMD_DEBUG=cs,initnir
+      radeonsi: enable aco support for compute shader
+
+Rohan Garg (1):
+      anv: split ANV_PIPE_RENDER_TARGET_BUFFER_WRITES for finer grained flushing
+
+Samuel Pitoiset (5):
+      radv: add a helper for emitting a null depth/stencil target
+      radv: reset more DB registers when emitting a null ds target
+      radv: emit DB_RENDER_CONTROL as part of the framebuffer
+      radv: disable HTILE compression only when layouts are compressed
+      radv/ci: update the list of expected failures on STONEY
+
+Timothy Arceri (1):
+      st/glsl: move linking code to the same st file
 
 Timur Kristóf (1):
-      radv: Use RESET_FILTER_CAM for some mesh shading draws.
+      aco: Mark exec write used when it writes other registers.
 
-Vinson Lee (1):
-      r600/sfn: Remove duplicate assignment
+Xi Ruoyao (1):
+      Revert "glx: Remove pointless GLX_INTEL_swap_event paranoia"
 
