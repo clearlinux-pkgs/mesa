@@ -1,96 +1,43 @@
-Updating from 397e728ef4f1247c0c2d11bf8516763b2a3088ff to b49afd6ce24b9f3403993bbc096d72c6a28a854f
+Updating from b49afd6ce24b9f3403993bbc096d72c6a28a854f to 6e5eb0afd3f97937262db0bbd4f13aff76785015
 
-Alyssa Rosenzweig (3):
-      nir/builder: Add ubitfield_extract_imm helper
-      agx: Implement bitfieldExtract natively
-      asahi: Use bitfield_extract for texture lowering
+Charmaine Lee (1):
+      svga: lower images before ntt
 
-Caio Oliveira (1):
-      microsoft/clc: Add unreachable() to fix 'may be unitialized' warning
+David Heidelberg (5):
+      ci/windows: move microsoft farm rules
+      ci/etnaviv: if farm is down, we expect no manual jobs can be triggered
+      ci/amd: hide vaapi job dependent on Collabora farm when it's down
+      ci/crocus: depend on state of the Anholt farm
+      ci: implement farms handling trough files inside .ci-farms
 
-Dave Airlie (1):
-      ac/radeonsi: add av1 defaults header file from radeonsi
+Eric Engestrom (6):
+      egl: return correct error for EGL_KHR_image_pixmap
+      clang-format: add explanation for anyone reading .clang-format-include
+      radv,aco: tweaks to get clang-format to print nicer code
+      radv: reformat according to its .clang-format
+      aco: reformat according to its .clang-format
+      ci: enforce formatting for RADV & ACO
 
-Dylan Baker (4):
-      bin/pick: fix issue where None for nomination_type could fail
-      bin/pick: use lineboxes to make the UI clearer
-      bin/pick: Add support for adding notes on patches
-      bin/pick-ui: use asyncio.new_event_loop
+Iván Briano (1):
+      anv: do not explode on 32 bit builds
 
-Erik Faye-Lund (1):
-      docs: upgrade bootstrap to 5.3.0
+Jianxun Zhang (8):
+      iris: Fix memory alignment when importing dmabuf (GFX12.5)
+      include/uapi: Update drm_fourcc.h from drm kernel
+      intel/isl: Add MTL RC CCS modifier into modifier info
+      iris: Support I915_FORMAT_MOD_4_TILED_MTL_RC_CCS modifier
+      intel/isl: Add MTL RC CCS CC modifier into modifier info
+      iris: Support I915_FORMAT_MOD_4_TILED_MTL_RC_CCS_CC modifier
+      intel/isl: Add MTL MC CCS modifier into modifier info
+      iris: Support MTL modifier MC_CCS
 
-Friedrich Vock (1):
-      radv: Add the BOs of all shaders in a RT pipeline
+Konstantin Seurer (2):
+      Revert "radv: Enable ray tracing pipelines by default"
+      radv/rt: Enable RT pipelines on GFX10_3+ excluding vangogh
 
-Georg Lehmann (3):
-      aco/opcodes: move v_cndmask_b32 back to the VOP2 list
-      aco: remove v_cvt_pkrtz_f16_f32_e64 when it's actually VOP2
-      aco/opcodes: delete wrong comment copy pasted from NIR
+Thomas H.P. Andersen (1):
+      tgsi: remove unused functions and structs
 
-Karol Herbst (6):
-      nv50/ir: use override
-      nv50/ir: resolve -Woverloaded-virtual=1 warnings
-      clc: add commment to clc_optional_features to ensure no padding exists
-      rusticl/spirv: Key optional clc features when caching.
-      clc: static assert that clc_optional_features has no padding
-      nouveau: eliminate busy waiting on fences
-
-Konstantin Seurer (1):
-      radv/rt: Stop forcing wave32 by setting compute_subgroup_size
-
-Matt Turner (1):
-      meson: Remove reference to removed SWR driver
-
-Mike Blumenkrantz (5):
-      zink: more anv ci flakes
-      aux/trace: add methods for mesh shaders
-      lavapipe: more fixes for sample shading
-      lavapipe: fix shader binary binding with mesh shaders
-      lavapipe: correctly update shader object per-stage push constant sizes
-
-Pavel Ondračka (9):
-      r300: remove unused SIN/COS lowering
-      r300: remove unused SSG lowering
-      r300: move CEIL lowering to NIR
-      r300: remove unused FLR lowering
-      r300: remove unused POW lowering
-      r300: remove unused DST lowering
-      r300: remove unused ROUND lowering
-      r300: remove unused LIT lowering
-      r300: remove unused opcodes from r300_tgsi_to_rc
-
-Samuel Pitoiset (7):
-      radv: remove unused radv_dgc_token struct
-      radv: add dgc_emit_state() helper
-      radv: add dgc_emit_push_constant() helper
-      radv: add dgc_emit_vertex_buffer() helper
-      radv: add dgc_emit_draw() helper
-      radv: add dgc_emit_draw_indexed() helper
-      radv: add dgc_emit_index_buffer()
-
-SoroushIMG (1):
-      pvr: add missing frag to geom dependency for jobs targetting same render target
-
-Tapani Pälli (10):
-      anv: wrap pipe control emission to a set of helper functions
-      anv: implement flush part of emit_apply_pipe_flushes with helper
-      anv: implement invalidate part of emit_apply_pipe_flushes with helper
-      anv: convert genX_query pipe controls to use pc helper
-      anv: change pipe controls in genX_state to use pc helper
-      anv: change pipe control in genX_pipeline to use pc helper
-      anv: change pipe controls in genX_gpu_memcpy to use pc helper
-      anv: change pipe control in indirect draw gen to use pc helper
-      anv: change most pipe controls in gfx8_cmd_buffer to use pc helper
-      anv: convert most pc in genX_cmd_buffer to use pc helper
-
-Tim Pambor (1):
-      virgl: Fix stack overflow in virgl_bind_sampler_states
-
-Tony Wasserka (2):
-      aco/spill: Use arena allocator for next use distances
-      aco/spill: Use arena allocator for spills
-
-Yiwei Zhang (1):
-      anv: avoid requiring ordered memory planes for explicit import
+Yonggang Luo (1):
+      dri: Replace usage of boolean/TRUE/FALSE with bool/true/false
 
