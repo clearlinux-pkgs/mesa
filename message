@@ -1,43 +1,47 @@
-Updating from b49afd6ce24b9f3403993bbc096d72c6a28a854f to 6e5eb0afd3f97937262db0bbd4f13aff76785015
+Updating from 6e5eb0afd3f97937262db0bbd4f13aff76785015 to 3a569fbf9b6e8eedd8659fc51b9b1378bae9dbf6
 
-Charmaine Lee (1):
-      svga: lower images before ntt
+Gert Wollny (1):
+      r600: Split tex CF only if written component is read
 
-David Heidelberg (5):
-      ci/windows: move microsoft farm rules
-      ci/etnaviv: if farm is down, we expect no manual jobs can be triggered
-      ci/amd: hide vaapi job dependent on Collabora farm when it's down
-      ci/crocus: depend on state of the Anholt farm
-      ci: implement farms handling trough files inside .ci-farms
+Karol Herbst (6):
+      rusticl/device: add intel usm queries DPCPP cares about
+      rusticl/device: sort cl_device_info queries
+      rusticl/version: use cl_version instead of cl_uint and provide a From impl
+      rusticl: advertize cl_khr_extended_versioning
+      docs/cl: fix whitespace issues and add missing entries
+      rusticl: advertize cl_khr_spirv_no_integer_wrap_decoration
 
-Eric Engestrom (6):
-      egl: return correct error for EGL_KHR_image_pixmap
-      clang-format: add explanation for anyone reading .clang-format-include
-      radv,aco: tweaks to get clang-format to print nicer code
-      radv: reformat according to its .clang-format
-      aco: reformat according to its .clang-format
-      ci: enforce formatting for RADV & ACO
-
-Iván Briano (1):
-      anv: do not explode on 32 bit builds
-
-Jianxun Zhang (8):
-      iris: Fix memory alignment when importing dmabuf (GFX12.5)
-      include/uapi: Update drm_fourcc.h from drm kernel
-      intel/isl: Add MTL RC CCS modifier into modifier info
-      iris: Support I915_FORMAT_MOD_4_TILED_MTL_RC_CCS modifier
-      intel/isl: Add MTL RC CCS CC modifier into modifier info
-      iris: Support I915_FORMAT_MOD_4_TILED_MTL_RC_CCS_CC modifier
-      intel/isl: Add MTL MC CCS modifier into modifier info
-      iris: Support MTL modifier MC_CCS
-
-Konstantin Seurer (2):
-      Revert "radv: Enable ray tracing pipelines by default"
-      radv/rt: Enable RT pipelines on GFX10_3+ excluding vangogh
-
-Thomas H.P. Andersen (1):
-      tgsi: remove unused functions and structs
-
-Yonggang Luo (1):
-      dri: Replace usage of boolean/TRUE/FALSE with bool/true/false
+Marek Olšák (32):
+      gallium/hud: append results to files instead of overwriting them
+      radeonsi: don't convert L8A8 to R8A8 when blitting via compute to fix gfx7
+      amd: update SET_*_REG_PAIRS* documentation and remove radeon_info options
+      amd: improve the IB parser, parse more packets
+      amd: rename mid_command_buffer_preemption_enabled -> register_shadowing_required
+      amd: increase the attribute ring size on gfx1103_r1
+      amd: don't set PA_RATE_CNTL because it has no effect
+      amd: fix GPU cache sizes retrieved from the kernel
+      amd: remove non-shadowed register tables
+      amd: remove ac_check_shadowed_regs
+      amd: add a new helper that prints all non-shadowed regs
+      amd: update shadowed register tables for gfx11
+      amd: skip redundant PKT3_NUM_INSTANCES even with register shadowing
+      amd: skip redundant INDEX_TYPE even with register shadowing
+      radeonsi: set register_shadowing_enabled if AMD_DEBUG=shadowregs is set
+      radeonsi/ci: add glx@glx-visuals-stencil to skips because it gets stuck often
+      radeonsi: fix RB+ and gfx11 issues with framebuffer state
+      radeonsi: change si_emit_derived_tess_state into a state atom
+      radeonsi: shrink the last field of tcs_offchip_layout due to LDS limit
+      radeonsi: don't do PFP_SYNC_ME before CP DMA and compute blits
+      radeonsi: don't needlessly invalidate L0/L1 caches at the beginning of IBs
+      radeonsi: add more variables into si_pm4_state and rework how it's created
+      radeonsi: remove sscreen parameter from si_pm4_set_reg_idx3
+      radeonsi: set non-graphics uconfig registers first in the preamble
+      radeonsi: handle demoted si_pm4_set_reg_idx3 as si_pm4_set_reg
+      radeonsi: eliminate redundant compute SH register changes
+      radeonsi: handle VGT_GS_OUT_PRIM_TYPE like a tracked register
+      radeonsi: handle VGT_LS_HS_CONFIG like a tracker register
+      radeonsi: handle GE_CNTL and IA_MULTI_VGT_PARAM as a tracked register
+      radeonsi: remove gfx10 NGG streamout
+      ci: remove clang-format testing
+      intel/ci: disable iris-jsl-deqp because it always fails for an AMD MR
 
