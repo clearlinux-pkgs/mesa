@@ -1,47 +1,48 @@
-Updating from 6e5eb0afd3f97937262db0bbd4f13aff76785015 to 3a569fbf9b6e8eedd8659fc51b9b1378bae9dbf6
+Updating from 3a569fbf9b6e8eedd8659fc51b9b1378bae9dbf6 to 0e728ea7b0779e299cec948d7ba06ab591c04992
+
+David Heidelberg (1):
+      ci/docs: fixup incorrect spacing around console block
+
+Eric Engestrom (2):
+      radv: fix formatting
+      Revert "ci: remove clang-format testing"
 
 Gert Wollny (1):
-      r600: Split tex CF only if written component is read
+      r600/sfn: Don't deref unused group slots
 
-Karol Herbst (6):
-      rusticl/device: add intel usm queries DPCPP cares about
-      rusticl/device: sort cl_device_info queries
-      rusticl/version: use cl_version instead of cl_uint and provide a From impl
-      rusticl: advertize cl_khr_extended_versioning
-      docs/cl: fix whitespace issues and add missing entries
-      rusticl: advertize cl_khr_spirv_no_integer_wrap_decoration
+Iago Toral Quiroga (4):
+      nir/lower_tex: copy missing fields when creating copy of tex instruction
+      nir/lower_tex: handle lower_tg4_offsets with lower_tg4_broadcom_swizzle
+      broadcom/compiler: handle textureGatherOffsets
+      v3dv: expose shaderImageGatherExtended
 
-Marek Olšák (32):
-      gallium/hud: append results to files instead of overwriting them
-      radeonsi: don't convert L8A8 to R8A8 when blitting via compute to fix gfx7
-      amd: update SET_*_REG_PAIRS* documentation and remove radeon_info options
-      amd: improve the IB parser, parse more packets
-      amd: rename mid_command_buffer_preemption_enabled -> register_shadowing_required
-      amd: increase the attribute ring size on gfx1103_r1
-      amd: don't set PA_RATE_CNTL because it has no effect
-      amd: fix GPU cache sizes retrieved from the kernel
-      amd: remove non-shadowed register tables
-      amd: remove ac_check_shadowed_regs
-      amd: add a new helper that prints all non-shadowed regs
-      amd: update shadowed register tables for gfx11
-      amd: skip redundant PKT3_NUM_INSTANCES even with register shadowing
-      amd: skip redundant INDEX_TYPE even with register shadowing
-      radeonsi: set register_shadowing_enabled if AMD_DEBUG=shadowregs is set
-      radeonsi/ci: add glx@glx-visuals-stencil to skips because it gets stuck often
-      radeonsi: fix RB+ and gfx11 issues with framebuffer state
-      radeonsi: change si_emit_derived_tess_state into a state atom
-      radeonsi: shrink the last field of tcs_offchip_layout due to LDS limit
-      radeonsi: don't do PFP_SYNC_ME before CP DMA and compute blits
-      radeonsi: don't needlessly invalidate L0/L1 caches at the beginning of IBs
-      radeonsi: add more variables into si_pm4_state and rework how it's created
-      radeonsi: remove sscreen parameter from si_pm4_set_reg_idx3
-      radeonsi: set non-graphics uconfig registers first in the preamble
-      radeonsi: handle demoted si_pm4_set_reg_idx3 as si_pm4_set_reg
-      radeonsi: eliminate redundant compute SH register changes
-      radeonsi: handle VGT_GS_OUT_PRIM_TYPE like a tracked register
-      radeonsi: handle VGT_LS_HS_CONFIG like a tracker register
-      radeonsi: handle GE_CNTL and IA_MULTI_VGT_PARAM as a tracked register
-      radeonsi: remove gfx10 NGG streamout
-      ci: remove clang-format testing
-      intel/ci: disable iris-jsl-deqp because it always fails for an AMD MR
+Illia Abernikhin (3):
+      docs: add iris features to docs/features.txt
+      docs: add crocus features to docs/features.txt
+      docs: remove i965 features from docs/features.txt
+
+Karol Herbst (11):
+      docs/cl: improve reporting of image features
+      rusticl/mem: cache the pipe_format
+      rusticl/mem: fix validation of packed image formats
+      rusticl/format: pass order and type to rusticl_image_format directly
+      rusticl/format: extract CL format to pipe format mapping into const function
+      rusticl/format: extract required format checks into const functions
+      rusticl/format: drop req_for_3d_image_write_ext
+      rusticl/format: add required format table for CL2.0
+      rusticl/format: document cl to pipe format mapping
+      rusticl/format: move format table generation into a macro
+      rusticl/format: enable all trivial to support optional image formats
+
+Lionel Landwerlin (1):
+      anv: avoid private buffer allocations in vkGetDeviceImageMemoryRequirementsKHR
+
+Samuel Pitoiset (7):
+      radv: do not use IB for the GFX preamble with RADV_DEBUG=noibs
+      radv: use IB for the GFX preamble on GFX6
+      radv: reserve space for shadowed regs
+      radv/amdgpu: fix a buffer overflow for submissions with RADV_DEBUG=noibs
+      radv/amdgpu: remove useless assert in radv_amdgpu_winsys_cs_submit_internal()
+      radv/amdgpu: add cs_execute_ib() for executing IBs
+      radv: use cs_execute_ib() for GFX, MBCP and DGC IBs
 
