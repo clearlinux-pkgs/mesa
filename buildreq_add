@@ -35,3 +35,6 @@ glslang
 libvdpau-dev
 libva-dev
 libglvnd-dev
+llvm-staticdev
+nasm
+yasm

@@ -1,0 +1,27 @@
+--- mesa-bbcda63564478533ce33a924421a75ab1d042f6e/src/util/blake3/meson.build~	2023-06-28 13:42:44.000000000 +0000
++++ mesa-bbcda63564478533ce33a924421a75ab1d042f6e/src/util/blake3/meson.build	2023-06-28 15:10:27.484984369 +0000
+@@ -4,6 +4,7 @@
+     'blake3_portable.c'
+ ]
+ blake3_defs = []
++blake3_defs += blake3_x86_no_simd_defs
+ 
+ is_windows = host_machine.system() == 'windows'
+ is_msvc = meson.get_compiler('c').get_id() == 'msvc'
+--- mesa-bbcda63564478533ce33a924421a75ab1d042f6e/src/util/blake3/meson.build~	2023-06-28 15:10:27.000000000 +0000
++++ mesa-bbcda63564478533ce33a924421a75ab1d042f6e/src/util/blake3/meson.build	2023-06-28 15:12:43.005161955 +0000
+@@ -4,13 +4,13 @@
+     'blake3_portable.c'
+ ]
+ blake3_defs = []
+-blake3_defs += blake3_x86_no_simd_defs
+ 
+ is_windows = host_machine.system() == 'windows'
+ is_msvc = meson.get_compiler('c').get_id() == 'msvc'
+ cpu_family = host_machine.cpu_family()
+ 
+ blake3_x86_no_simd_defs = ['-DBLAKE3_NO_SSE2', '-DBLAKE3_NO_SSE41', '-DBLAKE3_NO_AVX2', '-DBLAKE3_NO_AVX512']
++blake3_defs += blake3_x86_no_simd_defs
+ 
+ if cpu_family == 'x86_64'
+   if is_windows

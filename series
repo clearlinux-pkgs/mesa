@@ -5,3 +5,4 @@
 #0001-Revert-egl-move-include-of-local-headers-out-of-Khro.patch
 #backport-raytracing.patch
 asmbuild.patch
+blake.patch

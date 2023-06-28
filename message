@@ -1,48 +1,22 @@
-Updating from 3a569fbf9b6e8eedd8659fc51b9b1378bae9dbf6 to 0e728ea7b0779e299cec948d7ba06ab591c04992
+Updating from 86785130d18a1e6c603dfbf57559aa2a8a748295 to bbcda63564478533ce33a924421a75ab1d042f6e
 
-David Heidelberg (1):
-      ci/docs: fixup incorrect spacing around console block
+Alejandro Piñeiro (2):
+      v3dv: refactor copy_image_to_buffer_blit
+      v3dv: add a linear images to buffer copy codepath
 
-Eric Engestrom (2):
-      radv: fix formatting
-      Revert "ci: remove clang-format testing"
+Erik Faye-Lund (1):
+      draw/i915: move hwfmt array to i915 specific struct
 
-Gert Wollny (1):
-      r600/sfn: Don't deref unused group slots
+Karmjit Mahil (1):
+      pvr: Setup ZLS depth and stencil load/store separately
 
-Iago Toral Quiroga (4):
-      nir/lower_tex: copy missing fields when creating copy of tex instruction
-      nir/lower_tex: handle lower_tg4_offsets with lower_tg4_broadcom_swizzle
-      broadcom/compiler: handle textureGatherOffsets
-      v3dv: expose shaderImageGatherExtended
+Samuel Pitoiset (5):
+      radv/amdgpu: add more small helpers for managing CS
+      radv/amdgpu: add support for executing DGC cmdbuf with RADV_DEBUG=noibs
+      radv: allow NV_device_generated_commands with RADV_DEBUG=noibs
+      radv: stop emitting TILE_SURFACE_ENABLE for the ZRANGE_PRECISION workaround
+      radv: inline more values in radv_emit_fb_ds_state()
 
-Illia Abernikhin (3):
-      docs: add iris features to docs/features.txt
-      docs: add crocus features to docs/features.txt
-      docs: remove i965 features from docs/features.txt
-
-Karol Herbst (11):
-      docs/cl: improve reporting of image features
-      rusticl/mem: cache the pipe_format
-      rusticl/mem: fix validation of packed image formats
-      rusticl/format: pass order and type to rusticl_image_format directly
-      rusticl/format: extract CL format to pipe format mapping into const function
-      rusticl/format: extract required format checks into const functions
-      rusticl/format: drop req_for_3d_image_write_ext
-      rusticl/format: add required format table for CL2.0
-      rusticl/format: document cl to pipe format mapping
-      rusticl/format: move format table generation into a macro
-      rusticl/format: enable all trivial to support optional image formats
-
-Lionel Landwerlin (1):
-      anv: avoid private buffer allocations in vkGetDeviceImageMemoryRequirementsKHR
-
-Samuel Pitoiset (7):
-      radv: do not use IB for the GFX preamble with RADV_DEBUG=noibs
-      radv: use IB for the GFX preamble on GFX6
-      radv: reserve space for shadowed regs
-      radv/amdgpu: fix a buffer overflow for submissions with RADV_DEBUG=noibs
-      radv/amdgpu: remove useless assert in radv_amdgpu_winsys_cs_submit_internal()
-      radv/amdgpu: add cs_execute_ib() for executing IBs
-      radv: use cs_execute_ib() for GFX, MBCP and DGC IBs
+Yonggang Luo (1):
+      d3d12: Fixes unused-variable compile error
 
