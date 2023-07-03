@@ -63,3 +63,4 @@ directx-headers
 lavacli
 32llvmspirvlib
 llvmspirvlib
+32spirv-tools

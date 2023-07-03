@@ -1,22 +1,5 @@
-Updating from 86785130d18a1e6c603dfbf57559aa2a8a748295 to bbcda63564478533ce33a924421a75ab1d042f6e
+Updating from ee69c56c8ca99b678258c06748c47cd1d58c6a66 to ea9f8c26bc952c6e0e24e086e364d16aa7841bd9
 
-Alejandro Piñeiro (2):
-      v3dv: refactor copy_image_to_buffer_blit
-      v3dv: add a linear images to buffer copy codepath
-
-Erik Faye-Lund (1):
-      draw/i915: move hwfmt array to i915 specific struct
-
-Karmjit Mahil (1):
-      pvr: Setup ZLS depth and stencil load/store separately
-
-Samuel Pitoiset (5):
-      radv/amdgpu: add more small helpers for managing CS
-      radv/amdgpu: add support for executing DGC cmdbuf with RADV_DEBUG=noibs
-      radv: allow NV_device_generated_commands with RADV_DEBUG=noibs
-      radv: stop emitting TILE_SURFACE_ENABLE for the ZRANGE_PRECISION workaround
-      radv: inline more values in radv_emit_fb_ds_state()
-
-Yonggang Luo (1):
-      d3d12: Fixes unused-variable compile error
+Romain Failliot (1):
+      docs(fix): remove last ref to i965 in features.txt
 
