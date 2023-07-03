@@ -1,5 +1,88 @@
-Updating from ee69c56c8ca99b678258c06748c47cd1d58c6a66 to ea9f8c26bc952c6e0e24e086e364d16aa7841bd9
+Updating from ea9f8c26bc952c6e0e24e086e364d16aa7841bd9 to 5be8f98f5ac5cbdb314bdd88d6b6f51642d7701c
 
-Romain Failliot (1):
-      docs(fix): remove last ref to i965 in features.txt
+Christian Gmeiner (1):
+      etnaviv: nir: do a late nir_opt_cse run
+
+Daniel Schürmann (1):
+      radv: reference pipeline cache object in radv_pipeline
+
+David Heidelberg (8):
+      ci/microsoft: uploading artifacts gets stuck currently (retried)
+      ci/microsoft: rename manual rules according to rest introduced rules
+      ci: create manual farm rules
+      ci/traces: guard DXVK and VK behind VK_DRIVER
+      ci/apitrace: include version with LTO enabled
+      ci/traces: print version of apps used for replaying traces
+      ci: when touching farms, never run manual jobs
+      ci/microsoft: partly revert rename from container-rules to manual-rules
+
+Juan A. Suarez Romero (1):
+      v3d/ci: add new flake
+
+Konstantin Seurer (19):
+      nir: Add nir_builder_at
+      radv: Use nir_builder_at
+      asahi: Use nir_builder_at
+      v3d: Use nir_builder_at
+      glsl: Use nir_builder_at
+      nir: Use nir_builder_at
+      spirv: Use nir_builder_at
+      freedreno: Use nir_builder_at
+      gallium,st: Use nir_builder_at
+      crocus: Use nir_builder_at
+      etnaviv: Use nir_builder_at
+      r600: Use nir_builder_at
+      radeonsi: Use nir_builder_at
+      vc4: Use nir_builder_at
+      zink: Use nir_builder_at
+      lavapipe: Use nir_builder_at
+      microsoft: Use nir_builder_at
+      panfrost: Use nir_builder_at
+      intel: Use nir_builder_at
+
+Lionel Landwerlin (1):
+      docs/features: update anv entries
+
+Rhys Perry (5):
+      nir: split nir_lower_mov64
+      radv: use nir_lower_conv64
+      radv: call nir_lower_int64 later
+      radeonsi: use nir_lower_conv64
+      aco: remove 64-bit integer conversion opcodes
+
+Rob Clark (1):
+      freedreno/fdperf: Use common device info helpers
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: disable Collabora's LAVA lab for maintance"
+
+Shan-Min Chao (1):
+      tu/kgsl: Fix memory overwrite with vkFlushMappedMemoryRanges when more than 1 range
+
+Sil Vilerino (8):
+      frontend/va: Pass surf->fence in PIPE_VIDEO_ENTRYPOINT_ENCODE contexts for driver to wait on input surface pending work
+      frontend/va: Add video processing async fence support
+      d3d12: Video Decode - Implement get_decoder_fence and async queing
+      d3d12: Apply style format to d3d12_video_dec.cpp
+      d3d12: Video Decode - Sync 3D context copy with decode work for texture array case
+      d3d12: Video Encode - GPU wait on input surface fence
+      d3d12: Video Process - Implement get_processor_fence and async queing
+      d3d12: Video Decode - Refactor and style fixes
+
+Tatsuyuki Ishi (6):
+      vulkan/pipeline_cache: Do not consume object passed into remove_object.
+      vulkan/pipeline_cache: Move locking outside of remove_object.
+      vulkan/pipeline_cache: Move cache_object_unref out of header.
+      vulkan/pipeline_cache: Introduce weak reference mode.
+      radv: Enable weak reference cache for device->mem_cache.
+      zink/ci: Add ext_transform_feedback@api-errors to fail list.
+
+Timur Kristóf (3):
+      radv: Refactor required subgroup size in pipeline key.
+      radv: Use required subgroup info for graphics shaders.
+      radv: Enable required subgroup size on mesh/task.
+
+Yonggang Luo (1):
+      compiler/clc: Switch to use nir_foreach_function_impl in function nir_lower_libclc
 
