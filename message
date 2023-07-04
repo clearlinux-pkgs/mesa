@@ -1,88 +1,97 @@
-Updating from ea9f8c26bc952c6e0e24e086e364d16aa7841bd9 to 5be8f98f5ac5cbdb314bdd88d6b6f51642d7701c
+Updating from 5be8f98f5ac5cbdb314bdd88d6b6f51642d7701c to 59cf3702c4bf3734e42a8ad5e086a3a6ed59d4b7
 
-Christian Gmeiner (1):
-      etnaviv: nir: do a late nir_opt_cse run
+Alejandro Piñeiro (1):
+      v3dv/device: update conformanceVersion
 
-Daniel Schürmann (1):
-      radv: reference pipeline cache object in radv_pipeline
+Caio Oliveira (10):
+      nir/print: Use symbols % for SSA and @ for intrinsic
+      nir/print: Use `bN` instead of `block_N` for identifying basic blocks
+      nir/print: Use BITSIZExELEMENTS for SSA sizes
+      nir/print: Align instructions around `=`
+      nir/print: Rename print_tabs() to print_indentation() and use it more
+      nir/print: Don't use comment syntax for deref_cast properties
+      nir/print: Use `//` for comments
+      nir/print: Use 4-space indentation
+      nir/print: Print div/con annotation first
+      nir/print: Reformat the preds/succs block information
 
-David Heidelberg (8):
-      ci/microsoft: uploading artifacts gets stuck currently (retried)
-      ci/microsoft: rename manual rules according to rest introduced rules
-      ci: create manual farm rules
-      ci/traces: guard DXVK and VK behind VK_DRIVER
-      ci/apitrace: include version with LTO enabled
-      ci/traces: print version of apps used for replaying traces
-      ci: when touching farms, never run manual jobs
-      ci/microsoft: partly revert rename from container-rules to manual-rules
+Christian Gmeiner (2):
+      docs: mark OES_texture_half_float done on etnaviv
+      etnaviv: support OES_texture_half_float_linear
 
-Juan A. Suarez Romero (1):
-      v3d/ci: add new flake
+Connor Abbott (15):
+      util/bitset: Add some extra functions
+      vk/graphics_state: Remove vk_subpass_info
+      vk/graphics_state: Add feedback_loop_input_only
+      vk/graphics_state: Add VI_BINDINGS_VALID state
+      vk/graphics_state: Fix some assertions when copying state
+      vk/graphics_state: Add helpers for pre-baking state
+      radv: Fix radv_pipeline_is_blend_enabled
+      vk/graphics_state: Track attachment count as state
+      vulkan: Fix renderpass flags with driver-specific renderpass
+      vk/graphics_state: Don't track each vertex input field
+      tu: Don't use A6XX_PC_PRIMITIVE_CNTL_0::TESS_UPPER_LEFT_DOMAIN_ORIGIN
+      freedreno/a6xx: Fix name of A6XX_PC_PRIMITIVE_CNTL_0::TESS_UPPER_LEFT_DOMAIN_ORIGIN
+      tu: Split pipeline struct into different types
+      tu: Rewrite to use common Vulkan dynamic state
+      tu: Use common dirty tracking for PC_PRIMITIVE_CNTL_0
 
-Konstantin Seurer (19):
-      nir: Add nir_builder_at
-      radv: Use nir_builder_at
-      asahi: Use nir_builder_at
-      v3d: Use nir_builder_at
-      glsl: Use nir_builder_at
-      nir: Use nir_builder_at
-      spirv: Use nir_builder_at
-      freedreno: Use nir_builder_at
-      gallium,st: Use nir_builder_at
-      crocus: Use nir_builder_at
-      etnaviv: Use nir_builder_at
-      r600: Use nir_builder_at
-      radeonsi: Use nir_builder_at
-      vc4: Use nir_builder_at
-      zink: Use nir_builder_at
-      lavapipe: Use nir_builder_at
-      microsoft: Use nir_builder_at
-      panfrost: Use nir_builder_at
-      intel: Use nir_builder_at
+Daniel Stone (1):
+      Revert "ci/fdno: Pause a660 testing"
 
-Lionel Landwerlin (1):
-      docs/features: update anv entries
+Dave Airlie (1):
+      lavapipe: expose subgroups in mesh/task shaders.
 
-Rhys Perry (5):
-      nir: split nir_lower_mov64
-      radv: use nir_lower_conv64
-      radv: call nir_lower_int64 later
-      radeonsi: use nir_lower_conv64
-      aco: remove 64-bit integer conversion opcodes
+Erico Nunes (1):
+      ci: restore lima farm
 
-Rob Clark (1):
-      freedreno/fdperf: Use common device info helpers
+Iago Toral Quiroga (1):
+      broadcom: use nir info to keep track of implicit sample shading
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Janne Grunau (1):
+      st/mesa: Set gl_config.floatMode based on color_format
 
-Shan-Min Chao (1):
-      tu/kgsl: Fix memory overwrite with vkFlushMappedMemoryRanges when more than 1 range
+Joshua Ashton (7):
+      radv: Refactor buffer robustness to an enum
+      radv: Rename radv_nir_compiler_options::robust_buffer_access to robust_buffer_access_llvm
+      radv: Split and move buffer robustness to shader key
+      radv: Rename radv_required_subgroup_info to radv_shader_stage_key
+      radv: Implement VK_EXT_pipeline_robustness
+      radv: Advertise VK_EXT_pipeline_robustness
+      radv: Remove unused pipeline param from radv_generate_pipeline_key
 
-Sil Vilerino (8):
-      frontend/va: Pass surf->fence in PIPE_VIDEO_ENTRYPOINT_ENCODE contexts for driver to wait on input surface pending work
-      frontend/va: Add video processing async fence support
-      d3d12: Video Decode - Implement get_decoder_fence and async queing
-      d3d12: Apply style format to d3d12_video_dec.cpp
-      d3d12: Video Decode - Sync 3D context copy with decode work for texture array case
-      d3d12: Video Encode - GPU wait on input surface fence
-      d3d12: Video Process - Implement get_processor_fence and async queing
-      d3d12: Video Decode - Refactor and style fixes
+José Roberto de Souza (4):
+      anv: Fix compute maximum number of threads value
+      anv: Fix some mismatches of canonical and regular addresses around anv_bo_vma_alloc_or_close()
+      anv: Drop unnecessary intel_canonical_address() call around anv_address_physical()
+      anv: Drop unnecessary intel_canonical_address() calls around bo->offset
 
-Tatsuyuki Ishi (6):
-      vulkan/pipeline_cache: Do not consume object passed into remove_object.
-      vulkan/pipeline_cache: Move locking outside of remove_object.
-      vulkan/pipeline_cache: Move cache_object_unref out of header.
-      vulkan/pipeline_cache: Introduce weak reference mode.
-      radv: Enable weak reference cache for device->mem_cache.
-      zink/ci: Add ext_transform_feedback@api-errors to fail list.
+Konstantin Seurer (3):
+      nir/opt_dead_cf: Handle if statements ending in a jump correctly
+      nir/builder_opcodes: Do not generate empty intrinsic indices
+      amd: Move ac_hw_stage to its own file
 
-Timur Kristóf (3):
-      radv: Refactor required subgroup size in pipeline key.
-      radv: Use required subgroup info for graphics shaders.
-      radv: Enable required subgroup size on mesh/task.
+Lynne (1):
+      anv_video: reject decoding of unsupported profiles and formats
 
-Yonggang Luo (1):
-      compiler/clc: Switch to use nir_foreach_function_impl in function nir_lower_libclc
+Marcin Ślusarz (8):
+      nir: extract try_lower_id_to_index_1d
+      nir: use wg id to wg idx shortcut if two dims of num_workgroups are 1
+      nir: use constant components of num_workgroups in wg id to wg idx lowering
+      nir: lower num_workgroups to constants
+      intel/compiler: pass num_workgroups from task to mesh shaders
+      nir: add cheap shortcut for wg id to wg idx lowering
+      anv,intel/compiler: enable shortcut in wg id to wg idx lowering on >= gfx12.5
+      intel/compiler: simplify reading of gl_NumWorkGroups in task/mesh
+
+Yonggang Luo (9):
+      dxil: Use nir_remove_non_entrypoints
+      nir: Update the comment to call nir_remove_non_entrypoints directly
+      glsl: Use nir_remove_non_entrypoints to simplify the code
+      radv: Use nir_remove_non_entrypoints in radv_shader.c
+      nir: Add nir_foreach_function_safe and use it
+      pvr: Use alignas instead of ALIGN_ATTR and remove ALIGN_ATTR
+      vc4: Convert to use nir_foreach_function_impl when possible
+      v3d: Switch to use nir_foreach_function_impl
+      broadcom: Switch to use nir_foreach_function_impl
 
