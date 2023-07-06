@@ -1,99 +1,107 @@
-Updating from 59cf3702c4bf3734e42a8ad5e086a3a6ed59d4b7 to b9de7da421d2dde4e473c50cc9293e693836d7f7
+Updating from b9de7da421d2dde4e473c50cc9293e693836d7f7 to 26d83ae255945177e25cd9a071db22d177c7a2cc
 
-Alyssa Rosenzweig (16):
-      agx: Add algebraic opt to help with discard lowering
-      agx: Smarten discard_agx -> sample_mask lowering
-      asahi: Strip ? in GenXML
-      asahi: Rename 'Render Target' to 'PBE'
-      asahi: Identify PBE::sRGB flag
-      asahi: Remove ; in perf_debug_ctx
-      agx: Use nir_opt_shrink_stores
-      agx: Use nir_opt_shrink_vectors
-      agx: Assert that barriers are not used in the preamble
-      asahi: Assert we don't transition shared resources
-      asahi: Fix scissor_culls_everything check
-      asahi: Use ralloc harder
-      asahi: Take ownership of compute shader NIR
-      agx: Don't leak ssa_to_reg_out
-      asahi: Use txf_ms for MSAA background programs
-      nir: Fix breaking in nir_foreach_phi(_safe)
+Antonio Gomes (2):
+      rusticl: Drop some Kernel data and have a NirKernelBuild ref instead
+      rusticl: Drop Program::kernel_count
 
-Asahi Lina (6):
-      asahi: match_soa: Treat offsets as signed
-      asahi: Identify the separate varying count fields
-      asahi: Gather flat/linear shaded input info from uncompiled FS
-      asahi: Fix type confusion for fragment shader keys
-      asahi: Add flat/linear shaded varyings mask to the VS shader key
-      asahi: Arrange VS varyings in the correct order
+Christian Gmeiner (1):
+      ci/etnaviv: update ci expectation
 
-Boris Brezillon (3):
-      renderonly: Fix potential NULL deref in the error path
-      renderonly: Make sure we reset scanout on error in create_kms_dumb_buffer_for_resource()
-      winsys/panfrost: Make sure we reset scanout on error in create_kms_dumb_buffer_for_resource()
+Eric Engestrom (5):
+      panfrost/ci: drop invalid skips that are already marked as known flakes
+      intel/ci: fix skips definitions
+      etnaviv/ci: fix skips definition
+      zink/ci: fix skips & flakes for zink+radv on vangogh & navi10
+      docs/codingstyle: fix clang-format command
 
-Danylo Piliaiev (1):
-      tu: Add missing dbg reg stomping to tu_CmdBeginRendering
+Erik Faye-Lund (21):
+      math: fix indentation in m_matrix.[ch]
+      math: remove unused defines
+      math: drop MAT_[ST][XYZ] defines
+      aux/trace: use stdint.h types
+      pipebuffer: use unsigned instead of uint
+      gallivm: use unsigned instead of uint
+      aux/pp: use unsigned instead of uint
+      aux/util: use enum for render-condition
+      aux/util: match type of pipe_draw_start_count_bias::start/count
+      aux/util: use enum for primitive-type
+      aux/util: use unsigned instead of uint
+      aux/util: use stdint.h types
+      aux/util: uint -> unsigned
+      tgsi: use enum instead of defines
+      tgsi: use stdint.h types
+      tgsi: use enum for tgsi-file type
+      tgsi: use enum for property-name
+      tgsi: use enum for shader-type
+      tgsi: use enum for interpolate-mode
+      tgsi: uint -> uint32_t
+      tgsi: uint -> unsigned
 
-Dave Airlie (5):
-      gallivm: store thread id in separate values.
-      gallivm: convert block_id to discrete values.
-      gallivm: convert grid_size to discrete values.
-      gallivm: make block_size use discrete values.
-      clc: llvm 17 requires opaque pointers.
+Iago Toral Quiroga (2):
+      broadcom/compiler: free defin and defout arrays if they already exist
+      broadcom/compiler: don't leak v3d_compile when finding a new best strategy
 
-Friedrich Vock (14):
-      radv: Add radv_shader_free_list
-      radv: Move shader arena allocation to a separate function
-      radv: Add option to allocate shaders in replayable VA range
-      radv: Add utilities to serialize and deserialize shader allocation info
-      radv: Add radv_shader_reupload
-      radv: Break up radv_shader_nir_to_asm
-      radv: Split up implementation of radv_shader_create
-      radv: Add support for creating capture/replay shaders
-      radv: Add radv_rt_capture_replay_handle
-      radv/rt: Only compare the non-recursive capture/replay handle
-      radv/rt: Associate capture/replay handles with stages
-      radv/rt: Replay shader allocations according to capture/replay handle
-      radv/rt: Rework radv_GetRayTracingCaptureReplayShaderGroupHandlesKHR
-      radv: Re-enable RT pipeline capture/replay handles
+Lionel Landwerlin (4):
+      intel/fs: disable coarse pixel shader with interpolater messages at sample
+      nir/opt_shrink_vectors: enable sparse intrinsics shrinking
+      docs/features: add more missing extensions
+      docs/features: add hasvk entries
 
-Hyunjun Ko (1):
-      anv/video: fix to support HEVC 10bit on some of 9th gens.
+Marek Olšák (1):
+      vbo: correctly restore _VaryingInputs for display list fast path
 
-José Roberto de Souza (1):
-      iris: Convert slab address to canonical
+Mike Blumenkrantz (6):
+      vk/wsi/x11: move surface alpha check from get_caps to creation
+      vk/wsi/x11: handle geometry updating more asynchronously
+      vk/wsi/x11: stop roundtripping on presentation
+      vk/wsi: unify dmabuf exporting
+      vk/wsi: add error logging for syncfile import/export failures
+      zink: fix anv ci flakes (for real this time)
 
-Konstantin Seurer (5):
-      gallivm: Fix atomic_global types
-      lavapipe: Set the descriptor count to what vkd3d-proton requires
-      llvmpipe: Allow comparison sampling for float formats
-      llvmpipe: Allocate more dummy sample functions for FORMAT_NONE
-      llvmpipe,lavapipe: Relayout lp_descriptor
+QwertyChouskie (1):
+      docs/features.txt(fix): mark VK_EXT_pipeline_robustness as supported on radv
 
-Michael Tretter (2):
-      panfrost: remove BO from cache before closing GEM
-      kmsro: assert that scanout refcount is larger than 0
+Sil Vilerino (2):
+      frontend/va: Fix vaSyncSurface and vaQuerySurface status for drivers not implementing get_processor_fence
+      frontend/va: Remove fence_server_sync for surface in vlVaHandleVAProcPipelineParameterBufferType
 
-Mike Blumenkrantz (2):
-      zink: don't destroy swapchain on initial CreateSwapchainKHR fail
-      aux/trace: fix bindless texture dumping
+Timothy Arceri (20):
+      glsl: add some more c wrappers for string_to_uint_map
+      mesa: add some new constants
+      glsl: move some compiler code out of st
+      glsl: move lowering linker code out of st
+      glsl: port assign location code for VS inputs or FS outputs
+      glsl: call assign_attribute_or_color_locations() in NIR linker
+      glsl: remove unused buffer objects with packed layout
+      glsl: remove unused system vars
+      glsl: drop the dce of global vars from GLSL IR linker
+      nir/glsl: add nir_var_declared_implicitly enum
+      glsl: move disable_varying_optimizations_for_sso() to NIR linker
+      glsl: remove the always_active_io flag from GLSL IR
+      glsl: inline link_varyings()
+      glsl: set last_vert_prog in the nir linker
+      glsl: drop link_invalidate_variable_locations()
+      glsl: move store_fragdepth_layout() to nir linker
+      glsl: remove glsl ir optimisation loop from linker
+      st/glsl: merge link_shader() into st_link_nir()
+      st/glsl: merge st_link_glsl_to_nir() into st_link_nir()
+      st/glsl: merge st_glsl_to_ir.cpp with st_glsl_to_nir.cpp
 
-Patrick Lerda (1):
-      radeonsi: fix refcnt imbalance related to util_blitter_save_fragment_constant_buffer_slot()
+Yiwei Zhang (10):
+      venus: refactor ahb buffer mem type bits cache to be lazy
+      venus: refactor buffer cache related bits
+      venus: extend VkBuffer cache to cover concurrent sharing
+      venus: fix a cmd tmp storage leak
+      venus: fix leaks from tracked present src images
+      venus: track pool in cmd and track device in pool
+      venus: cmd to reuse alloc copy from cmd pool
+      venus: refactor vn_cmd_add_query_feedback and miscs
+      venus: cache query batches at cmd pool
+      venus: refactor query batch handling
 
-Pavel Ondračka (5):
-      r300: lower undefs to zero
-      r300: add some early safe bool lowering
-      r300: remove most of backend contant folding
-      r300: disable ntt regalloc for vertex shaders
-      r300: assert that every writer has a reader
+Zhang Ning (1):
+      lima: use u_pipe_screen_lookup_or_create in the renderonly path too
 
-Robert Beckett (1):
-      winsys/panfrost: Fix a scanout resource leak
-
-Sviatoslav Peleshko (1):
-      glsl: Fix yylloc.source propagation in YYLLOC_DEFAULT
-
-Yonggang Luo (1):
-      radeonsi: Use ALIGN_POT instead ALIGN_TO
+xurui (1):
+      zink: Free the cdt when an error occurs
 
