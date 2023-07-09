@@ -1,105 +1,18 @@
-Updating from 26d83ae255945177e25cd9a071db22d177c7a2cc to 591ce8f185b6123fd95dd77880c706c2d7e25666
+Updating from 591ce8f185b6123fd95dd77880c706c2d7e25666 to d3662ba461e15bbefc5f8887bee58e016f69f281
 
-Alyssa Rosenzweig (3):
-      vulkan: Add vk_index_type_to_bytes helper
-      lavapipe: Use vk_index_type_to_bytes
-      v3dv: Use vk_index_type_to_bytes
+Billy Laws (1):
+      wgl: Fix depth/stencil image support when using zink kopper
 
-David Heidelberg (2):
-      ci/x86: Build ANGLE for testing layering on VK drivers.
-      ci/amd: switch all possible jobs from X11 to Wayland
+David Heidelberg (3):
+      ci/freedreno: switch a630_{piglit,skqp} and a618_gl to Weston
+      ci/freedreno: re-enable a530 as it's now stable with multiple skips
+      ci/freedreno: document number of a630 devices available
 
-Emma Anholt (6):
-      ci/anv: Make anv-manual-rules actually manual on anv-only changes.
-      ci: Clean up .intel-rules definition.
-      ci/amd: Report flakes to #amd-ci on OFTC.
-      ci/anv: Add testing of the GLES CTS using ANGLE on TGL.
-      ci/radv+radeonsi: Fix the combo rules to include core vulkan changes.
-      ci/radv: Add testing of the GLES CTS using ANGLE on stoney.
+Eric Engestrom (1):
+      ci/zink+radv: document another flake
 
-Eric Engestrom (13):
-      vc4/ci: fix skipping of gles3 piglit tests
-      v3dv/ci: fix skipping of vk tests
-      v3dv/ci: skip more tests that are timing out
-      virgl/ci: fix skips definition
-      clang-format: add egl foreach macro
-      clang-format: add wayland foreach macros
-      egl: change a couple of clang-format settings
-      egl: add a few trailing commas
-      egl: protect the formatting in a couple of places
-      egl: prevent clang-format from reordering some headers
-      egl: re-format using clang-format
-      clang-format: enforce formatting of egl
-      add initial .git-blame-ignore-revs
-
-Friedrich Vock (1):
-      meson: Prefix Vulkan "Ray Tracing" summary with "Intel"
-
-Ganesh Belgur Ramachandra (5):
-      gallium/pipe: Add get_resources() to pipe_video_buffer
-      gallium/vl: implementation for get_resources()
-      nouveau: implementation for get_resources()
-      d3d12: implementation for get_resources()
-      frontends/va: use resources instead of views
-
-Gert Wollny (3):
-      r600: Pre-EG  - Set wrap texture modes to repeat when seemless cube is used
-      r600/sfn: Be more conservative with AR re-use
-      r600/sfn: Shorten array elements live range
-
-Guilherme Gallo (3):
-      ci/lava: Increase Docker action failure_retry counter
-      ci/lava: Add LAVA SSH client container
-      ci/lava: Use an alpine image for SSH client container
-
-Jesse Natalie (4):
-      radv: Fix label name
-      microsoft/clc: Fix usage of nir_builder_at
-      ci/windows: Re-enable Windows builds
-      d3d12: Fix indexing of local_reference_state
-
-Jordan Justen (3):
-      intel/genxml: Add COMPCS0 aux-table registers
-      anv: Program compute aux-map base address during queue init
-      anv: Use correct CCS0 aux-map register offset in pipe flush
-
-Karol Herbst (14):
-      docs: add missing get_compute_state_info documentation
-      vtn: more CL subgroups
-      clc: rework optional subgroup feature
-      llvmpipe: report the proper subgroup size
-      gallium: add simd_sizes to pipe_compute_state_object_info
-      gallium: add get_compute_state_subgroup_size
-      gallium: add PIPE_COMPUTE_CAP_MAX_SUBGROUPS
-      iris: implement get_compute_state_subgroup_size
-      rusticl/util: add an Iterator to iterate over set bits in an integer
-      rusticl/util: add div_round_up
-      rusticl/device: rework subgroups to subgroup_sizes
-      gallium: change PIPE_COMPUTE_CAP_SUBGROUP_SIZE to a bitfield of sizes
-      rusticl: deal with compute_param returning 0
-      rusticl: support subgroups
-
-Konstantin Seurer (1):
-      lavapipe: Always advertise formatless storage image OPs
-
-Lucas Stach (3):
-      etnaviv: move resource level dimension members to make comments line up
-      etnaviv: rs: fix multisampled blits
-      etnaviv: blt: fix multisampled blits
-
-Sagar Ghuge (3):
-      iris: Use correct CCS0 aux-map register offset
-      intel/genxml: Fix typo in CCS cache flush enable
-      intel/genxml: Drop incorrect compute aux-inv register entry
-
-Yiwei Zhang (1):
-      venus: recheck valid bit after acquiring lock to init ahb mem type bits
-
-Yonggang Luo (3):
-      etnaviv: Convert to use nir_foreach_function_impl
-      intel/vulkan: Convert to use nir_foreach_function_impl when possible
-      iris: Convert to use nir_foreach_function_impl
-
-xurui (1):
-      zink: The result should be assigned a value when returned
+Friedrich Vock (3):
+      radv/ci: Skip ray tracing tests on vangogh
+      Revert "radv/rt: Enable RT pipelines on GFX10_3+ excluding vangogh"
+      Revert "Revert "radv: Enable ray tracing pipelines by default""
 
