@@ -1,18 +1,8 @@
-Updating from 591ce8f185b6123fd95dd77880c706c2d7e25666 to d3662ba461e15bbefc5f8887bee58e016f69f281
+Updating from d3662ba461e15bbefc5f8887bee58e016f69f281 to 689f38b2b452a8b8bad5ab9388c7f71ff9074cec
 
-Billy Laws (1):
-      wgl: Fix depth/stencil image support when using zink kopper
+Marek Olšák (1):
+      radeonsi/gfx11: only use SET_*_PAIRS* packets on dGPUs
 
-David Heidelberg (3):
-      ci/freedreno: switch a630_{piglit,skqp} and a618_gl to Weston
-      ci/freedreno: re-enable a530 as it's now stable with multiple skips
-      ci/freedreno: document number of a630 devices available
-
-Eric Engestrom (1):
-      ci/zink+radv: document another flake
-
-Friedrich Vock (3):
-      radv/ci: Skip ray tracing tests on vangogh
-      Revert "radv/rt: Enable RT pipelines on GFX10_3+ excluding vangogh"
-      Revert "Revert "radv: Enable ray tracing pipelines by default""
+Patrick Lerda (1):
+      panfrost: fix refcnt imbalance related to blitter
 
