@@ -1,8 +1,81 @@
-Updating from d3662ba461e15bbefc5f8887bee58e016f69f281 to 689f38b2b452a8b8bad5ab9388c7f71ff9074cec
+Updating from 689f38b2b452a8b8bad5ab9388c7f71ff9074cec to 3c520892b10ca249723f11d3e4858cc41e072e0c
 
-Marek Olšák (1):
-      radeonsi/gfx11: only use SET_*_PAIRS* packets on dGPUs
+Alyssa Rosenzweig (1):
+      rogue: Remove commented convert_from_ssa call
 
-Patrick Lerda (1):
-      panfrost: fix refcnt imbalance related to blitter
+Christian Gmeiner (1):
+      docs: update etnaviv extensions
+
+Corentin Noël (1):
+      ci: Uprev virglrenderer
+
+Dave Airlie (1):
+      gallium/va: fix superres av1 decoding.
+
+David Heidelberg (5):
+      ci/freedreno: add KHR-GL46.buffer_storage flakes
+      ci/freedreno: add execution@varying-struct-copy-return-vs flake
+      ci/container: add weston into Vulkan container
+      ci/container: we need to keep the wine inside
+      ci/traces: switch from xvfb to Weston XWayland
+
+Eric Engestrom (1):
+      ci/zink+radv: fix flake definition
+
+Erik Faye-Lund (4):
+      nir: constify intrin
+      nir: use nir_intrinsic_get_var
+      radv: do not rely on constant-folding
+      nir: do not needlessly rely on optimizations
+
+Feng Jiang (2):
+      frontends/va: Fix memory leak of decrypt_key
+      radeonsi/vcn: Remove unnecessary type conversion
+
+Friedrich Vock (2):
+      radv/rt: Enable exact on software intersection functions
+      radv/rt: Miss rays that hit the triangle's v edge
+
+Italo Nicola (19):
+      freedreno: implement clear_render_target and clear_depth_stencil
+      v3d: implement clear_render_target and clear_depth_stencil
+      vc4: implement clear_render_target and clear_depth_stencil
+      d3d12: fix clear_depth_stencil texture deref
+      gallium: implement u_default_clear_texture
+      gallium: use u_default_clear_texture where applicable
+      gallium: rename util_clear_texture to util_clear_texture_sw
+      mesa/st: use fallback path when pipe->clear_texture is not available
+      rusticl: use fallback path when pipe->clear_texture is not available
+      clover: use fallback path when pipe->clear_texture is not available
+      gallium: cleanup util_blitter_clear_render_target
+      gallium: remove PIPE_CAP_CLEAR_TEXTURE
+      lima/ci: add some ARB_clear_texture piglit tests to lima-fails.txt
+      d3d12/ci: add piglit arb_clear_texture-integer fail to CI expectations
+      nir: add options to lower y_vu, yv_yu, yx_xvxu and xy_vxux
+      gallium/st: add support for PIPE_FORMAT_NV21 and PIPE_FORMAT_G8_B8R8_420
+      mesa/main: add PIPE_FORMAT_YVYU and PIPE_FORMAT_R8B8_R8G8
+      mesa/main: add PIPE_FORMAT_VYUY and PIPE_FORMAT_B8R8_G8R8
+      freedreno/ci: add KHR-GL46.buffer_storage.map_persistent_flush to flakes
+
+Julia Zhang (1):
+      virgl: remove check of VIRGL_CAP_V2_UNTYPED_RESOURCE
+
+Lionel Landwerlin (1):
+      zink: update profile vulkan version requirements
+
+Mike Blumenkrantz (1):
+      zink: fix batch disambiguation on first submit
+
+Sagar Ghuge (2):
+      anv: Drop depth cache flush requirement after depth clear/resolve
+      iris: Drop depth cache flush requirement after depth clear/resolve
+
+Timothy Arceri (2):
+      glsl: remove dead varyings before assigning attr locations
+      glsl: do vs attribute validation in NIR linker
+
+Yonggang Luo (3):
+      treewide: Remove all usage of nir_builder_init with nir_builder_create and nir_builder_at
+      treewide: remove unused nir_builder
+      nir: Remove nir_builder_init, it's not used anymore
 
