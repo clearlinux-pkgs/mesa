@@ -1,81 +1,91 @@
-Updating from 689f38b2b452a8b8bad5ab9388c7f71ff9074cec to 3c520892b10ca249723f11d3e4858cc41e072e0c
+Updating from 3c520892b10ca249723f11d3e4858cc41e072e0c to ad980dc699ef59d68716039e661c9230d6652769
 
-Alyssa Rosenzweig (1):
-      rogue: Remove commented convert_from_ssa call
+Alyssa Rosenzweig (18):
+      nir: Add intrinsics for register access
+      nir: Add helpers for walking register uses
+      nir: Add pass for trivializing register access
+      nir: Add legacy data structures & helpers
+      nir: Add new version of lower_regs_to_ssa
+      nir: Produce intrinsics in lower_{phis,ssa_defs}_to_regs
+      nir: Add intrinsics version of locals_to_regs
+      nir: Add lower_vec_to_regs pass
+      gallium: Return SSA values from TTN ALU helpers
+      gallium: Convert TTN to register intrinsics
+      mesa: Simplify ptn_log() a bit
+      mesa: Return SSA defs from PTN ALU helpers
+      mesa: Convert PTN to register intrinsics
+      nir/lower_shader_calls: Convert to register intrinsics
+      nir: Remove nir_lower_regs_to_ssa
+      nir: Remove nir_register-based unit tests
+      gallivm: Switch to reg intrinsics
+      pan/mdg: Ingest new-style registers
 
-Christian Gmeiner (1):
-      docs: update etnaviv extensions
+Christian Gmeiner (2):
+      etnaviv: linker: handle scenario where there are FS inputs without matching VS output
+      etnaviv: linker: clean up etna_link_shader(..)
 
-Corentin Noël (1):
-      ci: Uprev virglrenderer
+Daniel Schürmann (8):
+      aco/assembler: align resume shaders with cache lines
+      aco/assembler: align loops if it reduces the number of cache lines
+      aco/assembler: change prefetch mode on GFX10.3+ during loops if beneficial
+      vulkan/pipeline_cache: add 'skip_disk_cache' option
+      radv/meta: disable disk cache for meta shaders
+      radv: migrate radv_shader hash to BLAKE3
+      amd: move end-of-code marker padding to ACO.
+      amd: Do shader binary alignment for prefetch at memory allocation time.
 
-Dave Airlie (1):
-      gallium/va: fix superres av1 decoding.
+Danylo Piliaiev (1):
+      tu: Fix zombie VMAs array not initialized when first BOs may be freed
 
-David Heidelberg (5):
-      ci/freedreno: add KHR-GL46.buffer_storage flakes
-      ci/freedreno: add execution@varying-struct-copy-return-vs flake
-      ci/container: add weston into Vulkan container
-      ci/container: we need to keep the wine inside
-      ci/traces: switch from xvfb to Weston XWayland
+Dave Airlie (7):
+      llvmpipe/linear: don't allow linear path for shader output with location frac
+      llvmpipe/linear: refactor linear samplers into templated code.
+      llvmpipe/linear/tgsi: calculate num_texs properly for nir.
+      llvmpipe/linear: add sample routines for swapping r/b channels
+      llvmpipe/linear: add support for sampling when cbuf order is different.
+      llvmpipe/linear: add support for rgba color buffers.
+      ci: update fails for fixed tests due to llvmpipe linear changes.
 
-Eric Engestrom (1):
-      ci/zink+radv: fix flake definition
+David Heidelberg (1):
+      ci/freedreno: another batch of a530 flakes
 
-Erik Faye-Lund (4):
-      nir: constify intrin
-      nir: use nir_intrinsic_get_var
-      radv: do not rely on constant-folding
-      nir: do not needlessly rely on optimizations
+Eric Engestrom (4):
+      ci: document workflow rules
+      ci: set priority:low tag only on non-Marge pipelines
+      ci: fix .valve-farm-manual-rules
+      ci: split farm rules out of test-source-dep.yml
 
-Feng Jiang (2):
-      frontends/va: Fix memory leak of decrypt_key
-      radeonsi/vcn: Remove unnecessary type conversion
+Faith Ekstrand (4):
+      nir: Add a reg_intrinsics flag to nir_convert_from_ssa
+      nir/from_ssa: Make additional assumptions in coalescing
+      nir/from_ssa: Support register intrinsics
+      freedreno/ci: Update pixmark piano checksums
 
-Friedrich Vock (2):
-      radv/rt: Enable exact on software intersection functions
-      radv/rt: Miss rays that hit the triangle's v edge
+Feng Jiang (1):
+      virgl/video: Fix out-of-bounds access in fill_mpeg4_picture_desc()
 
-Italo Nicola (19):
-      freedreno: implement clear_render_target and clear_depth_stencil
-      v3d: implement clear_render_target and clear_depth_stencil
-      vc4: implement clear_render_target and clear_depth_stencil
-      d3d12: fix clear_depth_stencil texture deref
-      gallium: implement u_default_clear_texture
-      gallium: use u_default_clear_texture where applicable
-      gallium: rename util_clear_texture to util_clear_texture_sw
-      mesa/st: use fallback path when pipe->clear_texture is not available
-      rusticl: use fallback path when pipe->clear_texture is not available
-      clover: use fallback path when pipe->clear_texture is not available
-      gallium: cleanup util_blitter_clear_render_target
-      gallium: remove PIPE_CAP_CLEAR_TEXTURE
-      lima/ci: add some ARB_clear_texture piglit tests to lima-fails.txt
-      d3d12/ci: add piglit arb_clear_texture-integer fail to CI expectations
-      nir: add options to lower y_vu, yv_yu, yx_xvxu and xy_vxux
-      gallium/st: add support for PIPE_FORMAT_NV21 and PIPE_FORMAT_G8_B8R8_420
-      mesa/main: add PIPE_FORMAT_YVYU and PIPE_FORMAT_R8B8_R8G8
-      mesa/main: add PIPE_FORMAT_VYUY and PIPE_FORMAT_B8R8_G8R8
-      freedreno/ci: add KHR-GL46.buffer_storage.map_persistent_flush to flakes
+Julia Tatz (1):
+      aux/trace: fix (u)int dump
 
-Julia Zhang (1):
-      virgl: remove check of VIRGL_CAP_V2_UNTYPED_RESOURCE
+Karmjit Mahil (1):
+      docs: Add inital PowerVR driver documentation
 
-Lionel Landwerlin (1):
-      zink: update profile vulkan version requirements
+Konstantin Seurer (3):
+      nir/lower_shader_calls: Remat derefs after shader calls
+      nir/opt_dead_cf: Run dead_cf_block while it makes progress
+      nir/opt_dead_cf: Clarify comment
 
-Mike Blumenkrantz (1):
-      zink: fix batch disambiguation on first submit
+Lionel Landwerlin (2):
+      zink: drop linear D32_SFLOAT_S8_UINT requirement
+      anv: fix utrace signaling with Xe
 
-Sagar Ghuge (2):
-      anv: Drop depth cache flush requirement after depth clear/resolve
-      iris: Drop depth cache flush requirement after depth clear/resolve
+Lucas Fryzek (1):
+      gallium: Remove `PIPE_CAP_RGB_OVERRIDE_DST_ALPHA_BLEND`
 
-Timothy Arceri (2):
-      glsl: remove dead varyings before assigning attr locations
-      glsl: do vs attribute validation in NIR linker
+Marek Olšák (2):
+      radeonsi: fix gfx9 regression causing GPU hangs
+      radeonsi/gfx11: fix a regression with PAIRS packets due to shader changes
 
-Yonggang Luo (3):
-      treewide: Remove all usage of nir_builder_init with nir_builder_create and nir_builder_at
-      treewide: remove unused nir_builder
-      nir: Remove nir_builder_init, it's not used anymore
+Rob Clark (1):
+      freedreno/drm/virtio: Trigger host side wait boost
 
