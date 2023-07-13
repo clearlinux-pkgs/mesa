@@ -1,91 +1,92 @@
-Updating from 3c520892b10ca249723f11d3e4858cc41e072e0c to ad980dc699ef59d68716039e661c9230d6652769
+Updating from ad980dc699ef59d68716039e661c9230d6652769 to 0dc961645c4f0241f8512cb0ec3ad59635842072
 
-Alyssa Rosenzweig (18):
-      nir: Add intrinsics for register access
-      nir: Add helpers for walking register uses
-      nir: Add pass for trivializing register access
-      nir: Add legacy data structures & helpers
-      nir: Add new version of lower_regs_to_ssa
-      nir: Produce intrinsics in lower_{phis,ssa_defs}_to_regs
-      nir: Add intrinsics version of locals_to_regs
-      nir: Add lower_vec_to_regs pass
-      gallium: Return SSA values from TTN ALU helpers
-      gallium: Convert TTN to register intrinsics
-      mesa: Simplify ptn_log() a bit
-      mesa: Return SSA defs from PTN ALU helpers
-      mesa: Convert PTN to register intrinsics
-      nir/lower_shader_calls: Convert to register intrinsics
-      nir: Remove nir_lower_regs_to_ssa
-      nir: Remove nir_register-based unit tests
-      gallivm: Switch to reg intrinsics
-      pan/mdg: Ingest new-style registers
+Alyssa Rosenzweig (1):
+      zink: Switch to register intrinsics
 
-Christian Gmeiner (2):
-      etnaviv: linker: handle scenario where there are FS inputs without matching VS output
-      etnaviv: linker: clean up etna_link_shader(..)
+Christian Gmeiner (3):
+      nir: rename intrinsic to have a more generic nameing
+      nir: rename has_txs to has_texture_scaling
+      nir/lower_tex: optimize offset lowering for has_texture_scaling
 
-Daniel Schürmann (8):
-      aco/assembler: align resume shaders with cache lines
-      aco/assembler: align loops if it reduces the number of cache lines
-      aco/assembler: change prefetch mode on GFX10.3+ during loops if beneficial
-      vulkan/pipeline_cache: add 'skip_disk_cache' option
-      radv/meta: disable disk cache for meta shaders
-      radv: migrate radv_shader hash to BLAKE3
-      amd: move end-of-code marker padding to ACO.
-      amd: Do shader binary alignment for prefetch at memory allocation time.
+Connor Abbott (1):
+      freedreno/regs: Document a7xx CP_FIXED_STRIDE_DRAW_TABLE
 
-Danylo Piliaiev (1):
-      tu: Fix zombie VMAs array not initialized when first BOs may be freed
-
-Dave Airlie (7):
-      llvmpipe/linear: don't allow linear path for shader output with location frac
-      llvmpipe/linear: refactor linear samplers into templated code.
-      llvmpipe/linear/tgsi: calculate num_texs properly for nir.
-      llvmpipe/linear: add sample routines for swapping r/b channels
-      llvmpipe/linear: add support for sampling when cbuf order is different.
-      llvmpipe/linear: add support for rgba color buffers.
-      ci: update fails for fixed tests due to llvmpipe linear changes.
+Danylo Piliaiev (21):
+      freedreno/regs: Print xml validation error if validation fails
+      freedreno/rnn: Fix addvariant being set effectively once
+      freedreno/rnn: Make addvariant work for fields in the same reg
+      freedreno/rnn: Take into account array's variant for regs
+      freedreno/regs: Change a7xx regs to have open range for generation
+      freedreno/regs: More CP commands are the same on a7xx as on a6xx
+      freedreno/regs: Document CP_MEM_TO_SCRATCH_MEM
+      freedreno/regs: Document a7xx CP_MODIFY_TIMESTAMP
+      freedreno/regs: Clarify polling on a7xx for CP_WAIT_REG_MEM/CP_COND_WRITE5
+      freedreno/regs: Add a7xx pseudo-regs to CP_SET_PSEUDO_REG
+      freedreno/regs: a7xx has a new source type CP_REG_TEST
+      freedreno/regs: Add 2 new a7xx modes to CP_COND_REG_EXEC
+      freedreno/regs: Add some new a7xx events
+      freedreno/regs: Add more a7xx regs and reg fields
+      freedreno/regs: Fix a7xx SP_FS_PREFETCH definition
+      freedreno/regs: Generate per-gen reg usage tables
+      freedreno/regs: Define usage for all a6xx/a7xx regs
+      tu: Allow reg stomping of compute related registers
+      tu: Use reg usage tables for stale reg dbg option
+      freedreno/regs: Properly document a7xx CP_EVENT_WRITE, CP_WAIT_TIMESTAMP
+      freedreno/regs: Document a7xx CP_BV_BR_COUNT_OPS
 
 David Heidelberg (1):
-      ci/freedreno: another batch of a530 flakes
+      ci/freedreno: update a530 flakes
 
-Eric Engestrom (4):
-      ci: document workflow rules
-      ci: set priority:low tag only on non-Marge pipelines
-      ci: fix .valve-farm-manual-rules
-      ci: split farm rules out of test-source-dep.yml
+Dylan Baker (2):
+      VERSION: bump to 23.3.0-devel
+      docs: Update release calendar for 23.2.0-rc1
 
-Faith Ekstrand (4):
-      nir: Add a reg_intrinsics flag to nir_convert_from_ssa
-      nir/from_ssa: Make additional assumptions in coalescing
-      nir/from_ssa: Support register intrinsics
-      freedreno/ci: Update pixmark piano checksums
+Eric Engestrom (7):
+      etnaviv/ci: drop duplicate line in etnaviv files list
+      broadcom/ci: add the renderonly folder to things that can affect v3d & vc4
+      meson: clarify description of `opengl` option
+      meson: clarify what "off-screen rendering" means
+      ci: avoid running hardware jobs if there are already trivial issues
+      ci: avoid running hardware jobs if lint fails - now on LAVA too!
+      ci: avoid running hardware jobs if lint fails - now on Windows too!
 
-Feng Jiang (1):
-      virgl/video: Fix out-of-bounds access in fill_mpeg4_picture_desc()
+Faith Ekstrand (1):
+      nv50/ir: Convert to new-style NIR registers
 
-Julia Tatz (1):
-      aux/trace: fix (u)int dump
+Friedrich Vock (1):
+      radv/ci: Set DRIVER_NAME in LAVA raven vkcts jobs
 
-Karmjit Mahil (1):
-      docs: Add inital PowerVR driver documentation
+Helen Koike (3):
+      ci: re-add EXTRA_LOCAL_PACKAGES to rootfs
+      ci: add EXTRA_LOCAL_PACKAGES to apt-get install
+      docs/ci: Add docs for EXTRA_LOCAL_PACKAGES
 
-Konstantin Seurer (3):
-      nir/lower_shader_calls: Remat derefs after shader calls
-      nir/opt_dead_cf: Run dead_cf_block while it makes progress
-      nir/opt_dead_cf: Clarify comment
+Hyunjun Ko (1):
+      anv: Adds a workaround for HEVC decoding on some old platforms.
 
-Lionel Landwerlin (2):
-      zink: drop linear D32_SFLOAT_S8_UINT requirement
-      anv: fix utrace signaling with Xe
+Karol Herbst (5):
+      nvc0: backport fp helper invocation fix to 2nd gen Maxwell+
+      rusticl/kernel: silence newer clippy warning
+      rusticl: Replace &Arc<Device> with &Device
+      rusticl/device: make it &'static
+      api/icd: drop static lifetime from `get_ref` return type
 
-Lucas Fryzek (1):
-      gallium: Remove `PIPE_CAP_RGB_OVERRIDE_DST_ALPHA_BLEND`
+Marcin Ślusarz (3):
+      anv: fix how NULL buffer_view is handled in anv_descriptor_set_write_buffer_view
+      anv: pass anv_surface_state using a pointer
+      anv: limit stack usage for anv_surface_state
 
-Marek Olšák (2):
-      radeonsi: fix gfx9 regression causing GPU hangs
-      radeonsi/gfx11: fix a regression with PAIRS packets due to shader changes
+Mohamed Ahmed (3):
+      vulkan/util: Support 10-bit and 12-bit color formats in ycbcr_info in vk_format.c
+      vulkan/util: Support VK_EXT_ycbcr_2plane_444_formats color formats in vk_format.c
+      vulkan/util: Use ycbcr_info for multiplane helpers in vk_format.c
 
-Rob Clark (1):
-      freedreno/drm/virtio: Trigger host side wait boost
+Timur Kristóf (1):
+      aco: Add MESA_SHADER_KERNEL to instruction selection setup.
+
+Yiwei Zhang (4):
+      venus: handle query feedback creation failure
+      venus: ensure consistency of query overflow behavior
+      venus: add a missing barrier before copying query feedback
+      venus: refactor query feedback cmd record
 
