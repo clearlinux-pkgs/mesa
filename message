@@ -1,92 +1,71 @@
-Updating from ad980dc699ef59d68716039e661c9230d6652769 to 0dc961645c4f0241f8512cb0ec3ad59635842072
+Updating from 0dc961645c4f0241f8512cb0ec3ad59635842072 to 5f5be9e4e10a487e60dc7a04affa5405e51c06bd
 
-Alyssa Rosenzweig (1):
-      zink: Switch to register intrinsics
+Alyssa Rosenzweig (13):
+      gallium/trace: Collect enums from multiple files
+      gallium,util: Move blend enums to util/
+      gallium,util: Move util_blend_dst_alpha_to_one
+      util/blend: Add helpers for normalizing inverts
+      vulkan: Add helpers for blend enum translation
+      lvp: Use common blend/logicop translation
+      nir/lower_blend: Use util enums
+      panfrost: Convert to PIPE_BLEND enums internally
+      gallium: Remove pipe->compiler BLEND enum translation
+      compiler: Remove blend enums duplicating util
+      nir/legacy: Fix fneg(load_reg) case
+      nir/legacy: Fix handling of fsat(fabs)
+      ntt: Switch to new-style registers and modifiers
 
-Christian Gmeiner (3):
-      nir: rename intrinsic to have a more generic nameing
-      nir: rename has_txs to has_texture_scaling
-      nir/lower_tex: optimize offset lowering for has_texture_scaling
+Amber (7):
+      ir3: make wave_granularity configurable
+      turnip: Add support for devices not supporting double thread size.
+      turnip: make sampler_minmax support configurable.
+      freedreno, turnip: set correct reg_size_vec4 for a6xx_gen1_low
+      ir3: handle non-uniform case for atomic image/ssbo intrinsics
+      freedreno: Add support for devices not supporting double thread size.
+      turnip: Add debug option to allow non-conforming features.
 
 Connor Abbott (1):
-      freedreno/regs: Document a7xx CP_FIXED_STRIDE_DRAW_TABLE
+      afuc: Rework and significantly expand README.rst
 
-Danylo Piliaiev (21):
-      freedreno/regs: Print xml validation error if validation fails
-      freedreno/rnn: Fix addvariant being set effectively once
-      freedreno/rnn: Make addvariant work for fields in the same reg
-      freedreno/rnn: Take into account array's variant for regs
-      freedreno/regs: Change a7xx regs to have open range for generation
-      freedreno/regs: More CP commands are the same on a7xx as on a6xx
-      freedreno/regs: Document CP_MEM_TO_SCRATCH_MEM
-      freedreno/regs: Document a7xx CP_MODIFY_TIMESTAMP
-      freedreno/regs: Clarify polling on a7xx for CP_WAIT_REG_MEM/CP_COND_WRITE5
-      freedreno/regs: Add a7xx pseudo-regs to CP_SET_PSEUDO_REG
-      freedreno/regs: a7xx has a new source type CP_REG_TEST
-      freedreno/regs: Add 2 new a7xx modes to CP_COND_REG_EXEC
-      freedreno/regs: Add some new a7xx events
-      freedreno/regs: Add more a7xx regs and reg fields
-      freedreno/regs: Fix a7xx SP_FS_PREFETCH definition
-      freedreno/regs: Generate per-gen reg usage tables
-      freedreno/regs: Define usage for all a6xx/a7xx regs
-      tu: Allow reg stomping of compute related registers
-      tu: Use reg usage tables for stale reg dbg option
-      freedreno/regs: Properly document a7xx CP_EVENT_WRITE, CP_WAIT_TIMESTAMP
-      freedreno/regs: Document a7xx CP_BV_BR_COUNT_OPS
+Danylo Piliaiev (8):
+      freedreno/cffdec: Decode CP_DRAW_AUTO
+      freedreno, turnip: Clarify some RB_CCU_CNTL fields
+      freedreno,turnip: Make number of VSC pipes configurable
+      freedreno,turnip: Make CS shared memory size configurable
+      freedreno,turnip: Make VS input attr/binding count configurable
+      freedreno: Add A605, A608, A610, A612 GPUs definition
+      turnip: Make multiview support configurable per generation
+      ir3: Make FS tex prefetch optimization optional
 
-David Heidelberg (1):
-      ci/freedreno: update a530 flakes
+Dylan Baker (1):
+      docs: truncate feature list for 23.3-devel
 
-Dylan Baker (2):
-      VERSION: bump to 23.3.0-devel
-      docs: Update release calendar for 23.2.0-rc1
+Filip Gawin (1):
+      crocus: Avoid fast-clear with incompatible view
 
-Eric Engestrom (7):
-      etnaviv/ci: drop duplicate line in etnaviv files list
-      broadcom/ci: add the renderonly folder to things that can affect v3d & vc4
-      meson: clarify description of `opengl` option
-      meson: clarify what "off-screen rendering" means
-      ci: avoid running hardware jobs if there are already trivial issues
-      ci: avoid running hardware jobs if lint fails - now on LAVA too!
-      ci: avoid running hardware jobs if lint fails - now on Windows too!
+Frank Binns (1):
+      pvr: clang-format fixes
 
-Faith Ekstrand (1):
-      nv50/ir: Convert to new-style NIR registers
+Jordan Justen (6):
+      isl: Add ISL_SURF_USAGE_STREAM_OUT_BIT
+      anv,iris,hasvk: Use ISL_SURF_USAGE_STREAM_OUT_BIT for setting stream-out MOCS
+      genxml/hsw: Add additional MOCS field enumerations
+      genxml/chv: Add MEMORY_OBJECT_CONTROL_STATE_CHV to document compared to BDW
+      isl/dev: Add uncached MOCS value
+      isl: Set MOCS to uncached for MTL stream-out
 
-Friedrich Vock (1):
-      radv/ci: Set DRIVER_NAME in LAVA raven vkcts jobs
+Juston Li (1):
+      zink: remove venus from renderpass optimizations
 
-Helen Koike (3):
-      ci: re-add EXTRA_LOCAL_PACKAGES to rootfs
-      ci: add EXTRA_LOCAL_PACKAGES to apt-get install
-      docs/ci: Add docs for EXTRA_LOCAL_PACKAGES
+Konrad Dybcio (1):
+      freedreno: Set magic writes per-GPU, using existing data
 
-Hyunjun Ko (1):
-      anv: Adds a workaround for HEVC decoding on some old platforms.
+Lionel Landwerlin (1):
+      anv: hide exec_flags selection inside the i915 backend
 
-Karol Herbst (5):
-      nvc0: backport fp helper invocation fix to 2nd gen Maxwell+
-      rusticl/kernel: silence newer clippy warning
-      rusticl: Replace &Arc<Device> with &Device
-      rusticl/device: make it &'static
-      api/icd: drop static lifetime from `get_ref` return type
+Pavel Ondračka (1):
+      r300: update RV370 failures
 
-Marcin Ślusarz (3):
-      anv: fix how NULL buffer_view is handled in anv_descriptor_set_write_buffer_view
-      anv: pass anv_surface_state using a pointer
-      anv: limit stack usage for anv_surface_state
-
-Mohamed Ahmed (3):
-      vulkan/util: Support 10-bit and 12-bit color formats in ycbcr_info in vk_format.c
-      vulkan/util: Support VK_EXT_ycbcr_2plane_444_formats color formats in vk_format.c
-      vulkan/util: Use ycbcr_info for multiplane helpers in vk_format.c
-
-Timur Kristóf (1):
-      aco: Add MESA_SHADER_KERNEL to instruction selection setup.
-
-Yiwei Zhang (4):
-      venus: handle query feedback creation failure
-      venus: ensure consistency of query overflow behavior
-      venus: add a missing barrier before copying query feedback
-      venus: refactor query feedback cmd record
+Sil Vilerino (1):
+      util: Blake3 - Identify arm64ec as aarch64 instead of x64
 
