@@ -1,71 +1,75 @@
-Updating from 0dc961645c4f0241f8512cb0ec3ad59635842072 to 5f5be9e4e10a487e60dc7a04affa5405e51c06bd
+Updating from 5f5be9e4e10a487e60dc7a04affa5405e51c06bd to 39824457283bf194c2e2773c19708848027121e1
 
-Alyssa Rosenzweig (13):
-      gallium/trace: Collect enums from multiple files
-      gallium,util: Move blend enums to util/
-      gallium,util: Move util_blend_dst_alpha_to_one
-      util/blend: Add helpers for normalizing inverts
-      vulkan: Add helpers for blend enum translation
-      lvp: Use common blend/logicop translation
-      nir/lower_blend: Use util enums
-      panfrost: Convert to PIPE_BLEND enums internally
-      gallium: Remove pipe->compiler BLEND enum translation
-      compiler: Remove blend enums duplicating util
-      nir/legacy: Fix fneg(load_reg) case
-      nir/legacy: Fix handling of fsat(fabs)
-      ntt: Switch to new-style registers and modifiers
+Alyssa Rosenzweig (1):
+      ir3: Convert to register intrinsics
 
-Amber (7):
-      ir3: make wave_granularity configurable
-      turnip: Add support for devices not supporting double thread size.
-      turnip: make sampler_minmax support configurable.
-      freedreno, turnip: set correct reg_size_vec4 for a6xx_gen1_low
-      ir3: handle non-uniform case for atomic image/ssbo intrinsics
-      freedreno: Add support for devices not supporting double thread size.
-      turnip: Add debug option to allow non-conforming features.
-
-Connor Abbott (1):
-      afuc: Rework and significantly expand README.rst
-
-Danylo Piliaiev (8):
-      freedreno/cffdec: Decode CP_DRAW_AUTO
-      freedreno, turnip: Clarify some RB_CCU_CNTL fields
-      freedreno,turnip: Make number of VSC pipes configurable
-      freedreno,turnip: Make CS shared memory size configurable
-      freedreno,turnip: Make VS input attr/binding count configurable
-      freedreno: Add A605, A608, A610, A612 GPUs definition
-      turnip: Make multiview support configurable per generation
-      ir3: Make FS tex prefetch optimization optional
-
-Dylan Baker (1):
-      docs: truncate feature list for 23.3-devel
-
-Filip Gawin (1):
-      crocus: Avoid fast-clear with incompatible view
+David Rosca (1):
+      radeonsi: Use DIV_ROUND_UP instead of ALIGN_POT
 
 Frank Binns (1):
-      pvr: clang-format fixes
+      pvr: skip setting up SPM consts buffer when no const shared regs are used
 
-Jordan Justen (6):
-      isl: Add ISL_SURF_USAGE_STREAM_OUT_BIT
-      anv,iris,hasvk: Use ISL_SURF_USAGE_STREAM_OUT_BIT for setting stream-out MOCS
-      genxml/hsw: Add additional MOCS field enumerations
-      genxml/chv: Add MEMORY_OBJECT_CONTROL_STATE_CHV to document compared to BDW
-      isl/dev: Add uncached MOCS value
-      isl: Set MOCS to uncached for MTL stream-out
+Karmjit Mahil (6):
+      pvr: Remove mrt setup from SPM EOT
+      pvr: Compile SPM EOT shader
+      pvr: Use the SPM EOT on barrier stores
+      pvr: Remove some magic numbers and increments from km stream
+      pvr: Restructure `rogue_kmd_stream.xml`
+      pvr: Submit PR commands
 
-Juston Li (1):
-      zink: remove venus from renderpass optimizations
+Lucas Stach (16):
+      ci/etnaviv: update ci expectation
+      etnaviv: move resource seqnos to level
+      etnaviv: flush destination before executing blit
+      etnaviv: optimize resource copies by skipping clean levels
+      etnaviv: add helper to mark resource level as flushed
+      etnaviv: add helper to mark resource level as changed
+      etnaviv: add helper to transfer resource level age to another
+      etnaviv: add helper to get TS validity
+      etnaviv: add helper to set TS validity
+      etnaviv: move TS meta into etna_resource_level
+      etnaviv: add tile status buffer status into TS metadata
+      etnaviv: optimize sampler source update
+      etnaviv: allow sampler TS even if the resource is flushed
+      etnaviv: keep blit destination tile status valid if possible
+      etnaviv: optimize render resource update
+      etnaviv: optimize transfers when whole resource level is discarded
 
-Konrad Dybcio (1):
-      freedreno: Set magic writes per-GPU, using existing data
+Marcin Ślusarz (4):
+      iris: avoid duplicating validation entries
+      hasvk: remove dead code & comments related to mesh shading
+      anv: drop support for VK_NV_mesh_shader
+      intel/compiler: remove NV_mesh_shader support
 
-Lionel Landwerlin (1):
-      anv: hide exec_flags selection inside the i915 backend
+Marek Olšák (1):
+      Revert "ac/nir/ngg: Follow intrinsic sources when analyzing before culling."
 
-Pavel Ondračka (1):
-      r300: update RV370 failures
+Rohan Garg (2):
+      iris: migrate WA 14013910100 to use the WA framework
+      iris: migrate WA 14016118574 to use the WA framework
 
-Sil Vilerino (1):
-      util: Blake3 - Identify arm64ec as aarch64 instead of x64
+Sagar Ghuge (2):
+      intel/compiler: Look at 2 register worth of data instead of 4
+      isl: Disable MCS compression just on ACM platform
+
+Semjon Kravtsenko (1):
+      glx: Assign unique serial number to GLXBadFBConfig error
+
+Thong Thai (2):
+      radeonsi: enable vcn encoder rgb input support
+      Update radeon_vcn_enc.c
+
+Timur Kristóf (9):
+      aco: Fix subgroup_id intrinsic on GFX10.3+.
+      ac/nir: Simplify arg unpacking when shift is zero.
+      ac/nir: Add new pass to lower intrinsics to shader args.
+      radv: Move radv_select_hw_stage to radv_shader_info.
+      radv: Use ac_nir_lower_intrinsics_to_args.
+      radeonsi: Move si_select_hw_stage to si_shader_info.
+      radeonsi: Use ac_nir_lower_intrinsics_to_args.
+      aco: Remove subgroup_id and num_subgroups intrinsics.
+      ac/llvm: Remove subgroup_id and num_subgroups intrinsics.
+
+WinLinux1028 (1):
+      radeonsi: prefix function with si_ to prevent name collision
 
