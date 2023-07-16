@@ -1,75 +1,9 @@
-Updating from 5f5be9e4e10a487e60dc7a04affa5405e51c06bd to 39824457283bf194c2e2773c19708848027121e1
+Updating from 39824457283bf194c2e2773c19708848027121e1 to 9bcdc45ee7e8c4ca0dbb18ba16077d474d5ebb31
 
-Alyssa Rosenzweig (1):
-      ir3: Convert to register intrinsics
+Alyssa Rosenzweig (2):
+      nir: Add fence_{pbe,mem}_to_tex(_pixel)_agx intrinsics
+      nir: Devendor load_sample_mask
 
-David Rosca (1):
-      radeonsi: Use DIV_ROUND_UP instead of ALIGN_POT
-
-Frank Binns (1):
-      pvr: skip setting up SPM consts buffer when no const shared regs are used
-
-Karmjit Mahil (6):
-      pvr: Remove mrt setup from SPM EOT
-      pvr: Compile SPM EOT shader
-      pvr: Use the SPM EOT on barrier stores
-      pvr: Remove some magic numbers and increments from km stream
-      pvr: Restructure `rogue_kmd_stream.xml`
-      pvr: Submit PR commands
-
-Lucas Stach (16):
-      ci/etnaviv: update ci expectation
-      etnaviv: move resource seqnos to level
-      etnaviv: flush destination before executing blit
-      etnaviv: optimize resource copies by skipping clean levels
-      etnaviv: add helper to mark resource level as flushed
-      etnaviv: add helper to mark resource level as changed
-      etnaviv: add helper to transfer resource level age to another
-      etnaviv: add helper to get TS validity
-      etnaviv: add helper to set TS validity
-      etnaviv: move TS meta into etna_resource_level
-      etnaviv: add tile status buffer status into TS metadata
-      etnaviv: optimize sampler source update
-      etnaviv: allow sampler TS even if the resource is flushed
-      etnaviv: keep blit destination tile status valid if possible
-      etnaviv: optimize render resource update
-      etnaviv: optimize transfers when whole resource level is discarded
-
-Marcin Ślusarz (4):
-      iris: avoid duplicating validation entries
-      hasvk: remove dead code & comments related to mesh shading
-      anv: drop support for VK_NV_mesh_shader
-      intel/compiler: remove NV_mesh_shader support
-
-Marek Olšák (1):
-      Revert "ac/nir/ngg: Follow intrinsic sources when analyzing before culling."
-
-Rohan Garg (2):
-      iris: migrate WA 14013910100 to use the WA framework
-      iris: migrate WA 14016118574 to use the WA framework
-
-Sagar Ghuge (2):
-      intel/compiler: Look at 2 register worth of data instead of 4
-      isl: Disable MCS compression just on ACM platform
-
-Semjon Kravtsenko (1):
-      glx: Assign unique serial number to GLXBadFBConfig error
-
-Thong Thai (2):
-      radeonsi: enable vcn encoder rgb input support
-      Update radeon_vcn_enc.c
-
-Timur Kristóf (9):
-      aco: Fix subgroup_id intrinsic on GFX10.3+.
-      ac/nir: Simplify arg unpacking when shift is zero.
-      ac/nir: Add new pass to lower intrinsics to shader args.
-      radv: Move radv_select_hw_stage to radv_shader_info.
-      radv: Use ac_nir_lower_intrinsics_to_args.
-      radeonsi: Move si_select_hw_stage to si_shader_info.
-      radeonsi: Use ac_nir_lower_intrinsics_to_args.
-      aco: Remove subgroup_id and num_subgroups intrinsics.
-      ac/llvm: Remove subgroup_id and num_subgroups intrinsics.
-
-WinLinux1028 (1):
-      radeonsi: prefix function with si_ to prevent name collision
+Faith Ekstrand (1):
+      nv50/ir: Support vector movs
 
