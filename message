@@ -1,9 +1,29 @@
-Updating from 39824457283bf194c2e2773c19708848027121e1 to 9bcdc45ee7e8c4ca0dbb18ba16077d474d5ebb31
+Updating from 9bcdc45ee7e8c4ca0dbb18ba16077d474d5ebb31 to f7c74e35eef06b6b6f5b14eff4a129fb9592e562
 
-Alyssa Rosenzweig (2):
-      nir: Add fence_{pbe,mem}_to_tex(_pixel)_agx intrinsics
-      nir: Devendor load_sample_mask
+David Heidelberg (8):
+      ci: build kernel in gfx-ci/linux and just use binaries in Mesa3D CI
+      ci: update kernel to 6.3.13
+      ci/freedreno: add fails introduced by upreving to 6.3.13
+      Revert "lima/ci: temporarily disable deqp-egl tests due to timeouts"
+      ci/radeonsi: stoney arb_timer_query got fixed between kernel 6.3.1..13
+      ci/lima: EGL testing was disabled when fp16 fail was removed
+      ci/freedreno: fix unexpectedpass flake on a630
+      ci/freedreno: add another a530 flakes
 
-Faith Ekstrand (1):
-      nv50/ir: Support vector movs
+Lionel Landwerlin (1):
+      isl: add a tool to query surface parameters
+
+Lucas Stach (9):
+      etnaviv: split etna_copy_resource_box levels parameter in src/dst
+      etnaviv: don't allocate full resource as transfer staging
+      etnaviv: check for valid TS as condition to create the staging resource
+      etnaviv: reword comment about staging resource usage
+      etnaviv: remove huge outdated comment
+      etnaviv: move buffer range tracking into the PIPE_MAP_WRITE clause
+      etnaviv: remove superfluous braces
+      etnaviv: remove always true assert in etna_transfer_unmap
+      etnaviv: remove bogus comment about replacing resource storage
+
+Rohan Garg (1):
+      iris: fix iris for WA 16013000631
 
