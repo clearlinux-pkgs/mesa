@@ -1,29 +1,60 @@
-Updating from 9bcdc45ee7e8c4ca0dbb18ba16077d474d5ebb31 to f7c74e35eef06b6b6f5b14eff4a129fb9592e562
+Updating from f7c74e35eef06b6b6f5b14eff4a129fb9592e562 to 75990e5564fc8f155c9f165517712a232a2100c8
 
-David Heidelberg (8):
-      ci: build kernel in gfx-ci/linux and just use binaries in Mesa3D CI
-      ci: update kernel to 6.3.13
-      ci/freedreno: add fails introduced by upreving to 6.3.13
-      Revert "lima/ci: temporarily disable deqp-egl tests due to timeouts"
-      ci/radeonsi: stoney arb_timer_query got fixed between kernel 6.3.1..13
-      ci/lima: EGL testing was disabled when fp16 fail was removed
-      ci/freedreno: fix unexpectedpass flake on a630
-      ci/freedreno: add another a530 flakes
+Alyssa Rosenzweig (7):
+      nir: Promote tess_coord_r600 to tess_coord_xy
+      nir: Add nir_lower_tess_coord_z pass
+      r600: Use nir_lower_tess_coord_xy
+      ir3: Use nir_lower_tess_coord_z
+      nir: Initialize workgroup_size in builder_init_simple_shader
+      v3dv: Rely on nir_builder setting workgroup size
+      radv: Rely on workgroup_size initialization
 
-Lionel Landwerlin (1):
-      isl: add a tool to query surface parameters
+Danylo Piliaiev (1):
+      ir3: Use NIR info to enable per sample shading
 
-Lucas Stach (9):
-      etnaviv: split etna_copy_resource_box levels parameter in src/dst
-      etnaviv: don't allocate full resource as transfer staging
-      etnaviv: check for valid TS as condition to create the staging resource
-      etnaviv: reword comment about staging resource usage
-      etnaviv: remove huge outdated comment
-      etnaviv: move buffer range tracking into the PIPE_MAP_WRITE clause
-      etnaviv: remove superfluous braces
-      etnaviv: remove always true assert in etna_transfer_unmap
-      etnaviv: remove bogus comment about replacing resource storage
+David Heidelberg (3):
+      ci: add quirk for GitLab assuming changes is always true for scheduled runs
+      ci/microsoft: when re-enabling Windows Farm, always run the container
+      ci/freedreno: add a530 flakes, remove one fail which recently started passing
+
+Eric Engestrom (2):
+      ci: replace copy of nouveau rules with reference
+      ci: drop leftover kernel configs
+
+Guilherme Gallo (1):
+      bin/ci: Ensure that all jobs have nodes in DAG
+
+Iván Briano (1):
+      anv: ensure CFE_STATE is emitted for ray tracing pipelines
+
+Leo Liu (1):
+      radeonsi: add AV1 profile to supported profile
+
+Marek Olšák (3):
+      glthread: determine global locking once every 64 batches to fix get_time perf
+      mesa: fix 38% decrease in display list performance of Viewperf2020/NX8_StudioAA
+      freedreno,lima,zink: update CI fixes and flakes
+
+Rhys Perry (9):
+      ac/llvm: fix AC_TM_CHECK_IR
+      radv: fix radv_get_ballot_bit_size with CS
+      ac/llvm: fix wave32 ac_build_mbcnt_add with 64-bit mask
+      ac/llvm: skip ballot zext for 32-bit dest with wave32-as-wave64
+      radv: add conformant_trunc_coord to cache UUID
+      radv: don't unset TRUNC_COORD if conformant_trunc_coord=true
+      ac/nir: always round cube array layers
+      nir/unsigned_upper_bound: fix phi(bcsel)
+      nir/tests: add test for unsigned_upper_bound with loop header phis
+
+Robert Foss (7):
+      egl: Expose access to DeviceList
+      egl: Rename _eglRefreshDeviceList() to _eglDeviceRefreshList()
+      egl: Refresh DeviceList during eglInitialize()
+      egl/surfaceless: Use EGL DeviceList instead of drmGetDevices2()
+      egl/android: Use EGL DeviceList instead drmGetDevices2()
+      egl: Rename _eglAddDevice() to _eglFindDevice()
+      egl: Rename _eglAddDevice() to _eglFindDevice()
 
 Rohan Garg (1):
-      iris: fix iris for WA 16013000631
+      intel/perf: add perf query support for Intel Raptorlake
 
