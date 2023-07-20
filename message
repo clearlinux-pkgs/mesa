@@ -1,60 +1,141 @@
-Updating from f7c74e35eef06b6b6f5b14eff4a129fb9592e562 to 75990e5564fc8f155c9f165517712a232a2100c8
+Updating from 0137de917b20f87084581d35a7bbf0e52aea3a07 to f7d05865240f622d7d5d394a1bb62cb09c2d3f9b
 
-Alyssa Rosenzweig (7):
-      nir: Promote tess_coord_r600 to tess_coord_xy
-      nir: Add nir_lower_tess_coord_z pass
-      r600: Use nir_lower_tess_coord_xy
-      ir3: Use nir_lower_tess_coord_z
-      nir: Initialize workgroup_size in builder_init_simple_shader
-      v3dv: Rely on nir_builder setting workgroup size
-      radv: Rely on workgroup_size initialization
+Alyssa Rosenzweig (2):
+      panfrost: Lower vertex_id for XFB
+      panfrost: Fix transform feedback on v9 harder
 
-Danylo Piliaiev (1):
-      ir3: Use NIR info to enable per sample shading
+Asahi Lina (1):
+      docs/tgsi: Specify that depth texture fetches are replicated
 
-David Heidelberg (3):
-      ci: add quirk for GitLab assuming changes is always true for scheduled runs
-      ci/microsoft: when re-enabling Windows Farm, always run the container
-      ci/freedreno: add a530 flakes, remove one fail which recently started passing
+Caio Oliveira (1):
+      nir: Use instructions_pass() for nir_fixup_deref_modes()
 
-Eric Engestrom (2):
-      ci: replace copy of nouveau rules with reference
-      ci: drop leftover kernel configs
+Chia-I Wu (5):
+      radv: fix separate depth/stencil layouts in fb state
+      radv: fix separate depth/stencil layouts in resolve meta
+      radv: refactor depth clear in clear meta
+      radv: fix separate depth/stencil layouts in clear meta
+      amd/ci: update radv-stoney-aco-fails.txt for depth/stencil clear
 
-Guilherme Gallo (1):
-      bin/ci: Ensure that all jobs have nodes in DAG
+Danylo Piliaiev (2):
+      freedreno/regs: Rename SP_FS_CTRL_REG0.DIFF_FINE into LODPIXMASK
+      ir3: Fix FS quad ops returning wrong values from helper invocations
 
-Iván Briano (1):
-      anv: ensure CFE_STATE is emitted for ray tracing pipelines
+Dave Airlie (1):
+      ci: remove binding model from the asan skips for lavapipe.
 
-Leo Liu (1):
-      radeonsi: add AV1 profile to supported profile
+David Heidelberg (1):
+      ci/panfrost: introduce OpenGL testing with Mali-G57 MP5 on Asurada chromebook
 
-Marek Olšák (3):
-      glthread: determine global locking once every 64 batches to fix get_time perf
-      mesa: fix 38% decrease in display list performance of Viewperf2020/NX8_StudioAA
-      freedreno,lima,zink: update CI fixes and flakes
+David Rosca (1):
+      radeonsi/vcn: Fix setting color range in AV1 bitstream
 
-Rhys Perry (9):
-      ac/llvm: fix AC_TM_CHECK_IR
-      radv: fix radv_get_ballot_bit_size with CS
-      ac/llvm: fix wave32 ac_build_mbcnt_add with 64-bit mask
-      ac/llvm: skip ballot zext for 32-bit dest with wave32-as-wave64
-      radv: add conformant_trunc_coord to cache UUID
-      radv: don't unset TRUNC_COORD if conformant_trunc_coord=true
-      ac/nir: always round cube array layers
-      nir/unsigned_upper_bound: fix phi(bcsel)
-      nir/tests: add test for unsigned_upper_bound with loop header phis
+Eric Engestrom (1):
+      ci: delete install.tar after extracting it to avoid re-uploading it
 
-Robert Foss (7):
-      egl: Expose access to DeviceList
-      egl: Rename _eglRefreshDeviceList() to _eglDeviceRefreshList()
-      egl: Refresh DeviceList during eglInitialize()
-      egl/surfaceless: Use EGL DeviceList instead of drmGetDevices2()
-      egl/android: Use EGL DeviceList instead drmGetDevices2()
-      egl: Rename _eglAddDevice() to _eglFindDevice()
-      egl: Rename _eglAddDevice() to _eglFindDevice()
+Felix DeGrood (6):
+      anv: save a shader source uint32_t hash in gfx/compute pipelines
+      anv: Add Source hash field to VkPipelineExecutableStatisticKHR
+      iris: save shader source sha1 in ish
+      mesa: propagate shader source sha1 from gl_shader to nir_shader
+      intel: use shader source hash in INTEL_MEASURE
+      intel/compiler: use shader source hash in shader dump code
 
-Rohan Garg (1):
-      intel/perf: add perf query support for Intel Raptorlake
+Gert Wollny (1):
+      r600/sfn: remove debug output leftovers
+
+José Roberto de Souza (12):
+      anv: Use workaround framework to Wa_14016118574
+      intel/aux_map: Nuke format_enum
+      intel/aux_map: Use get_aux_entry() in remove_mapping()
+      intel/aux_map: Replace magic number by INTEL_AUX_MAP_ENTRY_VALID_BIT
+      intel/aux_map: Rename some variables to improve readability
+      intel/aux_map: Mask out bits above index 47 in intel_aux_get_meta_address_mask()
+      intel/aux_map: Convert l1_entry_addr_out to canonical
+      intel/aux_map: Drop magic sub table size number
+      intel/aux_map: Add function and macro to return l2 and l1 table masks
+      anv: Add gem_create_userptr() to KMD backend
+      anv: Replace handle by anv_bo in the gem_close()
+      anv: Add support for userptr in Xe KMD
+
+Karmjit Mahil (4):
+      pvr: Use the correct size for the unified store allocation
+      pvr: Allow query stage for barrier sub cmds
+      pvr: Fix occlusion query unaccounted for user fences
+      pvr: Fix writing query availability write out
+
+Konstantin Seurer (3):
+      radv: Stop using the misleading round_up_u* functions
+      radv/meta_buffer: Stop setting RADV_META_SAVE_DESCRIPTORS
+      radv/meta_buffer: Rename size_minus16 to max_offset
+
+Lionel Landwerlin (3):
+      intel/fs: fix missing predicate on SEL instruction
+      intel/compiler: rework input parameters
+      ci/a530: switch a few tests to flakes to unblock CI
+
+Lucas Stach (1):
+      etnaviv: initialize VIVS_GL_BUG_FIXES
+
+Mike Blumenkrantz (2):
+      zink: set pipeline dynamic state count after all dynamic states are set
+      zink: set feedback attachments on batch init
+
+Pavel Ondračka (7):
+      r300: check for index overflow when translating from TGSI
+      r300: source register index is always unsigned
+      r300: bump the RC_MAX_INDEX_BITS
+      r300: normal instruction can't have presubtract op
+      r300: add a helper for checking number of temporary sources
+      r300: cycles estimate for shader-db
+      r300: fix cycles calculation
+
+Robert Mader (1):
+      egl/wayland: wait for compositor to release shm buffers
+
+Samuel Pitoiset (1):
+      zink/ci: update list of expected failures for NAVI10
+
+Sergi Blanch Torne (2):
+      Introduce ci-kdl builder and launcher.
+      Integrate ci-kdl in the building process and launch process.
+
+Thomas H.P. Andersen (34):
+      tgsi: remove unused tgsi_shader_info.num_tokens
+      tgsi: remove unused tgsi_shader_info.array_max
+      tgsi: remove unused tgsi_shader_info.num_memory_instructions
+      tgsi: remove unused tgsi_shader_info.colors_read
+      tgsi: remove unused tgsi_shader_info.colors_written
+      tgsi: remove unused tgsi_shader_info.reads_position
+      tgsi: remove unused tgsi_shader_info.reads_samplemask
+      svga: remove unused struct field
+      tgsi: remove unused tgsi_shader_info.reads_tess_factors
+      tgsi: remove unused tgsi_shader_info fields
+      tgsi: remove unused tgsi_shader_info fields
+      tgsi: remove unused tgsi_shader_info.uses_drawid
+      tgsi: remove unused tgsi_shader_info fields
+      tgsi: remove unused tgsi_shader_info.uses_subgroup_info
+      tgsi: remove unused tgsi_shader_info.writes_primid
+      tgsi: remove unused tgsi_shader_info.uses_doubles
+      tgsi: remove unused tgsi_shader_info.uses_derivatives
+      tgsi: remove unused tgsi_shader_info.uses_bindless_samplers
+      tgsi: remove unused tgsi_shader_info.uses_bindless_images
+      tgsi: remove unused tgsi_shader_info.clipdist_writemask
+      tgsi: remove unused tgsi_shader_info.culldist_writemask
+      tgsi: remove unused tgsi_shader_info.images_load
+      tgsi: remove unused tgsi_shader_info.images_store
+      tgsi: remove unused tgsi_shader_info.images_atomic
+      tgsi: remove unused tgsi_shader_info.uses_bindless_buffer_load
+      tgsi: remove unused tgsi_shader_info.uses_bindless_buffer_store
+      tgsi: remove unused tgsi_shader_info.uses_bindless_buffer_atomic
+      tgsi: remove unused tgsi_shader_info.uses_bindless_image_load
+      tgsi: remove unused tgsi_shader_info.uses_bindless_image_store
+      tgsi: remove unused tgsi_shader_info.uses_bindless_image_atomic
+      tgsi: remove unused tgsi_shader_info.indirect_files_read
+      tgsi: remove unused tgsi_shader_info.indirect_files_written
+      tgsi: remove unused tgsi_shader_info.const_buffers_indirect
+      tgsi: remove unused tgsi_shader_info.max_depth
+
+Vignesh Raman (1):
+      ci: add Vignesh Raman into restricted traces access list
 
