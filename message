@@ -1,10 +1,77 @@
-Updating from f997d32f9f6a040f4956e067a4914a9584cbd424 to c2e398632645cc587072b68c0e3a97910859a6ac
+Updating from c2e398632645cc587072b68c0e3a97910859a6ac to 079e8a96749e9d4dfe415dfcd676e0d5e0ec37ea
 
-Alyssa Rosenzweig (1):
-      asahi: Don't depend on glibc to decode
+Charles Giessen (1):
+      panvk: Use 1.0 in ICD Manifest json
 
-Bas Nieuwenhuizen (3):
-      aco: fix nir_op_vec8/16 with 16-bit elements.
-      aco: Fix some constant patterns in 16-bit vec4 construction with s_pack.
-      nir: Fix 16-component nir_replicate.
+Christian Gmeiner (9):
+      etnaviv: make use of BITFIELD_BIT(..) macro
+      etnaviv: name the enum used for pass_flags
+      etnaviv: add is_dead_instruction(..) helper
+      etnaviv: extend etna_pass_flags with source modifiers
+      etnaviv: do not clear all pass_flags before RA
+      etnaviv: nir: look at parent instr in lower_alu(..)
+      etnaviv: nir: add etna_nir_lower_to_source_mods(..)
+      etnaviv: nir: switch to etna_nir_lower_to_source_mods(..)
+      etnaviv: nir: convert to new-style NIR registers
+
+Danylo Piliaiev (1):
+      tu,freedreno: Forbid blit event for R8G8_SRGB due to gpu faults
+
+David Heidelberg (1):
+      ci/freedreno: cover all texture gather flakes
+
+David Rosca (3):
+      gallium/auxiliary/vl: Handle UV subsampling in compute_shader_yuv
+      gallium/auxiliary/vl: Fix blurry output of compute_shader_yuv
+      frontends/va: Add YUV420 to NV12 postproc conversion
+
+Faith Ekstrand (1):
+      anv,hasvk,iris: sampler_prog_key::swizzles is only used on crocus
+
+Georg Lehmann (2):
+      aco/gfx11: fix get_gfx11_true16_mask with v_cmp_class_f16
+      aco: improve get_gfx11_true16_mask description
+
+Konstantin Seurer (3):
+      llvmpipe: Fix compiling with LP_USE_TEXTURE_CACHE
+      nir/tests: Refactor boilerplate into a common header
+      nir/tests: Use a single binary
+
+Marcin Ślusarz (3):
+      intel/compiler/mesh: compactify MUE layout
+      intel/compiler,anv: put some vertex and primitive data in headers
+      intel/compiler: load debug mesh compaction options once
+
+Qiang Yu (13):
+      aco,radv: replace tess_input_vertices shader info param
+      radeonsi: aco does not pass LS outputs to HS by arg
+      radeonsi: extract si_get_prev_stage_nir_shader to be shared with aco
+      radeonsi: init aco shader info for merged LS/HS
+      radeonsi: simplify si_build_wrapper_function
+      radeonsi: move vertex shader vb desc input sgpr args to last
+      radeonsi: remove param type check in wrapper function
+      radeonsi: refine si_llvm_ls_build_end
+      radeonsi: refine si_llvm_es_build_end
+      radeonsi: aco compile support merged mono shader
+      radeonsi: calculate lds size for merged shaders
+      radeonsi: enable aco compile for mono merged LS/HS
+      radeonsi: enable aco compile for mono merged ES/GS
+
+Rhys Perry (2):
+      nir/opt_dead_cf: remove nodes after a jump earlier
+      nir/tests: add nir_opt_dead_cf_test.jump_before_constant_if
+
+Samuel Pitoiset (2):
+      radv: stop using an array of binaries when compiling a compute shader
+      radv: add radv_compile_cs() to compile a compute shader
+
+Timothy Arceri (5):
+      nir/opt_copy_prop_vars: don't clone copies if branch empty
+      nir/opt_copy_prop_vars: speedup cloning of copy tables
+      nir/opt_copy_prop_vars: remove var hash entry on kill alias
+      nir/opt_copy_prop_vars: skip cloning of copies arrays until needed
+      nir/opt_copy_prop_vars: drop reuse of dynamic arrays
+
+Zhang Ning (1):
+      Revert "intel/ci: disable iris-jsl-deqp because it always fails for an AMD MR"
 
