@@ -1,4 +1,3 @@
-23.2.0+556.g079e8a96749
-pkgconfig(spirv-tools)
+23.2.0+2326.g65cda2c0e16
 pkgconfig(valgrind)
 valgrind

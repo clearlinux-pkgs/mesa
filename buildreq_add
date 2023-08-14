@@ -38,3 +38,4 @@ libglvnd-dev
 llvm-staticdev
 nasm
 yasm
+SPIRV-Tools-dev
