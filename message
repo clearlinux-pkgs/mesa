@@ -1,29 +1,88 @@
-Updating from 777d336b1ffe6b1ab4aec16ef32d71b9ad62f51f to 65cda2c0e16682c7c2bd6329f276016c5755ccc0
+Updating from 65cda2c0e16682c7c2bd6329f276016c5755ccc0 to 3176abc0f204a855d924cde7ac6b8390ac7a6a1f
 
-Alyssa Rosenzweig (1):
-      nir: Drop "SSA" from NIR language
+Alyssa Rosenzweig (10):
+      agx: Stop passing nir_dest around
+      agx: Remove agx_nir_ssa_index
+      pan/mdg: Don't reference nir_dest
+      pan/bi: Don't reference nir_dest
+      asahi: Do not reference nir_dest
+      panfrost: Do not reference nir_dest
+      zink: Do not reference nir_dest
+      ir3: Do not reference nir_dest
+      dxil: Do not reference nir_dest
+      nir: Drop nir_dest_init
+
+Christian Gmeiner (3):
+      etnaviv: switch to log2f(..)
+      etnaviv: switch to U_FIXED(..) macro
+      etnaviv: switch to S_FIXED(..) macro
+
+David Heidelberg (2):
+      ci/baremetal: do not install curl, it's already there
+      ci/baremetal: shorten BM_KERNEL to filename and BM_DTB to name only
 
 David Rosca (1):
-      frontends/va: Ignore requested size when creating VAEncCodedBufferType
+      gallium/auxiliary/vl: Set correct csc matrix in set_buffer_layer
 
-Faith Ekstrand (12):
-      nvk: Don't use nir_ssa_for_src()
-      nir: Drop most instances of nir_ssa_dest_init()
-      nir: Drop more instances of nir_ssa_dest_init()
-      nir/clone: Clone nir_def nor nir_dest
-      nir/serialize: [De]serialize nir_def nor nir_dest
-      nir: Drop nir_ssa_dest_init()
-      nir: Drop nir_ssa_dest_init_for_type()
-      nir: nir_foreach_ssa_def() -> nir_foreach_def()
-      st,zink,sfn: Use nir_foreach_def instead of nir_foreach_dest
-      dxil: Use nir_foreach_def() instead of nir_foreach_dest()
-      nir/from_ssa: Use nir_foreach_def() instead of nir_foreach_dest()
-      nir: Drop nir_foreach_dest()
+Faith Ekstrand (19):
+      intel/vec4: Stop passing around nir_dest
+      intel/fs: Stop passing around nir_dest and nir_alu_dest
+      broadcom: Stop using nir_dest directly
+      vc4: Stop passing around nir_dest
+      nir,ntt,a2xx,lima: Stop using nir_dest directly
+      lima: Stop using nir_dest directly
+      etnaviv: Stop passing around nir_dest
+      r600/sfn: Stop passing around nir_dest and nir_alu_dest
+      nv50/ir: Stop passing around nir_dest and nir_alu_dest
+      nir/gather_types: Stop passing around nir_dest
+      nir/dce: Stop passing around nir_dest
+      nir/propagate_invariant: Stop passing around nir_dest
+      nir/validate: Replace all dest validation with validate_def
+      nir/print: Replace all dest printing with print_def
+      nir: Get rid of nir_dest_bit_size()
+      nir: Get rid of nir_dest_num_components()
+      nir: Get rid of nir_dest_is_divergent()
+      nir: Drop nir_alu_dest
+      nir: Drop nir_dest
 
-Konstantin Seurer (2):
-      clang-format: Disable formatting by default
-      lavapipe: Use common physical device properties
+Italo Nicola (3):
+      panfrost: fix invalid memory access in get_equation_str()
+      pan/decode: handle more than one panfrost_device
+      panfrost/ci: updated CI expectations
 
-M Henning (1):
-      nvk: Remove reference to genUserClip
+Karol Herbst (1):
+      clc: use CLANG_RESOURCE_DIR for clang's resource path
+
+Konstantin Seurer (3):
+      nir/from_ssa: Don't insert store_reg instructions before phis
+      gallivm: Run nir_convert_to_lcssa before nir_convert_from_ssa
+      lavapipe/ci: Remove descriptor_indexing fails
+
+Lionel Landwerlin (1):
+      anv: don't try to access dynamic buffers from surface states
+
+Mike Blumenkrantz (11):
+      d3d10umd: use cso_context to set vertex buffers and elements
+      virgl: move virgl_vertex_elements_state to header
+      virgl: fix some indentation
+      nouveau: calloc vertex csos
+      gallium: move vertex stride to CSO
+      zink: fix null config screen creation
+      zink: fix crash in lower_pv_mode_gs_store
+      u/draw: skip zero-sized indirect draws
+      lavapipe: handle VkPipelineCreateFlagBits2KHR
+      lavapipe: handle VkBufferUsageFlags2KHR
+      zink: ci updates
+
+Rhys Perry (1):
+      aco: summarize register demand after handling branches
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: disable Collabora's LAVA lab for maintance"
+
+Yonggang Luo (3):
+      radv: Fixes mingw linkage error undefined reference to `radv_GetCalibratedTimestampsEXT'
+      v3d: Use DIV_ROUND_UP instead div_round_up
+      freedreno: Use shared DIV_ROUND_UP instead div_round_up
 
