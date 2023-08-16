@@ -1,88 +1,86 @@
-Updating from 65cda2c0e16682c7c2bd6329f276016c5755ccc0 to 3176abc0f204a855d924cde7ac6b8390ac7a6a1f
+Updating from 3176abc0f204a855d924cde7ac6b8390ac7a6a1f to c4133a110def6a20dbff9ffc4531108475420fcc
 
-Alyssa Rosenzweig (10):
-      agx: Stop passing nir_dest around
-      agx: Remove agx_nir_ssa_index
-      pan/mdg: Don't reference nir_dest
-      pan/bi: Don't reference nir_dest
-      asahi: Do not reference nir_dest
-      panfrost: Do not reference nir_dest
-      zink: Do not reference nir_dest
-      ir3: Do not reference nir_dest
-      dxil: Do not reference nir_dest
-      nir: Drop nir_dest_init
+Alyssa Rosenzweig (4):
+      panfrost: Pack stride at CSO create time on v9
+      lvp,nir/lower_input_attachments: Use nir_trim_vector
+      broadcom/compiler: Use nir_trim_vector explicitly
+      nir: Assert that nir_ssa_for_src components matches
 
-Christian Gmeiner (3):
-      etnaviv: switch to log2f(..)
-      etnaviv: switch to U_FIXED(..) macro
-      etnaviv: switch to S_FIXED(..) macro
+David Heidelberg (1):
+      ci/freedreno: document another a530 flake batch
 
-David Heidelberg (2):
-      ci/baremetal: do not install curl, it's already there
-      ci/baremetal: shorten BM_KERNEL to filename and BM_DTB to name only
+Faith Ekstrand (10):
+      util/format: 8-bit interleaved YUV formats are UNORM
+      gallivm: Support G8B8_G8R8_422_UNORM and B8G8_R8G8_422_UNORM
+      blorp: Use R8G8_UINT for YCRCB_* formats with CCS
+      anv: Disable CCS_E for ISL_FORMAT_YCRCB_*
+      vulkan/format: Use correct swizzle for 1-plane YCbCr formats
+      gallivm: Drop the Vulkan YUV format hacks
+      nir: Rename nir_instr_type_ssa_undef to nir_instr_type_undef
+      nir s/nir_get_ssa_scalar/nir_get_scalar/
+      nir: s/live_ssa_def/live_def/
+      nir: s/nir_instr_ssa_def/nir_instr_def/
 
-David Rosca (1):
-      gallium/auxiliary/vl: Set correct csc matrix in set_buffer_layer
+Italo Nicola (1):
+      egl: reenable partial redraw with a warning when using gallium hud
 
-Faith Ekstrand (19):
-      intel/vec4: Stop passing around nir_dest
-      intel/fs: Stop passing around nir_dest and nir_alu_dest
-      broadcom: Stop using nir_dest directly
-      vc4: Stop passing around nir_dest
-      nir,ntt,a2xx,lima: Stop using nir_dest directly
-      lima: Stop using nir_dest directly
-      etnaviv: Stop passing around nir_dest
-      r600/sfn: Stop passing around nir_dest and nir_alu_dest
-      nv50/ir: Stop passing around nir_dest and nir_alu_dest
-      nir/gather_types: Stop passing around nir_dest
-      nir/dce: Stop passing around nir_dest
-      nir/propagate_invariant: Stop passing around nir_dest
-      nir/validate: Replace all dest validation with validate_def
-      nir/print: Replace all dest printing with print_def
-      nir: Get rid of nir_dest_bit_size()
-      nir: Get rid of nir_dest_num_components()
-      nir: Get rid of nir_dest_is_divergent()
-      nir: Drop nir_alu_dest
-      nir: Drop nir_dest
+Jordan Justen (4):
+      intel/genxml: Move sorting & writing into GenXml class
+      intel/genxml: Don't rewrite sorted xml if the contents didn't change
+      intel/genxml: Add final newline to output when saving xml
+      intel/genxml: Update xml with gen_sort_tags.py output
 
-Italo Nicola (3):
-      panfrost: fix invalid memory access in get_equation_str()
-      pan/decode: handle more than one panfrost_device
-      panfrost/ci: updated CI expectations
+José Roberto de Souza (2):
+      intel/isl: Remove unknown workaround
+      intel/isl: Remove Wa_22011186057
 
-Karol Herbst (1):
-      clc: use CLANG_RESOURCE_DIR for clang's resource path
+Julia Tatz (1):
+      gallium/dri: fix dri2_from_names
 
-Konstantin Seurer (3):
-      nir/from_ssa: Don't insert store_reg instructions before phis
-      gallivm: Run nir_convert_to_lcssa before nir_convert_from_ssa
-      lavapipe/ci: Remove descriptor_indexing fails
+Konstantin Seurer (2):
+      radv/rt: Rename shader_pc and next_shader
+      radv/rt: Rename traversal_shader to traversal_shader_addr
 
-Lionel Landwerlin (1):
-      anv: don't try to access dynamic buffers from surface states
-
-Mike Blumenkrantz (11):
-      d3d10umd: use cso_context to set vertex buffers and elements
-      virgl: move virgl_vertex_elements_state to header
-      virgl: fix some indentation
-      nouveau: calloc vertex csos
-      gallium: move vertex stride to CSO
-      zink: fix null config screen creation
-      zink: fix crash in lower_pv_mode_gs_store
-      u/draw: skip zero-sized indirect draws
-      lavapipe: handle VkPipelineCreateFlagBits2KHR
-      lavapipe: handle VkBufferUsageFlags2KHR
+Mike Blumenkrantz (25):
+      zink: track start/stop of a couple query types
+      zink: require EDS1 for CWE usage
+      zink: unset primgen suspended flag when ending a primgen query
+      zink: rework rast-discard for primgen queries
+      zink: rip out some awkward parts of the old non-cwe path
+      zink: drop CWE requirement for renderpass tracking with primgen queries
+      nir/zink: fix gs emulation xfb_info sizing
+      zink: move fragcolor lowering further along the compile process
+      zink: add a mode param to find_var_with_location_frac
+      zink: use lowered io (kinda) for i/o vars
+      zink: stop lowering indirect derefs
+      ntt: handle interp intrinsics as derefs
+      zink: delete split_blocks pass
+      zink: delete lower_64bit_vertex_attribs pass
+      zink: fix clip/cull dist xfb inlining
+      zink: delete all the extra gross xfb handling
+      zink: stop using pipe_stream_output
+      zink: remove pipe_stream_output from function params
       zink: ci updates
+      aux/trace: print bindless handles as pointers
+      zink: remove unused param from create_ici
+      zink: split create_ici to init and eval
+      zink: add maintenance extensions to profile
+      zink: use maintenance5
+      zink: use real A8_UNORM when possible
+
+Mohamed Ahmed (2):
+      util/format: Add G8B8_G8R8_422_UNORM and B8G8_R8G8_422_UNORM formats
+      vulkan/format: Translate G8B8G8R8_422_UNORM and B8G8R8G8_422_UNORM properly
+
+Paul Gofman (1):
+      driconf: add a workaround for Captain Lycop: Invasion of the Heters
 
 Rhys Perry (1):
-      aco: summarize register demand after handling branches
+      aco: don't create sendmsg(dealloc_vgprs) if scratch is used
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Sylvain Munaut (1):
+      mesa: Enable ARB_texture_border_clamp in GL Core
 
-Yonggang Luo (3):
-      radv: Fixes mingw linkage error undefined reference to `radv_GetCalibratedTimestampsEXT'
-      v3d: Use DIV_ROUND_UP instead div_round_up
-      freedreno: Use shared DIV_ROUND_UP instead div_round_up
+Vinson Lee (1):
+      intel/decoder: Fix memory leak on error path
 
