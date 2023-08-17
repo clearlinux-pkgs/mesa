@@ -1,86 +1,97 @@
-Updating from 3176abc0f204a855d924cde7ac6b8390ac7a6a1f to c4133a110def6a20dbff9ffc4531108475420fcc
+Updating from c4133a110def6a20dbff9ffc4531108475420fcc to 3aa3eb8ddd9b5922b5b4eef4e4e8a2abcdfcba5b
 
-Alyssa Rosenzweig (4):
-      panfrost: Pack stride at CSO create time on v9
-      lvp,nir/lower_input_attachments: Use nir_trim_vector
-      broadcom/compiler: Use nir_trim_vector explicitly
-      nir: Assert that nir_ssa_for_src components matches
+Andrew Randrianasulu (1):
+      nv50/ir: Remove few nvc0 specific defines from nv50-specific header.
 
-David Heidelberg (1):
-      ci/freedreno: document another a530 flake batch
+Christian Gmeiner (1):
+      etnaviv: fix null pointer dereference
 
-Faith Ekstrand (10):
-      util/format: 8-bit interleaved YUV formats are UNORM
-      gallivm: Support G8B8_G8R8_422_UNORM and B8G8_R8G8_422_UNORM
-      blorp: Use R8G8_UINT for YCRCB_* formats with CCS
-      anv: Disable CCS_E for ISL_FORMAT_YCRCB_*
-      vulkan/format: Use correct swizzle for 1-plane YCbCr formats
-      gallivm: Drop the Vulkan YUV format hacks
-      nir: Rename nir_instr_type_ssa_undef to nir_instr_type_undef
-      nir s/nir_get_ssa_scalar/nir_get_scalar/
-      nir: s/live_ssa_def/live_def/
-      nir: s/nir_instr_ssa_def/nir_instr_def/
+Dor Askayo (1):
+      nouveau: add exported GEM handles to the global list
 
-Italo Nicola (1):
-      egl: reenable partial redraw with a warning when using gallium hud
+Emma Anholt (6):
+      vulkan/util: Make multialloc succeed with 0 allocations.
+      turnip: Track the first/last subpass an attachment is used in.
+      turnip: Skip emitting empty CP_COND_REG_EXEC.
+      turnip: Save the renderpass's clear values in the cmdbuf state.
+      turnip: Move gmem clears and loads to the first subpass that uses them.
+      turnip: Move sysmem clears to the first subpass that uses them.
 
-Jordan Justen (4):
-      intel/genxml: Move sorting & writing into GenXml class
-      intel/genxml: Don't rewrite sorted xml if the contents didn't change
-      intel/genxml: Add final newline to output when saving xml
-      intel/genxml: Update xml with gen_sort_tags.py output
+Erik Faye-Lund (1):
+      docs: upgrade bootstrap to 5.3.1
 
-José Roberto de Souza (2):
-      intel/isl: Remove unknown workaround
-      intel/isl: Remove Wa_22011186057
+Faith Ekstrand (8):
+      nir: Rework nir_scalar_chase_movs a bit
+      nir: Fix nir_op_mov handling in nir_collect_src_uniforms
+      nir: Handle nir_op_mov properly in opt_shrink_vectors
+      nir: Don't handle nir_op_mov in get_undef_mask in opt_undef
+      nir: Clean up nir_op_is_vec() and its callers
+      nir/large_constants: Use nir_component_mask_t
+      nir/large_constants: Add read/write_const_values helpers
+      nir/opt_large_constants: Add Small constant handling
 
-Julia Tatz (1):
-      gallium/dri: fix dri2_from_names
+Feng Jiang (1):
+      meson: Rename dri-vdpau.dyn to dri.dyn
 
-Konstantin Seurer (2):
-      radv/rt: Rename shader_pc and next_shader
-      radv/rt: Rename traversal_shader to traversal_shader_addr
+Julia Tatz (9):
+      aux/trace: skip multi-line comments in enums2names
+      aux/trace: deduplicate enum dump macro work
+      aux/trace: move trace_sample_view logic
+      aux/trace: fix set_hw_atomic_buffers method name
+      aux/trace: add screen video methods
+      aux/trace: add context video methods
+      aux/trace: wrap video_codec & video_buffer
+      aux/trace: unwrap refrence frames in picture_desc
+      aux/trace: trace video_buffer method return vals
 
-Mike Blumenkrantz (25):
-      zink: track start/stop of a couple query types
-      zink: require EDS1 for CWE usage
-      zink: unset primgen suspended flag when ending a primgen query
-      zink: rework rast-discard for primgen queries
-      zink: rip out some awkward parts of the old non-cwe path
-      zink: drop CWE requirement for renderpass tracking with primgen queries
-      nir/zink: fix gs emulation xfb_info sizing
-      zink: move fragcolor lowering further along the compile process
-      zink: add a mode param to find_var_with_location_frac
-      zink: use lowered io (kinda) for i/o vars
-      zink: stop lowering indirect derefs
-      ntt: handle interp intrinsics as derefs
-      zink: delete split_blocks pass
-      zink: delete lower_64bit_vertex_attribs pass
-      zink: fix clip/cull dist xfb inlining
-      zink: delete all the extra gross xfb handling
-      zink: stop using pipe_stream_output
-      zink: remove pipe_stream_output from function params
-      zink: ci updates
-      aux/trace: print bindless handles as pointers
-      zink: remove unused param from create_ici
-      zink: split create_ici to init and eval
-      zink: add maintenance extensions to profile
-      zink: use maintenance5
-      zink: use real A8_UNORM when possible
+Karol Herbst (1):
+      nv50: fix code uploads bigger than 0x10000 bytes
 
-Mohamed Ahmed (2):
-      util/format: Add G8B8_G8R8_422_UNORM and B8G8_R8G8_422_UNORM formats
-      vulkan/format: Translate G8B8G8R8_422_UNORM and B8G8R8G8_422_UNORM properly
+Konstantin Seurer (1):
+      nir/opt_large_constants: Handle small float arrays
 
-Paul Gofman (1):
-      driconf: add a workaround for Captain Lycop: Invasion of the Heters
+Lionel Landwerlin (1):
+      iris: ensure stalling pipe control before fast clear
 
-Rhys Perry (1):
-      aco: don't create sendmsg(dealloc_vgprs) if scratch is used
+Matt Turner (1):
+      Revert "intel/fs: only avoid SIMD32 if strictly inferior in throughput"
 
-Sylvain Munaut (1):
-      mesa: Enable ARB_texture_border_clamp in GL Core
+Mohamed Ahmed (3):
+      nvk: Enable SEPARATE_RECONSTRUCTION_FILTER_BIT for multi-planar formats only
+      nvk: Enable MIDPOINT_CHROMA_SAMPLES_BIT for multi-planar formats only
+      nil: Add support for G8B8_G8R8_UNORM and B8G8_R8G8_UNORM
 
-Vinson Lee (1):
-      intel/decoder: Fix memory leak on error path
+Qiang Yu (22):
+      aco: add p_end_with_regs pseudo instruction
+      aco: move jump to epilog out of ic_merged_wave_info
+      aco: add tcs end regs for epilog usage
+      aco: allow tcs with epilog to keep nir store output instruction
+      aco: add pending_lds_access option for insert waitcnt
+      aco: add tcs epilog generation for radeonsi
+      aco: don't emit s_endpgm for tcs with epilog
+      aco: skip scratch init when no scratch arg provide
+      aco,radeonsi: save const addr to symbol
+      ac/nir/tess: move tess factor output out of control flow
+      aco: use semantic location as io temp index
+      radeonsi: add exec_size to shader binary
+      radeonsi: support upload multi part shader binary
+      radeonsi: share si_get_tcs_out_patch_stride with aco
+      radeonsi: fill part mode tcs aco shader info
+      radeonsi: extract si_llvm_build_shader_part
+      radeonsi: remove separate_prolog arg from prolog/epilog build
+      radeonsi: add si_get_tcs_epilog_args
+      radeonsi: change si_fill_aco_options args
+      radeonsi: add si_aco_build_shader_part
+      radeonsi: part mode standalone tcs support aco compile
+      radeonsi: remove unused arg of get_tcs_tes_buffer_address
+
+Rhys Perry (8):
+      radv: disable 64-bit color attachments
+      radv: fix 128bpp comp-to-single clears
+      radv: support 128bpp comp-to-single with all colors
+      radv/gfx11: re-enable 0001/1110 clear values
+      nir/lower_shader_calls: fix align_offset
+      nir/opt_load_store_vectorize: support scratch access
+      radv: vectorize RT stack access
+      radv: vectorize scratch access
 
