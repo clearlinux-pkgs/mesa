@@ -1,97 +1,117 @@
-Updating from c4133a110def6a20dbff9ffc4531108475420fcc to 3aa3eb8ddd9b5922b5b4eef4e4e8a2abcdfcba5b
+Updating from 3aa3eb8ddd9b5922b5b4eef4e4e8a2abcdfcba5b to 96c0f8c58007556e1502999c7e2cb3ae58d4a026
 
-Andrew Randrianasulu (1):
-      nv50/ir: Remove few nvc0 specific defines from nv50-specific header.
+Caio Oliveira (2):
+      nir: Add nir_opt_reuse_constants()
+      radv: Use nir_opt_reuse_constants()
 
-Christian Gmeiner (1):
-      etnaviv: fix null pointer dereference
+Christian Gmeiner (2):
+      etnaviv: switch to float_to_ubyte(..)
+      ci/etnaviv: update ci expectation
 
-Dor Askayo (1):
-      nouveau: add exported GEM handles to the global list
+David Heidelberg (5):
+      ci: remove LAVA prefix from variables which can be used also elsewhere
+      ci/zink: drop a630, which we currently have very low amount available
+      ci/freedreno: the tag belongs to the apq8016 only
+      ci/freedreno: switch references, the farm-rules takes care about this
+      ci/freedreno: handle disabling farm properly for each FD/Collabora farm
 
-Emma Anholt (6):
-      vulkan/util: Make multialloc succeed with 0 allocations.
-      turnip: Track the first/last subpass an attachment is used in.
-      turnip: Skip emitting empty CP_COND_REG_EXEC.
-      turnip: Save the renderpass's clear values in the cmdbuf state.
-      turnip: Move gmem clears and loads to the first subpass that uses them.
-      turnip: Move sysmem clears to the first subpass that uses them.
+Emma Anholt (4):
+      ci/freedreno: Skip some tests on a5xx that destabilize other tests.
+      freedreno/a3-5xx: Don't try to emit ISAM for SSBO loads.
+      ci/turnip: Add a660 VK coverage.
+      disk_cache: Disable the "List" test for RO disk cache.
 
-Erik Faye-Lund (1):
-      docs: upgrade bootstrap to 5.3.1
+Eric Engestrom (5):
+      docs: add release notes for 23.1.6
+      docs: add sha256sum for 23.1.6
+      docs: update calendar for 23.1.6
+      docs: add one more 23.1.x release
+      ci: rename *.log to *.txt to work around gitlab bug
 
-Faith Ekstrand (8):
-      nir: Rework nir_scalar_chase_movs a bit
-      nir: Fix nir_op_mov handling in nir_collect_src_uniforms
-      nir: Handle nir_op_mov properly in opt_shrink_vectors
-      nir: Don't handle nir_op_mov in get_undef_mask in opt_undef
-      nir: Clean up nir_op_is_vec() and its callers
-      nir/large_constants: Use nir_component_mask_t
-      nir/large_constants: Add read/write_const_values helpers
-      nir/opt_large_constants: Add Small constant handling
+Faith Ekstrand (10):
+      nir: Take a nir_def * in nir_tex_instr_add_src()
+      nir: Take a nir_def * in nir_phi_instr_add_src()
+      nir/opt_undef: Don't rewrite a bcsel to mov
+      nir: Add a nir_instr_clear_src() helper and use it
+      nir: Add and use a nir_instr_init_src() helper
+      nir: Drop nir_if_rewrite_condition()
+      nir: Drop most uses of nir_instr_rewrite_src_ssa()
+      nir: Drop nir_instr_rewrite_src_ssa()
+      nir: Drop most uses if nir_instr_rewrite_src()
+      nir: Drop nir_instr_rewrite_src()
 
-Feng Jiang (1):
-      meson: Rename dri-vdpau.dyn to dri.dyn
+Gert Wollny (1):
+      r600: use correct cso pointer for fetch shader
 
-Julia Tatz (9):
-      aux/trace: skip multi-line comments in enums2names
-      aux/trace: deduplicate enum dump macro work
-      aux/trace: move trace_sample_view logic
-      aux/trace: fix set_hw_atomic_buffers method name
-      aux/trace: add screen video methods
-      aux/trace: add context video methods
-      aux/trace: wrap video_codec & video_buffer
-      aux/trace: unwrap refrence frames in picture_desc
-      aux/trace: trace video_buffer method return vals
+Helen Koike (1):
+      ci: disable duplicated pipelines triggered by marge
 
-Karol Herbst (1):
-      nv50: fix code uploads bigger than 0x10000 bytes
+Igor Torrente (1):
+      zink: Fix one addicional case when running a compositor
 
-Konstantin Seurer (1):
-      nir/opt_large_constants: Handle small float arrays
+Jason Ekstrand (1):
+      spirv: Re-emit constants at their uses
 
-Lionel Landwerlin (1):
-      iris: ensure stalling pipe control before fast clear
+Karol Herbst (3):
+      nouveau: take glsl_type ref unconditionally
+      rusticl/kernel: optimize nir between lowering io and explicit types
+      nv50: limit max code uploads to 0x8000
 
-Matt Turner (1):
-      Revert "intel/fs: only avoid SIMD32 if strictly inferior in throughput"
+Kenneth Graunke (1):
+      intel/compiler: Respect NIR_DEBUG_PRINT_INTERNAL for DEBUG_OPTIMIZER
 
-Mohamed Ahmed (3):
-      nvk: Enable SEPARATE_RECONSTRUCTION_FILTER_BIT for multi-planar formats only
-      nvk: Enable MIDPOINT_CHROMA_SAMPLES_BIT for multi-planar formats only
-      nil: Add support for G8B8_G8R8_UNORM and B8G8_R8G8_UNORM
+Marek Olšák (39):
+      glthread: sync for VDPAU sync functions
+      radeonsi: turn sh_base[PIPE_SHADER_VERTEX] into a constant in emit_draw_packets
+      radeonsi: restructure the loop for non-indexed multi draws
+      radeonsi: cosmetic changes to radeon_opt_* macros
+      radeonsi: handle draw user SGPRs as tracked registers
+      radeonsi: update obsolete comments about compiler queues
+      radeonsi: remove si_compute.h, move the contents into si_pipe.h
+      radeonsi: move si_update/emit_tess_io_layout_state into si_state_shaders.cpp
+      radeonsi: move si_emit_spi_map into si_state_shaders.cpp
+      radeonsi: move si_emit_rasterizer_prim_state out of si_emit_all_states
+      radeonsi: remove splitting IBs that use too much memory
+      radeonsi: add padding to si_resource to fix Viewperf2020/catiav5test1 perf
+      radeonsi: remove unused check_mem parameter from si_sampler_view_add_buffer
+      radeonsi: remove the draw counter with primitive restart from the HUD
+      radeonsi: always inline si_prefetch_shaders
+      radeonsi: specialize si_draw_rectangle using a C++ template
+      radeonsi: add index parameter into si_atom::emit
+      radeonsi: split direct pm4 emission from si_pm4_emit
+      radeonsi: move code around si_pm4_emit_state into si_pm4_emit_state
+      radeonsi: merge pm4 state and atom emit loops into one
+      radeonsi: add a simple version of si_pm4_emit_state for non-shader states
+      radeonsi: handle deferred cache flushes as a state (si_atom)
+      radeonsi: remove render condition logic from si_draw by reordering atoms
+      radeonsi: abort when failing to upload descriptors instead of skipping draws
+      radeonsi: rename shader_pointers state -> gfx_shader_pointers
+      radeonsi: merge si_upload_*_descriptors into si_emit_*_shader_pointers
+      radeonsi: convert si_gfx_resources_add_all_to_bo_list to a state atom
+      radeonsi/ci: update gfx11 failures
+      radeonsi: move GE_CNTL emission from si_draw into si_emit_vgt_pipeline_state
+      radeonsi: use num_patches_per_workgroup directly in si_get_ia_multi_vgt_param
+      radeonsi: enable shader culling by default because it helps Viewperf
+      radeonsi: rewrite how occlusion query precision is determined for performance
+      radeonsi: set PIPE_CONTEXT_LOSE_CONTEXT_ON_RESET on aux_context explicitly
+      radeon_winsys: move allow_context_lost from cs_create to ctx_create
+      winsys/amdgpu: rework how SW reset status is generated and reported
+      radeon_winsys: add a ctx_set_sw_reset_status callback
+      radeonsi: don't abort for descriptor failures, let the winsys handle it
+      radeonsi: don't use threadID.yz/blockID.yz for copy_image if those are always 0
+      radeonsi: don't use threadID.yz/blockID.yz for compute_blit if they're always 0
 
-Qiang Yu (22):
-      aco: add p_end_with_regs pseudo instruction
-      aco: move jump to epilog out of ic_merged_wave_info
-      aco: add tcs end regs for epilog usage
-      aco: allow tcs with epilog to keep nir store output instruction
-      aco: add pending_lds_access option for insert waitcnt
-      aco: add tcs epilog generation for radeonsi
-      aco: don't emit s_endpgm for tcs with epilog
-      aco: skip scratch init when no scratch arg provide
-      aco,radeonsi: save const addr to symbol
-      ac/nir/tess: move tess factor output out of control flow
-      aco: use semantic location as io temp index
-      radeonsi: add exec_size to shader binary
-      radeonsi: support upload multi part shader binary
-      radeonsi: share si_get_tcs_out_patch_stride with aco
-      radeonsi: fill part mode tcs aco shader info
-      radeonsi: extract si_llvm_build_shader_part
-      radeonsi: remove separate_prolog arg from prolog/epilog build
-      radeonsi: add si_get_tcs_epilog_args
-      radeonsi: change si_fill_aco_options args
-      radeonsi: add si_aco_build_shader_part
-      radeonsi: part mode standalone tcs support aco compile
-      radeonsi: remove unused arg of get_tcs_tes_buffer_address
+Mike Blumenkrantz (2):
+      vk/graphics: fix CWE handling with DS3
+      Revert "vk/wsi/x11: handle geometry updating more asynchronously"
 
-Rhys Perry (8):
-      radv: disable 64-bit color attachments
-      radv: fix 128bpp comp-to-single clears
-      radv: support 128bpp comp-to-single with all colors
-      radv/gfx11: re-enable 0001/1110 clear values
-      nir/lower_shader_calls: fix align_offset
-      nir/opt_load_store_vectorize: support scratch access
-      radv: vectorize RT stack access
-      radv: vectorize scratch access
+Sagar Ghuge (3):
+      intel/isl: Enable INTEL_DEBUG=noccs/nohiz in ISL helpers
+      anv,hasvk: drop unnecessary DEBUG_NO_CCS/NO_HIZ checks
+      iris,crocus: drop unnecessary DEBUG_NO_CCS/NO_HIZ checks
+
+Tapani Pälli (3):
+      vulkan/runtime: change assert to match specification needs
+      anv: remove assert, size is asserted in the runtime
+      anv: refactor batch_set_preemption to use batch_emit_pipe_control
 
