@@ -1,5 +1,6 @@
 libEGL_mesa.so.0:__egl_Main
 libGLX_mesa.so.0:MesaGLInteropGLXExportObject
+libGLX_mesa.so.0:MesaGLInteropGLXFlushObjects
 libGLX_mesa.so.0:MesaGLInteropGLXQueryDeviceInfo
 libGLX_mesa.so.0:__glx_Main
 libGLX_mesa.so.0:glAccum
