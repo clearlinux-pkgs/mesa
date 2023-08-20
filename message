@@ -1,74 +1,45 @@
-Updating from 96c0f8c58007556e1502999c7e2cb3ae58d4a026 to caf15a3276941b8516eb05045eb5e8c4b78080f6
+Updating from caf15a3276941b8516eb05045eb5e8c4b78080f6 to c2d3d655b8facd8ecb0efebf1cc4cdbca6001d65
 
 Alyssa Rosenzweig (3):
-      nir: Add nir_shader_intrinsics_pass
-      nir: Lower fquantize2f16
-      agx: Lower fquantize2f16
+      nir/lower_helper_writes: Consider bindless images
+      nir/passthrough_gs: Correctly set vertices_in
+      nir/passthrough_gs: Fix array size
 
-David Heidelberg (2):
-      ci/freedreno: another batch of Adreno 530 flakes
-      gtest: backport ansi color fix
-
-David Rosca (1):
-      radeonsi/vcn: Fix leaking fences in decode
+Bas Nieuwenhuizen (4):
+      util/perf: Add gpuvis integration.
+      egl,venus,vulkan,turnip,freedreno: Update CPU trace init to init more than perfetto.
+      vulkan: Add CPU tracing for vkWaitForFences.
+      docs: Add documentation for gpuvis.
 
 Eric Engestrom (2):
-      ci/freedreno: reuse freedreno_gl_file_list instead of re-definining it
-      egl: bump extension string length
+      vc4: drop duplicate .lower_ldexp
+      zink: fix format in zink_make_{image,texture}_handle_resident()
 
-Faith Ekstrand (3):
-      nir: Drop nir_push_if_src()
-      nir: Fix metadata in nir_lower_is_helper_invocation
-      nir: Use nir_shader_intrinsic_pass() a few places
+M Henning (1):
+      nv/codegen: Use nir_lower_clip
 
-Flora Cui (1):
-      radeonsi: limit CP DMA to skip holes in sparse bo
+Marek Olšák (20):
+      nir: fix constant evaluation of fddx/fddy sourcing Inf & NaN constant
+      nir/algebraic: collapse ALU opcodes sourcing NaN
+      ac/gpu_info: add the /dev/dri/ filename into radeon_info
+      Revert "ac: don't call ac_query_pci_bus_info from ac_query_gpu_info"
+      ac: implement AMD_FORCE_FAMILY properly, remove SI_FORCE_FAMILY
+      ac: document ac_shader_args::gs_vtx_offset
+      ac: minor updates to packet documentation and definitions
+      ac: change offsets of DMA_DATA dwords to prevent reg offset conflicts
+      ac: improve the IB parser
+      ac: update gfx11 shadowed register tables
+      ac: add a standalone IB parser program
+      ac/surface: trivial non-functional changes
+      ac/surface: add radeon_surf::u::gfx9::uses_custom_pitch
+      radeonsi: allow setting any index in radeon_set_sh_reg_idx
+      radeonsi: rename uses_subgroup_info to uses_tg_size
+      radeonsi: improve the heuristic when to use Wave32 for compute shaders
+      radeonsi: simplify/merge emit_shader_ngg functions
+      radeonsi: don't pass gl_Layer to PS for blit shaders
+      radeonsi/gfx11: pass attribute ring addr via SGPR instead of memory for blits
+      radeonsi: fix templated si_draw_rectangle callback for Navi14
 
-Julia Zhang (1):
-      radeonsi: modify algorithm of skipping holes of sparse bo
-
-Konstantin Seurer (11):
-      bin: Update spirv sources
-      vulkan: Allow beta extensions for physical device features
-      vulkan: Allow beta extensions for physical device properties
-      vulkan Add enqueue entrypoint for CmdDispatchGraphAMDX
-      nir: Add shader enqueue data structures and handling
-      spirv: Update headers and grammer JSON
-      spirv: Implement SPV_AMDX_shader_enqueue
-      lavapipe: Add lvp_pipeline_type
-      lavapipe: Implement exec graph pipelines
-      lavapipe: Implement AMDX_shader_enqueue commands
-      lavapipe: Advertise AMDX_shader_enqueue
-
-Mike Blumenkrantz (2):
-      r600: store the mask of buffers used by a vertex state
-      r600: better tracking for vertex buffer emission
-
-Pavel Ondračka (2):
-      r300: don't abort on flow control when using draw for vs
-      r300: add dEQP baseline for RV370 with forced swtcl
-
-Rohan Garg (1):
-      anv: emitting 3DSTATE_PRIMITIVE_REPLICATION is required on Gen12+
-
-Samuel Pitoiset (7):
-      radv: reduce TCS_OFFCHIP_LAYOUT_NUM_PATCHES to 6-bits
-      radv: add missing comment about TCS_OFFCHIP_LAYOUT_LSHS_VERTEX_STRIDE
-      radv: fix emitting TCS epilogs for GFX6-9
-      radv: remove radv_cmd_buffer::cached_vertex_formats
-      radv: remove unused param from radv_pipeline_init_multisample_state()
-      radv: simplify declaring VS specific input SGPRs
-      radv: stop copying if VS or TES uses the InvocationID built-in
-
-Sviatoslav Peleshko (1):
-      dri: Use RGB internal formats for RGBX formats
-
-Sylvain Munaut (7):
-      include: Fix the PFN declarations to be pointers as they should
-      glx: Add missing MesaGLInteropGLXFlushObjects
-      glx: Export the MESA GL Interop functions through glXGetProcAddress
-      egl: Export the MESA GL Interop functions through eglGetProcAddress
-      glx: Remove MESA_depth_float_bit from enum
-      glx: Advertise GLX_MESA_gl_interop extension if support present
-      egl: Advertise EGL_MESA_gl_interop extension if support present
+Timur Kristóf (1):
+      nir/opt_dead_cf: Remove if branches with undef condition.
 
