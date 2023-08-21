@@ -1,45 +1,8 @@
-Updating from caf15a3276941b8516eb05045eb5e8c4b78080f6 to c2d3d655b8facd8ecb0efebf1cc4cdbca6001d65
+Updating from c2d3d655b8facd8ecb0efebf1cc4cdbca6001d65 to 953ac9da7949a7d2333680aa77ff20288a247f19
 
-Alyssa Rosenzweig (3):
-      nir/lower_helper_writes: Consider bindless images
-      nir/passthrough_gs: Correctly set vertices_in
-      nir/passthrough_gs: Fix array size
-
-Bas Nieuwenhuizen (4):
-      util/perf: Add gpuvis integration.
-      egl,venus,vulkan,turnip,freedreno: Update CPU trace init to init more than perfetto.
-      vulkan: Add CPU tracing for vkWaitForFences.
-      docs: Add documentation for gpuvis.
-
-Eric Engestrom (2):
-      vc4: drop duplicate .lower_ldexp
-      zink: fix format in zink_make_{image,texture}_handle_resident()
-
-M Henning (1):
-      nv/codegen: Use nir_lower_clip
-
-Marek Olšák (20):
-      nir: fix constant evaluation of fddx/fddy sourcing Inf & NaN constant
-      nir/algebraic: collapse ALU opcodes sourcing NaN
-      ac/gpu_info: add the /dev/dri/ filename into radeon_info
-      Revert "ac: don't call ac_query_pci_bus_info from ac_query_gpu_info"
-      ac: implement AMD_FORCE_FAMILY properly, remove SI_FORCE_FAMILY
-      ac: document ac_shader_args::gs_vtx_offset
-      ac: minor updates to packet documentation and definitions
-      ac: change offsets of DMA_DATA dwords to prevent reg offset conflicts
-      ac: improve the IB parser
-      ac: update gfx11 shadowed register tables
-      ac: add a standalone IB parser program
-      ac/surface: trivial non-functional changes
-      ac/surface: add radeon_surf::u::gfx9::uses_custom_pitch
-      radeonsi: allow setting any index in radeon_set_sh_reg_idx
-      radeonsi: rename uses_subgroup_info to uses_tg_size
-      radeonsi: improve the heuristic when to use Wave32 for compute shaders
-      radeonsi: simplify/merge emit_shader_ngg functions
-      radeonsi: don't pass gl_Layer to PS for blit shaders
-      radeonsi/gfx11: pass attribute ring addr via SGPR instead of memory for blits
-      radeonsi: fix templated si_draw_rectangle callback for Navi14
-
-Timur Kristóf (1):
-      nir/opt_dead_cf: Remove if branches with undef condition.
+Eric Engestrom (4):
+      v3dv: fix VK_PIPELINE_ROBUSTNESS_{BUFFER,IMAGE}_BEHAVIOR_DEVICE_DEFAULT_EXT copy/paste typo
+      v3dv: fix copy/pasted type of `sample`
+      v3dv: fix shader stage name in error message
+      v3d/qpu: fix type of function argument
 
