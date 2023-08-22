@@ -1,8 +1,82 @@
-Updating from c2d3d655b8facd8ecb0efebf1cc4cdbca6001d65 to 953ac9da7949a7d2333680aa77ff20288a247f19
+Updating from 953ac9da7949a7d2333680aa77ff20288a247f19 to a29e2c6fbc73e68c0e02263cd015aff1709ce698
 
-Eric Engestrom (4):
-      v3dv: fix VK_PIPELINE_ROBUSTNESS_{BUFFER,IMAGE}_BEHAVIOR_DEVICE_DEFAULT_EXT copy/paste typo
-      v3dv: fix copy/pasted type of `sample`
-      v3dv: fix shader stage name in error message
-      v3d/qpu: fix type of function argument
+Chia-I Wu (1):
+      ac/surface: limit RADEON_SURF_NO_TEXTURE to color surfaces
+
+Christian Gmeiner (1):
+      etnaviv: unbreak cmdline compiler
+
+Dave Airlie (8):
+      gallivm: drop unused info parameter
+      llvmpipe/fs: drop cbuf 0 since it's lowered now.
+      gallivm/nir: avoid using params->info
+      llvmpipe/fs: move some tgsi checks in nir path to nir code.
+      llvmpipe/cs: convert to using tgsi->nir
+      llvmpipe/cs: drop tgsi for compute/mesh/task shader internals.
+      lavapipe: use vk_buffer common code.
+      lavapipe: use vk_buffer_range common code.
+
+David Heidelberg (1):
+      ci: disable Material Testers.x86_64_2020.04.08_13.38_frame799.rdc trace
+
+Erik Faye-Lund (1):
+      docs: expand mobile-menu without js
+
+George Ouzounoudis (1):
+      nouveau/codegen: Add a 4th optimization level for MemoryOpts
+
+Konstantin Seurer (2):
+      radv: Add internal_nodes_offset to scratch_layout
+      radv: Remove leaf_args::dst_offset
+
+M Henning (2):
+      nv50_ir_from_nir: Use nir's lower_fpow
+      nv/codegen: Delete OP_POW
+
+Mike Blumenkrantz (2):
+      zink: wait on async fence during ctx program removal
+      zink: handle patch variable locations for separate shaders better
+
+Pavel Ondračka (23):
+      r300: copy ntt to r300 compiler
+      r300: add lower_sqrt to nir option
+      r300: remove unused intrinsics in ntr
+      r300: remove irrelevant opcodes in ntr
+      r300: remove unused integer support in ntr
+      r300: remove ntr_tgsi_usage_mask
+      r300: remove more unused 64-bit pieces from ntr
+      r300: simplify vectorization rules
+      r300: remove more ntr unused helpers
+      r300: remove the unneeded ntr_lower_vec_to_reg callback
+      r300: remove unneeded 64bit and atomic lowering passes
+      r300: remove unused ntr default settings
+      r300: remove ntr default options
+      r300: simplify ntr_emit_load_ubo
+      r300: simplify ntr_emit_load_input
+      r300: remove some virglrenderer specifics from ntr
+      r300: simplify ntr_setup_uniforms
+      r300: simplify ntr_output_decl
+      r300: simplify ntr_try_store_in_tgsi_output
+      r300: remove some unsupported texture opcodes
+      r300: remove unused barrier code from ntr
+      r300: simplify ntr_get_gl_varying_semantic
+      r300: remove the nrt main optimization loop
+
+Samuel Pitoiset (13):
+      Revert "radv/amdgpu: workaround a kernel bug when replacing sparse mappings"
+      Revert "radv/amdgpu: skip adding per VM BOs for sparse during CS BO list build"
+      radv/amdgpu: allow to execute external IBs on the compute queue
+      radv/amdgpu: add support for submitting external IBs with the chained path
+      zink/ci: update list of expected failures for NAVI10
+      radv: use the maximum possible workgroup size for TCS epilogs
+      radv: stop declaring the scratch offset argument for TCS epilogs
+      radv: declare shader arguments for TCS epilogs
+      radv: add tcs_out_patch_fits_subgroup to radv_tcs_epilog_key
+      aco: fix jumping from main TCS to epilog on GFX9+
+      aco: adjust TCS epilogs for RADV
+      aco: allow SGPRs operands with p_jump_to_epilog
+      aco: implement create_tcs_jump_to_epilog()
+
+Tatsuyuki Ishi (1):
+      radv/amdgpu: Do not pass in a BO handle when clearing PRT VA region.
 
