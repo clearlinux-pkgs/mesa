@@ -1,82 +1,101 @@
-Updating from 953ac9da7949a7d2333680aa77ff20288a247f19 to a29e2c6fbc73e68c0e02263cd015aff1709ce698
+Updating from a29e2c6fbc73e68c0e02263cd015aff1709ce698 to aef257fd15272019e770401d741906659737117c
 
-Chia-I Wu (1):
-      ac/surface: limit RADEON_SURF_NO_TEXTURE to color surfaces
+Alyssa Rosenzweig (2):
+      nir/print: Print access qualifiers for intrinsics
+      nir/lower_gs_intrinsics: Remove end primitive for points
 
-Christian Gmeiner (1):
-      etnaviv: unbreak cmdline compiler
+Caio Oliveira (4):
+      compiler/types: Use ralloc for the key in array_types
+      compiler/types: Use smaller keys for array_types table
+      compiler/types: Extract get_explicit_matrix_instance() function
+      compiler/types: Use smaller keys for explicit_matrix_types table
 
-Dave Airlie (8):
-      gallivm: drop unused info parameter
-      llvmpipe/fs: drop cbuf 0 since it's lowered now.
-      gallivm/nir: avoid using params->info
-      llvmpipe/fs: move some tgsi checks in nir path to nir code.
-      llvmpipe/cs: convert to using tgsi->nir
-      llvmpipe/cs: drop tgsi for compute/mesh/task shader internals.
-      lavapipe: use vk_buffer common code.
-      lavapipe: use vk_buffer_range common code.
+Daniel Schürmann (1):
+      nir/opt_move: fix handling of if-condition
 
-David Heidelberg (1):
-      ci: disable Material Testers.x86_64_2020.04.08_13.38_frame799.rdc trace
+David Rosca (4):
+      gallium/auxiliary/vl: Add BT.709 full csc matrix
+      frontends/va: Set csc matrix in postproc
+      gallium/auxiliary/vl: Don't set csc matrix in video_buffer/rgb_to_yuv_layer
+      frontends/va: Add BT.709 as supported postproc color standard
 
-Erik Faye-Lund (1):
-      docs: expand mobile-menu without js
+Emma Anholt (4):
+      blorp: Disable unaligned partial HIZ fast clears for HIZ_CCS too.
+      intel/fs: Move defin/defout setup to the start of the loop.
+      intel/fs: Move the defin[]/defout[] screening up to livein[]/liveout[] setup.
+      intel/fs: Simplify compute_start_end().
 
-George Ouzounoudis (1):
-      nouveau/codegen: Add a 4th optimization level for MemoryOpts
+Eric Engestrom (1):
+      ci/deqp: backport fix for dEQP-EGL.functional.wide_color.*_888_colorspace_*
 
-Konstantin Seurer (2):
-      radv: Add internal_nodes_offset to scratch_layout
-      radv: Remove leaf_args::dst_offset
+Friedrich Vock (10):
+      ac/msgpack: make fixstrs a const char
+      ac/sqtt,radv: Split internal and API hash in PSO correlations
+      ac/rgp: Write lds_size metadata
+      ac/rgp: Add metadata for separate-compiled RT stages
+      radv/sqtt: Move record filling to helper function
+      radv/sqtt: Unregister records based on hash
+      radv/sqtt: Write LDS size metadata in code objects
+      radv/sqtt: Handle separately-compiled RT pipelines
+      ac/sqtt,radv/sqtt: Add and use marker for separate RT compilation
+      nir/load_store_vectorize: Handle intrinsics with constant base
 
-M Henning (2):
-      nv50_ir_from_nir: Use nir's lower_fpow
-      nv/codegen: Delete OP_POW
+Georg Lehmann (3):
+      nir: unify lower_bitfield_insert with has_{bfm,bfi,bitfield_select}
+      nir: unify lower_bitfield_extract with has_bfe
+      nir: unify lower_find_msb with has_{find_msb_rev,uclz}
 
-Mike Blumenkrantz (2):
-      zink: wait on async fence during ctx program removal
-      zink: handle patch variable locations for separate shaders better
+José Roberto de Souza (1):
+      anv: Update Wa_16014390852 for MTL
 
-Pavel Ondračka (23):
-      r300: copy ntt to r300 compiler
-      r300: add lower_sqrt to nir option
-      r300: remove unused intrinsics in ntr
-      r300: remove irrelevant opcodes in ntr
-      r300: remove unused integer support in ntr
-      r300: remove ntr_tgsi_usage_mask
-      r300: remove more unused 64-bit pieces from ntr
-      r300: simplify vectorization rules
-      r300: remove more ntr unused helpers
-      r300: remove the unneeded ntr_lower_vec_to_reg callback
-      r300: remove unneeded 64bit and atomic lowering passes
-      r300: remove unused ntr default settings
-      r300: remove ntr default options
-      r300: simplify ntr_emit_load_ubo
-      r300: simplify ntr_emit_load_input
-      r300: remove some virglrenderer specifics from ntr
-      r300: simplify ntr_setup_uniforms
-      r300: simplify ntr_output_decl
-      r300: simplify ntr_try_store_in_tgsi_output
-      r300: remove some unsupported texture opcodes
-      r300: remove unused barrier code from ntr
-      r300: simplify ntr_get_gl_varying_semantic
-      r300: remove the nrt main optimization loop
+Konstantin Seurer (7):
+      radv/rt: Remove some dead code
+      radv/rt: Do not apply stack_ptr for non-recursive stages
+      radv/rt: Add and use radv_build_traversal
+      radv/rt: Insert rt_return_amd before lowering shader calls
+      radv/rt: Split stage initialization and hashing
+      aco: Do not fixup registers if there are no shader calls
+      radv: Stop updating the stack_size in insert_rt_case
 
-Samuel Pitoiset (13):
-      Revert "radv/amdgpu: workaround a kernel bug when replacing sparse mappings"
-      Revert "radv/amdgpu: skip adding per VM BOs for sparse during CS BO list build"
-      radv/amdgpu: allow to execute external IBs on the compute queue
-      radv/amdgpu: add support for submitting external IBs with the chained path
-      zink/ci: update list of expected failures for NAVI10
-      radv: use the maximum possible workgroup size for TCS epilogs
-      radv: stop declaring the scratch offset argument for TCS epilogs
-      radv: declare shader arguments for TCS epilogs
-      radv: add tcs_out_patch_fits_subgroup to radv_tcs_epilog_key
-      aco: fix jumping from main TCS to epilog on GFX9+
-      aco: adjust TCS epilogs for RADV
-      aco: allow SGPRs operands with p_jump_to_epilog
-      aco: implement create_tcs_jump_to_epilog()
+M Henning (10):
+      nv/codegen: Fix an uninitialized variable warning
+      nv/codegen: Delete OP_WRSV
+      nv/codegen: Delete OP_EXP, OP_LOG
+      nv/codegen: Remove fragCoord variable.
+      nv/codegen: Merge from_common into from_nir
+      nv/codegen: Remove unused clipVertexOutput var
+      nv50_ir_ra: Delete unused functions
+      nv/codegen: Delete unused OP_CONSTRAINT
+      nv/codegen: Delete periodicMask32
+      nv/codegen: Remove Function::buildDefSets
 
-Tatsuyuki Ishi (1):
-      radv/amdgpu: Do not pass in a BO handle when clearing PRT VA region.
+Marek Vasut (1):
+      etnaviv: Fully replicate back stencil config
+
+Mike Blumenkrantz (3):
+      zink: don't start multiple cache jobs for the same program
+      zink: use the "set" optimal key for prog last_variant_hash for consistency
+      zink: sanitize optimal keys
+
+Rob Clark (1):
+      util: Decouple disk cache from EGL_ANDROID_blob_cache
+
+Sagar Ghuge (1):
+      blorp: Drop unnecessary assertions in blorp_can_hiz_clear_depth
+
+Samuel Pitoiset (6):
+      radv: track the pipeline bind point for indirect commands layout
+      radv: prepare radv_get_sequence_size() for DGC compute
+      radv: prepare radv_prepare_dgc() for DGC compute
+      radv: implement NV_device_generated_commands_compute
+      radv: allow DGC on the compute queue
+      radv: advertise NV_device_generated_commands_compute
+
+Tapani Pälli (2):
+      anv: implement a dummy depth flush for Wa_14016712196
+      iris: implement a dummy depth flush for Wa_14016712196
+
+norablackcat (2):
+      spirv/nir_to_spirv: add expect assume op codes
+      rusticl: add cl_khr_expect_assume
 
