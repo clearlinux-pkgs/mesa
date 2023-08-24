@@ -1,101 +1,124 @@
-Updating from a29e2c6fbc73e68c0e02263cd015aff1709ce698 to aef257fd15272019e770401d741906659737117c
+Updating from aef257fd15272019e770401d741906659737117c to 112b393766ec669f9aa8bf6de864494583979d4c
 
-Alyssa Rosenzweig (2):
-      nir/print: Print access qualifiers for intrinsics
-      nir/lower_gs_intrinsics: Remove end primitive for points
+Alyssa Rosenzweig (50):
+      panfrost/ci: Disable T720
+      nir: Add load_sysval_agx intrinsic
+      agx: Fix extraneous bits with b2b32
+      agx: Use more barriers
+      asahi: Copy CSO stride
+      agx: Assert vertex_id, instance_id are VS-only
+      asahi: Keep drawoverhead from OOMing itself
+      agx: Don't blow up when lowering textures twice
+      agx/lower_vbo: Handle nonzero component
+      agx: Allow loop headers without later preds
+      agx: Handle b2i8
+      agx: Convert 8-bit comparisons
+      agx: Implement imul_high
+      asahi: Advertise OpenGL ES 3.1!
+      asahi/decode: Turn assert into error
+      asahi: Report local_size from compiler
+      asahi: Use local_size from compiler directly
+      asahi: Pass layer stride in pixels, not elements
+      agx: Clear sample count after lowering MSAA
+      agx: Clear image_array after lowering
+      asahi: Preserve atomic ops when rewriting image to bindless
+      agx: Use 16-bit reg for pixel_coord
+      asahi: Generalize query logic
+      asahi: Simplify occlusion query batch tracking
+      asahi: Refactor agx_get_query_result
+      asahi: Only touch batch->occlusion_queries for occlusion
+      asahi: Sync when beginning a query
+      asahi: Add non-occlusion query tracking
+      asahi: Add get_query_address helper
+      agx/fence_images: Use intrinsics_pass
+      agx: Do not fence write-only images
+      asahi: Add missing LOD source for agx_meta's txfs
+      agx: Do some texture lowering early
+      agx: Add helper returning if a descriptor crawl is needed
+      nir,asahi: Remove texture_base_agx
+      asahi: Move UBO lowering into GL driver
+      asahi: Add sysval tables for each shader stage
+      asahi: Split out per-stage sysvals
+      asahi: Collapse grid_info
+      asahi: Extract agx_upload_textures
+      asahi: Upload a single draw_uniforms per draw
+      asahi: Add real per-stage dirty flags
+      asahi: Extract sampler upload
+      asahi: Put unuploaded uniforms on the batch
+      asahi: Decouple sysval lowering from uniform assignment
+      asahi: Use finer dirty tracking for blend constant
+      asahi: Use proper dirty tracking for VBOs
+      asahi: Dirty track VBOs + blend const separately
+      asahi: Dirty the shader stage when the shader changes
+      asahi: Fix shader stage dirtying
 
-Caio Oliveira (4):
-      compiler/types: Use ralloc for the key in array_types
-      compiler/types: Use smaller keys for array_types table
-      compiler/types: Extract get_explicit_matrix_instance() function
-      compiler/types: Use smaller keys for explicit_matrix_types table
+Charmaine Lee (1):
+      svga: fix stride used in vertex declaration
 
-Daniel Schürmann (1):
-      nir/opt_move: fix handling of if-condition
+Chris Spencer (3):
+      anv/android: Fix importing hardware buffers with planar formats
+      anv/android: Add support for AHARDWAREBUFFER_FORMAT_YV12
+      anv: Advertise Vulkan 1.3 on Android 13
 
-David Rosca (4):
-      gallium/auxiliary/vl: Add BT.709 full csc matrix
-      frontends/va: Set csc matrix in postproc
-      gallium/auxiliary/vl: Don't set csc matrix in video_buffer/rgb_to_yuv_layer
-      frontends/va: Add BT.709 as supported postproc color standard
+David Heidelberg (1):
+      panfrost/ci: revert Disable T720
 
-Emma Anholt (4):
-      blorp: Disable unaligned partial HIZ fast clears for HIZ_CCS too.
-      intel/fs: Move defin/defout setup to the start of the loop.
-      intel/fs: Move the defin[]/defout[] screening up to livein[]/liveout[] setup.
-      intel/fs: Simplify compute_start_end().
+David Rosca (1):
+      Revert "radeonsi/vcn: add an exception of field case for h264 decoding"
 
-Eric Engestrom (1):
-      ci/deqp: backport fix for dEQP-EGL.functional.wide_color.*_888_colorspace_*
+Feng Jiang (1):
+      CODEOWNERS: Add @flynnjiang for VirGL video
 
-Friedrich Vock (10):
-      ac/msgpack: make fixstrs a const char
-      ac/sqtt,radv: Split internal and API hash in PSO correlations
-      ac/rgp: Write lds_size metadata
-      ac/rgp: Add metadata for separate-compiled RT stages
-      radv/sqtt: Move record filling to helper function
-      radv/sqtt: Unregister records based on hash
-      radv/sqtt: Write LDS size metadata in code objects
-      radv/sqtt: Handle separately-compiled RT pipelines
-      ac/sqtt,radv/sqtt: Add and use marker for separate RT compilation
-      nir/load_store_vectorize: Handle intrinsics with constant base
+Georg Lehmann (2):
+      aco: fix u2f16 with 32bit input
+      aco: combine a | ~b to bfi(b, a, -1)
 
-Georg Lehmann (3):
-      nir: unify lower_bitfield_insert with has_{bfm,bfi,bitfield_select}
-      nir: unify lower_bitfield_extract with has_bfe
-      nir: unify lower_find_msb with has_{find_msb_rev,uclz}
+Kenneth Graunke (6):
+      intel/fs: Account for payload GRFs when calculating register pressure
+      intel/compiler: Move SCHEDULE_NONE handling into schedule_instructions()
+      intel/fs: Index scheduler mode string table by mode enum
+      intel/fs: Make helpers for saving/restoring instruction order
+      intel/fs: Pick the lowest register pressure schedule when spilling
+      intel/fs: Dump IR for pre-RA scheduler modes in DEBUG_OPTIMIZER
 
-José Roberto de Souza (1):
-      anv: Update Wa_16014390852 for MTL
+Konstantin Seurer (1):
+      lavapipe: Lock around CSO destroys
 
-Konstantin Seurer (7):
-      radv/rt: Remove some dead code
-      radv/rt: Do not apply stack_ptr for non-recursive stages
-      radv/rt: Add and use radv_build_traversal
-      radv/rt: Insert rt_return_amd before lowering shader calls
-      radv/rt: Split stage initialization and hashing
-      aco: Do not fixup registers if there are no shader calls
-      radv: Stop updating the stack_size in insert_rt_case
+Mary (1):
+      agx: Ensure to lower 1D image load/store to 2D
 
-M Henning (10):
-      nv/codegen: Fix an uninitialized variable warning
-      nv/codegen: Delete OP_WRSV
-      nv/codegen: Delete OP_EXP, OP_LOG
-      nv/codegen: Remove fragCoord variable.
-      nv/codegen: Merge from_common into from_nir
-      nv/codegen: Remove unused clipVertexOutput var
-      nv50_ir_ra: Delete unused functions
-      nv/codegen: Delete unused OP_CONSTRAINT
-      nv/codegen: Delete periodicMask32
-      nv/codegen: Remove Function::buildDefSets
+Mike Blumenkrantz (1):
+      zink: copy some cs shader properties to the program struct
 
-Marek Vasut (1):
-      etnaviv: Fully replicate back stencil config
+Piotr Kocia (1):
+      nir: Remove dead nir_const_value variables
 
-Mike Blumenkrantz (3):
-      zink: don't start multiple cache jobs for the same program
-      zink: use the "set" optimal key for prog last_variant_hash for consistency
-      zink: sanitize optimal keys
+Rhys Perry (4):
+      aco: fix p_bpermute_gfx6 with input at non-zero byte
+      aco: fix p_bpermute_gfx6's exec save/restore with wave32
+      aco: clarify bpermute pseudo opcode names
+      aco: add adjust_bpermute_dst helper
 
-Rob Clark (1):
-      util: Decouple disk cache from EGL_ANDROID_blob_cache
+Rob Clark (2):
+      docs: Followup to !24636
+      tu: Workaround bionic _SC_LEVEL1_DCACHE_LINESIZE
 
-Sagar Ghuge (1):
-      blorp: Drop unnecessary assertions in blorp_can_hiz_clear_depth
+Samuel Pitoiset (3):
+      aco: rework printing shader stages
+      radv: fix the per-patch data offset when TES isn't linked with TCS
+      radv: stop declaring unused SGPR arguments for PS epilogs
 
-Samuel Pitoiset (6):
-      radv: track the pipeline bind point for indirect commands layout
-      radv: prepare radv_get_sequence_size() for DGC compute
-      radv: prepare radv_prepare_dgc() for DGC compute
-      radv: implement NV_device_generated_commands_compute
-      radv: allow DGC on the compute queue
-      radv: advertise NV_device_generated_commands_compute
+Sviatoslav Peleshko (2):
+      intel/isl: Don't over-allocate CLEAR_COLOR size to use whole cache line
+      anv: Do fast clear color initialization more delicately
 
-Tapani Pälli (2):
-      anv: implement a dummy depth flush for Wa_14016712196
-      iris: implement a dummy depth flush for Wa_14016712196
+Tapani Pälli (1):
+      mesa: fix some TexParameter and SamplerParameter cases
 
-norablackcat (2):
-      spirv/nir_to_spirv: add expect assume op codes
-      rusticl: add cl_khr_expect_assume
+Yonggang Luo (5):
+      sfn: Use 4 instead of ATOMIC_COUNTER_SIZE
+      intel/brw: use 4 instead of MAX_VERTEX_STREAMS to avoid #include "mesa/main/config.h"
+      d3d12: replace use of MAX_VERTEX_STREAMS with PIPE_MAX_VERTEX_STREAMS
+      compiler: use 4 instead ATOMIC_COUNTER_SIZE in glsl_types.h to avoid #include "mesa/main/config.h"
+      compiler/glsl: Move glsl_print_type from glsl_types.* to ir_print_visitor.cpp
 
