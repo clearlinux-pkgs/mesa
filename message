@@ -1,124 +1,84 @@
-Updating from aef257fd15272019e770401d741906659737117c to 112b393766ec669f9aa8bf6de864494583979d4c
+Updating from 112b393766ec669f9aa8bf6de864494583979d4c to d693027a00fe5f2cf2b9548b69b50078ec0113be
 
-Alyssa Rosenzweig (50):
-      panfrost/ci: Disable T720
-      nir: Add load_sysval_agx intrinsic
-      agx: Fix extraneous bits with b2b32
-      agx: Use more barriers
-      asahi: Copy CSO stride
-      agx: Assert vertex_id, instance_id are VS-only
-      asahi: Keep drawoverhead from OOMing itself
-      agx: Don't blow up when lowering textures twice
-      agx/lower_vbo: Handle nonzero component
-      agx: Allow loop headers without later preds
-      agx: Handle b2i8
-      agx: Convert 8-bit comparisons
-      agx: Implement imul_high
-      asahi: Advertise OpenGL ES 3.1!
-      asahi/decode: Turn assert into error
-      asahi: Report local_size from compiler
-      asahi: Use local_size from compiler directly
-      asahi: Pass layer stride in pixels, not elements
-      agx: Clear sample count after lowering MSAA
-      agx: Clear image_array after lowering
-      asahi: Preserve atomic ops when rewriting image to bindless
-      agx: Use 16-bit reg for pixel_coord
-      asahi: Generalize query logic
-      asahi: Simplify occlusion query batch tracking
-      asahi: Refactor agx_get_query_result
-      asahi: Only touch batch->occlusion_queries for occlusion
-      asahi: Sync when beginning a query
-      asahi: Add non-occlusion query tracking
-      asahi: Add get_query_address helper
-      agx/fence_images: Use intrinsics_pass
-      agx: Do not fence write-only images
-      asahi: Add missing LOD source for agx_meta's txfs
-      agx: Do some texture lowering early
-      agx: Add helper returning if a descriptor crawl is needed
-      nir,asahi: Remove texture_base_agx
-      asahi: Move UBO lowering into GL driver
-      asahi: Add sysval tables for each shader stage
-      asahi: Split out per-stage sysvals
-      asahi: Collapse grid_info
-      asahi: Extract agx_upload_textures
-      asahi: Upload a single draw_uniforms per draw
-      asahi: Add real per-stage dirty flags
-      asahi: Extract sampler upload
-      asahi: Put unuploaded uniforms on the batch
-      asahi: Decouple sysval lowering from uniform assignment
-      asahi: Use finer dirty tracking for blend constant
-      asahi: Use proper dirty tracking for VBOs
-      asahi: Dirty track VBOs + blend const separately
-      asahi: Dirty the shader stage when the shader changes
-      asahi: Fix shader stage dirtying
+Alyssa Rosenzweig (2):
+      treewide: Use nir_shader_intrinsic_pass sometimes
+      treewide: Also handle struct nir_builder form
 
-Charmaine Lee (1):
-      svga: fix stride used in vertex declaration
+Benjamin Cheng (6):
+      vulkan/video: add helper to derive H264 scaling lists
+      radv/video: use vk_video_derive_h264_scaling_list
+      anv/video: use vk_video_derive_h264_scaling_list
+      util/vl: extract gallium vl scanning data to shared code
+      radv/video: send h264 scaling list in raster order
+      anv/video: send h264 scaling list in raster order
 
-Chris Spencer (3):
-      anv/android: Fix importing hardware buffers with planar formats
-      anv/android: Add support for AHARDWAREBUFFER_FORMAT_YV12
-      anv: Advertise Vulkan 1.3 on Android 13
+Chris Spencer (1):
+      anv: Don't reject Android image format if external props not supplied
 
-David Heidelberg (1):
-      panfrost/ci: revert Disable T720
+David Heidelberg (4):
+      ci/piglit: add extra space on top to prevent single quote getting into URL
+      ci/freedreno: There is only one King of Town.
+      ci: switch to 6.4 kernel, improving Adreno 660 reliability
+      ci/iris: add GL46.arrays_of_arrays_gl.SizedDeclarationsPrimitive timeout
 
-David Rosca (1):
-      Revert "radeonsi/vcn: add an exception of field case for h264 decoding"
+Dmitry Baryshkov (1):
+      tu: Pass real size of prime buffers to allocator
 
-Feng Jiang (1):
-      CODEOWNERS: Add @flynnjiang for VirGL video
+Faith Ekstrand (3):
+      drm-uapi: Sync nouveau_drm.h
+      nvk: Plumb no_prefetch through to the DRM back-end
+      nouveau/mme: Fix a compile warning
 
-Georg Lehmann (2):
-      aco: fix u2f16 with 32bit input
-      aco: combine a | ~b to bfi(b, a, -1)
+Ian Romanick (2):
+      util/rb-tree: Return the actual first node from rb_tree_search
+      util/rb-tree: Fix typo in comment
 
-Kenneth Graunke (6):
-      intel/fs: Account for payload GRFs when calculating register pressure
-      intel/compiler: Move SCHEDULE_NONE handling into schedule_instructions()
-      intel/fs: Index scheduler mode string table by mode enum
-      intel/fs: Make helpers for saving/restoring instruction order
-      intel/fs: Pick the lowest register pressure schedule when spilling
-      intel/fs: Dump IR for pre-RA scheduler modes in DEBUG_OPTIMIZER
+Jordan Justen (2):
+      intel/dev: Use RPL-U name on RPL-U devices
+      intel/dev: Add more RPL PCI IDs
 
-Konstantin Seurer (1):
-      lavapipe: Lock around CSO destroys
+Karol Herbst (3):
+      zink: fix source type in load/store scratch
+      zink: fix global stores
+      zink: update some compute caps
 
-Mary (1):
-      agx: Ensure to lower 1D image load/store to 2D
+Kenneth Graunke (1):
+      iris: Check prog[] instead of uncompiled[] for BLORP state skipping
 
-Mike Blumenkrantz (1):
-      zink: copy some cs shader properties to the program struct
+Konstantin Seurer (2):
+      vulkan/wsi/x11: Implement capture hotkey using the keymap
+      venus: Use the common GetPhysicalDeviceFeatures2 implementation
 
-Piotr Kocia (1):
-      nir: Remove dead nir_const_value variables
+Mauro Rossi (2):
+      anv/android: remove numFds check
+      hasvk/android: remove numFds check
 
-Rhys Perry (4):
-      aco: fix p_bpermute_gfx6 with input at non-zero byte
-      aco: fix p_bpermute_gfx6's exec save/restore with wave32
-      aco: clarify bpermute pseudo opcode names
-      aco: add adjust_bpermute_dst helper
+Mike Blumenkrantz (3):
+      zink: handle global atomic intrinsics
+      zink: use Aligned with global load/store ops
+      zink: fix rewrite_read_as_0 filtering
 
-Rob Clark (2):
-      docs: Followup to !24636
-      tu: Workaround bionic _SC_LEVEL1_DCACHE_LINESIZE
+Samuel Pitoiset (11):
+      radv: add radv_shader_info::is_monolithic
+      radv: use info->uses_view_index directly when declaring shader arguments
+      radv: do not inline push constants for non-monolithic shaders
+      radv: force indirect descriptor sets for non-monolithic shaders
+      radv: always declare some arguments for non-monolithic VS/TCS shaders
+      radv: add a new shader argument for non-monolithic shaders PC
+      ac: allow to mark shader arguments as preserved
+      radv: preserve shader arguments for non-monolithic VS/TCS on GFX9+
+      aco: disable shared VGPRs for non-monolithic shaders on GFX9+
+      aco: ensure to initialize exec manually for VS as LS on GFX9+
+      aco: add support for compiling VS+TCS separately on GFX9+
 
-Samuel Pitoiset (3):
-      aco: rework printing shader stages
-      radv: fix the per-patch data offset when TES isn't linked with TCS
-      radv: stop declaring unused SGPR arguments for PS epilogs
+Simon Ser (2):
+      wayland: enable use of wayland-protocols as a subproject
+      vulkan/wsi/wayland: add support for IMMEDIATE
 
-Sviatoslav Peleshko (2):
-      intel/isl: Don't over-allocate CLEAR_COLOR size to use whole cache line
-      anv: Do fast clear color initialization more delicately
+Yiwei Zhang (2):
+      venus: add no_sparse debug option to disable sparse resource support
+      venus: set deviceMemoryReport feature
 
-Tapani Pälli (1):
-      mesa: fix some TexParameter and SamplerParameter cases
-
-Yonggang Luo (5):
-      sfn: Use 4 instead of ATOMIC_COUNTER_SIZE
-      intel/brw: use 4 instead of MAX_VERTEX_STREAMS to avoid #include "mesa/main/config.h"
-      d3d12: replace use of MAX_VERTEX_STREAMS with PIPE_MAX_VERTEX_STREAMS
-      compiler: use 4 instead ATOMIC_COUNTER_SIZE in glsl_types.h to avoid #include "mesa/main/config.h"
-      compiler/glsl: Move glsl_print_type from glsl_types.* to ir_print_visitor.cpp
+twisted89 (1):
+      util/driconf: add workarounds for the Chronicles of Riddick
 
