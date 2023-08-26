@@ -1,84 +1,45 @@
-Updating from 112b393766ec669f9aa8bf6de864494583979d4c to d693027a00fe5f2cf2b9548b69b50078ec0113be
+Updating from d693027a00fe5f2cf2b9548b69b50078ec0113be to 5ce6e09ffc7c6089bac288f6d5d1e50d379386d8
 
-Alyssa Rosenzweig (2):
-      treewide: Use nir_shader_intrinsic_pass sometimes
-      treewide: Also handle struct nir_builder form
+Caio Oliveira (6):
+      anv/tests: Refactor state_pool_test_helper to not use macros for parametrization
+      anv/tests: Link a single anv_tests binary using gtest
+      anv/tests: Propagate failures to gtest
+      hasvk/tests: Refactor state_pool_test_helper to not use macros for parametrization
+      hasvk/tests: Link a single hasvk_tests binary using gtest
+      hasvk/tests: Propagate failures to gtest
 
-Benjamin Cheng (6):
-      vulkan/video: add helper to derive H264 scaling lists
-      radv/video: use vk_video_derive_h264_scaling_list
-      anv/video: use vk_video_derive_h264_scaling_list
-      util/vl: extract gallium vl scanning data to shared code
-      radv/video: send h264 scaling list in raster order
-      anv/video: send h264 scaling list in raster order
-
-Chris Spencer (1):
-      anv: Don't reject Android image format if external props not supplied
-
-David Heidelberg (4):
-      ci/piglit: add extra space on top to prevent single quote getting into URL
-      ci/freedreno: There is only one King of Town.
-      ci: switch to 6.4 kernel, improving Adreno 660 reliability
-      ci/iris: add GL46.arrays_of_arrays_gl.SizedDeclarationsPrimitive timeout
-
-Dmitry Baryshkov (1):
-      tu: Pass real size of prime buffers to allocator
-
-Faith Ekstrand (3):
-      drm-uapi: Sync nouveau_drm.h
-      nvk: Plumb no_prefetch through to the DRM back-end
-      nouveau/mme: Fix a compile warning
+David Heidelberg (2):
+      ci/panfrost: add G52 flakes
+      ci/panfrost: we have enough device, parallelize Vulkan tests
 
 Ian Romanick (2):
-      util/rb-tree: Return the actual first node from rb_tree_search
-      util/rb-tree: Fix typo in comment
+      nir/builder: Add nir_extract_i8_imm and nir_extract_u8_imm helpers
+      nir/algebraic: Remove redundant pack / unpack lowering patterns
 
-Jordan Justen (2):
-      intel/dev: Use RPL-U name on RPL-U devices
-      intel/dev: Add more RPL PCI IDs
-
-Karol Herbst (3):
-      zink: fix source type in load/store scratch
-      zink: fix global stores
-      zink: update some compute caps
-
-Kenneth Graunke (1):
-      iris: Check prog[] instead of uncompiled[] for BLORP state skipping
-
-Konstantin Seurer (2):
-      vulkan/wsi/x11: Implement capture hotkey using the keymap
-      venus: Use the common GetPhysicalDeviceFeatures2 implementation
-
-Mauro Rossi (2):
-      anv/android: remove numFds check
-      hasvk/android: remove numFds check
+Karol Herbst (2):
+      rusticl: add debug option to sync every event
+      rusticl/device: _MAX_CONST_BUFFER0_SIZE is unsigned
 
 Mike Blumenkrantz (3):
-      zink: handle global atomic intrinsics
-      zink: use Aligned with global load/store ops
-      zink: fix rewrite_read_as_0 filtering
+      rusticl: fixes for zink shader images
+      zink: pass KERNEL shaders through successfully
+      zink: add a618 flake
 
-Samuel Pitoiset (11):
-      radv: add radv_shader_info::is_monolithic
-      radv: use info->uses_view_index directly when declaring shader arguments
-      radv: do not inline push constants for non-monolithic shaders
-      radv: force indirect descriptor sets for non-monolithic shaders
-      radv: always declare some arguments for non-monolithic VS/TCS shaders
-      radv: add a new shader argument for non-monolithic shaders PC
-      ac: allow to mark shader arguments as preserved
-      radv: preserve shader arguments for non-monolithic VS/TCS on GFX9+
-      aco: disable shared VGPRs for non-monolithic shaders on GFX9+
-      aco: ensure to initialize exec manually for VS as LS on GFX9+
-      aco: add support for compiling VS+TCS separately on GFX9+
+Pavel Ondračka (6):
+      r300: reorder for easier presubtract 1-x pattern recognition
+      r300: exit early in presubtract is not supported
+      r300: implement bias presubtract
+      r300: convert x * 2 into x + x for presubtract
+      r300: move power of two multipliers down
+      r300: there is no limitation on presubtract source file
 
-Simon Ser (2):
-      wayland: enable use of wayland-protocols as a subproject
-      vulkan/wsi/wayland: add support for IMMEDIATE
+Roland Scheidegger (1):
+      lavapipe: further limit accurate_a0 hack
 
-Yiwei Zhang (2):
-      venus: add no_sparse debug option to disable sparse resource support
-      venus: set deviceMemoryReport feature
-
-twisted89 (1):
-      util/driconf: add workarounds for the Chronicles of Riddick
+Samuel Pitoiset (5):
+      radv: always declare some arguments for non-monolithic {VS,TES}/GS shaders
+      radv: preserve shader arguments for non-monolithic {VS,TES}/GS on GFX9+
+      aco: ensure to initialize exec manually for non-monolithic {VS,TES}/GS on GFX9+
+      aco: add support for compiling {VS,TES}+GS separately on GFX9+
+      radv,aco: remove unused clip/cull distances variables
 
