@@ -1,45 +1,65 @@
-Updating from d693027a00fe5f2cf2b9548b69b50078ec0113be to 5ce6e09ffc7c6089bac288f6d5d1e50d379386d8
+Updating from 5ce6e09ffc7c6089bac288f6d5d1e50d379386d8 to 78ec03b3ba65d221c78930e87616eef53f0fcf6c
 
-Caio Oliveira (6):
-      anv/tests: Refactor state_pool_test_helper to not use macros for parametrization
-      anv/tests: Link a single anv_tests binary using gtest
-      anv/tests: Propagate failures to gtest
-      hasvk/tests: Refactor state_pool_test_helper to not use macros for parametrization
-      hasvk/tests: Link a single hasvk_tests binary using gtest
-      hasvk/tests: Propagate failures to gtest
+Alejandro Piñeiro (1):
+      v3dv: re-enable sync_fd import/export on the simulator
 
-David Heidelberg (2):
-      ci/panfrost: add G52 flakes
-      ci/panfrost: we have enough device, parallelize Vulkan tests
+Bas Nieuwenhuizen (1):
+      vulkan: Add trace points for more Vulkan waiting functions.
 
-Ian Romanick (2):
-      nir/builder: Add nir_extract_i8_imm and nir_extract_u8_imm helpers
-      nir/algebraic: Remove redundant pack / unpack lowering patterns
+David Heidelberg (5):
+      ci/virgl: flakes in functional.draw_buffers_indexed group
+      ci/freedreno: add another a530 flake
+      ci/panfrost: add G52 simple_tests.partial_image_pot_same_format_noclear flake
+      panvk: architecture isn't invalid, just unsupported
+      panvk: catch unsupported arch in the panvk_physical_device_init
 
-Karol Herbst (2):
-      rusticl: add debug option to sync every event
-      rusticl/device: _MAX_CONST_BUFFER0_SIZE is unsigned
+David Rosca (1):
+      gallium/auxiliary/vl: Set vertex element src_stride in vl_deint_filter
 
-Mike Blumenkrantz (3):
-      rusticl: fixes for zink shader images
-      zink: pass KERNEL shaders through successfully
-      zink: add a618 flake
+M Henning (2):
+      nv/codegen: Change copy-constructor call to assign
+      nv/codegen: Delete copy and assign
 
-Pavel Ondračka (6):
-      r300: reorder for easier presubtract 1-x pattern recognition
-      r300: exit early in presubtract is not supported
-      r300: implement bias presubtract
-      r300: convert x * 2 into x + x for presubtract
-      r300: move power of two multipliers down
-      r300: there is no limitation on presubtract source file
+Mike Blumenkrantz (8):
+      zink: break out ds3 state resetting
+      zink: be consistent with ds3 state resetting for blits
+      zink: fix optimal_keys warning message
+      zink: force-reset unordered flags for buffer barriers on non-matching batch access
+      zink: reset unordered flags for image barriers on non-matching batch access
+      zink: make image barrier init functions void return
+      zink: simplify some image barrier conditionals
+      zink: remove sync TODO
 
-Roland Scheidegger (1):
-      lavapipe: further limit accurate_a0 hack
+Paul Gofman (1):
+      driconf: add a workaround for Rainbow Six Extraction
+
+Rhys Perry (1):
+      aco/spill: skip p_branch in process_block
+
+Ruijing Dong (1):
+      frontends/va: checking va version for av1enc support
 
 Samuel Pitoiset (5):
-      radv: always declare some arguments for non-monolithic {VS,TES}/GS shaders
-      radv: preserve shader arguments for non-monolithic {VS,TES}/GS on GFX9+
-      aco: ensure to initialize exec manually for non-monolithic {VS,TES}/GS on GFX9+
-      aco: add support for compiling {VS,TES}+GS separately on GFX9+
-      radv,aco: remove unused clip/cull distances variables
+      radv: rename tcs_shader to tcs in radv_emit_tcs_epilog_state()
+      radv: small cleanups in radv_emit_patch_control_points()
+      radv: fix emitting TCS epilogs if TES and GS are linked on GFX9+
+      radv: remove the pipeline dependency for emitting VGT_GS_MODE
+      aco: fix emitting TCS epilogs end on GFX9+
+
+Sil Vilerino (2):
+      d3d12: Fix Map/Unmap of YUV resources
+      d3d12: Fix H264 interlaced decode
+
+Simon Ser (1):
+      vulkan/wsi/wayland: fix unset present_mode
+
+Timothy Arceri (1):
+      util: add radeonsi workaround for Nowhere Patrol
+
+Vinson Lee (2):
+      nv50: Remove unused value
+      vk/wsi/x11: Remove dead code
+
+Yiwei Zhang (1):
+      venus: expose at least one cached memory type
 
