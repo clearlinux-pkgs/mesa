@@ -1,65 +1,59 @@
-Updating from 5ce6e09ffc7c6089bac288f6d5d1e50d379386d8 to 78ec03b3ba65d221c78930e87616eef53f0fcf6c
+Updating from 78ec03b3ba65d221c78930e87616eef53f0fcf6c to ae5e2c1fea864d7d9836a443ad68950be66da679
 
-Alejandro Piñeiro (1):
-      v3dv: re-enable sync_fd import/export on the simulator
+Alyssa Rosenzweig (1):
+      nir/lower_shader_calls: Fix warning with clang
 
-Bas Nieuwenhuizen (1):
-      vulkan: Add trace points for more Vulkan waiting functions.
+Corentin Noël (2):
+      ci: Add locked flag to bindgen-cli installation
+      virgl: Do not expose EXT_texture_mirror_clamp when using a GLES host
 
-David Heidelberg (5):
-      ci/virgl: flakes in functional.draw_buffers_indexed group
-      ci/freedreno: add another a530 flake
-      ci/panfrost: add G52 simple_tests.partial_image_pot_same_format_noclear flake
-      panvk: architecture isn't invalid, just unsupported
-      panvk: catch unsupported arch in the panvk_physical_device_init
+Eric Engestrom (2):
+      ci/farm-rules: fix missing valve-infra jobs in scheduled pipelines
+      bin/ci_run_n_monitor: error out if both --project and --pipeline-url are passed
 
-David Rosca (1):
-      gallium/auxiliary/vl: Set vertex element src_stride in vl_deint_filter
+Helen Koike (2):
+      ci: add --project option to ci_run_n_monitor.py
+      ci/android: remove strace output from cuttlefish-runner.sh
 
-M Henning (2):
-      nv/codegen: Change copy-constructor call to assign
-      nv/codegen: Delete copy and assign
+Iago Toral Quiroga (1):
+      v3d,v3dv: use fquantize2f16 lowering in NIR
 
-Mike Blumenkrantz (8):
-      zink: break out ds3 state resetting
-      zink: be consistent with ds3 state resetting for blits
-      zink: fix optimal_keys warning message
-      zink: force-reset unordered flags for buffer barriers on non-matching batch access
-      zink: reset unordered flags for image barriers on non-matching batch access
-      zink: make image barrier init functions void return
-      zink: simplify some image barrier conditionals
-      zink: remove sync TODO
+Ian Romanick (4):
+      intel/fs: Completely re-write the combine constants pass
+      intel/fs: Combine constants for SEL instructions too
+      intel/fs: Combine constants for integer instructions too
+      intel/fs: New VGRF packing scheme for constant combining
 
-Paul Gofman (1):
-      driconf: add a workaround for Rainbow Six Extraction
+Karol Herbst (7):
+      ci: disable a660 jobs
+      nir: make workgroup_id 32 bit only
+      nir: make num_workgroups 32 bit only
+      ac: drop 64 bit handling for cl workgroup intrinsics
+      gallivm/nir: drop 64 bit handling for cl workgroup intrinsics
+      intel/compiler: drop 64 bit handling for cl workgroup intrinsics
+      panfrost: drop 64 bit handling for cl workgroup intrinsics
 
-Rhys Perry (1):
-      aco/spill: skip p_branch in process_block
+Konstantin Seurer (1):
+      nir/lower_shader_calls: Limit the remat chain length
 
-Ruijing Dong (1):
-      frontends/va: checking va version for av1enc support
+Lionel Landwerlin (5):
+      intel/compiler: disable per-sample interpolation modes with non-per-sample dispatch
+      intel/compiler: fix dynamic alpha-to-coverage handling
+      intel/fs: implement dynamic interpolation mode for dynamic persample shaders
+      intel/fs: move lower of non-uniform at_sample barycentric to NIR
+      zink+anv: add regression testing with pipeline libraries
 
-Samuel Pitoiset (5):
-      radv: rename tcs_shader to tcs in radv_emit_tcs_epilog_state()
-      radv: small cleanups in radv_emit_patch_control_points()
-      radv: fix emitting TCS epilogs if TES and GS are linked on GFX9+
-      radv: remove the pipeline dependency for emitting VGT_GS_MODE
-      aco: fix emitting TCS epilogs end on GFX9+
+Matt Coster (3):
+      pvr: Don't override commands copied to new buffer when extending cs
+      pvr: Do not require TA_STATE_HEADER.pres_ispctl_dbsc for {db,sc}enable
+      pvr: Zero tail of cs buffers after linking when dumping cs
 
-Sil Vilerino (2):
-      d3d12: Fix Map/Unmap of YUV resources
-      d3d12: Fix H264 interlaced decode
+Mike Blumenkrantz (1):
+      zink: add lavapipe flake
+
+Samuel Pitoiset (1):
+      radv: re-order IO slot layout for stages that aren't linked
 
 Simon Ser (1):
-      vulkan/wsi/wayland: fix unset present_mode
-
-Timothy Arceri (1):
-      util: add radeonsi workaround for Nowhere Patrol
-
-Vinson Lee (2):
-      nv50: Remove unused value
-      vk/wsi/x11: Remove dead code
-
-Yiwei Zhang (1):
-      venus: expose at least one cached memory type
+      radv/winsys: check amdgpu_create_bo_from_user_mem() for EINVAL
 
