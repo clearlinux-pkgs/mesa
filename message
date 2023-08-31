@@ -1,59 +1,65 @@
-Updating from 78ec03b3ba65d221c78930e87616eef53f0fcf6c to ae5e2c1fea864d7d9836a443ad68950be66da679
+Updating from ae5e2c1fea864d7d9836a443ad68950be66da679 to 9b87912f62e464a7d15167802948187a9053e2e9
 
-Alyssa Rosenzweig (1):
-      nir/lower_shader_calls: Fix warning with clang
+Alyssa Rosenzweig (4):
+      nir: Add nir_before/after_impl cursors
+      treewide: Use nir_before/after_impl in easy cases
+      treewide: Use nir_before/after_impl for more elaborate cases
+      radv: Use before/after_cf_list for entrypoints
 
-Corentin Noël (2):
-      ci: Add locked flag to bindgen-cli installation
-      virgl: Do not expose EXT_texture_mirror_clamp when using a GLES host
+Connor Abbott (1):
+      vk/graphic_state, tu: Use dynamic blend count from subpass
 
-Eric Engestrom (2):
-      ci/farm-rules: fix missing valve-infra jobs in scheduled pipelines
-      bin/ci_run_n_monitor: error out if both --project and --pipeline-url are passed
+Dave Airlie (5):
+      llvmpipe/fs: switch to using tgsi->nir instead of handling tgsi
+      llvmpipe/analyse: drop TGSI path.
+      llvmpipe/fs: start using nir info in some places.
+      llvmpipe/fs: drop the simple shader logic
+      llvmpipe/fs: rewrite output finding using nir.
 
-Helen Koike (2):
-      ci: add --project option to ci_run_n_monitor.py
-      ci/android: remove strace output from cuttlefish-runner.sh
+Derek Foreman (1):
+      vulkan/wsi: warn about unset present_mode in PresentModeCompatibilityExt
 
-Iago Toral Quiroga (1):
-      v3d,v3dv: use fquantize2f16 lowering in NIR
+Eric Engestrom (1):
+      ci: document farm rules
 
-Ian Romanick (4):
-      intel/fs: Completely re-write the combine constants pass
-      intel/fs: Combine constants for SEL instructions too
-      intel/fs: Combine constants for integer instructions too
-      intel/fs: New VGRF packing scheme for constant combining
+Karol Herbst (3):
+      rusticl: reduce global_invocation_id_zero_base to 32 bit
+      panfrost: drop pan_nir_lower_64bit_intrin
+      rusticl/disk_cache: fix stack corruption
 
-Karol Herbst (7):
-      ci: disable a660 jobs
-      nir: make workgroup_id 32 bit only
-      nir: make num_workgroups 32 bit only
-      ac: drop 64 bit handling for cl workgroup intrinsics
-      gallivm/nir: drop 64 bit handling for cl workgroup intrinsics
-      intel/compiler: drop 64 bit handling for cl workgroup intrinsics
-      panfrost: drop 64 bit handling for cl workgroup intrinsics
+Konstantin Seurer (2):
+      lavapipe: Avoid lowering shaders twice
+      lavapipe: Fix the locking around cso destruction
 
-Konstantin Seurer (1):
-      nir/lower_shader_calls: Limit the remat chain length
-
-Lionel Landwerlin (5):
-      intel/compiler: disable per-sample interpolation modes with non-per-sample dispatch
-      intel/compiler: fix dynamic alpha-to-coverage handling
-      intel/fs: implement dynamic interpolation mode for dynamic persample shaders
-      intel/fs: move lower of non-uniform at_sample barycentric to NIR
-      zink+anv: add regression testing with pipeline libraries
-
-Matt Coster (3):
-      pvr: Don't override commands copied to new buffer when extending cs
-      pvr: Do not require TA_STATE_HEADER.pres_ispctl_dbsc for {db,sc}enable
-      pvr: Zero tail of cs buffers after linking when dumping cs
+Lionel Landwerlin (7):
+      anv: implement vkCmdBindIndexBuffer2KHR
+      anv: handle new VkBufferViewUsageCreateInfoKHR
+      anv: add vkGetRenderingAreaGranularityKHR()
+      anv: implement GetDeviceImageSubresourceLayoutKHR/GetImageSubresourceLayout2KHR
+      anv: add maintenance5 A8_UNORM/A1B5G5R5_UNORM support
+      anv: deal with new pipeline flags
+      anv: enable KHR_maintenance5
 
 Mike Blumenkrantz (1):
-      zink: add lavapipe flake
+      ci: disable nouveau shaderdb
 
-Samuel Pitoiset (1):
-      radv: re-order IO slot layout for stages that aren't linked
+Qiang Yu (6):
+      aco: simplify setup_tcs_info
+      aco: pass sw_stage when setup_isel_context
+      aco: prepare fix_ls_vgpr_init_bug to be used by gl vs prolog
+      aco: add vs prolog instruction selection for radeonsi
+      aco: add aco compile interface for radeonsi vs prolog
+      aco: do not fix_exports when program is prolog
 
-Simon Ser (1):
-      radv/winsys: check amdgpu_create_bo_from_user_mem() for EINVAL
+Rhys Perry (1):
+      aco/spill: add all live-in to merge block spill candidates
+
+Roman Stratiienko (1):
+      android: Fix num_planes assignment in u_gralloc_fallback
+
+Samuel Pitoiset (4):
+      amd/ci: update list of failures/flakes for glcts-vangogh-valve
+      ci: uprev vkd3d-proton
+      ci: uprev Fossilize
+      ci: add comment explaining which image tags to update for Fossilize
 
