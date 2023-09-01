@@ -1,65 +1,84 @@
-Updating from ae5e2c1fea864d7d9836a443ad68950be66da679 to 9b87912f62e464a7d15167802948187a9053e2e9
-
-Alyssa Rosenzweig (4):
-      nir: Add nir_before/after_impl cursors
-      treewide: Use nir_before/after_impl in easy cases
-      treewide: Use nir_before/after_impl for more elaborate cases
-      radv: Use before/after_cf_list for entrypoints
+Updating from 9b87912f62e464a7d15167802948187a9053e2e9 to cda5784eb3dc890138229604ab68fa319626cc73
 
 Connor Abbott (1):
-      vk/graphic_state, tu: Use dynamic blend count from subpass
+      freedreno/a7xx: Add CP_RESET_CONTEXT_STATE
 
-Dave Airlie (5):
-      llvmpipe/fs: switch to using tgsi->nir instead of handling tgsi
-      llvmpipe/analyse: drop TGSI path.
-      llvmpipe/fs: start using nir info in some places.
-      llvmpipe/fs: drop the simple shader logic
-      llvmpipe/fs: rewrite output finding using nir.
+Dave Airlie (1):
+      nvk: add build_id linker argument.
 
-Derek Foreman (1):
-      vulkan/wsi: warn about unset present_mode in PresentModeCompatibilityExt
+Eric Engestrom (3):
+      ci/b2c: skip install.tar extraction if the tarball is not present
+      ci/b2c: don't allow failures in test script preparation
+      ci/b2c: assert that install folder is present whether or not the tarball was extracted
 
-Eric Engestrom (1):
-      ci: document farm rules
+Feng Jiang (1):
+      meson: Move video to separate section in meson configuration summary
+
+Friedrich Vock (1):
+      radv/rt: Pre-initialize instance address
+
+Georg Lehmann (1):
+      aco: use v_cvt_f32_ubyte for signed casts too
 
 Karol Herbst (3):
-      rusticl: reduce global_invocation_id_zero_base to 32 bit
-      panfrost: drop pan_nir_lower_64bit_intrin
-      rusticl/disk_cache: fix stack corruption
+      rusticl/query: fix use-after-free, but also fix incorrect usage of unsafe
+      rusticl/event: disable profiling for devices without timestamps
+      rusticl/queue: properly implement clCreateCommandQueueWithProperties
 
-Konstantin Seurer (2):
-      lavapipe: Avoid lowering shaders twice
-      lavapipe: Fix the locking around cso destruction
+Konstantin Seurer (5):
+      aco/validate: Handle p_wqm like p_parallelcopy
+      aco: Use bytes() instead of size() in emit_wqm
+      aco: Unify demote and demote_if selection
+      radv: Only generate debug info if required
+      aco/lower_to_cssa: Fix typo
 
-Lionel Landwerlin (7):
-      anv: implement vkCmdBindIndexBuffer2KHR
-      anv: handle new VkBufferViewUsageCreateInfoKHR
-      anv: add vkGetRenderingAreaGranularityKHR()
-      anv: implement GetDeviceImageSubresourceLayoutKHR/GetImageSubresourceLayout2KHR
-      anv: add maintenance5 A8_UNORM/A1B5G5R5_UNORM support
-      anv: deal with new pipeline flags
-      anv: enable KHR_maintenance5
+Lang Yu (3):
+      amd/common: add AMD_CODE_PROPERTY_ENABLE_WAVEFRONT_SIZE32 property
+      radeonsi: use AMD_CODE_PROPERTY_ENABLE_WAVEFRONT_SIZE32 to determine wave size
+      radeonsi: use wave size to determine index stride
 
-Mike Blumenkrantz (1):
-      ci: disable nouveau shaderdb
+Lina Versace (1):
+      docs: Add row for VK_KHR_maintenance5
 
-Qiang Yu (6):
-      aco: simplify setup_tcs_info
-      aco: pass sw_stage when setup_isel_context
-      aco: prepare fix_ls_vgpr_init_bug to be used by gl vs prolog
-      aco: add vs prolog instruction selection for radeonsi
-      aco: add aco compile interface for radeonsi vs prolog
-      aco: do not fix_exports when program is prolog
+Matt Turner (5):
+      intel: Rearrange for next commit
+      intel: Consider with_intel_clc in with_any_intel
+      intel: Only build blorp if drivers are enabled
+      intel: Only build ds if drivers are enabled
+      intel: Only build perf if drivers or tools are enabled
 
-Rhys Perry (1):
-      aco/spill: add all live-in to merge block spill candidates
+Mike Blumenkrantz (3):
+      egl/dri3: only set driver_name if not already set
+      egl: call dri3_x11_connect() for zink
+      egl: bind dri2_set_WL_bind_wayland_display for zink when necessary
 
-Roman Stratiienko (1):
-      android: Fix num_planes assignment in u_gralloc_fallback
+Nanley Chery (1):
+      anv: Initialize the clear color more often for FCV
 
-Samuel Pitoiset (4):
-      amd/ci: update list of failures/flakes for glcts-vangogh-valve
-      ci: uprev vkd3d-proton
-      ci: uprev Fossilize
-      ci: add comment explaining which image tags to update for Fossilize
+Qiang Yu (7):
+      radeonsi: fill aco_shader_info->is_monolithic
+      radeonsi: remove is_monolithic from vs prolog key
+      radeonsi: extract si_get_vs_prolog_args to be shared with aco
+      radeonsi: fix aco options has_ls_vgpr_init_bug setup
+      radeonsi: add vs prolog aco build
+      radeonsi: set vs has prolog aco shader info
+      radeonsi: enable aco compile for part mode standalone vs
+
+Rohan Garg (1):
+      anv: use the pre defined _3DPRIMITIVE_DIRECT macro
+
+Samuel Pitoiset (6):
+      radv: preserve shader argument for separate compilation of NGG shaders
+      aco: flag blocks with long-jump as export_end for separate compilation
+      aco: adjust fix_exports() for VS/TES as NGG and non-monolithic shaders
+      aco: allow separate compilation of NGG shaders
+      zink/ci: add zink-radv-polaris10-valve
+      radv/ci: re-enable vkcts-polaris10-valve
+
+Tapani Pälli (2):
+      mesa: remove GL_UNSIGNED_BYTE as supported for snorm reads
+      ci: add a fix for KHR-GLES3.packed_pixels.*snorm tests
+
+Vlad Schiller (1):
+      pvr: Implement VK_EXT_tooling_info
 
