@@ -1,68 +1,26 @@
-Updating from cda5784eb3dc890138229604ab68fa319626cc73 to 3e457c6b7e917e8ef46d0866f31ae5e28abbe189
+Updating from 3e457c6b7e917e8ef46d0866f31ae5e28abbe189 to 8a32614a1831542c5d08073437b18b05bcfa5352
 
-Aditya Swarup (1):
-      isl: enable Tile64 for 3D images
+Aditya Swarup (5):
+      intel/isl: Unittest for linear to Ytile conversion
+      intel/isl: Convert linear texture to Tile4 format
+      intel/isl: Convert Tile4 texture to linear format
+      intel/isl: Linear to Tile-4 conversion unittest
+      Revert "iris: Disable tiled memcpy for Tile4"
 
 Alyssa Rosenzweig (1):
-      ci: Disable known broken Bifrost Vulkan job
+      ci: Disable WHL jobs
 
-David Heidelberg (2):
-      Revert "ci: disable a660 jobs"
-      docs: add LAVA farm informations
-
-Eric Engestrom (1):
-      ci/amd: split the polaris10 rules into one for each farm
-
-Georg Lehmann (3):
-      nir: add nir_scalar intrinsic helpers
-      nir: add nir_scalar_equal
-      aco: implement some exclusive scans with inclusive scans
-
-Jason Ekstrand (16):
-      intel/isl: Rename ISL_TILING_Yf/s to ISL_TILING_SKL_Yf/s
-      intel/isl: Add ICL variants of Yf and Ys tiling
-      intel/isl: Implement correct tile size calculations for Ys/Yf
-      intel/isl: Use the depth field of phys_level0_sa for GFX4_2D 3D surfaces
-      intel/isl: Fill out the correct phys_total_extent for Ys/Yf/Tile64
-      intel/isl: Indent uncompressed surface code
-      intel/isl: Support Ys, Yf & Tile64 in isl_surf_get_uncompressed_surf
-      intel/isl: Support Yf/Ys tiling in surf_fill_state
-      intel/isl: Support Yf/Ys tiling in emit_depth_stencil_hiz
-      intel/isl: Add initial data-structure support for miptails
-      intel/isl: Add support for computing offsets with miptails
-      intel/isl: Support miptails in isl_surf_get_uncompressed_surf
-      intel/isl: Start using miptails
-      intel/isl: Disallow CCS on 3D surfaces with miptails
-      intel/isl: Allow Ys tiling
-      anv: Align memory VA to support for Ys, Tile64 tiled images
-
-Karol Herbst (2):
-      rusticl/memory: do not verify pitch for IMAGE1D_BUFFER
-      rusticl/memory: only specify PIPE_BIND_SHADER_IMAGE where supported
-
-Lionel Landwerlin (18):
-      anv: add missing ISL storage usage
-      genxml/gfx11: remove Tiled Resource Mode field from HIER_DEPTH_BUFFER
-      genxml/gfx12: rename Tiled Resource Mode
-      isl: program 3DSTATE_HIER_DEPTH_BUFFER_BODY::TiledMode as documented
-      intel/isl: Disallow Yf, Ys and Tile64 for 3D depth/stencil surfaces
-      isl: disable Yf/Ys/Tile64 tilings for 1D images
-      isl: add a usage flag to request 2D/3D compatible views
-      isl: disallow TileYs/Yf on 3D storage images on Gfx9/11
-      intel/isl: Add a max_miptail_levels field to isl_tile_info
-      isl: make isl_surf_get_uncompressed_surf robust to argument accesses
-      isl: add Gfx12/12.5 restriction on 3D surfaces & compression
-      isl: disallow miptails on planar formats
-      isl: disable miptails on gfx12 with yuv formats
-      isl: disable CCS on Ys/Yf
-      blorp: allow 3D blits/copies on Ys/Yf/Tile64 tiling
-      intel/aux_map: correctly program tiling mode for Ys
-      isl: reorder tiling selection
-      anv: enable standard Y tiles
-
-Mark Janes (1):
-      intel: allow reduced memory usage for INTEL_MEASURE
+Lionel Landwerlin (1):
+      isl/tilememcpy_test: add multiple tile testing
 
 Matt Turner (1):
-      intel: Allow using intel_clc from the system
+      intel: Limit Intel Vulkan RT to x86_64
+
+Rohan Garg (6):
+      anv: drop dead ifdef
+      iris: use the correct WA macros and lineage numbers
+      anv: use the lineage number for WA
+      crocus: add a __gen_get_batch_address declaration
+      crocus: fix GFX_VERx10 macro
+      blorp: drop undefined macro
 
