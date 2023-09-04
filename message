@@ -1,26 +1,46 @@
-Updating from 3e457c6b7e917e8ef46d0866f31ae5e28abbe189 to 8a32614a1831542c5d08073437b18b05bcfa5352
+Updating from 8a32614a1831542c5d08073437b18b05bcfa5352 to 0e9a26372bb4e6819b8d56b445564395e04c4217
 
-Aditya Swarup (5):
-      intel/isl: Unittest for linear to Ytile conversion
-      intel/isl: Convert linear texture to Tile4 format
-      intel/isl: Convert Tile4 texture to linear format
-      intel/isl: Linear to Tile-4 conversion unittest
-      Revert "iris: Disable tiled memcpy for Tile4"
+Alexander Orzechowski (1):
+      radeonsi: Set PIPE_CONTEXT_LOSE_CONTEXT_ON_RESET for auxiliary contexts
 
-Alyssa Rosenzweig (1):
-      ci: Disable WHL jobs
+Carsten Haitzler (1):
+      kmsro: Add hdlcd DPU
 
-Lionel Landwerlin (1):
-      isl/tilememcpy_test: add multiple tile testing
+Dave Airlie (1):
+      nir/gather: add support for fbfetch and bindless image loads.
 
-Matt Turner (1):
-      intel: Limit Intel Vulkan RT to x86_64
+David Heidelberg (1):
+      ci: disable Google Freedreno farm, currently timeouting on all jobs
 
-Rohan Garg (6):
-      anv: drop dead ifdef
-      iris: use the correct WA macros and lineage numbers
-      anv: use the lineage number for WA
-      crocus: add a __gen_get_batch_address declaration
-      crocus: fix GFX_VERx10 macro
-      blorp: drop undefined macro
+Pavel Ondračka (1):
+      r300: use w channel for scalar opcodes if possible
+
+Qiang Yu (1):
+      aco,radv,radeonsi: rename is_monolithic to merged_shader_compiled_separately
+
+Roman Stratiienko (4):
+      v3dv/android: Use u_gralloc code
+      v3dv/android: Enable shared presentable image support
+      v3dv: Migrate to vk_device_memory
+      v3dv/android: Skip swapchain binding
+
+Samuel Pitoiset (3):
+      radv: fix capturing indirect dispatches with SQTT
+      radv/ci: re-enable vkd3d-polaris10-valve
+      ci: do not fail vkd3d-proton job when the expectations match
+
+Tapani Pälli (2):
+      anv: implement Wa_14018912822
+      iris: implement Wa_14018912822
+
+Timur Kristóf (6):
+      ac/nir: Add done arg to ac_nir_export_position.
+      ac/nir: Slightly refactor how pos0 exports are added when missing.
+      ac/nir/ngg: Wait for attribute stores before VS/TES/GS pos0 export.
+      ac/nir/ngg: Refactor mesh shader primitive export.
+      ac/nir/ngg: Wait for attribute ring stores in mesh shaders.
+      ac/nir/ngg: Extract nogs_export_vertex_params function.
+
+Vlad Schiller (1):
+      pvr: Add 'info' PVR_DEBUG flag
 
