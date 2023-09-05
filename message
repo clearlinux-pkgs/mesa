@@ -1,46 +1,153 @@
-Updating from 8a32614a1831542c5d08073437b18b05bcfa5352 to 0e9a26372bb4e6819b8d56b445564395e04c4217
+Updating from 0e9a26372bb4e6819b8d56b445564395e04c4217 to ad6557b101da3ec1b4f7c2e0a6fb0a2ee9a4cda8
 
-Alexander Orzechowski (1):
-      radeonsi: Set PIPE_CONTEXT_LOSE_CONTEXT_ON_RESET for auxiliary contexts
+Alyssa Rosenzweig (39):
+      nir/opt_if: Simplify if's with general conditions
+      asahi: Fixes for clang-warnings
+      agx: Fix jmp_exec_none encoding
+      agx/validate: Print to stderr
+      agx: Annotate opcodes with a scheduling class
+      agx: Add schedule-specialized get_sr variants
+      agx: Include schedule class in the opcode info
+      agx: Schedule for register pressure
+      agx: Lower pack_32_4x8_split
+      asahi: Force translucency for ignored render targets
+      agx: Remove logical_end instructions
+      agx: Lower pseudo-ops later
+      agx: Expand nest
+      agx: Lower nest later
+      agx: Split nest instruction into begin_cf + break
+      agx: Add break_if_*cmp instructions
+      agx: Add agx_first/last_instr helpers
+      agx: Use agx_first_instr
+      agx: Detect conditional breaks
+      agx: Omit push_exec at top level
+      agx: Omit while_icmp without continue
+      agx: Add helper to determine if a NIR loop uses continue
+      agx: Only use nest by 1 for loops w/o continue
+      agx: Add pseudo-instructions for icmp/fcmp
+      agx: Generate unfused comparison pseudo ops
+      agx: Fuse conditions into if's
+      agx: Fuse compares into selects
+      agx: Add unit test for if_cmp fusing
+      agx: Add unit test for cmp+sel fusing
+      asahi: Translate cube array dimension
+      ail: Force page-alignment for layered attachments
+      agx: Handle cube arrays when clamping arrays
+      agx: Lower coordinates for cube map array images
+      agx: Run opt_idiv_const after lowering texture
+      asahi: Forbid linear 1D Array images
+      asahi: Handle linear 1D Arrays
+      asahi: Conditionally expose cube arrays
+      gallium,mesa/st: Add PIPE_CONTEXT_NO_LOD_BIAS flag
+      asahi: Skip LOD bias lowering for GLES
 
-Carsten Haitzler (1):
-      kmsro: Add hdlcd DPU
+Asahi Lina (9):
+      asahi: Allocate staging resources as staging
+      asahi: cmdbuf: Identify call/ret bits
+      asahi: decode: Implement VDM call/ret
+      asahi: decode: Do not assert on buffer overruns
+      asahi: Fix VDM pipeline field width
+      asahi: Add scaffolding for supporting driconf options
+      asahi: Add and support the no_fp16 driconf flag
+      driconf: Disable fp16 for browsers
+      asahi: Allow no16 flag for disk cache
+
+Chris Spencer (2):
+      android: Add explanatory comment to u_gralloc
+      anv/android: Enable shared presentable image support
+
+Christian Gmeiner (2):
+      agx/lower_address: Use intrinsics_pass
+      agx/lower_address: Remove not used has_offset
+
+Connor Abbott (1):
+      vk/graphics_state: Fix copying MS locations pipeline state
+
+Danylo Piliaiev (24):
+      freedreno/registers: Refactor gen_header.py to allow more options
+      freedreno/registers: Generate python files with reg offsets
+      freedreno: Add a list of raw magic regs
+      freedreno: Fully define a730 and a740 device properties
+      ir3/tests: Use fd_dev_info to infer GPU generation
+      freedreno/computerator: Fix remaining issues with A7XX
+      isaspec: Make possible to obtain gpu_id in <expr> blocks
+      ir3/a7xx: cat5 mode1 has swapped tex/samp ids
+      ir3/a7xx: Don't multiply global mem instruction's offset by 4
+      ir3/a7xx: insert lock/unlock at the end of every compute shader
+      ir3/a7xx: Add ccinv instruction
+      ir3/a7xx: Use ccinv for data synchronization
+      ir3/a7xx: Disable shared consts for a7xx
+      tu/common: Generalize TU_GENX macro
+      tu: Basic a7xx support
+      freedreno/fdl: Set LOSSLESSCOMPEN for image when ubwc is enabled on a7xx
+      tu/a7xx: Fix geometry shaders
+      tu/a7xx: Fix tesselation shaders
+      tu/a7xx: Fix multiview
+      tu/a7xx: Fix flat shading
+      tu/a7xx: Fix occlusion query
+      tu/a7xx: Fix 3d blits after multiview usage
+      tu/a7xx: Fix CmdDrawIndirectByteCountEXT
+      tu/a7xx: Disable LRZ
 
 Dave Airlie (1):
-      nir/gather: add support for fbfetch and bindless image loads.
+      llvmpipe/cs: further cleanups after tgsi removal.
 
-David Heidelberg (1):
-      ci: disable Google Freedreno farm, currently timeouting on all jobs
+David Rosca (5):
+      gallium/auxiliary: Fix util_compute_blit half texel offset with scaling
+      gallium/auxiliary/vl: Map range when updating constants
+      gallium/auxiliary/vl: Clamp coordinates in compute shaders
+      gallium/auxiliary/vl: Support chroma sample location in compute shaders
+      frontends/va: Support chroma sample location in postproc
 
-Pavel Ondračka (1):
-      r300: use w channel for scalar opcodes if possible
+Dmitry Osipenko (3):
+      util/cache_test: Re-add test for disabled cache
+      util/cache_test: Fix disabled cache test using SHADER_CACHE_DISABLE_BY_DEFAULT
+      util/cache_test: Add test for get/put() with disabled cache
 
-Qiang Yu (1):
-      aco,radv,radeonsi: rename is_monolithic to merged_shader_compiled_separately
+Eric Engestrom (1):
+      ci: skip containers & build jobs when disabling a farm
 
-Roman Stratiienko (4):
-      v3dv/android: Use u_gralloc code
-      v3dv/android: Enable shared presentable image support
-      v3dv: Migrate to vk_device_memory
-      v3dv/android: Skip swapchain binding
+Karol Herbst (12):
+      asahi: fetch available system memory
+      asahi: lower hadd
+      asahi: handle kernels
+      asahi: handle load_workgroup_size
+      asahi: handle load_global_invocation_id_zero_base
+      asahi: implement get_compute_state_info
+      asahi: implement set_global_binding
+      asahi: implement clear_buffer
+      asahi: gracefully handle allocating linear images
+      asahi: handle images in is_format_supported
+      rusticl/memory: fallback if allocating linear images fails
+      rusticl: enable asahi
 
-Samuel Pitoiset (3):
-      radv: fix capturing indirect dispatches with SQTT
-      radv/ci: re-enable vkd3d-polaris10-valve
-      ci: do not fail vkd3d-proton job when the expectations match
+Leo Liu (1):
+      radeonsi/vcn: fix the incorrect dt_size
 
-Tapani Pälli (2):
-      anv: implement Wa_14018912822
-      iris: implement Wa_14018912822
+Lionel Landwerlin (4):
+      anv: rename total_batch_size
+      anv: reuse cmd_buffer::total_batch_size
+      intel/measure: track batch buffer sizes
+      intel/nir: rerun lower_tex if it lowers something
 
-Timur Kristóf (6):
-      ac/nir: Add done arg to ac_nir_export_position.
-      ac/nir: Slightly refactor how pos0 exports are added when missing.
-      ac/nir/ngg: Wait for attribute stores before VS/TES/GS pos0 export.
-      ac/nir/ngg: Refactor mesh shader primitive export.
-      ac/nir/ngg: Wait for attribute ring stores in mesh shaders.
-      ac/nir/ngg: Extract nogs_export_vertex_params function.
+Mark Collins (1):
+      tu/a7xx: Adapt r3d blits for A7xx
+
+Mike Blumenkrantz (6):
+      zink: be more precise about flagging rp changes around unordered u_blitter
+      zink: don't block reordering during ref updates in unordered blits
+      lavapipe: update vbo indices before propagating stride
+      lavapipe: fix pipeline stride propagation
+      zink: fix linear modifier dmabuf imports
+      zink: polaris ci updates
+
+Neal Gompa (1):
+      asahi: Fix 32-bit x86 build with correct data type for overflow error message
+
+Samuel Pitoiset (2):
+      radv/amdgpu: fix executing secondaries without IB2
+      radv/amdgpu: do not copy the original chain link for IBs
 
 Vlad Schiller (1):
-      pvr: Add 'info' PVR_DEBUG flag
+      pvr: Implement VK_KHR_format_feature_flags2
 
