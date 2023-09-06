@@ -1,153 +1,102 @@
-Updating from 0e9a26372bb4e6819b8d56b445564395e04c4217 to ad6557b101da3ec1b4f7c2e0a6fb0a2ee9a4cda8
-
-Alyssa Rosenzweig (39):
-      nir/opt_if: Simplify if's with general conditions
-      asahi: Fixes for clang-warnings
-      agx: Fix jmp_exec_none encoding
-      agx/validate: Print to stderr
-      agx: Annotate opcodes with a scheduling class
-      agx: Add schedule-specialized get_sr variants
-      agx: Include schedule class in the opcode info
-      agx: Schedule for register pressure
-      agx: Lower pack_32_4x8_split
-      asahi: Force translucency for ignored render targets
-      agx: Remove logical_end instructions
-      agx: Lower pseudo-ops later
-      agx: Expand nest
-      agx: Lower nest later
-      agx: Split nest instruction into begin_cf + break
-      agx: Add break_if_*cmp instructions
-      agx: Add agx_first/last_instr helpers
-      agx: Use agx_first_instr
-      agx: Detect conditional breaks
-      agx: Omit push_exec at top level
-      agx: Omit while_icmp without continue
-      agx: Add helper to determine if a NIR loop uses continue
-      agx: Only use nest by 1 for loops w/o continue
-      agx: Add pseudo-instructions for icmp/fcmp
-      agx: Generate unfused comparison pseudo ops
-      agx: Fuse conditions into if's
-      agx: Fuse compares into selects
-      agx: Add unit test for if_cmp fusing
-      agx: Add unit test for cmp+sel fusing
-      asahi: Translate cube array dimension
-      ail: Force page-alignment for layered attachments
-      agx: Handle cube arrays when clamping arrays
-      agx: Lower coordinates for cube map array images
-      agx: Run opt_idiv_const after lowering texture
-      asahi: Forbid linear 1D Array images
-      asahi: Handle linear 1D Arrays
-      asahi: Conditionally expose cube arrays
-      gallium,mesa/st: Add PIPE_CONTEXT_NO_LOD_BIAS flag
-      asahi: Skip LOD bias lowering for GLES
-
-Asahi Lina (9):
-      asahi: Allocate staging resources as staging
-      asahi: cmdbuf: Identify call/ret bits
-      asahi: decode: Implement VDM call/ret
-      asahi: decode: Do not assert on buffer overruns
-      asahi: Fix VDM pipeline field width
-      asahi: Add scaffolding for supporting driconf options
-      asahi: Add and support the no_fp16 driconf flag
-      driconf: Disable fp16 for browsers
-      asahi: Allow no16 flag for disk cache
+Updating from ad6557b101da3ec1b4f7c2e0a6fb0a2ee9a4cda8 to 12967c8dcb61c07196c0088082c7d21e0cf60f2c
 
 Chris Spencer (2):
-      android: Add explanatory comment to u_gralloc
-      anv/android: Enable shared presentable image support
+      anv/video: use correct enum value for max level IDC
+      radv/video: use correct enum value for max level IDC
 
-Christian Gmeiner (2):
-      agx/lower_address: Use intrinsics_pass
-      agx/lower_address: Remove not used has_offset
+Dave Airlie (2):
+      llvmpipe: move to nir lowering for fquantize2f16
+      rusticl: don't store ptrs to nir_variables across opt passes.
 
-Connor Abbott (1):
-      vk/graphics_state: Fix copying MS locations pipeline state
+David Heidelberg (2):
+      Revert "ci: disable Google Freedreno farm, currently timeouting on all jobs"
+      ci/farms: no need to check RUNNER_TAG for Collabora farm
 
-Danylo Piliaiev (24):
-      freedreno/registers: Refactor gen_header.py to allow more options
-      freedreno/registers: Generate python files with reg offsets
-      freedreno: Add a list of raw magic regs
-      freedreno: Fully define a730 and a740 device properties
-      ir3/tests: Use fd_dev_info to infer GPU generation
-      freedreno/computerator: Fix remaining issues with A7XX
-      isaspec: Make possible to obtain gpu_id in <expr> blocks
-      ir3/a7xx: cat5 mode1 has swapped tex/samp ids
-      ir3/a7xx: Don't multiply global mem instruction's offset by 4
-      ir3/a7xx: insert lock/unlock at the end of every compute shader
-      ir3/a7xx: Add ccinv instruction
-      ir3/a7xx: Use ccinv for data synchronization
-      ir3/a7xx: Disable shared consts for a7xx
-      tu/common: Generalize TU_GENX macro
-      tu: Basic a7xx support
-      freedreno/fdl: Set LOSSLESSCOMPEN for image when ubwc is enabled on a7xx
-      tu/a7xx: Fix geometry shaders
-      tu/a7xx: Fix tesselation shaders
-      tu/a7xx: Fix multiview
-      tu/a7xx: Fix flat shading
-      tu/a7xx: Fix occlusion query
-      tu/a7xx: Fix 3d blits after multiview usage
-      tu/a7xx: Fix CmdDrawIndirectByteCountEXT
-      tu/a7xx: Disable LRZ
+Faith Ekstrand (5):
+      nvk: Clean up includes
+      nvk: Add include guards to nvk_bo_sync.h
+      nvk: SPDX everything
+      nouveau/nil: SPDX everything
+      nouveau/mme: SPDX everything
 
-Dave Airlie (1):
-      llvmpipe/cs: further cleanups after tgsi removal.
+Gert Wollny (4):
+      r600/sfn: Make use of four clause local registers
+      r600/sfn: drop unused ControlFlowInstr type enum
+      r600/sfn: factor out resource as extra class
+      r600/sfn: Simplify dependency chain for index loads on EG
 
-David Rosca (5):
-      gallium/auxiliary: Fix util_compute_blit half texel offset with scaling
-      gallium/auxiliary/vl: Map range when updating constants
-      gallium/auxiliary/vl: Clamp coordinates in compute shaders
-      gallium/auxiliary/vl: Support chroma sample location in compute shaders
-      frontends/va: Support chroma sample location in postproc
+Jordan Justen (12):
+      anvil,hasvk: Rename need_clflush to need_flush
+      intel/common: Move intel_clflush.h to intel_mem.h/intel_mem.c
+      anvil,hasvk: Replace intel_clflush_range with intel_flush_range
+      intel/common: Add intel_flush_range_no_fence
+      anvil,hasvk: Use intel_flush_range_no_fence to flush command buffers
+      util/u_cpu_detect: Drop unused has_tsc
+      util/u_cpu_detect: Detect clflushopt support
+      meson: Check for the __builtin_ia32_clflushopt function
+      intel/clflush: Add support for clflushopt instruction
+      intel/dev/xe: Move placeholder subslice info into XEHP_FEATURES
+      intel/genxml: Ignore tail leading/trailing whitespace in node_validator()
+      intel/genxml: Fix comparing xml when node counts differ
 
-Dmitry Osipenko (3):
-      util/cache_test: Re-add test for disabled cache
-      util/cache_test: Fix disabled cache test using SHADER_CACHE_DISABLE_BY_DEFAULT
-      util/cache_test: Add test for get/put() with disabled cache
+Karol Herbst (1):
+      rusticl/mesa: create contexts with PIPE_CONTEXT_NO_LOD_BIAS
 
-Eric Engestrom (1):
-      ci: skip containers & build jobs when disabling a farm
+Lionel Landwerlin (19):
+      intel/fs: limit register flag interaction of FIND_*LIVE_CHANNEL
+      hasvk: add state cache invalidation back before fast clears
+      blorp: remove unused variable
+      anv: remove ReorderMode from pipeline 3DSTATE_GS emission
+      anv: change anv_batch_emit_merge to also do packing
+      intel/anv: batch stats util
+      intel/decoder: implement accumulated prints
+      anv: move all dynamic state emission to cmd_buffer_flush_dynamic_state
+      anv: rename files to represent their usage
+      anv: categorize partial/final pipeline instruction
+      anv: split 3DSTATE_TE packing between static & dynamic parts
+      anv: split 3DSTATE_VFG emission
+      anv: add a flag tracking occlusion query count change
+      anv: split pipeline programming into instructions
+      vulkan/runtime: add helper to name dirty states
+      anv: add new low level emission & dirty state tracking
+      anv: remove unused state emission
+      anv: split BLEND_STATE packing from BLEND_STATE_POINTERS emit
+      docs: update Anv documentation about dynamic state emission
 
-Karol Herbst (12):
-      asahi: fetch available system memory
-      asahi: lower hadd
-      asahi: handle kernels
-      asahi: handle load_workgroup_size
-      asahi: handle load_global_invocation_id_zero_base
-      asahi: implement get_compute_state_info
-      asahi: implement set_global_binding
-      asahi: implement clear_buffer
-      asahi: gracefully handle allocating linear images
-      asahi: handle images in is_format_supported
-      rusticl/memory: fallback if allocating linear images fails
-      rusticl: enable asahi
+Marek Olšák (3):
+      nir: replace undef only used by ALU opcodes with 0 or NaN
+      nir: remove nir_op_unpack_64 handling from nir_opt_undef
+      ac/llvm: don't convert undef to 0 because nir_opt_undef does it now
 
-Leo Liu (1):
-      radeonsi/vcn: fix the incorrect dt_size
+Matt Coster (1):
+      pvr: Cleanup comments in pvr_physical_device_get_supported_*()
 
-Lionel Landwerlin (4):
-      anv: rename total_batch_size
-      anv: reuse cmd_buffer::total_batch_size
-      intel/measure: track batch buffer sizes
-      intel/nir: rerun lower_tex if it lowers something
+Rohan Garg (1):
+      iris: migrate preemption streamwout wa to WA infra
 
-Mark Collins (1):
-      tu/a7xx: Adapt r3d blits for A7xx
+Samuel Pitoiset (4):
+      radv: avoid emitting SQTT markers for DGC calls
+      radv: add support for DGC with SQTT
+      zink/ci: merge GLCTS testing with GLESx for RADV
+      zink/ci: merge piglit testing with deqp-runner for RADV
 
-Mike Blumenkrantz (6):
-      zink: be more precise about flagging rp changes around unordered u_blitter
-      zink: don't block reordering during ref updates in unordered blits
-      lavapipe: update vbo indices before propagating stride
-      lavapipe: fix pipeline stride propagation
-      zink: fix linear modifier dmabuf imports
-      zink: polaris ci updates
+Sil Vilerino (3):
+      d3d12: Video Decode - Remove unnecessary copy for texture array case
+      util/vl_vlc: Use UINT64_MAX instead of ~0UL with MSVC compiler
+      d3d12: Extend video screen AV1 encode tile support checking
 
-Neal Gompa (1):
-      asahi: Fix 32-bit x86 build with correct data type for overflow error message
+Tapani Pälli (1):
+      driconf: use lower_depth_range_rate for The Spirit and The Mouse
 
-Samuel Pitoiset (2):
-      radv/amdgpu: fix executing secondaries without IB2
-      radv/amdgpu: do not copy the original chain link for IBs
+Vignesh Raman (2):
+      Do explicit cast to suppress clang warnings
+      ci: enforce -Wimplicit-const-int-float-conversion for clang
 
 Vlad Schiller (1):
-      pvr: Implement VK_KHR_format_feature_flags2
+      pvr: Remove PVR_WINSYS_BO_FLAG_ZERO_ON_ALLOC flag
+
+antonino (3):
+      vulkan/wsi: add `vk_wsi_force_swapchain_to_current_extent` driconf
+      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "The Talos Principle"
+      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "Serious Sam Fusion"
 
