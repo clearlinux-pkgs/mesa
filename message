@@ -1,102 +1,65 @@
-Updating from ad6557b101da3ec1b4f7c2e0a6fb0a2ee9a4cda8 to 12967c8dcb61c07196c0088082c7d21e0cf60f2c
+Updating from 12967c8dcb61c07196c0088082c7d21e0cf60f2c to a2ead228acb883efbb91c79b12ac8bb19f06d3e8
 
-Chris Spencer (2):
-      anv/video: use correct enum value for max level IDC
-      radv/video: use correct enum value for max level IDC
+Danylo Piliaiev (1):
+      ir3/lower_tex_prefetch: Fix crash with lowered load_barycentric_at_offset
 
-Dave Airlie (2):
-      llvmpipe: move to nir lowering for fquantize2f16
-      rusticl: don't store ptrs to nir_variables across opt passes.
+Eric Engestrom (4):
+      docs: add release notes for 23.1.7
+      docs: add sha256sum for 23.1.7
+      docs: update calendar for 23.1.7
+      docs: add one more 23.1.x release
 
-David Heidelberg (2):
-      Revert "ci: disable Google Freedreno farm, currently timeouting on all jobs"
-      ci/farms: no need to check RUNNER_TAG for Collabora farm
+Iago Toral Quiroga (3):
+      v3dv: be more precise in vkGetImageSubresourceLayout
+      v3dv: handle pPlaneLayouts in VkImageDrmFormatModifierExplicitCreateInfoEXT
+      v3dv: bump up MAX_UNIFORM_BUFFERS to 16
 
-Faith Ekstrand (5):
-      nvk: Clean up includes
-      nvk: Add include guards to nvk_bo_sync.h
-      nvk: SPDX everything
-      nouveau/nil: SPDX everything
-      nouveau/mme: SPDX everything
+Lionel Landwerlin (3):
+      anv: create individual logical engines on i915 when possible
+      anv: Copy/Clear MSAA images over companion RCS while we are on compute
+      pps-producer: add ability to select device with DRI_PRIME
 
-Gert Wollny (4):
-      r600/sfn: Make use of four clause local registers
-      r600/sfn: drop unused ControlFlowInstr type enum
-      r600/sfn: factor out resource as extra class
-      r600/sfn: Simplify dependency chain for index loads on EG
+Martin Roukala (né Peres) (2):
+      radv/ci: drop the auto-reboot-on-hang for vkcts-navi10
+      radv/ci: use the default kernel on vkcts-navi10
 
-Jordan Justen (12):
-      anvil,hasvk: Rename need_clflush to need_flush
-      intel/common: Move intel_clflush.h to intel_mem.h/intel_mem.c
-      anvil,hasvk: Replace intel_clflush_range with intel_flush_range
-      intel/common: Add intel_flush_range_no_fence
-      anvil,hasvk: Use intel_flush_range_no_fence to flush command buffers
-      util/u_cpu_detect: Drop unused has_tsc
-      util/u_cpu_detect: Detect clflushopt support
-      meson: Check for the __builtin_ia32_clflushopt function
-      intel/clflush: Add support for clflushopt instruction
-      intel/dev/xe: Move placeholder subslice info into XEHP_FEATURES
-      intel/genxml: Ignore tail leading/trailing whitespace in node_validator()
-      intel/genxml: Fix comparing xml when node counts differ
+Mike Blumenkrantz (1):
+      aux/tc: handle stride mismatch during rp-optimized subdata
 
-Karol Herbst (1):
-      rusticl/mesa: create contexts with PIPE_CONTEXT_NO_LOD_BIAS
+Piotr Kocia (1):
+      glsl: ir_function_param_visitor::visit_enter always true condition
 
-Lionel Landwerlin (19):
-      intel/fs: limit register flag interaction of FIND_*LIVE_CHANNEL
-      hasvk: add state cache invalidation back before fast clears
-      blorp: remove unused variable
-      anv: remove ReorderMode from pipeline 3DSTATE_GS emission
-      anv: change anv_batch_emit_merge to also do packing
-      intel/anv: batch stats util
-      intel/decoder: implement accumulated prints
-      anv: move all dynamic state emission to cmd_buffer_flush_dynamic_state
-      anv: rename files to represent their usage
-      anv: categorize partial/final pipeline instruction
-      anv: split 3DSTATE_TE packing between static & dynamic parts
-      anv: split 3DSTATE_VFG emission
-      anv: add a flag tracking occlusion query count change
-      anv: split pipeline programming into instructions
-      vulkan/runtime: add helper to name dirty states
-      anv: add new low level emission & dirty state tracking
-      anv: remove unused state emission
-      anv: split BLEND_STATE packing from BLEND_STATE_POINTERS emit
-      docs: update Anv documentation about dynamic state emission
+Sagar Ghuge (13):
+      anv: Add helper to create companion RCS command buffer
+      anv: Split out End/Destroy/Reset cmd buffer code into helper
+      anv: Handle companion RCS in end/destory/reset code path
+      intel: Add helper to create/destroy i915 VM
+      intel: Pass virtual memory address space ID while creating context
+      anv: Create companion RCS engine
+      anv: Move compute specfic bits under compute queue init
+      anv: Execute RCS init batch on companion RCS context/engine
+      anv: Setup companion RCS command buffer submission
+      anv: Execute an empty batch to sync main and companion RCS batch
+      anv: Add secondary companion RCS cmd buffer to primary
+      anv: Skip layout transition on the compute queue
+      anv: Extract batch print code to anv_print_batch helper
 
-Marek Olšák (3):
-      nir: replace undef only used by ALU opcodes with 0 or NaN
-      nir: remove nir_op_unpack_64 handling from nir_opt_undef
-      ac/llvm: don't convert undef to 0 because nir_opt_undef does it now
-
-Matt Coster (1):
-      pvr: Cleanup comments in pvr_physical_device_get_supported_*()
-
-Rohan Garg (1):
-      iris: migrate preemption streamwout wa to WA infra
-
-Samuel Pitoiset (4):
-      radv: avoid emitting SQTT markers for DGC calls
-      radv: add support for DGC with SQTT
-      zink/ci: merge GLCTS testing with GLESx for RADV
-      zink/ci: merge piglit testing with deqp-runner for RADV
-
-Sil Vilerino (3):
-      d3d12: Video Decode - Remove unnecessary copy for texture array case
-      util/vl_vlc: Use UINT64_MAX instead of ~0UL with MSVC compiler
-      d3d12: Extend video screen AV1 encode tile support checking
+Samuel Pitoiset (3):
+      radv: fix interactions with primitives generated queries and pipeline stats
+      radv: skip DGC calls when the indirect sequence count is zero with a predicate
+      radv: avoid emitting THREAD_TRACE_MARKER for predicated draws/dispatches
 
 Tapani Pälli (1):
-      driconf: use lower_depth_range_rate for The Spirit and The Mouse
+      mesa: disable snorm readpix clamping with EXT_render_snorm
 
-Vignesh Raman (2):
-      Do explicit cast to suppress clang warnings
-      ci: enforce -Wimplicit-const-int-float-conversion for clang
+Tatsuyuki Ishi (2):
+      radv: Fix IB size for RADV_DEBUG=hang.
+      radv: Fix dumping vertex descriptors with RADV_DEBUG=hang.
+
+Timothy Arceri (2):
+      glsl: fix out params in glsl to nir
+      glsl_to_nir: add more unhandled function types
 
 Vlad Schiller (1):
-      pvr: Remove PVR_WINSYS_BO_FLAG_ZERO_ON_ALLOC flag
-
-antonino (3):
-      vulkan/wsi: add `vk_wsi_force_swapchain_to_current_extent` driconf
-      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "The Talos Principle"
-      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "Serious Sam Fusion"
+      pvr: Add VK_KHR_driver_properties
 
