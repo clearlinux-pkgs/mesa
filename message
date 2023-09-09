@@ -1,65 +1,60 @@
-Updating from 12967c8dcb61c07196c0088082c7d21e0cf60f2c to a2ead228acb883efbb91c79b12ac8bb19f06d3e8
+Updating from a2ead228acb883efbb91c79b12ac8bb19f06d3e8 to 6a89507be8a94fe258513812b8934d7fe3af462c
 
-Danylo Piliaiev (1):
-      ir3/lower_tex_prefetch: Fix crash with lowered load_barycentric_at_offset
+Bas Nieuwenhuizen (1):
+      radv: Use a double jump to limit nops in DGC for dynamic sequence count.
 
-Eric Engestrom (4):
-      docs: add release notes for 23.1.7
-      docs: add sha256sum for 23.1.7
-      docs: update calendar for 23.1.7
-      docs: add one more 23.1.x release
+Danylo Piliaiev (2):
+      tu: Exclude SP_UNKNOWN_AE73 from reg stomping
+      tu: Call tu_cs_dbg_stomp_regs with appropriate GPU gen
 
-Iago Toral Quiroga (3):
-      v3dv: be more precise in vkGetImageSubresourceLayout
-      v3dv: handle pPlaneLayouts in VkImageDrmFormatModifierExplicitCreateInfoEXT
-      v3dv: bump up MAX_UNIFORM_BUFFERS to 16
+Dave Airlie (1):
+      llvmpipe: enable f16 paths on aarch64.
 
-Lionel Landwerlin (3):
-      anv: create individual logical engines on i915 when possible
-      anv: Copy/Clear MSAA images over companion RCS while we are on compute
-      pps-producer: add ability to select device with DRI_PRIME
+David Heidelberg (1):
+      ci/traces: extend no-output timeout by 5 minutes
 
-Martin Roukala (né Peres) (2):
-      radv/ci: drop the auto-reboot-on-hang for vkcts-navi10
-      radv/ci: use the default kernel on vkcts-navi10
+David Rosca (1):
+      frontends/va: Flush after unmapping VAImageBufferType
+
+Eric Engestrom (2):
+      ci: taking igalia farm offline
+      ci/b2c: drop logic to remove install.tar
+
+Georg Lehmann (2):
+      aco/gfx11: don't use bfe for local_invocation_id if the others are always 0
+      nir/opt_algebraic: remove broken fddx/fddy patterns
+
+Konstantin Seurer (1):
+      radv: Don't use the depth image view for depth bias emission
+
+Lionel Landwerlin (2):
+      anv: remove aux checking asserts
+      anv: bound image usages to the associated queue family
 
 Mike Blumenkrantz (1):
-      aux/tc: handle stride mismatch during rp-optimized subdata
+      zink: always add a per-prog ref for gpl libs
 
-Piotr Kocia (1):
-      glsl: ir_function_param_visitor::visit_enter always true condition
+Pierre-Eric Pelloux-Prayer (3):
+      radeonsi/sdma: use multiple commands if required
+      radv/sdma: use multiple commands if required
+      radv/sdma: use correct limits for gfx10.3
 
-Sagar Ghuge (13):
-      anv: Add helper to create companion RCS command buffer
-      anv: Split out End/Destroy/Reset cmd buffer code into helper
-      anv: Handle companion RCS in end/destory/reset code path
-      intel: Add helper to create/destroy i915 VM
-      intel: Pass virtual memory address space ID while creating context
-      anv: Create companion RCS engine
-      anv: Move compute specfic bits under compute queue init
-      anv: Execute RCS init batch on companion RCS context/engine
-      anv: Setup companion RCS command buffer submission
-      anv: Execute an empty batch to sync main and companion RCS batch
-      anv: Add secondary companion RCS cmd buffer to primary
-      anv: Skip layout transition on the compute queue
-      anv: Extract batch print code to anv_print_batch helper
+Sagar Ghuge (3):
+      iris: Enable always flush cache with DEBUG_STALL option
+      intel/genxml: Add STATE_COMPUTE_MODE instruction
+      anv: Program and emit STATE_COMPUTE_MODE
 
-Samuel Pitoiset (3):
-      radv: fix interactions with primitives generated queries and pipeline stats
-      radv: skip DGC calls when the indirect sequence count is zero with a predicate
-      radv: avoid emitting THREAD_TRACE_MARKER for predicated draws/dispatches
+Samuel Pitoiset (4):
+      radv: adjust next stage for VS prologs and merged shaders compiled separately
+      radv: adjust emitted prolog regs for merged shaders compiled separately
+      radv: do not use pre-compiled prologs when VS is compiled separately
+      radv: remove useless PIPELINE_CREATE_2_LIBRARY_BIT check for retained shaders
 
-Tapani Pälli (1):
-      mesa: disable snorm readpix clamping with EXT_render_snorm
+Tatsuyuki Ishi (1):
+      radv/amdgpu: Use rwlock to protect access to virtual BOs.
 
-Tatsuyuki Ishi (2):
-      radv: Fix IB size for RADV_DEBUG=hang.
-      radv: Fix dumping vertex descriptors with RADV_DEBUG=hang.
-
-Timothy Arceri (2):
-      glsl: fix out params in glsl to nir
-      glsl_to_nir: add more unhandled function types
-
-Vlad Schiller (1):
-      pvr: Add VK_KHR_driver_properties
+Timothy Arceri (3):
+      nir: replace use of nir_src_copy()
+      nir: remove unused nir_src_copy()
+      nir: remove unused param from nir_alu_src_copy()
 
