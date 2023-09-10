@@ -1,60 +1,76 @@
-Updating from a2ead228acb883efbb91c79b12ac8bb19f06d3e8 to 6a89507be8a94fe258513812b8934d7fe3af462c
-
-Bas Nieuwenhuizen (1):
-      radv: Use a double jump to limit nops in DGC for dynamic sequence count.
-
-Danylo Piliaiev (2):
-      tu: Exclude SP_UNKNOWN_AE73 from reg stomping
-      tu: Call tu_cs_dbg_stomp_regs with appropriate GPU gen
-
-Dave Airlie (1):
-      llvmpipe: enable f16 paths on aarch64.
-
-David Heidelberg (1):
-      ci/traces: extend no-output timeout by 5 minutes
-
-David Rosca (1):
-      frontends/va: Flush after unmapping VAImageBufferType
+Updating from 6a89507be8a94fe258513812b8934d7fe3af462c to 39fca243bb914cea853e9d3502f1f38e6bf96ad4
 
 Eric Engestrom (2):
-      ci: taking igalia farm offline
-      ci/b2c: drop logic to remove install.tar
+      ci: drop clover leftover
+      Revert "ci: taking igalia farm offline"
 
-Georg Lehmann (2):
-      aco/gfx11: don't use bfe for local_invocation_id if the others are always 0
-      nir/opt_algebraic: remove broken fddx/fddy patterns
+Faith Ekstrand (3):
+      nvk: Don't add a dummy attachment when gl_SampleMask is written
+      nvk: Set the discard bit for Z/S self-deps
+      nvk: Invalidate the texture cache in PipelineBarrier
 
-Konstantin Seurer (1):
-      radv: Don't use the depth image view for depth bias emission
+Ian Romanick (2):
+      intel/compiler: Combine control barriers with identical memory semantics
+      intel/compiler: Don't evict for workgroup-scope fences
 
-Lionel Landwerlin (2):
-      anv: remove aux checking asserts
-      anv: bound image usages to the associated queue family
+Jordan Justen (1):
+      intel/dev: Update device string for MTL PCI ID 0x7d55
 
-Mike Blumenkrantz (1):
-      zink: always add a per-prog ref for gpl libs
+Kenneth Graunke (8):
+      nir: Fix function parameter indentation in nir_opt_barriers.c
+      nir: Add an optimization pass to reduce barrier modes
+      nir: Reduce the scope of shared memory barriers
+      lavapipe: Don't delete control barriers
+      virgl, nir_to_tgsi: Add a hack for promoting partial memory barriers
+      dxil: Set UAV_FENCE_THREAD_GROUP any time global isn't required
+      glsl: Use nir_opt_barrier_modes() to drop unnecessary barriers
+      anv: Use nir_opt_barrier_modes() to drop unnecessary barriers
 
-Pierre-Eric Pelloux-Prayer (3):
-      radeonsi/sdma: use multiple commands if required
-      radv/sdma: use multiple commands if required
-      radv/sdma: use correct limits for gfx10.3
+Marek Olšák (1):
+      meson: use llvm-config instead of cmake to fix linking errors with meson 1.2.1
 
-Sagar Ghuge (3):
-      iris: Enable always flush cache with DEBUG_STALL option
-      intel/genxml: Add STATE_COMPUTE_MODE instruction
-      anv: Program and emit STATE_COMPUTE_MODE
+Mike Blumenkrantz (40):
+      zink: use a pointer to simplify submit struct mechanics
+      zink: make zink_resource_image_barrier2_init public
+      zink: add a third submitinfo (unused for now)
+      zink: make submitinfo handling easier to manage with enum
+      zink: add another submitinfo for fd semaphore waits
+      zink: add a screen cache for fd semaphores
+      zink: add a util for getting cached fd semaphores
+      zink: hook up cached fd semaphore usage for batch signal/waits
+      zink: handle implicit sync for dmabufs
+      zink: handle multi-plane implicit sync
+      zink: ci updates
+      zink: set is_xfb=false for all i/o variables
+      zink: reorder bindless io lowering
+      zink: fix typing on bindless io lowering
+      zink: delete some bindless io lowering code
+      zink: use nir_io_semantics::num_slots for indirect var creation
+      zink: simplify an arrayed io check during variable creation
+      zink: use explicit stride from types instead of copying old_var stride
+      zink: use MAX_PATCH_VERTICES directly for arrayed io var sizing
+      zink: use explicit sizing for builtins when creating variables
+      zink: create new vars without copying existing ones
+      zink: add a new linker pass to handle mismatched i/o components
+      zink: use right function to get src_type in eliminate_io_wrmasks
+      zink: re-rework i/o variable handling to make having variables entirely optional
+      ci: bump VVL to 1.3.263
+      zink: simplify redundant is_buffer check
+      zink: use VkFormatProperties3
+      lavapipe: handle VkHostImageCopyDevicePerformanceQueryEXT
+      lavapipe: don't advertise UNDEFINED layout for HIC
+      zink: hook up VK_EXT_host_image_copy
+      zink: move mem type detection up in file
+      zink: disable HIC without resizable BAR
+      zink: add a fixup method for extra driver props
+      zink: fix some off-by-one indentation
+      zink: use some return codes for check_ici errors
+      zink: check/use suboptimal HIC during ici init
+      zink: use HIC for image subdata when possible
+      zink: slightly refactor psiz deletion during linking
+      zink: delete all psiz=1.0 stores if maintenance5 is present
+      nir/inline_uniforms: fix oob access with nir_find_inlinable_uniforms
 
-Samuel Pitoiset (4):
-      radv: adjust next stage for VS prologs and merged shaders compiled separately
-      radv: adjust emitted prolog regs for merged shaders compiled separately
-      radv: do not use pre-compiled prologs when VS is compiled separately
-      radv: remove useless PIPELINE_CREATE_2_LIBRARY_BIT check for retained shaders
-
-Tatsuyuki Ishi (1):
-      radv/amdgpu: Use rwlock to protect access to virtual BOs.
-
-Timothy Arceri (3):
-      nir: replace use of nir_src_copy()
-      nir: remove unused nir_src_copy()
-      nir: remove unused param from nir_alu_src_copy()
+Yiwei Zhang (1):
+      venus: expose KHR_external_fence/sempahore_fd extensions
 
