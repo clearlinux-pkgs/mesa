@@ -1,13 +1,142 @@
-Updating from 39fca243bb914cea853e9d3502f1f38e6bf96ad4 to 2d4fe5f229791fde52846b3f583c12508b5109d6
+Updating from 2d4fe5f229791fde52846b3f583c12508b5109d6 to 23f9e89fce63362698fbd72ed0af05f43206ee68
 
-Dave Airlie (1):
-      clover/llvm: move to modern pass manager.
+Alba Mendez (1):
+      meson: support installation tags
+
+Alyssa Rosenzweig (1):
+      nir: Add nir_function_instructions_pass helper
+
+Caio Oliveira (1):
+      util: Add convenience macros for linear allocator
+
+Chia-I Wu (1):
+      winsys/radeon: fix a race between bo import and destroy
+
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to f7db20b03de6896d013826c0a731bc4417c1a5a0
+
+Connor Abbott (13):
+      tu: Remove MSAA draw state
+      tu: Merge SAMPLE_LOCATIONS and SAMPLE_LOCATIONS_ENABLE draw states
+      tu: Merge PC_RASTER_CNTL into RAST draw state
+      tu: Stop reusing base Vulkan dynamic state enums
+      tu: Merge depth/stencil draw states
+      tu: Rename PrimID-related registers
+      tu, freedreno/a6xx: Don't use VS for PrimID passthru state
+      tu: Pull entangled shader state into program config
+      ir3: Add ir3_find_input_loc() helper
+      tu: Split up tu6_emit_vpc()
+      freedreno, ir3, tu: Constify various uses of ir3_shader_variant
+      ir3: Add helper to determine when variant exceeds safe constlen
+      tu: Split program draw state into per-shader states
+
+Corentin Noël (1):
+      ci: disable Collabora's LAVA lab for maintenance
+
+Daniel Stone (5):
+      ci: Declare stages before jobs
+      ci/radeonsi: Add new flake
+      ci/d3d12: Add new flake
+      ci/intel: Add new skqp flake
+      ci/zink: Add new zink-lvp flakes
+
+Dave Airlie (18):
+      nir: use a _clone so users calling their variable clone don't get a warning
+      nir: rename nir_inline_functions.c to nir_functions.c
+      nir: use nir_function_instructions_pass in the inliner.
+      nir: move the libclc lowering over to functions file.
+      nir/functions: use helper to get function for a name.
+      nir/functions: put link state into a struct
+      nir/functions: move linker pass to new helper
+      nir: add nir function clone
+      nir: don't inline linked functions
+      gallivm/nir: split prepasses out to make per-function work easier.
+      gallivm: rework translator to allow per-impl work.
+      spirv/nir: parse function control and store in nir.
+      nir: add driver_functions option to avoid inlining.
+      nir: add a function usage tracker
+      rusticl: use cleanup funcs
+      gallivm: add support for function calling
+      llvmpipe/cs: add support for function calls.
+      llvmpipe: enable driver functions.
+
+Emma Anholt (1):
+      ci/freedreno: Add another excessive-constlen UBO skip.
 
 Erico Nunes (1):
-      lima: fix plbu block stride calculation
+      ci: disable lima LAVA lab for maintance
 
-Konstantin Seurer (3):
-      radv/rt: Store NIR shaders separately
-      radv/rt: Add monolithic raygen lowering
-      radv/rt: Enable monolithic pipelines
+Ganesh Belgur Ramachandra (2):
+      radeonsi: stores bottom_edge_rule option in the rasterizer state
+      radeonsi: sets OPTIMAL_BIN_SELECTION to 0 if using bottom_edge_rule
+
+Iago Toral Quiroga (2):
+      v3dv: add support for sampling simple 2D linear textures
+      v3dv: expand sampling from linear image hack to support multi-planar images
+
+Iván Briano (9):
+      anv: fix missing 3DSTATE_SBE_CLIP emission
+      anv: ensure pipelines have all state
+      anv: tell blorp to do mesh stuff only if it's enabled
+      blorp: fix hangs with mesh enabled
+      anv: use a simpler MUE layout for fast linked libraries
+      anv: track what kind of pipeline a fragment shader may be used with
+      intel/fs: read viewport and layer from the FS payload
+      intel/fs: handle URB setup for fast linked mesh pipelines
+      anv: enable VK_EXT_mesh_shader where supported
+
+Konstantin Seurer (2):
+      radv/ci: Document new flake
+      vulkan/properties: Handle unsized arrays properly
+
+Lionel Landwerlin (5):
+      anv: fix 3DSTATE_VFG emission
+      anv: emit 3DSTATE_URB_ALLOC_(MESH|TASK) only when mesh shaders are enabled
+      anv: ensure mesh pipeline have all pre-rasterization stages disabled
+      anv: ensure partially packed instructions are emitted in the pipeline
+      anv: fix missing 3DSTATE_SBE_MESH emission
+
+Mike Blumenkrantz (3):
+      zink: add ZINK_DEBUG=quiet
+      zink: imply ZINK_DEBUG=quiet if ZINK_DEBUG=optimal_keys is set on turnip
+      zink: set optimal_keys for turnip jobs
+
+Paulo Zanoni (5):
+      anv: rename the vm_bind vfuncs
+      anv: add a new vm_bind vfunc
+      anv/xe: make vm_binds async
+      anv/xe: return failure in case waiting for the vm_bind syncobj fails
+      anv: remove misleading comment about batch_len
+
+Pavel Ondračka (1):
+      r300: reduce number of iterations for vertex shader loops
+
+Rob Clark (15):
+      ir3+tu: Simplify ir3_find_sysval_regid callers
+      freedreno/a6xx: Drop unused screen args
+      freedreno/a6xx: Re-work fd6_emit_shader
+      freedreno/a6xx: Re-write the function-of-doom
+      freedreno: Implement ATI_meminfo
+      freedreno/a6xx: ARB_post_depth_coverage
+      freedreno/a6xx: ARB_sample_locations
+      freedreno/a6xx: ARB_texture_filter_minmax
+      freedreno/a6xx: EXT_demote_to_helper_invocation
+      freedreno/a6xx: EXT_shader_image_load_formatted
+      freedreno/a6xx: EXT_depth_bounds_test
+      freedreno/a6xx: Use pipe_blit_info::sample0_only
+      freedreno/a6xx: Handle PIPE_BIND_BLENDABLE
+      freedreno/a6xx: ARB_shader_viewport_layer_array
+      tu: Fix heap size
+
+Roman Stratiienko (1):
+      v3dv: Rely on the internal tiled flag instead of the common vk structure
+
+Samuel Pitoiset (1):
+      radv: fix enabling DGCC
+
+Sergi Blanch Torne (1):
+      Revert "ci: disable Collabora's LAVA lab for maintance"
+
+Xaver Hugl (1):
+      vulkan wsi: add support for PresentOptionAsyncMayTear
 
