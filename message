@@ -1,142 +1,86 @@
-Updating from 2d4fe5f229791fde52846b3f583c12508b5109d6 to 23f9e89fce63362698fbd72ed0af05f43206ee68
+Updating from 23f9e89fce63362698fbd72ed0af05f43206ee68 to 75bcebbb9e68f28599ea8c91bdbc778e54cd2d48
 
-Alba Mendez (1):
-      meson: support installation tags
-
-Alyssa Rosenzweig (1):
-      nir: Add nir_function_instructions_pass helper
-
-Caio Oliveira (1):
-      util: Add convenience macros for linear allocator
-
-Chia-I Wu (1):
-      winsys/radeon: fix a race between bo import and destroy
-
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to f7db20b03de6896d013826c0a731bc4417c1a5a0
-
-Connor Abbott (13):
-      tu: Remove MSAA draw state
-      tu: Merge SAMPLE_LOCATIONS and SAMPLE_LOCATIONS_ENABLE draw states
-      tu: Merge PC_RASTER_CNTL into RAST draw state
-      tu: Stop reusing base Vulkan dynamic state enums
-      tu: Merge depth/stencil draw states
-      tu: Rename PrimID-related registers
-      tu, freedreno/a6xx: Don't use VS for PrimID passthru state
-      tu: Pull entangled shader state into program config
-      ir3: Add ir3_find_input_loc() helper
-      tu: Split up tu6_emit_vpc()
-      freedreno, ir3, tu: Constify various uses of ir3_shader_variant
-      ir3: Add helper to determine when variant exceeds safe constlen
-      tu: Split program draw state into per-shader states
+Caio Oliveira (4):
+      compiler/types: Use right hash for function types
+      compiler/types: Don't duplicate empty string
+      compiler/types: Constify a couple of pointers in glsl_type
+      compiler/types: Remove unused GLSL_TYPE_FUNCTION and related functions
 
 Corentin Noël (1):
-      ci: disable Collabora's LAVA lab for maintenance
+      llvmpipe: make sure to initialize the lp_setup_context slots with the default values
 
-Daniel Stone (5):
-      ci: Declare stages before jobs
-      ci/radeonsi: Add new flake
-      ci/d3d12: Add new flake
-      ci/intel: Add new skqp flake
-      ci/zink: Add new zink-lvp flakes
+Dave Airlie (3):
+      radv: don't emit event code on video queues.
+      spirv: use a pointer sized int type for opencl event_t
+      clover: fix parameter arguments since recent translator changes.
 
-Dave Airlie (18):
-      nir: use a _clone so users calling their variable clone don't get a warning
-      nir: rename nir_inline_functions.c to nir_functions.c
-      nir: use nir_function_instructions_pass in the inliner.
-      nir: move the libclc lowering over to functions file.
-      nir/functions: use helper to get function for a name.
-      nir/functions: put link state into a struct
-      nir/functions: move linker pass to new helper
-      nir: add nir function clone
-      nir: don't inline linked functions
-      gallivm/nir: split prepasses out to make per-function work easier.
-      gallivm: rework translator to allow per-impl work.
-      spirv/nir: parse function control and store in nir.
-      nir: add driver_functions option to avoid inlining.
-      nir: add a function usage tracker
-      rusticl: use cleanup funcs
-      gallivm: add support for function calling
-      llvmpipe/cs: add support for function calls.
-      llvmpipe: enable driver functions.
+Emma Anholt (4):
+      ci/anv: Drop DEQP_VER:vk setting.
+      ci/anv: Drop "-vk" from the job name.
+      ci/anv: Add a manual full VK run for TGL.
+      ci/anv: Add testing on JSL.
 
-Emma Anholt (1):
-      ci/freedreno: Add another excessive-constlen UBO skip.
+Eric Engestrom (4):
+      bin/ci_run_n_monitor: print in which repo we're looking for the pipeline
+      bin/ci_run_n_monitor: automatically pick MR pipelines when they exist
+      ci: remove duplicate fork pipeline in MRs
+      ci_run_n_monitor: add comment to explain "MR > fork" logic
 
-Erico Nunes (1):
-      ci: disable lima LAVA lab for maintance
+Hans-Kristian Arntzen (2):
+      wsi/x11: Fix potential deadlock in present ID.
+      wsi/x11: Don't allow signal_present_id to rewind.
 
-Ganesh Belgur Ramachandra (2):
-      radeonsi: stores bottom_edge_rule option in the rasterizer state
-      radeonsi: sets OPTIMAL_BIN_SELECTION to 0 if using bottom_edge_rule
+Iago Toral Quiroga (1):
+      v3dv: don't assume that bound descriptors have been written
 
-Iago Toral Quiroga (2):
-      v3dv: add support for sampling simple 2D linear textures
-      v3dv: expand sampling from linear image hack to support multi-planar images
+Illia Polishchuk (2):
+      zink: move find_sampler_var from zink to nir core
+      nir: fix invalid sampler search by texture id
 
-Iván Briano (9):
-      anv: fix missing 3DSTATE_SBE_CLIP emission
-      anv: ensure pipelines have all state
-      anv: tell blorp to do mesh stuff only if it's enabled
-      blorp: fix hangs with mesh enabled
-      anv: use a simpler MUE layout for fast linked libraries
-      anv: track what kind of pipeline a fragment shader may be used with
-      intel/fs: read viewport and layer from the FS payload
-      intel/fs: handle URB setup for fast linked mesh pipelines
-      anv: enable VK_EXT_mesh_shader where supported
+Iván Briano (1):
+      intel/fs: use ffsll so we don't explode on 32 bits
 
-Konstantin Seurer (2):
-      radv/ci: Document new flake
-      vulkan/properties: Handle unsized arrays properly
+Juston Li (2):
+      venus: sync protocol for VK_EXT_vertex_input_dynamic_state
+      venus: implement VK_EXT_vertex_input_dynamic_state
 
-Lionel Landwerlin (5):
-      anv: fix 3DSTATE_VFG emission
-      anv: emit 3DSTATE_URB_ALLOC_(MESH|TASK) only when mesh shaders are enabled
-      anv: ensure mesh pipeline have all pre-rasterization stages disabled
-      anv: ensure partially packed instructions are emitted in the pipeline
-      anv: fix missing 3DSTATE_SBE_MESH emission
+Karol Herbst (1):
+      docs/features: cl_khr_3d_image_writes needs driver support
 
-Mike Blumenkrantz (3):
-      zink: add ZINK_DEBUG=quiet
-      zink: imply ZINK_DEBUG=quiet if ZINK_DEBUG=optimal_keys is set on turnip
-      zink: set optimal_keys for turnip jobs
+Leo Liu (1):
+      Revert "frontends/va: Also map VAImageBufferType for reading"
 
-Paulo Zanoni (5):
-      anv: rename the vm_bind vfuncs
-      anv: add a new vm_bind vfunc
-      anv/xe: make vm_binds async
-      anv/xe: return failure in case waiting for the vm_bind syncobj fails
-      anv: remove misleading comment about batch_len
+Martin Roukala (né Peres) (2):
+      zink/ci: automatically reboot when hitting a kernel BUG on vangogh
+      zink/ci: document more flakes seen on vangogh
 
-Pavel Ondračka (1):
-      r300: reduce number of iterations for vertex shader loops
+Mike Blumenkrantz (10):
+      aux/tc: fix staging buffer sizing for texture_subdata
+      aux/tc: fix address calc for segmented texture subdata
+      zink: ci updates
+      lavapipe: KHR_map_memory2
+      zink: slightly refactor pipeline compile selection
+      zink: add a flag for combined pipeline compile for doing FAIL_ON_PIPELINE_COMPILE_REQUIRED
+      zink: remove an intermediate variable in pipeline compile selection
+      zink: use FAIL_ON_PIPELINE_COMPILE_REQUIRED for GPL path
+      zink: pass a stage mask to pipeline create functions
+      glsl: check for xfb setting xfb info
 
-Rob Clark (15):
-      ir3+tu: Simplify ir3_find_sysval_regid callers
-      freedreno/a6xx: Drop unused screen args
-      freedreno/a6xx: Re-work fd6_emit_shader
-      freedreno/a6xx: Re-write the function-of-doom
-      freedreno: Implement ATI_meminfo
-      freedreno/a6xx: ARB_post_depth_coverage
-      freedreno/a6xx: ARB_sample_locations
-      freedreno/a6xx: ARB_texture_filter_minmax
-      freedreno/a6xx: EXT_demote_to_helper_invocation
-      freedreno/a6xx: EXT_shader_image_load_formatted
-      freedreno/a6xx: EXT_depth_bounds_test
-      freedreno/a6xx: Use pipe_blit_info::sample0_only
-      freedreno/a6xx: Handle PIPE_BIND_BLENDABLE
-      freedreno/a6xx: ARB_shader_viewport_layer_array
-      tu: Fix heap size
+Rhys Perry (3):
+      nir/lower_system_values change num_workgroups to uint32_t
+      radv: optimize mesh workgroup ID using ts_mesh_dispatch_dimensions
+      radv: use shortcut_1d_workgroup_id
 
-Roman Stratiienko (1):
-      v3dv: Rely on the internal tiled flag instead of the common vk structure
+Rohan Garg (1):
+      intel/genxml: update PIPE_CONTROL instruction for dg2
 
-Samuel Pitoiset (1):
-      radv: fix enabling DGCC
+Samuel Pitoiset (2):
+      radv: fix emitting SQTT userdata when CAM is needed
+      radv: fix capturing RGP on RDNA3 with more than one Shader Engine
 
-Sergi Blanch Torne (1):
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Timothy Arceri (1):
+      glsl: remove field from gl_shader_program
 
-Xaver Hugl (1):
-      vulkan wsi: add support for PresentOptionAsyncMayTear
+Yiwei Zhang (1):
+      venus: fix a device memory report leak
 
