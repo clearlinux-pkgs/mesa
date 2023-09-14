@@ -1,86 +1,92 @@
-Updating from 23f9e89fce63362698fbd72ed0af05f43206ee68 to 75bcebbb9e68f28599ea8c91bdbc778e54cd2d48
+Updating from 75bcebbb9e68f28599ea8c91bdbc778e54cd2d48 to 16527f6ffd0129f2f6e1728e388cdc14b60240ca
 
-Caio Oliveira (4):
-      compiler/types: Use right hash for function types
-      compiler/types: Don't duplicate empty string
-      compiler/types: Constify a couple of pointers in glsl_type
-      compiler/types: Remove unused GLSL_TYPE_FUNCTION and related functions
+Caio Oliveira (16):
+      compiler/types: Move GLSL specific builtin structs into glsl/
+      glsl: Add missing glsl_types initialization to test_optpass
+      glsl: Don't create struct type builtins
+      compiler/types: Add extra level of macro to builtin_macros
+      compiler/types: Use designated initializer syntax to specify builtins
+      compiler/types: Move local cache details to implementation file
+      compiler/types: Add a mem_ctx for the glsl_type_cache
+      compiler/types: Use type cache mem_ctx for hash tables
+      compiler/types: Don't store a mem_ctx per type
+      compiler/types: Simplify clearing the glsl_type_cache
+      compiler/types: Move static asserts about glsl_type to a central place
+      compiler/types: Store builtin types directly as data
+      compiler/types: Use a linear (arena) allocator for glsl_types
+      compiler/types: Make struct glsl_type visible to C code
+      compiler/types: Add workaround to use builtin_type_macros.h in C
+      compiler/types: Move builtin type initialization to C
 
-Corentin Noël (1):
-      llvmpipe: make sure to initialize the lp_setup_context slots with the default values
+Daniel Stone (6):
+      ci/radeonsi: Skip more really slow tests
+      ci/zink: Add another conversion fail on a618
+      ci: Move farm-disable rules before anything else
+      ci: Always set user container jobs to manual
+      ci: Use container rules for containers
+      ci: Only look at file changes for MRs
 
-Dave Airlie (3):
-      radv: don't emit event code on video queues.
-      spirv: use a pointer sized int type for opencl event_t
-      clover: fix parameter arguments since recent translator changes.
+Danylo Piliaiev (4):
+      freedreno/replay: Add limited support for KGSL
+      freedreno/rddecompiler: Update to handle a7xx
+      freedreno/replay: Add "print" instr to ir3 asm to be used in replay
+      freedreno/replay: Add "gpu_print" function for command streams
 
-Emma Anholt (4):
-      ci/anv: Drop DEQP_VER:vk setting.
-      ci/anv: Drop "-vk" from the job name.
-      ci/anv: Add a manual full VK run for TGL.
-      ci/anv: Add testing on JSL.
+Dave Airlie (1):
+      radv/video: take db alignment into account when allocating images.
 
 Eric Engestrom (4):
-      bin/ci_run_n_monitor: print in which repo we're looking for the pipeline
-      bin/ci_run_n_monitor: automatically pick MR pipelines when they exist
-      ci: remove duplicate fork pipeline in MRs
-      ci_run_n_monitor: add comment to explain "MR > fork" logic
+      ci: don't run everything just because a farm gets re-enabled
+      ci/windows: centralize definition of windows runners tags
+      ci/windows: add windows docker runner tags to .windows-docker-vs2019
+      ci/windows: drop build rules from test jobs
 
-Hans-Kristian Arntzen (2):
-      wsi/x11: Fix potential deadlock in present ID.
-      wsi/x11: Don't allow signal_present_id to rewind.
+Erik Faye-Lund (1):
+      panfrost: delete stale editorconfig file
 
-Iago Toral Quiroga (1):
-      v3dv: don't assume that bound descriptors have been written
+José Roberto de Souza (6):
+      intel: Sync xe_drm.h
+      anv: Move i915 specific gem_set_caching to backend
+      anv: Move i915 specific code from common anv_gem.c
+      anv: Move bo_alloc_flags_to_bo_flags() to backend
+      anv: Move i915 handling of imported bos bo_flags
+      anv: Remove i915_drm.h include from common code
 
-Illia Polishchuk (2):
-      zink: move find_sampler_var from zink to nir core
-      nir: fix invalid sampler search by texture id
+Konrad Dybcio (1):
+      freedreno: Include speedbin fallback in 740 chipid to fix probing
 
-Iván Briano (1):
-      intel/fs: use ffsll so we don't explode on 32 bits
+Mark Collins (5):
+      freedreno/rnn: Remove %n usage in fprintf
+      freedreno: Only add drm/computerator when system_has_kms_drm
+      freedreno/decode: Support building replay for multiple KMDs
+      freedreno+meson: Add lua+libarchive+libxml from Meson WrapDB
+      meson: Warn about side-effects from DRM for FD KMDs
 
-Juston Li (2):
-      venus: sync protocol for VK_EXT_vertex_input_dynamic_state
-      venus: implement VK_EXT_vertex_input_dynamic_state
+Mike Blumenkrantz (3):
+      zink: don't warn about missing scalarBlockLayout on v3dv
+      aux/tc: fix renderpass tracking fb state clobber scenario
+      vk/enum2str: add more max enum vendors
 
-Karol Herbst (1):
-      docs/features: cl_khr_3d_image_writes needs driver support
+Roman Stratiienko (6):
+      v3dv/android: Add a helper function to support explicit layouts
+      v3dv/android: Rework Android native buffer importing logic
+      v3dv: Use format stored in vk_image and vk_image_view after init
+      v3dv: Split v3dv_image_init to use layout setting logic separately
+      v3dv/android: Add AHardwareBuffer support
+      v3dv: Enable VK API v1.2 for Android
 
-Leo Liu (1):
-      Revert "frontends/va: Also map VAImageBufferType for reading"
+Samuel Pitoiset (1):
+      zink/ci: update list of expected failures for POLARIS10/NAVI10
 
-Martin Roukala (né Peres) (2):
-      zink/ci: automatically reboot when hitting a kernel BUG on vangogh
-      zink/ci: document more flakes seen on vangogh
+Sil Vilerino (1):
+      aux/tc: Add ASSERTED to unreferenced release build variable
 
-Mike Blumenkrantz (10):
-      aux/tc: fix staging buffer sizing for texture_subdata
-      aux/tc: fix address calc for segmented texture subdata
-      zink: ci updates
-      lavapipe: KHR_map_memory2
-      zink: slightly refactor pipeline compile selection
-      zink: add a flag for combined pipeline compile for doing FAIL_ON_PIPELINE_COMPILE_REQUIRED
-      zink: remove an intermediate variable in pipeline compile selection
-      zink: use FAIL_ON_PIPELINE_COMPILE_REQUIRED for GPL path
-      zink: pass a stage mask to pipeline create functions
-      glsl: check for xfb setting xfb info
+Sviatoslav Peleshko (1):
+      zink: Change zink_vertex_elements_hw_state::b.strides to VkDeviceSize
 
-Rhys Perry (3):
-      nir/lower_system_values change num_workgroups to uint32_t
-      radv: optimize mesh workgroup ID using ts_mesh_dispatch_dimensions
-      radv: use shortcut_1d_workgroup_id
+Tapani Pälli (1):
+      iris: modify Wa_14014414195 to use intel_needs_workaround
 
-Rohan Garg (1):
-      intel/genxml: update PIPE_CONTROL instruction for dg2
-
-Samuel Pitoiset (2):
-      radv: fix emitting SQTT userdata when CAM is needed
-      radv: fix capturing RGP on RDNA3 with more than one Shader Engine
-
-Timothy Arceri (1):
-      glsl: remove field from gl_shader_program
-
-Yiwei Zhang (1):
-      venus: fix a device memory report leak
+Vlad Schiller (1):
+      pvr: Use correct index when writing query availability data
 
