@@ -1,111 +1,57 @@
-Updating from 16527f6ffd0129f2f6e1728e388cdc14b60240ca to dd6a7a8e61524ea1b933ca56c54bc49cb3306185
+Updating from dd6a7a8e61524ea1b933ca56c54bc49cb3306185 to 3a307e2248333dc95330b390167463c28bc4f9a7
 
-Caio Oliveira (2):
-      glsl: Annotate _mesa_glsl_error() with PRINTFLIKE
-      compiler/types: Fix array name dimension flipping for unsized arrays
+Connor Abbott (4):
+      tu: Fix per-view viewport state propagation
+      tu: Fix tu6_emit_*_fdm size call
+      tu: Fix assert in FDM state emission
+      tu: Actually emit patchpoint for viewports with FDM
 
-Daniel Schürmann (8):
-      aco: append p_logical_end after monolithic RT shaders
-      aco/insert_exec_mask: set Exact mode after p_discard_if when necessary
-      aco: don't optimize cross-lane instructions across p_wqm
-      aco: make p_wqm a marker instruction without Operands/Definitions
-      aco: don't insert a copy when emitting p_wqm
-      aco: insert a single p_end_wqm after the last derivative calculation
-      aco/insert_exec_mask: Simplify WQM handling (1/2)
-      aco/insert_exec_mask: Simplify WQM handling (2/2)
+Daniel Stone (1):
+      ci: Fix pre-merge pipelines with no code changes
 
-Daniel van Vugt (1):
-      glx: Increment dpy->request before issuing an error that had no request
+Dylan Baker (1):
+      meson: use a single dependency call for lua
 
-Dave Airlie (2):
-      ac,radeonsi: move vcn enc structs to common
-      ac,radeonsi: move vcn enc av1 default cdf file to common
+Eric Engestrom (5):
+      ci: document which image tags need to be bumped when updating piglit
+      ci: document which image tags need to be bumped when updating {alpine,debian,fedora}/x86_64
+      ci/farm-rules: rename .disable-farm-mr-rules to make it clear it's only about MRs
+      ci/farm-rules: re-add "run every container and build job when a farm gets re-enabled"
+      ci/zink: drop redundant `MESA_LOADER_DRIVER_OVERRIDE: zink`
 
-David Rosca (2):
-      frontends/va: Parse chroma sample location in H264/HEVC SPS
-      radeonsi/vcn: Set H264/HEVC chroma sample location in bitstream
+Erico Nunes (1):
+      Revert "ci: disable lima LAVA lab for maintance"
 
-Emma Anholt (1):
-      freedreno: Build drm subdir before perfcntrs, which uses it.
+Jordan Justen (1):
+      intel/common: Add sse2_args for 32-bit build when -Dsse2=false was set
 
-Helen Koike (1):
-      ci: add locked flag to bindgen-cli on x86_64_build.sh
+Mike Blumenkrantz (5):
+      lavapipe: EXT_load_store_op_none
+      tu: handle unused color attachments without crashing
+      zink: use much bigger dummy surfaces
+      zink: propagate rp_tc_info_updated across unordered blits
+      zink: use null attachments for null attachments with dynamic render
 
-Ian Romanick (15):
-      glsl/list: Clean up an inappropriate comment
-      util/rb-tree: Work around C++'s dislike of offsetof
-      util/rb-tree: Inline rb_tree_init
-      intel/fs: Don't continue fixed point iteration just because liveout changes
-      intel/fs: Don't try to copy propagate into a source again after progress is made
-      intel/fs: Make try_constant_propagate and try_copy_propagate file private
-      intel/fs: Move src.file checks out of try_constant_propagate and try_copy_propagate
-      intel/fs: Don't loop in try_constant_propagate
-      intel/fs: Simplify check in can_propagate_from
-      intel/fs: Make opt_copy_propagation_local file private
-      intel/fs: Encapsulate per-block ACP in a structure
-      intel/fs: Use rb_tree to store ACP entries by source
-      intel/fs: Use rb_tree to store ACP entries by destination
-      intel/fs: Use rb_tree for copy prop dataflow
-      intel/fs: Merge copy prop dataflow loops
+Rob Clark (3):
+      freedreno: Fix crash with debug msgs enabled
+      freedreno/layout: Handle 565/etc MSAA special case
+      freedreno/decode: Fix printing chip-id
 
-Jordan Justen (12):
-      intel/genxml: Support importing from another genxml file
-      intel/genxml: Add support for excluding items when importing
-      intel/genxml: Add all xml files as pack dependencies
-      intel/genxml: Add GenXml.optimize_xml_import()
-      intel/genxml: Drop assertion to allow for importing
-      intel/genxml: Add GenXml.add_xml_imports method
-      intel/genxml: Add GenXml.flatten_xml() method
-      intel/genxml: Add genxml_import.py script
-      intel/decoder: ralloc_steal() values from spec context for fields and enums
-      intel/decoder: Implement support for importing genxml
-      intel/genxml: Start Xe2 support
-      intel/genxml: Auto-import genxml files using genxml_import.py
+Roman Stratiienko (1):
+      panvk: Add Android ICD loader entry point
 
-Konstantin Seurer (11):
-      radv: Remove dead radix_sort_vk_get_memory_requirements call
-      radv/radix_sort: Vendor the radix sort dispatch code
-      radv: Perform multiple sorts in parallel
-      radv/ci: Improve ray tracing skips
-      ac/llvm: Fix typed loads with 16bit formats
-      ac/llvm: Use the correct return type for uadd_carry and usub_borrow
-      ac/llvm: Use float types for float atomics
-      radv: Don't advertise features requiring PS epilogs with LLVM
-      radv: Update navi21 llvm fails
-      radv/rt: Handle stages without nir properly
-      radv: Remove ray tracing shader module identifier skips
+Samuel Holland (3):
+      Android.mk: Allow building only Vulkan drivers
+      Android.mk: Explicitly enable/disable LLVM support
+      Android.mk: Only link LLVM for radeonsi, not amd_vk
 
-Mike Blumenkrantz (4):
-      aux/tc: fix rp info handling around tc_sync calls
-      aux/tc: don't use pipe_buffer_create_with_data() for rp-optimized subdata
-      zink: flag db maps as unsynchronized
-      lavapipe: clamp cache uuid size
+Sviatoslav Peleshko (1):
+      intel/fs: Check if the whole ubo load range is in the push const range
 
-Rhys Perry (1):
-      aco: remove fast path in insert_exec_mask's process_instructions
+Tapani Pälli (1):
+      mesa: some cleanups for texparam extension checks
 
-Ruijing Dong (1):
-      radeonsi/vcn: change max_poc to fixed value for hevc encoder.
-
-Samuel Pitoiset (20):
-      radv: set THREAD_TRACE_TOKEN_MASK.BOP_EVENTS_TOKEN_INCLUDE on GFX10.3+
-      radv: disable unsupported hw shader stages for RGP on GFX11+
-      radv: fix instruction timing on GFX11
-      ac/rgp: use correct API stage string for mesh/task shaders
-      radv: set THREAD_TRACE_MARKER_ENABLE for mesh/task draws
-      radv: emit relocation for mesh/task shaders
-      issue_templates/Bug Report: fix outdated URL for GFXReconstruct
-      ac,radv,radeonsi: rework SPM counters configuration and share it
-      ac/perfcounter: add new SQ_WGP block for GFX11+
-      ac/spm: add SPM counters configuration for GFX11
-      radv: enable the PKT3 CAM bit for some SPM register writes
-      radv,radeonsi: use AC_SPM_SEGMENT_TYPE_xxx instead of magic values
-      ac/spm: remove useless SPM block setting for GFX9 and older GPUs
-      ac/spm: add SPM block definition for GFX10-GFX10.3
-      ac/gpu_info: init num_cu_per_sh from the kernel
-      ac/perfcounter: set the number of instances of GL1C to 4
-      ac/perfcounter: compute the number of global instances of TCP,SQ,GL1C and GL2C
-      ac/spm: fix checking if the counter instance is valid
-      ac/spm: rework how segment muxsel RAM are filled
-      ac/spm: initialize and set instance mapping for counters
+Yiwei Zhang (2):
+      vulkan: remove a dup entry from vk_image_usage_to_ahb_usage
+      vulkan/android: improve vkQueueSignalReleaseImageANDROID
 
