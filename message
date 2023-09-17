@@ -1,57 +1,16 @@
-Updating from dd6a7a8e61524ea1b933ca56c54bc49cb3306185 to 3a307e2248333dc95330b390167463c28bc4f9a7
+Updating from 3a307e2248333dc95330b390167463c28bc4f9a7 to edd3cd67c2f69a81fec0595ec1469a71521d6043
 
-Connor Abbott (4):
-      tu: Fix per-view viewport state propagation
-      tu: Fix tu6_emit_*_fdm size call
-      tu: Fix assert in FDM state emission
-      tu: Actually emit patchpoint for viewports with FDM
+Caio Oliveira (4):
+      compiler/types: Use Python to generate code for builtin types
+      compiler/types: Use glsl_get_type_name() to access the type name
+      compiler/types: Change glsl_type::name to be an uintptr_t
+      compiler/types: Use a string table for builtin type names
 
-Daniel Stone (1):
-      ci: Fix pre-merge pipelines with no code changes
-
-Dylan Baker (1):
-      meson: use a single dependency call for lua
-
-Eric Engestrom (5):
-      ci: document which image tags need to be bumped when updating piglit
-      ci: document which image tags need to be bumped when updating {alpine,debian,fedora}/x86_64
-      ci/farm-rules: rename .disable-farm-mr-rules to make it clear it's only about MRs
-      ci/farm-rules: re-add "run every container and build job when a farm gets re-enabled"
-      ci/zink: drop redundant `MESA_LOADER_DRIVER_OVERRIDE: zink`
-
-Erico Nunes (1):
-      Revert "ci: disable lima LAVA lab for maintance"
-
-Jordan Justen (1):
-      intel/common: Add sse2_args for 32-bit build when -Dsse2=false was set
-
-Mike Blumenkrantz (5):
-      lavapipe: EXT_load_store_op_none
-      tu: handle unused color attachments without crashing
-      zink: use much bigger dummy surfaces
-      zink: propagate rp_tc_info_updated across unordered blits
-      zink: use null attachments for null attachments with dynamic render
-
-Rob Clark (3):
-      freedreno: Fix crash with debug msgs enabled
-      freedreno/layout: Handle 565/etc MSAA special case
-      freedreno/decode: Fix printing chip-id
-
-Roman Stratiienko (1):
-      panvk: Add Android ICD loader entry point
-
-Samuel Holland (3):
-      Android.mk: Allow building only Vulkan drivers
-      Android.mk: Explicitly enable/disable LLVM support
-      Android.mk: Only link LLVM for radeonsi, not amd_vk
-
-Sviatoslav Peleshko (1):
-      intel/fs: Check if the whole ubo load range is in the push const range
-
-Tapani Pälli (1):
-      mesa: some cleanups for texparam extension checks
-
-Yiwei Zhang (2):
-      vulkan: remove a dup entry from vk_image_usage_to_ahb_usage
-      vulkan/android: improve vkQueueSignalReleaseImageANDROID
+Gert Wollny (6):
+      r600: print texture resource index mode separately
+      r600/sfn: Make address split pass obligatory
+      r600/sfn: rename method resource_base to resource_id
+      r600/sfn: Add old address to update_indirect_addr
+      r600/sfn: Sepeate resource and sampler in texture instructions
+      r600/sfn: get rid of the method to get the index mode
 
