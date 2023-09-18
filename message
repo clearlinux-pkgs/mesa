@@ -1,16 +1,29 @@
-Updating from 3a307e2248333dc95330b390167463c28bc4f9a7 to edd3cd67c2f69a81fec0595ec1469a71521d6043
+Updating from edd3cd67c2f69a81fec0595ec1469a71521d6043 to ac48334ecd307054bb4176089898c6e19e32fc6f
 
-Caio Oliveira (4):
-      compiler/types: Use Python to generate code for builtin types
-      compiler/types: Use glsl_get_type_name() to access the type name
-      compiler/types: Change glsl_type::name to be an uintptr_t
-      compiler/types: Use a string table for builtin type names
+Pierre-Eric Pelloux-Prayer (8):
+      glx: drop the 'libGL' log prefix
+      loader: refactor DRI_PRIME handling code
+      loader: extend DRI_PRIME to support =N
+      loader: add DRI_PRIME_DEBUG env var
+      device_select_layer: support DRI_PRIME=n
+      docs: update DRI_PRIME documentation
+      device_select: add shortcut for MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE
+      st/mesa: check renderbuffer before using it
 
-Gert Wollny (6):
-      r600: print texture resource index mode separately
-      r600/sfn: Make address split pass obligatory
-      r600/sfn: rename method resource_base to resource_id
-      r600/sfn: Add old address to update_indirect_addr
-      r600/sfn: Sepeate resource and sampler in texture instructions
-      r600/sfn: get rid of the method to get the index mode
+Rhys Perry (1):
+      aco/optimizer_postRA: check overwritten_subdword in is_overwritten_since()
+
+Samuel Pitoiset (9):
+      radv: reserve more CS space in SQTT/SPM paths
+      ac/spm: use block flags to initialize instance mapping
+      ac/spm: select correct segment type for per-SE blocks
+      radv,radeonsi: make sure to emit GRBM_GFX_INDEX before SQ select registers
+      ac/spm: fix number of instances of GL2C
+      ac,radv,radeonsi: prepare support for multi-instance SPM SQ counters
+      ac,radv,radeonsi: prepare support for multi-instance SPM generic counters
+      ac/spm: move the counter instance to ac_spm_counter_create_info
+      ac/spm: enable support for multi-instance counters
+
+Vinson Lee (1):
+      freedreno/replay: Fix implicit-function-declaration error
 
