@@ -1,29 +1,72 @@
-Updating from edd3cd67c2f69a81fec0595ec1469a71521d6043 to ac48334ecd307054bb4176089898c6e19e32fc6f
+Updating from ac48334ecd307054bb4176089898c6e19e32fc6f to 4c877ebfe50868d97a74b25576abdba4ae6c7139
 
-Pierre-Eric Pelloux-Prayer (8):
-      glx: drop the 'libGL' log prefix
-      loader: refactor DRI_PRIME handling code
-      loader: extend DRI_PRIME to support =N
-      loader: add DRI_PRIME_DEBUG env var
-      device_select_layer: support DRI_PRIME=n
-      docs: update DRI_PRIME documentation
-      device_select: add shortcut for MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE
-      st/mesa: check renderbuffer before using it
+Alyssa Rosenzweig (15):
+      nir: Add NIR_OP_IS_DERIVATIVE property
+      nir: Hoist nir_op_is_derivative
+      nir/opt_preamble: Use nir_op_is_derivative
+      nir/opt_gcm: Use nir_op_is_derivative more
+      nir/gather_info: Use nir_op_is_derivative
+      nir/opt_sink: Sink load_constant_agx
+      nir/opt_sink: Sink load_local_pixel_agx
+      nir/opt_sink: Sink frag coord instructions
+      nir/opt_sink: Do not move derivatives
+      nir/opt_sink: Move ALU with constant sources
+      nir/opt_sink: Also consider load_preamble as const
+      agx: Enable sinking ALU
+      treewide: Drop nir_ssa_for_src users
+      treewide: Remove remaining nir_ssa_for_src
+      nir: Remove nir_ssa_for_src
 
-Rhys Perry (1):
-      aco/optimizer_postRA: check overwritten_subdword in is_overwritten_since()
+Dave Airlie (1):
+      nir: add a deref slot counter that handles compact
 
-Samuel Pitoiset (9):
-      radv: reserve more CS space in SQTT/SPM paths
-      ac/spm: use block flags to initialize instance mapping
-      ac/spm: select correct segment type for per-SE blocks
-      radv,radeonsi: make sure to emit GRBM_GFX_INDEX before SQ select registers
-      ac/spm: fix number of instances of GL2C
-      ac,radv,radeonsi: prepare support for multi-instance SPM SQ counters
-      ac,radv,radeonsi: prepare support for multi-instance SPM generic counters
-      ac/spm: move the counter instance to ac_spm_counter_create_info
-      ac/spm: enable support for multi-instance counters
+David Rosca (1):
+      radeonsi/vcn: Don't hang GPU when using DCC surface as encoder input
 
-Vinson Lee (1):
-      freedreno/replay: Fix implicit-function-declaration error
+Iago Toral Quiroga (1):
+      v3dv: only handle Android Hardware Buffer on Android
+
+Mark Collins (1):
+      meson: Update libarchive to v3.7.2-2
+
+Mike Blumenkrantz (4):
+      egl/swrast: expose EXT_swap_buffers_with_damage and EXT_present_opaque
+      egl/wayland: split out wl drm extension init
+      egl/wayland: use more registry listeners to better handle device init
+      egl/wayland: enable WL_bind_wayland_display for zink
+
+Rhys Perry (3):
+      aco: check logical_phi_info at p_logical_end when eliminating exec writes
+      aco: remove unused p_logical_end check when optimizing branching sequence
+      radv: disable mesh dispatch XYZ_DIM when possible
+
+Rohan Garg (1):
+      anv: define clear color localy within can_fast_clear_color_att
+
+Ryan Neph (1):
+      vulkan/android: add missed STACK_ARRAY_FINISH()
+
+Samuel Pitoiset (7):
+      radv: fix checking if RGP is enabled with others tracing tools
+      radv: fix missing ISA with RGP and GPL
+      ac/perfcounter: add SG_WQP group for GFX11
+      ac/perfcounter: add GFX11 groups
+      drirc: remove Path of Exile workarounds
+      radv: remove drirc workarounds for Path Of Exile
+      radv: remove absolute_depth_bias workaround
+
+Sil Vilerino (1):
+      d3d12: Video - Relax ID3D12VideoDevice QI version for decode, process
+
+Tapani Pälli (2):
+      iris: avoid issues with undefined clip distance
+      crocus: avoid issues with undefined clip distance
+
+Yiwei Zhang (6):
+      vulkan/android: add missing AHARDWAREBUFFER_USAGE_GPU_DATA_BUFFER usage
+      vulkan/android: drop vk_buffer dependency from common AHB impl
+      venus: use common vk_queue object
+      venus: use common ANB implementation
+      venus: use more common vk_queue related implementations
+      venus: drop device, family, index, flags tracking from vn_queue
 
