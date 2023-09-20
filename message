@@ -1,72 +1,32 @@
-Updating from ac48334ecd307054bb4176089898c6e19e32fc6f to 4c877ebfe50868d97a74b25576abdba4ae6c7139
+Updating from 4c877ebfe50868d97a74b25576abdba4ae6c7139 to 8d2dcd55d78cff504304e2c7aa8b76526c8be36b
 
-Alyssa Rosenzweig (15):
-      nir: Add NIR_OP_IS_DERIVATIVE property
-      nir: Hoist nir_op_is_derivative
-      nir/opt_preamble: Use nir_op_is_derivative
-      nir/opt_gcm: Use nir_op_is_derivative more
-      nir/gather_info: Use nir_op_is_derivative
-      nir/opt_sink: Sink load_constant_agx
-      nir/opt_sink: Sink load_local_pixel_agx
-      nir/opt_sink: Sink frag coord instructions
-      nir/opt_sink: Do not move derivatives
-      nir/opt_sink: Move ALU with constant sources
-      nir/opt_sink: Also consider load_preamble as const
-      agx: Enable sinking ALU
-      treewide: Drop nir_ssa_for_src users
-      treewide: Remove remaining nir_ssa_for_src
-      nir: Remove nir_ssa_for_src
-
-Dave Airlie (1):
-      nir: add a deref slot counter that handles compact
-
-David Rosca (1):
-      radeonsi/vcn: Don't hang GPU when using DCC surface as encoder input
+Emma Anholt (3):
+      ci/intel: Add various updates from our nightly runs.
+      ci/virgl: Disable virgl-iris-traces.
+      ci/zink: Add a few updates for anv/tgl from the nightly runs.
 
 Iago Toral Quiroga (1):
-      v3dv: only handle Android Hardware Buffer on Android
+      v3dv: we can sample from 1D array too
 
-Mark Collins (1):
-      meson: Update libarchive to v3.7.2-2
+Jose Maria Casanova Crespo (1):
+      vc4: mark buffers as initialized at vc4_texture_subdata
 
-Mike Blumenkrantz (4):
-      egl/swrast: expose EXT_swap_buffers_with_damage and EXT_present_opaque
-      egl/wayland: split out wl drm extension init
-      egl/wayland: use more registry listeners to better handle device init
-      egl/wayland: enable WL_bind_wayland_display for zink
+Paulo Zanoni (3):
+      iris: assert bufmgr->bo_deps_lock is held
+      iris: avoid stack overflow in iris_bo_wait_syncobj()
+      iris: assert(bo->deps) after realloc()
 
-Rhys Perry (3):
-      aco: check logical_phi_info at p_logical_end when eliminating exec writes
-      aco: remove unused p_logical_end check when optimizing branching sequence
-      radv: disable mesh dispatch XYZ_DIM when possible
+Pavel Ondračka (3):
+      r300: enable nir_move_vec_src_uses_to_dest
+      nir/move_vec_src_uses_to_dest: skip reuse if vec is used only once in store_output
+      nir/move_vec_src_uses_to_dest: allow to skip reuse of constant sources
 
-Rohan Garg (1):
-      anv: define clear color localy within can_fast_clear_color_att
+Rob Clark (1):
+      freedreno/a6xx: Add L8_SRGB
 
-Ryan Neph (1):
-      vulkan/android: add missed STACK_ARRAY_FINISH()
+Tapani Pälli (1):
+      anv: refactor to fix pipe control debugging
 
-Samuel Pitoiset (7):
-      radv: fix checking if RGP is enabled with others tracing tools
-      radv: fix missing ISA with RGP and GPL
-      ac/perfcounter: add SG_WQP group for GFX11
-      ac/perfcounter: add GFX11 groups
-      drirc: remove Path of Exile workarounds
-      radv: remove drirc workarounds for Path Of Exile
-      radv: remove absolute_depth_bias workaround
-
-Sil Vilerino (1):
-      d3d12: Video - Relax ID3D12VideoDevice QI version for decode, process
-
-Tapani Pälli (2):
-      iris: avoid issues with undefined clip distance
-      crocus: avoid issues with undefined clip distance
-
-Yiwei Zhang (6):
-      vulkan/android: add missing AHARDWAREBUFFER_USAGE_GPU_DATA_BUFFER usage
-      vulkan/android: drop vk_buffer dependency from common AHB impl
-      venus: use common vk_queue object
-      venus: use common ANB implementation
-      venus: use more common vk_queue related implementations
-      venus: drop device, family, index, flags tracking from vn_queue
+lorn10 (1):
+      docs: Update Clover's env variable documentation
 
