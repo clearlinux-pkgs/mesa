@@ -1,32 +1,93 @@
-Updating from 4c877ebfe50868d97a74b25576abdba4ae6c7139 to 8d2dcd55d78cff504304e2c7aa8b76526c8be36b
+Updating from 8d2dcd55d78cff504304e2c7aa8b76526c8be36b to 2b1148ca4d0d6ccccbc7ea6373cb063177494bb6
 
-Emma Anholt (3):
-      ci/intel: Add various updates from our nightly runs.
-      ci/virgl: Disable virgl-iris-traces.
-      ci/zink: Add a few updates for anv/tgl from the nightly runs.
+Caio Oliveira (4):
+      intel/compiler/xe2: Account for reg_unit() in TCS intrinsics
+      intel/compiler/xe2: Account for reg_unit() in TES intrinsics
+      intel/fs/xe2+: Update BS payload setup for Xe2 reg size.
+      intel/fs/xe2+: Update TASK/MESH payload setup for Xe2 reg size.
 
-Iago Toral Quiroga (1):
-      v3dv: we can sample from 1D array too
+Connor Abbott (3):
+      nir/lower_subgroups: Don't do multiple lowerings at once
+      nir/spirv: Add inverse_ballot intrinsic
+      amd: Use inverse ballot intrinsic if available
 
-Jose Maria Casanova Crespo (1):
-      vc4: mark buffers as initialized at vc4_texture_subdata
+David Rosca (3):
+      frontends/va: Track surfaces in context
+      frontends/va: Destroy fences when destroying surface or context
+      radeonsi/vcn: Implement destroy_fence vfunc
 
-Paulo Zanoni (3):
-      iris: assert bufmgr->bo_deps_lock is held
-      iris: avoid stack overflow in iris_bo_wait_syncobj()
-      iris: assert(bo->deps) after realloc()
+Eric Engestrom (6):
+      docs: add release notes for 23.1.8
+      docs: add sha256sum for 23.1.8
+      docs: update calendar for 23.1.8
+      docs: add another 23.1.x
+      ci: limit build jobs to 30min so that they can retry when they go wrong
+      docs: drop outdated and redundant note about the minimum meson version
 
-Pavel Ondračka (3):
-      r300: enable nir_move_vec_src_uses_to_dest
-      nir/move_vec_src_uses_to_dest: skip reuse if vec is used only once in store_output
-      nir/move_vec_src_uses_to_dest: allow to skip reuse of constant sources
+Francisco Jerez (25):
+      intel/fs/ra: Define REG_CLASS_COUNT constant specifying the number of register classes.
+      intel/vec4/ra: Define REG_CLASS_COUNT constant specifying the number of register classes.
+      intel/compiler: Make MAX_VGRF_SIZE macro depend on devinfo and update it for Xe2.
+      intel/fs/ra/xe2: Scale up register allocation granularity by 2x on Xe2+ platforms.
+      intel/eu/xe2+: Fix encoding of various message descriptors for change in register size.
+      intel/fs: Fix signedness of payload_node_count argument of calculate_payload_ranges().
+      intel/fs/xe2+: Fix payload node live range calculations for change in register size.
+      intel/fs/xe2+: Fix grf_count in post-RA scheduling for updated register file size.
+      intel/fs/xe2+: Fixes for increased accumulator register width.
+      intel/fs/xe2+: Scale MAX_SAMPLER_MESSAGE_SIZE by native register size.
+      intel/eu/xe2+: Update validation of GRF region size to account for Xe2 reg size
+      intel/fs/xe2+: Allow increased SIMD width for various get_fpu_lowered_simd_width() restrictions.
+      intel/compiler/xe2+: Represent dispatch_grf_start_reg in native GRF units.
+      intel/fs/xe2+: Update encoding of FB write message payload.
+      intel/fs/xe2+: Round up fs_builder::vgrf() size calculation to HW register unit.
+      intel/fs/xe2+: Scale BRW_MAX_MSG_LENGTH by native register size.
+      intel/fs/xe2+: Fix payload layout of sampler messages for Xe2 reg size
+      intel/fs/xe2+: Update GS payload setup for Xe2 reg size.
+      intel/fs/xe2+: Update TCS payload setup for Xe2 reg size.
+      intel/fs/xe2+: Update TES payload setup for Xe2 reg size.
+      intel/fs: Lower unsupported regioning with non-trivial 2D regions on FIXED_GRFs.
+      intel/fs/xe2+: Update regioning lowering offset alignment checks for Xe2 regs.
+      intel/fs/xe2+: Fix execution width of SHADER_OPCODE_GET_BUFFER_SIZE for SIMD16 EU.
+      intel/fs/xe2+: Fix calculation of spill message width for Xe2 regs.
+      intel/xe2+: Round up size to reg_unit() in fs_reg_alloc::alloc_spill_reg().
 
-Rob Clark (1):
-      freedreno/a6xx: Add L8_SRGB
+Georg Lehmann (1):
+      aco: simplify masked swizzle dpp selection by removing or_mask first
 
-Tapani Pälli (1):
-      anv: refactor to fix pipe control debugging
+Ian Romanick (3):
+      intel/compiler/xe2: Update fs_visitor::setup_vs_payload to account for Xe2 reg size
+      intel/compiler/xe2: Use SIMD16 for nir_intrinsic_image_size
+      intel/compiler/xe2: TXD is lowered to SIMD16 in SIMD32 mode
 
-lorn10 (1):
-      docs: Update Clover's env variable documentation
+Jordan Justen (7):
+      intel/compiler/fs: Support Xe2 reg size in assign_curb_setup
+      intel/compiler: Update opt_split_sends() for Xe2 reg size
+      intel/compiler: Update emit_rt_lsc_fence() for Xe2
+      intel/compiler: Update lower_trace_ray_logical_send() for Xe2
+      intel/compiler: Update ray-tracing intrinsic lowering for Xe2
+      intel/compiler: Update RT stack_id access for Xe2
+      intel/fs: Update SSBO & shared uniform block loads for Xe2
+
+Karol Herbst (2):
+      rusticl/mesa: fix `set_constant_buffer` when passing an empty buffer
+      rusticl/kernel: skip adding global id offsets if not used
+
+Konstantin Seurer (3):
+      radv/bvh: Treat instances with mask == 0 as inactive
+      radv/ray_queries: Skip cull_mask handling if it is FF
+      radv/rt: Skip cull_mask handling if it is FF
+
+Rohan Garg (3):
+      intel/compiler: Adjust CS payload registers for new register width on Xe2+
+      intel/compiler: Adjust fence message lengths for new register width on Xe2+
+      intel/compiler: Adjust barrier emission for Xe2+
+
+Roman Stratiienko (4):
+      u_gralloc: Remove inline modifiers from the functions
+      u_gralloc: Remove usage of NONNULL macro
+      Revert "util: Add NONNULL macro"
+      u_gralloc: Add a function that returns gralloc type
+
+Sviatoslav Peleshko (1):
+      zink: Store zink_vertex_elements_hw_state::b.strides by binding id
 
