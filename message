@@ -1,93 +1,60 @@
-Updating from 8d2dcd55d78cff504304e2c7aa8b76526c8be36b to 2b1148ca4d0d6ccccbc7ea6373cb063177494bb6
+Updating from 2b1148ca4d0d6ccccbc7ea6373cb063177494bb6 to 9442571664e5a7d6e06f098ce4ea2246e5504796
 
-Caio Oliveira (4):
-      intel/compiler/xe2: Account for reg_unit() in TCS intrinsics
-      intel/compiler/xe2: Account for reg_unit() in TES intrinsics
-      intel/fs/xe2+: Update BS payload setup for Xe2 reg size.
-      intel/fs/xe2+: Update TASK/MESH payload setup for Xe2 reg size.
+Corentin Noël (1):
+      virgl: Cover all the formats defined in the virgl definition
 
-Connor Abbott (3):
-      nir/lower_subgroups: Don't do multiple lowerings at once
-      nir/spirv: Add inverse_ballot intrinsic
-      amd: Use inverse ballot intrinsic if available
+Emma Anholt (1):
+      ci/fastboot: Use a case insensitive match for a fastboot line.
 
-David Rosca (3):
-      frontends/va: Track surfaces in context
-      frontends/va: Destroy fences when destroying surface or context
-      radeonsi/vcn: Implement destroy_fence vfunc
+Eric Engestrom (2):
+      ci/zink+radv: specify that zink-radv-navi10-valve should run in the mupuf farm
+      ci/zink+radv: bump the timeout of zink-radv-navi10-valve by 10 minutes
 
-Eric Engestrom (6):
-      docs: add release notes for 23.1.8
-      docs: add sha256sum for 23.1.8
-      docs: update calendar for 23.1.8
-      docs: add another 23.1.x
-      ci: limit build jobs to 30min so that they can retry when they go wrong
-      docs: drop outdated and redundant note about the minimum meson version
+Helen Koike (1):
+      ci: separate hiden jobs to -inc.yml files
 
-Francisco Jerez (25):
-      intel/fs/ra: Define REG_CLASS_COUNT constant specifying the number of register classes.
-      intel/vec4/ra: Define REG_CLASS_COUNT constant specifying the number of register classes.
-      intel/compiler: Make MAX_VGRF_SIZE macro depend on devinfo and update it for Xe2.
-      intel/fs/ra/xe2: Scale up register allocation granularity by 2x on Xe2+ platforms.
-      intel/eu/xe2+: Fix encoding of various message descriptors for change in register size.
-      intel/fs: Fix signedness of payload_node_count argument of calculate_payload_ranges().
-      intel/fs/xe2+: Fix payload node live range calculations for change in register size.
-      intel/fs/xe2+: Fix grf_count in post-RA scheduling for updated register file size.
-      intel/fs/xe2+: Fixes for increased accumulator register width.
-      intel/fs/xe2+: Scale MAX_SAMPLER_MESSAGE_SIZE by native register size.
-      intel/eu/xe2+: Update validation of GRF region size to account for Xe2 reg size
-      intel/fs/xe2+: Allow increased SIMD width for various get_fpu_lowered_simd_width() restrictions.
-      intel/compiler/xe2+: Represent dispatch_grf_start_reg in native GRF units.
-      intel/fs/xe2+: Update encoding of FB write message payload.
-      intel/fs/xe2+: Round up fs_builder::vgrf() size calculation to HW register unit.
-      intel/fs/xe2+: Scale BRW_MAX_MSG_LENGTH by native register size.
-      intel/fs/xe2+: Fix payload layout of sampler messages for Xe2 reg size
-      intel/fs/xe2+: Update GS payload setup for Xe2 reg size.
-      intel/fs/xe2+: Update TCS payload setup for Xe2 reg size.
-      intel/fs/xe2+: Update TES payload setup for Xe2 reg size.
-      intel/fs: Lower unsupported regioning with non-trivial 2D regions on FIXED_GRFs.
-      intel/fs/xe2+: Update regioning lowering offset alignment checks for Xe2 regs.
-      intel/fs/xe2+: Fix execution width of SHADER_OPCODE_GET_BUFFER_SIZE for SIMD16 EU.
-      intel/fs/xe2+: Fix calculation of spill message width for Xe2 regs.
-      intel/xe2+: Round up size to reg_unit() in fs_reg_alloc::alloc_spill_reg().
+Ian Romanick (1):
+      nir/rematerialize: Rematerialize ALUs used only by compares with zero
 
-Georg Lehmann (1):
-      aco: simplify masked swizzle dpp selection by removing or_mask first
+Jordan Justen (2):
+      intel/genxml: Build with gen20.xml
+      intel/isl: Build for Xe2
 
-Ian Romanick (3):
-      intel/compiler/xe2: Update fs_visitor::setup_vs_payload to account for Xe2 reg size
-      intel/compiler/xe2: Use SIMD16 for nir_intrinsic_image_size
-      intel/compiler/xe2: TXD is lowered to SIMD16 in SIMD32 mode
+Konstantin Seurer (7):
+      aco/spill: Make sure that offset stays in bounds
+      nir: Add nir_cf_node_cf_tree_prev
+      nir: Add nir_foreach_block_in_cf_node_reverse
+      nir: Add nir_rematerialize_deref_in_use_blocks
+      nir/lcssa: Fix rematerializing derefs
+      nir/deref: Layer rematerialization helpers
+      lavapipe/ci: Fix asan expectations
 
-Jordan Justen (7):
-      intel/compiler/fs: Support Xe2 reg size in assign_curb_setup
-      intel/compiler: Update opt_split_sends() for Xe2 reg size
-      intel/compiler: Update emit_rt_lsc_fence() for Xe2
-      intel/compiler: Update lower_trace_ray_logical_send() for Xe2
-      intel/compiler: Update ray-tracing intrinsic lowering for Xe2
-      intel/compiler: Update RT stack_id access for Xe2
-      intel/fs: Update SSBO & shared uniform block loads for Xe2
+Martin Roukala (né Peres) (2):
+      radv/ci: move vkcts-navi10 testing to KWS
+      radv/ci: add more tests to the navi10 vkcts flake list
 
-Karol Herbst (2):
-      rusticl/mesa: fix `set_constant_buffer` when passing an empty buffer
-      rusticl/kernel: skip adding global id offsets if not used
+Mike Blumenkrantz (7):
+      zink: delete injected pointsize during shader creation
+      zink: require maintenance5 for shobj
+      zink: delete a non-maintenance5 workaround for shobj use
+      lavapipe: set separate_shaders for shader objects
+      zink: set workgroup_memory_explicit_layout for shader validation
+      zink: add a ZINK_DEBUG=validation alias
+      zink: fix semaphore signal ordering
 
-Konstantin Seurer (3):
-      radv/bvh: Treat instances with mask == 0 as inactive
-      radv/ray_queries: Skip cull_mask handling if it is FF
-      radv/rt: Skip cull_mask handling if it is FF
+Pierre-Eric Pelloux-Prayer (1):
+      radeonsi: emit framebuffer state after allocating cmask
 
-Rohan Garg (3):
-      intel/compiler: Adjust CS payload registers for new register width on Xe2+
-      intel/compiler: Adjust fence message lengths for new register width on Xe2+
-      intel/compiler: Adjust barrier emission for Xe2+
+Rhys Perry (1):
+      nir/deref: remove rematerialize_deref_in_block cache
 
-Roman Stratiienko (4):
-      u_gralloc: Remove inline modifiers from the functions
-      u_gralloc: Remove usage of NONNULL macro
-      Revert "util: Add NONNULL macro"
-      u_gralloc: Add a function that returns gralloc type
+Rob Clark (2):
+      freedreno: Add reformatting commits to .git-blame-ignore-revs
+      freedreno/fence: Hold a strong ref to batch
 
-Sviatoslav Peleshko (1):
-      zink: Store zink_vertex_elements_hw_state::b.strides by binding id
+Timothy Arceri (4):
+      glsl: move get_varying_type() declaration earlier
+      glsl: add nir version of validate_first_and_last_interface_explicit_locations()
+      glsl: switch to nir validate_first_and_last_interface_explicit_locations()
+      glsl: remove unused validate_first_and_last_interface_explicit_locations()
 
