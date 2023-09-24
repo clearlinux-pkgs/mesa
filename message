@@ -1,46 +1,9 @@
-Updating from 9442571664e5a7d6e06f098ce4ea2246e5504796 to d7f3fdc262ab8deb70402b5cd297576df8f2eaba
+Updating from d7f3fdc262ab8deb70402b5cd297576df8f2eaba to feafb8a256b67d816c1cb8fdf258c75a29245c3f
 
-Caio Oliveira (9):
-      compiler: Use a meson dependency for libcompiler
-      meson: Remove unnecessary inc_compiler mentions
-      rusticl: Ensure NIR generated headers will be available
-      clover: Hide SPIR-V related code behind HAVE_CLOVER_SPIRV
-      clover: Only compile/depend libclspirv and libclnir when using SPIR-V support
-      compiler: Only enable mesaclc helper if we have OpenCL SPIR-V support
-      intel/compiler: Don't allocate memory for SIMD select error handling
-      microsoft/compiler: Fix printf formatting string issues
-      util: Add more PRINTFLIKE and MALLOCLIKE annotations
+Faith Ekstrand (1):
+      nvk: Set GUARDBAND_Z_SCALE_1 when Z-clipping
 
-David Heidelberg (2):
-      ci/venus: add fragment.32B_in_memory_with_vec4_s32 flake
-      iris: do not mention specifically clover for OpenCL support
-
-Faith Ekstrand (5):
-      nvk: Lower interp_at_sample to interp_at_offset
-      nvk: Disable statistics around meta ops
-      nvk: Clean up viewport math
-      nvk: Fix depth clipping parameters
-      nvk: Enable dynamic clip/clamp enable
-
-Felix DeGrood (1):
-      anv: fix frame count reporting in INTEL_MEASURE
-
-Frank Binns (2):
-      pvr: treat VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT as not supported
-      pvr: remove pvr_pbe_get_src_pos()
-
-Mike Blumenkrantz (8):
-      zink: move swapchain fence to swapchain object
-      zink: avoid UAF on wayland async present with to-be-retired swapchain
-      zink: always trace_screen_unwrap in acquire
-      lavapipe: fix variable descriptor count support handling
-      lavapipe: always set independent blend
-      lavapipe: more vertex stride fixups
-      lavapipe: set default viewport and scissor count for cmdbufs
-      lavapipe: set default min sample shading to 1
-
-Rob Clark (3):
-      freedreno/decode: Lookup device info
-      freedreno/decode: Use info->chip to decode
-      freedreno/decode: Remove gpu_id
+Karmjit Mahil (2):
+      pvr: Fix `for` loop itarator usage
+      pvr: Fix dynamic desc offset storage
 
