@@ -1,97 +1,73 @@
-Updating from 1020cf8a825c252ed920ea9fc65a52944e624174 to 79bc5ff6f88927939f19fb8acd452b23583651be
+Updating from 79bc5ff6f88927939f19fb8acd452b23583651be to c59179e6bbd9c7331aeeb8f0c6e92e98ddde0a4e
 
 Caio Oliveira (1):
-      util: Fix bookkeeping of linear node sizes
+      intel/compiler: Don't store stage name and abbrev
 
-Charmaine Lee (4):
-      svga: fix persistent mapped surface update to constant buffer
-      svga: restrict use of rawbuf for constant buffer access to GL43 device
-      svga: fix immediates used in rawbuf for constant buffer
-      svga: use srv raw buffer for accessing readonly shader buffer
+Charmaine Lee (1):
+      svga: sync resource content from backing resource before image upload
 
 Connor Abbott (16):
-      tu: Create singleton "empty" shaders
-      tu: Start tracking shaders independently of pipeline
-      tu: Move FS-specific pipeline information to the shader
-      tu: Use shader directly for VS/TCS output size and patch size
-      tu: Rewrite tessellation modes handling
-      tu: Rework passing shared consts
-      tu: Decouple program state from the pipeline
-      tu: Use pipeline feedback loop flag indirectly
-      tu: Rewrite remaining pipeline LRZ handling
-      tu: Don't reference pipeline for some draw states
-      tu: Make compute dispatch use the shader
-      tu: Don't use pipeline for dynamic draw states
-      tu: Don't use pipeline for bandwidth validity
-      tu: Don't use pipeline for per_view_viewport
-      tu: Don't use pipeline for active stages
-      tu: Remove pipeline from state
+      zink: Rework color clamping and conversion
+      freedreno/fdl: Use A8_UNORM HW format for sampling
+      tu: Support clearing A8_UNORM
+      freedreno/fdl: Support PIPE_FORMAT_R5G5B5A1_UNORM on a6xx
+      tu/clear_blit: Fix staging image view layer count
+      tu/clear_blit: Allow VK_REMAINING_ARRAY_LAYERS as layerCount
+      tu: Allow VK_WHOLE_SIZE in tu_CmdBindVertexBuffers2EXT pSizes
+      tu: Implement vkCmdBindIndexBuffer2KHR
+      tu: Implement vkGetImageSubresourceLayout2KHR and vkGetDeviceImageSubresourceLayoutKHR
+      tu: Implement vkGetRenderingAreaGranularityKHR
+      tu: Use new buffer usage flags
+      tu: Support VkPipelineCreateFlags2CreateInfoKHR
+      tu: Check for DEVICE_LOST in vkGetEventStatus()
+      tu: Add maintenance5 properties
+      freedreno/ci: Skip dEQP-VK.info.device_extensions
+      tu: Expose VK_KHR_maintenance5
 
-Corentin Noël (1):
-      mesa: Ensure that the baselevel will never exceed the maximal supported number
+Dave Airlie (2):
+      llvmpipe/fs: fix regression in sample mask handling from tgsi removal.
+      llvmpipe: reset viewport_index_slot in fb bind
 
-Dave Airlie (1):
-      draw/mesh: reset some user state values on mesh draws.
+Eric Engestrom (1):
+      ci/docs: drop extra overwritten rules
 
-David Rosca (4):
-      gallium/auxiliary/vl: Add RGB to YUV compute shader
-      gallium/auxiliary/vl: Use chroma offset in YUV to RGB weave compute shader
-      gallium/auxiliary/vl: Fix YUV to RGB bob compute shader deinterlacing
-      gallium/auxiliary/vl: Only map the shader constants buffer in render
+Erico Nunes (1):
+      v3dv: allow headless device without display device
 
-Eric Engestrom (2):
-      ci: unify container and build jobs rules
-      docs/meson: drop mention that our meson is ready
+Georg Lehmann (2):
+      aco: fix p_extract with v1 dst and s1 operand
+      aco: implement 64bit div find_lsb
 
-Faith Ekstrand (13):
-      nvk: Re-order physical device limits
-      nvk: Advertise maxMemoryAllocationCount = 4096
-      nvk: Advertise discreteQueuePriorities = 2
-      nvk: Rip out old UAPI support
-      nvk/drm: Drop the push_add_push_bo() helper
-      nvk/drm: Drop the push_add_bo() helper
-      nvk: Drop command buffer BO tracking
-      nvk: Drop memory object tracking
-      nvk: Drop the device-level mutex
-      nvk: Get rid of the tiled memory allocation helpers
-      nvk/drm: Restructure nvk_queue_submit_drm_nouveau()
-      nvk/drm: Split exec as needed for large command buffers
-      nvk: Don't store the descriptor pool BO in the set
+Italo Nicola (5):
+      pan/genxml: add Width/Height fields to v9+ Plane descriptor
+      panfrost: rename _needs_multiplanar_descriptor to _is_yuv
+      panfrost: prepare v9+ to support YUV sampling
+      panfrost: use centered YUV chroma siting
+      panfrost: advertise YUV formats for valhall
 
-Gert Wollny (2):
-      virgl: report MIRROR_CLAMP features better
-      ci: Upref virglrenderer
+Jose Maria Casanova Crespo (1):
+      vc4: Fix mask RGBA validation at YUV blit
 
-Hyunjun Ko (1):
-      anv: don't use cmd_buffer after destroyed.
+Karol Herbst (3):
+      rusticl/mesa/context: fix clear_sampler_views
+      nir: add nir_lower_alu_vec8_16_srcs pass
+      zink: lower vec8/16
 
-Karol Herbst (1):
-      meson/rusticl: add sha1_h
+Konrad Dybcio (2):
+      freedreno: Include speedbin fallback in 690 chipid to fix probing
+      freedreno: Add Adreno 643
 
-Kenneth Graunke (1):
-      mesa: Fix zeroing of new ParameterValues array entries when growing
+Lionel Landwerlin (1):
+      anv/iris: widen Wa_14015946265 to Gfx11+
 
-Lina Versace (1):
-      intel/pci_ids: Consistently use lowercase
+Matt Coster (2):
+      pvr: Don't rely on GNU void pointer arithmetic
+      pvr: Force compile error on GNU void pointer arithmetic
 
-Marek Olšák (2):
-      gallivm: fix build with LLVM 18
-      amd/llvm: fix build with LLVM 18
-
-Martin Roukala (né Peres) (3):
-      radv/ci/vkcts-navi21: catch all the line_stipple_(enable|params) flakes
-      radv/ci/vkcts-navi21: document more flakes
-      radv/ci/vkcts-navi10: catch all the line-related flakes
-
-Samuel Pitoiset (7):
-      nir: rename atomic_add_gs_invocation_count_amd to make it more generic
-      ac/nir: add lowering for mesh shader queries
-      ac/nir: add lowering for task shader queries
-      radv: add GDS counters offset for mesh/task queries
-      radv: adjust lowering of intrinsic queries for mesh/task shaders
-      radv: enable lowering of mesh/task shader queries when enabled
-      radv: declare shader_query_state for mesh/task shaders
+Rhys Perry (2):
+      aco/waitcnt: replace wait_cnt::*_cnt with booleans
+      aco/waitcnt: add print helpers
 
 Tapani Pälli (1):
-      anv: fix a leak of fp64_nir shader
+      iris: use intel_needs_workaround for Wa_14014414195 part 2
 
