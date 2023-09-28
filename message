@@ -1,73 +1,127 @@
-Updating from 79bc5ff6f88927939f19fb8acd452b23583651be to c59179e6bbd9c7331aeeb8f0c6e92e98ddde0a4e
+Updating from c59179e6bbd9c7331aeeb8f0c6e92e98ddde0a4e to 3d993e63bb59a6a25cf15e72495c0ccbf2df453e
 
-Caio Oliveira (1):
-      intel/compiler: Don't store stage name and abbrev
+Caio Oliveira (9):
+      intel/compiler/xe2: URB fence uses LSC now
+      intel/compiler/xe2: Fix URB writes in TCS
+      intel/compiler/xe2: Update TCS ICP handle code to support SIMD16
+      compiler/types: Add support for Cooperative Matrix types
+      nir: Add new intrinsics for Cooperative Matrix
+      nir: Handle cooperative matrix in various passes
+      spirv: Expose some memory related functions in vtn_private.h
+      spirv: Let vtn_ssa_value hold references to variables
+      spirv: Implement SPV_KHR_cooperative_matrix
 
-Charmaine Lee (1):
-      svga: sync resource content from backing resource before image upload
+Christian Gmeiner (1):
+      isaspec: python does not need ';'
 
-Connor Abbott (16):
-      zink: Rework color clamping and conversion
-      freedreno/fdl: Use A8_UNORM HW format for sampling
-      tu: Support clearing A8_UNORM
-      freedreno/fdl: Support PIPE_FORMAT_R5G5B5A1_UNORM on a6xx
-      tu/clear_blit: Fix staging image view layer count
-      tu/clear_blit: Allow VK_REMAINING_ARRAY_LAYERS as layerCount
-      tu: Allow VK_WHOLE_SIZE in tu_CmdBindVertexBuffers2EXT pSizes
-      tu: Implement vkCmdBindIndexBuffer2KHR
-      tu: Implement vkGetImageSubresourceLayout2KHR and vkGetDeviceImageSubresourceLayoutKHR
-      tu: Implement vkGetRenderingAreaGranularityKHR
-      tu: Use new buffer usage flags
-      tu: Support VkPipelineCreateFlags2CreateInfoKHR
-      tu: Check for DEVICE_LOST in vkGetEventStatus()
-      tu: Add maintenance5 properties
-      freedreno/ci: Skip dEQP-VK.info.device_extensions
-      tu: Expose VK_KHR_maintenance5
+Cong Liu (1):
+      r300:  Fix out-of-bounds access in ntr_emit_store_output()
 
 Dave Airlie (2):
-      llvmpipe/fs: fix regression in sample mask handling from tgsi removal.
-      llvmpipe: reset viewport_index_slot in fb bind
+      llvmpipe/cs: migrate to generic jit texture from pipe code.
+      llvmpipe/cs: migrate cs image handle to common jit code.
+
+Emma Anholt (2):
+      ci/etnaviv: Skip some tests that hang the GPU and knock out other tests.
+      ci/etnaviv: Drop some gc2k flakes that I think are resolved.
 
 Eric Engestrom (1):
-      ci/docs: drop extra overwritten rules
+      ci/zink+radv: document flake
 
-Erico Nunes (1):
-      v3dv: allow headless device without display device
+Faith Ekstrand (6):
+      nvk: Store a 20-bit driver_build_sha in nvk_instance
+      nvk: Hook up the disk cache
+      nvk: Re-structure early shader compilation a bit
+      nvk: Add a default pipeline cache
+      nvk: Cache NIR shaders
+      nvk: Init pipelineCacheUUID
 
-Georg Lehmann (2):
-      aco: fix p_extract with v1 dst and s1 operand
-      aco: implement 64bit div find_lsb
+Francisco Jerez (4):
+      intel/fs/xe2+: Fix URB writes with 0 data components.
+      intel/fs: Specify number of data components of logical URB writes via control immediate.
+      intel/fs: Delete manual 'inst->mlen' calculations from all uses of logical URB writes.
+      intel/fs: Delete manual 'inst->mlen' calculations from all uses of logical URB reads.
 
-Italo Nicola (5):
-      pan/genxml: add Width/Height fields to v9+ Plane descriptor
-      panfrost: rename _needs_multiplanar_descriptor to _is_yuv
-      panfrost: prepare v9+ to support YUV sampling
-      panfrost: use centered YUV chroma siting
-      panfrost: advertise YUV formats for valhall
+Ian Romanick (4):
+      intel/compiler/xe2: Handle new URB read messages
+      intel/compiler/xe2: Handle new URB write messages
+      intel/compiler/xe2: Update fs_visitor::emit_urb_writes to not assume SIMD8
+      spirv: Track when a shader has a cooperative matrix
 
-Jose Maria Casanova Crespo (1):
-      vc4: Fix mask RGBA validation at YUV blit
+Jordan Justen (9):
+      iris: Build for Xe2
+      anv/blorp: Use anv_genX to set device->blorp.exec
+      anv: Disable Ray Tracing on xe2 until our compiler supports Xe2 RT
+      anv: Build for Xe2
+      anv: Print warning that Xe2 is not supported rather than failing
+      intel/compiler: Add enum xe2_lsc_cache_store
+      intel/compiler: Use enum xe2_lsc_cache_store on xe2
+      intel/compiler: Add enum xe2_lsc_cache_load
+      intel/compiler: Use enum xe2_lsc_cache_load on xe2
 
-Karol Herbst (3):
-      rusticl/mesa/context: fix clear_sampler_views
-      nir: add nir_lower_alu_vec8_16_srcs pass
-      zink: lower vec8/16
+Kenneth Graunke (1):
+      intel/fs: Fix Xe2 URB read/lowering with per-slot offsets
 
-Konrad Dybcio (2):
-      freedreno: Include speedbin fallback in 690 chipid to fix probing
-      freedreno: Add Adreno 643
+Konstantin Seurer (2):
+      hasvk: Use the common GetPhysicalDeviceFeatures2 implementation
+      vulkan: Remove vk_get_physical_device_core_1_*_feature_ext
 
-Lionel Landwerlin (1):
-      anv/iris: widen Wa_14015946265 to Gfx11+
+Lionel Landwerlin (2):
+      anv: add missing workaround for 3DSTATE_LINE_STIPPLE
+      iris: add missing workaround for 3DSTATE_LINE_STIPPLE
 
-Matt Coster (2):
-      pvr: Don't rely on GNU void pointer arithmetic
-      pvr: Force compile error on GNU void pointer arithmetic
+Marcin Ślusarz (5):
+      intel/compiler: add lsc_msg_desc_wcmask
+      intel/compiler: add initial support for URB_LOGICAL_SRC_CHANNEL_MASK to lower_urb_write_logical_send_xe2
+      intel/compiler/mesh: fix position of output URB handle for xe2
+      intel/compiler/mesh: implement IO for xe2
+      intel/compiler: mask GS URB handles at thread payload construction
+
+Marek Olšák (2):
+      radeonsi: fix compute-only contexts
+      ac/llvm: replace removed amdgcn.ldexp for LLVM 18
+
+Martin Roukala (né Peres) (3):
+      radv/ci: update the vkcts gfx1100 flake/fail lists
+      radv/ci: add a manual job to run vkcts on navi31
+      radv/ci: add a manual job for vkd3d-proton on navi31
+
+Mike Blumenkrantz (1):
+      glx: XFree visual info
+
+Paulo Zanoni (6):
+      intel/isl: add ISL_SURF_USAGE_SPARSE_BIT
+      intel/isl: simplify the check for maximum surface size
+      anv/sparse: add the initial code for Sparse Resources
+      anv/sparse: get ready to issue a single vm_bind ioctl per non-opaque bind
+      anv/sparse: add INTEL_DEBUG=sparse
+      anv: enable sparse resources by default
 
 Rhys Perry (2):
-      aco/waitcnt: replace wait_cnt::*_cnt with booleans
-      aco/waitcnt: add print helpers
+      nir/lower_int64: fix find_lsb(0)
+      nir/algebraic: optimize u2u32(a >> 32)
 
-Tapani Pälli (1):
-      iris: use intel_needs_workaround for Wa_14014414195 part 2
+Sagar Ghuge (1):
+      anv: Enable barrier handling on video engines
+
+Samuel Pitoiset (1):
+      radv: stop skip emitting CB states when there is no color attachment
+
+Timothy Arceri (8):
+      nir: fix typo in comment
+      nir: copy explicit_invariant flag to nir vars
+      glsl: move interpolation_string() to linker_util
+      glsl: move is_gl_identifier() to linker_util
+      nir: add used field to nir variables
+      glsl: implement cross_validate_outputs_to_inputs() in nir linker
+      glsl: switch to nir linkers cross_validate_outputs_to_inputs()
+      glsl: remove now unused varying linker code
+
+antonino (3):
+      vulkan: Extend vkGet/SetPrivateDataEXT handling to all platforms
+      vulkan: Extend vkGet/SetPrivateDataEXT handling to VkSurface
+      vulkan: Handle vkSetDebugUtilsObjectNameEXT on WSI objects
+
+wangra (1):
+      tu/kgsl: Fix bitfield of DITHER_MODE_MRT6
 
