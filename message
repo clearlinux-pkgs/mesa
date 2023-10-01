@@ -1,34 +1,25 @@
-Updating from 3d993e63bb59a6a25cf15e72495c0ccbf2df453e to a524f6b5d4fb04716a4d3c0e0f9014175e633595
+Updating from a524f6b5d4fb04716a4d3c0e0f9014175e633595 to 476529a692d57aeaa6f8f21e7adead37eba7d31d
 
-Caio Oliveira (7):
-      compiler/types: Remove private related declarations
-      compiler/types: Remove use of new/delete
-      compiler/types: Remove use of references
-      compiler/types: Remove use of auto
-      compiler/types: Use C compatible cast syntax
-      compiler/types: Spell struct and enum in type names
-      compiler/types: Add void parameter to ensure these are valid C prototypes
+Cong Liu (1):
+      virgl:Fix ITEM_CPY macro pointer copy bug
 
-Helen Koike (1):
-      ci/ci_run_n_monitor: add docs for multiple targets
+Eric Engestrom (4):
+      docs: document the merging process and what is allowed or not
+      ci: drop unused shader-db clone + build from alpine image
+      ci: drop unused shader-db clone + build from fedora image
+      ci: move shader-db clone/build into its own script
 
-Karol Herbst (1):
-      rusticl/mesa: create COMPUTE_ONLY contexts
+Guilherme Gallo (4):
+      ci/radeonsi: Update flake list
+      ci/freedreno: Add a new flake
+      ci/zink: Found some flakes
+      ci/anv: Catch some flakes
 
-Lionel Landwerlin (3):
-      intel/fs: handle ishl in surface/sampler rematerialization
-      intel/fs: handle add3 in surface/sampler rematerialization
-      intel/fs: switch from SIMD 1 to 8 instructions surface/sampler rematerialization
+Konstantin Seurer (3):
+      radv/bvh/ploc: Load child bounds from LDS
+      radv: Merge the sync_data and header initialization
+      radv: Do not sync after radv_update_buffer_cp
 
-Mike Blumenkrantz (1):
-      radv: fix external handle type queries for dmabuf/fd
-
-Rhys Perry (2):
-      aco/optimizer_postRA: don't combine DPP across exec on GFX8/9
-      aco: don't combine DPP into v_cmpx
-
-Samuel Pitoiset (3):
-      radv: re-enable DCC with mipmaps on GFX11
-      radv: fix COMPUTE_SHADER_INVOCATIONS query on compute queue
-      radv: emit missing PA_{SC,SU}_LINE_STIPPLE_xxx regs in gfx preamble
+Marek Olšák (1):
+      ac/perfcounter: remove a bogus assert to fix an assertion failure on gfx11
 
