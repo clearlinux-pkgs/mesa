@@ -1,25 +1,56 @@
-Updating from a524f6b5d4fb04716a4d3c0e0f9014175e633595 to 476529a692d57aeaa6f8f21e7adead37eba7d31d
+Updating from 476529a692d57aeaa6f8f21e7adead37eba7d31d to dbe2230408a5fefbd45188ead96f78a7490d9ad9
 
-Cong Liu (1):
-      virgl:Fix ITEM_CPY macro pointer copy bug
+Alyssa Rosenzweig (29):
+      asahi: Clamp index buffer extent to what's read
+      agx: Align the reg file for 256-bit vectors
+      agx: Hoist sample_mask/zs_emit
+      agx: Set PIPE_SHADER_CAP_CONT_SUPPORTED
+      agx: Augment if/else/while_cmp with a target
+      agx: Add jumps to block ends
+      agx: Add agx_prev_block helper
+      agx: Insert jmp_exec_none instructions
+      nir: Add layer_id_written_agx sysval
+      nir: Support arrays in block_image_store_agx
+      agx/nir_lower_texture: Allow disabling layer clamping
+      agx: Pack block image store dim correctly
+      agx: Handle layered block image stores
+      agx: Add pass to lower layer ID writes
+      asahi: Add helper to get layer id in internal program
+      asahi,agx: Select layered rendering outputs
+      agx: Support packed layered rendering writes
+      agx/tilebuffer: Support layered layouts
+      agx/lower_tilebuffer: Support spilled layered RTs
+      asahi: Use layered layouts
+      asahi: Expose VS_LAYER_VIEWPORT behind a flag
+      asahi: Account for layering for attachment views
+      asahi: Assume LAYER is flat-shaded
+      asahi: Add pass to predicate layer ID reads
+      asahi: Predicate layer ID reads
+      asahi: Write to cubes/etc attachments as 2D array
+      asahi: Use a 2D Array texture for array render targets
+      asahi: Generate layered EOT programs
+      asahi: Handle layered background programs
 
-Eric Engestrom (4):
-      docs: document the merging process and what is allowed or not
-      ci: drop unused shader-db clone + build from alpine image
-      ci: drop unused shader-db clone + build from fedora image
-      ci: move shader-db clone/build into its own script
+Eric Engestrom (2):
+      ci/deqp-runner: fix indentation
+      ci/deqp-runner: restore exit-on-error after getting deqp-runner's exit code
 
-Guilherme Gallo (4):
-      ci/radeonsi: Update flake list
-      ci/freedreno: Add a new flake
-      ci/zink: Found some flakes
-      ci/anv: Catch some flakes
+Friedrich Vock (2):
+      radv: Initialize shader freelist on allocation
+      radv: Fix check in insert_block
 
-Konstantin Seurer (3):
-      radv/bvh/ploc: Load child bounds from LDS
-      radv: Merge the sync_data and header initialization
-      radv: Do not sync after radv_update_buffer_cp
+Janne Grunau (1):
+      asahi: decode: Fix uint64_t format modifiers in agxdecode_stateful()
 
-Marek Olšák (1):
-      ac/perfcounter: remove a bogus assert to fix an assertion failure on gfx11
+Marek Olšák (7):
+      ac/llvm: set !fpmath 3.0 for llvm.sqrt
+      ac/gpu_info: don't align IBs to the GL2 cache line size
+      ac/llvm: fix flat PS input corruption
+      amd: rename GFX110x to NAVI31-33
+      ac/gpu_info: replace ib_alignment with per-IP IB base and size alignments
+      ac/gpu_info: pad IBs according to ib_size_alignment
+      winsys/amdgpu: pad gfx and compute IBs with a single NOP packet
+
+Vitaliy Triang3l Kuzmin (1):
+      r600: Replace R600_BIG_ENDIAN with UTIL_ARCH_BIG_ENDIAN
 
