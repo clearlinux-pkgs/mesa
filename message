@@ -1,56 +1,56 @@
-Updating from 476529a692d57aeaa6f8f21e7adead37eba7d31d to dbe2230408a5fefbd45188ead96f78a7490d9ad9
+Updating from dbe2230408a5fefbd45188ead96f78a7490d9ad9 to 90f12ce74021a3a0b7291c2d77f9d5b214e764a2
 
-Alyssa Rosenzweig (29):
-      asahi: Clamp index buffer extent to what's read
-      agx: Align the reg file for 256-bit vectors
-      agx: Hoist sample_mask/zs_emit
-      agx: Set PIPE_SHADER_CAP_CONT_SUPPORTED
-      agx: Augment if/else/while_cmp with a target
-      agx: Add jumps to block ends
-      agx: Add agx_prev_block helper
-      agx: Insert jmp_exec_none instructions
-      nir: Add layer_id_written_agx sysval
-      nir: Support arrays in block_image_store_agx
-      agx/nir_lower_texture: Allow disabling layer clamping
-      agx: Pack block image store dim correctly
-      agx: Handle layered block image stores
-      agx: Add pass to lower layer ID writes
-      asahi: Add helper to get layer id in internal program
-      asahi,agx: Select layered rendering outputs
-      agx: Support packed layered rendering writes
-      agx/tilebuffer: Support layered layouts
-      agx/lower_tilebuffer: Support spilled layered RTs
-      asahi: Use layered layouts
-      asahi: Expose VS_LAYER_VIEWPORT behind a flag
-      asahi: Account for layering for attachment views
-      asahi: Assume LAYER is flat-shaded
-      asahi: Add pass to predicate layer ID reads
-      asahi: Predicate layer ID reads
-      asahi: Write to cubes/etc attachments as 2D array
-      asahi: Use a 2D Array texture for array render targets
-      asahi: Generate layered EOT programs
-      asahi: Handle layered background programs
+Christian Gmeiner (1):
+      docs: Move isaspec out of drivers/freedreno
 
-Eric Engestrom (2):
-      ci/deqp-runner: fix indentation
-      ci/deqp-runner: restore exit-on-error after getting deqp-runner's exit code
+Georg Lehmann (4):
+      nir: scalarize masked_swizzle_amd created from shuffle_xor
+      aco/optimizer: check if we can use omod before labeling it
+      aco/optimizer: copy propagate to output modifier instructions
+      aco: remove -0.0 for 32 bit fsign with mul_legacy/omod when denorms are flushed
 
-Friedrich Vock (2):
-      radv: Initialize shader freelist on allocation
-      radv: Fix check in insert_block
+Iago Toral Quiroga (5):
+      broadcom/compiler: add a couple of shader key helpers
+      v3d: compute nir sha1 for uncompiled shader state
+      v3d: use pre-computed shader sha1 for disk cache
+      v3d: fix RAM shader cache
+      v3d: get rid of shader_state pointer in v3d_key
 
-Janne Grunau (1):
-      asahi: decode: Fix uint64_t format modifiers in agxdecode_stateful()
+Jonathan Marek (2):
+      freedreno: move redump.h to common code + cleanup
+      tu: add a TU_DEBUG=rd option for cmdstream dumping
 
-Marek Olšák (7):
-      ac/llvm: set !fpmath 3.0 for llvm.sqrt
-      ac/gpu_info: don't align IBs to the GL2 cache line size
-      ac/llvm: fix flat PS input corruption
-      amd: rename GFX110x to NAVI31-33
-      ac/gpu_info: replace ib_alignment with per-IP IB base and size alignments
-      ac/gpu_info: pad IBs according to ib_size_alignment
-      winsys/amdgpu: pad gfx and compute IBs with a single NOP packet
+Lionel Landwerlin (1):
+      anv: fix internal compute copy shader build
 
-Vitaliy Triang3l Kuzmin (1):
-      r600: Replace R600_BIG_ENDIAN with UTIL_ARCH_BIG_ENDIAN
+Martin Roukala (né Peres) (3):
+      ci/vkcts-vangogh: mark dEQP-VK.dynamic_rendering.primary_cmd_buff.basic.* as flake
+      ci/vkcts-navi21: mark more of the RT handles checks as flakes
+      ci: make B2C_JOB_VOLUME_EXCLUSIONS to all .b2c-test jobs
+
+Rhys Perry (3):
+      aco: disable zero offset optimization for strict WQM coords
+      nir/constant_folding: remove zero texel offset
+      aco: remove zero offset optimization
+
+Sagar Ghuge (1):
+      isl: Use 16-bit instead of 8-bits for surface format info fields
+
+Samuel Pitoiset (4):
+      radv: fix alignment of DGC command buffers
+      radv/ci: update list of expected failures on PITCAIRN
+      radv/ci: update list of flakes for NAVI10/VEGA10
+      radv/amdgpu: fix alignment of command buffers
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: disable Collabora's LAVA lab for maintance"
+
+Tapani Pälli (6):
+      iris: correct dst alpha blend factor in Wa_14018912822
+      iris/anv: move Wa_14018912822 as a drirc workaround
+      iris: flush data cache when flushing HDC on GFX < 12
+      anv: HDC flush is available only for GFX_VER 12+
+      iris: HDC flush is available only for GFX_VER 12+
+      intel/genxml: remove HDC from gen11.xml, it is not available
 
