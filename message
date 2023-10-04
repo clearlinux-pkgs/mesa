@@ -1,56 +1,70 @@
-Updating from dbe2230408a5fefbd45188ead96f78a7490d9ad9 to 90f12ce74021a3a0b7291c2d77f9d5b214e764a2
+Updating from 90f12ce74021a3a0b7291c2d77f9d5b214e764a2 to 72323f66d9991029c6533aeb2d76c0bf8ae9d651
 
-Christian Gmeiner (1):
-      docs: Move isaspec out of drivers/freedreno
+Benjamin Cheng (1):
+      radv/video: find SPS with pps_seq_parameter_set_id
 
-Georg Lehmann (4):
-      nir: scalarize masked_swizzle_amd created from shuffle_xor
-      aco/optimizer: check if we can use omod before labeling it
-      aco/optimizer: copy propagate to output modifier instructions
-      aco: remove -0.0 for 32 bit fsign with mul_legacy/omod when denorms are flushed
+Christian Gmeiner (5):
+      isaspec: Add support for templates
+      isaspec: encode: Correct used regex
+      isaspec: Add method to get all instrustions
+      isaspec: Add support for custom meta information
+      isaspec: Add BitSetEnumValue object
 
-Iago Toral Quiroga (5):
-      broadcom/compiler: add a couple of shader key helpers
-      v3d: compute nir sha1 for uncompiled shader state
-      v3d: use pre-computed shader sha1 for disk cache
-      v3d: fix RAM shader cache
-      v3d: get rid of shader_state pointer in v3d_key
+Danylo Piliaiev (7):
+      tu/perfetto: Remove now unnecessary tu_perfetto_util
+      tu/perfetto: Allow gpu time to be passed into tu_perfetto_submit
+      tu/kgsl: Fix memory leak of tmp allocations during submissions
+      tu/kgsl: Support u_trace and perfetto
+      tu/a7xx: Correctly record timestamps for u_trace
+      tu/virtio: Fix incorrect call to tu_perfetto_submit
+      ci: Compile Turnip's virtio kmd in debian-arm64
 
-Jonathan Marek (2):
-      freedreno: move redump.h to common code + cleanup
-      tu: add a TU_DEBUG=rd option for cmdstream dumping
+Emma Anholt (7):
+      ci/anv: Drop incorrect xfail addition for TGL
+      ci/anv: Drop the 16bit.scalar.13 skip.
+      ci/etnaviv: Minor xfail/flake polishing.
+      ci/etnaviv: Skip a GLES2 test that times out the asan job.
+      ci/zink: Skip more doubles tests on anv that flake at 3 minute timeouts.
+      ci/docker: Clear the results file before starting a new deqp test run.
+      ci/crocus: Add a related flake to a known one.
 
-Lionel Landwerlin (1):
-      anv: fix internal compute copy shader build
+Georg Lehmann (2):
+      nir: make quad intrinsic dst bit size match src0
+      nir/lower_subgroups: use intrinsic builder more
 
-Martin Roukala (né Peres) (3):
-      ci/vkcts-vangogh: mark dEQP-VK.dynamic_rendering.primary_cmd_buff.basic.* as flake
-      ci/vkcts-navi21: mark more of the RT handles checks as flakes
-      ci: make B2C_JOB_VOLUME_EXCLUSIONS to all .b2c-test jobs
+Gert Wollny (1):
+      copyimage: check requested slice early when cube maps are involved
 
-Rhys Perry (3):
-      aco: disable zero offset optimization for strict WQM coords
-      nir/constant_folding: remove zero texel offset
-      aco: remove zero offset optimization
+Juan A. Suarez Romero (1):
+      v3dv/ci: update expected list
+
+Kenneth Graunke (1):
+      anv: Add support for a transfer queue on Alchemist
+
+Mike Blumenkrantz (5):
+      zink: fix crashing in image rebinds
+      zink: move push descriptor disable to driver workarounds
+      zink: move v3dv scalarBlockLayout workaround
+      zink: fix end-of-batch barrier pipeline stages
+      zink: guarantee egl syncobj lifetime
+
+Rob Clark (10):
+      freedreno: Indentation fix
+      freedreno: Use explicit QCOM_TILED3 modifier
+      freedreno/a6xx: Remove dummy packet for globals
+      freedreno: Fix streamout offset_buf dirtiness
+      freedreno: Fix user const buffer dirtiness
+      freedreno/batch: Move query_buf allocation
+      freedreno: Add private-BO tracking
+      freedreno: Add missing indirect_draw_count tracking
+      freedreno: Move/add some attach_bo()
+      freedreno: Add attach-bo debugging
 
 Sagar Ghuge (1):
-      isl: Use 16-bit instead of 8-bits for surface format info fields
+      anv: Handle end of pipe with MI_FLUSH_DW on transfer queue
 
-Samuel Pitoiset (4):
-      radv: fix alignment of DGC command buffers
-      radv/ci: update list of expected failures on PITCAIRN
-      radv/ci: update list of flakes for NAVI10/VEGA10
-      radv/amdgpu: fix alignment of command buffers
-
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
-
-Tapani Pälli (6):
-      iris: correct dst alpha blend factor in Wa_14018912822
-      iris/anv: move Wa_14018912822 as a drirc workaround
-      iris: flush data cache when flushing HDC on GFX < 12
-      anv: HDC flush is available only for GFX_VER 12+
-      iris: HDC flush is available only for GFX_VER 12+
-      intel/genxml: remove HDC from gen11.xml, it is not available
+Samuel Pitoiset (3):
+      radv: enable DCC for MSAA images on GFX11
+      zink/ci: update list of expectations for zink-anv-tgl
+      zink/ci: bump zink-anv-tgl-full timeout to 1h45m
 
