@@ -1,70 +1,80 @@
-Updating from 90f12ce74021a3a0b7291c2d77f9d5b214e764a2 to 72323f66d9991029c6533aeb2d76c0bf8ae9d651
+Updating from 72323f66d9991029c6533aeb2d76c0bf8ae9d651 to 8361cd4c4cf7c5e63e7d1be3a7b57898e9de62bc
 
-Benjamin Cheng (1):
-      radv/video: find SPS with pps_seq_parameter_set_id
+Carsten Haitzler (1):
+      panfrost: Add GPU variant of G57 to the set of known ids
 
-Christian Gmeiner (5):
-      isaspec: Add support for templates
-      isaspec: encode: Correct used regex
-      isaspec: Add method to get all instrustions
-      isaspec: Add support for custom meta information
-      isaspec: Add BitSetEnumValue object
+Danylo Piliaiev (5):
+      freedreno/registers: Refine a7xx push consts registers
+      ir3,tu: Refactor push consts info plumbing
+      freedreno: Make possible to specify A7XX feature flags
+      turnip,ir3: Implement A7XX push consts load via preamble
+      tu: Add push_consts_per_stage debug option
 
-Danylo Piliaiev (7):
-      tu/perfetto: Remove now unnecessary tu_perfetto_util
-      tu/perfetto: Allow gpu time to be passed into tu_perfetto_submit
-      tu/kgsl: Fix memory leak of tmp allocations during submissions
-      tu/kgsl: Support u_trace and perfetto
-      tu/a7xx: Correctly record timestamps for u_trace
-      tu/virtio: Fix incorrect call to tu_perfetto_submit
-      ci: Compile Turnip's virtio kmd in debian-arm64
+Eric Engestrom (4):
+      ci: fix shebang in build-deqp-runner.sh
+      docs: add release notes for 23.1.9
+      docs: add sha256sum for 23.1.9
+      docs: update calendar for 23.1.9
 
-Emma Anholt (7):
-      ci/anv: Drop incorrect xfail addition for TGL
-      ci/anv: Drop the 16bit.scalar.13 skip.
-      ci/etnaviv: Minor xfail/flake polishing.
-      ci/etnaviv: Skip a GLES2 test that times out the asan job.
-      ci/zink: Skip more doubles tests on anv that flake at 3 minute timeouts.
-      ci/docker: Clear the results file before starting a new deqp test run.
-      ci/crocus: Add a related flake to a known one.
+Faith Ekstrand (4):
+      drm-uapi: Sync nouveau_drm.h
+      nvk: Take GETPARAM_EXEC_PUSH_MAX into account
+      nvk: Handle zero-sized sparse buffers
+      nvk: Use align() and align64() instead of ALIGN_POT
 
-Georg Lehmann (2):
-      nir: make quad intrinsic dst bit size match src0
-      nir/lower_subgroups: use intrinsic builder more
+Georg Lehmann (3):
+      aco: assume new generations are unsupported by clrx
+      aco: assume newer generation will use GFX11 wait_imm packing
+      aco: print final ir instead if printing asm is unsupported
 
 Gert Wollny (1):
-      copyimage: check requested slice early when cube maps are involved
+      mesa: check numlevels and numlayers when creating a texture view
 
-Juan A. Suarez Romero (1):
-      v3dv/ci: update expected list
+Igor Torrente (1):
+      zink: fix for startup crash of weston running on top of zink + venus
 
-Kenneth Graunke (1):
-      anv: Add support for a transfer queue on Alchemist
+Karol Herbst (1):
+      rusticl: fix clippys bool_to_int_with_if
 
-Mike Blumenkrantz (5):
-      zink: fix crashing in image rebinds
-      zink: move push descriptor disable to driver workarounds
-      zink: move v3dv scalarBlockLayout workaround
-      zink: fix end-of-batch barrier pipeline stages
-      zink: guarantee egl syncobj lifetime
+Konstantin Seurer (3):
+      zink: Initialize primitive types to an invalid value
+      nir/passthrough_gs: Support edge flags with points
+      zink: Enable edge flags with points
 
-Rob Clark (10):
-      freedreno: Indentation fix
-      freedreno: Use explicit QCOM_TILED3 modifier
-      freedreno/a6xx: Remove dummy packet for globals
-      freedreno: Fix streamout offset_buf dirtiness
-      freedreno: Fix user const buffer dirtiness
-      freedreno/batch: Move query_buf allocation
-      freedreno: Add private-BO tracking
-      freedreno: Add missing indirect_draw_count tracking
-      freedreno: Move/add some attach_bo()
-      freedreno: Add attach-bo debugging
+Leandro Ribeiro (5):
+      egl: rewrite outdated comment in _eglFindDevice()
+      egl: remove unused parameter from _eglAddDRMDevice()
+      egl: simplify _eglAddDRMDevice()
+      egl: make explicit that we don't support render nodes for software EGLDevice
+      egl: move is_render_node flag to platform_wayland
 
-Sagar Ghuge (1):
-      anv: Handle end of pipe with MI_FLUSH_DW on transfer queue
+Leo Liu (1):
+      ac/gpu_info: override ib_size_alignment for VCN_DEC and JPEG
 
-Samuel Pitoiset (3):
-      radv: enable DCC for MSAA images on GFX11
-      zink/ci: update list of expectations for zink-anv-tgl
-      zink/ci: bump zink-anv-tgl-full timeout to 1h45m
+Marek Olšák (4):
+      Revert "radeonsi: specialize si_draw_rectangle using a C++ template"
+      radeonsi/ci: update navi10 results
+      gallium/util: fix GALLIUM_TESTS=1 by using cso_set_vertex_buffers_and_elements
+      gallium/util: add more tests for compute-only contexts
+
+Martin Roukala (né Peres) (1):
+      zink/ci: remove 19 tests from the zink-radv-polaris10-fails list
+
+Mike Blumenkrantz (2):
+      aux/trace: dump enum names for map usage
+      gallium: add PIPE_MAP_NONE
+
+Rhys Perry (4):
+      aco: shrink DPP8_instruction
+      aco: add fetch_inactive field to DPP instructions
+      nir: add fetch inactive index to quad_swizzle_amd/masked_swizzle_amd
+      aco: disable FI for quad/masked swizzle
+
+Samuel Pitoiset (2):
+      radv/ci: rename GFX1100 lists to NAVI31
+      radv: fix emulated geometry shader primitives/invocations queries
+
+Sviatoslav Peleshko (2):
+      intel/fs: Fix "packed word exception" condition for register regioning
+      intel/eu/validate: Validate "packed word exception" stricter
 
