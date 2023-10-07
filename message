@@ -1,64 +1,66 @@
-Updating from 8361cd4c4cf7c5e63e7d1be3a7b57898e9de62bc to 4b9c3c76d0cf1be96053651b05e65d06827fd3cc
+Updating from 4b9c3c76d0cf1be96053651b05e65d06827fd3cc to 0c10cbff558b5070b90642db7fcf672191f348f4
 
-Chia-I Wu (8):
-      vulkan/runtime: add a helper for ETC2 emulation
-      radv: use vk_tecompress_etc2 from the runtime
-      vulkan/runtime: fix image type check for ETC2 emulation
-      vulkan/runtime: fix a harmless typo for ETC2 emulation
-      vulkan/runtime, radv: remove 1D support from ETC2 emulation
-      radv: add radv_is_format_emulated
-      radv: simplify view format override for emulated formats
-      radv: hard code format features for emulated formats
+Caio Oliveira (11):
+      intel/fs: Tweak default case of fs_inst::size_read()
+      compiler/types: Move the C++ inline functions in glsl_type out of the struct body
+      compiler/types: Move C declarations into glsl_types.h
+      compiler/types: Flip wrapping of base_type checks
+      compiler/types: Flip wrapping of various type identification checks
+      compiler/types: Flip wrapping of convenience accessors for vector types
+      compiler/types: Flip wrapping of basic "get type" functions
+      rusticl: Add Rust bindings for inline glsl_types functions
+      util: Add size to ralloc_header in debug mode
+      util: Add a canary to identify gc_ctx in debug mode
+      util: Add function print information about a ralloc tree
 
 Danylo Piliaiev (1):
-      tu: Fix VK_FORMAT_A8_UNORM_KHR using UBWC when !has_8bpp_ubwc
+      tu/kgsl: Fix field order in kgsl_command_object init
 
-David Heidelberg (2):
-      ci/bare-metal: correct workaround for R8152 issue while retrieving TFTP data
-      ci/bare-metal: drop unused imports, sort, use SPDX license
+Eric Engestrom (3):
+      ci: drop unused ephemeral packages in alpine image
+      docs/ci: rewrite the "farm maintenance ^ other change" rule to mean what we actually meant
+      ci: skip dEQP-VK.api.driver_properties.conformance_version for everyone
 
-Emma Anholt (3):
-      ci/etnaviv: return gl-1.4-tex1d-2dborder as a known flake
-      ci/crocus: Add known piglit flakes
-      ci/hasvk: Add a bunch of new CTS border color fails.
+Faith Ekstrand (4):
+      nouveau: Generate headers for Maxwell B compute
+      nvk: Add a nvk_cmd_buffer_compute_cls() helper
+      nvk: Invalidate sampler/texture header caches in BeginCommandBuffer()
+      nvk: Invalidate SKED caches at the top of command buffers
 
-Erik Faye-Lund (3):
-      docs/panfrost: link to lima
-      docs/panfrost: use code-blocks with wrapping for long blocks
-      docs/panfrost: use math-role to denote powers of two
+Ian Douglas Scott (1):
+      egl/wayland: Don't segfault if `create_wl_buffer` returns `NULL`
 
-Ganesh Belgur Ramachandra (3):
-      radeonsi: "clear_render_target" shader in nir
-      radeonsi: "clear_render_target_1d_array" shader in nir
-      radeonsi: "clear_12bytes_buffer" shader in nir
+Ian Romanick (1):
+      intel/fs: Add DP4A to get_lowered_simd_width
 
-Georg Lehmann (4):
-      aco/gfx11: optimize dual source export
-      aco/gfx11: apply clamp/omod to vinterp
-      aco: support v_fma_f32_dpp as fma_mix
-      aco/gfx11: support vinterp as fma_mix
+Kai Wasserbäch (2):
+      fix: clover: LLVM 18 renamed/moved CGFT_*, update compat layer
+      fix: clover: LLVM 18: s/CodeGenOpt::/CodeGenOptLevel::/
 
-Konstantin Seurer (1):
-      mesa: Fix glBegin/End when LINE_LOOP is not supported
+Lionel Landwerlin (4):
+      anv: reduce working temporary memory for BVH builds
+      anv: move bo_pool allocation flags to init caller
+      anv: use buffer pools for BVH build buffers
+      intel/ds: track acceleration RT commands
 
-Marek Olšák (9):
-      radeonsi: add another aux context for uploading shaders
-      radeonsi: upload shaders via a staging buffer so as not to map VRAM directly
-      ac/surface: don't require exact pitch for gfx6-8 tiled imports
-      Revert "ac/gpu_info: override ib_size_alignment for VCN_DEC and JPEG"
-      Revert "radv/amdgpu: fix alignment of command buffers"
-      Revert "radv: fix alignment of DGC command buffers"
-      Revert "winsys/amdgpu: pad gfx and compute IBs with a single NOP packet"
-      Revert "ac/gpu_info: pad IBs according to ib_size_alignment"
-      Revert "ac/gpu_info: replace ib_alignment with per-IP IB base and size alignments"
+Martin Roukala (né Peres) (1):
+      ci/b2c: switch containers to a back-up ahead of valve-infra renaming
 
-Samuel Pitoiset (5):
-      radv/ci: remove duplicate skipped tests for RAVEN/STONEY
-      radv/ci: exclude dEQP-VK.texture.explicit_lod.2d.sizes.128x128_* for all jobs
-      radv: fix synchronization with emulated GS primitives/invocations queries
-      radv/ci: remove no longer existing test for VANGOGH
-      radv/ci: cleanup list of expected failures for NAVI10/NAVI21/VEGA10
+Mike Blumenkrantz (4):
+      Revert "egl/wayland: Add image loader extension for swrast"
+      egl/wayland: don't block in swrast when updating buffers for zink
+      egl/wayland: return sooner from swrast_update_buffers() if zink
+      zink: don't check submit count for unflushed usage
 
-Simon Zeni (1):
-      nouveau/winsys: use mmap instead of mmap64 in nouveau_bo
+Samuel Pitoiset (4):
+      radv: always write the sample positions when a new descriptor BO is created
+      radv: fill the scratch BO in radv_fill_shader_rings()
+      radv: fix gang submissions with chaining
+      radv: fix re-emitting streamout descriptors for NGG streamout
+
+Yiwei Zhang (1):
+      venus: fix re-export of imported classic 3d resources
+
+antonino (1):
+      zink: store bindless var when creating it to avoid creating it again
 
