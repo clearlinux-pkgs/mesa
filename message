@@ -1,66 +1,42 @@
-Updating from 4b9c3c76d0cf1be96053651b05e65d06827fd3cc to 0c10cbff558b5070b90642db7fcf672191f348f4
+Updating from 0c10cbff558b5070b90642db7fcf672191f348f4 to c005b5a16f5a0e38840d03d419137d6c98090788
 
-Caio Oliveira (11):
-      intel/fs: Tweak default case of fs_inst::size_read()
-      compiler/types: Move the C++ inline functions in glsl_type out of the struct body
-      compiler/types: Move C declarations into glsl_types.h
-      compiler/types: Flip wrapping of base_type checks
-      compiler/types: Flip wrapping of various type identification checks
-      compiler/types: Flip wrapping of convenience accessors for vector types
-      compiler/types: Flip wrapping of basic "get type" functions
-      rusticl: Add Rust bindings for inline glsl_types functions
-      util: Add size to ralloc_header in debug mode
-      util: Add a canary to identify gc_ctx in debug mode
-      util: Add function print information about a ralloc tree
+Caio Oliveira (1):
+      util: Avoid waste space when linear alloc'ing large sizes
 
-Danylo Piliaiev (1):
-      tu/kgsl: Fix field order in kgsl_command_object init
+David Heidelberg (2):
+      ci/lima: farm is down, disable for now
+      ci: do not report failed job when flakes reporting fails
 
-Eric Engestrom (3):
-      ci: drop unused ephemeral packages in alpine image
-      docs/ci: rewrite the "farm maintenance ^ other change" rule to mean what we actually meant
-      ci: skip dEQP-VK.api.driver_properties.conformance_version for everyone
+Eric Engestrom (5):
+      pick-ui: use assignment expressions
+      pick-ui: use more expressive variable names
+      pick-ui: add `Backport-to: XX.Y` nomination
+      v3d/ci: move traces job to wayland
+      ci: print deqp version in the job log
 
-Faith Ekstrand (4):
-      nouveau: Generate headers for Maxwell B compute
-      nvk: Add a nvk_cmd_buffer_compute_cls() helper
-      nvk: Invalidate sampler/texture header caches in BeginCommandBuffer()
-      nvk: Invalidate SKED caches at the top of command buffers
+Gert Wollny (1):
+      virgl: Use common clear_texture if host doesn't support the feature
 
-Ian Douglas Scott (1):
-      egl/wayland: Don't segfault if `create_wl_buffer` returns `NULL`
+Lionel Landwerlin (1):
+      anv: fix index buffer size programming
 
-Ian Romanick (1):
-      intel/fs: Add DP4A to get_lowered_simd_width
+Marek Olšák (7):
+      nir: sort variables by location in nir_lower_io_passes to work around a bug
+      nir: recompute IO bases after DCE in nir_lower_io_passes
+      nir: add dual-slot input information into load_input intrinsics
+      nir: take dual slot input info into account when computing IO driver locations
+      nir: gather dual slot input information
+      nir: expose reusable linking helpers for cloning uniform loads
+      nir: handle nir_var_mem_ubo in nir_clone_uniform_variable
 
-Kai Wasserbäch (2):
-      fix: clover: LLVM 18 renamed/moved CGFT_*, update compat layer
-      fix: clover: LLVM 18: s/CodeGenOpt::/CodeGenOptLevel::/
+Mark Collins (3):
+      freedreno/common: Add max_sets property to A6xxGPUInfo
+      tu: Support higher descriptor set count for A7XX
+      tu,util/driconf: Add option to not reserve descriptor set
 
-Lionel Landwerlin (4):
-      anv: reduce working temporary memory for BVH builds
-      anv: move bo_pool allocation flags to init caller
-      anv: use buffer pools for BVH build buffers
-      intel/ds: track acceleration RT commands
+Thomas H.P. Andersen (1):
+      nvk: set optimization level to 3
 
-Martin Roukala (né Peres) (1):
-      ci/b2c: switch containers to a back-up ahead of valve-infra renaming
-
-Mike Blumenkrantz (4):
-      Revert "egl/wayland: Add image loader extension for swrast"
-      egl/wayland: don't block in swrast when updating buffers for zink
-      egl/wayland: return sooner from swrast_update_buffers() if zink
-      zink: don't check submit count for unflushed usage
-
-Samuel Pitoiset (4):
-      radv: always write the sample positions when a new descriptor BO is created
-      radv: fill the scratch BO in radv_fill_shader_rings()
-      radv: fix gang submissions with chaining
-      radv: fix re-emitting streamout descriptors for NGG streamout
-
-Yiwei Zhang (1):
-      venus: fix re-export of imported classic 3d resources
-
-antonino (1):
-      zink: store bindless var when creating it to avoid creating it again
+Vignesh Raman (1):
+      ci: Uprev crosvm
 
