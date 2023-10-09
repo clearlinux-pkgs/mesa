@@ -1,42 +1,11 @@
-Updating from 0c10cbff558b5070b90642db7fcf672191f348f4 to c005b5a16f5a0e38840d03d419137d6c98090788
+Updating from c005b5a16f5a0e38840d03d419137d6c98090788 to 16fa4621b8fbb185fd8219be6540183bfe942f0d
 
-Caio Oliveira (1):
-      util: Avoid waste space when linear alloc'ing large sizes
+David Heidelberg (1):
+      ci/freedreno: re-enable Cheza (Adreno 630) runners
 
-David Heidelberg (2):
-      ci/lima: farm is down, disable for now
-      ci: do not report failed job when flakes reporting fails
+Rob Clark (1):
+      freedreno: Rework supported-modifiers handling
 
-Eric Engestrom (5):
-      pick-ui: use assignment expressions
-      pick-ui: use more expressive variable names
-      pick-ui: add `Backport-to: XX.Y` nomination
-      v3d/ci: move traces job to wayland
-      ci: print deqp version in the job log
-
-Gert Wollny (1):
-      virgl: Use common clear_texture if host doesn't support the feature
-
-Lionel Landwerlin (1):
-      anv: fix index buffer size programming
-
-Marek Olšák (7):
-      nir: sort variables by location in nir_lower_io_passes to work around a bug
-      nir: recompute IO bases after DCE in nir_lower_io_passes
-      nir: add dual-slot input information into load_input intrinsics
-      nir: take dual slot input info into account when computing IO driver locations
-      nir: gather dual slot input information
-      nir: expose reusable linking helpers for cloning uniform loads
-      nir: handle nir_var_mem_ubo in nir_clone_uniform_variable
-
-Mark Collins (3):
-      freedreno/common: Add max_sets property to A6xxGPUInfo
-      tu: Support higher descriptor set count for A7XX
-      tu,util/driconf: Add option to not reserve descriptor set
-
-Thomas H.P. Andersen (1):
-      nvk: set optimization level to 3
-
-Vignesh Raman (1):
-      ci: Uprev crosvm
+Vinson Lee (1):
+      anv: Fix transfer type assert
 
