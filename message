@@ -1,11 +1,118 @@
-Updating from c005b5a16f5a0e38840d03d419137d6c98090788 to 16fa4621b8fbb185fd8219be6540183bfe942f0d
+Updating from 16fa4621b8fbb185fd8219be6540183bfe942f0d to e1622dcca1a1ea27a803c8185c5e1fca253e0290
 
-David Heidelberg (1):
-      ci/freedreno: re-enable Cheza (Adreno 630) runners
+Dave Airlie (15):
+      lavapipe: fix some whitespace in advance of other changes.
+      lavapipe: fix subresource layers asserts
+      lavapipe: support host image copying on compressed texture formats
+      llvmpipe: don't create texture functions for planar textures.
+      lavapipe: don't emit blit src/dst for subsampled formats.
+      llvmpipe: don't support planar formats for buffers.
+      lavapipe: convert sampler to use vk base class.
+      lavapipe: cleanup copy code to use a local region variable.
+      lavapipe: start introducing planes structure.
+      lavapipe: allocate image and image view planes.
+      lavapipe: handle planes in copies
+      lavapipe: handle planes in get image sub resource
+      lavapipe: add descriptor sets bindings for planar images
+      lavapipe: handle planes in texture lowering.
+      lavapipe: expose planar ycbcr formats and new ycbcr features
 
-Rob Clark (1):
-      freedreno: Rework supported-modifiers handling
+Emma Anholt (11):
+      i915: Re-clang-format and enforce it in CI.
+      i915: Print the relevant counts vs limits when throwing errors.
+      i915: Don't log I915_DEBUG=fs output for blit shaders.
+      i915: Save fragment program compile error messages in the fragment shader.
+      i915: Do a test compile at glLinkShader() time.
+      i915: Make exceeding tex indirect count fatal.
+      i915: Use nir_group_loads() to reduce texture indirection phases.
+      ci/crocus: Generalize the drawarrays-vertex-count flakes.
+      ci/zink: Skip 3-minute-long glx-visuals timeouts.
+      ci/zink: Skip dmat[34] op tests in general, as well
+      ci/crocus: Disable flaky unvanquished-ultra trace
 
-Vinson Lee (1):
-      anv: Fix transfer type assert
+Erik Faye-Lund (11):
+      docs: fix linkcheck
+      docs: update a few links to https
+      docs: update anchor for link
+      docs: update link to git-wiki
+      docs: link to upstream etnaviv
+      docs: apply some trivial redirects
+      docs: use doc-role when linking to lists article
+      docs: keep up with intels ever-moving documentation
+      docs: mark some redirects as allowed
+      docs: only link to old docs from html
+      docs: use html_static_path for static files
+
+Iván Briano (5):
+      vulkan/runtime: add internal parameter to vk_spirv_to_nir
+      nir/lower_int64: respect rounding mode when casting to float
+      intel/compiler: round f2f16 correctly for RTNE case
+      util: add double_to_float16 helpers
+      nir: round f2f16{_rtne/_rtz} correctly for constant expressions
+
+José Roberto de Souza (2):
+      iris: Lock bufmgr->lock before call vma_free() in error path
+      iris: Nuke useless flags from iris_fine_fence_new()
+
+Karmjit Mahil (3):
+      pvr: Fix cubemap layer stride
+      pvr: Use the render passes' attachments array to setup ISP state
+      pvr: Adjust EOT PBE state to account for the iview's base array layer
+
+Lionel Landwerlin (4):
+      anv: implement INTEL_DEBUG=reemit
+      anv: add missing workaround handling in simple shader
+      anv: fix a couple of missing input for 3DSTATE_RASTER programming
+      anv: flag 3DSTATE_RASTER as dirty after simple shader primitive
+
+Mike Blumenkrantz (3):
+      egl: don't set ForceSoftware for all zink loading
+      zink: error at handle export on missing EXT_image_drm_format_modifier
+      gbm: delete some zink handling
+
+Qiang Yu (26):
+      ac,radeonsi: move ps arg pos_fixed_pt to ac_shader_args
+      aco: do not eliminate final exec write when p_end_with_regs block
+      aco: remove p_end_with_regs from needs_exact()
+      aco: add ps prolog generation for radeonsi
+      aco: handle ps outputs from radeonsi
+      aco: add create_fs_end_for_epilog for radeonsi
+      aco,radv: remove unused ps epilog info fields
+      aco,radv: rename ps epilog info inputs to colors
+      aco: simplify export_fs_mrt_color
+      aco,radv: add radeonsi spec ps epilog code
+      aco: compact ps expilog color export for radeonsi
+      aco,radv,radeonsi: pass spi ps input ena and addr
+      aco: do not fix_exports when program has epilog
+      aco: fix assertion fail when program contains empty block
+      aco: create exit block for p_end_with_regs to branch to
+      aco: wait memory ops done before go to next shader part
+      radeonsi: reduce sgpr count for scratch_offset when aco
+      radeonsi: init spi_ps_input_addr for part mode ps
+      radeonsi: extract si_prolog_get_internal_binding_slot
+      radeonsi: extract si_get_ps_prolog_args to be shared with aco
+      ac,radeonsi: remove unused ps prolog key fields
+      radeonsi: add ps prolog shader part build
+      radeonsi: extract si_get_ps_epilog_args to be shared with aco
+      radeonsi: fill aco shader info for ps part
+      radeonsi: add ps epilog shader part build
+      radeonsi: enable aco compile for part mode ps
+
+Samuel Pitoiset (1):
+      radv: fix IB alignment
+
+SoroushIMG (1):
+      pvr: fix mipmap size calculation for bc formats
+
+Yiwei Zhang (4):
+      venus: remove redundant bo roundtrip and add more docs
+      venus: track VkPhysicalDeviceMemoryProperties instead
+      venus: refactor vn_device_memory to prepare for async alloc
+      venus: make device memory alloc async
+
+Yonggang Luo (1):
+      util: Deduplicate macros between u_math.h and macros.h
+
+antonino (1):
+      nir: fix several crashes in `nir_lower_tex`
 
