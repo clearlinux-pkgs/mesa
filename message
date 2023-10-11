@@ -1,118 +1,96 @@
-Updating from 16fa4621b8fbb185fd8219be6540183bfe942f0d to e1622dcca1a1ea27a803c8185c5e1fca253e0290
+Updating from e1622dcca1a1ea27a803c8185c5e1fca253e0290 to 2717499c91d4b942e7c1f2024de4a8e18ec03cd7
 
-Dave Airlie (15):
-      lavapipe: fix some whitespace in advance of other changes.
-      lavapipe: fix subresource layers asserts
-      lavapipe: support host image copying on compressed texture formats
-      llvmpipe: don't create texture functions for planar textures.
-      lavapipe: don't emit blit src/dst for subsampled formats.
-      llvmpipe: don't support planar formats for buffers.
-      lavapipe: convert sampler to use vk base class.
-      lavapipe: cleanup copy code to use a local region variable.
-      lavapipe: start introducing planes structure.
-      lavapipe: allocate image and image view planes.
-      lavapipe: handle planes in copies
-      lavapipe: handle planes in get image sub resource
-      lavapipe: add descriptor sets bindings for planar images
-      lavapipe: handle planes in texture lowering.
-      lavapipe: expose planar ycbcr formats and new ycbcr features
+Alyssa Rosenzweig (15):
+      lima/pp: Do not use union undefined behaviour
+      nir: Add trivial nir_src_* getters
+      nir: Use set_parent_instr internally
+      nir: Use getters for nir_src::parent_*
+      nir: Assert the nir_src union is used safely
+      nir: Use a tagged pointer for nir_src parents
+      nir: Add ACCESS_CAN_SPECULATE
+      ir3: Set CAN_SPECULATE before opt_preamble
+      ir3: Model cost of phi nodes for opt_preamble
+      nir/opt_preamble: Walk cf_list manually
+      nir/opt_preamble: Preserve IR when replacing phis
+      nir/opt_preamble: Unify foreach_use logic
+      nir/opt_preamble: Move phis for movable if's
+      nir/opt_preamble: Respect ACCESS_CAN_SPECULATE
+      freedreno/ci: Minetest
 
-Emma Anholt (11):
-      i915: Re-clang-format and enforce it in CI.
-      i915: Print the relevant counts vs limits when throwing errors.
-      i915: Don't log I915_DEBUG=fs output for blit shaders.
-      i915: Save fragment program compile error messages in the fragment shader.
-      i915: Do a test compile at glLinkShader() time.
-      i915: Make exceeding tex indirect count fatal.
-      i915: Use nir_group_loads() to reduce texture indirection phases.
-      ci/crocus: Generalize the drawarrays-vertex-count flakes.
-      ci/zink: Skip 3-minute-long glx-visuals timeouts.
-      ci/zink: Skip dmat[34] op tests in general, as well
-      ci/crocus: Disable flaky unvanquished-ultra trace
+Danylo Piliaiev (3):
+      tu: Fix stale tu_render_pass_attachment::store_stencil with dyn rendering
+      tu: Zero init tu_render_pass and tu_subpass for dynamic rendering
+      tu: Disable preamble push consts when they are not used
 
-Erik Faye-Lund (11):
-      docs: fix linkcheck
-      docs: update a few links to https
-      docs: update anchor for link
-      docs: update link to git-wiki
-      docs: link to upstream etnaviv
-      docs: apply some trivial redirects
-      docs: use doc-role when linking to lists article
-      docs: keep up with intels ever-moving documentation
-      docs: mark some redirects as allowed
-      docs: only link to old docs from html
-      docs: use html_static_path for static files
+Dave Airlie (1):
+      lavapipe + docs: update ycbcr extension enables.
 
-Iván Briano (5):
-      vulkan/runtime: add internal parameter to vk_spirv_to_nir
-      nir/lower_int64: respect rounding mode when casting to float
-      intel/compiler: round f2f16 correctly for RTNE case
-      util: add double_to_float16 helpers
-      nir: round f2f16{_rtne/_rtz} correctly for constant expressions
+David Heidelberg (3):
+      ci/traces: upload only missing trace images
+      ci/traces: keep images for every job except the performance testing
+      ci/traces: rename upload function to reflect it works with S3
 
-José Roberto de Souza (2):
-      iris: Lock bufmgr->lock before call vma_free() in error path
-      iris: Nuke useless flags from iris_fine_fence_new()
+Eric Engestrom (2):
+      ci/b2c: move to the shiny new `gfx-ci/ci-tron` repo
+      ci/b2c: use latest mesa-trigger image
 
-Karmjit Mahil (3):
-      pvr: Fix cubemap layer stride
-      pvr: Use the render passes' attachments array to setup ISP state
-      pvr: Adjust EOT PBE state to account for the iview's base array layer
+Erik Faye-Lund (3):
+      ci/etnaviv: update ci expectation
+      ci/etnaviv: allow failure on failing test
+      zink: fix wording of warning
 
-Lionel Landwerlin (4):
-      anv: implement INTEL_DEBUG=reemit
-      anv: add missing workaround handling in simple shader
-      anv: fix a couple of missing input for 3DSTATE_RASTER programming
-      anv: flag 3DSTATE_RASTER as dirty after simple shader primitive
+Faith Ekstrand (9):
+      nvk: Advertise more inline uniform block limits
+      nvk: Emit MME_DMA_SYSMEMBAR before indirect draw/dispatch
+      nvk: Set max descriptors to 2^20 for most descriptor types
+      nvk: Reset descriptor pool allocator when all sets are destroyed
+      nil/format: Use A for alpha blend
+      nil/format: Advertise R10G10B10A2_UINT texture buffer support
+      nvk: Disable depth or stencil tests when unbound
+      nvk: Always emit at least one color attachment
+      nvk: Improve address space and buffer size limits
+
+Frank Binns (5):
+      pvr: fix attachments segfault in pvr_is_stencil_store_load_needed()
+      pvr: fix allocation size of clear colour consts shared regs buffer
+      pvr: change a few places to use PVR_DW_TO_BYTES()
+      pvr: fix setup of load op unresolved msaa mask
+      pvr: emit PPP state when vis_test dirty bit is set
+
+Jani Nikula (1):
+      docs/vulkan: fixup some typos
+
+Karmjit Mahil (8):
+      pvr: Fix MRT index in PBE state
+      pvr: Fix pbe_emit assert
+      pvr: Fix OOB access of pbe_{cs,reg}_words
+      pvr: Order tile buffer EOT emits to be last
+      pvr: Fix subpass sample count on ds attachment only
+      pvr: Refactor subpass ds and sample count setup
+      pvr: Fix SPM load shader sample rate
+      pvr: Fix PPP_SCREEN sizes
+
+Karol Herbst (2):
+      rusticl/memory: fix potential use-after-free in clEnqueueSVMMemFill
+      nir/load_libclc: fix libclc memory leak
+
+Martin Roukala (né Peres) (1):
+      zink/ci: remove 42 tests from the zink-radv-polaris10-fails list
 
 Mike Blumenkrantz (3):
-      egl: don't set ForceSoftware for all zink loading
-      zink: error at handle export on missing EXT_image_drm_format_modifier
-      gbm: delete some zink handling
+      zink: apply ZINK_DEBUG=quiet to all missing feature warnings
+      zink: set ZINK_DEBUG=quiet for polaris jobs
+      lavapipe: don't block begin/end cmdbuf pipeline barriers
 
-Qiang Yu (26):
-      ac,radeonsi: move ps arg pos_fixed_pt to ac_shader_args
-      aco: do not eliminate final exec write when p_end_with_regs block
-      aco: remove p_end_with_regs from needs_exact()
-      aco: add ps prolog generation for radeonsi
-      aco: handle ps outputs from radeonsi
-      aco: add create_fs_end_for_epilog for radeonsi
-      aco,radv: remove unused ps epilog info fields
-      aco,radv: rename ps epilog info inputs to colors
-      aco: simplify export_fs_mrt_color
-      aco,radv: add radeonsi spec ps epilog code
-      aco: compact ps expilog color export for radeonsi
-      aco,radv,radeonsi: pass spi ps input ena and addr
-      aco: do not fix_exports when program has epilog
-      aco: fix assertion fail when program contains empty block
-      aco: create exit block for p_end_with_regs to branch to
-      aco: wait memory ops done before go to next shader part
-      radeonsi: reduce sgpr count for scratch_offset when aco
-      radeonsi: init spi_ps_input_addr for part mode ps
-      radeonsi: extract si_prolog_get_internal_binding_slot
-      radeonsi: extract si_get_ps_prolog_args to be shared with aco
-      ac,radeonsi: remove unused ps prolog key fields
-      radeonsi: add ps prolog shader part build
-      radeonsi: extract si_get_ps_epilog_args to be shared with aco
-      radeonsi: fill aco shader info for ps part
-      radeonsi: add ps epilog shader part build
-      radeonsi: enable aco compile for part mode ps
+Qiang Yu (1):
+      radeonsi: disable disk cache when use aco
 
-Samuel Pitoiset (1):
-      radv: fix IB alignment
+Roman Stratiienko (1):
+      dri: Remove __driDriverExtensions leftovers
 
-SoroushIMG (1):
-      pvr: fix mipmap size calculation for bc formats
-
-Yiwei Zhang (4):
-      venus: remove redundant bo roundtrip and add more docs
-      venus: track VkPhysicalDeviceMemoryProperties instead
-      venus: refactor vn_device_memory to prepare for async alloc
-      venus: make device memory alloc async
-
-Yonggang Luo (1):
-      util: Deduplicate macros between u_math.h and macros.h
-
-antonino (1):
-      nir: fix several crashes in `nir_lower_tex`
+Samuel Pitoiset (4):
+      zink: use warn_missing_feature for missing modifier support
+      radv: fix destroying GDS/OA BOs
+      radv: allocate only 1 GDS OA counter for gfx10 NGG streamout
+      ac/nir: only consider overflow for valid feedback buffers
 
