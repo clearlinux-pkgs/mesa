@@ -1,82 +1,50 @@
-Updating from 2717499c91d4b942e7c1f2024de4a8e18ec03cd7 to f1c9efc52e056ad1c48a66ddcbd5dc91e8815756
+Updating from cba898a53059b12b948fba7c69634a033c6dccad to b94b784492640519a37182c300b0872524c78d77
 
-Chia-I Wu (1):
-      mesa: make astc_decoder.glsl vk-compatible
+Adam Jackson (1):
+      docs: Mention 'meson devenv' in the pre-install test instructions
 
-Christian Gmeiner (1):
-      spirv: Don't use libclc for rotate
+Dave Airlie (1):
+      intel-clc: avoid using spirv-linker.
 
-Danylo Piliaiev (2):
-      ir3: Fix values of #wrmask not being compatible with ir3 parser
-      tu: Count a whole push consts range in constlen for PREAMBLE push consts
+Friedrich Vock (1):
+      radv/rt: Reject hits within 10ULP of previous hits in emulated RT
 
-David Heidelberg (1):
-      ci/traces: always export piglit EXTRA_ARGS
+Gert Wollny (1):
+      virgl: Fix logic for reporting PIPE_MIRROR_CLAMP
 
-David Rosca (2):
-      frontends/va: Add High Quality preset mode
-      radeonsi/vcn: Add High Quality encoding preset for AV1
+Hyunjun Ko (1):
+      anv: don't flush_llc on gen9
 
-Helen Koike (8):
-      ci/ci_run_n_monitor: print stress test results per job
-      ci/ci_run_n_monitor: simplify with defaultdict
-      ci/ci_run_n_monitor: merge print_job_status_change with print_job_status
-      ci/ci_run_n_monitor: make --target mandatory
-      ci/ci_run_n_monitor: merge enable_job with retry_job
-      ci/ci_run_n_monitor: simplify enable/cancel logic in monitor_pipeline()
-      ci/ci_run_n_monitor: allow <user>/<project> in --project
-      ci/ci_run_n_monitor: limit repetitions on --stress
-
-Karmjit Mahil (3):
-      vulkan: Add `vk_subpass_dependency_is_fb_local()` helper
-      tu: Use common `vk_subpass_dependency_is_fb_local()`
-      pvr: Don't merge subpasses on framebuffer-global dependancy
+Iván Briano (1):
+      anv: advertise VK_KHR_global_priority_queue
 
 Lionel Landwerlin (4):
-      vulkan: bump headers/registry to 1.3.267
-      anv: rename primary in container in ExecuteCommands()
-      anv: add support for VK_EXT_nested_command_buffer
-      anv: simplify push descriptors
+      anv: workaround Gfx11 with optimized state emission
+      u_trace: generate tracepoint index parameter in perfetto callbacks
+      u_trace: generate tracepoint name array in perfetto header
+      intel/ds: provide names for different events of a timeline's row
 
 Lucas Stach (2):
-      etnaviv: fix read staging buffer leak
-      Revert "ci/etnaviv: allow failure on failing test"
+      etnaviv: use correct blit box sizes when copying resource
+      etnaviv: zero shared TS metadata block
 
-Matt Coster (3):
-      pvr: Switch to common pipeline cache implementation
-      pvr: Use vk_sampler base
-      pvr: Clean up & fix sampler border color support
+Marek Olšák (12):
+      ac/gpu_info: split ib_alignment as ip[type].ib_alignment
+      ac/gpu_info: move ib_pad_dw_mask into ip[]
+      ac/gpu_info: drop the hack unifying all IB alignments
+      ac/gpu_info: conservatively decrease IB alignment and padding to 256B
+      ac/gpu_info: set gfx and compute IB padding to only 8 dwords
+      winsys/amdgpu: properly pad the IB in amdgpu_submit_gfx_nop
+      winsys/amdgpu: correctly pad noop IBs for RADEON_NOOP=1
+      winsys/amdgpu: pad gfx and compute IBs with only 1 NOP
+      ac/gpu_info: don't allow register shadowing with SR-IOV due to bad performance
+      radeonsi: disable register shadowing without SR-IOV to fix bad performance
+      winsys/amdgpu: don't send CP_GFX_SHADOW chunk if shadow address is not set
+      radeonsi/ci: update gfx1100 results
 
-Rhys Perry (6):
-      aco: fix LdsDirectVMEMHazard WaW with the wrong waitcnt
-      aco: only mitigate VcmpxExecWARHazard when necessary
-      aco: fix s_setreg hazards
-      aco: consider exec_hi in reads_exec()
-      aco: resolve all possible hazards at the end of shader parts
-      aco/tests: test that hazards are resolved at the end of shader parts
+Rohan Garg (1):
+      anv: fix debug string for PC flush
 
-Rohan Garg (3):
-      intel/genxml: fix 3DSTATE_3D_MODE length to align with BSpec
-      anv: ensure that FCV_CCS_E fast clears are properly tracked
-      anv: enable FCV for Gen12.5
-
-Samuel Pitoiset (4):
-      radv/ci: update list of expected failures on RAVEN
-      radv/ci: update list of flakes for VANGOGH
-      radv/ci: update list of flakes for STONEY
-      radv: disable primitive restart for non-indexed draws on GFX11
-
-Tapani Pälli (1):
-      mesa/st: ignore StencilSampling if stencil not part of the format
-
-Yiwei Zhang (1):
-      venus: enable Vulkan 1.3 for Android 13 and above
-
-Yogesh Mohan Marimuthu (6):
-      ac/surface: add astc block size to bpe_to_format() function
-      util: move ASTCLutHolder from mesa/main to util
-      vulkan/formats,zink: move vk_format_from_pipe_format() function
-      vulkan/runtime: add compute astc decoder helper functions
-      vulkan add 3D texture support for compute astc decoder
-      radv: integrate meta astc compute decoder to radv
+Vinson Lee (1):
+      broadcom/qpu: Remove duplicate variable opcode
 
