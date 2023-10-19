@@ -1,50 +1,65 @@
-Updating from cba898a53059b12b948fba7c69634a033c6dccad to b94b784492640519a37182c300b0872524c78d77
+Updating from 74ef0d4f9343afd76073ded8320850f28929a1b9 to 6e73b1c5b2f9cfa6755297689ec7b1f2cd8ee744
 
-Adam Jackson (1):
-      docs: Mention 'meson devenv' in the pre-install test instructions
+Emma Anholt (9):
+      ci/zink: Only test half of piglit pre-merge on anv.
+      ci: Stop doing internal retries in bare-metal.
+      ci/bare-metal: Drop the 2 vs 1 exit code from poe_run.
+      ci/bare-metal: Default our boards to a 20-minute timeout for the whole job.
+      ci/iris: Drop parallel on kbl piglit to 2.
+      ci/freedreno: Fold a630_egl into a630_gl.
+      ci/freedreno: Move skqp testing to a618.
+      ci/zink: Cut zink-lvp coverage in half.
+      ci/freedreno: Generalize the implicit_unmap timeouts.
 
-Dave Airlie (1):
-      intel-clc: avoid using spirv-linker.
+Faith Ekstrand (6):
+      nvk: Advertise VK_EXT_attachment_feedback_loop_layout
+      features: Mark VK_EXT_attachment_feedback_loop_layout done for NVK
+      nvk: Re-arrange Vulkan 1.2 features to match the header
+      nvk: Advertise shaderOutputLayer and shaderOutputViewportIndex
+      nvk: Enable descriptorIndexing
+      nvk: Implement VK_EXT_dynamic_rendering_unused_attachments
 
-Friedrich Vock (1):
-      radv/rt: Reject hits within 10ULP of previous hits in emulated RT
+Lina Versace (11):
+      venus: Sync protocol for VK_EXT_graphics_pipeline_library
+      venus: Erase pViewports and pScissors in fewer cases
+      venus: Fix crash when VkGraphicsPipelineCreateInfo::layout is missing
+      venus: Fix subpass attachments
+      venus: Drop incorrectly-used always-true pipeline vars
+      venus: Use VkImageAspectFlags in vn_subpass
+      venus: Add enum vn_pipeline_type
+      venus: Renames for VkGraphicsPipelineCreateInfo fixes
+      venus: Refactor pipeline fixup into two stages
+      venus: Do pipeline fixes for VK_EXT_graphics_pipeline_library
+      venus: Enable VK_EXT_graphics_pipeline_library behind debug flag
 
-Gert Wollny (1):
-      virgl: Fix logic for reporting PIPE_MIRROR_CLAMP
+Lionel Landwerlin (2):
+      anv: don't uninitialize bvh_bo_pool is not initialized
+      anv: uninitialize queues before utrace
 
-Hyunjun Ko (1):
-      anv: don't flush_llc on gen9
+Mike Blumenkrantz (9):
+      nir/lower_fragcolor: preserve location_frac
+      zink: update pointer for GPL pipeline cache entry formats
+      zink: fix legacy depth texture rewriting for single component reads
+      egl: unify dri2_egl_display creation
+      egl: init dri3 version info during screen creation
+      egl/glx: don't load non-sw zink without dri3 support
+      egl: add automatic zink fallback loading between hw and sw drivers
+      glx: add automatic zink fallback loading between hw and sw drivers
+      ci: don't set GALLIUM_DRIVER for zink
 
-Iván Briano (1):
-      anv: advertise VK_KHR_global_priority_queue
+Saroj Kumar (3):
+      radeonsi: Add perfetto support in radeonsi
+      radeonsi: Add u_trace init code in radeonsi
+      radeonsi: Add tracepoints in radeonsi driver
 
-Lionel Landwerlin (4):
-      anv: workaround Gfx11 with optimized state emission
-      u_trace: generate tracepoint index parameter in perfetto callbacks
-      u_trace: generate tracepoint name array in perfetto header
-      intel/ds: provide names for different events of a timeline's row
-
-Lucas Stach (2):
-      etnaviv: use correct blit box sizes when copying resource
-      etnaviv: zero shared TS metadata block
-
-Marek Olšák (12):
-      ac/gpu_info: split ib_alignment as ip[type].ib_alignment
-      ac/gpu_info: move ib_pad_dw_mask into ip[]
-      ac/gpu_info: drop the hack unifying all IB alignments
-      ac/gpu_info: conservatively decrease IB alignment and padding to 256B
-      ac/gpu_info: set gfx and compute IB padding to only 8 dwords
-      winsys/amdgpu: properly pad the IB in amdgpu_submit_gfx_nop
-      winsys/amdgpu: correctly pad noop IBs for RADEON_NOOP=1
-      winsys/amdgpu: pad gfx and compute IBs with only 1 NOP
-      ac/gpu_info: don't allow register shadowing with SR-IOV due to bad performance
-      radeonsi: disable register shadowing without SR-IOV to fix bad performance
-      winsys/amdgpu: don't send CP_GFX_SHADOW chunk if shadow address is not set
-      radeonsi/ci: update gfx1100 results
-
-Rohan Garg (1):
-      anv: fix debug string for PC flush
-
-Vinson Lee (1):
-      broadcom/qpu: Remove duplicate variable opcode
+Timur Kristóf (9):
+      radv: Rename SDMA file to radv_sdma.c
+      radv: Use const device argument in radv_sdma_copy_buffer.
+      radv: Use const on vi_alpha_is_on_msb arguments.
+      radv: Only call si_cp_dma_wait_for_idle on GFX and ACE queues.
+      radv: Move radv_cp_wait_mem to radv_cs.h and add queue family argument.
+      radv: Refactor WRITE_DATA helper function.
+      radv: Use new WRITE_DATA helper in more places.
+      radv: Add queue family argument to some functions.
+      radv: Wait for bottom of pipe in ACE gang wait postamble.
 
