@@ -1,65 +1,80 @@
-Updating from 74ef0d4f9343afd76073ded8320850f28929a1b9 to 6e73b1c5b2f9cfa6755297689ec7b1f2cd8ee744
+Updating from 6e73b1c5b2f9cfa6755297689ec7b1f2cd8ee744 to 46fc9decadfa6b8c69c95f24a153dea2a0271e78
 
-Emma Anholt (9):
-      ci/zink: Only test half of piglit pre-merge on anv.
-      ci: Stop doing internal retries in bare-metal.
-      ci/bare-metal: Drop the 2 vs 1 exit code from poe_run.
-      ci/bare-metal: Default our boards to a 20-minute timeout for the whole job.
-      ci/iris: Drop parallel on kbl piglit to 2.
-      ci/freedreno: Fold a630_egl into a630_gl.
-      ci/freedreno: Move skqp testing to a618.
-      ci/zink: Cut zink-lvp coverage in half.
-      ci/freedreno: Generalize the implicit_unmap timeouts.
+Charmaine Lee (1):
+      svga: ignore sampler view resource if not used by shaders
 
-Faith Ekstrand (6):
-      nvk: Advertise VK_EXT_attachment_feedback_loop_layout
-      features: Mark VK_EXT_attachment_feedback_loop_layout done for NVK
-      nvk: Re-arrange Vulkan 1.2 features to match the header
-      nvk: Advertise shaderOutputLayer and shaderOutputViewportIndex
-      nvk: Enable descriptorIndexing
-      nvk: Implement VK_EXT_dynamic_rendering_unused_attachments
+David Rosca (1):
+      frontends/va: Fix locking in vlVaBeginPicture
 
-Lina Versace (11):
-      venus: Sync protocol for VK_EXT_graphics_pipeline_library
-      venus: Erase pViewports and pScissors in fewer cases
-      venus: Fix crash when VkGraphicsPipelineCreateInfo::layout is missing
-      venus: Fix subpass attachments
-      venus: Drop incorrectly-used always-true pipeline vars
-      venus: Use VkImageAspectFlags in vn_subpass
-      venus: Add enum vn_pipeline_type
-      venus: Renames for VkGraphicsPipelineCreateInfo fixes
-      venus: Refactor pipeline fixup into two stages
-      venus: Do pipeline fixes for VK_EXT_graphics_pipeline_library
-      venus: Enable VK_EXT_graphics_pipeline_library behind debug flag
+Emma Anholt (4):
+      ci_run_n_monitor: Poll mesa/mesa and user/mesa for pipelines at the same time.
+      glx: Delete support for GLX_OML_swap_method.
+      ci: drop skip for glx-swap-copy.
+      dri: Drop a duplicate mesa vs pipe format table.
 
-Lionel Landwerlin (2):
-      anv: don't uninitialize bvh_bo_pool is not initialized
-      anv: uninitialize queues before utrace
+Helen Koike (1):
+      ci/marge_queue: add missing python-dateutils to requirements.txt
 
-Mike Blumenkrantz (9):
-      nir/lower_fragcolor: preserve location_frac
-      zink: update pointer for GPL pipeline cache entry formats
-      zink: fix legacy depth texture rewriting for single component reads
-      egl: unify dri2_egl_display creation
-      egl: init dri3 version info during screen creation
-      egl/glx: don't load non-sw zink without dri3 support
-      egl: add automatic zink fallback loading between hw and sw drivers
-      glx: add automatic zink fallback loading between hw and sw drivers
-      ci: don't set GALLIUM_DRIVER for zink
+Juston Li (1):
+      venus: set lvp queries as saturate on overflow
 
-Saroj Kumar (3):
-      radeonsi: Add perfetto support in radeonsi
-      radeonsi: Add u_trace init code in radeonsi
-      radeonsi: Add tracepoints in radeonsi driver
+Karol Herbst (2):
+      zink: wrap shared memory blocks in a struct
+      zink: properly alias shared memory
 
-Timur Kristóf (9):
-      radv: Rename SDMA file to radv_sdma.c
-      radv: Use const device argument in radv_sdma_copy_buffer.
-      radv: Use const on vi_alpha_is_on_msb arguments.
-      radv: Only call si_cp_dma_wait_for_idle on GFX and ACE queues.
-      radv: Move radv_cp_wait_mem to radv_cs.h and add queue family argument.
-      radv: Refactor WRITE_DATA helper function.
-      radv: Use new WRITE_DATA helper in more places.
-      radv: Add queue family argument to some functions.
-      radv: Wait for bottom of pipe in ACE gang wait postamble.
+Lina Versace (1):
+      venus: Fix -Wmaybe-uninitialized
+
+Lionel Landwerlin (12):
+      anv: move generation shader return instruction to last draw lane
+      anv: fix generated draws gl_DrawID with more than 8192 indirect draws
+      anv: extract out draw call generation
+      anv: identify internal shader in NIR
+      anv: avoid MI commands to copy draw indirect count
+      anv: move generation batch fields to a sub-struct
+      util/glsl2spirv: add ability to pass defines
+      anv: factor out host/gpu internal shaders interfaces
+      anv: index indirect data buffer with absolute offset
+      anv: add ring buffer mode to generated draw optimization
+      anv: merge gfx9/11 indirect draw generation shaders
+      anv: document the draw indirect optimization ring mode
+
+Lucas Stach (2):
+      Revert "etnaviv: use correct blit box sizes when copying resource"
+      mesa: add GL_APPLE_sync support
+
+Marek Olšák (1):
+      amd/common: update DCC for gfx11.5
+
+Mike Blumenkrantz (1):
+      egl/wayland: only add more registry listeners for hardware devices
+
+Pierre-Eric Pelloux-Prayer (4):
+      amd/common: update addrlib for gfx11.5
+      amd/common: add registers for gfx11.5
+      ac/nir: extract must_wait_attr_ring helper
+      amd, radeonsi: Add code to enable gfx11.5
+
+Saleemkhan Jamadar (1):
+      radeonsi/vcn: set jpeg reg version for gfx 1150
+
+Sil Vilerino (11):
+      frontends/va: Add profile param when querying PIPE_VIDEO_CAP_ENC_QUALITY_LEVEL
+      d3d12: Upgrade to D3D12 Agility SDK 1.611 Video interface
+      d3d12: Fixes AV1 tx_mode_support reporting and unsupported tx_mode overriding
+      d3d12: Video Decode - Wait for GPU completion before destroying decoder in-flight objects
+      d3d12: Do not destroy codec when destroying video buffer
+      d3d12: AV1 encode - Add lower resolution fallback check for uniform tile support
+      d3d12: AV1 encode - add fallback for app passing unsupported pic_params.InterpolationFilter
+      d3d12: AV1 Encode - Fix VAConfigAttribEncMaxRefFrames reporting
+      frontend/va: Add support for VAConfigAttribEncMaxTileRows/Cols
+      d3d12: Add support for PIPE_VIDEO_CAP_ENC_MAX_TILE_ROWS/COLS
+      d3d12: Allocate d3d12_video_buffer with higher alignment for compatibility
+
+Vlad Schiller (5):
+      pvr: Implement VK_KHR_external_fence
+      pvr: Implement VK_KHR_external_semaphore
+      pvr: Enable VK_KHR_bind_memory2 extension
+      pvr: Implement VK_EXT_texel_buffer_alignment
+      pvr: Implement VK_EXT_host_query_reset
 
