@@ -1,80 +1,12 @@
-Updating from 6e73b1c5b2f9cfa6755297689ec7b1f2cd8ee744 to 46fc9decadfa6b8c69c95f24a153dea2a0271e78
+Updating from 46fc9decadfa6b8c69c95f24a153dea2a0271e78 to 5d87cd4e5194b86d9bce5b440f2fa86649b3b1a8
 
-Charmaine Lee (1):
-      svga: ignore sampler view resource if not used by shaders
+David Heidelberg (1):
+      ci/freedreno: fix copy paste causing a618_gl being run only in manual pipeline
 
-David Rosca (1):
-      frontends/va: Fix locking in vlVaBeginPicture
+Maaz Mombasawala (2):
+      svga: Make surfaces shareable at creation.
+      svga: Unify gmr and mob surface pool managers
 
-Emma Anholt (4):
-      ci_run_n_monitor: Poll mesa/mesa and user/mesa for pipelines at the same time.
-      glx: Delete support for GLX_OML_swap_method.
-      ci: drop skip for glx-swap-copy.
-      dri: Drop a duplicate mesa vs pipe format table.
-
-Helen Koike (1):
-      ci/marge_queue: add missing python-dateutils to requirements.txt
-
-Juston Li (1):
-      venus: set lvp queries as saturate on overflow
-
-Karol Herbst (2):
-      zink: wrap shared memory blocks in a struct
-      zink: properly alias shared memory
-
-Lina Versace (1):
-      venus: Fix -Wmaybe-uninitialized
-
-Lionel Landwerlin (12):
-      anv: move generation shader return instruction to last draw lane
-      anv: fix generated draws gl_DrawID with more than 8192 indirect draws
-      anv: extract out draw call generation
-      anv: identify internal shader in NIR
-      anv: avoid MI commands to copy draw indirect count
-      anv: move generation batch fields to a sub-struct
-      util/glsl2spirv: add ability to pass defines
-      anv: factor out host/gpu internal shaders interfaces
-      anv: index indirect data buffer with absolute offset
-      anv: add ring buffer mode to generated draw optimization
-      anv: merge gfx9/11 indirect draw generation shaders
-      anv: document the draw indirect optimization ring mode
-
-Lucas Stach (2):
-      Revert "etnaviv: use correct blit box sizes when copying resource"
-      mesa: add GL_APPLE_sync support
-
-Marek Olšák (1):
-      amd/common: update DCC for gfx11.5
-
-Mike Blumenkrantz (1):
-      egl/wayland: only add more registry listeners for hardware devices
-
-Pierre-Eric Pelloux-Prayer (4):
-      amd/common: update addrlib for gfx11.5
-      amd/common: add registers for gfx11.5
-      ac/nir: extract must_wait_attr_ring helper
-      amd, radeonsi: Add code to enable gfx11.5
-
-Saleemkhan Jamadar (1):
-      radeonsi/vcn: set jpeg reg version for gfx 1150
-
-Sil Vilerino (11):
-      frontends/va: Add profile param when querying PIPE_VIDEO_CAP_ENC_QUALITY_LEVEL
-      d3d12: Upgrade to D3D12 Agility SDK 1.611 Video interface
-      d3d12: Fixes AV1 tx_mode_support reporting and unsupported tx_mode overriding
-      d3d12: Video Decode - Wait for GPU completion before destroying decoder in-flight objects
-      d3d12: Do not destroy codec when destroying video buffer
-      d3d12: AV1 encode - Add lower resolution fallback check for uniform tile support
-      d3d12: AV1 encode - add fallback for app passing unsupported pic_params.InterpolationFilter
-      d3d12: AV1 Encode - Fix VAConfigAttribEncMaxRefFrames reporting
-      frontend/va: Add support for VAConfigAttribEncMaxTileRows/Cols
-      d3d12: Add support for PIPE_VIDEO_CAP_ENC_MAX_TILE_ROWS/COLS
-      d3d12: Allocate d3d12_video_buffer with higher alignment for compatibility
-
-Vlad Schiller (5):
-      pvr: Implement VK_KHR_external_fence
-      pvr: Implement VK_KHR_external_semaphore
-      pvr: Enable VK_KHR_bind_memory2 extension
-      pvr: Implement VK_EXT_texel_buffer_alignment
-      pvr: Implement VK_EXT_host_query_reset
+Yiwei Zhang (1):
+      ci/venus: mark more flaky tests after recent cts uprev
 
