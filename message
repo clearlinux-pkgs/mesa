@@ -1,12 +1,14 @@
-Updating from 46fc9decadfa6b8c69c95f24a153dea2a0271e78 to 5d87cd4e5194b86d9bce5b440f2fa86649b3b1a8
+Updating from 5d87cd4e5194b86d9bce5b440f2fa86649b3b1a8 to fc62df19b77c2812b1521152ffd8600a1f6ceec5
 
 David Heidelberg (1):
-      ci/freedreno: fix copy paste causing a618_gl being run only in manual pipeline
+      ci/freedreno: disable Adreno 660 Vulkan pre-merge
 
-Maaz Mombasawala (2):
-      svga: Make surfaces shareable at creation.
-      svga: Unify gmr and mob surface pool managers
+Eric Engestrom (1):
+      ci/b2c: change artifacts path to match baremetal and LAVA
 
-Yiwei Zhang (1):
-      ci/venus: mark more flaky tests after recent cts uprev
+Helen Koike (1):
+      ci/ci_run_n_monitor: keep monitoring if a job is still running
+
+Saroj Kumar (1):
+      radeonsi: fixes compilaton error when perfetto is disabled
 
