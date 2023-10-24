@@ -1,14 +1,52 @@
-Updating from 5d87cd4e5194b86d9bce5b440f2fa86649b3b1a8 to fc62df19b77c2812b1521152ffd8600a1f6ceec5
+Updating from fc62df19b77c2812b1521152ffd8600a1f6ceec5 to 9dcc74e5579a5182959ab36454c6ae97ff814784
 
-David Heidelberg (1):
-      ci/freedreno: disable Adreno 660 Vulkan pre-merge
+Caio Oliveira (4):
+      spirv: Expose stage enum conversion in vtn_private.h
+      spirv: Change spirv2nir to use the shorter shader name abbreviations
+      spirv: List entry-points in spirv2nir when unsure what to use
+      spirv: Let spirv2nir find out the shader to use
 
-Eric Engestrom (1):
-      ci/b2c: change artifacts path to match baremetal and LAVA
+Christian Gmeiner (2):
+      etnaviv: drm: Be able to mark end of context init
+      etnaviv: Skip 'empty' cmd streams
 
-Helen Koike (1):
-      ci/ci_run_n_monitor: keep monitoring if a job is still running
+Corentin Noël (7):
+      freedreno/drm/virtio: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
+      tu: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
+      aux/tc: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
+      venus: Change the only occurrence of VN_TRACE_BEGIN/END to VN_TRACE_SCOPE
+      util: Avoid the use of MESA_TRACE_BEGIN/END
+      util/perf: Remove the tracing categories
+      util: Remove MESA_TRACE_BEGIN/END
 
-Saroj Kumar (1):
-      radeonsi: fixes compilaton error when perfetto is disabled
+Emma Anholt (2):
+      docs/ci: Drop old instructions for farm disabling
+      docs/ci: Add some links in the CI docs to how to track job flakes
+
+Friedrich Vock (2):
+      radv/rra: Recognize LPDDR memory
+      radv/rmv: Recognize LPDDR memory
+
+Karmjit Mahil (1):
+      pvr: Only setup the bgobj to load if we have a load_op
+
+Karol Herbst (1):
+      zink: fix zink_destroy_screen for early screen creation fails
+
+Nanley Chery (10):
+      intel: Return a bool from intel_aux_map_add_mapping
+      anv: Move scope of CCS binding determination
+      anv: Allocate space for aux-map CCS in image bindings
+      anv: Wrap aux surface image binding queries
+      anv: Refactor CCS disabling at image bind time
+      anv: Place images into the aux-map when safe to do so
+      anv: Loosen anv_bo_allows_aux_map
+      anv: Meet CCS alignment reqs with dedicated allocs
+      anv: Delete implicit CCS code
+      intel/isl: Add scores for GEN12_RC_CCS and MTL_RC_CCS
+
+Rhys Perry (3):
+      radv: skip zero-sized memcpy
+      ac/nir: fix out-of-bounds access in ac_nir_export_position
+      radv: fix signed integer overflow
 
