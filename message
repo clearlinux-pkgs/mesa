@@ -1,52 +1,103 @@
-Updating from fc62df19b77c2812b1521152ffd8600a1f6ceec5 to 9dcc74e5579a5182959ab36454c6ae97ff814784
+Updating from 9dcc74e5579a5182959ab36454c6ae97ff814784 to b653669fc5a6cc5d55d57d437e18f45fe98a3bd2
 
-Caio Oliveira (4):
-      spirv: Expose stage enum conversion in vtn_private.h
-      spirv: Change spirv2nir to use the shorter shader name abbreviations
-      spirv: List entry-points in spirv2nir when unsure what to use
-      spirv: Let spirv2nir find out the shader to use
+Bas Nieuwenhuizen (6):
+      nir: Add AMD cooperative matrix intrinsics.
+      aco: Add WMMA instructions.
+      aco: Make RA understand WMMA instructions.
+      radv: Don't transparently use wave32 with cooperative matrices.
+      radv: Add cooperative matrix lowering.
+      radv: Expose VK_KHR_cooperative_matrix.
 
-Christian Gmeiner (2):
-      etnaviv: drm: Be able to mark end of context init
-      etnaviv: Skip 'empty' cmd streams
+Boyuan Zhang (1):
+      radeonsi/vcn: disable tmz ctx buffer for VCN_2_2_0
 
-Corentin Noël (7):
-      freedreno/drm/virtio: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
-      tu: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
-      aux/tc: Use MESA_TRACE_SCOPE instead of _BEGIN/_END
-      venus: Change the only occurrence of VN_TRACE_BEGIN/END to VN_TRACE_SCOPE
-      util: Avoid the use of MESA_TRACE_BEGIN/END
-      util/perf: Remove the tracing categories
-      util: Remove MESA_TRACE_BEGIN/END
+Caio Oliveira (1):
+      intel/compiler: Don't emit calls to validate() in release build
 
-Emma Anholt (2):
-      docs/ci: Drop old instructions for farm disabling
-      docs/ci: Add some links in the CI docs to how to track job flakes
+Chia-I Wu (2):
+      anv: prep for gen9 astc workaround
+      anv: add gen9 astc workaround
 
-Friedrich Vock (2):
-      radv/rra: Recognize LPDDR memory
-      radv/rmv: Recognize LPDDR memory
+Emma Anholt (4):
+      glsl: Remove int64 div/mod lowering.
+      llvmpipe: Set nir_lower_dround_even.
+      nir: Add nir_lower_dsign as 64-bit fsign lowering.
+      glsl: Retire dround lowering.
 
-Karmjit Mahil (1):
-      pvr: Only setup the bgobj to load if we have a load_op
+Faith Ekstrand (8):
+      nir: Add a nir_ssa_def_all_uses_are_fsat() helper
+      nir: Add convert_alu_types to divergence analysis
+      nir/lower_tex: Add a lower_txd_clamp option
+      nir: Add a load_sysval_nv intrinsic
+      nir: Add NV-specific texture opcodes
+      nir: Add an load_barycentric_at_offset_nv intrinsic
+      nir: Add a range to most I/O intrinsics
+      nir: Add NVIDIA-specific I/O intrinsics
 
-Karol Herbst (1):
-      zink: fix zink_destroy_screen for early screen creation fails
+Helen Koike (2):
+      ci/marge_queue: add pretty_dutation()
+      ci/ci_run_n_monitor: print job duration time
 
-Nanley Chery (10):
-      intel: Return a bool from intel_aux_map_add_mapping
-      anv: Move scope of CCS binding determination
-      anv: Allocate space for aux-map CCS in image bindings
-      anv: Wrap aux surface image binding queries
-      anv: Refactor CCS disabling at image bind time
-      anv: Place images into the aux-map when safe to do so
-      anv: Loosen anv_bo_allows_aux_map
-      anv: Meet CCS alignment reqs with dedicated allocs
-      anv: Delete implicit CCS code
-      intel/isl: Add scores for GEN12_RC_CCS and MTL_RC_CCS
+José Roberto de Souza (2):
+      intel: Sync xe_drm.h
+      anv: Switch Xe KMD vm bind to sync
 
-Rhys Perry (3):
-      radv: skip zero-sized memcpy
-      ac/nir: fix out-of-bounds access in ac_nir_export_position
-      radv: fix signed integer overflow
+Juan A. Suarez Romero (1):
+      v3d/vc4/ci: add new fails/timeout
+
+Lang Yu (2):
+      amd/common: add missing stuff for gfx11.5
+      amd/radeonsi: add missing stuff for gfx11.5
+
+Mary Guillemard (1):
+      nir: Add NVIDIA-specific geometry shader opcodes
+
+Mike Blumenkrantz (2):
+      zink: only increment image_rebind_counter on image export if binds exist
+      zink: check for sampler view existence during zink_rebind_all_images()
+
+Rhys Perry (14):
+      Revert "radv: pre-init surface info"
+      nir: improve ms_cross_invocation_output_access with local_invocation_id
+      aco,nir: add export_row_amd intrinsic
+      ac/nir: add row parameter to helpers
+      ac/nir: remove dead code
+      ac/nir: refactor mesh vertex/primitive export
+      ac/nir: implement mesh shader gs_fast_launch=2
+      ac/nir: optimize mesh shader local_invocation_index
+      radv: implement mesh shader gs_fast_launch=2
+      ac/nir: add emit_ms_outputs helper
+      ac/nir,radv: pass workgroup size to ac_nir_lower_ngg_ms
+      ac/nir: implement mesh shader multi-row export
+      radv: implement mesh shader multi-row export
+      radv: enable mesh shader gs_fast_launch=2 and multi-row export
+
+Rohan Garg (3):
+      anv: cleanup includes
+      anv: turn off non zero fast clears for CCS_E
+      anv: selectively enable FCV optimization for DG2
+
+Samuel Pitoiset (6):
+      radv: set ENABLE_PING_PONG_BIN_ORDER for GFX11.5
+      radv: initialize video decoder for GFX11.5
+      ac/gpu_info: query the maximum number of IBs per submit from the kernel
+      Revert "radv: fix finding shaders by PC"
+      radv: fix missing predicate bit for WRITE_DATA helper
+      ac/gpu_info: fix querying the maximum number of IBs per ring
+
+Timur Kristóf (7):
+      radv: Simplify gang CS and semaphore initialization.
+      radv: Allow gang submit use cases other than task shaders.
+      radv: Slightly refactor gang semaphore functions.
+      radv: Add gang follower semaphore functions.
+      radv: Support SDMA in radv_cs_write_data_head.
+      radv: Support SDMA in radv_cp_wait_mem.
+      radv: Support SDMA in si_cs_emit_write_event_eop.
+
+Yogesh Mohan Marimuthu (5):
+      radeonsi: add more documentation for dpbb debug env variable
+      docs: remove document for unused variable dfsm from AMD_DEBUG
+      radeonsi: correct old comment in si_emit_framebuffer_state()
+      radeonsi: In gfx6_init_gfx_preamble_state() use gfx_level only from sctx
+      radeonsi: add radeonsi to GL_RENDERER string
 
