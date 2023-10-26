@@ -1,103 +1,120 @@
-Updating from 9dcc74e5579a5182959ab36454c6ae97ff814784 to b653669fc5a6cc5d55d57d437e18f45fe98a3bd2
+Updating from b653669fc5a6cc5d55d57d437e18f45fe98a3bd2 to 895c85ca8feaad5bc4637e548d42fc38267c21d8
 
-Bas Nieuwenhuizen (6):
-      nir: Add AMD cooperative matrix intrinsics.
-      aco: Add WMMA instructions.
-      aco: Make RA understand WMMA instructions.
-      radv: Don't transparently use wave32 with cooperative matrices.
-      radv: Add cooperative matrix lowering.
-      radv: Expose VK_KHR_cooperative_matrix.
+Alyssa Rosenzweig (1):
+      nir/trivialize_registers: Handle obscure load hazard
 
-Boyuan Zhang (1):
-      radeonsi/vcn: disable tmz ctx buffer for VCN_2_2_0
+Caio Oliveira (33):
+      compiler/types: Flip wrapping of "type contains?" predicate functions
+      compiler/types: Flip wrapping of array related functions
+      compiler/types: Flip wrapping of cmat related functions
+      compiler/types: Flip wrapping of CL related functions
+      compiler/types: Flip wrapping of size related functions
+      compiler/types: Flip wrapping of struct related functions
+      compiler/types: Flip wrapping of interface related functions
+      compiler/types: Flip wrapping of layout related functions
+      compiler/types: Flip wrapping of record_compare
+      compiler/types: Flip wrapping of get_instance()
+      compiler/types: Flip wrapping of texture/sampler/image get instance functions
+      compiler/types: Flip wrapping of various get instance functions
+      compiler/types: Flip wrapping of get row/column type helpers
+      compiler/types: Flip wrapping of remaining non-trivial type getters
+      compiler/types: Flip wrapping of remaining small data getters
+      compiler/types: Flip wrapping of numeric type conversion functions
+      compiler/types: Move remaining code from nir_types to glsl_types
+      rusticl: Add bindings for glsl_vector_type()
+      compiler/types: Add more glsl_contains_*() functions and use them in C++
+      compiler/types: Add glsl_get_mul_type() and use it in C++
+      compiler/types: Add glsl_type_compare_no_precision() and use it in C++
+      compiler/types: Add glsl_type_uniform_locations() and use it in C++
+      compiler/types: Add glsl_get_std430_array_stride() and use it in C++
+      compiler/types: Add glsl_get_explicit_*() functions and use them in C++
+      compiler/types: Implement glsl_type::field_type() in terms of existing functions
+      compiler/types: Add glsl_simple_explicit_type() and simplify glsl_simple_type()
+      compiler/types: Add remaining type extraction functions and use them in C++
+      compiler/types: Use C instead of C++ constants for builtin types
+      compiler/types: Remove usages of C++ members in glsl_types.cpp
+      compiler/types: Annotate extern "C" only once in glsl_types.cpp
+      compiler/types: Rename glsl_types.cpp to glsl_types.c
+      compiler/types: Remove warnings about potential fallthrough
+      compiler/types: Move comments and reorganize declarations
 
-Caio Oliveira (1):
-      intel/compiler: Don't emit calls to validate() in release build
+Christian Gmeiner (2):
+      ci: Bump PyYAML to 6.0.1
+      etnaviv: Don't leak disk_cache
 
-Chia-I Wu (2):
-      anv: prep for gen9 astc workaround
-      anv: add gen9 astc workaround
+David Rosca (4):
+      frontends/va: Parse H264 SPS for max_num_reorder_frames
+      util/vl: Fix vl_rbsp parser with bitstreams without emulation bytes
+      frontends/va: Fix parsing packed headers without emulation bytes
+      radeonsi/vcn: Add encode support for H264 B-frames
 
-Emma Anholt (4):
-      glsl: Remove int64 div/mod lowering.
-      llvmpipe: Set nir_lower_dround_even.
-      nir: Add nir_lower_dsign as 64-bit fsign lowering.
-      glsl: Retire dround lowering.
+Emma Anholt (1):
+      ci_run_n_monitor: Always resolve --rev arguments for looking up pipelines.
 
-Faith Ekstrand (8):
-      nir: Add a nir_ssa_def_all_uses_are_fsat() helper
-      nir: Add convert_alu_types to divergence analysis
-      nir/lower_tex: Add a lower_txd_clamp option
-      nir: Add a load_sysval_nv intrinsic
-      nir: Add NV-specific texture opcodes
-      nir: Add an load_barycentric_at_offset_nv intrinsic
-      nir: Add a range to most I/O intrinsics
-      nir: Add NVIDIA-specific I/O intrinsics
+Eric Engestrom (3):
+      VERSION: bump to 24.0
+      docs: reset new_features.txt
+      docs: update calendar for 23.3.0-rc1
 
-Helen Koike (2):
-      ci/marge_queue: add pretty_dutation()
-      ci/ci_run_n_monitor: print job duration time
+Iago Toral Quiroga (1):
+      v3dv: fix confusing nomenclature about DRM nodes
 
-José Roberto de Souza (2):
-      intel: Sync xe_drm.h
-      anv: Switch Xe KMD vm bind to sync
+Karol Herbst (1):
+      docs/features: remove empty lines confusing mesamatrix
 
-Juan A. Suarez Romero (1):
-      v3d/vc4/ci: add new fails/timeout
+Lionel Landwerlin (3):
+      anv: fixup 32bit build of internal shaders
+      anv: fix uninitialized use of compute initialization batch
+      intel/fs: fix dynamic interpolation mode selection
 
-Lang Yu (2):
-      amd/common: add missing stuff for gfx11.5
-      amd/radeonsi: add missing stuff for gfx11.5
+Louis-Francis Ratté-Boulianne (15):
+      panfrost: Fix error in comment
+      panfrost: Add methods to determine slice and body alignment
+      panfrost: Add method to get size of AFBC subblocks
+      panfrost: Precalculate stride and nr of blocks for AFBC layouts
+      panfrost: Add panfrost_batch_write_bo
+      panfrost: Make panfrost_resource_create_with_modifier public
+      panfrost: Split out internal of `panfrost_launch_grid`
+      panfrost: Add infrastructure for internal AFBC compute shaders
+      panfrost: Add method to get size of AFBC superblocks valid data
+      panfrost: Add support for AFBC packing
+      panfrost: Legalize resource when attaching to a batch
+      panfrost: Don't force constant modifier after converting
+      panfrost: Add debug flag to force packing of AFBC textures on upload
+      panfrost: Add some debug utility methods for resources
+      panfrost: Add env variable for max AFBC packing ratio
 
-Mary Guillemard (1):
-      nir: Add NVIDIA-specific geometry shader opcodes
+Martin Roukala (né Peres) (1):
+      zink/ci: drop the concurrency of the zink-radv-vangogh-valve job
 
-Mike Blumenkrantz (2):
-      zink: only increment image_rebind_counter on image export if binds exist
-      zink: check for sampler view existence during zink_rebind_all_images()
+Mike Blumenkrantz (6):
+      zink: use weston for anv ci
+      zink: blow up broken xservers more reliably
+      zink: delete some dead modifier handling
+      ci: skip implicit modifier piglits for zink
+      zink: don't block large vram allocations
+      vulkan/wsi: unify all the image usage flag caps
 
-Rhys Perry (14):
-      Revert "radv: pre-init surface info"
-      nir: improve ms_cross_invocation_output_access with local_invocation_id
-      aco,nir: add export_row_amd intrinsic
-      ac/nir: add row parameter to helpers
-      ac/nir: remove dead code
-      ac/nir: refactor mesh vertex/primitive export
-      ac/nir: implement mesh shader gs_fast_launch=2
-      ac/nir: optimize mesh shader local_invocation_index
-      radv: implement mesh shader gs_fast_launch=2
-      ac/nir: add emit_ms_outputs helper
-      ac/nir,radv: pass workgroup size to ac_nir_lower_ngg_ms
-      ac/nir: implement mesh shader multi-row export
-      radv: implement mesh shader multi-row export
-      radv: enable mesh shader gs_fast_launch=2 and multi-row export
+Neha Bhende (1):
+      ntt: lower indirect tesslevels in ntt
 
-Rohan Garg (3):
-      anv: cleanup includes
-      anv: turn off non zero fast clears for CCS_E
-      anv: selectively enable FCV optimization for DG2
+Rhys Perry (3):
+      nir/serialize: fix signed integer overflow
+      nir/lower_shader_calls: skip zero-sized qsort
+      util: skip zero-sized SHA1Update
 
 Samuel Pitoiset (6):
-      radv: set ENABLE_PING_PONG_BIN_ORDER for GFX11.5
-      radv: initialize video decoder for GFX11.5
-      ac/gpu_info: query the maximum number of IBs per submit from the kernel
-      Revert "radv: fix finding shaders by PC"
-      radv: fix missing predicate bit for WRITE_DATA helper
-      ac/gpu_info: fix querying the maximum number of IBs per ring
+      radv: remove outdated RADV_DEBUG=vmfaults support
+      amd: update amdgpu_drm.h
+      amd: add has_gpuvm_fault_query
+      radv/amdgpu: add support quering the last GPUVM fault
+      radv: query and report the last GPUVM fault with RADV_DEBUG=hang
+      radv: report the last GPUVM fault when a device lost is detected
 
-Timur Kristóf (7):
-      radv: Simplify gang CS and semaphore initialization.
-      radv: Allow gang submit use cases other than task shaders.
-      radv: Slightly refactor gang semaphore functions.
-      radv: Add gang follower semaphore functions.
-      radv: Support SDMA in radv_cs_write_data_head.
-      radv: Support SDMA in radv_cp_wait_mem.
-      radv: Support SDMA in si_cs_emit_write_event_eop.
+Seppo Yli-Olli (1):
+      zink: Fix SyntaxWarning in zink_extensions script
 
-Yogesh Mohan Marimuthu (5):
-      radeonsi: add more documentation for dpbb debug env variable
-      docs: remove document for unused variable dfsm from AMD_DEBUG
-      radeonsi: correct old comment in si_emit_framebuffer_state()
-      radeonsi: In gfx6_init_gfx_preamble_state() use gfx_level only from sctx
-      radeonsi: add radeonsi to GL_RENDERER string
+Tapani Pälli (2):
+      intel/dev: expand existing fix for all gfx12 with small EU count
+      egl: fix leaking drmDevicePtr in _eglFindDevice
 
