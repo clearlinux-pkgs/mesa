@@ -1,132 +1,74 @@
-Updating from 895c85ca8feaad5bc4637e548d42fc38267c21d8 to ce5475366e9f4dcbd24eed8af7fbcfe38427d242
+Updating from ce5475366e9f4dcbd24eed8af7fbcfe38427d242 to 38deb97d101ef421a7a3e90798f2d6708e128dbf
 
-Alyssa Rosenzweig (4):
-      hasvk: Support builiding on non-Intel
-      crocus: Support building on non-Intel
-      meson: Add vulkan-drivers=all option
-      meson: Add gallium-drivers=all option
+Alejandro Piñeiro (1):
+      broadcom/qpu: use back BITFIELD64_RANGE for ANYOPMASK
 
-Corentin Noël (1):
-      mesa/bufferobj: ensure that very large width+offset are always rejected
+Anuj Phogat (1):
+      intel/l3: Adjust URB weight calculation for gfx12.5+.
 
-Eric Engestrom (2):
-      ci/rpi4: group all spec@ext_image_dma_buf_import@ext_image_dma_buf_import-sample_* together
-      ci/rpi4: add spec@ext_image_dma_buf_import@ext_image_dma_buf_import-sample_yvyu to the list of known failures
+Caio Oliveira (1):
+      anv: Fix leak when compiling internal kernels
 
-Erik Faye-Lund (3):
-      docs: prepare for hawkmoth
-      docs: remove breathe/doxygen stuff
-      docs: improve readability of c-signatures
+Francisco Jerez (16):
+      intel/l3/gfx11+: Add tile cache partition to intel_l3_config struct.
+      intel/l3: Define helper for obtaining the size of an L3 partition in KB.
+      intel/l3: Set up L3FullWayAllocationEnable config if ALL partition has over 126 ways.
+      intel/dg2: Import L3 cache configurations.
+      intel/mtl: Import L3 cache configurations.
+      intel/xehp+: Add TBIMR-related genxml definitions.
+      intel/xehp+: Import algorithm for TBIMR tiling parameter calculation.
+      intel/xehp+: Add dynamic state flags controlling whether TBIMR is enabled during 3D primitives.
+      intel/xehp+: Define driconf option for selectively disabling TBIMR.
+      iris/xehp: Implement TBIMR tile pass setup and pipeline bandwidth estimation.
+      anv/xehp: Implement TBIMR tile pass setup and pipeline bandwidth estimation.
+      anv/xehp+: Enable TBIMR in generated draw calls.
+      intel/xehp: Adjust TBIMR performance chicken bits.
+      intel/xehp+: Adjust TBIMR batch size based on slice count.
+      intel/xehp+: Use TBIMR tile box check in order to avoid performance regressions.
+      intel/xehp: Enable TBIMR by default.
 
-Faith Ekstrand (8):
-      nir: Add a lower_first_invocation_to_ballot option to lower_subgroups
-      nir: Add a lower_read_first_invocation option to lower_subgroups
-      nir/lower_bit_size: Fix subgroup lowering for floats
-      nir/lower_bit_size: Handle vote_feq/ieq separately
-      nir/lower_bit_size: Use u_intN_min/max()
-      nir: Split nir_lower_subgroup_options::lower_vote_eq into two bits
-      nir: Return b2b ops from nir_type_conversion_op()
-      nir/lower_bit_size: Use b2b for boolean subgroup ops
+Jordan Justen (1):
+      intel/l3: Use devinfo->urb.size when cfg urb-size is 0.
 
-Ganesh Belgur Ramachandra (1):
-      radeonsi: Fix clear-render-target shader for 1darrays in NIR
+Juan A. Suarez Romero (1):
+      v3d/ci: run V3D GL tests in 64-bits
 
-Guilherme Gallo (3):
-      ci/bin: Use iid instead of SHA in gitlab_gql
-      ci/bin: Do not forget to add early-stage dependencies
-      ci/bin: Refactor create_job_needs_dag
+Karol Herbst (10):
+      vtn/opencl: always lower to libclc fmod
+      rusticl/device: restrict image_buffer_size
+      rusticl/device: restrict param_max_size further
+      rusticl/mem: properly set pipe_image_view::access
+      zink: support CLAMP_TO_BORDER with unnormalized coords
+      zink: alias nir scratch memory by lowering to common bit_size
+      zink: emit float controls
+      zink: lower fisnormal as it requires the Kernel Cap
+      radv: fix buffers in vkGetDescriptorEXT with size not aligned to 4
+      rusticl/queue: Only take a weak ref to the last Event
 
-Ian Romanick (1):
-      nir/split_vars: Don't split arrays of cooperative matrix types
+Lionel Landwerlin (1):
+      intel/fs: Xe2 fix for ExBSO on UGM
 
-Jani Nikula (7):
-      nir: add names to some typedef'd structs/enums
-      nir: drop **< style documentation comments
-      isl: drop **< style documentation comments
-      docs: Add docs/header-stubs/README.rst
-      docs/vulkan: use hawkmoth instead of doxygen
-      docs/nir: use hawkmoth instead of doxygen
-      docs/isl: use hawkmoth instead of doxygen
+Marek Olšák (1):
+      radeonsi: initialize perfetto in the right place
 
-Lionel Landwerlin (2):
-      anv/meson: add missing dependency on the interface header
-      anv: ensure we reapply always pipeline dynamic state in runtime state
+Mike Blumenkrantz (4):
+      zink: add more locking for compute pipelines
+      radv: correctly return oom from the device when failing to create a cs
+      zink: make (some) vk allocation commands more robust against vram depletion
+      zink: check for cbuf0 writes before setting A2C
 
-Martin Roukala (né Peres) (1):
-      ci/b2c: fix artifact collection
+Samuel Pitoiset (1):
+      radv: dump the pipeline hash to the gpu hang report
 
-Mike Blumenkrantz (24):
-      draw: fix uninit variable false positive
-      zink: add copy box locking
-      tc: add non-definitive tracking for batch completion
-      tc: always track fb attachments
-      tc: add batch usage tagging to threaded_resource
-      tc: use strong refs for fb attachment tracking
-      tc: allow unsynchronized texture_subdata calls where possible
-      zink: handle unsynchronized image maps from tc
-      zink: barrier_cmdbuf -> reordered_cmdbuf
-      zink: assert that transfer_dst is available before doing buf2img
-      zink: rework cmdbuf submission to be more extensible
-      zink: add a third cmdbuf for unsynchronized (not reordered) ops
-      zink: add flag to restrict unsynchronized texture access
-      zink: add locking for batch refs
-      zink: enable unsynchronized texture uploads using staging buffers
-      ci: skip zink vram test
-      ci: bump VVL to 1.3.269
-      zink: emit SpvCapabilitySampleRateShading with SampleId
-      zink: always set VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT for usermem
-      zink: clamp resolve extents to src/dst geometry
-      zink: only emit xfb execution mode for last vertex stage
-      aux/u_transfer_helper: set rendertarget bind for msaa staging resource
-      zink: unset explicit_xfb_buffer for non-xfb shaders
-      mesa/st/texture: match width+height for texture downloads of cube textures
-
-Qiang Yu (22):
-      aco: do not fix_exports when separately compiled ngg vs or es
-      aco: add create_end_for_merged_shader
-      aco: extend max operands in a instruction to 128
-      aco: move end program handling to select_shader
-      aco: stop emit s_endpgm for first stage of merged shader
-      aco: add aco_is_gpu_supported
-      radeonsi: add vs prolog args needed by aco ls vgpr fix
-      radeonsi: fill aco shader info for part mode merged shader
-      radeonsi: enable aco compilation for merged shader parts
-      radeonsi: move use_aco to si_screen
-      radeonsi: move llvm compiler alloc/free into create/destroy funcntion
-      radeonsi: stop llvm context creation when use aco
-      radeonsi: move llvm internal header to si_shader_llvm.h
-      radeonsi: selectively build si llvm compiler create/destroy
-      radeonsi: selectively build llvm compile
-      radeonsi: set use_aco when no llvm available
-      radeonsi: include ac_llvm_util.h when llvm available
-      radeonsi: disk cache remove llvm dependancy when use aco
-      radeonsi: does not call llvm init when no llvm available
-      radeonsi: change compiler name for aco
-      radeonsi: selectively build llvm files
-      meson: be able to build radeonsi without llvm
-
-Ruijing Dong (1):
-      radeonsi/vcn: vcn4 encoding interface dummy update
-
-Samuel Pitoiset (4):
-      radv: move RADV_DEBUG_NO_HIZ check in radv_use_htile_for_image()
-      radv: implement VK_EXT_image_compression_control
-      radv: advertise VK_EXT_image_compression_control
-      ac/gpu_info: remove bogus assertion about number of COMPUTE/SDMA queues
-
-Sil Vilerino (1):
-      d3d12: d3d12_video_buffer_create_impl - Fix resource importing
-
-Tapani Pälli (4):
-      intel/dev: provide intel_device_info_is_adln helper
-      iris: add required PC for Wa_14014966230
-      anv: add current_pipeline for batch_emit_pipe_control
-      anv: add required PC for Wa_14014966230
-
-Yonggang Luo (5):
-      compiler: Implement num_mesh_vertices_per_primitive to match u_vertices_per_prim
-      treewide: Merge num_mesh_vertices_per_primitive and u_vertices_per_prim into mesa_vertices_per_prim
-      nir: remove redundant include of gallium headers
-      nir: #include "util/macros.h" for BITFIELD64_MASK in nir.c
-      compiler,vulkan,drm-shim: Remove unused include directories from meson.build
+Yiwei Zhang (10):
+      venus: use common vk_image_format_to_ahb_format helper
+      venus: use common vk_image_usage_to_ahb_usage helper
+      venus: tiny refactor of device memory report interface
+      venus: avoid modifier prop query in vn_android_get_image_builder
+      venus: use common vk_image as vn_image base
+      venus: use common vk_device_memory as vn_device_memory base
+      venus: use common AHB management and export impl
+      venus: use vk_device_memory tracked export and import handle types
+      venus: use vk_device_memory tracked size
+      venus: use vk_device_memory tracked memory_type_index
 
