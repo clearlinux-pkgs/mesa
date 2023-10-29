@@ -1,74 +1,11 @@
-Updating from ce5475366e9f4dcbd24eed8af7fbcfe38427d242 to 38deb97d101ef421a7a3e90798f2d6708e128dbf
+Updating from 38deb97d101ef421a7a3e90798f2d6708e128dbf to 4f892ecc1e143c42a41d32450262e799d4d152af
 
-Alejandro Piñeiro (1):
-      broadcom/qpu: use back BITFIELD64_RANGE for ANYOPMASK
-
-Anuj Phogat (1):
-      intel/l3: Adjust URB weight calculation for gfx12.5+.
-
-Caio Oliveira (1):
-      anv: Fix leak when compiling internal kernels
-
-Francisco Jerez (16):
-      intel/l3/gfx11+: Add tile cache partition to intel_l3_config struct.
-      intel/l3: Define helper for obtaining the size of an L3 partition in KB.
-      intel/l3: Set up L3FullWayAllocationEnable config if ALL partition has over 126 ways.
-      intel/dg2: Import L3 cache configurations.
-      intel/mtl: Import L3 cache configurations.
-      intel/xehp+: Add TBIMR-related genxml definitions.
-      intel/xehp+: Import algorithm for TBIMR tiling parameter calculation.
-      intel/xehp+: Add dynamic state flags controlling whether TBIMR is enabled during 3D primitives.
-      intel/xehp+: Define driconf option for selectively disabling TBIMR.
-      iris/xehp: Implement TBIMR tile pass setup and pipeline bandwidth estimation.
-      anv/xehp: Implement TBIMR tile pass setup and pipeline bandwidth estimation.
-      anv/xehp+: Enable TBIMR in generated draw calls.
-      intel/xehp: Adjust TBIMR performance chicken bits.
-      intel/xehp+: Adjust TBIMR batch size based on slice count.
-      intel/xehp+: Use TBIMR tile box check in order to avoid performance regressions.
-      intel/xehp: Enable TBIMR by default.
-
-Jordan Justen (1):
-      intel/l3: Use devinfo->urb.size when cfg urb-size is 0.
-
-Juan A. Suarez Romero (1):
-      v3d/ci: run V3D GL tests in 64-bits
-
-Karol Herbst (10):
-      vtn/opencl: always lower to libclc fmod
-      rusticl/device: restrict image_buffer_size
-      rusticl/device: restrict param_max_size further
-      rusticl/mem: properly set pipe_image_view::access
-      zink: support CLAMP_TO_BORDER with unnormalized coords
-      zink: alias nir scratch memory by lowering to common bit_size
-      zink: emit float controls
-      zink: lower fisnormal as it requires the Kernel Cap
-      radv: fix buffers in vkGetDescriptorEXT with size not aligned to 4
-      rusticl/queue: Only take a weak ref to the last Event
-
-Lionel Landwerlin (1):
-      intel/fs: Xe2 fix for ExBSO on UGM
-
-Marek Olšák (1):
-      radeonsi: initialize perfetto in the right place
-
-Mike Blumenkrantz (4):
-      zink: add more locking for compute pipelines
-      radv: correctly return oom from the device when failing to create a cs
-      zink: make (some) vk allocation commands more robust against vram depletion
-      zink: check for cbuf0 writes before setting A2C
-
-Samuel Pitoiset (1):
-      radv: dump the pipeline hash to the gpu hang report
-
-Yiwei Zhang (10):
-      venus: use common vk_image_format_to_ahb_format helper
-      venus: use common vk_image_usage_to_ahb_usage helper
-      venus: tiny refactor of device memory report interface
-      venus: avoid modifier prop query in vn_android_get_image_builder
-      venus: use common vk_image as vn_image base
-      venus: use common vk_device_memory as vn_device_memory base
-      venus: use common AHB management and export impl
-      venus: use vk_device_memory tracked export and import handle types
-      venus: use vk_device_memory tracked size
-      venus: use vk_device_memory tracked memory_type_index
+Karol Herbst (7):
+      rusticl/device: restrict const max size to 1 << 26 bytes
+      rusticl/mesa: pass PIPE_BIND_LINEAR in resource_create_texture_from_user
+      rusticl: handle failed maps gracefully
+      zink: validate pointer alignment in resource_from_user_memory
+      zink: handle denorm preserve execution modes
+      zink: deallocate global_bindings array
+      zink: emit MemoryAccess flags for coherent global load/stores
 
