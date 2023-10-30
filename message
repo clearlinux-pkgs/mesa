@@ -1,11 +1,5 @@
-Updating from 38deb97d101ef421a7a3e90798f2d6708e128dbf to 4f892ecc1e143c42a41d32450262e799d4d152af
+Updating from 4f892ecc1e143c42a41d32450262e799d4d152af to 78edaa2a9a1f5114db9e61ce2ad558d3f2c1decd
 
-Karol Herbst (7):
-      rusticl/device: restrict const max size to 1 << 26 bytes
-      rusticl/mesa: pass PIPE_BIND_LINEAR in resource_create_texture_from_user
-      rusticl: handle failed maps gracefully
-      zink: validate pointer alignment in resource_from_user_memory
-      zink: handle denorm preserve execution modes
-      zink: deallocate global_bindings array
-      zink: emit MemoryAccess flags for coherent global load/stores
+Julia Zhang (1):
+      radeonsi: modify binning settings to improve performance
 
