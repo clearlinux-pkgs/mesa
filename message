@@ -1,85 +1,46 @@
-Updating from 78edaa2a9a1f5114db9e61ce2ad558d3f2c1decd to 5e4ba9b166078fb4978c4eb69986bfff0f6ca66b
+Updating from 5e4ba9b166078fb4978c4eb69986bfff0f6ca66b to da7e6f303b1a8ed7e9c13bccb6e4c90ff356a914
 
-Danylo Piliaiev (3):
-      tu: Fix reading of stale (V)PC_PRIMITIVE_CNTL_0
-      tu/a7xx: Zero out A7XX_VPC_PRIMITIVE_CNTL_0 in 3d blits
-      tu/a6xx: Exclude REG_A6XX_TPL1_UNKNOWN_B602 from reg stomping
+Alejandro Piñeiro (1):
+      broadcom/compiler: add v3d_pack_unnormalized_coordinates helper
 
-David Heidelberg (16):
-      ci/docs: add coreutils
-      ci: bump tags
-      ci/zink: reduce premerge testing on a618 to ~ 12 minutes
-      ci: hide Mesa install phase
-      ci: drop clover from release builds and remove rusticl build
-      ci: simplify debian-rusticl-testing definition
-      ci: drop mingw and wine from the x86_64 build container
-      ci: always cleanup pip and cargo leftovers
-      ci: bashify scripts, use arrays
-      ci: drop debootstrap, unused
-      ci/panfrost: run T860 traces as intended (nightly job)
-      ci/venus: reduce pre-merge to fit under 15 min
-      ci/alpine: do not store apk cache
-      ci/wine: move wine configuration into rootfs where is wine available
-      Revert "ci/wine: move wine configuration into rootfs where is wine available"
-      ci/lava: add wine into the amd64 ephemeral container packages
+Bas Nieuwenhuizen (3):
+      radv: Add DGC preprocessing barrier support.
+      radv: Add compute DGC preprocessing support.
+      radv: Add some initial graphics DGC preprocessing support.
 
-Eric Engestrom (4):
-      ci/zink+radv: add another flake on polaris
-      ci: drop confusing fake `rules`, `if` and `when` on the list of rules strings
-      docs/ci: allow sanity job to be missing
-      ci: don't run sanity in Marge pipelines
+Casey Bowman (1):
+      anv: Override vendorID for Diablo IV
 
-Erik Faye-Lund (1):
-      util: remove unused lut
+Eric Engestrom (2):
+      ci: add `.never-post-merge-rules` to avoid re-running pre-merge jobs after merging
+      broadcom: use `.never-post-merge-rules` for all rpi tests
 
-Etaash Mathamsetty (1):
-      driconf: add a workaround for Rainbow Six Siege
+Frank Binns (1):
+      pvr: rename some more instances of 'reserved' to 'carveout' for consistency
 
-Iago Toral Quiroga (1):
-      v3d,v3dv: fix MMU error from hardware prefetch after ldunifa
+Gert Wollny (1):
+      virgl: Use host reported limits for max outputs
 
-Jordan Justen (1):
-      anv: Add more space for init_render_queue_state() batch (MTL regression)
+Giancarlo Devich (1):
+      nir: Workaround MSVC internal compiler error in ARM64 build
 
-Juston Li (6):
-      venus: add helper function to get cmd handle
-      venus: refactor out common cmd feedback functions
-      venus: support deferred query feedback recording
-      venus: track/recycle appended query feedback cmds
-      venus: append query feedback at submission time
-      venus: switch to unconditionally deferred query feedback
+Jesse Natalie (1):
+      microsoft: Disable post-merge CI for Windows
 
-Kenneth Graunke (6):
-      intel/compiler: Delete unused emit_dummy_fs()
-      intel/compiler: Delete unused repclear shader uniform handling
-      intel/compiler: Delete repclear shader's special case for 1 color target
-      intel/compiler: Drop unused saturate handling in repclear shader
-      intel/compiler: Convert the repclear shader to use send-from-GRF
-      intel/compiler: Assert that FS_OPCODE_[REP_]FB_WRITE is for pre-Gfx7
+Karol Herbst (1):
+      rusticl/mesa/screen: do not derefence the entire pipe_screen struct
 
-LingMan (1):
-      rusticl: Show an error message if the build is attempted with an outdated bindgen version
+Rob Clark (1):
+      ci: Only strip debug symbols
 
-Lionel Landwerlin (8):
-      blorp: handle binding table & surface state allocation failures
-      anv: rename internal heaps
-      anv: deal with state stream allocation failures
-      anv: add max_size argument for block & state pools
-      anv: make sure pools can handle more than 2Gb
-      anv: fail pool allocation when over the maximal size
-      anv: use anv_state_pool_state_address for blorp vertex buffer address
-      anv: fix corner case of mutable descriptor pool creation
-
-Samuel Pitoiset (8):
-      radv: fix a synchronization issue with primitives generated query on RDNA1-2
-      ac/registers: allow to parse GCVM_L2_PROTECTION_FAULT_STATUS
-      ac/debug: add a helper to print GPUVM fault protection status
-      radv: use the GPUVM fault protection status helper
-      radv: remove NGG streamout support for RDNA1-2
-      radv: remove unnecessary VS_PARTIAL_FLUSH for NGG streamout
-      ac/nir: remove dead code in nir_intrinsic_xfb_counter_{add,sub}_amd
-      aco: remove dead code in nir_intrinsic_xfb_counter_{add,sub}_amd
-
-Tapani Pälli (1):
-      intel/dev: fix intel_device_info_is_adln check
+Vitaliy Triang3l Kuzmin (9):
+      r600: Move r600_create_vertex_fetch_shader to r600_shader.c
+      r600: Remove Gallium dependencies in r600_isa
+      r600: Replace R600_ERR with R600_ASM_ERR in shader code
+      r600: Remove Gallium dependencies in r600_asm
+      r600: Split r600_shader.h into common and Gallium parts
+      r600/sfn: Make r600 header include paths relative
+      r600/sfn: Split r600_shader_from_nir into common and Gallium parts
+      r600: Fix outputs typo in print_pipe_info
+      r600: Replace TGSI I/O semantics with shader_enums
 
