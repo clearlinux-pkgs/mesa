@@ -1,46 +1,67 @@
-Updating from 5e4ba9b166078fb4978c4eb69986bfff0f6ca66b to da7e6f303b1a8ed7e9c13bccb6e4c90ff356a914
+Updating from da7e6f303b1a8ed7e9c13bccb6e4c90ff356a914 to 60cd0af06c081a6762d0598a9dfbbfc37c2b65d3
 
-Alejandro Piñeiro (1):
-      broadcom/compiler: add v3d_pack_unnormalized_coordinates helper
+Chia-I Wu (1):
+      radv: fix vkCmdCopyImage2 for emulated etc2/astc
 
-Bas Nieuwenhuizen (3):
-      radv: Add DGC preprocessing barrier support.
-      radv: Add compute DGC preprocessing support.
-      radv: Add some initial graphics DGC preprocessing support.
+David Heidelberg (2):
+      ci/zink: restore full premerge testing on Adreno 618
+      ci: fixup section names
 
-Casey Bowman (1):
-      anv: Override vendorID for Diablo IV
+Faith Ekstrand (1):
+      nir: add deref follower builder for casts.
 
-Eric Engestrom (2):
-      ci: add `.never-post-merge-rules` to avoid re-running pre-merge jobs after merging
-      broadcom: use `.never-post-merge-rules` for all rpi tests
-
-Frank Binns (1):
-      pvr: rename some more instances of 'reserved' to 'carveout' for consistency
+Felix DeGrood (1):
+      anv: remove CS_FLUSH from query regression
 
 Gert Wollny (1):
-      virgl: Use host reported limits for max outputs
+      r600: Add callbacks for get_driver_uuid and get_device_uuid
 
-Giancarlo Devich (1):
-      nir: Workaround MSVC internal compiler error in ARM64 build
+Guilherme Gallo (7):
+      ci/lava: Use project_name instead of hardcoded `mesa`
+      ci/lava: Fix imports formatting
+      ci/lava: Refactor UART definition building blocks
+      ci/lava: Create LAVAJobDefinition
+      ci/lava: Make SSH definition wrap the UART one
+      ci/lava: Enable SSH by default in fastboot devices
+      ci/lava: Add unit tests covering job definition
 
-Jesse Natalie (1):
-      microsoft: Disable post-merge CI for Windows
+Jesse Natalie (2):
+      d3d12: Only set draw params root parameter index for actual draw params
+      dzn: Implement VK_MSFT_layered_driver
 
-Karol Herbst (1):
-      rusticl/mesa/screen: do not derefence the entire pipe_screen struct
+Mark Janes (2):
+      iris: make shader cache content deterministic
+      anv: make shader cache content deterministic
 
-Rob Clark (1):
-      ci: Only strip debug symbols
+Max R (2):
+      virgl: Implement clear_render_target and clear_depth_stencil
+      ci: Uprev virglrenderer
 
-Vitaliy Triang3l Kuzmin (9):
-      r600: Move r600_create_vertex_fetch_shader to r600_shader.c
-      r600: Remove Gallium dependencies in r600_isa
-      r600: Replace R600_ERR with R600_ASM_ERR in shader code
-      r600: Remove Gallium dependencies in r600_asm
-      r600: Split r600_shader.h into common and Gallium parts
-      r600/sfn: Make r600 header include paths relative
-      r600/sfn: Split r600_shader_from_nir into common and Gallium parts
-      r600: Fix outputs typo in print_pipe_info
-      r600: Replace TGSI I/O semantics with shader_enums
+Rhys Perry (4):
+      nir: add helpers to skip idempotent passes
+      radv: use NIR_LOOP_PASS helpers
+      aco: add VALU/SALU/VMEM/SMEM statistics
+      aco: collect Pre-Sched SGPRs/VGPRs before spilling
+
+Samuel Pitoiset (7):
+      radv/ci: update list of expected failures/flakes for NAVI31
+      radv: add RADV_DEBUG=nomeshshader
+      radv/ci: enable RADV_DEBUG=nomeshshader for vkcts-navi31-valve
+      radv: bind the non-dynamic graphics state from the pipeline unconditionally
+      radv: adjust binning settings to improve performance on GFX9
+      radv: fix compute shader invocations query on compute queue on GFX6
+      radv: emit COMPUTE_PIPELINESTAT_ENABLE for CS invocations on ACE
+
+Sarah Walker (1):
+      pvr: Update AM62 DSS compatible string to match upstream
+
+Tapani Pälli (1):
+      iris: handle tile case where cso width, height is zero
+
+Timur Kristóf (5):
+      radv: Remove always false tmz variables from SDMA functions.
+      radv: Expose radv_get_dcc_max_uncompressed_block_size function.
+      radv: Implement buffer/image copies on transfer queues.
+      radv: Add temporary BO for transfer queues.
+      radv: Implement workaround for unaligned buffer/image copies.
 
