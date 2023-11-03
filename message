@@ -1,67 +1,102 @@
-Updating from da7e6f303b1a8ed7e9c13bccb6e4c90ff356a914 to 60cd0af06c081a6762d0598a9dfbbfc37c2b65d3
+Updating from 60cd0af06c081a6762d0598a9dfbbfc37c2b65d3 to 47398c65ee7425cdb2480ba5be43d0a1565da2f3
 
-Chia-I Wu (1):
-      radv: fix vkCmdCopyImage2 for emulated etc2/astc
+Alejandro Piñeiro (5):
+      broadcom: only support v42 and v71
+      broadcom/compiler: set properly lod query
+      broadcom/cle: remove v33 and v41 from xml definition
+      broadcom/cle: rename xml files
+      docs/v3d: update v3d documentation
 
-David Heidelberg (2):
-      ci/zink: restore full premerge testing on Adreno 618
-      ci: fixup section names
+Alyssa Rosenzweig (25):
+      gitlab: Highlight .cl as C
+      nir,vtn: Add exported bool to nir_function
+      nir: Add nir_remove_non_exported
+      nir/builder: Add nir_call helper
+      meson: Simplify clc expression
+      meson: Require clc for asahi
+      vtn: Add spirv_library_to_nir_builder feature
+      clc: Add missing idep_vtn
+      agx: Fix lower regular texture metadata
+      agx: Vectorize load/stores
+      agx: Fuse (unmasked) extr_agx
+      agx: Fuse ubitfield_extract
+      asahi: Fix agx_pack unrolling
+      asahi: Make GenXML compatible with OpenCL
+      asahi: Unpack at 32-bit granularity
+      asahi: Reexpress genxml pack macro
+      asahi: Add folder for internal shaders
+      asahi: Add asahi_clc infrastructure
+      asahi: Pass valid memctx to open_device
+      asahi: Deserialize libagx when opening device
+      asahi,agx: Plumb libagx
+      asahi: Add software-defined field to texture desc
+      agx: Use CL for texture lowerings
+      asahi: Remove placeholder shader
+      asahi: Fix tools=all builds
 
-Faith Ekstrand (1):
-      nir: add deref follower builder for casts.
+Connor Abbott (4):
+      util/rb_tree: Fix editorconfig
+      util/rb_tree: Add augmented trees and interval trees
+      freedreno/ci: Remove minetest trace
+      v3d/ci: Remove minetest trace
 
-Felix DeGrood (1):
-      anv: remove CS_FLUSH from query regression
+Corentin Noël (2):
+      virgl: fill the array_size value when using PIPE_TEXTURE_CUBE
+      virgl/texture: Align destination box to block depth
 
-Gert Wollny (1):
-      r600: Add callbacks for get_driver_uuid and get_device_uuid
+Eric Engestrom (1):
+      ci/radeonsi: add another flake
 
-Guilherme Gallo (7):
-      ci/lava: Use project_name instead of hardcoded `mesa`
-      ci/lava: Fix imports formatting
-      ci/lava: Refactor UART definition building blocks
-      ci/lava: Create LAVAJobDefinition
-      ci/lava: Make SSH definition wrap the UART one
-      ci/lava: Enable SSH by default in fastboot devices
-      ci/lava: Add unit tests covering job definition
+Faith Ekstrand (10):
+      nir: Handle wildcards with casts in copy_prop_vars
+      nir: Use nir_builder to insert movs
+      nir: Add asserts to nir_phi_builder_value_set_block_def
+      vc4: Stop assuming glsl_get_length() returns 0 for vectors
+      v3d: Stop assuming glsl_get_length() returns 0 for vectors
+      nir/lower_io_to_vector: Only call glsl_get_length() on arrays
+      nir/types: Support vectors in glsl_get_length()
+      nir: Handle array-deref-of-vec in vars_to_ssa
+      nir: Handle array-deref-of-vec in var split passes
+      nir/validate: Allow array derefs on vectors on function/shader_temp
 
-Jesse Natalie (2):
-      d3d12: Only set draw params root parameter index for actual draw params
-      dzn: Implement VK_MSFT_layered_driver
+Jesse Natalie (5):
+      wgl: Take pixelformat color channels into account for choosing a PFD
+      winsys/gdi: Handle 4444 and 1010102 texture formats
+      winsys/gdi: Update is_displaytarget_format_supported to reflect reality
+      d3d12: Don't support displaytargets that can't be supported by GDI/DXGI
+      dzn: Use vk_properties helper
 
-Mark Janes (2):
-      iris: make shader cache content deterministic
-      anv: make shader cache content deterministic
+Karol Herbst (2):
+      nir: Stop assuming glsl_get_length() returns 0 for vectors
+      ir2: Stop assuming glsl_get_length() returns 0 for vectors
 
-Max R (2):
-      virgl: Implement clear_render_target and clear_depth_stencil
-      ci: Uprev virglrenderer
+Konstantin Seurer (5):
+      radv: Add RADV_MAX_HIT_ATTRIB_DWORDS
+      radv/nir: Add radv_nir_lower_hit_attrib_derefs
+      radv/nir: Handle boolean hit attribs
+      radv/clang-format: Do not indent C++ modifiers
+      radv: Add radv_nir_lower_hit_attrib_derefs_tests
 
-Rhys Perry (4):
-      nir: add helpers to skip idempotent passes
-      radv: use NIR_LOOP_PASS helpers
-      aco: add VALU/SALU/VMEM/SMEM statistics
-      aco: collect Pre-Sched SGPRs/VGPRs before spilling
+Rhys Perry (2):
+      radv: call lower_array_deref_of_vec before lower_io_arrays_to_elements
+      radv: skip radv_remove_varyings for mesh shaders
 
-Samuel Pitoiset (7):
-      radv/ci: update list of expected failures/flakes for NAVI31
-      radv: add RADV_DEBUG=nomeshshader
-      radv/ci: enable RADV_DEBUG=nomeshshader for vkcts-navi31-valve
-      radv: bind the non-dynamic graphics state from the pipeline unconditionally
-      radv: adjust binning settings to improve performance on GFX9
-      radv: fix compute shader invocations query on compute queue on GFX6
-      radv: emit COMPUTE_PIPELINESTAT_ENABLE for CS invocations on ACE
+Rob Clark (2):
+      tu/msm: Fix timeline semaphore support
+      tu/virtio: Fix timeline semaphore support
 
-Sarah Walker (1):
-      pvr: Update AM62 DSS compatible string to match upstream
+Rohan Garg (1):
+      intel/compiler: migrate WA 14013672992 to use WA framework
 
-Tapani Pälli (1):
-      iris: handle tile case where cso width, height is zero
+Samuel Pitoiset (2):
+      ci: backport two mesh/task query fixes for VKCTS
+      radv/ci: document one more flake test
 
-Timur Kristóf (5):
-      radv: Remove always false tmz variables from SDMA functions.
-      radv: Expose radv_get_dcc_max_uncompressed_block_size function.
-      radv: Implement buffer/image copies on transfer queues.
-      radv: Add temporary BO for transfer queues.
-      radv: Implement workaround for unaligned buffer/image copies.
+Yiwei Zhang (1):
+      venus: fix query feedback batch leak and race upon submission
+
+duncan.hopkins (3):
+      util: Update util/libdrm.h stubs to allow loader.c to compile on MacOS.
+      dri: added build dependencies for systems using non-standard prefixed X11 libs.
+      glx: fix automatic zink fallback loading between hw and sw drivers on MacOS
 
