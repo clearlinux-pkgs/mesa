@@ -1,102 +1,120 @@
-Updating from 60cd0af06c081a6762d0598a9dfbbfc37c2b65d3 to 47398c65ee7425cdb2480ba5be43d0a1565da2f3
+Updating from 47398c65ee7425cdb2480ba5be43d0a1565da2f3 to 655cbf203d15e6fc89f620eb745f6b04ae794fa6
 
-Alejandro Piñeiro (5):
-      broadcom: only support v42 and v71
-      broadcom/compiler: set properly lod query
-      broadcom/cle: remove v33 and v41 from xml definition
-      broadcom/cle: rename xml files
-      docs/v3d: update v3d documentation
+Antonio Gomes (14):
+      rusticl, meson: Move libc functions to their own crate
+      rusticl, meson: Add gl/egl/glx bindings
+      iris: Fixups in resource_get_handle and resource_from_handle
+      mesa/st: Add new data to mesa_glinterop
+      mesa/st, dri2, wgl, glx: Modify flush_objects interop func to export a fence_fd
+      rusticl: Add xplat helpers to dynamic link interop functions
+      rusticl/device: Function to check for gl interop support
+      rusticl/device: Enable gl_sharing only if create_fence_fd is implemented
+      rusticl: Add functions to create CL ctxs from GL, and also to query them
+      rusticl/format: Add conversion table for GL->CL
+      rusticl: Create CL mem objects from GL
+      rusticl: Add support for cube maps
+      rusticl: Flush objects just before importing them
+      rusticl: Advertise cl_khr_gl_sharing extension
 
-Alyssa Rosenzweig (25):
-      gitlab: Highlight .cl as C
-      nir,vtn: Add exported bool to nir_function
-      nir: Add nir_remove_non_exported
-      nir/builder: Add nir_call helper
-      meson: Simplify clc expression
-      meson: Require clc for asahi
-      vtn: Add spirv_library_to_nir_builder feature
-      clc: Add missing idep_vtn
-      agx: Fix lower regular texture metadata
-      agx: Vectorize load/stores
-      agx: Fuse (unmasked) extr_agx
-      agx: Fuse ubitfield_extract
-      asahi: Fix agx_pack unrolling
-      asahi: Make GenXML compatible with OpenCL
-      asahi: Unpack at 32-bit granularity
-      asahi: Reexpress genxml pack macro
-      asahi: Add folder for internal shaders
-      asahi: Add asahi_clc infrastructure
-      asahi: Pass valid memctx to open_device
-      asahi: Deserialize libagx when opening device
-      asahi,agx: Plumb libagx
-      asahi: Add software-defined field to texture desc
-      agx: Use CL for texture lowerings
-      asahi: Remove placeholder shader
-      asahi: Fix tools=all builds
+Chia-I Wu (2):
+      radv: stop using vk_render_pass_state::render_pass
+      vulkan, tu, pvr: remove vk_render_pass_state::render_pass
 
-Connor Abbott (4):
-      util/rb_tree: Fix editorconfig
-      util/rb_tree: Add augmented trees and interval trees
-      freedreno/ci: Remove minetest trace
-      v3d/ci: Remove minetest trace
+Daniel Stone (1):
+      ci: Try really hard to print final result string
 
-Corentin Noël (2):
-      virgl: fill the array_size value when using PIPE_TEXTURE_CUBE
-      virgl/texture: Align destination box to block depth
+Dave Airlie (10):
+      vulkan: update video headers
+      vulkan/video: add support for h264 encode to common code
+      vulkan/video: add h265 encode support
+      vulkan/video: add h264 nal enum
+      vulkan/video: add a nal_unit lookup for hevc
+      util: add a bitstream encoder for video stream headers.
+      vulkan/video: add h264 level idc convertor utility
+      vulkan/video: add a h265 level translator.
+      vulkan/video: add h264 headers encode
+      vulkan/video: add h265 header encoders.
 
-Eric Engestrom (1):
-      ci/radeonsi: add another flake
+David Rosca (9):
+      frontends/va: Map decoder and postproc surfaces for reading
+      radeonsi/vce: Implement destroy_fence vfunc
+      radeonsi/uvd: Implement destroy_fence vfunc
+      radeonsi/uvd_enc: Implement destroy_fence vfunc
+      radeonsi/uvd_enc: Fix leaking session info buffer
+      Revert "radeon/radeon_vce: fix out of target bitrate in CBR mode (H.264)"
+      radeonsi/vce: Tweak motion estimation params for better quality
+      radeonsi/vce: Add VUI parameters in output bitstream
+      radeonsi/uvd_enc: Add VUI parameters in output bitstream
 
-Faith Ekstrand (10):
-      nir: Handle wildcards with casts in copy_prop_vars
-      nir: Use nir_builder to insert movs
-      nir: Add asserts to nir_phi_builder_value_set_block_def
-      vc4: Stop assuming glsl_get_length() returns 0 for vectors
-      v3d: Stop assuming glsl_get_length() returns 0 for vectors
-      nir/lower_io_to_vector: Only call glsl_get_length() on arrays
-      nir/types: Support vectors in glsl_get_length()
-      nir: Handle array-deref-of-vec in vars_to_ssa
-      nir: Handle array-deref-of-vec in var split passes
-      nir/validate: Allow array derefs on vectors on function/shader_temp
+Eric Engestrom (3):
+      rpi4/ci: add more known dEQP-EGL.functional.*.*_context.gles*.other failures
+      rpi4/ci: move `spec@!opengl 1.1@depthstencil-default_fb-drawpixels-24_8 samples=2` from fails for flakes after an UnexpectedPass
+      rpi4/ci: remove `spec@!opengl 1.1@depthstencil-default_fb-drawpixels-32f_24_8_rev samples=2` from fails as it's a flaky test and already marked as such
 
-Jesse Natalie (5):
-      wgl: Take pixelformat color channels into account for choosing a PFD
-      winsys/gdi: Handle 4444 and 1010102 texture formats
-      winsys/gdi: Update is_displaytarget_format_supported to reflect reality
-      d3d12: Don't support displaytargets that can't be supported by GDI/DXGI
-      dzn: Use vk_properties helper
+Faith Ekstrand (4):
+      nvk: Force all mappable BOs into GART pre-Maxwell
+      nvk: Fix nvk_heap_free() for contiguous heaps
+      nvk: Drop a bogus assert
+      nvk: Assert no storage images on Kepler
 
-Karol Herbst (2):
-      nir: Stop assuming glsl_get_length() returns 0 for vectors
-      ir2: Stop assuming glsl_get_length() returns 0 for vectors
+Gert Wollny (3):
+      r600: Add experimental get_compute_state_info
+      r600: Link with libgalliumvl, when enabling rusticl this is needed
+      r600/sfn: Fixup component count only if intrinsic has it
 
-Konstantin Seurer (5):
-      radv: Add RADV_MAX_HIT_ATTRIB_DWORDS
-      radv/nir: Add radv_nir_lower_hit_attrib_derefs
-      radv/nir: Handle boolean hit attribs
-      radv/clang-format: Do not indent C++ modifiers
-      radv: Add radv_nir_lower_hit_attrib_derefs_tests
+Jesse Natalie (4):
+      vulkan: Remove no-longer-needed prototypes for ICD entrypoints
+      vulkan: Consolidate common ICD methods
+      vulkan: Support loader interface v7
+      dzn: Fix memory type sorting
 
-Rhys Perry (2):
-      radv: call lower_array_deref_of_vec before lower_io_arrays_to_elements
-      radv: skip radv_remove_varyings for mesh shaders
+José Expósito (1):
+      zink: Fix crash on zink_create_screen error path
 
-Rob Clark (2):
-      tu/msm: Fix timeline semaphore support
-      tu/virtio: Fix timeline semaphore support
+Juan A. Suarez Romero (2):
+      v3d: use kmsro to create drm screen on real hw
+      vc4/ci: comment why piglit is disabled
 
-Rohan Garg (1):
-      intel/compiler: migrate WA 14013672992 to use WA framework
+Karol Herbst (5):
+      nvc0: implement PIPE_CAP_TIMER_RESOLUTION
+      radeonsi: support importing arbitrary resources
+      radeonsi: hack for importing 3D textures
+      rusticl/context: fix importing gl cube maps
+      docs/features: mark rusticl gl_sharing as done
 
-Samuel Pitoiset (2):
-      ci: backport two mesh/task query fixes for VKCTS
-      radv/ci: document one more flake test
+Lucas Fryzek (1):
+      freedreno/drm: Add more APIs to per backend API
 
-Yiwei Zhang (1):
-      venus: fix query feedback batch leak and race upon submission
+Paulo Zanoni (8):
+      anv: don't forget to destroy device->vma_mutex
+      anv: alloc client visible addresses at the bottom of vma_hi
+      anv/sparse: join multiple bind operations when possible
+      anv/sparse: join multiple NULL binds when possible
+      anv/sparse: also print bind->address at dump_anv_vm_bind
+      intel/genxml: add the Gen12+ TR-TT registers
+      anv/sparse: extract anv_sparse_bind()
+      anv: setup the TR-TT vma heap
 
-duncan.hopkins (3):
-      util: Update util/libdrm.h stubs to allow loader.c to compile on MacOS.
-      dri: added build dependencies for systems using non-standard prefixed X11 libs.
-      glx: fix automatic zink fallback loading between hw and sw drivers on MacOS
+Rob Clark (8):
+      freedreno/drm: Fix race in zombie import
+      freedreno: Fix modifier determination
+      freedreno: Handle DRM_FORMAT_MOD_QCOM_TILED3 import
+      virtio/drm: Split out common virtgpu drm structs
+      freedreno/drm: Simplify backend mmap impl
+      virtio: Add vdrm native-context helper
+      freedreno/drm/virtio: Switch to vdrm helper
+      tu/drm/virtio: Switch to vdrm helper
+
+Yonggang Luo (5):
+      nvk: Should use alignment instead of align
+      microsoft/clc: Using sampler_id instead PIPE_MAX_SHADER_SAMPLER_VIEWS for dxil_lower_sample_to_txf_for_integer_tex
+      microsoft/clc: Use 128 instead of PIPE_MAX_SHADER_SAMPLER_VIEWS
+      micosoft: define enum dxil_tex_wrap to avoid the usage of enum pipe_tex_wrap
+      micosoft: decouple microsoft vulkan driver and compiler from gallium
+
+antonino (1):
+      nir: don't take the derivative of the array index in `nir_lower_tex`
+
+duncan.hopkins (1):
+      vulkan: added build dependencies for systems using non-standard prefixed X11 libs.
 
