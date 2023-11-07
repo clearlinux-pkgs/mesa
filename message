@@ -1,60 +1,122 @@
-Updating from cd0a01522f22646f840cfc5e7557e9f8f84a1e5e to ac342f68517c06c7505ac0eb723f6cb0a418e059
+Updating from ac342f68517c06c7505ac0eb723f6cb0a418e059 to 3626d07d66de7a257caa9b4c169acb3f291b25ac
 
-David Rosca (1):
-      radeonsi: Fix offset for linear surfaces on GFX < 9
+Alyssa Rosenzweig (44):
+      compiler: Make shader_enums.h CL-safe
+      compiler: Inline mesa_vertices_per_prim
+      compiler: Make u_decomposed_prims_for_vertices available to CL
+      nir/lower_gs_intrinsics: Include primitive counts
+      nir/lower_gs_intrinsics: Append EndPrimitive
+      nir/lower_gs_intrinsics: Count decomposed primitives too
+      nir: Also gather decomposed primitive count
+      nir: Add intrinsics for lowering GS
+      nir: Add intrinsics for lowering bindless textures/samplers
+      nir/print: handle adjacency
+      asahi: Clamp 8-bit integer RTs
+      agx: Legalize image MS index
+      agx: Fix fragment side effects scheduling
+      agx: Check for spilling in release builds
+      docs/features: Mark ARB_mdi done on asahi
+      agx: Cleanup 8-bit math before lowering
+      agx: Require 32-bit alignment for EOT offset
+      agx: Add scaffolding for subgroup ops
+      agx: Translate simple subgroup ops
+      asahi: Pack non-border colour sampler desc
+      agx: Allow drivers to lower texture handles
+      asahi: Lower samplers to bindless if needed
+      agx: Lower LOD bias earlier
+      agx: Handle bindless samplers
+      asahi: Handle load_sampler_handle
+      asahi: Add sampler heap data structure
+      asahi: Use the sampler heap
+      asahi: Upload tex/samplers properly with merged shaders
+      asahi: Don't hazard track fake resources
+      asahi: Refactor encoder data structure
+      asahi: Factor out agx_launch
+      asahi: Make encoder_allocate public
+      asahi: Add data structures for geometry shaders
+      asahi: Add helpers for lowering GS
+      asahi: Add GS lowering pass
+      asahi: Wire up geometry shaders
+      asahi: Advertise geometry shaders
+      asahi: rm unused deqp debug flag
+      asahi: Don't use OpenGL clip bit
+      asahi: Plumb clip_halfz bit from RS
+      asahi: Advertise ARB_clip_control
+      asahi: Implement timer queries
+      docs: Mark timer queries as done on asahi
+      asahi: Implement ARB_base_instance
 
-Eric Engestrom (9):
-      broadcom/ci: merge gl test lists to use a single deqp instance
-      broadcom/ci: fix list indentation
-      broadcom/ci: split broadcom-common manual rules to .broadcom-common-manual-rules
-      vc4/ci: add manual variant of .vc4-rules
-      v3dv/ci: add manual variant of .v3dv-rules
-      v3d/ci: add "full run" variant of v3d-rpi4-gl:arm64 as a manual job
-      v3dv/ci: add "full run" variant of v3dv-rpi4-vk:arm64 as a manual job
-      vc4/ci: add piglit "full run" variant of vc4-rpi3-gl:arm32 as a manual job
-      rpi4/ci: skip more timing out tests in the dEQP-VK.ssbo.layout.* group
+Andrew Gazizov (1):
+      venus: Add use_guest_vram capset to enable guest-based blob alloc
+
+Christian Gmeiner (2):
+      agx: Re-index nir defs to reduce memory usage
+      ci/etnaviv: Update ci expectation
+
+Connor Abbott (5):
+      vk,lvp,tu,radv,anv: Add common vk_*_pipeline_create_flags() helper
+      vk/graphics_state: Support VK_KHR_maintenance5
+      vk/graphics_state, tu: Rewrite renderpass flags handling
+      vk/graphics_state: Support VK_EXT_attachment_feedback_loop_dynamic_state
+      vk/graphics_state: Add vk_pipeline_flags_feedback_loops helper
+
+David Heidelberg (2):
+      ci/nouveau: define a kernel and dtb, so we can fetch it from external sources
+      ci: inject gfx-ci/linux S3 artifacts without rebuilding containers
+
+Eric Engestrom (6):
+      zink+radv/ci: simplify deqp config
+      zink+radv/ci: ensure renderer is "zink on radv"
+      ci: restore sanity (aka. Revert "ci: don't run sanity in Marge pipelines")
+      gitlab_gql: strip newline at the end of the token file
+      ci_run_n_monitor: compile target_jobs_regex only once
+      ci/gitlab_gql: stop re-compiling regex now that all users pre-compile it
+
+Erik Faye-Lund (6):
+      panfrost: allow packing formats outside of pan_format.c
+      panfrost: bypass format-table for null-textures
+      panfrost: pass blendable formats to pan_pack_color
+      panfrost: store blendable_formats in panfrost_device
+      panfrost: look at correct blendable format version
+      panfrost: use perf_debug instead of open-coding
+
+Georg Lehmann (6):
+      aco, radv: vectorize f2f16 if rounding mode is rtz
+      aco: force uniform result for LDS load with uniform address if it can be non uniform
+      aco: stop using cstdint
+      aco: namespace aco_opcode
+      aco: deduplicate instr_class definition
+      aco: deduplicate Format definition
+
+Jordan Justen (3):
+      intel/dev/wa: Raise error if mesa_defs.json contains unknown platforms
+      intel/dev: Rename mtl-m to mtl-u
+      intel/dev: Rename mtl-p to mtl-h
 
 Karol Herbst (2):
-      rusticl/queue: do not send empty lists of event to worker queue
-      rusticl/queue: fix implicit flushing of queue dependencies
+      rusticl: only support the matching device for gl_sharing
+      rusticl/memory: fix new clippy::needless-borrow warning
 
-LingMan (3):
-      rusticl: Directly pass a `&Device` to `Mem::map_image` and `Mem::map_buffer`
-      rusticl: Only put an Arc around PipeScreen where needed
-      rusticl: Avoid repeatedly creating Vecs during Platform initialization
+Lucas Stach (1):
+      etnaviv: drm: don't update cmdstream timestamp when skipping submit
 
-Marek Olšák (21):
-      ac: add missing gfx11.5 bits
-      ac/gpu_info: adjust attribute ring size for gfx11
-      ac/surface: cosmetic changes
-      ac/surface/tests: cosmetic changes
-      radeonsi: don't use nir_optimization_barrier_vgpr_amd with ACO
-      radeonsi: inline si_allocate_gds and si_add_gds_to_buffer_list
-      radeonsi: inline si_screen_clear_buffer
-      radeonsi: remove redundant VS_PARTIAL_FLUSH for streamout
-      radeonsi: remove AMD_DEBUG=nogfx
-      radeonsi: rename ctx -> sctx in si_emit_guardband
-      radeonsi: remove and inline si_shader::ngg::prim_amp_factor
-      radeonsi: decrease PIPE_CAP_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS to 1024
-      radeonsi: cosmetic changes in si_pm4.c
-      radeonsi: split setting num_threads in si_emit_dispatch_packets
-      radeonsi: use si_shader_uses_streamout properly
-      radeonsi: adjust setting PA_SC_EDGERULE once more
-      radeonsi: various isolated cosmetic changes
-      radeonsi: move max_dist for MSAA into si_state_msaa.c
-      radeonsi: cosmetic changes in si_state_viewport.c
-      radeonsi: cosmetic changes in si_state_binning.c, si_state_msaa.c
-      radeonsi: move setting registers at the end of si_emit_cb_render_state
+Mary Guillemard (9):
+      venus: skip bind sparse info when checking for feedback query
+      nir: Add AGX-specific doorbell and stack mapping opcodes
+      agx: Add doorbell and stack mapping opcodes
+      agx: Handle doorbell and stack mapping intrinsics
+      asahi: clc: Handle doorbell and stack mapping intrinsics
+      agx: Add stack load and store opcodes
+      agx: Implement scratch load/store
+      agx: Add stack adjust opcode
+      agx: Emit stack_adjust in the entrypoint
 
-Samuel Pitoiset (3):
-      nir: fix inserting the break instruction for partial loop unrolling
-      radv: add initial VK_EXT_device_fault support
-      radv: advertise VK_EXT_device_fault
+Sviatoslav Peleshko (1):
+      nir/loop_analyze: Fix inverted condition handling in iterations calculation
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
-
-Vlad Schiller (1):
-      pvr: Fix VK_EXT_texel_buffer_alignment
+Vitaliy Triang3l Kuzmin (4):
+      r600/sfn: Change sampler_index to texture_index in buffer txs
+      r600/sfn: Remove unused sampler reference in emit_tex_lod
+      nir: Don't skip lower_alu if only bit_count needs lowering
+      vulkan: Fix pipeline layout allocation scope
 
