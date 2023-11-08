@@ -1,122 +1,106 @@
-Updating from ac342f68517c06c7505ac0eb723f6cb0a418e059 to 3626d07d66de7a257caa9b4c169acb3f291b25ac
+Updating from 3626d07d66de7a257caa9b4c169acb3f291b25ac to a77ea9555aa00cc12f3d1c440252e940ff552500
 
-Alyssa Rosenzweig (44):
-      compiler: Make shader_enums.h CL-safe
-      compiler: Inline mesa_vertices_per_prim
-      compiler: Make u_decomposed_prims_for_vertices available to CL
-      nir/lower_gs_intrinsics: Include primitive counts
-      nir/lower_gs_intrinsics: Append EndPrimitive
-      nir/lower_gs_intrinsics: Count decomposed primitives too
-      nir: Also gather decomposed primitive count
-      nir: Add intrinsics for lowering GS
-      nir: Add intrinsics for lowering bindless textures/samplers
-      nir/print: handle adjacency
-      asahi: Clamp 8-bit integer RTs
-      agx: Legalize image MS index
-      agx: Fix fragment side effects scheduling
-      agx: Check for spilling in release builds
-      docs/features: Mark ARB_mdi done on asahi
-      agx: Cleanup 8-bit math before lowering
-      agx: Require 32-bit alignment for EOT offset
-      agx: Add scaffolding for subgroup ops
-      agx: Translate simple subgroup ops
-      asahi: Pack non-border colour sampler desc
-      agx: Allow drivers to lower texture handles
-      asahi: Lower samplers to bindless if needed
-      agx: Lower LOD bias earlier
-      agx: Handle bindless samplers
-      asahi: Handle load_sampler_handle
-      asahi: Add sampler heap data structure
-      asahi: Use the sampler heap
-      asahi: Upload tex/samplers properly with merged shaders
-      asahi: Don't hazard track fake resources
-      asahi: Refactor encoder data structure
-      asahi: Factor out agx_launch
-      asahi: Make encoder_allocate public
-      asahi: Add data structures for geometry shaders
-      asahi: Add helpers for lowering GS
-      asahi: Add GS lowering pass
-      asahi: Wire up geometry shaders
-      asahi: Advertise geometry shaders
-      asahi: rm unused deqp debug flag
-      asahi: Don't use OpenGL clip bit
-      asahi: Plumb clip_halfz bit from RS
-      asahi: Advertise ARB_clip_control
-      asahi: Implement timer queries
-      docs: Mark timer queries as done on asahi
-      asahi: Implement ARB_base_instance
+Corentin Noël (5):
+      mesa/ffvs: Use gl_state_index16 in helpers directly
+      gallivm: Initialize indir_index to NULL before use
+      gallivm/lp_bld_nir_aos: Use TGSI instead of PIPE enum
+      mesa: Use a switch for state_iter and be more precise about its type
+      frontends/va: Remove wrong use of ProfileToPipe
 
-Andrew Gazizov (1):
-      venus: Add use_guest_vram capset to enable guest-based blob alloc
+Eric Engestrom (1):
+      v3d/ci: run manual jobs in daily pipeline
 
-Christian Gmeiner (2):
-      agx: Re-index nir defs to reduce memory usage
-      ci/etnaviv: Update ci expectation
+Erik Faye-Lund (1):
+      mesa/ffvs: use unreachable instead of assert
 
-Connor Abbott (5):
-      vk,lvp,tu,radv,anv: Add common vk_*_pipeline_create_flags() helper
-      vk/graphics_state: Support VK_KHR_maintenance5
-      vk/graphics_state, tu: Rewrite renderpass flags handling
-      vk/graphics_state: Support VK_EXT_attachment_feedback_loop_dynamic_state
-      vk/graphics_state: Add vk_pipeline_flags_feedback_loops helper
+Guilherme Gallo (9):
+      ci/bin: Fix find_dependency function calls
+      ci/bin: Replace AIOHTTPTransport with RequestsHTTPTransport
+      ci/bin: gql: make the query cache optional
+      ci/bin: gql: Log the caching errors
+      ci/bin: gql: Implement pagination
+      ci/bin: gql: Improve queries for jobs/stages retrieval
+      ci/bin: Fix gitlab_gql methods that uses needs DAG
+      ci/bin: Fix mypy errors in gitlab_gql.py
+      ci/bin: Print a summary list of dependency and target jobs
 
-David Heidelberg (2):
-      ci/nouveau: define a kernel and dtb, so we can fetch it from external sources
-      ci: inject gfx-ci/linux S3 artifacts without rebuilding containers
+Jesse Natalie (9):
+      microsoft/compiler: Set src/dest nir types on image intrinsics when deducing format
+      d3d12: Disable common state promotion for non-simultaneous-access textures
+      d3d12: Initialize shader key swizzle for non-int textures
+      d3d12: Add a fallback for int clears where value can't be cast to float
+      d3d12: Binding buffers as SSBO/storage image needs to add buffer ranges
+      d3d12: Change memory barrier implementation
+      d3d12: Support ARB_texture_view
+      d3d12: Use format casting for shader images
+      d3d12: GL4.3
 
-Eric Engestrom (6):
-      zink+radv/ci: simplify deqp config
-      zink+radv/ci: ensure renderer is "zink on radv"
-      ci: restore sanity (aka. Revert "ci: don't run sanity in Marge pipelines")
-      gitlab_gql: strip newline at the end of the token file
-      ci_run_n_monitor: compile target_jobs_regex only once
-      ci/gitlab_gql: stop re-compiling regex now that all users pre-compile it
+José Roberto de Souza (10):
+      anv: Add missing ANV_BO_ALLOC_EXTERNAL flags when calling anv_device_import_bo()
+      intel: Add more information about the PAT entry used
+      intel: Update MTL scanout PAT entry
+      intel: Add a write combining PAT entry
+      anv: Honor memory coherency of the memory type selected
+      anv: Move PAT entry selection to common code
+      anv: Change default PAT entry to WC
+      anv: Calculate mmap mode based on alloc_flags
+      anv: Remove anv_bo flags that can be inferred from alloc_flags
+      iris: Add iris_bufmgr_get_pat_entry_for_bo_flags()
 
-Erik Faye-Lund (6):
-      panfrost: allow packing formats outside of pan_format.c
-      panfrost: bypass format-table for null-textures
-      panfrost: pass blendable formats to pan_pack_color
-      panfrost: store blendable_formats in panfrost_device
-      panfrost: look at correct blendable format version
-      panfrost: use perf_debug instead of open-coding
+Lionel Landwerlin (1):
+      anv: dynamically allocate utrace batch buffers
 
-Georg Lehmann (6):
-      aco, radv: vectorize f2f16 if rounding mode is rtz
-      aco: force uniform result for LDS load with uniform address if it can be non uniform
-      aco: stop using cstdint
-      aco: namespace aco_opcode
-      aco: deduplicate instr_class definition
-      aco: deduplicate Format definition
+Marek Olšák (19):
+      ac/gpu_info: split has_set_pairs_packets into context and sh flags
+      ac/gpu_info,llvm: trivial cosmetic changes
+      radeonsi: clean up si_set_streamout_targets
+      radeonsi: upload shaders using a compute queue instead of gfx
+      radeonsi: rewrite PM4 packet building helpers with less duplication
+      radeonsi: move buffered_xx_regs into a substructure
+      radeonsi: rename HAS_PAIRS -> HAS_SH_PAIRS_PACKED
+      radeonsi: rename radeon_*push_*_sh_reg -> gfx11_*push_*_sh_reg
+      radeonsi: rewrite gfx11_*push*_sh_reg helpers
+      radeonsi: restructure blocks in si_setup_nir_user_data
+      radeonsi: restructure blocks in si_emit_graphics_{shader,compute}_pointers
+      radeonsi/gfx11: use PKT3_SET_CONTEXT_REG_PAIRS_PACKED for PM4 states
+      radeonsi: don't call nir_lower_compute_system_values too many times
+      radeonsi: don't check DCC compatibility on chips where it's no-op
+      radeonsi: cosmetic changes in si_emit_db_render_state
+      radeonsi: prettify code around PA_SC_LINE_STIPPLE
+      radeonsi: move emitting VGT_TF_PARAM into gfx10_emit_shader_ngg
+      radeonsi: remove num_params variable from gfx10_shader_ngg
+      radeonsi: move SPI_SHADER_IDX_FORMAT into the preamble (it's immutable)
 
-Jordan Justen (3):
-      intel/dev/wa: Raise error if mesa_defs.json contains unknown platforms
-      intel/dev: Rename mtl-m to mtl-u
-      intel/dev: Rename mtl-p to mtl-h
+Mark Collins (2):
+      meson: Only include virtio when DRM available
+      meson: Only link libvdrm to Turnip with virtio KMD
 
-Karol Herbst (2):
-      rusticl: only support the matching device for gl_sharing
-      rusticl/memory: fix new clippy::needless-borrow warning
+Rhys Perry (3):
+      radv: disable gs_fast_launch=2 by default
+      aco/tests: fix tests with LLVM 17
+      aco/tests: fix tests with LLVM 18
 
-Lucas Stach (1):
-      etnaviv: drm: don't update cmdstream timestamp when skipping submit
+Rohan Garg (5):
+      blorp,anv,iris: refactor blorp functions into something more generic
+      iris: Wa 16014538804 for DG2, MTL A0
+      iris: pull WA 22014412737 into emit_3dprimitive_was
+      anv: WA 16014538804 for DG2, MTL A0
+      blorp: WA 16014538804 for DG2, MTL A0
 
-Mary Guillemard (9):
-      venus: skip bind sparse info when checking for feedback query
-      nir: Add AGX-specific doorbell and stack mapping opcodes
-      agx: Add doorbell and stack mapping opcodes
-      agx: Handle doorbell and stack mapping intrinsics
-      asahi: clc: Handle doorbell and stack mapping intrinsics
-      agx: Add stack load and store opcodes
-      agx: Implement scratch load/store
-      agx: Add stack adjust opcode
-      agx: Emit stack_adjust in the entrypoint
+Sagar Ghuge (3):
+      iris: Disable auxiliary buffer if MSRT is bound as texture
+      iris: Disable CCS compression on top of MSAA compression on ACM
+      isl: Enable MCS compression on ACM platform
 
-Sviatoslav Peleshko (1):
-      nir/loop_analyze: Fix inverted condition handling in iterations calculation
+Samuel Pitoiset (1):
+      ci: re-apply two mesh/task query fixes for VKCTS
 
-Vitaliy Triang3l Kuzmin (4):
-      r600/sfn: Change sampler_index to texture_index in buffer txs
-      r600/sfn: Remove unused sampler reference in emit_tex_lod
-      nir: Don't skip lower_alu if only bit_count needs lowering
-      vulkan: Fix pipeline layout allocation scope
+Tapani Pälli (1):
+      anv: skip engine initialization if vm control not supported
+
+Tatsuyuki Ishi (1):
+      fast_urem_by_const: #ifdef DEBUG an assertion.
+
+Yiwei Zhang (1):
+      zink: apply can_do_invalid_linear_modifier to Venus
 
