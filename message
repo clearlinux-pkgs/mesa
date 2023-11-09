@@ -1,106 +1,54 @@
-Updating from 3626d07d66de7a257caa9b4c169acb3f291b25ac to a77ea9555aa00cc12f3d1c440252e940ff552500
+Updating from a77ea9555aa00cc12f3d1c440252e940ff552500 to 3d3176aa1776d7784e3ed63136472d05314b488e
 
-Corentin Noël (5):
-      mesa/ffvs: Use gl_state_index16 in helpers directly
-      gallivm: Initialize indir_index to NULL before use
-      gallivm/lp_bld_nir_aos: Use TGSI instead of PIPE enum
-      mesa: Use a switch for state_iter and be more precise about its type
-      frontends/va: Remove wrong use of ProfileToPipe
+Caio Oliveira (7):
+      intel/compiler: Remove unused parameter from brw_nir_adjust_payload()
+      intel/compiler: Take more precise params in brw_nir_optimize()
+      intel/compiler: Remove unused parameter from brw_nir_analyze_ubo_ranges()
+      intel/compiler: Clarify the asserts in nir_load_workgroup_id lowering
+      intel/compiler: Rework opt_split_sends to not rely/modify LOAD_PAYLOAD
+      intel/compiler: Re-enable opt_zero_samples() for Gfx7+
+      intel/compiler: Re-enable opt_zero_samples() in many cases for Gfx12.5
 
-Eric Engestrom (1):
-      v3d/ci: run manual jobs in daily pipeline
+Connor Abbott (2):
+      tu: Assume no raster-order attachment access with NULL DS/blend state
+      tu: Fix order of rasterizer_discard check
 
-Erik Faye-Lund (1):
-      mesa/ffvs: use unreachable instead of assert
+Danylo Piliaiev (1):
+      tu/a7xx: Fix occlusion queries on pre-A740 GPUs
 
-Guilherme Gallo (9):
-      ci/bin: Fix find_dependency function calls
-      ci/bin: Replace AIOHTTPTransport with RequestsHTTPTransport
-      ci/bin: gql: make the query cache optional
-      ci/bin: gql: Log the caching errors
-      ci/bin: gql: Implement pagination
-      ci/bin: gql: Improve queries for jobs/stages retrieval
-      ci/bin: Fix gitlab_gql methods that uses needs DAG
-      ci/bin: Fix mypy errors in gitlab_gql.py
-      ci/bin: Print a summary list of dependency and target jobs
+David Heidelberg (1):
+      ci/zink: disable nheko trace, as it sometimes crashes
 
-Jesse Natalie (9):
-      microsoft/compiler: Set src/dest nir types on image intrinsics when deducing format
-      d3d12: Disable common state promotion for non-simultaneous-access textures
-      d3d12: Initialize shader key swizzle for non-int textures
-      d3d12: Add a fallback for int clears where value can't be cast to float
-      d3d12: Binding buffers as SSBO/storage image needs to add buffer ranges
-      d3d12: Change memory barrier implementation
-      d3d12: Support ARB_texture_view
-      d3d12: Use format casting for shader images
-      d3d12: GL4.3
+Eric Engestrom (2):
+      radeonsi/ci: document new failures and flakes
+      ci: disable lima farm as it appears to be down
 
-José Roberto de Souza (10):
-      anv: Add missing ANV_BO_ALLOC_EXTERNAL flags when calling anv_device_import_bo()
-      intel: Add more information about the PAT entry used
-      intel: Update MTL scanout PAT entry
-      intel: Add a write combining PAT entry
-      anv: Honor memory coherency of the memory type selected
-      anv: Move PAT entry selection to common code
-      anv: Change default PAT entry to WC
-      anv: Calculate mmap mode based on alloc_flags
-      anv: Remove anv_bo flags that can be inferred from alloc_flags
-      iris: Add iris_bufmgr_get_pat_entry_for_bo_flags()
+Francisco Jerez (6):
+      intel/eu/xe2+: Add support for 10-bit SWSB representation on Xe2+ platforms.
+      intel/fs/xe2+: Add comment reminding us to take advantage of the 32 SBID tokens.
+      intel/fs/xe2+: Teach SWSB pass about the behavior of double precision instructions.
+      intel/fs/xe2+: Handle extended math instructions as in-order in SWSB pass.
+      intel/eu/xe2+: Add definition for size of GRF space on Xe2.
+      intel/fs/xe2+: Don't special case SEL_EXEC in inferred_exec_pipe().
 
-Lionel Landwerlin (1):
-      anv: dynamically allocate utrace batch buffers
+Friedrich Vock (1):
+      aco: Update printed block kinds
 
-Marek Olšák (19):
-      ac/gpu_info: split has_set_pairs_packets into context and sh flags
-      ac/gpu_info,llvm: trivial cosmetic changes
-      radeonsi: clean up si_set_streamout_targets
-      radeonsi: upload shaders using a compute queue instead of gfx
-      radeonsi: rewrite PM4 packet building helpers with less duplication
-      radeonsi: move buffered_xx_regs into a substructure
-      radeonsi: rename HAS_PAIRS -> HAS_SH_PAIRS_PACKED
-      radeonsi: rename radeon_*push_*_sh_reg -> gfx11_*push_*_sh_reg
-      radeonsi: rewrite gfx11_*push*_sh_reg helpers
-      radeonsi: restructure blocks in si_setup_nir_user_data
-      radeonsi: restructure blocks in si_emit_graphics_{shader,compute}_pointers
-      radeonsi/gfx11: use PKT3_SET_CONTEXT_REG_PAIRS_PACKED for PM4 states
-      radeonsi: don't call nir_lower_compute_system_values too many times
-      radeonsi: don't check DCC compatibility on chips where it's no-op
-      radeonsi: cosmetic changes in si_emit_db_render_state
-      radeonsi: prettify code around PA_SC_LINE_STIPPLE
-      radeonsi: move emitting VGT_TF_PARAM into gfx10_emit_shader_ngg
-      radeonsi: remove num_params variable from gfx10_shader_ngg
-      radeonsi: move SPI_SHADER_IDX_FORMAT into the preamble (it's immutable)
+Georg Lehmann (1):
+      aco: don't CSE v_permlane across exec
 
-Mark Collins (2):
-      meson: Only include virtio when DRM available
-      meson: Only link libvdrm to Turnip with virtio KMD
+José Roberto de Souza (4):
+      intel/common: Add intel_gem_read_correlate_cpu_gpu_timestamp()
+      anv: Reduce ifdefs in anv_GetCalibratedTimestampsEXT()
+      anv: Make use of intel_gem_read_correlate_cpu_gpu_timestamp()
+      intel/common/xe: Re implement xe_gem_read_render_timestamp() with xe_gem_read_correlate_cpu_gpu_timestamp()
 
-Rhys Perry (3):
-      radv: disable gs_fast_launch=2 by default
-      aco/tests: fix tests with LLVM 17
-      aco/tests: fix tests with LLVM 18
+Lionel Landwerlin (2):
+      perfetto/pps-producer: add optimized cpu/gpu timestamp correlation support
+      intel/ds: use improved timestamp correlation if available
 
-Rohan Garg (5):
-      blorp,anv,iris: refactor blorp functions into something more generic
-      iris: Wa 16014538804 for DG2, MTL A0
-      iris: pull WA 22014412737 into emit_3dprimitive_was
-      anv: WA 16014538804 for DG2, MTL A0
-      blorp: WA 16014538804 for DG2, MTL A0
-
-Sagar Ghuge (3):
-      iris: Disable auxiliary buffer if MSRT is bound as texture
-      iris: Disable CCS compression on top of MSAA compression on ACM
-      isl: Enable MCS compression on ACM platform
-
-Samuel Pitoiset (1):
-      ci: re-apply two mesh/task query fixes for VKCTS
-
-Tapani Pälli (1):
-      anv: skip engine initialization if vm control not supported
-
-Tatsuyuki Ishi (1):
-      fast_urem_by_const: #ifdef DEBUG an assertion.
-
-Yiwei Zhang (1):
-      zink: apply can_do_invalid_linear_modifier to Venus
+Rob Clark (3):
+      freedreno/a6xx: Assume MOD_INVALID imports are linear
+      freedreno/a6xx: Fix antichamber trace replay assert
+      Revert "ci/freedreno: disable antichambers trace"
 
