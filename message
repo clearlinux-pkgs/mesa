@@ -1,54 +1,49 @@
-Updating from a77ea9555aa00cc12f3d1c440252e940ff552500 to 3d3176aa1776d7784e3ed63136472d05314b488e
+Updating from 3d3176aa1776d7784e3ed63136472d05314b488e to fcd025c1ce658f1efd18b2e0072ef5c82862db2b
 
-Caio Oliveira (7):
-      intel/compiler: Remove unused parameter from brw_nir_adjust_payload()
-      intel/compiler: Take more precise params in brw_nir_optimize()
-      intel/compiler: Remove unused parameter from brw_nir_analyze_ubo_ranges()
-      intel/compiler: Clarify the asserts in nir_load_workgroup_id lowering
-      intel/compiler: Rework opt_split_sends to not rely/modify LOAD_PAYLOAD
-      intel/compiler: Re-enable opt_zero_samples() for Gfx7+
-      intel/compiler: Re-enable opt_zero_samples() in many cases for Gfx12.5
+Caio Oliveira (1):
+      intel/compiler: Remove is_tex()
 
-Connor Abbott (2):
-      tu: Assume no raster-order attachment access with NULL DS/blend state
-      tu: Fix order of rasterizer_discard check
+Connor Abbott (3):
+      tu: Make sure copies to half-float formats are bit exact
+      tu: Fix getting VkDescriptorSetVariableDescriptorCountLayoutSupport
+      ir3/ra: Don't swap killed sources for early-clobber destination
 
-Danylo Piliaiev (1):
-      tu/a7xx: Fix occlusion queries on pre-A740 GPUs
+Dave Stevenson (2):
+      gallium: Add more TinyDRM drivers to the list of kmsro drivers
+      gallium: Add udl (DisplayLink) to the list of kmsro drivers
 
-David Heidelberg (1):
-      ci/zink: disable nheko trace, as it sometimes crashes
+David Heidelberg (2):
+      gitlab: make commit more commit-like formatted
+      ci: tag sanity, rustfmt and clang-format job as a "placeholder" job
 
-Eric Engestrom (2):
-      radeonsi/ci: document new failures and flakes
-      ci: disable lima farm as it appears to be down
+Eric Engestrom (8):
+      radv/ci: add navi21 flakes
+      radv/ci: add vega10 flakes
+      radv/ci: add polaris10 flakes
+      radv+zink/ci: add polaris10 flakes
+      radv+zink/ci: add navi10 flakes
+      bin/gitlab_gql: resolve sha locally to be able to use things like `HEAD`
+      gitlab_gql: make `--rev` optional, defaulting to `HEAD`
+      bin/gitlab_gql: fix command in example
 
-Francisco Jerez (6):
-      intel/eu/xe2+: Add support for 10-bit SWSB representation on Xe2+ platforms.
-      intel/fs/xe2+: Add comment reminding us to take advantage of the 32 SBID tokens.
-      intel/fs/xe2+: Teach SWSB pass about the behavior of double precision instructions.
-      intel/fs/xe2+: Handle extended math instructions as in-order in SWSB pass.
-      intel/eu/xe2+: Add definition for size of GRF space on Xe2.
-      intel/fs/xe2+: Don't special case SEL_EXEC in inferred_exec_pipe().
+Lionel Landwerlin (1):
+      isl: disable MCS compression on R9G9B9E5
 
-Friedrich Vock (1):
-      aco: Update printed block kinds
+Martin Roukala (né Peres) (1):
+      radv/ci: fix `vkcts-navi21-valve` execution
 
-Georg Lehmann (1):
-      aco: don't CSE v_permlane across exec
+Mauro Rossi (1):
+      Android.mk: be able to build radeonsi without llvm
 
-José Roberto de Souza (4):
-      intel/common: Add intel_gem_read_correlate_cpu_gpu_timestamp()
-      anv: Reduce ifdefs in anv_GetCalibratedTimestampsEXT()
-      anv: Make use of intel_gem_read_correlate_cpu_gpu_timestamp()
-      intel/common/xe: Re implement xe_gem_read_render_timestamp() with xe_gem_read_correlate_cpu_gpu_timestamp()
+Molly Sophia (1):
+      tu: Fix KHR_present_id and KHR_present_wait being used without initialization
 
-Lionel Landwerlin (2):
-      perfetto/pps-producer: add optimized cpu/gpu timestamp correlation support
-      intel/ds: use improved timestamp correlation if available
+Paulo Zanoni (1):
+      vulkan: fix potential memory leak in create_rect_list_pipeline()
 
-Rob Clark (3):
-      freedreno/a6xx: Assume MOD_INVALID imports are linear
-      freedreno/a6xx: Fix antichamber trace replay assert
-      Revert "ci/freedreno: disable antichambers trace"
+Roman Stratiienko (1):
+      v3d: Don't implicitly clear the content of the imported buffer
+
+Tele42 (1):
+      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "The Talos Principle VR"
 
