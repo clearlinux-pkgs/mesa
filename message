@@ -1,49 +1,29 @@
-Updating from 3d3176aa1776d7784e3ed63136472d05314b488e to fcd025c1ce658f1efd18b2e0072ef5c82862db2b
+Updating from fcd025c1ce658f1efd18b2e0072ef5c82862db2b to 0976dfeca29527c2175c6925d46cba84391910c3
 
-Caio Oliveira (1):
-      intel/compiler: Remove is_tex()
+Eric Engestrom (1):
+      bin/gitlab_gql: only get the pipeline when a pipeline is needed
 
-Connor Abbott (3):
-      tu: Make sure copies to half-float formats are bit exact
-      tu: Fix getting VkDescriptorSetVariableDescriptorCountLayoutSupport
-      ir3/ra: Don't swap killed sources for early-clobber destination
+Faith Ekstrand (1):
+      nir: Optimize boolean ieq/ine with an immediate
 
-Dave Stevenson (2):
-      gallium: Add more TinyDRM drivers to the list of kmsro drivers
-      gallium: Add udl (DisplayLink) to the list of kmsro drivers
+Marek Olšák (5):
+      radeonsi: adjust the total viewport area
+      radeonsi/gfx11: use SET_CONTEXT_REG_PAIRS_PACKED for other states
+      radeonsi/gfx11: don't set OREO_MODE to fix rare corruption
+      radeonsi: don't dma-upload shaders on APUs
+      radeonsi/ci: update failures for gfx103
 
-David Heidelberg (2):
-      gitlab: make commit more commit-like formatted
-      ci: tag sanity, rustfmt and clang-format job as a "placeholder" job
+Phillip Pearson (1):
+      radeonsi: use PRIu64 instead of %lu for uint64_t formatting
 
-Eric Engestrom (8):
-      radv/ci: add navi21 flakes
-      radv/ci: add vega10 flakes
-      radv/ci: add polaris10 flakes
-      radv+zink/ci: add polaris10 flakes
-      radv+zink/ci: add navi10 flakes
-      bin/gitlab_gql: resolve sha locally to be able to use things like `HEAD`
-      gitlab_gql: make `--rev` optional, defaulting to `HEAD`
-      bin/gitlab_gql: fix command in example
+Qiang Yu (1):
+      radeonsi: fix piglit image coherency test when use aco
 
-Lionel Landwerlin (1):
-      isl: disable MCS compression on R9G9B9E5
+Tatsuyuki Ishi (2):
+      radv: Fix mis-sizing of pipeline_flags in radv_hash_rt_shaders.
+      radv: Use sizeof(flags) instead of hardcoded size in radv_hash_shaders.
 
-Martin Roukala (né Peres) (1):
-      radv/ci: fix `vkcts-navi21-valve` execution
-
-Mauro Rossi (1):
-      Android.mk: be able to build radeonsi without llvm
-
-Molly Sophia (1):
-      tu: Fix KHR_present_id and KHR_present_wait being used without initialization
-
-Paulo Zanoni (1):
-      vulkan: fix potential memory leak in create_rect_list_pipeline()
-
-Roman Stratiienko (1):
-      v3d: Don't implicitly clear the content of the imported buffer
-
-Tele42 (1):
-      drirc: enable `vk_wsi_force_swapchain_to_current_extent` for "The Talos Principle VR"
+antonino (2):
+      vulkan: use instance allocator for `object_name` in some objects
+      nir/zink: drop NIH helper in favor of `mesa_vertices_per_prim`
 
