@@ -1,29 +1,63 @@
-Updating from fcd025c1ce658f1efd18b2e0072ef5c82862db2b to 0976dfeca29527c2175c6925d46cba84391910c3
+Updating from 0976dfeca29527c2175c6925d46cba84391910c3 to 61203f60787b146606ceb5cf8541b8186f6f7171
 
-Eric Engestrom (1):
-      bin/gitlab_gql: only get the pipeline when a pipeline is needed
+Eric Engestrom (5):
+      v3d/ci: add new failures
+      bin/gitlab_gql: only allow a single `--print-*` argument per invocation
+      bin/gitlab_gql: rename get_job_final_definition() to print_...() since that's what it actually does
+      bin/gitlab_gql: deduplicate fetch_merged_yaml() logic between print branches
+      bin/gitlab_gql: give a better name to the --print-job-manifest argument value than PRINT_JOB_MANIFEST
 
-Faith Ekstrand (1):
-      nir: Optimize boolean ieq/ine with an immediate
+Friedrich Vock (2):
+      vulkan: Don't use set_foreach_remove when destroying pipeline caches
+      radv/ci: Update skips comments
 
-Marek Olšák (5):
-      radeonsi: adjust the total viewport area
-      radeonsi/gfx11: use SET_CONTEXT_REG_PAIRS_PACKED for other states
-      radeonsi/gfx11: don't set OREO_MODE to fix rare corruption
-      radeonsi: don't dma-upload shaders on APUs
-      radeonsi/ci: update failures for gfx103
+Hans-Kristian Arntzen (1):
+      radv/radeonsi: Forward correct GPU instance to umr.
 
-Phillip Pearson (1):
-      radeonsi: use PRIu64 instead of %lu for uint64_t formatting
+Iago Toral Quiroga (1):
+      v3d: implement support for PIPE_CAP_NATIVE_FENCE_FD
 
-Qiang Yu (1):
-      radeonsi: fix piglit image coherency test when use aco
+José Roberto de Souza (1):
+      anv: Bring back the non optimized version of build_load_render_surface_state_address()
 
-Tatsuyuki Ishi (2):
-      radv: Fix mis-sizing of pipeline_flags in radv_hash_rt_shaders.
-      radv: Use sizeof(flags) instead of hardcoded size in radv_hash_shaders.
+Mart Raudsepp (1):
+      docs: Fix typo in OpenGL 3.3 support on Asahi
 
-antonino (2):
-      vulkan: use instance allocator for `object_name` in some objects
-      nir/zink: drop NIH helper in favor of `mesa_vertices_per_prim`
+Mary Guillemard (1):
+      zink: Check for VK_EXT_extended_dynamic_state3 before setting A2C
+
+Rhys Perry (3):
+      aco: workaround LS VGPR initialization bug in RADV prologs
+      aco: skip LS VGPR initialization bug workaround if the prolog exists
+      radv: set prolog as_ls if has_ls_vgpr_init_bug=true
+
+Rob Clark (4):
+      freedreno/a6xx: Don't set patch_vertices if no tess
+      freedreno/a6xx: Rework wave input size
+      freedreno/drm: Fix mmap leak
+      freedreno: Always attach bo to submit
+
+Ruijing Dong (4):
+      radeonsi/vcn: preparation for enc intra-refresh
+      radeonsi/vcn: change intra-ref name
+      radonesi/vcn: enable intra-refresh in vcn encoders
+      frontends/va: add intra-refresh in VAAPI interface
+
+Samuel Pitoiset (9):
+      radv: add a helper to determine if it's possible to preprocess DGC
+      radv: emit individual SET_SH_REG for inlined push constants with DGC
+      radv: optimize emitting inlined push constants with DGC
+      radv: enable DGC preprocessing when all push constants are inlined
+      radv: restore sampling CPU/GPU clocks before starting SQTT trace
+      ac/rgp: update dumping queue event records to the capture
+      radv: add radv_write_timestamp() helper
+      radv: add support for RGP queue events
+      radv: add drirc options to force re-compilation of shaders when needed
+
+Tatsuyuki Ishi (5):
+      aco: Replace aco_vs_input_state.divisors with bitfields.
+      radv: Remove last VS prolog reuse logic.
+      radv, aco: Rework VS prolog key handling.
+      radv, aco: Inline struct aco_vs_input_state.
+      radv: Pre-mask misaligned_mask for VS prolog.
 
