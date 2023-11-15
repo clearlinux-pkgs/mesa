@@ -1,531 +1,91 @@
-Updating from 61203f60787b146606ceb5cf8541b8186f6f7171 to bff7e4b69dce3356ba070f0eb87db9da65cad77a
+Updating from bff7e4b69dce3356ba070f0eb87db9da65cad77a to d5efa3f204cef8c090e6e0f7107fbadf4029eb96
 
-Caio Oliveira (16):
-      intel/compiler: Use linear allocator in parts of brw_schedule_instructions
-      intel/compiler: Remove reference to brw_isa_info from schedule_node
-      intel/compiler: Allocate all schedule_nodes at once
-      intel/compiler: Use array to iterate the scheduler nodes
-      intel/compiler: Add only available instructions to scheduling list
-      intel/compiler: Extract scheduling related basic functions
-      intel/compiler: Cache issue_time information
-      intel/compiler: Remove virtual calls from scheduler
-      intel/compiler: Move FS specific fields to fs_instruction_scheduler
-      intel/compiler: Merge child/latency arrays in schedule_node
-      intel/compiler: Tidy up code in scheduler related to reads_remaining
-      intel/compiler: Move earlier scheduler code that is not mode-specific
-      intel/compiler: Separate schedule_node temporary data
-      intel/compiler: Make scheduler classes take an external mem_ctx
-      intel/compiler: Reuse same scheduler for all pre-RA scheduling modes
-      intel/compiler: Clear up block instructions before re-adding them
+Chia-I Wu (3):
+      radv: fix image view extent override for astc
+      radv: minor clean up to image view extent override
+      ac: be careful with stencil_offset override
 
-Daniel Almeida (17):
-      nak: derive From<OpFoo> for Op through a proc macro
-      nak: make Instr::new() generic
-      nak: compiler: add From<T:Into<Op>> for Instr
-      nak: compiler: replace Instr::new(..) with OpFoo {}.into()
-      nak: Heap-allocate Instrs
-      nak: Do not allocate vectors needlessly in optimization passes
-      nak: add support for floor, ceil and trunc
-      nak: run nir_lower_frexp and nir_opt_algebraic_late
-      nak: more lowerings
-      nak: change ishl data type to I32
-      nak: add support for nir_op_isign
-      nak: Add support for nir_op_bitcount
-      nak: add support for nir_op_bitfield_reverse
-      nak: add support for findmsb,findlsb
-      nak: add support for packhalf2x16_split
-      nak: add support for nir_op_unpack_half_2x16_split_{x|y}
-      nak: add support for atomic cmpxcgh on images
+David Heidelberg (1):
+      ci/traces: drop the freedoom-phase2-gl-high.trace
 
-Danylo Piliaiev (4):
-      tu: Always print startup failure messages
-      tu: Return error when GPU is unsupported
-      freedreno/devices: Support Adreno 725
-      tu: Add a725 workaround dispatch at the start of each cmdbuf
-
-Dave Airlie (3):
-      nak: fix backtrace crash running computeheadless
-      nak: make ipa encoding match the order in codegen gv100
-      nak: do perspective divide for interp none as well
+David Rosca (7):
+      gallium/auxiliary/vl: Fix coordinates clamp in compute shaders
+      gallium/auxiliary: Fix coordinates clamp in util_compute_blit
+      gallium/auxiliary/vl: Scale dst_rect x0/y0 when rendering chroma plane
+      gallium/auxiliary/vl: Support interleaved input in deinterlace filter
+      Revert "frontends/va: Alloc interlaced surface for interlaced pics"
+      gallium/auxiliary: NIR blit_compute_shader
+      gallium/auxiliary/vl: NIR compute shaders
 
 Eric Engestrom (1):
-      ci/valve-infra: ensure the correct farm picks up the job
+      docs: update calendar for 23.3.0-rc{2,3,4} and add another release candidate
 
-Faith Ekstrand (391):
-      nouveau: Add initial headers and meson for the new compoiler
-      nak: Copy the optimization loop from Intel
-      nak: Add a bunch of shader lowering code in NIR
-      nak: Add initial stubs for rust code
-      nvk: Run shaders through NAK
-      nak: Add the core IR
-      nak: Add Rust bindings for NIR
-      nak: Add initial translation from NIR
-      nak: Add a copy-prop pass
-      nak: Add a dead-code pass
-      nak: Add a util library
-      nak: Add a trivial register allocator
-      nak: Add a lowering pass for VEC and SPLIT instructions
-      nak: Add a lowering pass for ZERO sources and destinations
-      nak: Add bitset infrastructure
-      nak: Add encoding for a few instructions
-      nak: Encode program headers
-      nak: Header stuff
-      nak: Lower system values to a new load_sysval_nak intrinsic
-      nak: Implement load_sysval_nv as S2R
-      nak: Implement load_ubo
-      nak: Implement load/store_global
-      nak: Zero out the .w component of descriptors
-      nak: Add an instruction fuzzing tool
-      nak: Implement iadd and ishl
-      nak: Add a pass for computing instruction dependencies
-      nak: Implement 32-bit logic ops
-      nak: Add support for instruction predicates
-      nak: Implement integer comparisons
-      nak: Implement bcsel
-      nak: Rework ALU instruction encode
-      nak/meson: Use bindgen dependencies
-      nak: Add nak_compiler_create/destroy
-      nvk: Pass an actual nak_compiler to nak_compile_shader()
-      nak: Plumb the SM through to nak::Shader
-      nak: Encode load/store correctly on SM80
-      nak: Rework instruction encoding
-      nak: Implement boolean logic ops
-      nak: Lower 8 and 16-bit types
-      HACK: Support old meson
-      nak: Use Instr::num_srcs/dsts() less
-      nak: Get rid of meta instructions
-      meson: Pull in syn from crates.io
-      nak: Add SrcAsSlice and DstAsSlice traits
-      nak: Add a SrcModsAsSlice trait
-      nak: Use a different inner struct type for each opcode
-      nak: Use Src::Zero for load_const(0)
-      nak: Handle zeroes at emit time
-      nak: Implement i2f
-      nak: Implement fadd
-      nak: Rework integer compare ops
-      nak: Implement float comparisons
-      nak: Implement nir_op_b2f32
-      nak: Implement unary float and integer ops
-      nak: Allow iadd3 to take an immediate in srcs[2]
-      nak: Implement fsign
-      nak: Rework ALUSrc in emit code
-      nak: Rework source modifiers
-      nak: One of the predicates in IADD3 is a destination
-      nak: Implement Display for SSAValue
-      nak: Make Dst its own type
-      nak: Add modifier propagation
-      nak: Implement basic control-flow
-      nak: Move nak_compiler to nak_private.h
-      nak: Add a nir_shader_compiler_options to nak_compiler
-      nvk: Pull the NIR options from NAK
-      nak: Implement b2i32
-      nak: Implement iadd64
-      nak: Implement phis
-      nak: Add a union-find implementation
-      nak: Lower global access to scalars as needed
-      nak: Print names of missing instructions
-      nak: Implement unpack_64_2x32_split_*
-      WIP: nak: Rework the barrier assignment pass
-      nak: Add an SSAValueAllocator struct
-      nak: Pass an SSAValueAllocator through to map methods
-      nak: Handle fadd funnyness in the emit code
-      WIP: nak: Add a legalization pass
-      nak: Rename Imm to Imm32
-      nak: Add separate True and False source types
-      nak: Handle phis with non-SSA sources
-      nak: Support both destinations in PLOP3
-      nak: Drop the special cases for single-component vec/split
-      nak: Don't emit MOVs for overlapping vec and split src/dst
-      HACK: nak: Lower iadd64 again
-      nak: Add a parallel copy in struction with lowering
-      nak: Use OpParCopy for OpVec and OpSplit lowering
-      nak: Get rid of the BitSet and BitSetMut traits
-      nak: Rename BitSetView to BitView
-      nak: Add a BitSet struct
-      nak: Add an SSAComp struct
-      nak: Rework dead-code
-      nak: Rework phis
-      nak: Add a space to the end of vec and split arg lists
-      nak: Add a liveness analysis pass
-      nak: Add a non-trivial register allocator
-      nak: Improve the dependency tracker
-      nak: Handle token re-use in dep tracking
-      nak: Implement nir_op_i(eq|ne) for booleans
-      nak: Fold [P]Lop3 sources
-      nak: Predicates default to true
-      nak: Implement nir_op_[iu](min|max)
-      nak: Implement nir_op_fmul
-      nak: Implement nir_op_(fmin|fmax)
-      nak: Implement nir_op_u2f
-      nak: Implement nir_op_vecN
-      nak: Implement MuFu and a bunch of float unops
-      nak: Move nak_sysval_attr_addr/sysval_idx higher in the file
-      nak: Implement input interpolation
-      nak: Handle multiple vector destinations in RA
-      nak: Use immediage offsets for load/store_global
-      nak: Implement OpFSOut with an OpParCopy
-      nak: Implement f2[iu]32
-      nak: Wire up ffma
-      nak: Add more legalization
-      nak: Implement right-shifts
-      nak: Implement nir_op_[iu]mul[_high]
-      nak: Enable nir_lower_idiv
-      nak: Add a NIR texture lowering pass
-      nak: Use more core NIR texture lowering
-      nak: Wire up texture ops
-      nak: Simplify the FromVariants proc macro
-      nak: Simplify the (Srcs|Dsts)AsSlice proc macro
-      HACK: spirv: Add a MESA_SPIRV_DUMP_PATH environment variable
-      nak: Add a NAK_DEBUG environment variable
-      nvk: Drop printing of NAK shaders
-      nvk: Pass NAK flags through to shader cache UUIDs
-      nak: Add a debug flag to assign worst-case instruction deps
-      nak: Rework vector handling
-      nak: Legalize vector sources
-      nak: Add a use tracker to RA
-      nak: Much more believable try_find_unused_reg_range()
-      nak: Implement nir_op[iu]mul_2x32_64
-      Revert "HACK: nak: Lower iadd64 again"
-      nak: Implement nir_op_ixor
-      nak: Implement undef instructions
-      nak: Implement image load/store
-      nak: Wire up OpLd and OpSt for local and shared
-      nak: Implement nir_intrinsic_load/store_scratch
-      nak: Add a smarter new_lop2 helper
-      nak: Improve RA failure messages
-      nak: Legalize OpShf
-      nak: Only put actually live SSA values in the ra.live_in sets
-      nak: Legalize more stuff
-      nak/nir: Lower image size and samples to txq
-      nak: Improve [FI]SETP encoding
-      nak: Legalize Op[FI]Setp
-      nak: Don't allow r255 in texture or surface ops
-      nak: sin() and cos() require we divide by 2pi
-      nak: Add F2F and implement fquantize16
-      nak: Implement barriers
-      nvk: Plumb num_barriers through from NAK
-      nak: Implement load/store_shared
-      nak: Integers don't have abs() source modifiers
-      nak: Add a mechanism for decorating sources with types
-      nak: Decorate sources with types
-      nak: Only divide FS inputs by .w for smooth interpolation
-      nak: Rework source modifiers a bit
-      nak: Add a Src::supports_src_type() helper
-      nak: Rework copy-prop to use soruce type decorations
-      nak: Implement nir_intrinsic_global_atomic_*
-      nak: Implement nir_intrinsic_shared_atomic_*
-      nak: Implement global/shared_atomic_comp_swap
-      nak: Implement image atomics
-      nak: Fix the 2nd predicate on LOP3
-      nak: Optimize OpLop3 and OpPLop3
-      nak: DCE things with constant false predicates
-      nak: Rework source modifiers instructions a bit
-      nak: Fold fsat into FAdd/FFma/FMul
-      nak: Delete unused imports and dead code
-      nak: Add accum predicates to Op[FI]Setp
-      nak: Add a Pred struct move the enum to PredRef
-      nak: Fix multisampled textureing
-      nak: Legalize everything
-      nak: Rework cbufs a bit
-      nak: Implement indirect UBO loads
-      nak: Implement nir_op_b2b1 and nir_op_b2b32
-      nak: Follow memcpy semantics with OpParCopy
-      nak: Work in terms of bits for type sizes
-      nak: Add a builder
-      nak: Use the builder in some lowering passes
-      nak: Compute liveness in reverse block order
-      nak: Rework liveness to add next-use information
-      nak: Add a PerRegFile helper struct
-      nak: Record register pressure in liveness
-      nak: Initialize RA with only live registers
-      nak: Use num_regs instead of max_reg in RA
-      nak: Use pcopy.push() in RA
-      nak: Rework RA a bit
-      nak: Add some documentation for SSA values
-      nak: Print to stderr
-      nak/ra: Pass a PerRegFile num_regs into the allocator
-      nak: Allocate the minimum number of GPRs.
-      nak: Separate the CFG from liveness
-      nak: Break guts of liveness into traits
-      nak: Require Rust 1.70.0
-      nak: Handle dead destinations in RA
-      nak: Make calc_max_live a function of the Liveness trait
-      nak: Bring back bitset-based liveness
-      nak: Add mum_gprs and tls_size to Shader
-      nak: Accurately set num_gprs
-      nak: Add a RegFileSet struct
-      nak: Add more SSA iterator options
-      nak: Add a new VecPair type
-      nak/nir: Add more helpers
-      nak: Emit if branches in the predecessor block
-      nak: Add a more awesome CFG data structure
-      nak: Store the blocks in the CFG
-      nak: Base liveness on CFG indices
-      nak: Add loop detection to the CFG
-      nak: Add a phi allocator
-      nak: Refactor nak_assign_regs a bit
-      nak: Use u32 for register indices
-      nak: Rework map_instrs()
-      nak: Add a new OpCopy instruction for parallel copy lowering
-      nak: Use the builder for the legalize pass
-      nak: Use OpCopy in legalize
-      nak: Use more OpCopy
-      nak: Add a Mem register file
-      nak: Handle RegFile::Mem in parallel copy lowering
-      nak: Allow DCE on functions
-      nak: Restructure liveness construction
-      nak: Add interference helpers
-      nak: Add a dominance check to CFG
-      nak: Add helpers to BasicBlock to get phis
-      nak: Add a to-CSSA pass
-      nak: Add an SSA repair pass
-      nak: Union find
-      nak/ra: Drop the pointless AssignRegs struct
-      nak/ra: Handle parallel copies as a special case
-      nak/ra: Don't free killed for OpPhiSrcs
-      nak: Expose LiveSet for incremental liveness tracking
-      nak: Add a RegFileSet filter to NextUseLiveness::for_function()
-      nak: Add more NextUseLiveness helpers
-      nak: Add a spilling pass
-      nak: Use the correct number of GPRs on Turing+
-      nak: Spill registers before RA
-      nak: Add a debug flag to test spilling
-      nak: Implement shader clock
-      nak/ra: Improve coalescing
-      nak/spill: Tweak the construction of S sets
-      nak: Document spilling and RA
-      nak: Add an alloc_vec() to SSAValueAllocator
-      nak: Move all the IADD3 insanity to a new OpIAdd3X opcode
-      nak/legalize: Fix too many IADD3 source modifiers
-      nak: Disable lower_image_size_to_txs for NAK
-      nak: IMAD also has a destination predicate
-      nak: Remap GLSL_SAMPLER_DIM_SUBPASS and SUBPASS_MS to 2D and MS
-      nak: Fix instruction ordering in nak_ir.rs
-      nak: Rename OpBFind to OpFlo
-      nak: Implement Index[Mut] for RegTracker
-      nak: Use the right number of predicates in RegTracker
-      nak: Rework the barrier insert pass
-      nak: Rework calc_delay.rs
-      nak: Re-work Instr::get_latency()
-      nak: Emit FS_OUT before EXIT
-      nvk: Use sysvals for fragcoord etc. with NAK
-      nak: Handle flat FS inputs
-      nak: Add support for centroid and sample interp modes
-      nak: Use load_interpolated_input for frag_coord
-      nak: Properly handle OpFSOut in RA and liveness
-      nak: Handle empty OpFSOut
-      nak/nir: Several FS output fixes
-      nak: Implement load_sample_id and load_sample_mask_in
-      nak: Implement discard and demote
-      nak: Set TLS size properly in the shader header
-      nvk,nak: Plumb through the zs_self_dep key bit
-      nak: Use count_attribute_slots for FS input var sizes
-      nak: Pull sm, num_gprs, and tls_size into a ShaderInfo struct
-      nak: Stash a ShaderInfo in ShaderFromNir
-      nak: Rework FS outputs again
-      nak: Re-plumb compute shader info
-      nak: Plumb more FS info through to the C API
-      nvk/nak: Translate our new FS flags from NAK to nvk_shader
-      nak: Saturate depth writes
-      nak: Add support for gl_FrontFace
-      nak/nir: Fix helper invocations
-      nak/nir: Use nir_shader_intrinsics_pass for FS inputs
-      nak: Handle interpolate_at_offset
-      nak: Take components into account in load_*input
-      nak: Plumb uses_kill through from nak_from_nir
-      nak/nir: Plumb the FS key into lower_fs_input_intrin
-      nak/nir: Move frag_coord/sample_pos lowering to FS input lowering
-      nak/nir: Fix sample vs. pixel input interpolation
-      nak/nir: Add a load_frag_w helper
-      nak/nir: Interpolate gl_PointCoord
-      nak/nir: Return one sample for gl_SampleMaskIn[0] when sample shading
-      nak: Fold source modifiers in legalize
-      nak: Provide more detail when printing IR after passes
-      nak: Handle modifiers in dedup_srcs() in opt_lop()
-      nvk: Add a helper for lowering system values to root table loads
-      nvk: Lower more draw system values
-      nak: Take component into account in store_output
-      nak: Fix printing of OpASt
-      nak: Move NIR enum translation out of nak_sph.rs
-      nak: rustfmt fixes
-      nak: Simplify I/O gathering
-      nvk: Set clip/cull_enable for NAK shaders
-      nak: Run simple liveness data-flow bottom-up
-      nak/bitset: Add a helper for modifying in-place
-      nak: Don't allocate bitsets in liveness data-flow
-      nak: Handle non-constant I/O offsets
-      nouveau/parser: Dump SET_STREAM_OUT_CONTROL_* properly
-      nak: Translate XFB info
-      nvk: Plumb through XFB info from NAK
-      nak: Add a Label struct for branch targets
-      nak: Add OpNop which can have a label
-      nak: Break indirect offset encoding into a helper
-      nak: Allow encoding Dst::None
-      nak: Add barrier instructions
-      nak/builder: Return the instruction from push_*()
-      nak: Implement NIR control barriers
-      nak: Implement From for SrcRef for more types
-      nak: Add enums for sysvals and attributes
-      nak: Plumb clip/cull enables through nak
-      nak/nir: Lower tessellation and geometry I/O
-      spirv: Fix locations for per-patch varyings
-      nak: NVIDIA calls them tessellation init shaders
-      nak: Rework OpALd and OpASt a bit
-      nak: Set per patch attribute count both places in the SPH
-      nak: Handle location_frac for FS outputs in nak_from_nir.rs
-      nak: Add lowering for per-vertex I/O
-      nak: Implement more attribute I/O
-      nak/nir: Lower load_primitive_id
-      nak,nvk: Plumb through tessellation info
-      nak: Implement load_tess_coord
-      nak: Fix lowering for patch_vertices_in
-      HACK: Only emit OpBar in compute shaders
-      nak/nir: Use count_vec4_slots instead of count_attribute_slots
-      nak: Add NIR lowering for attribute I/O
-      nak/nir: Lower systm values before lowering I/O
-      nak: Use nak_nir_lower_vtg_io
-      nak: Fix a bunch of warnings
-      nak: Fix opt_out
-      nak/bitset: Improve set_words()
-      nak/bitset: Add an is_empty() helepr
-      nak/bitset: Fix next_set()
-      nak/sph: Round tls_size up to a multiple of 16
-      nak: Fix repair_ssa() for back-edges
-      nak: Fix parallel copy handling in spilling
-      nak: Fix to_cssa()
-      nak/nir: Don't lower 1-bit phis
-      nak: Support encoding -Zero
-      nak: Fix fneg to do fadd(-0, x)
-      nak: Rename lower_vec_split() to lower_ineg()
-      nak: Use Src::From<u32> and Src::From<bool>
-      nak: A quick rustfmt fix
-      nak: Upgrade to more modern meson
-      nak: Add some #[allow(dead_code)]
-      nak: Drop some unused helpers
-      nak: Get rid of dead code warnings in RegFileSet
-      nak: Get rid of warnings in nak_sph.rs
-      nak: Drop the final calc_max_live() after GPR spilling
-      nak: Don't print a range for one register
-      nir: Add nvidia barrier intrinsics
-      nak/nir: Add a pass for adding convergence barriers
-      nak: Add OpBreak
-      nak: Handle control-flow barriers
-      nak: Use barriers for re-convergence
-      nak: Remove unnecessary control barriers
-      nak: Call nir_lower_subgroups()
-      nak: Use nir_shader_intrinsics_pass for system values
-      nak: Lower subgroup_id and num_subgroups
-      nak/nir: Allow boolean vote_ieq
-      nak/nir: Zero-pad subgroup masks
-      nak: Implement vote and ballot
-      nak: Fix the encoding of OpShfl
-      nak: Implement read_invocation and shuffle_*
-      nak: Allow 1-component image load/store
-      nak: Emit CCtl in barriers with acq/rel semantics
-      nak: Use strong ordering for Image load/store
-      nak: Use the simplified BAR.SYNC encoding
-      nak: Emit MemBar before Bar
-      nak: Insert an OpNop after OpBar
-      nak: Document a bit in encode_lds()
-      nvk: Enable subgroups features
-      nak: Rely on Rust 1.73 for next_multiple_of() and div_ceil()
-      nak: Require meson 1.3.0 and clean up a couple bits
-      meson: Set build.rust_std
-      ci: Bump container images for NAK dependencies
-      ci: Add syn to --force-fallback-for
-      ci: Update the python env for ci_run_n_monitor.py
-      nvk: Default to NAK on Turing+
-      nvk: Stop asserting 11-bit storage image handles
-      nvk: Free NAK shaders
-      nak: Fix copy-prop for OpPLop3 sources
-      nak: Drop OpAtomCas in favor of OpAtom with atom_op == CmpExch
-      nak: Make ALD/AST.PHYS a boolean
-      nak: Make encode_sm75 a method of Shader
-      nak: Plumb the nak_compiler through to lower_fs_input_intrin
-      nak: Rework FS input interpolation
+Faith Ekstrand (17):
+      nvk: Only advertise VK_KHR_shader_terminate_invocation if using NAK
+      nvk: Handle load_first_vertex in nvk_nir_lower_descriptors()
+      nak/nir: Lower indirect FS inputs
+      nvk: Only lower outputs to temporaries
+      nvk: Add a codegen helper for nir_shader_compiler_options
+      nvk: Move a bunch of codegen-specific lowering to helpers
+      nvk: Move the optimization loop to the nvk_codegen.c
+      nvk: Move the guts of nvk_compile_nir() to nvk_codegen.c
+      nvk: Move even more lowering into nvk_codegen.c
+      nvk: Use nak_fs_key instead of rolling our own
+      nak: Rename TLS to SLM
+      nak: Properly prefix nak_xfb_info
+      nak: Move clip, cull, and XFB into a nak_shader_info.vtg
+      nak: Add a writes_layer bit to nak_shader_info::vtg
+      nak: Handle the num_gpr offsetting inside nak
+      nvk: Use nak_shader_info natively
+      nak: Enable SM70 for Volta
 
-Helen Koike (1):
-      ci/zink: add spec@ext_timer_query@time-elapsed to flakes
+Friedrich Vock (1):
+      ac/gpu_info: Manually compute L3 size for Navi33
 
-Jesse Natalie (16):
-      microsoft/compiler: Bump signature limits for 32 rows of 4 components
-      microsoft/compiler: Don't declare PS output registers split across variables
-      microsoft/compiler: Don't use 64-bit types for signature entries
-      microsoft/compiler: When packing fractional inputs, find a row with space for it
-      microsoft/compiler: Stop lowering all I/O to temps
-      d3d12: Fix location_frac_mask bitfield size
-      d3d12: Split dvec3 interpolatns into devc2 and double
-      d3d12: Support enhanced layouts for VS inputs
-      d3d12: Fix GS variant I/O slot counts
-      d3d12: Enable ARB_enhanced_layouts and ARB_texture_mirror_clamp_to_edge
-      d3d12: Reference count queries in a batch
-      d3d12: ARB_query_buffer_object and GL4.4
-      d3d12: PRIMITIVES_GENERATED for stream > 0 should only be an SO query
-      d3d12: Handle cull distance as an XFB target
-      d3d12: Fix MSAA-disabling pass; sample mask should be 0 for helper lanes
-      d3d12: GL4.5
+Georg Lehmann (10):
+      aco: use null operand for SOPK s_waitcnt
+      aco: fix detecting sgprs read by SMEM hazard
+      aco/tests: add some missing scc defs
+      aco/tests: use correct operand size for some 64bit ops
+      aco: use lm for carry out in vsub32
+      aco: add missing scc def for SALU quad broadcast
+      aco/gfx10+: don't use v_cmpx with VCC def
+      aco: use correct operand size for int tg4 wa
+      aco: add src/def count and size for all ALU opcodes
+      aco: validate ALU operands and defs
 
-LingMan (4):
-      rusticl: Turn pointers in enqueue_svm_mem_fill_impl into proper Rust types
-      rusticl: Turn pointers in enqueue_svm_memcpy_impl into slices
-      rusticl/api: Add checking wrappers around `slice::from_raw_parts{_mut}`
-      rusticl: Use the `from_raw_parts` wrappers
+Jesse Natalie (1):
+      nir_lower_mem_access_bit_sizes: Fix write-mask-constrained 3-byte stores as atomics
 
-Lionel Landwerlin (6):
-      intel: fix PXP status check
-      anv: handle protected memory allocation
-      anv: allow creation of protected queues
-      anv: Emit protection + session ID on protected command buffers
-      anv: allow protected GEM context creation
-      anv: enable protected memory
+Job Noorman (1):
+      ir3: correctly set bit size for 64b constant @load_ubo
 
-M Henning (7):
-      nak: Fix a warn(unused_must_use) by calling drop
-      nak: Remove MemScope::Cluster
-      nak: Memory order/scope encodings for Ampere
-      nak: Specify MemScope on MemOrder::Strong
-      nak: Bind nir_intrinsic_access
-      nak: Add MemOrder::Constant
-      nvk: Use load_global_constant for ubo loads
+Karol Herbst (3):
+      nir: allow vec derefs on system values
+      vtn: add hack for system values placed in CrossWorkgroup memory
+      rusticl/api: workaround DPCPP fetching clSetProgramSpecializationConstant
 
-Mary Guillemard (14):
-      nak: sm75: Fix panic when encoding MUFU with SQRT and TANH
-      nak: Make PRMT selection a Src
-      nak: Add support for fddx and fddy
-      nak: Add for_each_instr in Shader
-      nak: Gather global memory usage for ShaderInfo
-      nak: Fix ALD/AST encoding for vtx and offset
-      nak: Add a complete wrapper around SPH
-      nak: Collect information to create SPH
-      nak: Remove encode_hdr_for_nir
-      nak: Restructure ShaderInfo
-      nak: Add geometry shader support
-      nak: Ensure we allocate one barrier when using BAR.SYNC
-      nak: Implement VK_KHR_shader_terminate_invocation
-      nak: Move nir_lower_int64 after I/O lowering
+Konstantin Seurer (2):
+      radv/sqtt: Fix tracing acceleration structure commands
+      radv/sqtt: Handle monolithic RT pipelines
 
-Maíra Canal (1):
-      v3dv: implement VK_EXT_multi_draw
+Lionel Landwerlin (1):
+      intel/fs: fix residency handling on Xe2
 
-Pierre-Eric Pelloux-Prayer (2):
-      mesa: restore call to _mesa_set_varying_vp_inputs from set_vertex_processing_mode
-      radeonsi/ci: update failures
+M Henning (2):
+      nak: Add encodings for cache eviction priorities
+      nak: Set "evict first" from ACCESS_NON_TEMPORAL
 
-Rhys Perry (1):
-      docs: fix RADV_THREAD_TRACE_CACHE_COUNTERS default
+Mark Collins (1):
+      meson: Update lua wrap to 5.4.6-4
 
-Sagar Ghuge (3):
-      anv: Write timestamp using MI_FLUSH_DW on blitter
-      anv: Avoid emitting PIPE_CONTROL command for copy/video queue
-      anv: Flush data cache while clearing depth using HIZ_CCS_WT
+Matt Turner (1):
+      r600: Add missing dep on git_sha1.h
 
-Samuel Pitoiset (1):
-      radv: fix VRS subpass attachment when HTILE can't be enabled on GFX10.3
+Samuel Pitoiset (2):
+      radv: fix registering queues for RGP with compute only
+      radv: set radv_zero_vram=true for Unreal Engine 4/5
 
 Tapani Pälli (1):
-      iris: add data cache flush for pre hiz op
-
-Tatsuyuki Ishi (2):
-      radv: Implement helpers for shader part caching.
-      radv: Use shader part caching helpers for VS prolog and PS/TCS epilog.
+      anv/drirc: add option to disable FCV optimization
 
