@@ -1,91 +1,57 @@
-Updating from bff7e4b69dce3356ba070f0eb87db9da65cad77a to d5efa3f204cef8c090e6e0f7107fbadf4029eb96
+Updating from d5efa3f204cef8c090e6e0f7107fbadf4029eb96 to ae171458827bb8fceb232b3a13f61920e87a0d3a
 
-Chia-I Wu (3):
-      radv: fix image view extent override for astc
-      radv: minor clean up to image view extent override
-      ac: be careful with stencil_offset override
+Eric Engestrom (3):
+      util/xmlconfig: drop default SYSCONFDIR & DATADIR values
+      lima: drop unused lima_get_absolute_timeout()
+      intel/ci: fix gl/vk dependencies in hsw jobs
 
-David Heidelberg (1):
-      ci/traces: drop the freedoom-phase2-gl-high.trace
+Erik Faye-Lund (1):
+      docs: apply permanent redirect
 
-David Rosca (7):
-      gallium/auxiliary/vl: Fix coordinates clamp in compute shaders
-      gallium/auxiliary: Fix coordinates clamp in util_compute_blit
-      gallium/auxiliary/vl: Scale dst_rect x0/y0 when rendering chroma plane
-      gallium/auxiliary/vl: Support interleaved input in deinterlace filter
-      Revert "frontends/va: Alloc interlaced surface for interlaced pics"
-      gallium/auxiliary: NIR blit_compute_shader
-      gallium/auxiliary/vl: NIR compute shaders
+Faith Ekstrand (1):
+      nak: Stop passing undefs to ipa_nv
 
-Eric Engestrom (1):
-      docs: update calendar for 23.3.0-rc{2,3,4} and add another release candidate
+José Expósito (2):
+      zink: fix dereference before NULL check
+      zink: allow software rendering only if selected
 
-Faith Ekstrand (17):
-      nvk: Only advertise VK_KHR_shader_terminate_invocation if using NAK
-      nvk: Handle load_first_vertex in nvk_nir_lower_descriptors()
-      nak/nir: Lower indirect FS inputs
-      nvk: Only lower outputs to temporaries
-      nvk: Add a codegen helper for nir_shader_compiler_options
-      nvk: Move a bunch of codegen-specific lowering to helpers
-      nvk: Move the optimization loop to the nvk_codegen.c
-      nvk: Move the guts of nvk_compile_nir() to nvk_codegen.c
-      nvk: Move even more lowering into nvk_codegen.c
-      nvk: Use nak_fs_key instead of rolling our own
-      nak: Rename TLS to SLM
-      nak: Properly prefix nak_xfb_info
-      nak: Move clip, cull, and XFB into a nak_shader_info.vtg
-      nak: Add a writes_layer bit to nak_shader_info::vtg
-      nak: Handle the num_gpr offsetting inside nak
-      nvk: Use nak_shader_info natively
-      nak: Enable SM70 for Volta
+José Roberto de Souza (1):
+      intel: Sync xe_drm.h
 
-Friedrich Vock (1):
-      ac/gpu_info: Manually compute L3 size for Navi33
-
-Georg Lehmann (10):
-      aco: use null operand for SOPK s_waitcnt
-      aco: fix detecting sgprs read by SMEM hazard
-      aco/tests: add some missing scc defs
-      aco/tests: use correct operand size for some 64bit ops
-      aco: use lm for carry out in vsub32
-      aco: add missing scc def for SALU quad broadcast
-      aco/gfx10+: don't use v_cmpx with VCC def
-      aco: use correct operand size for int tg4 wa
-      aco: add src/def count and size for all ALU opcodes
-      aco: validate ALU operands and defs
-
-Jesse Natalie (1):
-      nir_lower_mem_access_bit_sizes: Fix write-mask-constrained 3-byte stores as atomics
-
-Job Noorman (1):
-      ir3: correctly set bit size for 64b constant @load_ubo
-
-Karol Herbst (3):
-      nir: allow vec derefs on system values
-      vtn: add hack for system values placed in CrossWorkgroup memory
-      rusticl/api: workaround DPCPP fetching clSetProgramSpecializationConstant
-
-Konstantin Seurer (2):
-      radv/sqtt: Fix tracing acceleration structure commands
-      radv/sqtt: Handle monolithic RT pipelines
+Juston Li (3):
+      venus: sync protocol for VK_EXT_extended_dynamic_state3
+      venus: pipeline fixes for VK_EXT_extended_dynamic_state3
+      venus: enable VK_EXT_extended_dynamic_state3
 
 Lionel Landwerlin (1):
-      intel/fs: fix residency handling on Xe2
+      anv: workaround XeSS for Satisfactory
 
-M Henning (2):
-      nak: Add encodings for cache eviction priorities
-      nak: Set "evict first" from ACCESS_NON_TEMPORAL
+Mary Guillemard (2):
+      nak: Pass offset to load_frag_w
+      nak: Rewrite nir_intrinsic_load_sample_pos and implement nir_intrinsic_load_barycentric_at_sample
 
-Mark Collins (1):
-      meson: Update lua wrap to 5.4.6-4
+Rhys Perry (6):
+      nir/lower_fp16_casts: correctly round RTNE f64->f16 casts
+      nir/lower_fp16_casts: add option to split fp64 casts
+      radeonsi: use nir_lower_fp16_casts
+      radv: use nir_lower_fp16_casts
+      aco: remove f16<->f64 conversions
+      intel/compiler: use nir_lower_fp16_casts
 
-Matt Turner (1):
-      r600: Add missing dep on git_sha1.h
+Robert Mader (2):
+      util: Add new helpers for pipe resources
+      panfrost: Support parameter queries for main planes
 
 Samuel Pitoiset (2):
-      radv: fix registering queues for RGP with compute only
-      radv: set radv_zero_vram=true for Unreal Engine 4/5
+      radv: fix a descriptor leak with debug names and host base descriptor set
+      radv: add a missing async compute workaround for Tonga/Iceland
 
-Tapani Pälli (1):
-      anv/drirc: add option to disable FCV optimization
+Tatsuyuki Ishi (4):
+      zink: Fix missing sparse buffer bind synchronization.
+      zink: Defer freeing sparse backing buffers.
+      zink: Fix waiting for texture commit semaphores.
+      zink: Remove now unused dead_framebuffers.
+
+Vinson Lee (1):
+      ac/surface/tests: Remove duplicate variable block_size_bits
 
