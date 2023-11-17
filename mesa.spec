@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+1322.e171458827
-Release  : 602
+Release  : 603
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ae171458827bb8fceb232b3a13f61920e87a0d3a/mesa-23.3+1322-gae171458827.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ae171458827bb8fceb232b3a13f61920e87a0d3a/mesa-23.3+1322-gae171458827.tar.bz2
 Summary  : No detailed summary available
