@@ -1,6 +1,6 @@
 -Dplatforms=wayland,x11
 -Ddri3=enabled
--Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12
 -Dcpp_std=gnu++17
 -Dgallium-va=enabled
 -Dgallium-xa=enabled

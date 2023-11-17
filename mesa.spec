@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+1322.e171458827
-Release  : 601
+Release  : 602
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ae171458827bb8fceb232b3a13f61920e87a0d3a/mesa-23.3+1322-gae171458827.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ae171458827bb8fceb232b3a13f61920e87a0d3a/mesa-23.3+1322-gae171458827.tar.bz2
 Summary  : No detailed summary available
@@ -165,7 +165,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1700182397
+export SOURCE_DATE_EPOCH=1700232806
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -180,7 +180,7 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Ddri3=enabled \
--Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
@@ -198,7 +198,7 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Ddri3=enabled \
--Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
@@ -222,7 +222,7 @@ CXXFLAGS="${CLEAR_INTERMEDIATE_CXXFLAGS}${CLEAR_INTERMEDIATE_CXXFLAGS:+ }-m32 -m
 LDFLAGS="${CLEAR_INTERMEDIATE_LDFLAGS}${CLEAR_INTERMEDIATE_LDFLAGS:+ }-m32 -mstackrealign"
 meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Ddri3=enabled \
--Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
@@ -358,6 +358,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/dri/crocus_dri.so
+/V3/usr/lib64/dri/d3d12_dri.so
+/V3/usr/lib64/dri/d3d12_drv_video.so
 /V3/usr/lib64/dri/i915_dri.so
 /V3/usr/lib64/dri/iris_dri.so
 /V3/usr/lib64/dri/kms_swrast_dri.so
@@ -393,11 +395,14 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /V3/usr/lib64/libvulkan_lvp.so
 /V3/usr/lib64/libvulkan_radeon.so
 /V3/usr/lib64/libxatracker.so.2.5.0
+/V3/usr/lib64/vdpau/libvdpau_d3d12.so.1.0.0
 /V3/usr/lib64/vdpau/libvdpau_nouveau.so.1.0.0
 /V3/usr/lib64/vdpau/libvdpau_r600.so.1.0.0
 /V3/usr/lib64/vdpau/libvdpau_radeonsi.so.1.0.0
 /V3/usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/lib64/dri/crocus_dri.so
+/usr/lib64/dri/d3d12_dri.so
+/usr/lib64/dri/d3d12_drv_video.so
 /usr/lib64/dri/i915_dri.so
 /usr/lib64/dri/iris_dri.so
 /usr/lib64/dri/kms_swrast_dri.so
@@ -447,6 +452,10 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib64/libxatracker.so
 /usr/lib64/libxatracker.so.2
 /usr/lib64/libxatracker.so.2.5.0
+/usr/lib64/vdpau/libvdpau_d3d12.so
+/usr/lib64/vdpau/libvdpau_d3d12.so.1
+/usr/lib64/vdpau/libvdpau_d3d12.so.1.0
+/usr/lib64/vdpau/libvdpau_d3d12.so.1.0.0
 /usr/lib64/vdpau/libvdpau_nouveau.so
 /usr/lib64/vdpau/libvdpau_nouveau.so.1
 /usr/lib64/vdpau/libvdpau_nouveau.so.1.0
