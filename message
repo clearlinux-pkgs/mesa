@@ -1,153 +1,69 @@
-Updating from 1fabf535faae9ec651a0574247e885f9cdcbdaad to 12f6279c3913d3350d5b492cc7b4928c36041de2
+Updating from 12f6279c3913d3350d5b492cc7b4928c36041de2 to d3e3c30d36728f5331615b402eaed3cd7d45cb24
 
-Alejandro Piñeiro (2):
-      nir: add new opcodes to map new v71 packing/conversion instructions
-      broadcom/compiler: update image store lowering to use v71 new packing/conversion instructions
+Alyssa Rosenzweig (11):
+      gallium: add pipe_shader_from_nir helper
+      radeonsi: use pipe_shader_from_nir
+      v3d: use pipe_shader_from_nir
+      asahi: use pipe_shader_from_nir
+      vc4: use pipe_shader_from_nir
+      zink: use pipe_shader_from_nir
+      nouveau: use pipe_shader_from_nir
+      panfrost: use pipe_shader_from_nir
+      gallium: drop pipe_shader_state_from_nir
+      mesa/st: collapse tgsi deadcode
+      mesa/st: use pipe_shader_from_nir
 
-Alyssa Rosenzweig (3):
-      panfrost: Add an allow_rotating_primitives() helper
-      panfrost: Factor out vertex attribute stride calculation
-      panfrost: Add panfrost_get_{position,varying}_shader() helpers
+Caio Oliveira (1):
+      intel/compiler: Simplify allocation of NIR related arrays
 
-Boris Brezillon (40):
-      panfrost: Rename panfrost_vtable::context_init
-      panfrost: Inline pan_emit_tiler_heap()
-      panfrost: Inline pan_emit_tiler_ctx()
-      panfrost: Count draws at the batch level
-      panfrost: Express the per-batch limit in term of draws
-      panfrost: Count the number of compute jobs at the batch level
-      panfrost: Make panfrost_has_fragment_job() public
-      panfrost: Stop using the scoreboard to check the presence of draws/compute
-      panfrost: Store the fragment job descriptor address in the batch
-      panfrost: Emit the fragment job from panfrost_batch_submit()
-      panfrost: Move the panfrost_emit_tile_map() call around
-      panfrost: Get rid of unused in_sync parameter in panfrost_batch_submit[_ioctl]()
-      panfrost: Get rid of the out_sync parameter in panfrost_batch_submit_jobs()
-      panfrost: Get rid of unused fb parameter passed to panfrost_batch_submit_jobs()
-      panfrost: Add a submit_batch() hook to panfrost_vtable
-      panfrost: Store the index pointer in panfrost_batch
-      panfrost: Stop passing vertex attribute arrays around
-      panfrost: Store varying related fields in panfrost_batch
-      panfrost: Use u_reduced_prim() to do the is_line check
-      panfrost: Move JM specific fields to their own struct
-      panfrost: s/panfrost_emit_vertex_tiler_jobs/jm_push_vertex_tiler_jobs/
-      panfrost: Move the JM-specific bits out of emit_fragment_job()
-      panfrost: Rename several job emission helpers
-      panfrost: Factor out the point-sprite shader update logic
-      panfrost: Factor out the vertex count logic
-      panfrost: Re-order things in panfrost_direct_draw()
-      panfrost: Move all JM-specific bits out of panfrost_direct_draw()
-      panfrost: Use batch->tls.gpu to store the compute TLS descriptor
-      panfrost: Move JM-specific bits out of panfrost_launch_grid_on_batch()
-      panfrost: Move JM specific bits out of panfrost_launch_xfb()
-      panfrost: Drop the vertex_count argument passed to panfrost_batch_get_bifrost_tiler()
-      panfrost: Rename panfrost_batch_get_bifrost_tiler()
-      panfrost: s/panfrost_emit_shader/jm_emit_shader_env/
-      panfrost: s/panfrost_emit_primitive/jm_emit_primitive/
-      panfrost: Rename JM-specific batch submission helpers
-      panfrost: s/preload/jm_preload_fb/
-      panfrost: s/init_batch/jm_init_batch/
-      panfrost: Prepare things for the common/JM cmdstream split
-      panfrost: Move JM helpers to their own source file
-      panfrost: Add a JOBX() macro to simplify job-frontend selection
+Connor Abbott (1):
+      tu: Fix re-emitting VS param state after it is re-enabled
 
-Brian King ((MEDIA)) (1):
-      d3d12: Add constraint_set1_flag support
+Faith Ekstrand (2):
+      nak: gl_FragCoord and gl_PointCoord are screen-space interpolated
+      nvk/codegen: Fragment shader builtins are noperspective
 
-Chia-I Wu (1):
-      radv: disable TC-compat htile on GFX9 in some cases
+Georg Lehmann (1):
+      aco/sched: treat p_dual_src_export_gfx11 like export
 
-Danylo Piliaiev (3):
-      freedreno/devices: Separate device definition into base + gen features
-      freedreno,tu,ir3: Pass fd_dev_info into ir3_compiler_create
-      freedreno,tu: Add env vars to modify fd_dev_info
+Jesse Natalie (2):
+      nir_lower_mem_access_bit_sizes: Fix assert (bit -> byte size)
+      microsoft/compiler: Fix lower_mem_access_bit_size callback result
 
-Dennis Bonke (1):
-      mesa: add managarm support
+Martin Roukala (né Peres) (1):
+      Revert "ci/deqp-runner: turn paths in errors into links"
 
-Eric Engestrom (6):
-      asahi: use util_resource_num() instead of open-coding it
-      ci/piglit: specify only the traces file in the job config
-      amd/ci: track changes to the traces config file as well
-      ci: fix kdl commit fetch
-      ci: uprev deqp-runner from 0.16.1 to 0.18.0
-      ci/deqp-runner: turn paths in errors into links
+Mary Guillemard (2):
+      nvk: Disable flush on each queries and flush at the end
+      nvk: Implement VK_EXT_primitives_generated_query
 
-Erik Faye-Lund (1):
-      panfrost: do not open-code panfrost_has_fragment_job()
+Qiang Yu (1):
+      radeonsi: add missing args in spi_ps_input_ena when fbfetch output
 
-Faith Ekstrand (12):
-      nak: Rework reg and SSA value printing
-      nak: Make most Display stuff lower-case
-      nak: Rework opcode printing to use a new trait
-      nak: Implement DisplayOp on Op instead of Display
-      nak: Default InstrDeps::delay to 0
-      nak: Only write deps.delay when set
-      nak: Align instructions when printing
-      nak: Display memory access bits with the "." prefix
-      nak: Make MemAddrType a part of MemSpace
-      nak: Display memory type at the end for load/store ops
-      nak: Rework printing of texture and image dims
-      nak: Two more print fixes
+Samuel Pitoiset (12):
+      aco: rename color_exports to exports in create_fs_jump_to_epilog()
+      radv: rename ps_epilog_inputs to colors for PS epilogs
+      radv: add radv_physical_device::emulate_mesh_shader_queries for GFX10.3
+      radv: add support for mesh primitives queries on GFX10.3
+      radv: define new pipeline statistics indices for mesh/task on GFX11
+      radv: bump the pipeline state query size to 14 on GFX10.3
+      radv: do not harcode the pipeline stats mask for query resolves
+      radv: add support for mesh shader invocations queries on GFX10.3
+      radv: rework gfx10_copy_gds_query() slightly
+      radv: make some gang functions non-static
+      radv: add support for task shader invocations queries on GFX10.3
+      radv: enable meshShaderQueries on GFX10.3
 
-Francisco Jerez (1):
-      intel: Improve N-way pixel hashing computation to handle pixel pipes with asymmetric processing power.
+Sylvain Munaut (1):
+      mesa/st, dri2, wgl, glx: Restore flush_objects interop backward compat
 
-Helen Koike (1):
-      ci/ci_run_n_monitor: abort when target gets skipped
+Tapani Pälli (4):
+      drirc: Set limit_trig_input_range option for Valheim
+      iris: implement Wa_18020335297
+      anv: refactor state emission
+      anv: implement Wa_18020335297
 
-José Roberto de Souza (1):
-      intel: Sync xe_drm.h
-
-Lionel Landwerlin (1):
-      intel/perf: fix querying of configurations
-
-Samuel Pitoiset (2):
-      ac/surface: change tile mode for 3D PRT surfaces with bpp < 64 on GFX6-8
-      radv: re-enable sparseResidencyImage3D on POLARIS10+
-
-Sil Vilerino (24):
-      d3d12: Allow creating d3d12_dxcore_screen from existing ID3D12Device
-      vl/win32: Add vl_win32_screen_create_from_d3d12_device
-      gallium/auxiliary: Fix pb_bufmgr_slab.c leak
-      pipe: Extend get_feedback with additional metadata
-      pipe: Add PIPE_VIDEO_CAP_ENC_H264_DISABLE_DBK_FILTER_MODES_SUPPORTED
-      pipe: Add PIPE_VIDEO_CAP_ENC_INTRA_REFRESH_MAX_DURATION
-      pipe: Add H264 VUI encode params
-      pipe: Add HEVC VUI encode params
-      pipe: Add max_slice_bytes for H264, HEVC encoding
-      frontend/va: Add log2_max_frame_num_minus4 and log2_max_pic_order_cnt_lsb_minus4 for h264enc
-      frontend/va: Parse VUI H264 parameters
-      frontend/va: Parse VUI HEVC parameters
-      frontend/va: Support VAEncMiscParameterMaxSliceSize
-      meson: add vp9 and av1 codec support options
-      gallium/vl: Check for VP9 and AV1 meson option support flags
-      d3d12: Plumb pipe_h264_enc_picture_desc.dbk.disable_deblocking_filter_idc
-      d3d12: Use log2_max_frame_num_minus4 and log2_max_pic_order_cnt_lsb_minus4 from pipe_pic_params_h264
-      d3d12: Video Encode - Remove PIPE_VIDEO_PROFILE_MPEG4_AVC_BASELINE as not supported
-      d3d12: Disable codecs according to meson video-codecs option
-      d3d12: Implement H264 VUI Writer
-      d3d12: Implement HEVC VUI Writer
-      d3d12: Implement Intra Refresh for H264, HEVC, AV1
-      d3d12: Support PIPE_VIDEO_CAP_ENC_H264_DISABLE_DBK_FILTER_MODES_SUPPORTED
-      d3d12: Implement get_feedback with additional metadata
-
-Tapani Pälli (1):
-      drirc: use fake_sparse for Armored Core 6
-
-Timothy Arceri (5):
-      nir: move build_write_masked_stores() to nir builder
-      glsl/nir: implement a nir based lower distance pass
-      glsl: switch to NIR distance lowering pass
-      glsl: remove now unused lower distance pass
-      nir: simplify nir_build_write_masked_store()
-
-Vinson Lee (1):
-      nir: Fix decomposed_prmcnt copy-paste error
-
-Zhang Ning (1):
-      iris: use helper util_resource_at_index
-
-llyyr (1):
-      docs: document AMD_DEBUG=noefc and useaco
+Thomas H.P. Andersen (2):
+      docs: update nvk extensions
+      nvk: use nvk_pipeline_zalloc
 
