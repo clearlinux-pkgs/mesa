@@ -1,69 +1,38 @@
-Updating from 12f6279c3913d3350d5b492cc7b4928c36041de2 to d3e3c30d36728f5331615b402eaed3cd7d45cb24
+Updating from d3e3c30d36728f5331615b402eaed3cd7d45cb24 to 1b7107efe41406b707f5907269936e6332ec3db2
 
-Alyssa Rosenzweig (11):
-      gallium: add pipe_shader_from_nir helper
-      radeonsi: use pipe_shader_from_nir
-      v3d: use pipe_shader_from_nir
-      asahi: use pipe_shader_from_nir
-      vc4: use pipe_shader_from_nir
-      zink: use pipe_shader_from_nir
-      nouveau: use pipe_shader_from_nir
-      panfrost: use pipe_shader_from_nir
-      gallium: drop pipe_shader_state_from_nir
-      mesa/st: collapse tgsi deadcode
-      mesa/st: use pipe_shader_from_nir
+Alexander von Gluck IV (3):
+      egl/haiku: Cleanup includes; minor build fix
+      hgl: Redefine visual options in hgl_context.h
+      egl/haiku: Remove some dead cleanup code
 
-Caio Oliveira (1):
-      intel/compiler: Simplify allocation of NIR related arrays
+Daniel Schürmann (4):
+      nir: remove info.fs.needs_all_helper_invocations
+      nir/gather_info: add missing wide subgroup operations
+      nir: add info.fs.require_full_quads
+      aco: enable helper lanes if shader->info.fs.require_full_quads
 
-Connor Abbott (1):
-      tu: Fix re-emitting VS param state after it is re-enabled
+David Rosca (1):
+      util/rbsp: Fill bits twice if reading more than 16 bits
 
-Faith Ekstrand (2):
-      nak: gl_FragCoord and gl_PointCoord are screen-space interpolated
-      nvk/codegen: Fragment shader builtins are noperspective
+Iván Briano (1):
+      anv: use the right vertexOffset on CmdDrawMultiIndexed
 
-Georg Lehmann (1):
-      aco/sched: treat p_dual_src_export_gfx11 like export
+Marek Olšák (2):
+      st/mesa: disable light_twoside if back faces are culled
+      glsl/nir: return failure from link_varyings if there is a linker error
 
-Jesse Natalie (2):
-      nir_lower_mem_access_bit_sizes: Fix assert (bit -> byte size)
-      microsoft/compiler: Fix lower_mem_access_bit_size callback result
+Sagar Ghuge (1):
+      anv: Add comment to copy image code block
 
-Martin Roukala (né Peres) (1):
-      Revert "ci/deqp-runner: turn paths in errors into links"
+Samuel Pitoiset (1):
+      radv/ci: add missing expected failures for mesh queries on VANGOGH
 
-Mary Guillemard (2):
-      nvk: Disable flush on each queries and flush at the end
-      nvk: Implement VK_EXT_primitives_generated_query
+Sil Vilerino (1):
+      d3d12: fix usage of GetAdapterLuid() in mingw/GCC using ABI helper
 
-Qiang Yu (1):
-      radeonsi: add missing args in spi_ps_input_ena when fbfetch output
+Timothy Arceri (1):
+      glsl: drop ir_binop_ubo_load
 
-Samuel Pitoiset (12):
-      aco: rename color_exports to exports in create_fs_jump_to_epilog()
-      radv: rename ps_epilog_inputs to colors for PS epilogs
-      radv: add radv_physical_device::emulate_mesh_shader_queries for GFX10.3
-      radv: add support for mesh primitives queries on GFX10.3
-      radv: define new pipeline statistics indices for mesh/task on GFX11
-      radv: bump the pipeline state query size to 14 on GFX10.3
-      radv: do not harcode the pipeline stats mask for query resolves
-      radv: add support for mesh shader invocations queries on GFX10.3
-      radv: rework gfx10_copy_gds_query() slightly
-      radv: make some gang functions non-static
-      radv: add support for task shader invocations queries on GFX10.3
-      radv: enable meshShaderQueries on GFX10.3
-
-Sylvain Munaut (1):
-      mesa/st, dri2, wgl, glx: Restore flush_objects interop backward compat
-
-Tapani Pälli (4):
-      drirc: Set limit_trig_input_range option for Valheim
-      iris: implement Wa_18020335297
-      anv: refactor state emission
-      anv: implement Wa_18020335297
-
-Thomas H.P. Andersen (2):
-      docs: update nvk extensions
-      nvk: use nvk_pipeline_zalloc
+Zhang Ning (1):
+      lima: Support parameter queries for PIPE_RESOURCE_PARAM_NPLANES
 
