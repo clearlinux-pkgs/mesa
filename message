@@ -1,38 +1,24 @@
-Updating from d3e3c30d36728f5331615b402eaed3cd7d45cb24 to 1b7107efe41406b707f5907269936e6332ec3db2
+Updating from 1b7107efe41406b707f5907269936e6332ec3db2 to b5bcb658b4dcac0a08031b30a66c6780ea66c6ff
 
-Alexander von Gluck IV (3):
-      egl/haiku: Cleanup includes; minor build fix
-      hgl: Redefine visual options in hgl_context.h
-      egl/haiku: Remove some dead cleanup code
+José Roberto de Souza (2):
+      iris: Change default PAT entry to WC
+      intel: Rename PAT entries
 
-Daniel Schürmann (4):
-      nir: remove info.fs.needs_all_helper_invocations
-      nir/gather_info: add missing wide subgroup operations
-      nir: add info.fs.require_full_quads
-      aco: enable helper lanes if shader->info.fs.require_full_quads
+Kenneth Graunke (7):
+      iris: Make an iris_bucket_cache structure and array per heap
+      iris: Make an iris_heap_is_device_local() helper
+      iris: Rename heap_flags -> heap in i915_gem_create
+      iris: Split system memory heap into cached-coherent and uncached heaps
+      iris: Use 64K BOs for the shader uploader
+      iris: Align fresh BO allocations to 2MB in size
+      iris: Ensure virtual addresses are aligned to 2MB for 2MB+ blocks
 
-David Rosca (1):
-      util/rbsp: Fill bits twice if reading more than 16 bits
+Pavel Ondračka (1):
+      r300: add late vectorization after nir_move_vec_src_uses_to_dest
 
-Iván Briano (1):
-      anv: use the right vertexOffset on CmdDrawMultiIndexed
-
-Marek Olšák (2):
-      st/mesa: disable light_twoside if back faces are culled
-      glsl/nir: return failure from link_varyings if there is a linker error
-
-Sagar Ghuge (1):
-      anv: Add comment to copy image code block
-
-Samuel Pitoiset (1):
-      radv/ci: add missing expected failures for mesh queries on VANGOGH
-
-Sil Vilerino (1):
-      d3d12: fix usage of GetAdapterLuid() in mingw/GCC using ABI helper
-
-Timothy Arceri (1):
-      glsl: drop ir_binop_ubo_load
-
-Zhang Ning (1):
-      lima: Support parameter queries for PIPE_RESOURCE_PARAM_NPLANES
+Samuel Pitoiset (4):
+      radv: disable TC-compatible HTILE on Tonga and Iceland
+      radv: add missing FDCC_CONTROL bits for GFX1103 R2
+      radv: set radv_invariant_geom=true for War Thunder
+      radv: do not set OREO_MODE to fix rare corruption on GFX11
 
