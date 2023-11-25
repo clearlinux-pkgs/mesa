@@ -1,24 +1,39 @@
-Updating from 1b7107efe41406b707f5907269936e6332ec3db2 to b5bcb658b4dcac0a08031b30a66c6780ea66c6ff
+Updating from b5bcb658b4dcac0a08031b30a66c6780ea66c6ff to 827bbe48298b7e32d46c1b9b777511109762f305
 
-José Roberto de Souza (2):
-      iris: Change default PAT entry to WC
-      intel: Rename PAT entries
+David Heidelberg (1):
+      ci: disable Anholt farm
 
-Kenneth Graunke (7):
-      iris: Make an iris_bucket_cache structure and array per heap
-      iris: Make an iris_heap_is_device_local() helper
-      iris: Rename heap_flags -> heap in i915_gem_create
-      iris: Split system memory heap into cached-coherent and uncached heaps
-      iris: Use 64K BOs for the shader uploader
-      iris: Align fresh BO allocations to 2MB in size
-      iris: Ensure virtual addresses are aligned to 2MB for 2MB+ blocks
+Eric Engestrom (3):
+      docs: update calendar for 23.0.0-rc5
+      docs: add another -rc
+      ci: use released version of meson
 
-Pavel Ondračka (1):
-      r300: add late vectorization after nir_move_vec_src_uses_to_dest
+Faith Ekstrand (1):
+      nvk: Wire up MESA_VK_VERSION_OVERRIDE
 
-Samuel Pitoiset (4):
-      radv: disable TC-compatible HTILE on Tonga and Iceland
-      radv: add missing FDCC_CONTROL bits for GFX1103 R2
-      radv: set radv_invariant_geom=true for War Thunder
-      radv: do not set OREO_MODE to fix rare corruption on GFX11
+Jesse Natalie (1):
+      d3d12/driconf: Force on ARB_texture_view for Blender
+
+José Expósito (1):
+      zink: initialize drm_fd to -1
+
+Juan A. Suarez Romero (1):
+      broadcom/ci: separate hiden jobs to -inc.yml files
+
+Kai Wasserbäch (1):
+      fix: ac/llvm: LLVM 18: remove useless passes, partially removed upstream
+
+Marek Olšák (8):
+      nir: add lowering from FS LAYER input to LAYER_ID sysval
+      nir: return progress from nir_remove_sysval_output
+      ac/nir: add kill_layer flag to VS/GS/NGG lowering
+      st/mesa: set pipe_framebuffer_state::layers for PBO blits
+      radeonsi: clean up si_nir_kill_outputs
+      radeonsi: don't allocate output space for LAYER/VIEWPORT before TES and GS
+      radeonsi: implement gl_Layer in FS as a system value
+      radeonsi: remove the LAYER output if the framebuffer state has only 1 layer
+
+Robert Mader (2):
+      vc4/resource: Support offset query for multi-planar planes
+      v3d/resource: Support offset query for multi-planar planes
 
