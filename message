@@ -1,39 +1,10 @@
-Updating from b5bcb658b4dcac0a08031b30a66c6780ea66c6ff to 827bbe48298b7e32d46c1b9b777511109762f305
+Updating from 827bbe48298b7e32d46c1b9b777511109762f305 to 945288ffaecac106c978d10cd4d8512fa2992c47
 
-David Heidelberg (1):
-      ci: disable Anholt farm
+Marek Olšák (3):
+      nir: fix gathering TESS_LEVEL_INNER/OUTER usage with lowered IO
+      nir: don't declare illegal varyings in nir_create_passthrough_tcs
+      nir/print: print PATCH0 and VARn_16BIT names instead of numbers for TCS and TES
 
-Eric Engestrom (3):
-      docs: update calendar for 23.0.0-rc5
-      docs: add another -rc
-      ci: use released version of meson
-
-Faith Ekstrand (1):
-      nvk: Wire up MESA_VK_VERSION_OVERRIDE
-
-Jesse Natalie (1):
-      d3d12/driconf: Force on ARB_texture_view for Blender
-
-José Expósito (1):
-      zink: initialize drm_fd to -1
-
-Juan A. Suarez Romero (1):
-      broadcom/ci: separate hiden jobs to -inc.yml files
-
-Kai Wasserbäch (1):
-      fix: ac/llvm: LLVM 18: remove useless passes, partially removed upstream
-
-Marek Olšák (8):
-      nir: add lowering from FS LAYER input to LAYER_ID sysval
-      nir: return progress from nir_remove_sysval_output
-      ac/nir: add kill_layer flag to VS/GS/NGG lowering
-      st/mesa: set pipe_framebuffer_state::layers for PBO blits
-      radeonsi: clean up si_nir_kill_outputs
-      radeonsi: don't allocate output space for LAYER/VIEWPORT before TES and GS
-      radeonsi: implement gl_Layer in FS as a system value
-      radeonsi: remove the LAYER output if the framebuffer state has only 1 layer
-
-Robert Mader (2):
-      vc4/resource: Support offset query for multi-planar planes
-      v3d/resource: Support offset query for multi-planar planes
+Pierre-Eric Pelloux-Prayer (1):
+      radeonsi: check sctx->tess_rings is valid before using it
 
