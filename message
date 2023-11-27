@@ -1,10 +1,9 @@
-Updating from 827bbe48298b7e32d46c1b9b777511109762f305 to 945288ffaecac106c978d10cd4d8512fa2992c47
+Updating from 945288ffaecac106c978d10cd4d8512fa2992c47 to 1492d24f89f6e156d83d6f579d1d308eaae996ef
 
-Marek Olšák (3):
-      nir: fix gathering TESS_LEVEL_INNER/OUTER usage with lowered IO
-      nir: don't declare illegal varyings in nir_create_passthrough_tcs
-      nir/print: print PATCH0 and VARn_16BIT names instead of numbers for TCS and TES
+Christian Gmeiner (2):
+      etnaviv: rs: Call etna_rs_gen_clear_surface(..) when needed
+      etnaviv: Mark etna_rs_gen_clear_surface(..) private
 
-Pierre-Eric Pelloux-Prayer (1):
-      radeonsi: check sctx->tess_rings is valid before using it
+Eric Engestrom (1):
+      lp: make sure 0xff is unsigned before shifting it past signed int range
 
