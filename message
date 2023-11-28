@@ -1,9 +1,28 @@
-Updating from 945288ffaecac106c978d10cd4d8512fa2992c47 to 1492d24f89f6e156d83d6f579d1d308eaae996ef
+Updating from 1492d24f89f6e156d83d6f579d1d308eaae996ef to f843b14c171299e1696ca6d971ccaa496f60c3ab
 
-Christian Gmeiner (2):
-      etnaviv: rs: Call etna_rs_gen_clear_surface(..) when needed
-      etnaviv: Mark etna_rs_gen_clear_surface(..) private
+Eric Engestrom (2):
+      intel/perf: fix regex escaping
+      intel/ci: fix .hasvk-manual-rules
 
-Eric Engestrom (1):
-      lp: make sure 0xff is unsigned before shifting it past signed int range
+Faith Ekstrand (3):
+      nvk: Limit shader stages to supported stages
+      nak: Run rustfmt
+      nak: Only insert barriers around ifs if they actually re-converge
+
+Iván Briano (1):
+      hasvk: ensure we reapply always pipeline dynamic state in runtime state
+
+Jesse Natalie (3):
+      d3d12: Fix multidimensional array ordering
+      d3d12: Fix h264 encoder 32-bit build (uint64_t -> size_t)
+      d3d12: Fix hevc encoder 32-bit build (uint64_t -> size_t)
+
+Mary Guillemard (1):
+      venus: Do not submit batch manually when no feedback is required
+
+Rhys Perry (1):
+      ac/nir: fix partial mesh shader output writes on GFX11
+
+Samuel Pitoiset (1):
+      ci: uprev vkd3d-proton to 2.11
 
