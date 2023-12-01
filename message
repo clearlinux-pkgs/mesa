@@ -1,84 +1,114 @@
-Updating from f843b14c171299e1696ca6d971ccaa496f60c3ab to 112093f9e2d97c082f13af30bab2113f7cd47bcb
+Updating from 02fe92c908a6ceea8f78099e09c28ad0671b0396 to 8cfae7743955b8df1ea986cfdba44bda992f6cd2
 
-Alyssa Rosenzweig (2):
-      nir/lower_tex: Add 1D lowering
-      agx: fix 1D texture sampling
+Boyuan Zhang (4):
+      gallium/pipe: define hevc max slices number
+      frontend/va: add support for multi slices reflist
+      radeonsi: add new interface to handle multi slice reflist
+      radeonsi/vcn: add new logic for hevc multi slices reflist
 
 Caio Oliveira (4):
-      intel/compiler: Prefer ctor/dtors in some Google Tests
-      intel/compiler: Don't use fs_visitor::bld in tests
-      intel/compiler: Don't use fs_visitor::bld in fs_reg_alloc
-      intel/compiler: Don't use fs_visitor::bld in thread payload classes
+      intel/compiler: Add a few more helpers to fs_builder
+      intel/compiler: Allow dumping CFG to a specific FILE*
+      intel/compiler: Sort lists of succs and preds in CFG dump output
+      intel/compiler: Add a few tests to opt_predicated_break
 
-Christian Gmeiner (1):
-      docs: Update etnaviv extensions
+Erik Faye-Lund (6):
+      panfrost: minify dimensions when converting modifiers
+      util/format: document NONE swizzle
+      lavapipe: do not use NONE-swizzle
+      panfrost: do not handle NONE-swizzle
+      d3d12: do not handle PIPE_SWIZZLE_NONE from sampler-view
+      zink: do not handle PIPE_SWIZZLE_NONE
 
-Faith Ekstrand (12):
-      vulkan: Default override patch version to VK_HEADER_VERSION
-      nvk: Advertise Vulkan 1.1 on Turing+
-      nak: Drop the PrmtSelection stuff
-      nak: Add a builder helper for OpPrmt
-      nak: Rework OpPrmt a bit
-      nak: Implement nir_op_extract_*
-      nak: Fix int8/16 lowering
-      nak: Add base support for 8 and 16-bit types
-      nak: Implement more int/float conversions
-      nak: Implement integer conversions
-      nak: Handle non-DW-aligned UBO loads
-      nvk: Enable 8 and 16-bit integer types
+Frank Binns (2):
+      include/drm-uapi: add pvr_drm.h
+      pvr: Add powervr winsys implementation
 
-Georg Lehmann (2):
-      aco: don't optimize DPP across more than one block
-      aco: add test for post-ra DPP clobbered in linear cfg
+Gert Wollny (4):
+      r600/sfn: Allow skipping backend shader optimization for a subset of shaders
+      r600/sfn: keep workgroup and invocation ID registers for whole shader
+      r600/sfn: Fix usage of std::string constructor
+      r600/sfn: Don't try to re-use iterators when the set is made empty
 
-Jan Beich (2):
-      intel: make CLOCK_TAI optional for non-Linux
-      intel: make CLOCK_BOOTTIME optional for non-Linux
+Ian Romanick (7):
+      intel/vec4: Don't emit an empty ELSE
+      intel/compiler: Add basic CFG validation
+      intel/compiler: Limit scope of cur_endif variable
+      intel/compiler: Delete bidirectional block links in opt_predicated_break
+      intel/compiler: Don't create extra CFG links in opt_predicated_break
+      intel/compiler: Don't create extra CFG links when deleting a block
+      intel/compiler: Don't promote CFG link types when removing a block
+
+Jesse Natalie (1):
+      microsoft/clc: Fix image lowering pass to only erase variables at the end
+
+Jordan Justen (7):
+      intel/compiler: Define XE2 compiler enum
+      intel/genxml: Update COMPUTE_WALKER for xe2
+      iris: Set COMPUTE_WALKER Message SIMD field
+      anv: Set COMPUTE_WALKER Message SIMD field
+      intel/genxml: Update INTERFACE_DESCRIPTOR_DATA for xe2
+      anv, iris: Update INTERFACE_DESCRIPTOR_DATA programming for xe2
+      iris: xe2 doesn't have INTERFACE_DESCRIPTOR_DATA::BarrierEnable
 
 José Roberto de Souza (2):
-      intel: Share function to do device query in Xe KMD
-      iris: Check for maximum allowed priority in Xe KMD
+      intel/dev: Adjust prefetch_size values for Xe2 engines
+      anv: Fix vm bind of DRM_XE_VM_BIND_FLAG_NULL
 
-Juston Li (1):
-      venus: implement vkGet[Device]ImageSparseMemoryRequirements
+Lynne (1):
+      radv: change queue family order in radv_get_physical_device_queue_family_properties
 
-Kenneth Graunke (1):
-      anv: Implement rudimentary VK_AMD_buffer_marker support
+Marek Olšák (3):
+      ac: rename ac_parse_ib.c -> ac_ib_parser.c
+      ac: move the IB parsers into ac_parse_ib.c
+      ac: add an IB parser that gathers context rolls
 
-Konstantin Seurer (3):
-      radv/rt: Use a helper for inlining non-recursive stages
-      radv/rt: Skip null checks for small case counts
-      nir/lower_vars_to_scratch: Remove all unused derefs
+Peyton Lee (6):
+      frontends, va: add new parameters of post processor
+      amd,radeonsi: add libvpe
+      amd: add new hardware ip for vpe
+      amd, radeonsi: add si_vpe.c with helper functions of VPE lib
+      amd, radeonsi: supports post processing entrypoint
+      winsys, amdgpu, drm: add VPE submission handle
 
-Lionel Landwerlin (7):
-      intel/fs: fix incorrect register flag interaction with dynamic interpolator mode
-      intel/fs: reuse set_predicate()
-      intel/aux_map: introduce ref count of L1 entries
-      anv: use main image address to determine ccs compatibility
-      anv: track & unbind image aux-tt binding
-      anv: remove heuristic preferring dedicated allocations
-      intel/ds: add trace of buffer markers
+Qiang Yu (1):
+      nir: fix load layer id system_values_read info gather
 
-Marek Olšák (4):
-      gallium/docs: make CAP doc order match definition order
-      gallium: add PIPE_CAP_PERFORMANCE_MONITOR for GL_AMD_performance_monitor
-      radeonsi: group equal CAP cases
-      radeonsi: only expose GL_AMD_performance_monitor on gfx7-10.3
+Rhys Perry (2):
+      ac/nir: ignore 8/16-bit global access offset
+      ac/nir: fix 32-bit offset global access optimization
 
-Raphaël Gallais-Pou (1):
-      gallium: add sti DRM entry point
+Rohan Garg (17):
+      anv: Refactor loading indirect parameters and filling IDD
+      anv: refactor kernel dispatch to use new common functions
+      intel/dev: Add a bit for when the HW can do a indirect draw/dispatch unroll
+      genxml/12.5: Add the EXECUTE_INDIRECT_DRAW instruction
+      genxml/12.5: Add the EXECUTE_INDIRECT_DISPATCH instruction
+      anv: Emit EXECUTE_INDIRECT_DRAW when available
+      anv: Emit a EXECUTE_INDIRECT_DISPATCH when available
+      iris: Emit a EXECUTE_INDIRECT_DISPATCH when available
+      anv: memcpy the thread dimentions only when they're on the CPU
+      anv: introduce ANV_TIMESTAMP_REWRITE_INDIRECT_DISPATCH
+      intel/genxml: Add the preferred slm size enum for xe2
+      intel: Set a preferred SLM size for LNL
+      intel/genxml: Update COMPUTE_WALKER_BODY for xe2
+      intel/genxml: Update IDD for new fields
+      blorp: set min/max viewport depths to -FLT_MAX/FLT_MAX when EXT_depth_range_unrestricted is enabled
+      anv: ensure that we clamp only when EXT_depth_range_unrestricted is not enabled
+      anv: enable VK_EXT_depth_range_unrestricted
 
-Sagar Ghuge (1):
-      iris: Init aux map state for compute engine
+Samuel Pitoiset (2):
+      radv: fix bogus interaction between DGC and RT with descriptor bindings
+      radv: make sure to prefetch the compute shader for DGC
 
-Samuel Pitoiset (5):
-      radv/ci: add new flakes for VEGA10
-      radv: remove useless NIR instructions when emitting IBO with DGC
-      radv: set the stream VA for DGC graphics
-      radv: use an indirect draw when IBO isn't updated as part of DGC
-      radv: enable DGC preprocessing for IBO
+Sarah Walker (2):
+      pvr: csbgen: Add dummy implementation of stream type
+      pvr: Add command stream and static context state layout to rogue_kmd_stream.xml
 
-Tapani Pälli (2):
-      iris: implement dummy blit for Wa_16018063123
-      anv: implement dummy blit for Wa_16018063123
+Tatsuyuki Ishi (1):
+      radv: Remove aspect mask "expansion" for copy_image.
+
+ratatouillegamer (2):
+      hasvk: Add Vulkan API version override
+      hasvk: Enable hasvk override Vulkan API Version for Brawlhalla
 
