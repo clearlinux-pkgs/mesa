@@ -1,114 +1,44 @@
-Updating from 02fe92c908a6ceea8f78099e09c28ad0671b0396 to 8cfae7743955b8df1ea986cfdba44bda992f6cd2
+Updating from 8cfae7743955b8df1ea986cfdba44bda992f6cd2 to b7517aec9ee665c7b4c8c4629deeb0e34925b777
 
-Boyuan Zhang (4):
-      gallium/pipe: define hevc max slices number
-      frontend/va: add support for multi slices reflist
-      radeonsi: add new interface to handle multi slice reflist
-      radeonsi/vcn: add new logic for hevc multi slices reflist
+Caio Oliveira (2):
+      anv/xe2+: Use Region-based Tessellation redistribution
+      iris/xe2+: Use Region-based Tessellation redistribution
 
-Caio Oliveira (4):
-      intel/compiler: Add a few more helpers to fs_builder
-      intel/compiler: Allow dumping CFG to a specific FILE*
-      intel/compiler: Sort lists of succs and preds in CFG dump output
-      intel/compiler: Add a few tests to opt_predicated_break
+Eric Engestrom (6):
+      radv/ci: add navi21-aco flake
+      bin/gen_release_notes: fix regex raw string
+      bin/python-venv: fix venv folder check
+      bin/gen_release_notes: include removed 'new_features.txt' in commit
+      docs: add release notes for 23.3.0
+      docs: add sha256sum for 23.3.0
 
-Erik Faye-Lund (6):
-      panfrost: minify dimensions when converting modifiers
-      util/format: document NONE swizzle
-      lavapipe: do not use NONE-swizzle
-      panfrost: do not handle NONE-swizzle
-      d3d12: do not handle PIPE_SWIZZLE_NONE from sampler-view
-      zink: do not handle PIPE_SWIZZLE_NONE
+Faith Ekstrand (13):
+      nvk: Use the copy engine for CmdFillBuffer
+      nvk: Use the copy engine for NVK_DEBUG=zero_memory
+      nvk: Stop initializing the 2D engine
+      vulkan: Move vk_synchronization2 to vk_synchronization
+      vulkan: Add some auto-generated synchronization helpers
+      vulkan: Add helpers for pipeline stage flags
+      vulkan: Add helpers for access flags
+      nvk: Move Begin/EndTransformFeedback to nvk_cmd_draw.c
+      nvk: Rework transform feedback stalling
+      nvk: Implement vkCmdPipelineBarrier2 for real
+      nvk: Drop unnecessary per-draw/dispatch cache maintenance
+      nvk: Drop MME_DMA_SYSMEMBAR before indirect draw/dispatch
+      nak: Drop a bunch of SET_REFERENCE from the pre-Turing paths
 
-Frank Binns (2):
-      include/drm-uapi: add pvr_drm.h
-      pvr: Add powervr winsys implementation
+Jordan Justen (1):
+      intel/genxml: Update 3DSTATE_TE for xe2
 
-Gert Wollny (4):
-      r600/sfn: Allow skipping backend shader optimization for a subset of shaders
-      r600/sfn: keep workgroup and invocation ID registers for whole shader
-      r600/sfn: Fix usage of std::string constructor
-      r600/sfn: Don't try to re-use iterators when the set is made empty
+Marcin Ślusarz (1):
+      anv: fix minSubgroupSize for xe2
 
-Ian Romanick (7):
-      intel/vec4: Don't emit an empty ELSE
-      intel/compiler: Add basic CFG validation
-      intel/compiler: Limit scope of cur_endif variable
-      intel/compiler: Delete bidirectional block links in opt_predicated_break
-      intel/compiler: Don't create extra CFG links in opt_predicated_break
-      intel/compiler: Don't create extra CFG links when deleting a block
-      intel/compiler: Don't promote CFG link types when removing a block
+Martin Roukala (né Peres) (1):
+      radv: disable meshShaderQueries on gfx10.3
 
-Jesse Natalie (1):
-      microsoft/clc: Fix image lowering pass to only erase variables at the end
+Mary Guillemard (1):
+      nak: Fix NAK_ATTR_CLIP_CULL_DIST_7 wrong value
 
-Jordan Justen (7):
-      intel/compiler: Define XE2 compiler enum
-      intel/genxml: Update COMPUTE_WALKER for xe2
-      iris: Set COMPUTE_WALKER Message SIMD field
-      anv: Set COMPUTE_WALKER Message SIMD field
-      intel/genxml: Update INTERFACE_DESCRIPTOR_DATA for xe2
-      anv, iris: Update INTERFACE_DESCRIPTOR_DATA programming for xe2
-      iris: xe2 doesn't have INTERFACE_DESCRIPTOR_DATA::BarrierEnable
-
-José Roberto de Souza (2):
-      intel/dev: Adjust prefetch_size values for Xe2 engines
-      anv: Fix vm bind of DRM_XE_VM_BIND_FLAG_NULL
-
-Lynne (1):
-      radv: change queue family order in radv_get_physical_device_queue_family_properties
-
-Marek Olšák (3):
-      ac: rename ac_parse_ib.c -> ac_ib_parser.c
-      ac: move the IB parsers into ac_parse_ib.c
-      ac: add an IB parser that gathers context rolls
-
-Peyton Lee (6):
-      frontends, va: add new parameters of post processor
-      amd,radeonsi: add libvpe
-      amd: add new hardware ip for vpe
-      amd, radeonsi: add si_vpe.c with helper functions of VPE lib
-      amd, radeonsi: supports post processing entrypoint
-      winsys, amdgpu, drm: add VPE submission handle
-
-Qiang Yu (1):
-      nir: fix load layer id system_values_read info gather
-
-Rhys Perry (2):
-      ac/nir: ignore 8/16-bit global access offset
-      ac/nir: fix 32-bit offset global access optimization
-
-Rohan Garg (17):
-      anv: Refactor loading indirect parameters and filling IDD
-      anv: refactor kernel dispatch to use new common functions
-      intel/dev: Add a bit for when the HW can do a indirect draw/dispatch unroll
-      genxml/12.5: Add the EXECUTE_INDIRECT_DRAW instruction
-      genxml/12.5: Add the EXECUTE_INDIRECT_DISPATCH instruction
-      anv: Emit EXECUTE_INDIRECT_DRAW when available
-      anv: Emit a EXECUTE_INDIRECT_DISPATCH when available
-      iris: Emit a EXECUTE_INDIRECT_DISPATCH when available
-      anv: memcpy the thread dimentions only when they're on the CPU
-      anv: introduce ANV_TIMESTAMP_REWRITE_INDIRECT_DISPATCH
-      intel/genxml: Add the preferred slm size enum for xe2
-      intel: Set a preferred SLM size for LNL
-      intel/genxml: Update COMPUTE_WALKER_BODY for xe2
-      intel/genxml: Update IDD for new fields
-      blorp: set min/max viewport depths to -FLT_MAX/FLT_MAX when EXT_depth_range_unrestricted is enabled
-      anv: ensure that we clamp only when EXT_depth_range_unrestricted is not enabled
-      anv: enable VK_EXT_depth_range_unrestricted
-
-Samuel Pitoiset (2):
-      radv: fix bogus interaction between DGC and RT with descriptor bindings
-      radv: make sure to prefetch the compute shader for DGC
-
-Sarah Walker (2):
-      pvr: csbgen: Add dummy implementation of stream type
-      pvr: Add command stream and static context state layout to rogue_kmd_stream.xml
-
-Tatsuyuki Ishi (1):
-      radv: Remove aspect mask "expansion" for copy_image.
-
-ratatouillegamer (2):
-      hasvk: Add Vulkan API version override
-      hasvk: Enable hasvk override Vulkan API Version for Brawlhalla
+Samuel Pitoiset (1):
+      radv: remove radv_pipeline_key::dynamic_color_write_mask
 
