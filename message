@@ -1,44 +1,21 @@
-Updating from 8cfae7743955b8df1ea986cfdba44bda992f6cd2 to b7517aec9ee665c7b4c8c4629deeb0e34925b777
+Updating from b7517aec9ee665c7b4c8c4629deeb0e34925b777 to 2cdebf51fdb800dea06c9a7d421c42a48e8ffd8e
 
-Caio Oliveira (2):
-      anv/xe2+: Use Region-based Tessellation redistribution
-      iris/xe2+: Use Region-based Tessellation redistribution
+Dylan Baker (2):
+      docs: add release notes for 23.2.1
+      docs: Add sha256 sum for 23.2.1
 
-Eric Engestrom (6):
-      radv/ci: add navi21-aco flake
-      bin/gen_release_notes: fix regex raw string
-      bin/python-venv: fix venv folder check
-      bin/gen_release_notes: include removed 'new_features.txt' in commit
-      docs: add release notes for 23.3.0
-      docs: add sha256sum for 23.3.0
+Eric Engestrom (4):
+      docs: fix release date for 23.3.0
+      turnip: fix typo in comment
+      ci_run_n_monitor: allow picking a pipeline by its MR
+      amd/ci: radeonsi is gl, not vk
 
-Faith Ekstrand (13):
-      nvk: Use the copy engine for CmdFillBuffer
-      nvk: Use the copy engine for NVK_DEBUG=zero_memory
-      nvk: Stop initializing the 2D engine
-      vulkan: Move vk_synchronization2 to vk_synchronization
-      vulkan: Add some auto-generated synchronization helpers
-      vulkan: Add helpers for pipeline stage flags
-      vulkan: Add helpers for access flags
-      nvk: Move Begin/EndTransformFeedback to nvk_cmd_draw.c
-      nvk: Rework transform feedback stalling
-      nvk: Implement vkCmdPipelineBarrier2 for real
-      nvk: Drop unnecessary per-draw/dispatch cache maintenance
-      nvk: Drop MME_DMA_SYSMEMBAR before indirect draw/dispatch
-      nak: Drop a bunch of SET_REFERENCE from the pre-Turing paths
-
-Jordan Justen (1):
-      intel/genxml: Update 3DSTATE_TE for xe2
-
-Marcin Ślusarz (1):
-      anv: fix minSubgroupSize for xe2
-
-Martin Roukala (né Peres) (1):
-      radv: disable meshShaderQueries on gfx10.3
-
-Mary Guillemard (1):
-      nak: Fix NAK_ATTR_CLIP_CULL_DIST_7 wrong value
-
-Samuel Pitoiset (1):
-      radv: remove radv_pipeline_key::dynamic_color_write_mask
+M Henning (7):
+      nak: Request alignment that matches the load width
+      nak: Use nir_combined_align
+      nvk: Fix descriptor alignment offset
+      nak: Provide robustness info to postprocess_nir
+      nak: Call nir_opt_load_store_vectorize
+      nak: Call nir_opt_combine_barriers
+      nak: Call nir_opt_shrink_vectors
 
