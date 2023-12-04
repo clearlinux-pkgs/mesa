@@ -1,21 +1,51 @@
-Updating from b7517aec9ee665c7b4c8c4629deeb0e34925b777 to 2cdebf51fdb800dea06c9a7d421c42a48e8ffd8e
+Updating from 2cdebf51fdb800dea06c9a7d421c42a48e8ffd8e to fc96bc9b58731b160452cd5c54adb762b588bbd7
 
-Dylan Baker (2):
-      docs: add release notes for 23.2.1
-      docs: Add sha256 sum for 23.2.1
+Alyssa Rosenzweig (1):
+      nir/format_convert: handle clamping smaller bit sizes
 
-Eric Engestrom (4):
-      docs: fix release date for 23.3.0
-      turnip: fix typo in comment
-      ci_run_n_monitor: allow picking a pipeline by its MR
-      amd/ci: radeonsi is gl, not vk
+David Heidelberg (2):
+      ci/freedreno: disable a660 as it's down now
+      Revert "ci/freedreno: disable a660 as it's down now"
 
-M Henning (7):
-      nak: Request alignment that matches the load width
-      nak: Use nir_combined_align
-      nvk: Fix descriptor alignment offset
-      nak: Provide robustness info to postprocess_nir
-      nak: Call nir_opt_load_store_vectorize
-      nak: Call nir_opt_combine_barriers
-      nak: Call nir_opt_shrink_vectors
+Eric Engestrom (6):
+      v3dv: update symbols that have become aliases for newer ones
+      v3dv: drop duplicate flag
+      radv: update symbols that have become aliases for newer ones
+      pvr: update symbols that have become aliases for newer ones
+      anv: update symbols that have become aliases for newer ones
+      hasvk: update symbols that have become aliases for newer ones
+
+Erik Faye-Lund (1):
+      meson: work around meson 0.62 issue
+
+Felix bridault (1):
+      radv: use 32bit va range for sparse descriptor buffers
+
+Friedrich Vock (1):
+      radv: Enable compute dispatch tunneling
+
+José Roberto de Souza (1):
+      iris: Fix the mmap mode for IRIS_HEAP_DEVICE_LOCAL_PREFERRED
+
+Lionel Landwerlin (6):
+      intel/tools: add hang_replay tool
+      intel/hang_replay: add the ability to pass the context image to sim-drm
+      intel: add error2hangdump tool
+      intel/aubinator_error_decode: bump max buffers to 1024
+      intel/error_decode: map i915 gfx12.5 register names to our names
+      intel/tools: hang viewer/editor
+
+Pierre-Eric Pelloux-Prayer (1):
+      egl/wayland: set the correct modifier for the linear_copy image
+
+Samuel Pitoiset (5):
+      radv: simplify creating image views for src resolve images
+      radv: stop performing redundant resolves with the HW resolve path
+      radv: remove unused layers support for the HW/FS resolve paths
+      radv: only re-initialize DCC for one level for the HW resolve path
+      radv: adjust assertions for multi-layer resolves with the HW/FS paths
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's LAVA lab for maintance
+      Revert "ci: disable Collabora's LAVA lab for maintance"
 
