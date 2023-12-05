@@ -1,51 +1,137 @@
-Updating from 2cdebf51fdb800dea06c9a7d421c42a48e8ffd8e to fc96bc9b58731b160452cd5c54adb762b588bbd7
+Updating from fc96bc9b58731b160452cd5c54adb762b588bbd7 to 785290836bb48c2e521a40145b0c11213b44019e
 
-Alyssa Rosenzweig (1):
-      nir/format_convert: handle clamping smaller bit sizes
+Boris Brezillon (7):
+      panfrost: Fix multiplanar YUV texture descriptor emission on v9+
+      panfrost: Don't leak NIR compute shaders
+      panfrost: s/pan_scoreboard/pan_jc/
+      panfrost: Rename pan_cs.{c,h} into pan_desc.{c,h}
+      panfrost: Make pan_afbc_compression_mode() per-gen
+      panfrost: Restrict job chain helpers to JM hardware
+      panfrost: Restrict job descriptor emission to JM hardware
 
-David Heidelberg (2):
-      ci/freedreno: disable a660 as it's down now
-      Revert "ci/freedreno: disable a660 as it's down now"
+Caio Oliveira (4):
+      intel/compiler: Refactor program exit in intel_clc
+      intel/compiler: Use single variable instead of dynarray
+      intel/compiler: Fix memory leaks in intel_clc
+      intel/compiler: Remove the linking step in intel_clc
 
-Eric Engestrom (6):
-      v3dv: update symbols that have become aliases for newer ones
-      v3dv: drop duplicate flag
-      radv: update symbols that have become aliases for newer ones
-      pvr: update symbols that have become aliases for newer ones
-      anv: update symbols that have become aliases for newer ones
-      hasvk: update symbols that have become aliases for newer ones
+Dmitry Baryshkov (3):
+      freedreno/regs/mdp_common: change BPC1 -> BPC4
+      freedreno/regs/mdp_common: fix BPC comments
+      freedreno/regs: add mdp_fetch_mode enum
 
-Erik Faye-Lund (1):
-      meson: work around meson 0.62 issue
+Eric Engestrom (13):
+      amd/ci: fix yaml indentation
+      amd/ci: split common amd files list from radeonsi files list
+      amd/ci: limit radv jobs to radv + aco files changes
+      nvk: update symbols that have become aliases for newer ones
+      vk/runtime: update symbols that have become aliases for newer ones
+      vk/wsi: update symbols that have become aliases for newer ones
+      vk/util: update symbols that have become aliases for newer ones
+      vk/overlay-layer: update symbols that have become aliases for newer ones
+      venus: update symbols that have become aliases for newer ones
+      venus: fix typo in comment
+      amd/ci: reuse .radeonsi-rules in .radeonsi-vaapi-rules
+      nvk: use `||` instead of `|` between bools
+      radeonsi/ci: update vangogh piglit expectations
 
-Felix bridault (1):
-      radv: use 32bit va range for sparse descriptor buffers
+Faith Ekstrand (39):
+      nvk: Advertise VK_EXT_subgroup_size_control
+      nil: Add support for filling out linear texture headers
+      nouveau: Rename nvidia-headers to headers
+      nouveau: Move headers/classes to headers/nvidia/classes
+      nak: Run rustfmt again
+      nak: Fix integer roll-over when we have a u64vec4
+      nak: Set .64/.32 on CSSR as needed
+      nak/nir: Don't use nir_lower_bit_size on 64-bit values
+      nak: Implement 64-bit ineg
+      nak: Natively implement 64-bit shifts
+      nak: Lower isign in NIR
+      nak: Rework printing of comparisons
+      nak: Implement 64-bit comparisons
+      nak: Don't ask NIR to lower [iu]mul64_2x32
+      nak: Use the right source types for I2F, F2I, and F2F
+      nak: Fix encoding of 64-bit F2I, I2F, and F2F
+      nak: Implement b2i64
+      nak/nir: Don't lower 64-bit conversions
+      nvk: Advertise shaderInt64
+      nvk: Advertise VK_EXT_shader_subgroup_ballot/vote
+      nak/nir: Handle non-32-bit data in lower_scan_reduce
+      nvk: Advertise KHR_shader_subgroup_extended_types
+      nvk: Advertise VK_KHR_shader_atomic_int64
+      nak/nir: Trim image load/stores based on format
+      nak: Lower 64-bit image load/store
+      nak: Handle 64-bit image atomics
+      nil: Add R64_SINT and R64_UINT formats
+      nvk: Don't disable non-texturable formats
+      nvk: Implement VK_EXT_shader_image_atomic_int64
+      nak: Simplify Src::is_predicate()
+      nak: Replace OpBMov with OpBClear
+      nak: Fix scheduling for control barriers
+      nak: Add a barrier register file
+      nak: Add back OpBMov with better semantics
+      nak: Add support for spilling barriers
+      nak: Take num_barriers from RA
+      nak: Make barriers SSA-friendly
+      nak: Force RA to allocate bar_in/out to the same register
+      nak: Add a barrier propagation pass
 
-Friedrich Vock (1):
-      radv: Enable compute dispatch tunneling
+Karol Herbst (2):
+      rusticl: add x11 dependency
+      rusticl/gl: make GLX support optional
 
-José Roberto de Souza (1):
-      iris: Fix the mmap mode for IRIS_HEAP_DEVICE_LOCAL_PREFERRED
+Lionel Landwerlin (8):
+      anv: add a sampler state pool
+      anv: move descriptor set type selection to earlier
+      anv: make a couple of descriptor function private
+      anv: add missing push descriptor flush on ray tracing pipelines
+      anv: set layout printer
+      anv: use 2 different buffers for surfaces/samplers in descriptor sets
+      intel/hang_replay: fix compile race with generated files
+      intel/tools: 32bit compile fixes
 
-Lionel Landwerlin (6):
-      intel/tools: add hang_replay tool
-      intel/hang_replay: add the ability to pass the context image to sim-drm
-      intel: add error2hangdump tool
-      intel/aubinator_error_decode: bump max buffers to 1024
-      intel/error_decode: map i915 gfx12.5 register names to our names
-      intel/tools: hang viewer/editor
+Mario Kleiner (1):
+      v3d: add B10G10R10[X2/A2]_UNORM to format table.
 
-Pierre-Eric Pelloux-Prayer (1):
-      egl/wayland: set the correct modifier for the linear_copy image
+Martin Roukala (né Peres) (1):
+      amd/ci: reduce Renoir's concurrency to 16
 
-Samuel Pitoiset (5):
-      radv: simplify creating image views for src resolve images
-      radv: stop performing redundant resolves with the HW resolve path
-      radv: remove unused layers support for the HW/FS resolve paths
-      radv: only re-initialize DCC for one level for the HW resolve path
-      radv: adjust assertions for multi-layer resolves with the HW/FS paths
+Mohamed Ahmed (4):
+      nvk: Fix GetImageSubResourceLayout for non-disjoint images
+      nil: Add support for linear images
+      nvk: Wire up rendering to linear
+      nvk: Enable linear images for texturing
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's LAVA lab for maintance
-      Revert "ci: disable Collabora's LAVA lab for maintance"
+Rhys Perry (5):
+      aco: flush denormals for 16-bit fmin/fmax on GFX8
+      aco: implement 16-bit fsign on GFX8
+      aco: implement 16-bit derivatives
+      aco: implement 16-bit fsat on GFX8
+      aco: simplify v_mul_* labelling slightly
+
+Rob Clark (2):
+      isaspec: Sort labels with same output
+      freedreno/drm: Fix zombie BO import harder
+
+Samuel Pitoiset (8):
+      radv: remove never used binds_state for DGC
+      radv: only initialize the VBO reg if VBOs are bound with DGC
+      radv: only initialize the VTX base SGPR if non-zero with DGC
+      radv: add DGC support for mesh shader only
+      radv: advertise VK_EXT_depth_clamp_zero_one
+      radv: update the reset stipple pattern mode
+      radv: change the reset stipple pattern mode for adjacent lines
+      radv: make sure to reset the stipple line state when it's disabled
+
+Sil Vilerino (1):
+      ci: Build d3d12 gallium driver in debian-x86_32
+
+Sviatoslav Peleshko (1):
+      anv: Fix MI_ARB_CHECK calls in generated indirect draws optimization
+
+Yonggang Luo (4):
+      dzn: Fixes -Werror=incompatible-pointer-type
+      d3d12,dzn: Simplify the usage of #include <wsl/winadapter.h>
+      util: Fixes note: the alignment of ‘_Atomic long long int’ fields changed in GCC 11.
+      glsl: move glsl_get_gl_type into glsl/linker_util.h
 
