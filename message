@@ -1,137 +1,157 @@
-Updating from fc96bc9b58731b160452cd5c54adb762b588bbd7 to 785290836bb48c2e521a40145b0c11213b44019e
+Updating from 785290836bb48c2e521a40145b0c11213b44019e to e126e82c790f6bba8f53046195628107791f4a00
 
-Boris Brezillon (7):
-      panfrost: Fix multiplanar YUV texture descriptor emission on v9+
-      panfrost: Don't leak NIR compute shaders
-      panfrost: s/pan_scoreboard/pan_jc/
-      panfrost: Rename pan_cs.{c,h} into pan_desc.{c,h}
-      panfrost: Make pan_afbc_compression_mode() per-gen
-      panfrost: Restrict job chain helpers to JM hardware
-      panfrost: Restrict job descriptor emission to JM hardware
+Alyssa Rosenzweig (1):
+      nir/lower_idiv: Optimize idiv sign calculation
 
-Caio Oliveira (4):
-      intel/compiler: Refactor program exit in intel_clc
-      intel/compiler: Use single variable instead of dynarray
-      intel/compiler: Fix memory leaks in intel_clc
-      intel/compiler: Remove the linking step in intel_clc
+Connor Abbott (4):
+      tu: Don't use pipeline layout to emit shared const enable
+      tu: Rework dynamic offset handling
+      tu: Make filling out tu_program_state not depend on the pipeline
+      tu: Move shader linking to tu_shader.cc
 
-Dmitry Baryshkov (3):
-      freedreno/regs/mdp_common: change BPC1 -> BPC4
-      freedreno/regs/mdp_common: fix BPC comments
-      freedreno/regs: add mdp_fetch_mode enum
+Dave Airlie (1):
+      nvk/xfb: set correct counter buffer for writing stream out counters.
 
-Eric Engestrom (13):
-      amd/ci: fix yaml indentation
-      amd/ci: split common amd files list from radeonsi files list
-      amd/ci: limit radv jobs to radv + aco files changes
-      nvk: update symbols that have become aliases for newer ones
-      vk/runtime: update symbols that have become aliases for newer ones
-      vk/wsi: update symbols that have become aliases for newer ones
-      vk/util: update symbols that have become aliases for newer ones
-      vk/overlay-layer: update symbols that have become aliases for newer ones
-      venus: update symbols that have become aliases for newer ones
-      venus: fix typo in comment
-      amd/ci: reuse .radeonsi-rules in .radeonsi-vaapi-rules
-      nvk: use `||` instead of `|` between bools
-      radeonsi/ci: update vangogh piglit expectations
+Eric Engestrom (18):
+      freedreno/ci: add flake seen on a630
+      freedreno/ci: add more flakes seen on a630
+      freedreno/ci: add more a630 flakes
+      v3d: drop leftover from "move v3d_tiling to common"
+      radeonsi/ci: track changes to `vpelib`
+      turnip: update symbols that have become aliases for newer ones
+      util/blob: fix trivial typo
+      ci: explain what we mean by the various types of pipelines
+      ci: turn comment into code in `sanity` job rules
+      ci: identify merge request pipelines using `$CI_PIPELINE_SOURCE == merge_request_event` instead of `$CI_COMMIT_BRANCH` being missing
+      ci: rename is-pre-merge-for-marge to is-merge-attempt to be clearer
+      ci: drop containers, builds, and tests from post-merge pipeline
+      ci: add pipeline for direct pushes to main
+      ci: give an explicit priority to the scheduled nightly pipelines
+      ci: clean up pre-merge and fork pipelines rules
+      ci: make sure pre-merge pipelines have the same jobs as merge pipelines
+      ci: improve comments
+      ci: take microsoft farm offline
 
-Faith Ekstrand (39):
-      nvk: Advertise VK_EXT_subgroup_size_control
-      nil: Add support for filling out linear texture headers
-      nouveau: Rename nvidia-headers to headers
-      nouveau: Move headers/classes to headers/nvidia/classes
-      nak: Run rustfmt again
-      nak: Fix integer roll-over when we have a u64vec4
-      nak: Set .64/.32 on CSSR as needed
-      nak/nir: Don't use nir_lower_bit_size on 64-bit values
-      nak: Implement 64-bit ineg
-      nak: Natively implement 64-bit shifts
-      nak: Lower isign in NIR
-      nak: Rework printing of comparisons
-      nak: Implement 64-bit comparisons
-      nak: Don't ask NIR to lower [iu]mul64_2x32
-      nak: Use the right source types for I2F, F2I, and F2F
-      nak: Fix encoding of 64-bit F2I, I2F, and F2F
-      nak: Implement b2i64
-      nak/nir: Don't lower 64-bit conversions
-      nvk: Advertise shaderInt64
-      nvk: Advertise VK_EXT_shader_subgroup_ballot/vote
-      nak/nir: Handle non-32-bit data in lower_scan_reduce
-      nvk: Advertise KHR_shader_subgroup_extended_types
-      nvk: Advertise VK_KHR_shader_atomic_int64
-      nak/nir: Trim image load/stores based on format
-      nak: Lower 64-bit image load/store
-      nak: Handle 64-bit image atomics
-      nil: Add R64_SINT and R64_UINT formats
-      nvk: Don't disable non-texturable formats
-      nvk: Implement VK_EXT_shader_image_atomic_int64
-      nak: Simplify Src::is_predicate()
-      nak: Replace OpBMov with OpBClear
-      nak: Fix scheduling for control barriers
-      nak: Add a barrier register file
-      nak: Add back OpBMov with better semantics
-      nak: Add support for spilling barriers
-      nak: Take num_barriers from RA
-      nak: Make barriers SSA-friendly
-      nak: Force RA to allocate bar_in/out to the same register
-      nak: Add a barrier propagation pass
+Faith Ekstrand (17):
+      dxil: Use mesa_prim consistently
+      glsl: Properly remap GL_* to MESA_PRIM
+      intel/vec4: Use MESA_PRIM_* instead of GL_*
+      nir: Return a mesa_prim from gs_in_prim_for_topology
+      compiler: Fix a comment
+      radeonsi: Drop an unnecessary cast
+      nvk: Advertise VK_EXT_scalar_block_layout
+      nak: Advertise subgroupBroadcastDynamicId
+      nak: Add a B32 source type
+      nak: Rework the OpIAdd3/OpIAdd3X split
+      nak/legalize: Handle the src0/1 source mod condition for OpIAdd3X
+      nak: Legalize immediates with source modifiers
+      nak: Implement uadd_sat
+      nak: Implement usub_sat
+      nvk: Implement VK_EXT_texel_buffer_alignment
+      spirv: Plumb variable alignments through to NIR
+      nir: Respect variable alignments in lower_vars_to_explicit_types
+
+Jesse Natalie (2):
+      microsoft/clc: Fix images with multiple derefs for real
+      microsoft/clc: Add a test which sinks image derefs
+
+José Roberto de Souza (2):
+      intel: Sync xe_drm.h take 2 part 3
+      intel/isl: Set mocs.blitter_dst/src for MTL
+
+Juan A. Suarez Romero (1):
+      v3d: include the revision in the device name
 
 Karol Herbst (2):
-      rusticl: add x11 dependency
-      rusticl/gl: make GLX support optional
+      clc: allow debug flag to be read from other files
+      clc: add dump_llvm debug options
 
-Lionel Landwerlin (8):
-      anv: add a sampler state pool
-      anv: move descriptor set type selection to earlier
-      anv: make a couple of descriptor function private
-      anv: add missing push descriptor flush on ray tracing pipelines
-      anv: set layout printer
-      anv: use 2 different buffers for surfaces/samplers in descriptor sets
-      intel/hang_replay: fix compile race with generated files
-      intel/tools: 32bit compile fixes
+Lionel Landwerlin (2):
+      vulkan/runtime: retain video session creation flags
+      anv/video: only report matching memory types for protected sessions
 
-Mario Kleiner (1):
-      v3d: add B10G10R10[X2/A2]_UNORM to format table.
+Paulo Zanoni (4):
+      anv/sparse: reject binds that are not a multiple of the granularity
+      anv/tr-tt: assert the bind size is a multiple of the granularity
+      anv/sparse: check if the non-sparse version is supported first
+      anv/sparse: document USAGE_2D_3D_COMPATIBLE as non-standard too
 
-Martin Roukala (né Peres) (1):
-      amd/ci: reduce Renoir's concurrency to 16
+Qiang Yu (1):
+      aco: fix set_wqm segfault when ps prolog
 
-Mohamed Ahmed (4):
-      nvk: Fix GetImageSubResourceLayout for non-disjoint images
-      nil: Add support for linear images
-      nvk: Wire up rendering to linear
-      nvk: Enable linear images for texturing
+Rhys Perry (7):
+      aco: insert p_end_wqm before p_jump_to_epilog
+      nir/loop_analyze: skip if basis/limit/comparison is vector
+      nir/loop_analyze: scalarize try_eval_const_alu
+      nir/loop_analyze: fix vector basis/limit/comparison
+      nir/loop_analyze: check min compatibility with comparison
+      nir/loop_analyze: support umin and {u,i,f}max
+      nir/loop_analyze: support loops with min/max and non-add incrementation
 
-Rhys Perry (5):
-      aco: flush denormals for 16-bit fmin/fmax on GFX8
-      aco: implement 16-bit fsign on GFX8
-      aco: implement 16-bit derivatives
-      aco: implement 16-bit fsat on GFX8
-      aco: simplify v_mul_* labelling slightly
+Rohan Garg (1):
+      iris: Emit EXECUTE_INDIRECT_DRAW when available
 
-Rob Clark (2):
-      isaspec: Sort labels with same output
-      freedreno/drm: Fix zombie BO import harder
+Ryan Neph (5):
+      virgl: implemement resource_get_param() for modifier query
+      venus: add VN_PERF=no_tiled_wsi_image
+      venus: strip ALIAS_BIT for WSI image creation on ANV
+      venus: reject multi-plane modifiers for tiled wsi images
+      venus: add dri option to enable multi-plane wsi modifiers
 
-Samuel Pitoiset (8):
-      radv: remove never used binds_state for DGC
-      radv: only initialize the VBO reg if VBOs are bound with DGC
-      radv: only initialize the VTX base SGPR if non-zero with DGC
-      radv: add DGC support for mesh shader only
-      radv: advertise VK_EXT_depth_clamp_zero_one
-      radv: update the reset stipple pattern mode
-      radv: change the reset stipple pattern mode for adjacent lines
-      radv: make sure to reset the stipple line state when it's disabled
+Sagar Ghuge (1):
+      blorp: Handle stencil buffer compression on blitter engine
 
-Sil Vilerino (1):
-      ci: Build d3d12 gallium driver in debian-x86_32
+Samuel Pitoiset (15):
+      radv: set combinedImageSamplerDescriptorCount to 1 for multi-planar formats
+      radv: switch to on-demand PS epilogs for GPL
+      radv: remove unused code for compiling PS epilogs as part of pipelines
+      aco: export depth/stencil/samplemask in create_fs_jump_to_epilog()
+      ac/nir: add an option to skip MRTZ exports in ac_nir_lower_ps()
+      radv: determine if MRTZ needs to be exported via PS epilogs
+      radv: prepare the PS epilog key for exporting MRTZ on RDNA3
+      radv,aco: declare PS epilog VGPR arguments for depth/stencil/samplemask
+      radv: determine and emit SPI_SHADER_Z_FORMAT for PS epilogs
+      zink/ci: remove skipped tests from the list of expected failures for NAVI31
+      radv: export MRTZ via PS epilogs when alpha to coverage is dynamic on GFX11
+      radv: enable extendedDynamicState3AlphaToCoverageEnable on GFX11
+      zink/ci: skip more tests that run OOM on NAVI31
+      zink/ci: update list of failures for NAVI31
+      zink/ci: stop running zink-radv-navi31-valve sequentially
 
-Sviatoslav Peleshko (1):
-      anv: Fix MI_ARB_CHECK calls in generated indirect draws optimization
+Sil Vilerino (32):
+      pipe: Support inserting new headers on each H264/HEVC IDR frame
+      pipe: Add get_feedback_fence for encode async waiting on pipe_feedback_fence
+      pipe: Add fence_get_win32_handle to get HANDLE from pipe_fence_handle
+      pipe: Add p_video_codec.get_encode_headers for out of band VPS, SPS, PPS
+      pipe: Add PIPE_VIDEO_FEEDBACK_METADATA_TYPE_AVERAGE_FRAME_QP
+      pipe: Add PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE
+      pipe: Add PIPE_H264_MAX_REFERENCES
+      frontend/va: Add h264 encode ip_period param
+      frontend/va: Add VACodedBufferSegment Average QP metadata
+      frontend/va: Use p_video_codec.get_feedback_fence to report errors on frame submission
+      vl_winsys_win32: call winsys->destroy(winsys) in error conditions
+      d3d12: Implement inserting optional new headers on each H264/HEVC IDR frame
+      d3d12: Do not increase active_seq_parameter_set_id on new SPS. Force PPS on new SPS
+      d3d12: H264 encode - Allow CONSTRAINED_BASELINE profile to be written in headers
+      d3d12: Implement get_feedback_fence for encode async waiting on pipe_feedback_fence
+      d3d12: Implement fence_get_win32_handle to get HANDLE from d3d12_fence
+      d3d12: Only pass texture dimensions to d3d12_video_encoder_update_current_encoder_config_state
+      d3d12: Implement d3d12_video_encoder_get_encode_headers for out of band VPS, SPS, PPS
+      d3d12: Use new pipe h264 encode ip_period param
+      d3d12: max_frame_poc workaround for infinite GOPs
+      d3d12: Fix max slice size and max frame size metadata reporting
+      d3d12: Implement PIPE_VIDEO_FEEDBACK_METADATA_TYPE_AVERAGE_FRAME_QP
+      d3d12: Autodetect d3d12_video_buffer imported handle/resource format and dimensions when not passed
+      d3d12: Implement PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE
+      d3d12: Detect imported resource buffer unknown format
+      d3d12: Improve error detection and reporting for video encoder
+      d3d12: Fix d3d12_tcs_variant_cache_destroy leak in d3d12_context
+      d3d12: Fix screen->winsys leak in d3d12_screen
+      d3d12: d3d12_create_fence_win32 - Fix double refcount bump
+      d3d12: Fix max reference frames reporting when HW does not support B frame
+      d3d12: Video Encoder - When setting rate control dirty flags take into account rolled back optional configs
+      d3d12: Video Encoder: Support reporting non contiguous NALU, offsets for frontend extraction
 
-Yonggang Luo (4):
-      dzn: Fixes -Werror=incompatible-pointer-type
-      d3d12,dzn: Simplify the usage of #include <wsl/winadapter.h>
-      util: Fixes note: the alignment of ‘_Atomic long long int’ fields changed in GCC 11.
-      glsl: move glsl_get_gl_type into glsl/linker_util.h
+jphuang (1):
+      dzn: Change dst image layout according to aspect
 
