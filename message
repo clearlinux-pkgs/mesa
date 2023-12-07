@@ -1,157 +1,183 @@
-Updating from 785290836bb48c2e521a40145b0c11213b44019e to e126e82c790f6bba8f53046195628107791f4a00
+Updating from e126e82c790f6bba8f53046195628107791f4a00 to 4ac8d160065661cb229cd9b864f1431e9380e733
 
-Alyssa Rosenzweig (1):
-      nir/lower_idiv: Optimize idiv sign calculation
+Benjamin Lee (14):
+      nak: make sm available in builders
+      nak: Legalize a bunch of instructions for SM50
+      nak: add IADD instruction for SM50
+      nak: implement ST* and LD* on SM50
+      nak: add ATOM{G,S} encoding for SM50
+      nak: add carry register file
+      nak: move iadd64 construction to a builder method
+      nak: use carry register file for IADD2
+      nak: make as_imm_not_{i,f}20 helper methods public
+      nak: implement SHL and SHR on SM50
+      nak: implement IMUL for SM50
+      nak: encode Dst::None as RZ on SM50
+      nak: implement SHFL on SM50
+      nak: implement VOTE on SM50
 
-Connor Abbott (4):
-      tu: Don't use pipeline layout to emit shared const enable
-      tu: Rework dynamic offset handling
-      tu: Make filling out tu_program_state not depend on the pipeline
-      tu: Move shader linking to tu_shader.cc
+Daniel Almeida (15):
+      nak/sm50: rewrite encode_iadd2 to not use encode_alu()
+      nak: sm50: rewrite fsetp to not use encode_alu
+      nak: sm50: Rewrite fmnmx to not use encode_alu
+      nak: sm50: rewrite fmul to not use encode_alu
+      nak: sm50: rewrite fset to not use encode_alu
+      nak: sm50: rewrite iabs to not use encode_alu
+      nak: sm50: convert sel to not use encode_alu()
+      nak: sm50: convert i2f to not use encode_alu()
+      nak: sm50: rewrite encode_f2f to not use encode_alu()
+      nak: convert encode_imad to not use encode_alu()
+      nak: sm50: rewrite encode_popc to not use encode_alu()
+      nak: sm50: rewrite encode_prmt to not use encode_alu()
+      nak: sm50: remove encode_alu() and friends
+      nak/sm50: remove ALUSrc and friends
+      nak/sm50: remove *fmod* calls from iabs
 
-Dave Airlie (1):
-      nvk/xfb: set correct counter buffer for writing stream out counters.
+Dave Airlie (3):
+      nvk/nil: allow storage on VK_FORMAT_A2B10G10R10_UINT_PACK32
+      nvk: fix transform feedback with multiple saved counters.
+      nvk/nak/xfb: handle skipping properly when setting xfb_attr.
 
-Eric Engestrom (18):
-      freedreno/ci: add flake seen on a630
-      freedreno/ci: add more flakes seen on a630
-      freedreno/ci: add more a630 flakes
-      v3d: drop leftover from "move v3d_tiling to common"
-      radeonsi/ci: track changes to `vpelib`
-      turnip: update symbols that have become aliases for newer ones
-      util/blob: fix trivial typo
-      ci: explain what we mean by the various types of pipelines
-      ci: turn comment into code in `sanity` job rules
-      ci: identify merge request pipelines using `$CI_PIPELINE_SOURCE == merge_request_event` instead of `$CI_COMMIT_BRANCH` being missing
-      ci: rename is-pre-merge-for-marge to is-merge-attempt to be clearer
-      ci: drop containers, builds, and tests from post-merge pipeline
-      ci: add pipeline for direct pushes to main
-      ci: give an explicit priority to the scheduled nightly pipelines
-      ci: clean up pre-merge and fork pipelines rules
-      ci: make sure pre-merge pipelines have the same jobs as merge pipelines
-      ci: improve comments
-      ci: take microsoft farm offline
+Eric Engestrom (28):
+      ci: fix rules for formatting checks
+      zink/ci: fix yaml indentation
+      zink/ci: use variable to avoid repeating the list
+      zink/ci: expand first (and only) level of folders in the list of files
+      zink/ci: run only the relevant jobs when changing the ci expectations
+      panfrost/ci: fix yaml indendation
+      panfrost/ci: run only the relevant jobs when changing the ci expectations
+      freedreno/ci: fix yaml indentation
+      freedreno/ci: run only the relevant jobs when changing the ci expectations
+      intel/ci: fix yaml indentation
+      intel/ci: deduplicate common intel files rules
+      intel/ci: expand first level of common intel files
+      intel/ci: anv changes should only trigger anv jobs
+      intel/ci: hasvk changes should only trigger hasvk jobs
+      intel/ci: run only the relevant jobs when changing the ci expectations
+      docs/calendar: add 24.0 branchpoint and release schedule
+      etnaviv/ci: fix yaml indentation
+      etnaviv/ci: expand first level of files in src/etnaviv/
+      etnaviv/ci: run only the relevant jobs when changing the ci expectations
+      broadcom/ci: avoid running the rpi4 jobs when changing the rpi3 expectations, and vice-versa
+      vk/update-aliases.py: drop dead --check-only
+      vk/update-aliases.py: allow specifying the files we want to update
+      vk/update-aliases.py: handle "no match" grep call
+      vk/update-aliases.py: sort files when informing the user of the matches
+      vk/update-aliases.py: simplify addition of other concatenated prefixes
+      vk/update-aliases.py: handle more concatenated prefixes
+      vk/update-aliases.py: enforce correct list order
+      vk/update-aliases.py: only apply renames for the vulkan api (not vulkansc)
 
-Faith Ekstrand (17):
-      dxil: Use mesa_prim consistently
-      glsl: Properly remap GL_* to MESA_PRIM
-      intel/vec4: Use MESA_PRIM_* instead of GL_*
-      nir: Return a mesa_prim from gs_in_prim_for_topology
-      compiler: Fix a comment
-      radeonsi: Drop an unnecessary cast
-      nvk: Advertise VK_EXT_scalar_block_layout
-      nak: Advertise subgroupBroadcastDynamicId
-      nak: Add a B32 source type
-      nak: Rework the OpIAdd3/OpIAdd3X split
-      nak/legalize: Handle the src0/1 source mod condition for OpIAdd3X
-      nak: Legalize immediates with source modifiers
-      nak: Implement uadd_sat
-      nak: Implement usub_sat
-      nvk: Implement VK_EXT_texel_buffer_alignment
-      spirv: Plumb variable alignments through to NIR
-      nir: Respect variable alignments in lower_vars_to_explicit_types
+Faith Ekstrand (42):
+      nak: rustfmt
+      nak: Restructure for better module separation
+      ci: Also rustfmt binaries
+      nir: Split has_[su]dot_4x8 bits into regular and _sat versions
+      nir: Lower [su]dot_4x8_[ui]add_sat to [su]dot_4x8_[ui]add
+      microsoft: Stop claiming dot_4x8_sat support
+      nak: Rework printing of int/float types and rounding modes
+      nak: Wire up DP4
+      nvk: Advertise KHR_shader_integer_dot_product
+      nak: Split legalize into per-SM functions
+      nak: Initial WIP SM50 backend
+      nak: Rework set_src_imm20 in nak_encode_sm50
+      nak: Rewrite SM50 encode_fadd to not use encode_alu
+      nak: Rename LogicOp to LogicOp3
+      nak: Use OpLop2 and OpPSetP pre-SM70
+      nak: Rework the SM50 encoding of isetp
+      nak: Add SM50 encodings for ALD and AST
+      nak: Only split texture destinations on Volta+
+      nak: Rework nvfuzz for SM50
+      nak/nv50: Rewrite the encoding of OpShf
+      nak/sm50: Wire up tex ops
+      nak: Rewrite the SM50 encoding of OpF2I
+      nak/sm50: Rewrite the encoding for OpIMnMx
+      nak: Implement FS input interpolation on SM50
+      nak/sm50: Rewrite the encoding for OpMov
+      nak: Drop the SM50 encoding of BREV
+      nak/sm50: Add better helpers for encoding sources with modifiers
+      nak/sm50: Stop using ALUSrc for IADD2
+      nak/sm50: Drop src_mod_has* in favor of core helpers
+      nak: Clean up compiler warnings
+      nak: Add barriers on Volta
+      nak/nvfuzz: Add an SM parameter
+      nak: Drop the fmnmx from Builder
+      nak: Add an ftz bit to a bunch of float ops
+      nak: Plumb through float controls
+      nvk: Advertise VK_KHR_shader_float_controls
+      nak: Plumb through float controls for fset[p]
+      nak: Plumb through float controls for frnd[p]
+      nak: Add dnz bits to OpFMul and OpFFma
+      nak: Audit remaining FTZ/DNZ bits on sm70+
+      nak: Audit sm50 for FTZ/DNZ bits
+      nak: Clean up instruction printing a bit
 
-Jesse Natalie (2):
-      microsoft/clc: Fix images with multiple derefs for real
-      microsoft/clc: Add a test which sinks image derefs
+Jesse Natalie (1):
+      microsoft/clc: One more image lowering fix
 
-José Roberto de Souza (2):
-      intel: Sync xe_drm.h take 2 part 3
-      intel/isl: Set mocs.blitter_dst/src for MTL
+José Roberto de Souza (6):
+      anv: Fix handling of host_cached_coherent bos in gen9 lp in older kernels
+      anv: Split ANV_BO_ALLOC_HOST_CACHED_COHERENT into two actual flags
+      anv: Promote bos to host_cached+host_coherent in platforms with LLC
+      anv: Avoid unnecessary intel_flush calls
+      intel/genxml/xe2: Update PIPE_CONTROL
+      intel/genxml/xe2: Update PIPELINE_SELECT
 
-Juan A. Suarez Romero (1):
-      v3d: include the revision in the device name
+Juan A. Suarez Romero (2):
+      ci/baremetal: make BM_BOOTCONFIG optional
+      ci: do not mount already mounted directories
 
-Karol Herbst (2):
-      clc: allow debug flag to be read from other files
-      clc: add dump_llvm debug options
+Juston Li (1):
+      radv: enable stippledBresenhamLines on GFX9 chips
 
-Lionel Landwerlin (2):
-      vulkan/runtime: retain video session creation flags
-      anv/video: only report matching memory types for protected sessions
+Konstantin Seurer (4):
+      drm-shim/nouveau: Set nv_device_info_v0::platform
+      drm-shim/nouveau: Expose the 2D engine on NV50+
+      drm-shim/nouveau: Stub mitting ioctls
+      nvk: Do not preserve metadata after lower_load_global_constant_offset_instr
 
-Paulo Zanoni (4):
-      anv/sparse: reject binds that are not a multiple of the granularity
-      anv/tr-tt: assert the bind size is a multiple of the granularity
-      anv/sparse: check if the non-sparse version is supported first
-      anv/sparse: document USAGE_2D_3D_COMPATIBLE as non-standard too
+Mary Guillemard (1):
+      nak: sm50: Implement FFMA
 
-Qiang Yu (1):
-      aco: fix set_wqm segfault when ps prolog
+Pierre-Eric Pelloux-Prayer (1):
+      radeonsi: use a compute shader to convert unsupported indices format
 
-Rhys Perry (7):
-      aco: insert p_end_wqm before p_jump_to_epilog
-      nir/loop_analyze: skip if basis/limit/comparison is vector
-      nir/loop_analyze: scalarize try_eval_const_alu
-      nir/loop_analyze: fix vector basis/limit/comparison
-      nir/loop_analyze: check min compatibility with comparison
-      nir/loop_analyze: support umin and {u,i,f}max
-      nir/loop_analyze: support loops with min/max and non-add incrementation
+Rohan Garg (2):
+      intel/compiler: use the proper enum type to store the op
+      intel/compiler: infer the number of operands using lsc_op_num_data_values
 
-Rohan Garg (1):
-      iris: Emit EXECUTE_INDIRECT_DRAW when available
+Sil Vilerino (6):
+      meson: Add all, all_free (default) options for video-codecs option.
+      d3d12: Fix usage of H264/HEVC specific classes when VIDEO_CODEC_H26XENC not set
+      d3d12: Fix AV1 video encode 32 bits build
+      d3d12: Fix typos in d3d12_video_encoder_bitstream_builder_h264
+      d3d12: Use enc_constraint_set_flags for H264 NALU writing
+      frontends/va: Parse enc_constraint_set_flags from packed SPS
 
-Ryan Neph (5):
-      virgl: implemement resource_get_param() for modifier query
-      venus: add VN_PERF=no_tiled_wsi_image
-      venus: strip ALIAS_BIT for WSI image creation on ANV
-      venus: reject multi-plane modifiers for tiled wsi images
-      venus: add dri option to enable multi-plane wsi modifiers
+Tapani Pälli (1):
+      mesa: lower EXT_render_snorm version requirement
 
-Sagar Ghuge (1):
-      blorp: Handle stencil buffer compression on blitter engine
+Tatsuyuki Ishi (2):
+      radv: Add workaround to allow sparse binding on gfx queues.
+      radv: Enable radv_legacy_sparse_binding for DOOM Eternal.
 
-Samuel Pitoiset (15):
-      radv: set combinedImageSamplerDescriptorCount to 1 for multi-planar formats
-      radv: switch to on-demand PS epilogs for GPL
-      radv: remove unused code for compiling PS epilogs as part of pipelines
-      aco: export depth/stencil/samplemask in create_fs_jump_to_epilog()
-      ac/nir: add an option to skip MRTZ exports in ac_nir_lower_ps()
-      radv: determine if MRTZ needs to be exported via PS epilogs
-      radv: prepare the PS epilog key for exporting MRTZ on RDNA3
-      radv,aco: declare PS epilog VGPR arguments for depth/stencil/samplemask
-      radv: determine and emit SPI_SHADER_Z_FORMAT for PS epilogs
-      zink/ci: remove skipped tests from the list of expected failures for NAVI31
-      radv: export MRTZ via PS epilogs when alpha to coverage is dynamic on GFX11
-      radv: enable extendedDynamicState3AlphaToCoverageEnable on GFX11
-      zink/ci: skip more tests that run OOM on NAVI31
-      zink/ci: update list of failures for NAVI31
-      zink/ci: stop running zink-radv-navi31-valve sequentially
+Timothy Arceri (4):
+      nir: add nir_fixup_deref_types()
+      glsl: support glsl linking in nir block linker
+      glsl: use new nir based block linker
+      glsl: remove now unused GLSL IR block linker
 
-Sil Vilerino (32):
-      pipe: Support inserting new headers on each H264/HEVC IDR frame
-      pipe: Add get_feedback_fence for encode async waiting on pipe_feedback_fence
-      pipe: Add fence_get_win32_handle to get HANDLE from pipe_fence_handle
-      pipe: Add p_video_codec.get_encode_headers for out of band VPS, SPS, PPS
-      pipe: Add PIPE_VIDEO_FEEDBACK_METADATA_TYPE_AVERAGE_FRAME_QP
-      pipe: Add PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE
-      pipe: Add PIPE_H264_MAX_REFERENCES
-      frontend/va: Add h264 encode ip_period param
-      frontend/va: Add VACodedBufferSegment Average QP metadata
-      frontend/va: Use p_video_codec.get_feedback_fence to report errors on frame submission
-      vl_winsys_win32: call winsys->destroy(winsys) in error conditions
-      d3d12: Implement inserting optional new headers on each H264/HEVC IDR frame
-      d3d12: Do not increase active_seq_parameter_set_id on new SPS. Force PPS on new SPS
-      d3d12: H264 encode - Allow CONSTRAINED_BASELINE profile to be written in headers
-      d3d12: Implement get_feedback_fence for encode async waiting on pipe_feedback_fence
-      d3d12: Implement fence_get_win32_handle to get HANDLE from d3d12_fence
-      d3d12: Only pass texture dimensions to d3d12_video_encoder_update_current_encoder_config_state
-      d3d12: Implement d3d12_video_encoder_get_encode_headers for out of band VPS, SPS, PPS
-      d3d12: Use new pipe h264 encode ip_period param
-      d3d12: max_frame_poc workaround for infinite GOPs
-      d3d12: Fix max slice size and max frame size metadata reporting
-      d3d12: Implement PIPE_VIDEO_FEEDBACK_METADATA_TYPE_AVERAGE_FRAME_QP
-      d3d12: Autodetect d3d12_video_buffer imported handle/resource format and dimensions when not passed
-      d3d12: Implement PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE
-      d3d12: Detect imported resource buffer unknown format
-      d3d12: Improve error detection and reporting for video encoder
-      d3d12: Fix d3d12_tcs_variant_cache_destroy leak in d3d12_context
-      d3d12: Fix screen->winsys leak in d3d12_screen
-      d3d12: d3d12_create_fence_win32 - Fix double refcount bump
-      d3d12: Fix max reference frames reporting when HW does not support B frame
-      d3d12: Video Encoder - When setting rate control dirty flags take into account rolled back optional configs
-      d3d12: Video Encoder: Support reporting non contiguous NALU, offsets for frontend extraction
-
-jphuang (1):
-      dzn: Change dst image layout according to aspect
+Yonggang Luo (12):
+      meson/win32: There is no need install OpenGL headers on win32
+      intel: Remove unused ALIGN macro
+      clover: Rename function align to align_vector to avoid conflict with global align
+      treewide: Avoid use align as variable, replace it with other names
+      util,vulkan,mesa,compiler: Generate source files with utf8 encoding from mako template
+      intel: Generate source file with utf-8 encoding from mako template
+      zink: Generate source file with utf-8 encoding from mako template
+      docs: Generate document with utf8 encoding
+      v3dv: Use correct type VkStencilOp in function translate_stencil_op
+      broadcom/compiler: Use correct type pipe_logicop for logicop_func in struct v3d_fs_key
+      broadcom/compiler: remove unused blend in v3d_fs_key
+      broadcom: remove unused headers include
 
