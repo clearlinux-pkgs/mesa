@@ -1,183 +1,32 @@
-Updating from b0ad9995d6f464812cdb14a6a8b3f35b332afb3b to d11c9f983632d35e7010b470fe0af2f6a2c087bf
+Updating from d11c9f983632d35e7010b470fe0af2f6a2c087bf to 888f09eca883ca6428c1c25fcca913e3f188e543
 
-Alyssa Rosenzweig (92):
-      agx: Hotfix for stack_adjust in GS
-      asahi/decode: Decode multiple macOS commands
-      asahi: Quiet clang warning
-      asahi: Add half float type to genxml
-      asahi: Add XML for hw tessellation
-      asahi: Identify Primitive ID frag input
-      asahi: Identify bicubic filtering mode
-      asahi: fix index bias with GS/XFB
-      asahi: Sync heap size
-      asahi: init clear colour between batches
-      asahi: clamp clear colours
-      asahi: handle self blits
-      asahi: bump limits
-      asahi: remove bogus assertion
-      asahi: be robust about null xfb
-      asahi: fix dirty tracking fail with point sprites
-      asahi: handle null PBE
-      asahi: Be robust with arrays of images
-      asahi: fix imageSize of null image
-      asahi: rm compact image atomic descriptors
-      asahi: use 2D descriptors for cubes
-      asahi: defer texture packing to draw-time
-      ail: handle >4GiB textures
-      asahi: return GL_OOM for excessive image sizes
-      asahi: fix meta usc builder allocation
-      asahi: implement xfb stream queries
-      asahi: fix output to non-rast streams
-      asahi: bump glsl version
-      asahi: minify when blitting for transition
-      asahi: blit with the old format when transitioning
-      asahi: flush before resource transition
-      agx: Fix flatshading of matrices
-      asahi: fix xfb of pointsize when not drawing points
-      asahi: defeature quads
-      asahi: Rotate tri fans based on provoking vtx
-      asahi: use GS for first-provoking fans
-      asahi: Early out for GS + rast discard
-      asahi: Implement draw parameters
-      agx: wire up texture_samples/image_samplers
-      asahi: advertise ARB_shader_texture_image_samples
-      asahi: fix layout transitions with arrays
-      asahi: use correct target packing PBE
-      asahi: choose staging bind better
-      asahi: fix destroy_query leaving dangling references
-      asahi: add agx_push macro
-      asahi: collapse unreachable condition
-      asahi: use agx_push
-      asahi: remove dead declarations
-      asahi: rm unnecessary uniform upload for GS
-      asahi: make UB easier to see
-      asahi: force GS for indirect prim gen query
-      asahi: rework GS input assembly
-      asahi: Implement multidraw indirect
-      asahi: move heap alloc to first use
-      asahi: double depth bias
-      asahi: add static assert
-      agxdecode: fix stack smash with border colour
-      asahi: Support L/A/I formats for texture buffers
-      asahi: fix tri fan enum
-      asahi: rework cf binding xml
-      asahi: add xml for flatshading fans
-      agx: fix VARYING_SLOT_COL0 getting flatshaded
-      agx: Avoid scratch mem with tri strip w/ adjacency
-      agx: rework libagx linking a bit
-      asahi: Unroll GS/XFB primitive restart on the GPU
-      asahi: Lower edge flags
-      asahi: assert hw invariant
-      asahi: rewrite pointsize handling
-      agx: remove spurious z/s writes in force early-z shaders
-      agx: handle force early-z + discard
-      agx: note that sample_mask runs occlusion queries
-      agx: allocate varying slot if writing viewport only
-      agx: report if we have a nonzero viewport
-      asahi: allow empty scissor box
-      asahi: add XML for multiple viewports
-      asahi: Implement ARB_viewport_array
-      asahi: handle some components/offsets in GS lowering
-      asahi: prepare gs copy shaders for compact clip/cull
-      asahi: handle compact clip/cull in gs component gather
-      asahi: Implement ARB_cull_distance
-      asahi: add more BGR formats
-      asahi: fix dupe rgb65 formats
-      asahi: fix pbe swizzling
-      asahi: fix integer RT clamping
-      agx: fix fp64 lowering options
-      agx: Lower 64-bit I/O to 32-bit
-      agx: don't produce split of immediate
-      asahi: fix size calculation for 2d msaa arrays
-      asahi: allow more format reinterpretation
-      asahi: respect render condition for compute
-      asahi: wire up hardware gl_PrimitiveID
-      asahi: clamp draw count for mdi
+Echo J (1):
+      nvk: Set HOST_CACHED_BIT for the GTT type
 
-Asahi Lina (8):
-      asahi: Fix CDM Launch/Barrier naming
-      asahi: Add extra CDM barrier bit for G13X
-      asahi: Move USC cache flush to agx_batch_init_state
-      asahi: Add more memory barrier opcodes
-      asahi: Add extra barrier for texture atomics on G13X
-      ail: Fix miptree offset generation for compressed textures
-      ail: Add explicit specification of mip level strides
-      ail: Fix tile size & strides for compressed textures
+Faith Ekstrand (10):
+      nvk: Make NVK_DEBUG=push an alias for push_dump
+      nvk: s/device/dev in nvk_descriptor_set_layout.c
+      nvk: Plumb a physical device into descriptor_stride_align_for_type
+      nvk: Add a nvk_min_cbuf_alignment() helper and use it
+      nvk: Add an NVK_MIN_TEXEL_BUFFER_ALIGNMENT #define
+      nak: Reduce minStorageBufferAlignment
+      nvk: Simplify alignment limit plumbing
+      nvk: CBuf alignment reduces to 64B on Turing
+      nvk: Throw Tegra behind NVK_I_WANT_A_BROKEN_VULKAN_DRIVER
+      nvk: Rework the way we set up memory heaps/types
 
-Eric Engestrom (2):
-      a630/ci: add another flake
-      freedreno/ci: move hang-y a630 jobs from pre-merge to nightly
-
-Janne Grunau (1):
-      asahi: Fix typo in arch check in agx_get_gpu_timestamp
-
-Juston Li (1):
-      venus: fix query feedback copy sanitize off by 1
-
-Karol Herbst (1):
-      nir/opt_preamble: make load_workgroup_size handling optional
-
-Marek Olšák (38):
-      radeonsi/gfx11: fix unaligned SET_CONTEXT_PAIRS_PACKED
-      radeonsi: don't set non-existent VGT_GS_MAX_PRIMS_PER_SUBGROUP on gfx10
-      radeonsi: change the low-priority compiler queue to normal priority
-      radeonsi: update shaders for blend state only if the shader key changed
-      radeonsi: update shaders for rasterizer state only if the shader key changed
-      radeonsi: clean up setting poly/line/stipple shader key bits
-      radeonsi: rewrite how shader key bits dependent on current_rast_prim are updated
-      radeonsi: rewrite si_get_total_colormask as si_any_colorbuffer_written
-      radeonsi: in bind_{blend,rs}_state, only call 1 update function per if
-      radeonsi/gfx11: skip si_set_streamout_enable because it has no effect
-      radeonsi: execute streamout_begin after cache flushes
-      radeonsi: don't print the preamble state separately for GALLIUM_DDEBUG
-      radeonsi: replace gl_FrontFacing with a constant if one side is always culled
-      radeonsi: set OOB_SELECT for VBOs in si_create_vertex_elements
-      radeonsi: group most vertex element fields
-      radeonsi/gfx11: prefer Wave64 for PS without inputs for better VALU perf
-      radeonsi/gfx11: disable the shader profile for Medical that forces Wave64
-      radeonsi/gfx11: disable the shader profile for Medical that disables binning
-      radeonsi: clean up how debug flags and shader profiles determine the wave size
-      radeonsi/gfx11: prefer Wave64 for VS/TCS/TES/GS because it's slightly faster
-      winsys/amdgpu: bypass GL2 for command buffers
-      radeonsi: track NIR progress properly for optimizations in si_get_nir_shader
-      ac,radeonsi: rename pos_inputs -> fragcoord_components
-      nir,radeonsi: add FLAGS into load_vector_arg_amd to record color input usage
-      radeonsi: change the signature of si_nir_lower_ps_color_input
-      radeonsi: gather lowered color inputs for monolithic PS
-      radeonsi: add PS input info into si_shader_binary_info
-      radeonsi: don't include the PARAM_GEN input in si_shader_info
-      radeonsi: decrease NUM_INTERP if uniform inlining eliminated PS inputs
-      radeonsi: update comments about uniform inlining
-      radeonsi: decrease NUM_INTERP if export formats/colormask eliminated PS inputs
-      util: make BITSET_TEST_RANGE_INSIDE_WORD take a value to compare with
-      radeonsi: merge context_reg_saved_mask and other_reg_saved_mask into a BITSET
-      radeonsi: convert depth-stencil-alpha state to tracked registers
-      radeonsi: convert rasterizer state to tracked registers
-      ac/gpu_info: fix printing radeon_info after adding VPE
-      radeonsi: rework how guardband registers are updated to decrease overhead
-      mesa: fix _mesa_matrix_is_identity
-
-Paulo Zanoni (1):
-      intel/tools: fix compilation of intel_hang_viewer on 32 bits
-
-Pierre-Eric Pelloux-Prayer (1):
-      radeonsi: update guardband if vs_disables_clipping_viewport changes
-
-Qiang Yu (1):
-      radeonsi: fix legacy merged LS/ES workgroup size for aco compilation
-
-Rhys Perry (2):
-      vulkan/wsi: don't support present with queues where blit is unsupported
-      vulkan/wsi: fix win32 compilation
-
-Timur Kristóf (6):
-      radv: Implement barriers for transfer queues.
-      radv: Implement vkCmdFillBuffer on transfer queues.
-      radv: Implement vkCmdWriteTimestamp2 on transfer queues.
-      radv: Implement vkCmdWriteBufferMarker2AMD on transfer queues.
-      radv: Implement buffer copies on transfer queues.
-      radv: Implement vkCmdUpdateBuffer on transfer queues.
-
-i509VCB (1):
-      asahi,docs: add PBE to hardware glossary
+Marek Olšák (13):
+      mesa: remove some DrawTransformFeedback duplication
+      mesa: remove some DrawElementsInstanced duplication
+      mesa: remove more DrawArrays/Elements duplication
+      mesa: remove non-relevant 16-year-old comment
+      st/mesa: make prepare_(indexed_)draw non-static
+      mesa: inline st_draw_transform_feedback
+      mesa: call st_prepare_(indexed_)draw before Driver.DrawGallium(MultiMode)
+      st/mesa: no need to check index_size in st_prepare_indexed_draw anymore
+      mesa: move index bounds code (st_prepare_indexed_draw) into draw.c
+      cso: do cso_context inheritance how we do it elsewhere
+      cso: inline cso_get_pipe_context
+      mesa: execute an error path sooner in _mesa_validated_drawrangeelements
+      gallium: add typedef pipe_draw_func matching the draw_vbo signature and use it
 
