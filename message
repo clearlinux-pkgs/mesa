@@ -1,32 +1,60 @@
-Updating from d11c9f983632d35e7010b470fe0af2f6a2c087bf to 888f09eca883ca6428c1c25fcca913e3f188e543
+Updating from 888f09eca883ca6428c1c25fcca913e3f188e543 to 8af15359e37895957ce3b3fec0955c27a446f4ed
 
-Echo J (1):
-      nvk: Set HOST_CACHED_BIT for the GTT type
+Daniel Schürmann (3):
+      amd: rename max_wave64_per_simd -> max_waves_per_simd
+      aco: rename max_wave64_per_simd -> max_waves_per_simd
+      radv: fix number of physical SGPRs on GFX10+
 
-Faith Ekstrand (10):
-      nvk: Make NVK_DEBUG=push an alias for push_dump
-      nvk: s/device/dev in nvk_descriptor_set_layout.c
-      nvk: Plumb a physical device into descriptor_stride_align_for_type
-      nvk: Add a nvk_min_cbuf_alignment() helper and use it
-      nvk: Add an NVK_MIN_TEXEL_BUFFER_ALIGNMENT #define
-      nak: Reduce minStorageBufferAlignment
-      nvk: Simplify alignment limit plumbing
-      nvk: CBuf alignment reduces to 64B on Turing
-      nvk: Throw Tegra behind NVK_I_WANT_A_BROKEN_VULKAN_DRIVER
-      nvk: Rework the way we set up memory heaps/types
+David Heidelberg (1):
+      docs: drop unused manual optimizations override
 
-Marek Olšák (13):
-      mesa: remove some DrawTransformFeedback duplication
-      mesa: remove some DrawElementsInstanced duplication
-      mesa: remove more DrawArrays/Elements duplication
-      mesa: remove non-relevant 16-year-old comment
-      st/mesa: make prepare_(indexed_)draw non-static
-      mesa: inline st_draw_transform_feedback
-      mesa: call st_prepare_(indexed_)draw before Driver.DrawGallium(MultiMode)
-      st/mesa: no need to check index_size in st_prepare_indexed_draw anymore
-      mesa: move index bounds code (st_prepare_indexed_draw) into draw.c
-      cso: do cso_context inheritance how we do it elsewhere
-      cso: inline cso_get_pipe_context
-      mesa: execute an error path sooner in _mesa_validated_drawrangeelements
-      gallium: add typedef pipe_draw_func matching the draw_vbo signature and use it
+Eric Engestrom (1):
+      spirv: add missing build dependency
+
+Erik Faye-Lund (5):
+      mesa/main: remove unused Log2 variants of width/height/depth
+      mesa/main: remove unused ClassID
+      mesa/main: use _mesa_is_zero_size_texture-helper
+      mesa/main: remove unused function
+      mesa/st: use _mesa_is_zero_size_texture-helper
+
+Faith Ekstrand (3):
+      nir: Add a new has_fmulz_no_denorms flag
+      nak: Set .ftz on f32 ops by default
+      nak: Implement fmulz and ffmaz
+
+Ian Romanick (1):
+      nir: Handle divergence for decl_reg
+
+Jesse Natalie (2):
+      compiler/clc: Don't fail to parse SPIR-V if there's no kernels
+      microsoft/clc: Flip on capabilities to prevent warning spew
+
+Karol Herbst (7):
+      radeonsi: lower relative shuffle subgroup ops
+      radeonsi: lower 64bit subgroup shuffle to 32 bit
+      clc: add support for cl_khr_subgroup_shuffle and shuffle_relative
+      rusticl: implement cl_khr_subgroup_shuffle and shuffle_relative
+      ci/fedora: bump to meson 1.3.0
+      rusticl: bump meson req
+      rusticl: use rust.proc_macro for proc macros
+
+M Henning (2):
+      nak: Clamp negative texture array indices to zero
+      nak: Enable loop unrolling.
+
+Rob Clark (3):
+      freedreno: De-duplicate 19.2MHz RBBM tick conversion
+      freedreno: Fix timestamp conversion
+      freedreno: Implement PIPE_CAP_TIMER_RESOLUTION
+
+Samuel Pitoiset (2):
+      vulkan: bump headers/registry to 1.3.273
+      radv: promote EXT_calibrated_timestamps to KHR
+
+Sil Vilerino (1):
+      meson: Only build WGL for Windows platform when opengl option is active
+
+Yiwei Zhang (1):
+      driconfig: add a workaround for Hades (Vulkan backend)
 
