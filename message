@@ -1,60 +1,121 @@
-Updating from 888f09eca883ca6428c1c25fcca913e3f188e543 to 8af15359e37895957ce3b3fec0955c27a446f4ed
+Updating from 8af15359e37895957ce3b3fec0955c27a446f4ed to f6437f4388ecf398cb0effbf0584b5d972a64340
 
-Daniel Schürmann (3):
-      amd: rename max_wave64_per_simd -> max_waves_per_simd
-      aco: rename max_wave64_per_simd -> max_waves_per_simd
-      radv: fix number of physical SGPRs on GFX10+
+Alyssa Rosenzweig (2):
+      gallium: fix util_clamp_color type confusion
+      gallium: add PIPE_IMAGE_ACCESS_DRIVER_INTERNAL
 
-David Heidelberg (1):
-      docs: drop unused manual optimizations override
+Caio Oliveira (21):
+      intel/compiler: Remove unused headers
+      intel/compiler: Move NIR emission code to brw_fs_nir.cpp
+      intel/compiler: Make a NIR intrinsic emission functions static
+      intel/compiler: Make more functions in NIR conversion static
+      intel/compiler: Make functions for NIR control flow conversion static
+      intel/compiler: Make setup functions of NIR emission static
+      intel/compiler: Make non-intrinsic NIR conversion functions static
+      intel/compiler: Make NIR atomic conversion functions static
+      intel/compiler: Make NIR resources helpers static
+      intel/compiler: Move nir_ssa_value into a local structure
+      intel/compiler: Move remaining NIR conversion fields to nir_to_brw_state
+      intel/compiler: Stop using fs_visitor::bld field in NIR conversion
+      intel/compiler: Annotate and use nir_to_brw_state::bld
+      intel/compiler: Don't use fs_visitor::bld in remaining places
+      intel/compiler: Remove fs_visitor::bld
+      intel/compiler: Make fs_visitor not depend on fs_builder
+      intel/compiler: Make fs_builder include fs_visitor and not the other way
+      intel/compiler: Add ctor to fs_builder that just takes the shader
+      intel/compiler: Create and use nir_to_brw() function
+      intel/compiler: Use reference instead of pointer for nir_to_brw_state
+      intel/compiler: Use reference instead of pointer for fs_visitor
 
-Eric Engestrom (1):
-      spirv: add missing build dependency
+David Heidelberg (10):
+      ci/freedreno: mark unvanquished-lowest trace as flaky and skip
+      ci/freedreno: switch Adreno 630 boards back to 6.4 kernel
+      ci/freedreno: increase fraction for Vulkan testing
+      ci/tu: add another failing pipeline strip draw
+      ci/freedreno: extend timeout for full runs
+      ci/freedreno: re-enable two Adreno 618 tests
+      ci/freedreno: timestamp-get no longer fails on Adreno
+      ci/freedreno: downgrade a618_piglit to 6.4 kernel
+      ci/freedreno: fail introduced by ARB_post_depth_coverage
+      rusticl: add freedreno alias for RUSTICL_ENABLE
 
-Erik Faye-Lund (5):
-      mesa/main: remove unused Log2 variants of width/height/depth
-      mesa/main: remove unused ClassID
-      mesa/main: use _mesa_is_zero_size_texture-helper
-      mesa/main: remove unused function
-      mesa/st: use _mesa_is_zero_size_texture-helper
+Echo J (1):
+      vulkan: Remove nonexistent output in vk_synchronization_helpers target
+
+Erico Nunes (3):
+      lima/ci: update piglit ci expectations
+      Revert "ci: disable lima farm as it appears to be down"
+      panvk: Support modifiers for Wayland WSI
 
 Faith Ekstrand (3):
-      nir: Add a new has_fmulz_no_denorms flag
-      nak: Set .ftz on f32 ops by default
-      nak: Implement fmulz and ffmaz
+      nvk: Enable NAK by default for Volta
+      nak: Don't set both FTZ and DNZ at the same time
+      nvk: Implement VK_EXT_multi_draw
 
-Ian Romanick (1):
-      nir: Handle divergence for decl_reg
+Frank Binns (1):
+      pvr: alloc WSI memory via GPU when there isn't a valid display FD
 
-Jesse Natalie (2):
-      compiler/clc: Don't fail to parse SPIR-V if there's no kernels
-      microsoft/clc: Flip on capabilities to prevent warning spew
+Friedrich Vock (1):
+      radv,vtn,driconf: Add and use radv_rt_ssbo_non_uniform workaround for Crysis 2/3 Remastered
 
-Karol Herbst (7):
-      radeonsi: lower relative shuffle subgroup ops
-      radeonsi: lower 64bit subgroup shuffle to 32 bit
-      clc: add support for cl_khr_subgroup_shuffle and shuffle_relative
-      rusticl: implement cl_khr_subgroup_shuffle and shuffle_relative
-      ci/fedora: bump to meson 1.3.0
-      rusticl: bump meson req
-      rusticl: use rust.proc_macro for proc macros
+Iago Toral Quiroga (1):
+      broadcom: fix scheduling dependencies for SETMSF instruction
 
-M Henning (2):
-      nak: Clamp negative texture array indices to zero
-      nak: Enable loop unrolling.
+Jordan Justen (1):
+      isl: Add mocs for xe2
 
-Rob Clark (3):
-      freedreno: De-duplicate 19.2MHz RBBM tick conversion
-      freedreno: Fix timestamp conversion
-      freedreno: Implement PIPE_CAP_TIMER_RESOLUTION
+Karol Herbst (6):
+      clc: use addMacroDef/Undef instead of -D/-U flags
+      nak: fix some sm checks for volta
+      nir/algebraic: add support for custom arguments
+      nak: add algebraic lowering pass
+      nak: move nir_lower_subgroups into nak_postprocess_nir
+      rusticl/kernel: explicitly set rounding modes
 
-Samuel Pitoiset (2):
-      vulkan: bump headers/registry to 1.3.273
-      radv: promote EXT_calibrated_timestamps to KHR
+Lionel Landwerlin (8):
+      util/u_printf: add a u_printf_ptr() variant
+      nir: make printf_info (de)serializer available
+      nir/clone: fix missing printf_info clone
+      nir: include printfs from linked shaders
+      nir/divergence: handle printf intrinsic
+      nir/serialize: untangle printf serialization from a particular stage
+      nir: fixup nir_printf intrinsic description
+      anv: fix incorrect queue_family access on command buffer
 
-Sil Vilerino (1):
-      meson: Only build WGL for Windows platform when opengl option is active
+Pavel Asyutchenko (1):
+      mesa/main: allow S3TC for 3D textures
 
-Yiwei Zhang (1):
-      driconfig: add a workaround for Hades (Vulkan backend)
+Rhys Perry (1):
+      vulkan/wsi: always create command buffer for special blit queues
+
+Samuel Pitoiset (1):
+      docs: update features.txt for RADV
+
+Thomas Devoogdt (1):
+      util: os_same_file_description: fix unknown linux < 3.5 syscall SYS_kcmp
+
+Thomas H.P. Andersen (1):
+      nvk: VK_EXT_color_write_enable
+
+Timothy Arceri (4):
+      glsl/st: move has_half_float_packing flag to consts struct
+      glsl/st: move remaining glsl ir lowering to linker
+      mesa/st: drop additional validate_ir_tree() call
+      glsl: combine shader stage loops in linker
+
+Yogesh Mohan Marimuthu (10):
+      winsys/amdgpu: add _dw to max_ib_size variable for code readability
+      winsys/amdgpu: remove ib_type variable from struct amdgpu_ib
+      winsys/amdgpu: rename struct amdgpu_ib main variable as main_ib everywhere
+      winsys/amdgpu: rename ib variable name to chunk_ib
+      winsys/amdgpu: remove rcs variable from struct amdgpu_ib
+      winsys/amdgpu: move 125% comment to correct line of code
+      winsys/amdgpu: rename requested_size_dw to projected_size_dw
+      winsys/amdgpu: rename ptr_ib_size_inside_ib to is_chained_ib
+      winsys/amdgpu: rename big_ib_buffer,ib_mapped variables in struct amdgpu_ib
+      winsys/radeon: remove unused gpu_address variable from struct radeon_cmdbuf
+
+Yonggang Luo (2):
+      broadcom/(compiler,common): avoid include of gallium headers in header files
+      broadcom/compiler: remove include of gallium headers from meson.build
 
