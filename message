@@ -1,105 +1,88 @@
-Updating from 83756092350add3747579325063a7feab4bc9921 to 1cf1b9d7412e94f70a5f68f81eed7ac22ad75613
+Updating from 1cf1b9d7412e94f70a5f68f81eed7ac22ad75613 to 586c34b19c2e40cc5ddd43302fa202a4aa94a5c5
 
-Caio Oliveira (3):
-      compiler/types: Add a few more helpers to get builtin types
-      intel/compiler: Use C helpers to access builtin types
-      compiler: Remove C++ static member pointers to builtin types
+Boris Brezillon (10):
+      panfrost: Abstract kernel driver operations
+      pan/kmod: Add a backend for the panfrost kernel driver
+      panfrost: Avoid direct accesses to some panfrost_device fields
+      panfrost: Avoid direct accesses to some panfrost_bo fields
+      panfrost: Back panfrost_device with pan_kmod_dev object
+      panfrost: Add a VM to panfrost_device
+      panfrost: Back panfrost_bo with pan_kmod_bo object
+      panfrost: Introduce a PAN_BO_SHAREABLE flag
+      panvk: Pass PAN_BO_SHAREABLE when relevant
+      panfrost: Flag BO shareable when appropriate
 
-Daniel Schürmann (1):
-      aco: remove VCCZ and EXECZ register handling
+Colin Marc (1):
+      vulkan video: correctly set SPS VUI bits
 
-Daniel Stone (4):
-      ci: Fix trivial typo in ARTIFACTS_BASE_URL
-      panfrost/ci: Remove Vulkan expectations from G57
-      panfrost/ci: Add environment variable to suppress warnings
-      panfrost/ci: Skip broken image copy tests
+Eric Engestrom (2):
+      docs: document how to build the docs
+      vulkan/wsi: fix build when platform headers are installed in non-standard locations
 
-David Heidelberg (1):
-      ci/freedreno: more issues showed up on a618, let's use 6.4
+Faith Ekstrand (6):
+      nak: Switch to //-style comments
+      nak: Plumb shader model into instruction latency queries
+      nak: Handle minimum execution latencies in the dep tracker
+      nvk: Advertise VK_KHR_vulkan_memory_model
+      nvk: Use render->color_att_count for color write enables
+      nvk: Support extendedDynamicState3ColorWriteMask
 
-Eric Engestrom (7):
-      bin/gitlab_gql: fix --print-merged-yaml when --rev != HEAD
-      bin/gitlab_gql: print merged yaml as yaml instead of a python dict
-      v3d/ci: add flake
-      ci: fix indentation
-      ci: run every test when changing the build
-      docs: drop `:` in title
-      radv/ci: add flake
+Friedrich Vock (1):
+      radv/rt: Initialize unused children in PLOC early-exit
 
-Faith Ekstrand (18):
-      nak: Add a delay of 2 cycles for barriers
-      nak: Rework the dependency pass
-      nak: Handle negative cbuf offset immediates
-      nak/sm50: Fix immediate encodings
-      nak/sm50: Fix legalization of OpIAdd
-      nak/sm50: Add legalization and encoding for OpLdc
-      nvk/nir: Add cbuf analysis to nvi_nir_lower_descriptors()
-      nvk/nir: Lower UBO loads to load_ubo when we have a cbuf
-      nvk: Add a cbuf_bind_map to nvk_shader
-      nvk: Stash descriptor set sizes
-      nvk: Rework push_indirect to take an address
-      nvk: Set MME_DATA_FIFO_CONFIG on device init
-      nvk: Don't flush descriptors in BeginConditionalRendering
-      nvk: Upload cbufs based on the cbuf_map
-      nvk: Add debug flags to the physical device
-      nvk: Enable cbufs
-      nvk: Use ENUM_PACKED for enums instead of PACKED
-      nir: Scalarize bounds checked loads and stores
+George Ouzounoudis (9):
+      nvk: Move SET_BLEND_STATE_PER_TARGET to graphics state initialization
+      nvk: Support extendedDynamicState3ColorBlendEnable
+      nvk: Support extendedDynamicState3ColorBlendEquation
+      nvk: Support extendedDynamicState3SampleMask
+      nvk: Support extended dynamic state for alpha to coverage/one
+      vulkan: Fix dynamic graphics state enum usage
+      nvk: Support extended dynamic state for rasterization stream
+      nvk: Remove pipeline state setting functions
+      nvk: Support extended dynamic state for tessellation domain origin
 
-GKraats (1):
-      i915G: show correct number of needed ALU instructions at errmess
+Iago Toral Quiroga (3):
+      broadcom: disable perquad tmu loads after discards
+      broadcom: lower null pointers
+      v3dv: implement VK_KHR_shader_terminate_invocation
 
-Iago Toral Quiroga (1):
-      v3dv: switch timestamp queries to using BO memory
+Job Noorman (2):
+      nir: add _safe variants of nir_foreach_reg_load/store
+      ir3: lower 64b registers
 
-Jesse Natalie (2):
-      microsoft: Whitespace change to trigger CI
-      vulkan/wsi: Convert bit tests to bool with != 0
+José Roberto de Souza (2):
+      intel: Sync xe_drm.h final part
+      anv: Remove libdrm usage from Xe KMD backend
 
-Jordan Petridis (1):
-      Revert "ci: take microsoft farm offline"
+M Henning (3):
+      nak: Print out an instruction count
+      nak: Add a jump threading pass
+      nak: Optimize jumps to fall-through if possible
 
-Lionel Landwerlin (1):
-      anv: wait for CS write completion before executing secondary
+Nanley Chery (3):
+      iris: Optimize BO_ALLOC_ZEROED for suballocations
+      iris: Zero the clear color before FCV_CCS_E rendering
+      iris: Don't memset the clear color BO during aux init
 
-Martin Roukala (né Peres) (1):
-      ci/b2c: fix the `cmdline_extra` variable name
+Ruijing Dong (4):
+      radesonsi/vcn add qp_map definition
+      frontends/va: add ROI feature
+      radeonsi/vcn: ROI feature implementation
+      radeonsi/vcn: enable ROI feature in vcn.
 
-Maíra Canal (21):
-      v3dv: move multisync functions to the beginning of the file
-      v3dv: allow different in/out sync queues
-      v3dv: allow set_multisync() to accept more wait syncobjs
-      drm-uapi: extend interface for indirect CSD CPU job
-      v3dv: check CPU queue availability
-      v3dv: create a CPU queue type
-      v3dv: use the indirect CSD user extension
-      v3dv: occlusion queries aren't handled with a CPU job
-      drm-uapi: extend interface for timestamp query CPU job
-      v3dv: use the timestamp query user extension
-      drm-uapi: extend interface for reset timestamp CPU job
-      v3dv: use the reset timestamp user extension
-      drm-uapi: extend interface for copy timestamp results CPU job
-      v3dv: use the copy timestamp query results user extension
-      drm-uapi: extend interface for the reset performance query CPU job
-      v3dv: don't start iterating performance queries at zero
-      v3dv: use the reset performance query user extension
-      drm-uapi: extend interface for copy performance query CPU job
-      v3dv: use the copy performance query results user extension
-      v3d/v3dv: move V3D_CSD definitions to a separate file
-      v3dv: enable CPU jobs in the simulator
+Sagar Ghuge (1):
+      anv: Enable blitter engine unconditionally on ACM+
 
-Samuel Pitoiset (6):
-      radv: emit the task shader in radv_emit_graphics_pipeline()
-      radv: cleanup ac_nir_lower_ps options
-      radv: cleanup gathering PS info with/without PS epilogs
-      radv: cleanup radv_pipeline_generate_ps_epilog_key()
-      radv: add support for MRT compaction with PS epilogs
-      radv: fix binding partial depth/stencil views with dynamic rendering
+Samuel Pitoiset (2):
+      radv: stop asserting some image create info fields
+      radv: remove some declared but unused functions/macros
 
-Sil Vilerino (2):
-      d3d12: Bump directx-headers dependency to v611.0 for latest video codecs and features
-      d3d12: Remove D3D12_SDK_VERSION checks after bumping directx-headers dependency to v611
+Sil Vilerino (1):
+      d3d12: Fix warning C4065 switch statement contains default but no case labels
 
-Thomas H.P. Andersen (1):
-      docs: update features.txt for nvk
+Tapani Pälli (4):
+      anv/hasvk/drirc: change anv_assume_full_subgroups to have subgroup size
+      drirc: setup anv_assume_full_subgroups=16 for UnrealEngine5.1
+      anv: cleanup, use intel_needs_workaround instead of is_dg2
+      iris: cleanup, use intel_needs_workaround instead of is_dg2
 
