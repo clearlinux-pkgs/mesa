@@ -1,88 +1,13 @@
-Updating from 1cf1b9d7412e94f70a5f68f81eed7ac22ad75613 to 586c34b19c2e40cc5ddd43302fa202a4aa94a5c5
+Updating from 586c34b19c2e40cc5ddd43302fa202a4aa94a5c5 to ddf2ca4faffdd309638aa0ebfcba2c43b4fc439d
 
-Boris Brezillon (10):
-      panfrost: Abstract kernel driver operations
-      pan/kmod: Add a backend for the panfrost kernel driver
-      panfrost: Avoid direct accesses to some panfrost_device fields
-      panfrost: Avoid direct accesses to some panfrost_bo fields
-      panfrost: Back panfrost_device with pan_kmod_dev object
-      panfrost: Add a VM to panfrost_device
-      panfrost: Back panfrost_bo with pan_kmod_bo object
-      panfrost: Introduce a PAN_BO_SHAREABLE flag
-      panvk: Pass PAN_BO_SHAREABLE when relevant
-      panfrost: Flag BO shareable when appropriate
+Christian Gmeiner (3):
+      isaspec: Add bool_inv type to print inverted bools
+      etnaviv: Add isaspec support
+      etnaviv: disassembler: Switch to isaspec
 
-Colin Marc (1):
-      vulkan video: correctly set SPS VUI bits
+David Heidelberg (1):
+      ci/austriancoder: separate HW definition from SW
 
-Eric Engestrom (2):
-      docs: document how to build the docs
-      vulkan/wsi: fix build when platform headers are installed in non-standard locations
-
-Faith Ekstrand (6):
-      nak: Switch to //-style comments
-      nak: Plumb shader model into instruction latency queries
-      nak: Handle minimum execution latencies in the dep tracker
-      nvk: Advertise VK_KHR_vulkan_memory_model
-      nvk: Use render->color_att_count for color write enables
-      nvk: Support extendedDynamicState3ColorWriteMask
-
-Friedrich Vock (1):
-      radv/rt: Initialize unused children in PLOC early-exit
-
-George Ouzounoudis (9):
-      nvk: Move SET_BLEND_STATE_PER_TARGET to graphics state initialization
-      nvk: Support extendedDynamicState3ColorBlendEnable
-      nvk: Support extendedDynamicState3ColorBlendEquation
-      nvk: Support extendedDynamicState3SampleMask
-      nvk: Support extended dynamic state for alpha to coverage/one
-      vulkan: Fix dynamic graphics state enum usage
-      nvk: Support extended dynamic state for rasterization stream
-      nvk: Remove pipeline state setting functions
-      nvk: Support extended dynamic state for tessellation domain origin
-
-Iago Toral Quiroga (3):
-      broadcom: disable perquad tmu loads after discards
-      broadcom: lower null pointers
-      v3dv: implement VK_KHR_shader_terminate_invocation
-
-Job Noorman (2):
-      nir: add _safe variants of nir_foreach_reg_load/store
-      ir3: lower 64b registers
-
-José Roberto de Souza (2):
-      intel: Sync xe_drm.h final part
-      anv: Remove libdrm usage from Xe KMD backend
-
-M Henning (3):
-      nak: Print out an instruction count
-      nak: Add a jump threading pass
-      nak: Optimize jumps to fall-through if possible
-
-Nanley Chery (3):
-      iris: Optimize BO_ALLOC_ZEROED for suballocations
-      iris: Zero the clear color before FCV_CCS_E rendering
-      iris: Don't memset the clear color BO during aux init
-
-Ruijing Dong (4):
-      radesonsi/vcn add qp_map definition
-      frontends/va: add ROI feature
-      radeonsi/vcn: ROI feature implementation
-      radeonsi/vcn: enable ROI feature in vcn.
-
-Sagar Ghuge (1):
-      anv: Enable blitter engine unconditionally on ACM+
-
-Samuel Pitoiset (2):
-      radv: stop asserting some image create info fields
-      radv: remove some declared but unused functions/macros
-
-Sil Vilerino (1):
-      d3d12: Fix warning C4065 switch statement contains default but no case labels
-
-Tapani Pälli (4):
-      anv/hasvk/drirc: change anv_assume_full_subgroups to have subgroup size
-      drirc: setup anv_assume_full_subgroups=16 for UnrealEngine5.1
-      anv: cleanup, use intel_needs_workaround instead of is_dg2
-      iris: cleanup, use intel_needs_workaround instead of is_dg2
+Yiwei Zhang (1):
+      vulkan/wsi/wayland: ensure drm modifiers stored in chain are immutable
 
