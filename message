@@ -1,12 +1,104 @@
-Updating from ddf2ca4faffdd309638aa0ebfcba2c43b4fc439d to 240d11eb8d81cfab28c7075b9f1b600eb4df18dc
+Updating from 240d11eb8d81cfab28c7075b9f1b600eb4df18dc to b5153693cc38e631b23c741a5eb3b160a01b10e2
 
-Dave Airlie (1):
-      intel/compiler: move gen5 final pass to actually be final pass
+Connor Abbott (8):
+      freedreno/afuc: Handle store instruction on a5xx
+      freedreno/afuc: Add separate "SQE registers"
+      freedreno/afuc: Use SQE registers for call stack
+      freedreno/afuc: Add syntax for pre-increment addressing
+      freedreno/afuc: Decode (sdsN) modifier
+      freedreno: Update more control/pipe registers for a7xx
+      freedreno/afuc: README updates for a7xx
+      freedreno/afuc: Fix gen autodetection for a7xx
 
-Eric Engestrom (1):
-      ci/build: drop redundant meson/build.sh from jobs that already inherit from .meson-build
+David Heidelberg (1):
+      ci/freedreno: downgrade whole Adreno 6xx series, incl. zink-a618 jobs
 
-Martin Roukala (né Peres) (2):
-      ci: disable the valve-kws farm until it can be rebooted
-      Revert "ci: disable the valve-kws farm until it can be rebooted"
+Dudemanguy (1):
+      vulkan/wsi/wayland: fix wl_event_queue memory leak
+
+Erico Nunes (1):
+      ci: lima farm is down
+
+Faith Ekstrand (15):
+      nak: Move the copy detection part of opt_copy_prop to a helper
+      nak: Fix copy-prop for fp64
+      nak: Copy propagate and constant fold OpPrmt
+      nak: Make OpAtom::cmpr a GPR source
+      nak: Pass SrcTypes around instead of RegFile in legalize
+      nak/sm70: Allow src2 of 3src ops to be an immediate
+      nak: OpDAdd doesn't have saturate
+      nak: Rework encoding of ALU instructions on SM70+
+      nak: Add the rest of the double-precision ops
+      nak: Split fmul/ffma handling from fmulz/ffmaz
+      nak: Wire up 64-bit nir_op_fadd/ffma/fmul and comparisons
+      nak: Fix nir_op_f2f64
+      nak: Implement b2f64
+      nak/nir: Set nir_lower_io_lower_64bit_to_32 for varyings
+      meson: Update our rust dependencies
+
+Jesse Natalie (5):
+      util: Re-implement getenv for Windows
+      d3d12: Add a debug flag to opt out of singleton behavior
+      d3d12: Only destroy the winsys during screen destruction, not reset
+      libgl-gdi: Update wgl test to use a 32bit framebuffer
+      libgl-gdi: Update wgl test to set debug flags needed for tests
+
+Job Noorman (2):
+      nir: add helper to create cursor after all @decl_regs
+      ir3: lower 64b registers before creating preamble
+
+Jordan Justen (7):
+      intel/genxml: Add UNIFIED_COMPRESSION_FORMAT enum for xe2
+      anv, blorp, iris: Update 3DSTATE_PS programming for xe2
+      anv, blorp, iris, intel/genxml: Update 3DSTATE_VS for xe2
+      anv, blorp, iris, intel/genxml: Update 3DSTATE_PS_EXTRA for xe2
+      intel/batch_decoder: Update 3DSTATE_PS decoding for xe2
+      anv, iris, intel/genxml: Update 3DSTATE_GS for xe2
+      anv, iris, intel/genxml: Update 3DSTATE_HS for xe2
+
+Konstantin Seurer (2):
+      radv: Add more offsets acceleration_structure_layout
+      radv/bvh: Stop emitting leaf nodes inside the encoder
+
+Michel Dänzer (2):
+      gallium/dri: Return __DRI_ATTRIB_SWAP_UNDEFINED for _SWAP_METHOD
+      glx: Handle IGNORE_GLX_SWAP_METHOD_OML regardless of GLX_USE_APPLEGL
+
+Rohan Garg (1):
+      iris,isl: Adjust driver for several commands of clear color (xe2)
+
+Ruijing Dong (1):
+      radeonsi/vcn: ROI capability value initialization.
+
+Samuel Pitoiset (13):
+      radv: add missing HTILE support for fb mip tail workaround
+      radv: stop checking FMASK for the fb mip tail workaround
+      radv: move emitting the fb mip tail workaround when rendering begins
+      radv: remove radv_get_tess_output_topology() declaration
+      radv: move meta declarations to radv_meta.h
+      radv: move RADV_HASH_SHADER_xxx flags to radv_pipeline.c
+      radv: move radv_image_is_renderable() to radv_image.c
+      radv: move more descriptor related declarations to radv_descriptor_set.h
+      radv: move radv_depth_clamp_mode to radv_cmd_buffer.c
+      radv: move more shader related declarations to radv_shader.h
+      radv: move SI_GS_PER_ES to radv_constants.h
+      radv: move buffer view related code to radv_buffer_view.c
+      radv: move image view related code to radv_image_view.c
+
+Tapani Pälli (1):
+      iris: use intel_needs_workaround with 14015055625
+
+Tatsuyuki Ishi (3):
+      radv: Simplify shader config assignment.
+      radv: Move up radv_get_max_waves, radv_get_max_scratch_waves.
+      radv: Precompute shader max_waves.
+
+Yonggang Luo (1):
+      osmesa: Fixes building osmesa.c on windows
+
+Zhang, Jianxun (4):
+      intel/genxml: Remove 3DSTATE_CLEAR_PARAMS instruction (xe2)
+      intel/genxml: update 3DSTATE_WM_HZ_OP instruction (xe2)
+      intel/genxml: update 3DSTATE_DEPTH_BUFFER instruction (xe2)
+      intel/isl: update 3DSTATE_STENCIL_BUFFER (xe2)
 
