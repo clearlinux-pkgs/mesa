@@ -6,10 +6,10 @@
 # autospec commit: c1050fe
 #
 Name     : mesa
-Version  : 23.3+2899.gb5153693cc3
-Release  : 630
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/b5153693cc38e631b23c741a5eb3b160a01b10e2/mesa-23.3+2899-gb5153693cc3.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/b5153693cc38e631b23c741a5eb3b160a01b10e2/mesa-23.3+2899-gb5153693cc3.tar.bz2
+Version  : 23.3+2983.g6b1fafe7164
+Release  : 631
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/mesa-23.3+2983-g6b1fafe7164.tar.bz2
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/mesa-23.3+2983-g6b1fafe7164.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
@@ -82,10 +82,10 @@ Patch2: asmbuild.patch
 Patch3: blake.patch
 
 %description
-This local copy of a SHA1 implementation based on the sources below.
-Why:
-- Some libraries suffer from race condition and other issues. For example see
-commit ade3108bb5b0 ("util: Fix race condition on libgcrypt initialization").
+This directory contains a copy of the installed kernel headers
+required by several drivers to communicate with the kernel.
+Whenever one of those driver needs new definitions for new kernel
+APIs, these files should be updated.
 
 %package data
 Summary: data components for the mesa package.
@@ -148,16 +148,16 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2
-cd %{_builddir}/mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2
+%setup -q -n mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4
+cd %{_builddir}/mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 pushd ..
-cp -a mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2 build32
+cp -a mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4 build32
 popd
 pushd ..
-cp -a mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2 buildavx2
+cp -a mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4 buildavx2
 popd
 
 %build
@@ -165,7 +165,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702982496
+export SOURCE_DATE_EPOCH=1703163036
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -256,10 +256,10 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
-cp %{_builddir}/mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-b5153693cc38e631b23c741a5eb3b160a01b10e2/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
+cp %{_builddir}/mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
 pushd ../build32/
 DESTDIR=%{buildroot} ninja -C builddir install
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
