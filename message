@@ -1,61 +1,58 @@
-Updating from 6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4 to 8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c
+Updating from 8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c to 3e46ee61d557b0a1cee9930e708a3603dec8c34d
 
-Chia-I Wu (1):
-      vk/util: ignore unsupported feature structs
+Caio Oliveira (10):
+      intel/compiler: Use glsl_type C helpers
+      r600/sfn: Use glsl_type C helpers
+      nouveau: Use glsl_type C helpers
+      nir: Use glsl_type C helpers
+      mesa: Use glsl_type C helpers
+      lima: Use glsl_type C helpers
+      compiler/types: Add a few more glsl_type C helpers
+      glsl: Use glsl_type C helpers
+      compiler/types: Remove glsl_type C++ helpers
+      compiler/types: Use a typedef for glsl_type
 
-David Heidelberg (1):
-      ci/google: re-enable farm
+Francisco Jerez (30):
+      intel/compiler: Add max_polygons FS compilation parameter.
+      intel/compiler: Add multipolygon dispatch fields to brw_wm_prog_data.
+      intel/compiler: Add polygon count statistic to brw_compile_stats.
+      intel/fs: Add separate constructor of fs_visitor for fragment shaders.
+      intel/fs: Map all GS input attributes to ATTR register number 0.
+      intel/fs: Map all VS input attributes to ATTR register number 0.
+      intel/fs: Map all TES input attributes to ATTR register number 0.
+      intel/fs: Assert fs_reg::nr is always zero for ATTR registers in geometry stages.
+      intel/fs: Consider ATTR registers with different fs_reg::nr as belonging to disjoint register spaces.
+      intel/fs: Provide component index explicitly to interp_reg().
+      intel/fs: Pass builder to per_primitive_reg().
+      intel/fs: Fix fs_reg::component_size() to handle two-dimensional register regions.
+      intel/fs: Rework layout of FS vertex setup data in ATTR file to support multi-polygon dispatch.
+      intel/fs: Don't copy-propagate ATTR registers in multi-polygon FS shaders when invalid.
+      intel/compiler: Don't change types for copies from ATTR file.
+      intel/fs/gfx12+: Don't set nir_divergence_single_prim_per_subgroup option for fragment shaders.
+      intel/fs/gfx12: Don't consider multipolygon PS to have packed dispatch.
+      intel/fs: No need to copy null destinations in lower_simd_width.
+      intel/fs: Fix PS thread payload setup for depth_w_coef_reg.
+      intel/fs/gfx12: Implement multi-polygon format of back/front-facing flag in PS payload.
+      intel/fs/gfx12: Implement multi-polygon format of render target array index in PS payload.
+      intel: Add debug flag for enabling dual-SIMD8 fragment shader dispatch.
+      intel/compiler: Attempt to build dual-SIMD8 variant of fragment shaders on gfx12+ platforms.
+      intel/genxml: Add 3DSTATE_PS definitions needed for dual-SIMD8 dispatch on Gfx12+.
+      intel/gfx12: Enable SIMD8 dispatch in 3DSTATE_PS for FS multipolygon dispatch.
+      iris/gfx12: Hook up dual-SIMD8 fragment shader dispatch.
+      anv/gfx12: Hook up dual-SIMD8 fragment shader dispatch.
+      intel/fs/xe2+: Stop building SIMD8 compute-like shaders (CS/BS/TS/MS).
+      intel/fs/xe2+: Stop building SIMD8 fragment shaders.
+      intel/fs/xe2+: Stop building SIMD8 shaders for geometry stages (VS/TCS/TES/GS).
 
-Dmitry Baryshkov (1):
-      freedreno/drm: fallback to default BO allocation if heap alloc fails
+Ian Romanick (1):
+      intel/fs/xe2+: Pass correct dispatch_width to fs_generator for geometry-processing stages.
 
-Eric Engestrom (2):
-      radv/ci: add flake on raven
-      ci: add nvk to the clang build
+Jordan Justen (1):
+      intel/compiler: Pass max_polygons to copy-prop from fs_visitor.
 
-Friedrich Vock (1):
-      radv/rt: bsearch inlined shaders
+Rohan Garg (1):
+      intel/fs/xe2+: Lift CPS dispatch width restrictions on Xe2+.
 
-Jesse Natalie (1):
-      dzn: Fix 3D to 2D image copies
-
-Jonathan Gray (1):
-      intel/common: add directory prefix to intel_gem.h include
-
-Karol Herbst (1):
-      rusticl: check rustc version for flags requiring newer rustc/clippy
-
-Marek Olšák (6):
-      ci: disable the google/freedreno farm because it's down
-      glthread: add a missing end-of-batch marker
-      mesa: micro-improvements in draw.c
-      st/mesa: restore pipe_draw_info::mode at the end of st_hw_select_draw_gallium
-      mesa: add a pipe_draw_indirect_info* parameter into the DrawGallium callback
-      mesa: enable GL_SELECT and GL_FEEDBACK modes for indirect draws
-
-Matt Turner (2):
-      intel: Only validate inst compaction if debugging a shader stage
-      iris: Only initialize batch decoder if necessary
-
-Rob Clark (9):
-      drm-uapi: Sync drm-uapi
-      freedreno/layout: Add layout metadata
-      tu: Add metadata support for dedicated allocations
-      freedreno/drm: Add BO metadata support
-      freedreno: Add layout metadata support
-      ci: More context for color_clear skips for Wayland
-      ci: List specific color_clears skips
-      ci: Add wayland-dEQP-EGL.functional.render.* skips
-      ci: Remove per-driver wayland-dEQP-EGL xfails
-
-Tapani Pälli (2):
-      mesa: fix enum support for EXT_clip_cull_distance
-      drirc/anv: disable FCV optimization for Baldur's Gate 3
-
-Vignesh Raman (2):
-      ci: bare-metal: cros-servo: Create strutured logs for a630
-      ci/freedreno: add FARM variable
-
-Vinson Lee (1):
-      etnaviv: Remove duplicate initializers
+Yonggang Luo (1):
+      dzn: Remove #if D3D12_SDK_VERSION blocks now that 611 is required
 

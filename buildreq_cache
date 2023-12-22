@@ -1,7 +1,6 @@
-23.3+3014.g8023ede00ad
+23.3+3058.g3e46ee61d55
 libepoxy-dev
 pkgconfig(32epoxy)
-pkgconfig(32gtk+-3.0)
 pkgconfig(epoxy)
 pkgconfig(gtk+-3.0)
 pkgconfig(valgrind)
