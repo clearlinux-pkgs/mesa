@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+3014.g8023ede00ad
-Release  : 634
+Release  : 635
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Summary  : No detailed summary available
@@ -195,7 +195,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1703270957
+export SOURCE_DATE_EPOCH=1703273268
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
