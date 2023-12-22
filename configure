@@ -15,4 +15,5 @@
 -Dzstd=enabled
 -Dshader-cache=enabled
 -Dopengl=true
-
+-Dintel-xe-kmd=enabled
+-Dtools="intel-ui"

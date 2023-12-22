@@ -39,3 +39,5 @@ llvm-staticdev
 nasm
 yasm
 SPIRV-Tools-dev
+pypi-ply
+libclc-dev

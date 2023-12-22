@@ -7,14 +7,16 @@
 #
 Name     : mesa
 Version  : 23.3+3014.g8023ede00ad
-Release  : 632
+Release  : 633
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
+Requires: mesa-bin = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-lib = %{version}-%{release}
+Requires: mesa-libexec = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 BuildRequires : SPIRV-Tools-dev
 BuildRequires : Vulkan-Headers-dev
@@ -38,6 +40,7 @@ BuildRequires : glslang
 BuildRequires : libX11-dev32
 BuildRequires : libXv-dev32
 BuildRequires : libclc-dev
+BuildRequires : libepoxy-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libglvnd-dev
 BuildRequires : libpthread-stubs-dev
@@ -49,6 +52,7 @@ BuildRequires : nasm
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
 BuildRequires : pkgconfig(32dri3proto)
+BuildRequires : pkgconfig(32epoxy)
 BuildRequires : pkgconfig(32libdrm_intel)
 BuildRequires : pkgconfig(32libudev)
 BuildRequires : pkgconfig(32xdamage)
@@ -58,6 +62,8 @@ BuildRequires : pkgconfig(32xshmfence)
 BuildRequires : pkgconfig(32xvmc)
 BuildRequires : pkgconfig(DirectX-Headers)
 BuildRequires : pkgconfig(dri3proto)
+BuildRequires : pkgconfig(epoxy)
+BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libdrm_intel)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(presentproto)
@@ -67,6 +73,7 @@ BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pypi-mako
+BuildRequires : pypi-ply
 BuildRequires : valgrind
 BuildRequires : wayland-dev
 BuildRequires : wayland-dev32
@@ -87,6 +94,17 @@ required by several drivers to communicate with the kernel.
 Whenever one of those driver needs new definitions for new kernel
 APIs, these files should be updated.
 
+%package bin
+Summary: bin components for the mesa package.
+Group: Binaries
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-libexec = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
+
+%description bin
+bin components for the mesa package.
+
+
 %package data
 Summary: data components for the mesa package.
 Group: Data
@@ -99,6 +117,7 @@ data components for the mesa package.
 Summary: dev components for the mesa package.
 Group: Development
 Requires: mesa-lib = %{version}-%{release}
+Requires: mesa-bin = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Provides: mesa-devel = %{version}-%{release}
 Requires: mesa = %{version}-%{release}
@@ -112,6 +131,7 @@ dev components for the mesa package.
 Summary: dev32 components for the mesa package.
 Group: Default
 Requires: mesa-lib32 = %{version}-%{release}
+Requires: mesa-bin = %{version}-%{release}
 Requires: mesa-data = %{version}-%{release}
 Requires: mesa-dev = %{version}-%{release}
 
@@ -123,6 +143,7 @@ dev32 components for the mesa package.
 Summary: lib components for the mesa package.
 Group: Libraries
 Requires: mesa-data = %{version}-%{release}
+Requires: mesa-libexec = %{version}-%{release}
 Requires: mesa-license = %{version}-%{release}
 
 %description lib
@@ -137,6 +158,15 @@ Requires: mesa-license = %{version}-%{release}
 
 %description lib32
 lib32 components for the mesa package.
+
+
+%package libexec
+Summary: libexec components for the mesa package.
+Group: Default
+Requires: mesa-license = %{version}-%{release}
+
+%description libexec
+libexec components for the mesa package.
 
 
 %package license
@@ -165,7 +195,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1703253673
+export SOURCE_DATE_EPOCH=1703263506
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -194,7 +224,9 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dosmesa=true \
 -Dzstd=enabled \
 -Dshader-cache=enabled \
--Dopengl=true  builddir
+-Dopengl=true \
+-Dintel-xe-kmd=enabled \
+-Dtools="intel-ui"  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Ddri3=enabled \
@@ -212,7 +244,9 @@ CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS 
 -Dosmesa=true \
 -Dzstd=enabled \
 -Dshader-cache=enabled \
--Dopengl=true  builddiravx2
+-Dopengl=true \
+-Dintel-xe-kmd=enabled \
+-Dtools="intel-ui"  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
@@ -236,10 +270,14 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dosmesa=true \
 -Dzstd=enabled \
 -Dshader-cache=enabled \
--Dopengl=true -Dgallium-opencl=disabled \
+-Dopengl=true \
+-Dintel-xe-kmd=enabled \
+-Dtools="intel-ui" -Dgallium-opencl=disabled \
 -Dasm=false \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
--Dglvnd=false builddir
+-Dglvnd=false \
+-Dtools="" \
+-Dintel-clc=disabled builddir
 ninja -v -C builddir
 popd
 
@@ -310,6 +348,31 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/V3/usr/bin/aubinator
+/V3/usr/bin/aubinator_error_decode
+/V3/usr/bin/aubinator_viewer
+/V3/usr/bin/i965_asm
+/V3/usr/bin/i965_disasm
+/V3/usr/bin/intel_dev_info
+/V3/usr/bin/intel_error2aub
+/V3/usr/bin/intel_error2hangdump
+/V3/usr/bin/intel_hang_replay
+/V3/usr/bin/intel_hang_viewer
+/usr/bin/aubinator
+/usr/bin/aubinator_error_decode
+/usr/bin/aubinator_viewer
+/usr/bin/i965_asm
+/usr/bin/i965_disasm
+/usr/bin/intel_dev_info
+/usr/bin/intel_dump_gpu
+/usr/bin/intel_error2aub
+/usr/bin/intel_error2hangdump
+/usr/bin/intel_hang_replay
+/usr/bin/intel_hang_viewer
+/usr/bin/intel_sanitize_gpu
 
 %files data
 %defattr(-,root,root,-)
@@ -534,6 +597,13 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/lib32/vdpau/libvdpau_virtio_gpu.so.1
 /usr/lib32/vdpau/libvdpau_virtio_gpu.so.1.0
 /usr/lib32/vdpau/libvdpau_virtio_gpu.so.1.0.0
+
+%files libexec
+%defattr(-,root,root,-)
+/V3/usr/libexec/libintel_dump_gpu.so
+/V3/usr/libexec/libintel_sanitize_gpu.so
+/usr/libexec/libintel_dump_gpu.so
+/usr/libexec/libintel_sanitize_gpu.so
 
 %files license
 %defattr(0644,root,root,0755)
