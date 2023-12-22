@@ -17,3 +17,4 @@
 -Dopengl=true
 -Dintel-xe-kmd=enabled
 -Dtools="intel-ui"
+-Dintel-clc=enabled

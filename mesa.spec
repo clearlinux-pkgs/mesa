@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+3014.g8023ede00ad
-Release  : 633
+Release  : 634
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/mesa-23.3+3014-g8023ede00ad.tar.bz2
 Summary  : No detailed summary available
@@ -195,7 +195,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1703263506
+export SOURCE_DATE_EPOCH=1703270957
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -226,7 +226,8 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dintel-xe-kmd=enabled \
--Dtools="intel-ui"  builddir
+-Dtools="intel-ui" \
+-Dintel-clc=enabled  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Ddri3=enabled \
@@ -246,7 +247,8 @@ CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS 
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dintel-xe-kmd=enabled \
--Dtools="intel-ui"  builddiravx2
+-Dtools="intel-ui" \
+-Dintel-clc=enabled  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
@@ -272,7 +274,8 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dintel-xe-kmd=enabled \
--Dtools="intel-ui" -Dgallium-opencl=disabled \
+-Dtools="intel-ui" \
+-Dintel-clc=enabled -Dgallium-opencl=disabled \
 -Dasm=false \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
 -Dglvnd=false \
