@@ -1,136 +1,61 @@
-Updating from b5153693cc38e631b23c741a5eb3b160a01b10e2 to 6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4
+Updating from 6b1fafe7164305fbdab6a2c88abf2e8f5cc88bc4 to 8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c
 
-Bas Nieuwenhuizen (5):
-      nir: Add nir_static_workgroup_size helper.
-      nir: Add pass for clearing memory at the end of a shader.
-      radv: Add option to clear LDS at the end of a shader.
-      radeonsi: Add support to clear LDS at the end of a shader.
-      radv: Use correct writemask for cooperative matrix ordering.
+Chia-I Wu (1):
+      vk/util: ignore unsupported feature structs
 
-Christian Gmeiner (1):
-      mesa: Drop not used program_written_to_cache
+David Heidelberg (1):
+      ci/google: re-enable farm
 
-Daniel Almeida (1):
-      nak: sm50: fix ineg legalization
+Dmitry Baryshkov (1):
+      freedreno/drm: fallback to default BO allocation if heap alloc fails
 
-Dave Airlie (1):
-      vulkan/video: drop encode beta checks and rename EXT->KHR
+Eric Engestrom (2):
+      radv/ci: add flake on raven
+      ci: add nvk to the clang build
 
-David Heidelberg (3):
-      ci/broadcom: separate HW definition from SW
-      ci: skip EGL functional color_clears tests for Wayland
-      ci/lava: separate HW definitions from SW
+Friedrich Vock (1):
+      radv/rt: bsearch inlined shaders
 
-Faith Ekstrand (10):
-      nak: Fix encoding of dsetp with RZ on SM70+
-      nak: Implement 64-bit nir_op_fsign
-      nak/sm50: Add encoding and legalization for dadd/dfma/dmul/dsetp
-      nak/sm50: Fix encoding of f20 immediates
-      nak/sm50: Fix encoding of iadd with imm32
-      nak/sm50: Properly legalize OpSel and drop an assert
-      nak/sm50: Add DMnMx and use it for fp64 fmin/fmax
-      nir/lower_doubles: Add lowering for fmin/fmax/fsat
-      nak/nir: Lower a bunch of fp64
-      nvk: Advertise shaderFloat64
+Jesse Natalie (1):
+      dzn: Fix 3D to 2D image copies
 
-Jianxun Zhang (12):
-      intel/isl: Add a debug option to override modifer list
-      intel: Move mod_plane_is_clear_color() into isl
-      intel/vulkan: Report clear color in subresource layout
-      intel/vulkan: Allow modifiers supporting fast clear
-      intel/vulkan: Specify offset when creating aux state tracker
-      intel/vulkan: Import aux state tracking buffer
-      intel/vulkan: Remove private binding on fast clear region
-      intel/vulkan: Use the last 2 dwords of clear color struct
-      intel/vulkan: Correct a comment about an offset in fast clear
-      intel/vulkan: Update comment of a workaround of modifiers
-      intel/vulkan: Add COMPRESSED_CLEAR state in layout translation
-      intel/isl: Add Gfx 12.x RC_CCS_CC into modifier scores
+Jonathan Gray (1):
+      intel/common: add directory prefix to intel_gem.h include
 
-Joshua Ashton (2):
-      nvk: Hook up driconf for nvk_instance
-      nvk: Enable KHR_present_id and KHR_present_wait
+Karol Herbst (1):
+      rusticl: check rustc version for flags requiring newer rustc/clippy
 
-José Expósito (1):
-      egl/glx: fallback to software when Zink is forced and fails
+Marek Olšák (6):
+      ci: disable the google/freedreno farm because it's down
+      glthread: add a missing end-of-batch marker
+      mesa: micro-improvements in draw.c
+      st/mesa: restore pipe_draw_info::mode at the end of st_hw_select_draw_gallium
+      mesa: add a pipe_draw_indirect_info* parameter into the DrawGallium callback
+      mesa: enable GL_SELECT and GL_FEEDBACK modes for indirect draws
 
-Juan A. Suarez Romero (1):
-      ci/v3d/vc4: remove explicit modules to load
+Matt Turner (2):
+      intel: Only validate inst compaction if debugging a shader stage
+      iris: Only initialize batch decoder if necessary
 
-Karol Herbst (5):
-      clc: add workaround for clang always defining __IMAGE_SUPPORT_ and __opencl_c_int64
-      rusticl: do not warn on empty RUSTICL_DEBUG or RUSTICL_FEATURES
-      rusticl: silence clippy::arc-with-non-send-sync for now
-      rusticl: fix constant and printf buffer size
-      rusticl/nir: add missing nir include
+Rob Clark (9):
+      drm-uapi: Sync drm-uapi
+      freedreno/layout: Add layout metadata
+      tu: Add metadata support for dedicated allocations
+      freedreno/drm: Add BO metadata support
+      freedreno: Add layout metadata support
+      ci: More context for color_clear skips for Wayland
+      ci: List specific color_clears skips
+      ci: Add wayland-dEQP-EGL.functional.render.* skips
+      ci: Remove per-driver wayland-dEQP-EGL xfails
 
-Kenneth Graunke (2):
-      intel/fs: Allow omitting the destination of A64 untyped atomics
-      intel/fs: Drop opt_register_renaming()
+Tapani Pälli (2):
+      mesa: fix enum support for EXT_clip_cull_distance
+      drirc/anv: disable FCV optimization for Baldur's Gate 3
 
-Lang Yu (1):
-      radeonsi: emit SQ_NON_EVENT for GFX11_5
-
-Mike Blumenkrantz (1):
-      vk/cmd_queue: exempt more descriptor functions from autogeneration
-
-Pierre-Eric Pelloux-Prayer (11):
-      radeonsi/sqtt: fix RGP pm4 state emit function
-      radeonsi/sqtt: clear record_counts variable
-      radeonsi/sqtt: rework pm4.reg_va_low_idx
-      radeonsi/sqtt: use calloc instead of malloc
-      radeonsi/sqtt: reformat with clang-format
-      radeonsi/sqtt: fix capturing indirect dispatches with SQTT
-      radeonsi/winsys: add cs_get_ip_type function
-      radeonsi/sqtt: fix emitting SQTT userdata when CAM is needed
-      radeonsi/sqtt: fix capturing RGP on RDNA3 with more than one Shader Engine
-      radeonsi/sqtt: handle COMPUTE queues as well
-      radeonsi: fix extra_md handling with fmask
-
-Qiang Yu (1):
-      radeonsi: unify elf and raw shader binary upload
-
-Roland Scheidegger (1):
-      lavapipe: bump image alignment up to 64 bytes
-
-Samuel Pitoiset (3):
-      vulkan: bump headers/registry to 1.3.274
-      vulkan: drop VK_ENABLE_BETA_EXTENSIONS for video encode layouts
-      radv/ci: update CI lists for NAVI10,NAVI31 and RENOIR
-
-Sil Vilerino (2):
-      d3d12: Implement Delta QP ROI In h264, hevc and av1 video encode
-      d3d12: Report support for PIPE_VIDEO_CAP_ENC_ROI for Delta QP
-
-Sviatoslav Peleshko (2):
-      nir/loop_analyze: Don't test non-positive iterations count
-      intel/fs: Don't optimize DW*1 MUL if it stores value to the accumulator
-
-Timothy Arceri (6):
-      glsl: tidy up validation loop in linker
-      glsl: remove some unused linker code
-      glsl: copy precision val of function output params
-      glsl: add additional lower mediump test
-      glsl: move glsl ir lowering out of glsl_to_nir()
-      glsl: add support for inout params to glsl_to_nir()
-
-Timur Kristóf (7):
-      radv: Move SDMA function and struct declarations to a new header.
-      radv: Unify SDMA surface struct for linear and tiled images.
-      radv: Refactor and simplify SDMA surface info functions.
-      radv: Pass radv_sdma_surf from copy functions to SDMA.
-      radv: Use SDMA surface structs for determining unaligned buffer copies.
-      radv: Clean up SDMA chunked copy info struct.
-      radv: Use correct plane and binding index with SDMA.
-
-Vignesh Raman (3):
-      ci: Add CustomLogger class and CLI tool
-      ci: copy logging script to install
-      ci: bare-metal: poe: Create strutured logs
+Vignesh Raman (2):
+      ci: bare-metal: cros-servo: Create strutured logs for a630
+      ci/freedreno: add FARM variable
 
 Vinson Lee (1):
-      nvk: Fix tautological-overlap-compare warning
-
-Yonggang Luo (1):
-      meson: Support for both packaging and distutils
+      etnaviv: Remove duplicate initializers
 
