@@ -1,26 +1,8 @@
-Updating from 551924aa87912f664637ae844b422986f8453712 to 6d4577799ce0b789a969b0984c0985901829a707
+Updating from 6d4577799ce0b789a969b0984c0985901829a707 to d9ba75e2e1193de45f110509e748038633853a8c
 
-Eric Engestrom (3):
-      ci: disable collabora farm as it is currently offline
-      ci: fix farm restore pipelines
-      meson: always define {,DRAW_}LLVM_AVAILABLE one way or the other
+Chia-I Wu (1):
+      Revert "vk/util: ignore unsupported feature structs"
 
-Juan A. Suarez Romero (1):
-      ci/v3dv: add new failures
-
-Yonggang Luo (14):
-      ci/msvc: update flex and bison to winflexbison3
-      ci/msvc: Install graphics tools(DirectX debug layer) easy to stuck, place it at the beginning
-      ci/msvc: Split install vulkan sdk out of choco
-      ci/msvc: Rename vs2019 to msvc
-      ci/msvc: Rename vs to msvc for consistence
-      ci/msvc: Improve msvc init
-      ci/msvc: Remove &windows_msvc_image_tag
-      ci/msvc: Upgrade to vs2022 build tools
-      ci/msvc: Install msvc2019 only from vs2022
-      ci/msvc: Install both msvc2019 and msvc2022
-      ci/msvc: Stick deqp-runner to version v0.16.1
-      ci/msvc: Stick VK-GL-CTS to specific version 56114106d860c121cd6ff0c3b926ddc50c4c11fd
-      ci/msvc: Split the install of rust and d3d out of mesa_deps_test.ps1
-      ci/microsoft: Update the image-tag and image-path for msvc2019/msvc2022
+Karol Herbst (1):
+      ci: merge debian-rusticl-testing into debian-testing
 
