@@ -1,0 +1,11 @@
+--- mesa-8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/src/intel/dev/meson.build~	2023-12-22 11:13:23.000000000 +0000
++++ mesa-8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/src/intel/dev/meson.build	2023-12-27 16:16:01.026508118 +0000
+@@ -106,7 +106,7 @@
+   intel_dev_info = executable(
+     'intel_dev_info',
+     files('intel_dev_info.c'),
+-    dependencies : [dep_libdrm, dep_dl, dep_thread, dep_m, idep_intel_dev],
++    dependencies : [dep_libdrm, dep_dl, dep_thread, dep_m, idep_intel_dev, idep_intel_dev_wa],
+     include_directories : [inc_include, inc_src, inc_intel],
+     c_args : [no_override_init_args],
+     gnu_symbol_visibility : 'hidden',

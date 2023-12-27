@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+3085.gbd32badbb77
-Release  : 640
+Release  : 641
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/bd32badbb778339d0280e2160dace09c08544510/mesa-23.3+3085-gbd32badbb77.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/bd32badbb778339d0280e2160dace09c08544510/mesa-23.3+3085-gbd32badbb77.tar.bz2
 Summary  : No detailed summary available
@@ -87,6 +87,7 @@ BuildRequires : zstd-dev32
 Patch1: 0001-Revert-mesa-Enable-asm-unconditionally-now-that-gen_.patch
 Patch2: asmbuild.patch
 Patch3: blake.patch
+Patch4: deps.patch
 
 %description
 This directory contains a copy of the installed kernel headers
@@ -183,6 +184,7 @@ cd %{_builddir}/mesa-bd32badbb778339d0280e2160dace09c08544510
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 pushd ..
 cp -a mesa-bd32badbb778339d0280e2160dace09c08544510 build32
 popd
@@ -195,7 +197,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1703636117
+export SOURCE_DATE_EPOCH=1703694790
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
