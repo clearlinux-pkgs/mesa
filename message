@@ -1,8 +1,10 @@
-Updating from 6d4577799ce0b789a969b0984c0985901829a707 to d9ba75e2e1193de45f110509e748038633853a8c
+Updating from d9ba75e2e1193de45f110509e748038633853a8c to bd32badbb778339d0280e2160dace09c08544510
 
-Chia-I Wu (1):
-      Revert "vk/util: ignore unsupported feature structs"
-
-Karol Herbst (1):
-      ci: merge debian-rusticl-testing into debian-testing
+Nanley Chery (6):
+      iris: Simplify get_main_plane_for_plane
+      iris: Simplify a plane count check in from_handle
+      iris: Use helpers for generic aux plane importing
+      iris: Inline import_aux_info
+      iris: Use common res fields for imported planes
+      iris: Delay main and aux resource creation on import
 
