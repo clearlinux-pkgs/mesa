@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 23.3+3085.gbd32badbb77
-Release  : 642
+Release  : 643
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/bd32badbb778339d0280e2160dace09c08544510/mesa-23.3+3085-gbd32badbb77.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/bd32badbb778339d0280e2160dace09c08544510/mesa-23.3+3085-gbd32badbb77.tar.bz2
 Summary  : No detailed summary available
