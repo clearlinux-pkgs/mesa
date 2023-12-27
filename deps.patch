@@ -9,3 +9,104 @@
      include_directories : [inc_include, inc_src, inc_intel],
      c_args : [no_override_init_args],
      gnu_symbol_visibility : 'hidden',
+--- mesa-8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/src/intel/tools/meson.build~	2023-12-22 11:13:23.000000000 +0000
++++ mesa-8023ede00adf08359e6d0c2ebd6e62ebbbcc3c4c/src/intel/tools/meson.build	2023-12-27 16:39:56.056479686 +0000
+@@ -22,7 +22,7 @@
+   'aub',
+   files('aub_read.c', 'aub_mem.c'),
+   include_directories : [inc_include, inc_src, inc_intel],
+-  dependencies : [idep_mesautil, idep_intel_dev],
++  dependencies : [idep_mesautil, idep_intel_dev, idep_intel_dev_wa],
+   link_with : [libintel_common],
+   c_args : [no_override_init_args],
+   gnu_symbol_visibility : 'hidden',
+@@ -32,7 +32,7 @@
+ aubinator = executable(
+   'aubinator',
+   files('aubinator.c'),
+-  dependencies : [idep_mesautil, dep_expat, dep_zlib, dep_dl, dep_thread, dep_m, idep_intel_dev],
++  dependencies : [idep_mesautil, dep_expat, dep_zlib, dep_dl, dep_thread, dep_m, idep_intel_dev, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : [libintel_common, libintel_compiler, libaub],
+   c_args : [no_override_init_args],
+@@ -43,7 +43,7 @@
+ aubinator_error_decode = executable(
+   'aubinator_error_decode',
+   files('aubinator_error_decode.c'),
+-  dependencies : [idep_mesautil, dep_zlib, dep_thread, idep_intel_dev],
++  dependencies : [idep_mesautil, dep_zlib, dep_thread, idep_intel_dev, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : [libintel_common, libintel_compiler],
+   c_args : [no_override_init_args],
+@@ -76,7 +76,7 @@
+   'intel_error2hangdump',
+   files('error2hangdump.c'),
+   dependencies : [dep_zlib, dep_dl, dep_thread, dep_m],
+-  include_directories : [inc_include, inc_src, inc_intel],
++  include_directories : [inc_include, inc_src, inc_intel, idep_intel_dev_wa],
+   link_with : [libintel_dev],
+   c_args : [no_override_init_args],
+   gnu_symbol_visibility : 'hidden',
+@@ -86,7 +86,7 @@
+ intel_hang_replay = executable(
+   'intel_hang_replay',
+   files('intel_hang_replay.c'),
+-  dependencies : [idep_intel_dev, idep_libintel_common, dep_libdrm, dep_dl, dep_thread, dep_m],
++  dependencies : [idep_intel_dev, idep_libintel_common, dep_libdrm, dep_dl, dep_thread, dep_m, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : [libintel_dev, libintel_compiler],
+   c_args : [no_override_init_args],
+@@ -114,7 +114,7 @@
+ libintel_sanitize_gpu = shared_library(
+   'intel_sanitize_gpu',
+   files('intel_sanitize_gpu.c'),
+-  dependencies : [idep_mesautil, dep_dl, dep_thread],
++  dependencies : [idep_mesautil, dep_dl, dep_thread, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : libintel_common,
+   c_args : [no_override_init_args, sse2_args],
+@@ -137,7 +137,7 @@
+     'intel_context.h', 'gfx8_context.h', 'gfx10_context.h', 'intel_aub.h',
+     'aub_write.h', 'aub_write.c', 'intel_dump_gpu.c',
+   ),
+-  dependencies : [dep_dl, idep_mesautil, idep_intel_dev],
++  dependencies : [dep_dl, idep_mesautil, idep_intel_dev, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : [libintel_common],
+   c_args : [no_override_init_args],
+@@ -159,7 +159,7 @@
+     'intel_noop_drm_shim',
+     'intel_noop_drm_shim.c',
+     include_directories: [inc_include, inc_src, inc_intel],
+-    dependencies: [dep_libdrm, dep_drm_shim, idep_mesautil, idep_libintel_common, idep_intel_dev],
++    dependencies: [dep_libdrm, dep_drm_shim, idep_mesautil, idep_libintel_common, idep_intel_dev, idep_intel_dev_wa],
+     gnu_symbol_visibility : 'hidden',
+     install : true,
+   )
+@@ -171,7 +171,7 @@
+   aubinator_viewer = executable(
+     'aubinator_viewer',
+     files('aubinator_viewer.cpp', 'aubinator_viewer_decoder.cpp'),
+-    dependencies : [idep_mesautil, dep_zlib, dep_dl, dep_thread, dep_m, libintel_imgui_gtk_dep, idep_intel_dev],
++    dependencies : [idep_mesautil, dep_zlib, dep_dl, dep_thread, dep_m, libintel_imgui_gtk_dep, idep_intel_dev, idep_intel_dev_wa],
+     include_directories : [inc_include, inc_src, inc_intel],
+     link_with : [libintel_common, libintel_compiler, libaub],
+     c_args : [no_override_init_args],
+@@ -183,7 +183,7 @@
+   intel_hang_viewer = executable(
+     'intel_hang_viewer',
+     files('intel_hang_viewer.cpp', 'aubinator_viewer_decoder.cpp'),
+-    dependencies : [idep_mesautil, dep_zlib, dep_dl, dep_thread, dep_m, libintel_imgui_gtk_dep],
++    dependencies : [idep_mesautil, dep_zlib, dep_dl, dep_thread, dep_m, libintel_imgui_gtk_dep, idep_intel_dev_wa],
+     include_directories : [inc_include, inc_src, inc_intel],
+     link_with : [libintel_common, libintel_compiler, libintel_dev],
+     c_args : [no_override_init_args],
+@@ -223,7 +223,7 @@
+ i965_asm = executable(
+   'i965_asm',
+   ['i965_asm.c', i965_gram_tab[0], i965_gram_tab[1], i965_lex_yy_c],
+-  dependencies : [idep_mesautil, dep_thread, idep_intel_dev],
++  dependencies : [idep_mesautil, dep_thread, idep_intel_dev, idep_intel_dev_wa],
+   include_directories : [inc_include, inc_src, inc_intel],
+   link_with : [libintel_common, libintel_compiler],
+   c_args : [no_override_init_args],
