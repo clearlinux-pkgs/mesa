@@ -1,10 +1,21 @@
-Updating from d9ba75e2e1193de45f110509e748038633853a8c to bd32badbb778339d0280e2160dace09c08544510
+Updating from bd32badbb778339d0280e2160dace09c08544510 to ebee672ef87794f3f4201270623a92f34e62b8ff
 
-Nanley Chery (6):
-      iris: Simplify get_main_plane_for_plane
-      iris: Simplify a plane count check in from_handle
-      iris: Use helpers for generic aux plane importing
-      iris: Inline import_aux_info
-      iris: Use common res fields for imported planes
-      iris: Delay main and aux resource creation on import
+Eric Engestrom (3):
+      docs: add release notes for 23.3.2
+      docs: add sha256sum for 23.3.2
+      docs: update calendar for 23.3.2
+
+Felix DeGrood (2):
+      driconf: add Dying Light 2 to Intel XeSS workaround
+      driconf: add Witcher3 to Intel XeSS workaround
+
+José Roberto de Souza (3):
+      anv: Add ANV_BO_ALLOC_IMPORTED
+      anv: Replace anv_bo.vram_only by anv_bo.alloc_flags check
+      anv: Assume that imported bos already have flat CCS requirements satisfied
+
+Kenneth Graunke (3):
+      iris: Initialize bo->index to -1 when importing buffers
+      iris: Don't search the exec list if BOs have never been added to one
+      iris: Skip mi_builder init for indirect draws
 
