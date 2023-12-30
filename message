@@ -1,39 +1,9 @@
-Updating from ebee672ef87794f3f4201270623a92f34e62b8ff to 5fff6eac42b1fe0854cb1437f6d03261e1cc1809
+Updating from 5fff6eac42b1fe0854cb1437f6d03261e1cc1809 to 61c9cf9890431f94e3ec9c810aa18987fcfaafb3
 
-Dylan Baker (1):
-      meson: add wrap for libdrm
+Danylo Piliaiev (1):
+      freedreno: Add a644 support
 
-Eric Engestrom (7):
-      meson: update expat wrap
-      meson: update libarchive wrap
-      meson: update libxml2 wrap
-      meson: update zlib wrap
-      meson: use `allow_fallback` instead of manually listing the deps and what they provide
-      ci/containers: use build-libdrm.sh in debian/android
-      Revert "meson: add wrap for libdrm"
-
-Francisco Jerez (17):
-      intel/eu/xe2+: Add helpers for constructing registers in 512b units.
-      intel/fs/xe2+: Implement PS thread payload register offset setup.
-      intel/fs/xe2+: Fix for new layout of X/Y pixel coordinates in PS payload.
-      intel/fs/xe2+: Update uses of pixel/sample mask from PS thread payload.
-      intel/fs/xe2+: Update location of sample ID fields in PS payload.
-      intel/fs/xe2+: Update poly info PS payload for new multi-polygon dispatch format.
-      intel/fs: Add support for vector payload values to fetch_payload_reg().
-      intel/fs/xe2+: Enable new format of barycentrics in PS payload.
-      intel/fs/xe2+: Update for new layout of vertex setup data in PS payload.
-      intel/fs/xe2+: Implement support for multi-polygon vertex setup data in PS payload.
-      intel/fs/xe2+: Implement layout of mesh shading per-primitive inputs in PS thread payloads.
-      intel/fs: Plumb shader instead of compiler to get_lowered_simd_width() and friends.
-      intel/fs/xe2+: Lower SIMD width of instructions that access ATTR file from SIMD2x8/4x8 FS.
-      intel: Add debug flags for enabling Xe2+ multipolygon fragment shader dispatch modes.
-      intel/fs/xe2+: Attempt to build quad-SIMD8 and dual-SIMD16 FS variants on Xe2+ platforms.
-      intel/xe2+: Implement fragment shader dispatch state setup.
-      intel/compiler/xe2: Don't disassemble non-existent fields.
-
-Jordan Justen (1):
-      intel/xe2+: Implement brw_wm_state_simd_width_for_ksp() on Xe2+.
-
-Rohan Garg (1):
-      intel/compiler: Update disassembly for new LSC cache enums
+Nanley Chery (2):
+      isl: Handle MOD_INVALID in clear color plane check
+      iris: Fix lowered images in get_main_plane_for_plane
 
