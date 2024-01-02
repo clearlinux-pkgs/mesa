@@ -1,5 +1,5 @@
 PKG_NAME := mesa
-URL = https://gitlab.freedesktop.org/mesa/mesa/-/archive/0210b554d6840fef68abe87f72464e197a7eebc8/mesa-23.3+3151-g0210b554d68.tar.bz2
+URL = https://gitlab.freedesktop.org/mesa/mesa/-/archive/2e46dd062470b07d1c297275ab5a7a2040e1ab80/mesa-23.3+3158-g2e46dd06247.tar.bz2
 ARCHIVES = 
 
 include ../common/Makefile.common

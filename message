@@ -1,33 +1,15 @@
-Updating from 61c9cf9890431f94e3ec9c810aa18987fcfaafb3 to 0210b554d6840fef68abe87f72464e197a7eebc8
+Updating from 0210b554d6840fef68abe87f72464e197a7eebc8 to 2e46dd062470b07d1c297275ab5a7a2040e1ab80
 
-Caio Oliveira (3):
-      intel/cmat: Add pass to lower cooperative matrix to subgroup operations
-      intel/dev: Add cooperative matrix configuration information
-      anv: Implement VK_KHR_cooperative_matrix
+Luca Weiss (1):
+      freedreno: Enable A305B
 
-Ian Romanick (21):
-      intel/cmat: Update get_slice_type for packed slices
-      intel/cmat: Add lowering for cmat_insert and cmat_extract
-      intel/cmat: Enable packed formats for unary, length, and construct
-      intel/cmat: Enable packed formats for binary ops
-      intel/cmat: Enable packed formats for scalar ops
-      intel/cmat: Add lowering for cmat_bitcast
-      intel/cmat: Lower cmat_load and cmat_store
-      intel/compiler: Initial bits for DPAS instruction
-      intel/disasm: Disassembly support for DPAS
-      intel/compiler: Validation for DPAS instructions
-      intel/fs: Fix scoreboarding for DPAS
-      intel/fs: DPAS lowering
-      intel/fs: nir: Add nir_intrinsic_dpas_intel
-      anv: Add anv_physical_device::has_cooperative_matrix
-      anv: Set COMPUTE_WALKER systolic mode enable flag
-      anv: Set PIPELINE_SELECT systolic mode enable flag
-      anv: Lower indirect derefs again after lowering cooperative matrices
-      anv: Select the SIMD mode very early when cooperative matrices are used
-      intel/dev: Advertise integer configs with saturatingAccumulation too
-      intel/dev: Enable VK_KHR_cooperative_matrix on all Gfx9+ GPUs
-      intel/cmat: Generate better code for nir_intrinsic_cmat_insert
+Mark Collins (5):
+      freedreno/rddecompiler: Emit explicit scope for CP_COND_REG_EXEC
+      freedreno/rddecompiler: Decode ELSE branches using NOPs
+      freedreno/rddecompiler: Reset buffers after RD_CMDSTREAM_ADDR
+      freedreno/rddecompiler: Print pkt values in hex
+      freedreno/rddecompiler: Add ability to read GPU buffer into file
 
-Yonggang Luo (1):
-      treewide: Replace the include of nir_types.h with glsl_types.h
+Rhys Perry (1):
+      nir/loop_analyze: remove invariance analysis
 
