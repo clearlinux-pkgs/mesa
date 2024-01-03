@@ -1,15 +1,94 @@
-Updating from 0210b554d6840fef68abe87f72464e197a7eebc8 to 2e46dd062470b07d1c297275ab5a7a2040e1ab80
+Updating from 2e46dd062470b07d1c297275ab5a7a2040e1ab80 to 68a9b3cc6f26c755da584a645dd3a72bd61ea101
 
-Luca Weiss (1):
-      freedreno: Enable A305B
+Caio Oliveira (3):
+      util: Add a way to set the min_buffer_size in linear_alloc
+      spirv: Use linear_alloc for parsing-only data
+      spirv: Use value_id_bound to set initial memory allocated
 
-Mark Collins (5):
-      freedreno/rddecompiler: Emit explicit scope for CP_COND_REG_EXEC
-      freedreno/rddecompiler: Decode ELSE branches using NOPs
-      freedreno/rddecompiler: Reset buffers after RD_CMDSTREAM_ADDR
-      freedreno/rddecompiler: Print pkt values in hex
-      freedreno/rddecompiler: Add ability to read GPU buffer into file
+David Heidelberg (2):
+      ci/zink: update piano trace
+      ci/radeonsi: disable VA-API testing on raven
 
-Rhys Perry (1):
-      nir/loop_analyze: remove invariance analysis
+Eric Engestrom (4):
+      zink: update symbols that have become aliases for newer ones
+      zink/requirements: update feature and property names that have been promoted
+      docs/backport-mr: fix invalid nested formatting
+      docs: fix list whitespace
+
+Erik Faye-Lund (2):
+      zink: update profile schema
+      zink: use KHR version of maint5 features
+
+Ganesh Belgur Ramachandra (4):
+      radeonsi: enable nir pass for 64 bit operations
+      radeonsi: add comments for unpack_2x16* utility functions
+      radeonsi: convert "create_query_result_cs" shader to nir
+      radeonsi: convert "gfx11_create_sh_query_result_cs" shader to nir
+
+Georg Lehmann (1):
+      aco: optimize 32bit fsign by using fmulz with Inf
+
+Iván Briano (6):
+      anv: allow NULL index buffers
+      anv: remove no longer valid assert
+      anv: handle VkBindMemoryStatusKHR on buffer/image memory bind
+      anv: add support for Cmd*DescriptorSet*2KHR
+      anv: move astc_emu to use descriptors2 calls
+      anv: enable VK_KHR_maintenance6
+
+Jesse Natalie (1):
+      zink: Add ASSERTED to vars that are only used for asserts
+
+Jonathan Gray (1):
+      zink: put sysmacros.h include under #ifdef MAJOR_IN_SYSMACROS
+
+Jordan Justen (2):
+      intel/genxml/gfx125: Move L1_CACHE_CONTROL to enum
+      intel/genxml/gfx125: Move STATE_SURFACE_TYPE to enum
+
+José Roberto de Souza (1):
+      intel/isl/xe2: Enable route of Sampler LD message to LSC
+
+Juan A. Suarez Romero (1):
+      ci/v3dv: update results
+
+Karol Herbst (1):
+      zink: lock screen queue on context_destroy and CreateSwapchain
+
+Konstantin Seurer (1):
+      nir: Optimize fpow with small constant exponents
+
+Mark Janes (1):
+      intel: remove workaround for preproduction DG2 steppings
+
+Mary Guillemard (1):
+      zink: Force 128 fs input components under Venus for Intel
+
+Mike Blumenkrantz (1):
+      vulkan: add wrappers for descriptor '2' functions
+
+Pierre-Eric Pelloux-Prayer (1):
+      ac/surface: don't oversize surf_size
+
+Sagar Ghuge (2):
+      iris: No need to emit PIPELINE_SELECT on Xe2+
+      anv: No need to emit PIPELINE_SELECT on Xe2+
+
+Sergi Blanch Torne (1):
+      Revert "ci: disable collabora farm as it is currently offline"
+
+Tapani Pälli (1):
+      isl: implement Wa_14018471104
+
+Yiwei Zhang (4):
+      venus: clang format fixes
+      venus: split up the pipeline fix description into self and pnext
+      venus: refactor to add pipeline info fixes helpers
+      venus: properly ignore formats in VkPipelineRenderingCreateInfo
+
+Yonggang Luo (1):
+      compiler/glsl: Move glsl specific _mesa_glsl_initialize_types out and glsl_symbol_table of glsl_types.h
+
+Zhang, Jianxun (1):
+      intel/genxml: Add RENDER_SURFACE_STATE for xe2
 
