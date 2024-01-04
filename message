@@ -1,94 +1,108 @@
-Updating from 2e46dd062470b07d1c297275ab5a7a2040e1ab80 to 68a9b3cc6f26c755da584a645dd3a72bd61ea101
+Updating from 68a9b3cc6f26c755da584a645dd3a72bd61ea101 to aa1eb54b3bd721f5457c3829c927789a9453b650
 
-Caio Oliveira (3):
-      util: Add a way to set the min_buffer_size in linear_alloc
-      spirv: Use linear_alloc for parsing-only data
-      spirv: Use value_id_bound to set initial memory allocated
+Alyssa Rosenzweig (2):
+      nir/validate: allow bias on nir_texop_lod
+      asahi: Implement lod queries
 
-David Heidelberg (2):
-      ci/zink: update piano trace
-      ci/radeonsi: disable VA-API testing on raven
+Christian Gmeiner (1):
+      nir/opt_peephole_select: handle speculative ubo loads
 
-Eric Engestrom (4):
-      zink: update symbols that have become aliases for newer ones
-      zink/requirements: update feature and property names that have been promoted
-      docs/backport-mr: fix invalid nested formatting
-      docs: fix list whitespace
+Daniel Schürmann (5):
+      nir/opt_loop: move loop control-flow optimizations into separate pass
+      treewide: replace calls to nir_opt_trivial_continues() with nir_opt_loop()
+      nir: remove nir_opt_trivial_continues()
+      nir: remove redundant passes from nir_opt_if()
+      nir/opt_loop_cf: generalize removal of "trivial" continues
 
-Erik Faye-Lund (2):
-      zink: update profile schema
-      zink: use KHR version of maint5 features
+Danylo Piliaiev (3):
+      freedreno/devices: Update a690 magic regs from WSL blob
+      turnip: Disable UBWC for D/S images on A690
+      freedreno: Disable UBWC for D/S images on A690
 
-Ganesh Belgur Ramachandra (4):
-      radeonsi: enable nir pass for 64 bit operations
-      radeonsi: add comments for unpack_2x16* utility functions
-      radeonsi: convert "create_query_result_cs" shader to nir
-      radeonsi: convert "gfx11_create_sh_query_result_cs" shader to nir
+Dave Airlie (12):
+      gallivm: handle llvm 16 atexit ordering problems.
+      intel/compiler: fix release build unused variable.
+      intel/compiler: revert part of "Move earlier scheduler code that is not mode-specific"
+      llvmpipe: fix caching for texture shaders.
+      gallivm/sample: refactor first/last level handling and use level_zero_only.
+      gallivm/sample: add some num_samples vs level zero only support
+      gallivm/sample: make the load_mip helper useful outside this file.
+      gallivm/lp: reduce size of lp_jit_texture.
+      gallivm/lp: reduce image descriptor size.
+      gallivm/lp: merge sample info into normal info
+      gallivm/lp: move sampler index around to reduce struct
+      lavapipe: bump .maxResourceDescriptorBufferRange
 
-Georg Lehmann (1):
-      aco: optimize 32bit fsign by using fmulz with Inf
+Dmitry Baryshkov (4):
+      ir3: fix shift amount for 8-bit shifts
+      ir3/a6xx: fix ldg/stg of ulong2 and ulong4 data
+      freedreno/drm: notify valgrind about FD_BO_NOMAP maps
+      freedreno/drm: don't crash in heap allocator when run under valgrind
 
-Iván Briano (6):
-      anv: allow NULL index buffers
-      anv: remove no longer valid assert
-      anv: handle VkBindMemoryStatusKHR on buffer/image memory bind
-      anv: add support for Cmd*DescriptorSet*2KHR
-      anv: move astc_emu to use descriptors2 calls
-      anv: enable VK_KHR_maintenance6
+Eric Engestrom (1):
+      docs: mention that python package `packaging` is required on python 3.12+
 
-Jesse Natalie (1):
-      zink: Add ASSERTED to vars that are only used for asserts
-
-Jonathan Gray (1):
-      zink: put sysmacros.h include under #ifdef MAJOR_IN_SYSMACROS
-
-Jordan Justen (2):
-      intel/genxml/gfx125: Move L1_CACHE_CONTROL to enum
-      intel/genxml/gfx125: Move STATE_SURFACE_TYPE to enum
-
-José Roberto de Souza (1):
-      intel/isl/xe2: Enable route of Sampler LD message to LSC
-
-Juan A. Suarez Romero (1):
-      ci/v3dv: update results
+Gert Wollny (1):
+      zink: Don't pass a blend state when we have full ds3 support
 
 Karol Herbst (1):
-      zink: lock screen queue on context_destroy and CreateSwapchain
+      clc: remove code supporting pre llvm-10
 
-Konstantin Seurer (1):
-      nir: Optimize fpow with small constant exponents
-
-Mark Janes (1):
-      intel: remove workaround for preproduction DG2 steppings
-
-Mary Guillemard (1):
-      zink: Force 128 fs input components under Venus for Intel
+Luc Ma (1):
+      loader: Remove a line of unused include
 
 Mike Blumenkrantz (1):
-      vulkan: add wrappers for descriptor '2' functions
+      zink: enforce maxTexelBufferElements for texel buffer sizing
 
-Pierre-Eric Pelloux-Prayer (1):
-      ac/surface: don't oversize surf_size
+Pavel Ondračka (9):
+      r300: small adress register load optimization
+      r300: nir fcsel/CMP lowering pass for R500
+      r300: add some more early bool lowering
+      r300: lower flrp in NIR
+      r300: fcsel_ge lowering from lowered ftrunc
+      r300: lower ftrunc in NIR
+      r300: remove backend CMP lowering
+      r300: remove backend LRP lowering
+      r300: mark load_ubo_vec4 with ACCESS_CAN_SPECULATE
 
-Sagar Ghuge (2):
-      iris: No need to emit PIPELINE_SELECT on Xe2+
-      anv: No need to emit PIPELINE_SELECT on Xe2+
+Rhys Perry (1):
+      aco/tests: use more raw strings
 
-Sergi Blanch Torne (1):
-      Revert "ci: disable collabora farm as it is currently offline"
+Rob Clark (1):
+      freedreno/drm/virtio: Fix typo
 
-Tapani Pälli (1):
-      isl: implement Wa_14018471104
+Ruijing Dong (1):
+      frontends/va: remove some TODOs in hevc encoding
 
-Yiwei Zhang (4):
-      venus: clang format fixes
-      venus: split up the pipeline fix description into self and pnext
-      venus: refactor to add pipeline info fixes helpers
-      venus: properly ignore formats in VkPipelineRenderingCreateInfo
+Samuel Pitoiset (13):
+      radv: move radv_{emulate,enable}_rt() to radv_physical_device.c
+      radv: make a couple of NIR RT functions as static
+      radv: move radv_rt_{common,shader} files to nir/
+      radv: move radv_BindImageMemory2() to radv_image.c
+      radv: add support for VkBindMemoryStatusKHR
+      radv: rename RADV_GRAPHICS_STAGES to RADV_GRAPHICS_STAGE_BITS
+      radv: add support for version 2 of all descriptor binding commands
+      radv: add support for NULL index buffer
+      radv: advertise VK_KHR_maintenance6
+      radv: disable FMASK for MSAA images with layers on GFX9
+      radv: stop clearing CMASK to 0xcc when FMASK is present on GFX9
+      radv: disable stencil test without a stencil attachment
+      radv: constify a variable in radv_emit_depth_control()
 
-Yonggang Luo (1):
-      compiler/glsl: Move glsl specific _mesa_glsl_initialize_types out and glsl_symbol_table of glsl_types.h
+Sil Vilerino (2):
+      Revert "d3d12: Only destroy the winsys during screen destruction, not reset"
+      Revert "d3d12: Fix screen->winsys leak in d3d12_screen"
 
-Zhang, Jianxun (1):
-      intel/genxml: Add RENDER_SURFACE_STATE for xe2
+VladimirTechMan (1):
+      venus/android: Switch to using u_gralloc
+
+Yonggang Luo (5):
+      intel: Avoid use align as variable, replace it with other names
+      intel: Use ALIGN_POT instead of ALIGN inside macro define
+      intel: Cleanup duplicate ALIGN macro defines
+      intel,crocus,iris: Use align64 instead of ALIGN for 64 bit value parameter
+      amd: Use align64 instead of ALIGN for 64 bit value parameter
+
+daoxianggong (1):
+      zink - Fix for blend color change without blend state change
 
