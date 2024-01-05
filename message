@@ -1,108 +1,39 @@
-Updating from 68a9b3cc6f26c755da584a645dd3a72bd61ea101 to aa1eb54b3bd721f5457c3829c927789a9453b650
+Updating from aa1eb54b3bd721f5457c3829c927789a9453b650 to 91ec3cc7e283bd9a57d1c326335cd78719907f5f
 
-Alyssa Rosenzweig (2):
-      nir/validate: allow bias on nir_texop_lod
-      asahi: Implement lod queries
+Caio Oliveira (3):
+      intel/fs: Only allocate acp_entry if we are adding one
+      intel/fs: Use linear allocator in opt_copy_propagation
+      intel/fs: Use linear allocator in fs_live_variables
 
-Christian Gmeiner (1):
-      nir/opt_peephole_select: handle speculative ubo loads
+Corentin Noël (1):
+      virgl: Only send the same amount of data than declared in pipe_sampler_state
 
-Daniel Schürmann (5):
-      nir/opt_loop: move loop control-flow optimizations into separate pass
-      treewide: replace calls to nir_opt_trivial_continues() with nir_opt_loop()
-      nir: remove nir_opt_trivial_continues()
-      nir: remove redundant passes from nir_opt_if()
-      nir/opt_loop_cf: generalize removal of "trivial" continues
+Dave Airlie (1):
+      intel/compiler: reemit boolean resolve for inverted if on gen5
 
-Danylo Piliaiev (3):
-      freedreno/devices: Update a690 magic regs from WSL blob
-      turnip: Disable UBWC for D/S images on A690
-      freedreno: Disable UBWC for D/S images on A690
+Friedrich Vock (1):
+      radv/rt: Free traversal NIR after compilation
 
-Dave Airlie (12):
-      gallivm: handle llvm 16 atexit ordering problems.
-      intel/compiler: fix release build unused variable.
-      intel/compiler: revert part of "Move earlier scheduler code that is not mode-specific"
-      llvmpipe: fix caching for texture shaders.
-      gallivm/sample: refactor first/last level handling and use level_zero_only.
-      gallivm/sample: add some num_samples vs level zero only support
-      gallivm/sample: make the load_mip helper useful outside this file.
-      gallivm/lp: reduce size of lp_jit_texture.
-      gallivm/lp: reduce image descriptor size.
-      gallivm/lp: merge sample info into normal info
-      gallivm/lp: move sampler index around to reduce struct
-      lavapipe: bump .maxResourceDescriptorBufferRange
+Juan A. Suarez Romero (1):
+      ci/vc4/v3d: remove some flakes
 
-Dmitry Baryshkov (4):
-      ir3: fix shift amount for 8-bit shifts
-      ir3/a6xx: fix ldg/stg of ulong2 and ulong4 data
-      freedreno/drm: notify valgrind about FD_BO_NOMAP maps
-      freedreno/drm: don't crash in heap allocator when run under valgrind
+Karol Herbst (5):
+      zink: fix heap-use-after-free on batch_state with sub-allocated pipe_resources
+      rusticl: specify buffer bindings explicitly
+      rusticl: add QueueContext to track GPU state
+      rusticl/queue: release bound constant buffer
+      rusticl: use real buffer for cb0 for drivers prefering
 
-Eric Engestrom (1):
-      docs: mention that python package `packaging` is required on python 3.12+
+Sagar Ghuge (1):
+      intel/fs: Check fs_visitor instance before using it
 
-Gert Wollny (1):
-      zink: Don't pass a blend state when we have full ds3 support
+Samuel Pitoiset (4):
+      radv: remove duplicated si_tile_mode_index() function
+      radv: rename si_make_texture_descriptor() to gfx6_make_texture_descriptor()
+      radv: remove radv_write_scissors()
+      radv: drop si_ prefix from all functions
 
-Karol Herbst (1):
-      clc: remove code supporting pre llvm-10
-
-Luc Ma (1):
-      loader: Remove a line of unused include
-
-Mike Blumenkrantz (1):
-      zink: enforce maxTexelBufferElements for texel buffer sizing
-
-Pavel Ondračka (9):
-      r300: small adress register load optimization
-      r300: nir fcsel/CMP lowering pass for R500
-      r300: add some more early bool lowering
-      r300: lower flrp in NIR
-      r300: fcsel_ge lowering from lowered ftrunc
-      r300: lower ftrunc in NIR
-      r300: remove backend CMP lowering
-      r300: remove backend LRP lowering
-      r300: mark load_ubo_vec4 with ACCESS_CAN_SPECULATE
-
-Rhys Perry (1):
-      aco/tests: use more raw strings
-
-Rob Clark (1):
-      freedreno/drm/virtio: Fix typo
-
-Ruijing Dong (1):
-      frontends/va: remove some TODOs in hevc encoding
-
-Samuel Pitoiset (13):
-      radv: move radv_{emulate,enable}_rt() to radv_physical_device.c
-      radv: make a couple of NIR RT functions as static
-      radv: move radv_rt_{common,shader} files to nir/
-      radv: move radv_BindImageMemory2() to radv_image.c
-      radv: add support for VkBindMemoryStatusKHR
-      radv: rename RADV_GRAPHICS_STAGES to RADV_GRAPHICS_STAGE_BITS
-      radv: add support for version 2 of all descriptor binding commands
-      radv: add support for NULL index buffer
-      radv: advertise VK_KHR_maintenance6
-      radv: disable FMASK for MSAA images with layers on GFX9
-      radv: stop clearing CMASK to 0xcc when FMASK is present on GFX9
-      radv: disable stencil test without a stencil attachment
-      radv: constify a variable in radv_emit_depth_control()
-
-Sil Vilerino (2):
-      Revert "d3d12: Only destroy the winsys during screen destruction, not reset"
-      Revert "d3d12: Fix screen->winsys leak in d3d12_screen"
-
-VladimirTechMan (1):
-      venus/android: Switch to using u_gralloc
-
-Yonggang Luo (5):
-      intel: Avoid use align as variable, replace it with other names
-      intel: Use ALIGN_POT instead of ALIGN inside macro define
-      intel: Cleanup duplicate ALIGN macro defines
-      intel,crocus,iris: Use align64 instead of ALIGN for 64 bit value parameter
-      amd: Use align64 instead of ALIGN for 64 bit value parameter
-
-daoxianggong (1):
-      zink - Fix for blend color change without blend state change
+Yonggang Luo (2):
+      util,compiler: Avoid use align as variable, replace it with other names
+      panfrost: Avoid use align as variable, replace it with other names
 
