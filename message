@@ -1,39 +1,62 @@
-Updating from aa1eb54b3bd721f5457c3829c927789a9453b650 to 91ec3cc7e283bd9a57d1c326335cd78719907f5f
+Updating from 91ec3cc7e283bd9a57d1c326335cd78719907f5f to 568f61787a5cd1a69c799d935c364138ff415a1e
 
-Caio Oliveira (3):
-      intel/fs: Only allocate acp_entry if we are adding one
-      intel/fs: Use linear allocator in opt_copy_propagation
-      intel/fs: Use linear allocator in fs_live_variables
+Connor Abbott (1):
+      ir3/legalize: Fix helper propagation with b.any/b.all/getone
 
-Corentin Noël (1):
-      virgl: Only send the same amount of data than declared in pipe_sampler_state
-
-Dave Airlie (1):
-      intel/compiler: reemit boolean resolve for inverted if on gen5
+Eric Engestrom (1):
+      lvp: update symbols that have become aliases for newer ones
 
 Friedrich Vock (1):
-      radv/rt: Free traversal NIR after compilation
+      radv,aco: Convert 1D ray launches to 2D
+
+Georg Lehmann (2):
+      aco: shrink buffer stores with undef/zero components
+      aco/gfx12: implement broadcast dmask shrink behavior
 
 Juan A. Suarez Romero (1):
-      ci/vc4/v3d: remove some flakes
+      ci/v3d: add support for rpi5
 
-Karol Herbst (5):
-      zink: fix heap-use-after-free on batch_state with sub-allocated pipe_resources
-      rusticl: specify buffer bindings explicitly
-      rusticl: add QueueContext to track GPU state
-      rusticl/queue: release bound constant buffer
-      rusticl: use real buffer for cb0 for drivers prefering
+Karol Herbst (3):
+      ci,rusticl: bump meson req to 1.3.1
+      rusticl/meson: generate bindings for LLVM
+      rusticl/program: add LLVM functions to cache timestamp
 
-Sagar Ghuge (1):
-      intel/fs: Check fs_visitor instance before using it
+Konstantin Seurer (1):
+      radv: Implement VK_KHR_ray_tracing_position_fetch
 
-Samuel Pitoiset (4):
-      radv: remove duplicated si_tile_mode_index() function
-      radv: rename si_make_texture_descriptor() to gfx6_make_texture_descriptor()
-      radv: remove radv_write_scissors()
-      radv: drop si_ prefix from all functions
+Mark Janes (4):
+      intel/dev: improve descriptions of workaround macros.
+      intel/dev: poison macros for workarounds fixed at a stepping
+      intel: remove MTL a0 workarounds
+      intel/dev: update workaround definitions to latest defect status
 
-Yonggang Luo (2):
-      util,compiler: Avoid use align as variable, replace it with other names
-      panfrost: Avoid use align as variable, replace it with other names
+Mary Guillemard (2):
+      zink: Initialize pQueueFamilyIndices for image query / create
+      zink: Always fill external_only in zink_query_dmabuf_modifiers
+
+Michael Catanzaro (1):
+      util: create parents of disk cache directory if needed
+
+Michael Tretter (1):
+      egl/wayland: fix formatting and add trailing comma
+
+Rhys Perry (9):
+      aco: correctly set min/max_subgroup_size for wave32-as-wave64
+      radv: use CS wave selection for task shaders
+      radv: remove radv_shader_info's cs.subgroup_size
+      nir: add msad_4x8
+      nir/algebraic: optimize vkd3d-proton's MSAD
+      aco: implement msad_4x8
+      ac/llvm: implement msad_4x8
+      radv: enable msad_4x8
+      nir: remove sad_u8x4
+
+Vinson Lee (1):
+      ac/rgp: Fix single-bit-bitfield-constant-conversion warning
+
+Yonggang Luo (4):
+      glsl: Fixes glcpp/tests with mingw/gcc
+      util: Add align_uintptr and use it treewide  to replace ALIGN that works on size_t and uintptr_t
+      nvk: Avoid use align as variable, replace it with alignment
+      nouveau: Use align64 instead of ALIGN for 64 bit value parameter
 
