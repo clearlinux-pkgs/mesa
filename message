@@ -1,41 +1,40 @@
-Updating from 568f61787a5cd1a69c799d935c364138ff415a1e to a84729d36866bc79619523065a6038c3d8444f97
+Updating from a84729d36866bc79619523065a6038c3d8444f97 to 2c9fdaa83013ac60b55ef821d502282e297505b8
+
+Christian Gmeiner (1):
+      pan/mdg: Use nir_builder for load_sampler_lod_parameters_pan
 
 Daniel Schürmann (3):
-      aco: fix should_form_clause() for memory instructions without operands
-      aco: form clauses for LDS instructions
-      aco: add new post-RA scheduler for ILP
+      aco: refactor and speed-up dead code analysis
+      nir/opt_move_discards_to_top: don't schedule discard/demote across subgroup operations
+      nir/gather_info: fix enumeration of wide subgroup intrinsics
 
-Marek Olšák (32):
-      winsys/amdgpu: reduce wasted memory due to the size tolerance in pb_cache
-      gallium/pb_slab: move group_index and entry_size from pb_slab_entry to pb_slab
-      iris,zink,winsys/amdgpu: remove unused/redundant slab->entry_size
-      winsys/amdgpu: rename to amdgpu_bo_slab to amdgpu_bo_slab_entry
-      winsys/amdgpu: stop using pb_buffer::vtbl
-      gallium/pb_cache: remove pb_cache_entry::end to save space
-      gallium/pb_cache: switch time variables to milliseconds and 32-bit type
-      radeon_winsys: add struct radeon_winsys* parameter into fence_reference
-      r300,r600,radeon/winsys: always pass the winsys to radeon_bo_reference
-      winsys/amdgpu: don't layer slabs, use only 1 level of slabs, it improves perf
-      winsys/amdgpu: add amdgpu_bo_real_reusable slab for the backing buffer
-      winsys/amdgpu: remove now-redundant amdgpu_bo_slab_entry::real
-      winsys/amdgpu: remove va (gpu_address) from amdgpu_bo_slab_entry
-      winsys/amdgpu: don't use gpu_address to compute slab entry offset in bo_map
-      gallium/pb_buffer: define pb_buffer_lean without vtbl, inherit it by pb_buffer
-      gallium/pb_cache: switch to pb_buffer_lean
-      gallium/pb_cache: remove pb_cache_entry::mgr
-      gallium/pb_cache: remove pb_cache_entry::buffer
-      winsys/radeon: stop using pb_buffer::vtbl
-      r300,r600,radeonsi: switch to pb_buffer_lean
-      winsys/amdgpu: allocate 1 amdgpu_bo_slab_entry per cache line
-      winsys/amdgpu: compute bo->unique_id at pb_slab_alloc, not at memory allocation
-      winsys/amdgpu: rewrite BO fence tracking by adding a new queue fence system
-      winsys/amdgpu: rename amdgpu_winsys_bo::bo -> bo_handle
-      winsys/amdgpu: rename amdgpu_bo_sparse::lock -> commit_lock
-      winsys/amdgpu: rename amdgpu_bo_real::lock to map_lock
-      winsys/amdgpu: remove dependency_flags parameter from cs_add_fence_dependency
-      winsys/amdgpu: implement explicit fence dependencies as sequence numbers
-      winsys/amdgpu: use pipe_reference for amdgpu_ctx refcounting
-      winsys/amdgpu: don't use amdgpu_fence::ctx for fence dependencies
-      winsys/amdgpu: simplify code using amdgpu_cs_context::chunk_ib
-      radeonsi/ci: add gfx11 flakes
+Helen Koike (1):
+      ci: fix python-test dependency error on merge requests
+
+Konstantin Seurer (11):
+      radv: Make pipeline cache object data generic
+      radv: Don't store library stack sizes
+      radv: Add more ray tracing data to the cache
+      radv/rt: Skip compiling a traversal shader
+      radv: Skip compiling chit and miss shaders
+      radv/rt: Remove useless assert
+      radv/rt: Use radv_shader for compiled shaders
+      radv/sqtt: Avoid duplicate stage check
+      radv/rt: Repurpose radv_ray_tracing_stage_is_compiled
+      vtn: Remove transpose(m0)*m1 fast path
+      ac/nir: Export clip distances according to clip_cull_mask
+
+Lionel Landwerlin (2):
+      isl: further restrict alignment constraints
+      isl: implement Wa_22015614752
+
+Samuel Pitoiset (2):
+      Revert "radv: disable DCC with signedness reinterpretation on GFX11"
+      radv: stop disabling DCC for mutable with 0 formats on GFX11
+
+Sergi Blanch Torne (1):
+      ci: disable Collabora's LAVA lab for maintance
+
+Yonggang Luo (1):
+      etnaviv/drm: Remove redundant ALIGN macro by #include "util/u_math.h"
 
