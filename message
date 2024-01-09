@@ -1,40 +1,105 @@
-Updating from a84729d36866bc79619523065a6038c3d8444f97 to 2c9fdaa83013ac60b55ef821d502282e297505b8
+Updating from 2c9fdaa83013ac60b55ef821d502282e297505b8 to 5c42d6c62f9bec7ecc1bfe10d22ee7ffab773bf3
 
-Christian Gmeiner (1):
-      pan/mdg: Use nir_builder for load_sampler_lod_parameters_pan
+Alejandro Piñeiro (1):
+      broadcom/compiler: remove one superfluous call to nir_opt_undef
 
-Daniel Schürmann (3):
-      aco: refactor and speed-up dead code analysis
-      nir/opt_move_discards_to_top: don't schedule discard/demote across subgroup operations
-      nir/gather_info: fix enumeration of wide subgroup intrinsics
+Caio Oliveira (4):
+      anv: Don't print warnings for GRL kernel compilations
+      intel/compiler: Use INTEL_DEBUG=cs to ask for brw_compiler output
+      nir: Disable -Wmisleading-indentation when compiling with GCC
+      ci: Add Werror=misleading-indentation to debian-clang
 
-Helen Koike (1):
-      ci: fix python-test dependency error on merge requests
+Corentin Noël (1):
+      virgl: Assert build_id_note before dereferencing it
 
-Konstantin Seurer (11):
-      radv: Make pipeline cache object data generic
-      radv: Don't store library stack sizes
-      radv: Add more ray tracing data to the cache
-      radv/rt: Skip compiling a traversal shader
-      radv: Skip compiling chit and miss shaders
-      radv/rt: Remove useless assert
-      radv/rt: Use radv_shader for compiled shaders
-      radv/sqtt: Avoid duplicate stage check
-      radv/rt: Repurpose radv_ray_tracing_stage_is_compiled
-      vtn: Remove transpose(m0)*m1 fast path
-      ac/nir: Export clip distances according to clip_cull_mask
+Dave Airlie (1):
+      radv: don't emit cp dma packets on video rings.
 
-Lionel Landwerlin (2):
-      isl: further restrict alignment constraints
-      isl: implement Wa_22015614752
+Erik Faye-Lund (1):
+      panfrost: document ci failure
 
-Samuel Pitoiset (2):
-      Revert "radv: disable DCC with signedness reinterpretation on GFX11"
-      radv: stop disabling DCC for mutable with 0 formats on GFX11
+Florian Weimer (1):
+      meson: C type error in strtod_l/strtof_l probe
 
-Sergi Blanch Torne (1):
-      ci: disable Collabora's LAVA lab for maintance
+Georg Lehmann (4):
+      aco: apply packed fneg commutatively
+      aco: fix applying input modifiers to DPP8
+      aco: clean up fneg/fabs combining
+      aco: apply fneg/fabs to VOP3P
 
-Yonggang Luo (1):
-      etnaviv/drm: Remove redundant ALIGN macro by #include "util/u_math.h"
+Iago Toral Quiroga (1):
+      v3dv: implement VK_EXT_shader_demote_to_helper_invocation
+
+Italo Nicola (4):
+      panfrost: fix untracked dependency when converting resource modifier
+      gallium: stop calling resource_copy_region for multisampled copy_image
+      panfrost: legalize afbc before blitting
+      panfrost: expose support for EXT_copy_image
+
+Karol Herbst (1):
+      rusticl/llvm: do not include spirv-tools/linker.hpp
+
+Konstantin Seurer (6):
+      vtn: Handle DepthReplacing correctly
+      radv/rmv: Fix tracing ray tracing pipelines
+      radv/rt/rmv: Log pipeline library creation
+      radv: Use PLOC for TLAS builds
+      radv: Remove the BVH depth heuristics
+      radv/rt: Lower ray payloads to registers
+
+Leo Liu (1):
+      gallium/vl: match YUYV/UYVY swizzle with change of color channels
+
+Lionel Landwerlin (1):
+      intel/fs: fix depth compute state for unchanged depth layout
+
+Marek Olšák (7):
+      glthread: don't unroll draws using user VBOs with GLES
+      glthread: add proper helpers for call fences
+      gallium/u_threaded_context: use function table to jump to different draw impls
+      mesa,u_threaded_context: add a fast path for glDrawElements calling TC directly
+      gallium/u_threaded: use a dummy end call to indicate the end of the batch
+      gallium/u_threaded: remove unused param from tc_bind_buffer/add_to_buffer_list
+      gallium/u_threaded: keep it enabled even if the CPU count is 1
+
+Mike Blumenkrantz (1):
+      zink: always force flushes when originating from api frontend
+
+Pavel Ondračka (3):
+      r300: fix memory leaks in compiler tests
+      ci: uprev mesa-trigger container
+      ci: add r300 RV530 dEQP gles2 CI job
+
+Sergi Blanch Torne (2):
+      Revert "ac/nir: Export clip distances according to clip_cull_mask"
+      Revert "ci: disable Collabora's LAVA lab for maintance"
+
+Sil Vilerino (1):
+      d3d12: Fix AV1 Encode - log2 rounding for tile_info section
+
+Sviatoslav Peleshko (18):
+      intel/compiler: Add variable to dump binaries of all compiled shaders
+      intel/disasm: Print half-float values instead of placeholder
+      intel/compiler: Set flag reg to 0 when disabling predication
+      intel/disasm: Print src1_len correctly depending on ExDesc type
+      intel/fs: Set group 0 for Wa_14010017096 MOV instruction
+      intel/eu/validate: Validate that the ExecSize is a factor of chosen ChanOff
+      intel/tools/i965_asm: Add SWSB handling
+      intel/tools/i965_asm: Handle HF immediates
+      intel/tools/i965_asm: Handle sync instruction
+      intel/tools/i965_asm: Allow neg and abs modifiers on accumulator register
+      intel/tools/i965_asm: Don't override flag reg from cond modifier
+      intel/tools/i965_asm: Allow src0 and src2 of ternary instructions to be imm
+      intel/tools/i965_asm: Implement gfx12 and gfx12.5 send/sendc
+      intel/tools/i965_asm: Add dp4a and add3 instructions
+      intel/tools/i965_asm: Don't set src0 for break and while on gfx12
+      intel/tools/tests: Fix sends indirect argument in gfx9 test
+      intel/tools/tests: Unbreak i965_asm tests
+      intel/tools/tests: Add i965_asm tests for gfx12 and gfx12.5
+
+Timur Kristóf (4):
+      radv: Correct binding index for transfer buffer-image copies.
+      radv: Implement image copies on transfer queues.
+      radv: Implement T2T scanline copy workaround.
+      radv: Expose transfer queues, hidden behind a perftest flag.
 
