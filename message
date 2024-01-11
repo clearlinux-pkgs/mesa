@@ -1,193 +1,79 @@
-Updating from 5c42d6c62f9bec7ecc1bfe10d22ee7ffab773bf3 to efe12ae7ee1801d8d05c4069b793766b2f06cb7b
+Updating from efe12ae7ee1801d8d05c4069b793766b2f06cb7b to 0f57ffb845b61de8e5ed9f623cec2ef468e83f0c
 
-Alyssa Rosenzweig (85):
-      vtn: fuse OpenCL mad if we can can
-      asahi: fix eMRT + background load interaction
-      ail: add is_level_compressed query
-      ail: use is_level_compressed
-      ail: add ail_is_level_twiddled_uncompressed
-      asahi: do not use compression blits for uncompressed levels
-      agx: allow bindful arrays if not clamping
-      asahi: don't format convert with staging blits
-      asahi: implement arrays as 2d for internal images
-      asahi: respect last_block
-      asahi: allow compressed image stores in blits
-      asahi: fix image_mask with unbind num trailing
-      asahi: add compute blitter
-      asahi: add and use batch_is_compute helper
-      asahi: fix get_batch with compute batches
-      asahi: allow multiple compute dispatches in a batch
-      asahi: drop custom mipmap generate
-      asahi: set data_valid on first draw
-      asahi: fix data valid tracking
-      asahi: reduce transfer map flushing with staging blits
-      asahi: do not stall for writers with invalid mips
-      asahi: implement blit-based resource_copy_region
-      asahi: fix snorm staging blits
-      asahi: use copy region for decompression
-      asahi: fix scissor arrays
-      asahi: disable compute-based blitter for now
-      agx: use more mem->tex barriers even on g13g
-      agx: fix early-z + discard together
-      asahi: fix set_sampler_views
-      asahi: fix max tex sizes
-      agx: optimize fcmp like fcmpsel
-      agx: wire up some ballots
-      agx: lower votes to ballots
-      agx: implement query_levels
-      agx: skip scoreboard bit in builder for !wait
-      agx: make vec widths explicit in IR
-      agx: validate post-RA
-      agx: rm silly todo
-      agx: rm outdated comment
-      agx: add index size helper
-      agx: trust in agx_index size
-      agx: mv agx_read/write_regs to validator
-      agx: use custom assert when packing
-      agx: use mov imm for pcopies
-      agx: allow phis with 16bit imms
-      agx: prepare for immediates in phis
-      agx: handle imm inlining into phis
-      asahi: rework compute emptiness tracking
-      asahi: stub qbo on the cpu
-      asahi: implement xfb overflow queries
-      agx: const fold after discard lowering
-      agx: fix xfb of invalid comp
-      agx: fix xfb of invalid var
-      asahi: bump vertex shader outputs
-      asahi: rm pointless multisample key bit
-      asahi: rm layered bit from shader key
-      asahi: implement point sprites w/o shader key
-      asahi: rm unused blend enable bit
-      asahi: rm logicop enable bit
-      asahi: rm nr_cbufs from key
-      asahi: rm blend->store from shader key
-      asahi: rm vbuf.count from key
-      asahi: rm agx_vbufs wrapper
-      asahi: invert program_point_size
-      asahi: divide by xfb stride for xfb draws
-      asahi: disable fp16 cbuf cap
-      asahi: add missing GS line strip (+adj) handling
-      asahi: link libagx before lowering mem access widths
-      asahi: cl-ify some xfb logic
-      asahi: factor out libagx_map_vertex_in_tri_strip
-      asahi: rotate xfb'd tri strips
-      asahi: inline something silly
-      asahi: plumb get_ubo_size
-      asahi: make txf robust properly
-      asahi: fix passthrough GS with poly modes
-      asahi: add missing tib alignment check
-      agx: optimize split(64-bit uniform)
-      agx: expand agx_index
-      agx: fix 64-bit phis with inlined immediates
-      agx: add unit test for pcopy lowering bug
-      agx: require min alignment for load/store vectorize
-      asahi: fallback some resource copies
-      asahi: don't canonicalize nans/flush denorms when copying
-      agx: unit test split uniform opt
-      agx: clang-fmt
+Alessandro Astone (1):
+      zink: Fix resizable BAR detection logic
 
-Asahi Lina (4):
-      asahi: Add .editorconfig for CL files
-      asahi: Implement BO alignment
-      agx: Fix packing of stack map/unmap
-      agx: Add scoreboarding to stack instructions
+Alyssa Rosenzweig (1):
+      nir,zink: Redefine flat_mask in terms of I/O locations
 
-David Heidelberg (3):
-      ci: enable ci-deb-repo for libdrm 2.4.119 (and others in the future)
-      ci/alpine: update to latest to get libdrm 2.4.119
-      ci: bump Fedora and Android libdrm2 to 2.4.119
+Daniel Stone (1):
+      ci: Re-enable Collabora farm
 
-Eric Engestrom (1):
-      egl: only accept APIs that are compiled in
+David Heidelberg (1):
+      ci/rootfs: add libdrm also inside the rootfs
 
-Erik Faye-Lund (5):
-      mesa/st: do not require render-target support for texture-only exts
-      mesa/st: do not check for emulated format
-      mesa: actually check for EXT_color_buffer_float support
-      mesa/main: require EXT_color_buffer_float for ES 3.2
-      mesa: check for float-format support
+Eric Engestrom (9):
+      ci: split & reuse debian version identifier
+      ci: convert several `find | xargs` to `find -exec`
+      ci/deqp: set default platform to `default` instead of glx, to also support wayland
+      docs: add release notes for 23.3.3
+      docs: add sha256sum for 23.3.3
+      docs: update calendar for 23.3.3
+      docs: close the 23.2 cycle
+      VERSION: bump to 24.1
+      docs: reset new_features.txt
 
-Faith Ekstrand (1):
-      nvk: Free shaders created by codegen
+Iago Toral Quiroga (1):
+      v3dv: expose VK_EXT_subgroup_size_control
 
-Friedrich Vock (2):
-      radv/rt: Move per-geometry build info into a geometry_data struct
-      radv/rt: Acceleration structure updates
+José Expósito (1):
+      zink: add render-passes HUD query
 
-José Roberto de Souza (7):
-      utils/u_debug: Fix parse of "all,<something else>
-      anv: Increase ANV_MAX_QUEUE_FAMILIES
-      anv: Drop useless STATIC_ASSERT in anv_physical_device_init_queue_families()
-      anv: Simply companion_rcs handling
-      anv: Add missing anv_measure_submit() calls in Xe KMD backend
-      anv: Fix anv_measure_start/stop_snapshot() over copy or video engine
-      anv: Call anv_measure_submit() before anv_cmd_buffer_chain_command_buffers()
+Juan A. Suarez Romero (2):
+      Revert "v3d: use kmsro to create drm screen on real hw"
+      v3d: show warning on creating a v3d screen on real hw
 
-Konstantin Seurer (1):
-      vtn: Allow for OpCopyLogical with different but compatible types
+Juston Li (4):
+      venus: rename buffer cache to buffer reqs cache
+      venus: use vk_format helper for plane count
+      venus: support caching image memory requirements
+      venus: add LRU cache eviction for image mem reqs cache
 
-Marek Olšák (3):
-      meson: require libdrm_amdgpu 2.4.119
-      winsys/amdgpu: remove amdgpu_bo_real::gpu_address, use amdgpu_va_get_start_addr
-      winsys/amdgpu: remove amdgpu_bo_sparse::gpu_address, use amdgpu_va_get_start_addr
+Lionel Landwerlin (1):
+      anv: remove ANV_ENABLE_GENERATED_INDIRECT_DRAWS variable
 
-Martin Roukala (né Peres) (3):
-      ci: disable mupuf's farm
-      ci: disable collabora's farm which appears to be down
-      Revert "ci: disable mupuf's farm"
+Matt Turner (3):
+      symbols-check: Add _GLOBAL_OFFSET_TABLE_
+      nir: Fix cast
+      nir/tests: Reenable tests that failed on big-endian
 
-Mike Blumenkrantz (5):
-      vk/cmd_queue: stop using explicit casts
-      vk/cmd_queue: generate maint6 functions
-      vk/cmd_queue: fix up indentation a little
-      lavapipe: maint6 descriptor stuff
-      lavapipe: maint6
+Max R (1):
+      d3d10umd: Fix compilation
 
-Pavel Ondračka (3):
-      r300/ci: add missing kernel url quotes
-      r300/ci: switch to b2c v0.9.11
-      r300/ci: add piglit job
+Mike Blumenkrantz (2):
+      zink: fix buffer rebind early-out check
+      zink: ignore tc buffer replacement info
 
-Roman Stratiienko (3):
-      u_gralloc: Extract common code from fallback gralloc
-      u_gralloc: Add QCOM gralloc support
-      egl/android: Switch to generic buffer-info code
+Roman Stratiienko (1):
+      u_gralloc: Add support for gbm_gralloc
 
-Samuel Pitoiset (4):
-      radv: do not program COMPUTE_MAX_WAVE_ID (GDS register) on GFX6
-      radv/winsys: replace '<= GFX6' by '== GFX6'
-      radv: query drirc options in only one place
-      radv: move dri options to radv_instance::drirc
+Ruijing Dong (1):
+      radeonsi/vcn: update session_info from vcn3 and up.
 
-Simon Zeni (2):
-      EGL: sync files with Khronos
-      egl: implement EGL_EXT_query_reset_notification_strategy
+Samuel Pitoiset (8):
+      radv: rework declaring color arguments for PS epilogs
+      Revert "radv/rt: Lower ray payloads to registers"
+      radv: do not issue SQTT marker with DISPATCH_MESH_INDIRECT_MULTI
+      radv: add missing disable_shrink_image_store to the pipeline key
+      radv: move RADV_HASH_SHADER_KEEP_STATISTICS to radv_pipeline_key
+      radv: initialize radv_device::disable_trunc_coord earlier
+      radv: introduce radv_device_cache_key for per-device cache compiler options
+      radv: move all per-device keys from radv_pipeline_key to radv_device_cache_key
 
-Tapani Pälli (2):
-      iris: use workaround framework for Wa_22018402687
-      anv: use workaround framework for Wa_22018402687
-
-Tatsuyuki Ishi (1):
-      radv: Add layer to skip UnmapMemory for Quantic Dream Engine
-
-Teng, Jin Chung (1):
-      d3d12: Decode - Adding more supported resolution
-
-Thomas H.P. Andersen (8):
-      nvk: loop over stages in MESA order
-      nvk: add hashing for shaders
-      nvk: allocatable nvk_shaders
-      nvk: pipeline shader cache
-      nvk: VK_EXT_pipeline_creation_feedback
-      nvk: VK_EXT_pipeline_creation_cache_control
-      nvk: VK_EXT_shader_module_identifier
-      docs: update features.txt for nvk
-
-antonino (1):
-      egl: only check dri3 on X11
-
-i509VCB (2):
-      asahi: create queue for screen
-      agx: remove internal agx_device queue
+Yiwei Zhang (5):
+      meson/vulkan/util: allow venus to drop compiler deps
+      venus: make tls hint specific to pipeline creation
+      venus: TLS ring
+      venus: clean up secondary ring
+      venus: allow to retrieve pipeline cache on TLS ring
 
