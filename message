@@ -1,156 +1,64 @@
-Updating from 0f57ffb845b61de8e5ed9f623cec2ef468e83f0c to b9ad22d24eeeba5cf4ad1ec5e740e825500f57b8
+Updating from b9ad22d24eeeba5cf4ad1ec5e740e825500f57b8 to e36235e6d530e037cffd189d48fb6ae88f5dd613
 
-Agate, Jesse (3):
-      amd/vpelib: Studio Range Handling
-      amd/vpelib: White Screen Fix
-      amd/vpelib: VPT Failing Test Cases
-
-Alan Liu (3):
-      radeonsi/vpe: Add environment variable to set embbuf number
-      radeonsi/vpe: Don't map and unmap emb_buffer every time in process_frame
-      amd/vpelib: remove unused header file
-
-Alyssa Rosenzweig (29):
-      nir/lower_ssbo: rewrite
-      nir/lower_blend: return progress
-      nir/lower_io_to_temporaries: return prog
-      nir/lower_clip_cull_distance_arrays: return prog
-      nir: return prog from drawpixels
-      nir/lower_bitmap: return prog
-      nir/lower_alpha_test: rewrite with intrinsics_pass
-      nir/lower_point_size_mov: return prog
-      nir/lower_passthrough_edgeflags: return progress
-      nir/lower_io_arrays_to_elements: return prog
-      nir/lower_flatshade: fix metadata
-      glsl: return progress in point size linking
-      glsl: don't use NIR_PASS_V
-      glsl: fix metadata in gl_nir_zero_initialize_clip_distance
-      mesa/st: return progress in st_nir_lower_wpos_ytransform
-      mesa/st: use instructions_pass for plane lowering
-      mesa/st: return progress lowering builtins
-      mesa/st: don't use NIR_PASS_V
-      agx: rm deadcode
-      agx: ingest undefs in the backend
-      agx: stop lowering in opt loop
-      agx: only lower vars to ssa once
-      agx: fix metadata in layer lowering
-      agx: unset silly nir opts
-      agx: return progress from passes
-      asahi: return progress from passes
-      asahi: avoid silly internal NIR_PASS in gs lowering
-      asahi: don't use NIR_PASS for removing entrypoints
-      asahi: don't use NIR_PASS_V
-
-Assadian, Navid (2):
-      amd/vpelib: Apply inverse gamut remap to background
-      amd/vpelib: Use uint64 for buffer size
+Caio Oliveira (1):
+      intel/compiler/xe2: Implement instruction compaction for DPAS.
 
 Corentin Noël (2):
-      zink: Avoid the use of negative array offsets
-      zink: Use memmove when dealing with overlapping memory
+      glsl: Make sure to not cast ir_dereference_variable into ir_variable
+      glsl: Make sure that the variable is a ir_variable before unreferencing it
 
-Daniel Schürmann (3):
-      aco/insert_exec_mask: unify exec restore code after divergent control flow
-      aco/insert_exec_mask: replace phi for loop restore mask with explicit copies
-      aco/insert_exec_mask: only create loop phis for exec mask if necessary
+Faith Ekstrand (10):
+      nvk: Add an explicit mapping from shader stages to cbuf bindings
+      nvk: Return an nvk_cbuf_map from nvk_lower_nir()
+      nvk: Use s instead of set_idx in CmdBindDescriptorSets
+      nvk: Rework descriptor set binding
+      nvk: Make dynamic cbuf indices relative to the descriptor set
+      nvk: Handle missing descriptor sets in nvk_nir_lower_descriptors
+      nvk: Invalidate state after secondary command buffers
+      nvk: Set a minimum of one patch control point
+      nak: Disallow gl_FragData and set MRT correctly
+      nak: Add explicit padding to nak_shader_info
 
-Derek Foreman (1):
-      egl/wayland: Fix possible buffer leak
+Francisco Jerez (12):
+      intel/compiler/xe2: Add Xe2 bounds to FF() macro.
+      intel/compiler/xe2: Implement codegen of general instruction controls.
+      intel/compiler/xe2: Implement codegen of 2-source instruction operands.
+      intel/compiler/xe2: Implement codegen of indirect immediates.
+      intel/compiler/xe2: Implement codegen of three-source instructions.
+      intel/compiler: Add assume() checks to brw_compact_inst_(set_)bits().
+      intel/compiler/xe2: Implement codegen of compact instructions.
+      intel/compiler/xe2: Implement instruction compaction.
+      intel/compiler/xe2: Fix for NibCtrl field removal.
+      intel/compiler/xe2: Fix for the removal of most predication modes.
+      intel/compiler/xe2: Add extra flag registers.
+      intel/compiler/xe2: Fix for the removal of AccWrCtrl.
 
-Dmitry Osipenko (1):
-      virtio/vdrm: Fix lockup in vdrm_host_sync()
-
-Emma Anholt (2):
-      ci: Add full-run xfails missed in the 1.3.7.0 CTS update.
-      ci: Disable VK full runs that time out since 1.3.7.0 (hasvk, anv-tgl, a630)
-
-Eric Engestrom (4):
-      docs: update calendar for 24.0.0-rc1
-      ci: make sure we evaluate the python-test rules first
-      docs: fix syntax highlighting on non-code text snippet
-      docs: fix syntax highlighting on shell commands
-
-Francisco Jerez (3):
-      intel/fs: Use full 32-bit sample masks when immediate.
-      intel/eu/validate: SEND instructions don't have immediate encodings on Gen12+.
-      intel/eu/gfx12.5+: Don't fail validation with ARF register restriction error for indirect addressing.
+Georg Lehmann (1):
+      aco: reassign split vector to SOPC
 
 Jesse Natalie (1):
-      ci/windows: Update WARP to 1.0.9 NuGet
-
-Job Noorman (1):
-      tu: support l1 dcache size on musl
+      mesa: Consider mesa format in addition to internal format for mip/cube completeness
 
 José Roberto de Souza (1):
-      intel/isl/xe2: Disable route of Sampler LD message to LSC
+      anv: Fix PAT entry for userptr in integrated GPUs
 
 Juan A. Suarez Romero (1):
-      v3d/vc4/ci: reset the list of timeout tests
+      Revert "v3d: show warning on creating a v3d screen on real hw"
 
 Karol Herbst (2):
-      nak/algebraic: merge run and main function
-      nak/algebraic: write code to an output file
+      clc: use spirv triple starting with llvm-17
+      clc: add support for the native spir-v backend
 
-Lin, Ricky (1):
-      amd/vpelib: Rename the parameters of init vpe function
+Matt Turner (2):
+      util: Add DETECT_ARCH_HPPA macro
+      util/tests: Disable half-float NaN test on hppa/old-mips
 
-Lionel Landwerlin (1):
-      anv: fix disabled Wa_14017076903/18022508906
+Mike Blumenkrantz (3):
+      zink: use local screen variable in surface creation
+      zink: hook up maint6
+      zink: use maint6 for multi-layer compressed surface creation
 
-Mike Blumenkrantz (5):
-      vk/cmdbuf: add back deleted maint6 workgraph bits
-      lavapipe: use pushconstants2 for dgc
-      lavapipe: fix devenv icd filename
-      zink: fix separate shader patch variable location adjustment
-      lavapipe: delete extra descriptor buffer layout validation
-
-Pavel Ondračka (5):
-      r300: fix reusing of color varying slots for generic ones
-      r300: skip draw if vertex shader does not write gl_Position
-      r300/ci: switch to deqp-runner suite
-      r300/ci: add the KHR gles2 tests
-      r300/ci: move streaming-texture-leak from fails to skips
-
-Peyton Lee (5):
-      radeonsi/vpe: remove wait source surface fence and while loop
-      radeonsi/vpe: disable info log
-      radeonsi/vpe: move flush to si_vpe_processor_end_frame
-      radeonsi/vpe: support multi-buffer
-      radeonsi/vpe: pre-allocate stream struceutre
-
-Pierre-Eric Pelloux-Prayer (2):
-      radeonsi: compute epitch when modifying surf_pitch
-      Revert "ci/radeonsi: disable VA-API testing on raven"
-
-Rohan Garg (1):
-      anv: refactor emit_dynamic_buffer_binding_table_entry
-
-Shih, Jude (3):
-      amd/vpelib: Need a debug flag to support 2tap downscaling
-      amd/vpelib: Add VPE prefix on API to avoid naming conflict
-      amd/vpelib: Solve the downscaling problem for 2 tap
-
-Tapani Pälli (4):
-      hasvk: remove cmd_buffer_ray_query_globals function decl
-      hasvk: remove gfx9 specific code from emit_sample_pattern
-      hasvk: remove softpin (GFX_VERx10 >= 90) related code
-      hasvk: remove gfx9 specific cs stall from emit_ps_depth_count
-
-Tatsuyuki Ishi (1):
-      radv: Recompute max_waves after postprocessing RT config
-
-Timur Kristóf (1):
-      radv: Correctly select SDMA support for PRIME blit.
-
-Visan, Tiberiu (1):
-      amd/vpelib: revert SRGB to 709
-
-Yonggang Luo (7):
-      util: Add function util_is_power_of_two_nonzero_uintptr and macro IS_POT_NONZERO
-      asahi,panfrost: Use IS_POT_NONZERO to replace util_is_power_of_two_nonzero for different size
-      treewide: Use util_is_power_of_two_nonzero{64|_uintptr} when needed
-      svga: Cleanup duplicate ALIGN macro defines
-      nouveau: Use align64 instead of ALIGN over input layer_size_B
-      treewide: Use align64 instead of ALIGN for 64 bit value parameter
-      util: Update ALIGN prototype to match align
+Yiwei Zhang (2):
+      venus: avoid redundant layout transition for optimal internal layout
+      venus: populate oom from ring submit alloc failures
 
