@@ -1,64 +1,14 @@
-Updating from b9ad22d24eeeba5cf4ad1ec5e740e825500f57b8 to e36235e6d530e037cffd189d48fb6ae88f5dd613
+Updating from e36235e6d530e037cffd189d48fb6ae88f5dd613 to cfba24ccb548af0ad3427b525def602383cd204a
 
-Caio Oliveira (1):
-      intel/compiler/xe2: Implement instruction compaction for DPAS.
+Eric Engestrom (1):
+      ci/deqp: ensure that in `default` builds, wayland + x11 + xcb are all built
 
-Corentin Noël (2):
-      glsl: Make sure to not cast ir_dereference_variable into ir_variable
-      glsl: Make sure that the variable is a ir_variable before unreferencing it
+Faith Ekstrand (4):
+      nvk: Emit SET_ANTI_ALIAS at draw time when no render targets are bound
+      nvk: Move SET_HYBRID_ANTI_ALIAS_CONTROL to draw time
+      nvk: Advertise variableMultisampleRate and EDS3RasterizationSamples
+      nvk: Add a couple more features to features.txt
 
-Faith Ekstrand (10):
-      nvk: Add an explicit mapping from shader stages to cbuf bindings
-      nvk: Return an nvk_cbuf_map from nvk_lower_nir()
-      nvk: Use s instead of set_idx in CmdBindDescriptorSets
-      nvk: Rework descriptor set binding
-      nvk: Make dynamic cbuf indices relative to the descriptor set
-      nvk: Handle missing descriptor sets in nvk_nir_lower_descriptors
-      nvk: Invalidate state after secondary command buffers
-      nvk: Set a minimum of one patch control point
-      nak: Disallow gl_FragData and set MRT correctly
-      nak: Add explicit padding to nak_shader_info
-
-Francisco Jerez (12):
-      intel/compiler/xe2: Add Xe2 bounds to FF() macro.
-      intel/compiler/xe2: Implement codegen of general instruction controls.
-      intel/compiler/xe2: Implement codegen of 2-source instruction operands.
-      intel/compiler/xe2: Implement codegen of indirect immediates.
-      intel/compiler/xe2: Implement codegen of three-source instructions.
-      intel/compiler: Add assume() checks to brw_compact_inst_(set_)bits().
-      intel/compiler/xe2: Implement codegen of compact instructions.
-      intel/compiler/xe2: Implement instruction compaction.
-      intel/compiler/xe2: Fix for NibCtrl field removal.
-      intel/compiler/xe2: Fix for the removal of most predication modes.
-      intel/compiler/xe2: Add extra flag registers.
-      intel/compiler/xe2: Fix for the removal of AccWrCtrl.
-
-Georg Lehmann (1):
-      aco: reassign split vector to SOPC
-
-Jesse Natalie (1):
-      mesa: Consider mesa format in addition to internal format for mip/cube completeness
-
-José Roberto de Souza (1):
-      anv: Fix PAT entry for userptr in integrated GPUs
-
-Juan A. Suarez Romero (1):
-      Revert "v3d: show warning on creating a v3d screen on real hw"
-
-Karol Herbst (2):
-      clc: use spirv triple starting with llvm-17
-      clc: add support for the native spir-v backend
-
-Matt Turner (2):
-      util: Add DETECT_ARCH_HPPA macro
-      util/tests: Disable half-float NaN test on hppa/old-mips
-
-Mike Blumenkrantz (3):
-      zink: use local screen variable in surface creation
-      zink: hook up maint6
-      zink: use maint6 for multi-layer compressed surface creation
-
-Yiwei Zhang (2):
-      venus: avoid redundant layout transition for optimal internal layout
-      venus: populate oom from ring submit alloc failures
+George Ouzounoudis (1):
+      vulkan: Fix null pointer dereferencing on sample locations state
 
