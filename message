@@ -1,14 +1,78 @@
-Updating from e36235e6d530e037cffd189d48fb6ae88f5dd613 to cfba24ccb548af0ad3427b525def602383cd204a
+Updating from cfba24ccb548af0ad3427b525def602383cd204a to f079b6a18d87bb2a99ebb4365ef426b39019efed
 
-Eric Engestrom (1):
-      ci/deqp: ensure that in `default` builds, wayland + x11 + xcb are all built
+Danylo Piliaiev (5):
+      freedreno/replay: Delete all buffers after each submission
+      freedreno/replay: Correctly free iova on msm backend
+      freedreno/replay: Add WSL backend for Windows
+      ir3: Fix "print" meta instruction synchronization
+      ir3: Add fullsync and fullnop ir3 dbg options for over-syncing
 
-Faith Ekstrand (4):
-      nvk: Emit SET_ANTI_ALIAS at draw time when no render targets are bound
-      nvk: Move SET_HYBRID_ANTI_ALIAS_CONTROL to draw time
-      nvk: Advertise variableMultisampleRate and EDS3RasterizationSamples
-      nvk: Add a couple more features to features.txt
+Dmitry Osipenko (1):
+      iris: Use Mesa internal drm-uapi headers
 
-George Ouzounoudis (1):
-      vulkan: Fix null pointer dereferencing on sample locations state
+Juan A. Suarez Romero (2):
+      broadcom/simulator: protect simulator BO rallocs with mutexes
+      v3d/ci: run OpenGL 3.1 tests
+
+Karol Herbst (3):
+      rusticl/kernel: run opt/lower_memcpy later to fix a crash
+      rusticl/kernel: add a few comments in regards to pass ordering
+      rusticl/kernel: no need to reset the scratch size anymore
+
+Lionel Landwerlin (14):
+      intel/aux_map: fix fallback unmapping range on failure
+      anv: hide vendor ID for The Finals
+      intel/decoder: make vertex data decoding optional
+      intel/decoder: don't ignore BT entries at offset 0
+      intel/genxml: add CCS_INSTDONE register
+      intel/genxml: add GAM done register description
+      intel/hang_viewer: add aux-tt view
+      anv: export descriptor flushing functions
+      anv: fix include guards
+      anv: fix missing header
+      anv: move generated draw flush helper to its own file
+      anv: move draw commands to their own file
+      anv: move compute/ray-tracing commands to their own file
+      anv: rename video command file
+
+Lucas Stach (4):
+      etnaviv: disable 64bpp render/sampler formats
+      etnaviv: track resource sharing
+      etnaviv: only add shared resources to implicit flush list
+      etnaviv: implicitly update shared texture resources
+
+Marek Olšák (3):
+      gallium/u_vbuf: replace unnecessary dst_index with "i"
+      gallium: remove unbind_trailing_count from set_vertex_buffers
+      cso: don't unbind vertex buffers when enabling/disabling u_vbuf
+
+Samuel Pitoiset (16):
+      radv: constify stages in radv_rt_fill_group_info()
+      radv/rt: re-use radv_ray_tracing_stage::sha1 for hashing RT pipelines
+      radv: correctly return VK_ERROR_OUT_OF_DEVICE_MEMORY when mapping a BO fails
+      radv/nir: pass radv_shader_stage to some radv_nir_xxx() functions
+      radv/nir: remove useless struct for nir_shader typedef
+      radv: remove one unused parameter in radv_fill_shader_info_ngg()
+      radv: move radv_pipeline_key::mesh_fast_launch_2 to the per-device cache key
+      radv: add radv_shader_stage_key to radv_shader_stage
+      radv: use radv_shader_stage_key directly with pre-existing fields
+      radv: add optimisations_disabled to radv_shader_stage_key
+      radv: remove unecessary radv_nir_compiler_options::key
+      radv: remove unused lower_rt_instruction_monolithic_state::key
+      radv: stop passing the pipeline key when compiling compute/rt shaders
+      radv: re-organize radv_pipeline_key
+      radv: add vertex_robustness1 to radv_shader_stage_key
+      radv: introduce radv_graphics_state_key
+
+Tapani Pälli (1):
+      anv: check for wa 16013994831 in emit_so_memcpy_end
+
+Tatsuyuki Ishi (1):
+      radv: never set DISABLE_WR_CONFIRM for CP DMA clears and copies
+
+Vinson Lee (1):
+      intel/disasm: Remove duplicate variable reg_file
+
+chyyran (1):
+      util/format/fxt1: include "u_format_pack.h" instead of "util/format/u_format_pack.h"
 
