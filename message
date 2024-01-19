@@ -1,112 +1,82 @@
-Updating from e8c5a0485e907ba1fd573944ebcd792618cc0dcd to 6e4bb8253ed36f911a0a45dfecf89c237a8cd362
+Updating from 6e4bb8253ed36f911a0a45dfecf89c237a8cd362 to 2b47e93c8a8acb2fc501704f8f277d4ed696d53f
 
 Benjamin Lee (1):
-      nak: implement FSWZADD on SM50
+      nak: implement FLO on SM50
 
-Boris Brezillon (2):
-      panvk: Fix tracing
-      panvk: Fix access to unitialized panvk_pipeline_layout::num_sets field
+Danylo Piliaiev (1):
+      freedreno/replay: Make meta "print" instruction take any number of regs
 
-David Heidelberg (1):
-      ci/lima: update expectations, failing tests are being skipped
+Dave Airlie (3):
+      vulkan/video: constify the encoding apis.
+      radv/video: refactor sq start/end code to avoid decode hangs.
+      radv: don't submit empty command buffers on encoder ring.
 
-Eric Engestrom (1):
-      amd/ci: add flakes seen today
+Eric Engestrom (4):
+      docs: update calendar for 24.0.0-rc2
+      zink+radv/ci: drop duplicates flakes lines
+      CODEOWNERS: add myself as as person of contact for CI changes
+      CODEOWNERS: remove myself as a person of contact for a few things
 
-Erico Nunes (1):
-      Revert "ci: lima farm is down"
+Faith Ekstrand (8):
+      nvk: Set framebufferIntegerColorSampleCounts
+      nvk: Unref shaders on pipeline free
+      nvk: Add a #define for max shared memory size
+      nvk: Properly configure the min/max shared mem size
+      nvk: Implement VK_KHR_zero_initialize_workgroup_memory
+      nir,spirv: Add support for SPV_NV_shader_sm_builtins
+      nak: Add support for SPV_NV_shader_sm_builtins
+      nvk: Advertise VK_NV_shader_sm_builtins
 
-Faith Ekstrand (6):
-      nak: Implement nir_op_pack_half_2x16_rtz_split
-      nak: Implement nir_op_ufind_msb_rev
-      nak: Rename OpBrev to OpBRev
-      nak: Implement nir_op_bfm
-      nouveau/mme/fermi: Stop truncating iadd immediates
-      nouveau/mme: Stop using isaspec
+Gurchetan Singh (5):
+      mesa/util: Check __ANDROID__ when for detecting for Android
+      mesa/util: add <linux/fcntl.h>
+      mesa/util: use DETECT_OS_ANDROID in anon_file.c
+      mesa/vulkan: use a simpler path for header in trampoline gen
+      mesa/vulkan: use DETECT_OS_ANDROID
 
-Friedrich Vock (1):
-      radv/rt: Add workaround to make leaves always active
+Hans-Kristian Arntzen (4):
+      wsi/x11: Remove unused vk_alpha in get_dri3_modifiers.
+      wsi/x11: Compare modifiers before signalling SUBOPTIMAL.
+      wsi/x11: Add drirc option to ignore SUBOPTIMAL.
+      wsi/x11: Add workaround for Detroit Become Human.
 
-Helen Koike (5):
-      ci/ci_run_n_monitor: move get_gitlab_pipeline_from_url() to gitlab_common
-      ci/ci_gantt_chart: add tool to analyse pipeline execution time
-      ci/ci_gantt_chart: add timeout vertical line
-      ci/ci_gantt_chart: add option to save output to a file
-      ci/ci_gantt_chart: show duration on hover
+Ian Romanick (4):
+      intel/compiler: Disable DPAS instructions on MTL
+      intel/compiler: Use u_foreach_bit64 in brw_get_compiler_config_value
+      intel/compiler: Track lower_dpas flag in brw_get_compiler_config_value
+      intel/compiler: Track mue_compaction and mue_header_packing flags in brw_get_compiler_config_value
 
-Ian Romanick (1):
-      nir: Minor clean up in nir_alu_srcs_negative_equal
+Javier Martinez Canillas (1):
+      clc: silence a warn_unused_result
 
-Lionel Landwerlin (2):
-      nir/alu_srcs_negative_equal: bail earlier if possible
-      nir/comparison_pre_tests: update expectations
+Jordan Justen (1):
+      intel/dev/common: Add xe2 support to get_l3_list()
 
-Marek Olšák (20):
-      amd: unify NIR options between RADV and radeonsi
-      ac/nir: don't write TCS outputs to memory if no_varying is set
-      ac/nir: rename clipdist_enable_mask -> clip_cull_dist_mask
-      ac/nir: optimize out multiplications in small line culling
-      ac/nir: simplify code at the beginning of ac_nir_gs_shader_query
-      ac,radeonsi: emulate GS primitive pipeline stat on gfx11 because of culling
-      radeonsi: report more detailed output stats for shader-db
-      radeonsi: expose shader profiles to other .c files
-      radeonsi: don't use staging uploads for buffers & shaders with all VRAM visible
-      radeonsi: deduplicate gfx10_ngg_get_vertices_per_prim / get_num_vert_per_prim
-      radeonsi: change GS_STATE_PROVOKING_VTX_INDEX to 1 bit PROVOKING_VTX_FIRST
-      radeonsi: split si_update_ngg_prim_state_sgpr into 2 functions
-      radeonsi: pack GS_STATE_ESGS_VERTEX_STRIDE better to save 2 bits
-      radeonsi: remove no-op additions for viewport0_y_inverted
-      radeonsi: remove unused preloaded instance_divisor_constbuf
-      radeonsi: rename *trivial_vs_prolog -> *trivial_vs_inputs
-      radeonsi/gfx11: clean up MAX_ALLOWED_TILES_IN_WAVE programming
-      radeonsi/ci: update gfx11 flakes
-      radeonsi/gfx11: flush DB before Z/S clear to work around dEQP failures
-      radeonsi: don't flush CS before and after every blitter invocation
+Joshua Ashton (2):
+      winsys/amdgpu: Hook up guilt to amdgpu_ctx_set_sw_reset_status
+      winsys/amdgpu: Limit usage of query_reset_state2
 
-Mary Guillemard (6):
-      nouveau: nvidia_header: Add AMPERE_A in vk_push_print
-      nouveau: nvidia_header: Add TURING_COMPUTE_A and AMPERE_COMPUTE_A in vk_push_print
-      nouveau: nvidia_header: Add AMPERE_COMPUTE_B in vk_push_print
-      nouveau: nvidia-headers: Add compute array parsing to class_parser.py
-      nouveau: nvidia-headers: Add nv_push_dump tool
-      nouveau: mme: Add a dumper
+José Roberto de Souza (1):
+      intel/genxml/xe2: Remove L3ALLOC
 
-Ray Smith (2):
-      panfrost: Don't try to set bifrost blendable format on midgard
-      panfrost: Fix format tables for v4 and v5
+Karol Herbst (4):
+      nir/printf: remove treat_doubles_as_floats
+      clc: require LLVM-14
+      clc: merge blocks handling optional features
+      clc: require LLVM-15
 
-Ryan Neph (1):
-      venus: fix shmem leak on vn_ring_destroy
+Konstantin Seurer (6):
+      ac/llvm: Enable helper invocations for quad OPs
+      radv: Vectorize load_global_constant
+      lavapipe: Fix DGC vertex buffer handling
+      gallivm: Use saturating fpto*i conversions
+      lavapipe: Mark vertex elements dirty if the stride changed
+      lavapipe: Report the correct preprocess buffer size
 
-Samuel Pitoiset (16):
-      radv: add keep_statistic_info to radv_shader_stage_key
-      radv: add shader_version to radv_shader_stage_key
-      radv: pass radv_shader_stage_key to radv_pipeline_stage_init()
-      radv: make sure to retain shaders key for imported shaders with GPL
-      radv: cleanup radv_generate_pipeline_key()
-      radv: add radv_pipeline_get_shader_key()
-      radv/rt: cleanup radv_parse_rt_stage()
-      radv: hash radv_shader_stage_key
-      radv: stop hashing radv_pipeline_key for compute/rt pipelines
-      radv: remove the pipeline key for compute pipelines
-      radv: remove the pipeline key for ray tracing pipelines
-      radv: remove an extra new line in radv_shader.h
-      radv: pass radv_graphics_state_key to radv_hash_shaders()
-      radv: remove radv_generate_pipeline_key()
-      radv: rename radv_pipeline_key to radv_graphics_pipeline_key
-      radv: delay emitting streamout enable at draw time
+Tapani Pälli (2):
+      iris: expand pre-hiz data cache flush to gfx >= 125
+      anv: expand pre-hiz data cache flush to gfx >= 125
 
-Sil Vilerino (1):
-      d3d12: Do not assume multi-subregion support when querying for driver encode support
-
-Sviatoslav Peleshko (1):
-      nir: Use alu source components count in nir_alu_srcs_negative_equal
-
-Vignesh Raman (1):
-      ci: Add kmod
-
-Yonggang Luo (3):
-      compiler/spirv: The spirv shader is binary, should write in binary mode
-      compiler/spirv: There is not need unqualify const in function vtn_string_literal
-      compiler/spirv: vtn_add_printf_string support for handling OpBitcast
+Yiwei Zhang (1):
+      venus: ensure object id is unique
 
