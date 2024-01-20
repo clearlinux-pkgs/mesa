@@ -1,82 +1,108 @@
-Updating from 6e4bb8253ed36f911a0a45dfecf89c237a8cd362 to 2b47e93c8a8acb2fc501704f8f277d4ed696d53f
+Updating from 2b47e93c8a8acb2fc501704f8f277d4ed696d53f to ebcab145cfce334776be7e59db9beeb3f74b6967
+
+Alyssa Rosenzweig (1):
+      nir/passthrough_gs: plug leak
 
 Benjamin Lee (1):
-      nak: implement FLO on SM50
+      nak: fix iabs on SM50 with an explicit i2i op
 
-Danylo Piliaiev (1):
-      freedreno/replay: Make meta "print" instruction take any number of regs
+Caio Oliveira (3):
+      intel/compiler: Add couple of tests for fs_combine_constants
+      intel/compiler: Fix rebuilding the CFG in fs_combine_constants
+      intel: Use an intel enum for cmat scope
 
-Dave Airlie (3):
-      vulkan/video: constify the encoding apis.
-      radv/video: refactor sq start/end code to avoid decode hangs.
-      radv: don't submit empty command buffers on encoder ring.
+Daniel Almeida (2):
+      nak/sm50 add support for suld
+      nak/sm50: add support for suatom
+
+Daniel Schürmann (1):
+      aco: give spiller more room to assign spilled SGPRs to VGPRs
+
+Dave Airlie (1):
+      gallivm: fix coroutines with llvm 18
 
 Eric Engestrom (4):
-      docs: update calendar for 24.0.0-rc2
-      zink+radv/ci: drop duplicates flakes lines
-      CODEOWNERS: add myself as as person of contact for CI changes
-      CODEOWNERS: remove myself as a person of contact for a few things
+      radv/ci: sort navi21 flakes
+      amd/ci: add flakes seen today
+      amd/ci: consider much more of dEQP-VK.query_pool.statistics_query.host_query_reset.* to be flaky
+      r300/ci: add flakes
 
-Faith Ekstrand (8):
-      nvk: Set framebufferIntegerColorSampleCounts
-      nvk: Unref shaders on pipeline free
-      nvk: Add a #define for max shared memory size
-      nvk: Properly configure the min/max shared mem size
-      nvk: Implement VK_KHR_zero_initialize_workgroup_memory
-      nir,spirv: Add support for SPV_NV_shader_sm_builtins
-      nak: Add support for SPV_NV_shader_sm_builtins
-      nvk: Advertise VK_NV_shader_sm_builtins
+Erik Faye-Lund (5):
+      panfrost: add support for forcing sample-counts
+      panfrost: pass reduced primitive type instead of points
+      panfrost: add line_smooth shader-key and lowering
+      panfrost: clean up active_prim update
+      panfrost: implement line-smoothing
 
-Gurchetan Singh (5):
-      mesa/util: Check __ANDROID__ when for detecting for Android
-      mesa/util: add <linux/fcntl.h>
-      mesa/util: use DETECT_OS_ANDROID in anon_file.c
-      mesa/vulkan: use a simpler path for header in trampoline gen
-      mesa/vulkan: use DETECT_OS_ANDROID
+Faith Ekstrand (5):
+      nvk/draw: Map cbuf slots to shaders, not cbuf_maps
+      nak: Refactor shader upload math
+      nvk: Wire up nir_opt_large_constants
+      nak: Enable NIR fuse_ffmaN
+      nak: Legalize OpBMsk
 
-Hans-Kristian Arntzen (4):
-      wsi/x11: Remove unused vk_alpha in get_dri3_modifiers.
-      wsi/x11: Compare modifiers before signalling SUBOPTIMAL.
-      wsi/x11: Add drirc option to ignore SUBOPTIMAL.
-      wsi/x11: Add workaround for Detroit Become Human.
+Frank Binns (3):
+      CODEOWNERS: update Imagination maintainers
+      pvr: fix up some includes
+      pvr: split out device info into per GPU headers
 
-Ian Romanick (4):
-      intel/compiler: Disable DPAS instructions on MTL
-      intel/compiler: Use u_foreach_bit64 in brw_get_compiler_config_value
-      intel/compiler: Track lower_dpas flag in brw_get_compiler_config_value
-      intel/compiler: Track mue_compaction and mue_header_packing flags in brw_get_compiler_config_value
+Friedrich Vock (1):
+      radv: Fix shader replay allocation condition
 
-Javier Martinez Canillas (1):
-      clc: silence a warn_unused_result
+Georg Lehmann (8):
+      aco: stop scheduling at p_logical_end
+      nir: add ballot_relaxed and as_uniform intrinsics
+      aco: implement as_uniform and ballot_relaxed
+      ac/llvm: implement as_uniform and ballot_relaxed
+      nir: add lowering for boolean shuffle
+      radv: lower boolean shuffle
+      radeonsi: lower boolean shuffle
+      aco: remove boolean shuffle isel
 
-Jordan Justen (1):
-      intel/dev/common: Add xe2 support to get_l3_list()
+Helen Koike (1):
+      ci/ci_post_gantt: add script that post gantt to Marge's messages
 
-Joshua Ashton (2):
-      winsys/amdgpu: Hook up guilt to amdgpu_ctx_set_sw_reset_status
-      winsys/amdgpu: Limit usage of query_reset_state2
+Jesse Natalie (5):
+      ci/windows: Rev Vulkan SDK and piglit
+      d3d12: Set up spirv-as and fix expectations
+      microsoft/compiler: Declare shader model 6.8 / validator 1.8
+      microsoft/compiler: Handle comparison bias/gradient sampling
+      dzn: Add a debug option to enable experimental shader models
 
-José Roberto de Souza (1):
-      intel/genxml/xe2: Remove L3ALLOC
+Joshua Ashton (6):
+      radv/amdgpu: Handle -ENODATA and -ETIME from cs_submit
+      radv: Mark device loss if QueueSubmit failed immediately
+      radv: Remove check_status
+      radv/amdgpu: Remove ctx_query_reset_status
+      radv: Add radv_get_tdr_timeout_for_ip helper
+      radv: Ensure vkGetQueryPoolResults returns in finite-time
 
-Karol Herbst (4):
-      nir/printf: remove treat_doubles_as_floats
-      clc: require LLVM-14
-      clc: merge blocks handling optional features
-      clc: require LLVM-15
+José Roberto de Souza (2):
+      intel/dev: Reduce usage of intel_device_info_compute_system_memory()
+      intel: Make memory heaps consistent between KMDs
 
-Konstantin Seurer (6):
-      ac/llvm: Enable helper invocations for quad OPs
-      radv: Vectorize load_global_constant
-      lavapipe: Fix DGC vertex buffer handling
-      gallivm: Use saturating fpto*i conversions
-      lavapipe: Mark vertex elements dirty if the stride changed
-      lavapipe: Report the correct preprocess buffer size
+Martell Malone (3):
+      nine: r500 under 20 fragments cap is a warning
+      nine: detect emulation fallback of d3d coordinates
+      nine: update verbiage for enduser device messages
 
-Tapani Pälli (2):
-      iris: expand pre-hiz data cache flush to gfx >= 125
-      anv: expand pre-hiz data cache flush to gfx >= 125
+Pavel Ondračka (3):
+      r300: fix writemask for nir_intrinsic_load_ubo_vec4
+      r300: skip backend DCE for vertex shaders
+      r300: remove R3xx/R4xx backend absulute modifier lowering
 
-Yiwei Zhang (1):
-      venus: ensure object id is unique
+Rob Clark (7):
+      freedreno/a6xx: fix comment
+      freedreno/registers: Pass full args to dump_c()
+      freedreno/registers: De-duplicate xml_reg_files
+      freedreno/registers: Don't re-parse files
+      freedreno/registers: Generate copyright comment blurb
+      freedreno/registers: Add basic kernel header support
+      freedreno/registers: A couple newline changes
+
+Samuel Pitoiset (1):
+      aco: silent checking if clrxdisasm is available
+
+antonino (1):
+      zink: plug leak in `zink_create_quads_emulation_gs`
 
