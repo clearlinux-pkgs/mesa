@@ -1,108 +1,23 @@
-Updating from 2b47e93c8a8acb2fc501704f8f277d4ed696d53f to ebcab145cfce334776be7e59db9beeb3f74b6967
+Updating from ebcab145cfce334776be7e59db9beeb3f74b6967 to c3a64f8dd1192bef2b1cea29283a82f5f82f79a8
 
-Alyssa Rosenzweig (1):
-      nir/passthrough_gs: plug leak
+Eric Engestrom (1):
+      ci/deqp: backport fix for zlib.net not allowing tarball download anymore
 
-Benjamin Lee (1):
-      nak: fix iabs on SM50 with an explicit i2i op
+Francisco Jerez (6):
+      intel/ir/xe2+: Add support for 32 SBID tokens to performance model.
+      intel/fs/xe2+: Disable bank conflict mitigation pass for now.
+      intel/eu/xe2+: Translate brw_reg fields in REG_SIZE units to physical 512b GRF units during codegen.
+      intel/fs: Set the default execution group to 0 when not representable by the platform.
+      intel/fs: Emit QUAD_SWIZZLE instructions with WE_all for derivative lowering.
+      intel/fs/xe2+: Allow SIMD16 MULH instructions.
 
-Caio Oliveira (3):
-      intel/compiler: Add couple of tests for fs_combine_constants
-      intel/compiler: Fix rebuilding the CFG in fs_combine_constants
-      intel: Use an intel enum for cmat scope
+Konstantin (2):
+      util/printf: Include stdio.h
+      util/printf: Expose util_printf_prev_tok
 
-Daniel Almeida (2):
-      nak/sm50 add support for suld
-      nak/sm50: add support for suatom
+Konstantin Seurer (1):
+      radv: Implement NIR debug printf
 
-Daniel Schürmann (1):
-      aco: give spiller more room to assign spilled SGPRs to VGPRs
-
-Dave Airlie (1):
-      gallivm: fix coroutines with llvm 18
-
-Eric Engestrom (4):
-      radv/ci: sort navi21 flakes
-      amd/ci: add flakes seen today
-      amd/ci: consider much more of dEQP-VK.query_pool.statistics_query.host_query_reset.* to be flaky
-      r300/ci: add flakes
-
-Erik Faye-Lund (5):
-      panfrost: add support for forcing sample-counts
-      panfrost: pass reduced primitive type instead of points
-      panfrost: add line_smooth shader-key and lowering
-      panfrost: clean up active_prim update
-      panfrost: implement line-smoothing
-
-Faith Ekstrand (5):
-      nvk/draw: Map cbuf slots to shaders, not cbuf_maps
-      nak: Refactor shader upload math
-      nvk: Wire up nir_opt_large_constants
-      nak: Enable NIR fuse_ffmaN
-      nak: Legalize OpBMsk
-
-Frank Binns (3):
-      CODEOWNERS: update Imagination maintainers
-      pvr: fix up some includes
-      pvr: split out device info into per GPU headers
-
-Friedrich Vock (1):
-      radv: Fix shader replay allocation condition
-
-Georg Lehmann (8):
-      aco: stop scheduling at p_logical_end
-      nir: add ballot_relaxed and as_uniform intrinsics
-      aco: implement as_uniform and ballot_relaxed
-      ac/llvm: implement as_uniform and ballot_relaxed
-      nir: add lowering for boolean shuffle
-      radv: lower boolean shuffle
-      radeonsi: lower boolean shuffle
-      aco: remove boolean shuffle isel
-
-Helen Koike (1):
-      ci/ci_post_gantt: add script that post gantt to Marge's messages
-
-Jesse Natalie (5):
-      ci/windows: Rev Vulkan SDK and piglit
-      d3d12: Set up spirv-as and fix expectations
-      microsoft/compiler: Declare shader model 6.8 / validator 1.8
-      microsoft/compiler: Handle comparison bias/gradient sampling
-      dzn: Add a debug option to enable experimental shader models
-
-Joshua Ashton (6):
-      radv/amdgpu: Handle -ENODATA and -ETIME from cs_submit
-      radv: Mark device loss if QueueSubmit failed immediately
-      radv: Remove check_status
-      radv/amdgpu: Remove ctx_query_reset_status
-      radv: Add radv_get_tdr_timeout_for_ip helper
-      radv: Ensure vkGetQueryPoolResults returns in finite-time
-
-José Roberto de Souza (2):
-      intel/dev: Reduce usage of intel_device_info_compute_system_memory()
-      intel: Make memory heaps consistent between KMDs
-
-Martell Malone (3):
-      nine: r500 under 20 fragments cap is a warning
-      nine: detect emulation fallback of d3d coordinates
-      nine: update verbiage for enduser device messages
-
-Pavel Ondračka (3):
-      r300: fix writemask for nir_intrinsic_load_ubo_vec4
-      r300: skip backend DCE for vertex shaders
-      r300: remove R3xx/R4xx backend absulute modifier lowering
-
-Rob Clark (7):
-      freedreno/a6xx: fix comment
-      freedreno/registers: Pass full args to dump_c()
-      freedreno/registers: De-duplicate xml_reg_files
-      freedreno/registers: Don't re-parse files
-      freedreno/registers: Generate copyright comment blurb
-      freedreno/registers: Add basic kernel header support
-      freedreno/registers: A couple newline changes
-
-Samuel Pitoiset (1):
-      aco: silent checking if clrxdisasm is available
-
-antonino (1):
-      zink: plug leak in `zink_create_quads_emulation_gs`
+Yonggang Luo (1):
+      zink: Update zink-anv-tgl flakes
 
