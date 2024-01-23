@@ -1,23 +1,58 @@
-Updating from ebcab145cfce334776be7e59db9beeb3f74b6967 to c3a64f8dd1192bef2b1cea29283a82f5f82f79a8
+Updating from c3a64f8dd1192bef2b1cea29283a82f5f82f79a8 to 42fc83a6e3cbf4521f7c2d2acf26bdf22dd73f83
 
-Eric Engestrom (1):
-      ci/deqp: backport fix for zlib.net not allowing tarball download anymore
+Alejandro Piñeiro (2):
+      broadcom/compiler: fix coverity warning (unitialized pointer read)
+      v3dv/bo: use mtx_lock/unlock on cache_init too
 
-Francisco Jerez (6):
-      intel/ir/xe2+: Add support for 32 SBID tokens to performance model.
-      intel/fs/xe2+: Disable bank conflict mitigation pass for now.
-      intel/eu/xe2+: Translate brw_reg fields in REG_SIZE units to physical 512b GRF units during codegen.
-      intel/fs: Set the default execution group to 0 when not representable by the platform.
-      intel/fs: Emit QUAD_SWIZZLE instructions with WE_all for derivative lowering.
-      intel/fs/xe2+: Allow SIMD16 MULH instructions.
+David Heidelberg (1):
+      ci: bump kernel to 6.6.12, modularize i915, add Transparent Huge Pages
 
-Konstantin (2):
-      util/printf: Include stdio.h
-      util/printf: Expose util_printf_prev_tok
+Eric Engestrom (2):
+      rpi3/ci: update piglit & deqp expectations
+      rpi4/ci: skip more of the dEQP-VK.ssbo.phys.layout.* tests that timeout occasionally
 
-Konstantin Seurer (1):
-      radv: Implement NIR debug printf
+Eric R. Smith (1):
+      panfrost: fix panfrost drm-shim
 
-Yonggang Luo (1):
-      zink: Update zink-anv-tgl flakes
+Hans-Kristian Arntzen (4):
+      wsi/x11: Rewrite implementation to always use threads.
+      wsi/x11: Implement VK_EXT_swapchain_maintenance1.
+      wsi/x11: Keep track of multiple presentation requests.
+      wsi/x11: Make chain->status atomic.
+
+Juan A. Suarez Romero (1):
+      v3dv/ci: increase timeout for full jobs in 30min
+
+Karol Herbst (6):
+      nir: rework and fix rotate lowering
+      rusticl/program: rework debug logging option
+      rusticl/spirv: do not attempt to parse spirv after failed link
+      rusticl/spirv: use bool::then_Some inside SPIRVBin::link
+      rusticl/program: add clc_validator_options helper function
+      rusticl/program: add debug option to validate internal spirvs
+
+Konstantin Seurer (2):
+      llvmpipe: Stop refcounting sample functions
+      llvmpipe: Compile sample functioins on demand
+
+Lionel Landwerlin (1):
+      anv: using a single struct for kernel upload
+
+Sagar Ghuge (1):
+      intel/fs: Track instance id in gs_thread_payload
+
+Samuel Pitoiset (2):
+      radv: fix indirect dispatches on the compute queue on GFX7
+      radv: fix indirect draws with NULL index buffer on GFX10
+
+Sil Vilerino (1):
+      d3d12: Implement cap for PIPE_VIDEO_CAP_ENC_INTRA_REFRESH
+
+Yiwei Zhang (6):
+      venus: fix pipeline layout lifetime
+      venus: drop some redundant comment
+      venus: fix pipeline derivatives
+      venus: fix to respect the final pipeline layout
+      venus: allow tls ring submission to utilize the entire ring shmem
+      venus: default to enable GPL
 
