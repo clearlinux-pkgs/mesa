@@ -1,58 +1,116 @@
-Updating from c3a64f8dd1192bef2b1cea29283a82f5f82f79a8 to 42fc83a6e3cbf4521f7c2d2acf26bdf22dd73f83
+Updating from 42fc83a6e3cbf4521f7c2d2acf26bdf22dd73f83 to fdf6b22ffe7d63121bd7a9170639e79a77b59bb6
 
-Alejandro Piñeiro (2):
-      broadcom/compiler: fix coverity warning (unitialized pointer read)
-      v3dv/bo: use mtx_lock/unlock on cache_init too
+Benjamin Lee (5):
+      nak: implement rro op on SM50
+      nak: use rro when emitting mufu on SM50
+      nak: implement kill op on SM50
+      nak: implement cs2r op on SM50
+      nak: handle nop ops from NAK IR on SM50
 
-David Heidelberg (1):
-      ci: bump kernel to 6.6.12, modularize i915, add Transparent Huge Pages
+Boris Brezillon (57):
+      panfrost: Kill unused forward declarations in pan_texture.h
+      panfrost: Add a per-gen panfrost_format_from_pipe_format() helper
+      panfrost: Add a per-gen panfrost_blendable_format_from_pipe_format() helper
+      panfrost: Make panfrost_format_to_bifrost_blend() a per-gen helper
+      panfrost: Add panfrost_[blendable]_format_table() helpers
+      panfrost: Move panfrost_is_yuv() to pan_format.h
+      panfrost: Move YUV-debugging out of panfrost_new_texture()
+      panfrost: Stop passing a panfrost_device to panfrost_new_texture()
+      panfrost: Don't pass a panfrost_device to panfrost_format_supports_afbc()
+      panfrost: Don't pass a panfrost_device to panfrost_afbc_can_tile()
+      panfrost: Stop passing a panfrost_device to pan_blend_get_internal_desc()
+      panfrost: Stop exposing pan_blend_create_shader()
+      panfrost: Stop passing a panfrost_device to pan_blend_create_shader()
+      panfrost: Stop passing a panfrost_device to pan_inline_rt_conversion()
+      panfrost: Make the pan_blend logic panfrost_device-agnostic
+      panfrost: Get rid of unused panfrost_device arguments in pan_blitter.c
+      panfrost: Pass the tile buffer budget through pan_fb_info
+      panfrost: Pass the sample position array through pan_fb_info
+      panfrost: Pass no_hierarchical_tiling info through pan_tiler_context
+      panfrost: Pass tiler heap info through pan_tiler_context
+      panvk: Inline pan_wls_mem_size()
+      panfrost: Make pan_desc.{c,h} panfrost_device agnostic
+      panfrost: Drop unused panfrost_device forward declaration in pan_shader.h
+      panfrost: Make pan_layout.c panfrost_device agnostic
+      panfrost: Make pan_sample.c panfrost_device agnostic
+      panfrost: Make pan_encoder.h panfrost_device agnostic
+      panfrost: Remove unused header inclusions from pan_blitter.h
+      panfrost: Make pan_blitter.h includable from non per-gen files
+      panfrost: Make pan_blitter.{c,h} panfrost_device agnostic
+      panfrost: Make pan_indirect_dispatch panfrost_device agnostic
+      panfrost: Make pan_pool.h panfrost_{device,bo} agnostic
+      panfrost: Make pan_props.c panfrost_device agnostic
+      panfrost: Make pan_texture.{c,h} panfrost_bo agnostic
+      panfrost: Make pan_desc.{c,h} panfrost_bo agnostic
+      panfrost: Remove uneeded pan_device.h inclusions
+      panfrost: Make panfrost_texfeatures.c panfrost_device agnostic
+      panfrost: Make pan_perf panfrost_device agnostic
+      panfrost: Add a helper to retrieve a panfrost_bo from a pan_kmod_bo
+      panvk: Get rid of unused pdev arguments passed to some meta helpers
+      panvk: Stop passing panfrost_device around in internal meta helpers
+      panvk: Store various physical device properties at the physical_device level
+      panvk: Use vk_device::drm_fd instead of going back to the physical device
+      panvk: Move panfrost_device and panvk_meta to panvk_device
+      panvk: Add a decode context at the panvk_device level
+      panvk: Instantiate our own blitter/blend_shader caches
+      panvk: Add pan_kmod_{vm,dev} objects to panvk_device
+      panvk: Add the concept of private BO
+      panvk: Transition panvk_pool to panvk_priv_bo
+      panvk: Transition panvk_descriptor_set to panvk_priv_bo
+      panvk: Transition panvk_pipeline to panvk_priv_bo
+      panvk: Transition panvk_{image,buffer}_view to panvk_priv_bo
+      panvk: Track blit src/dst using pan_kmod_bo objects
+      panvk: Keep a ref to a pan_kmod_bo in panvk_image
+      panvk: Keep a ref to a pan_kmod_bo in panvk_buffer
+      panvk: Keep tiler_heap and sample_positions BOs at the panvk_device level
+      panvk: Move away from panfrost_{bo,device}
+      panfrost: Move pan_{bo,device}.{c,h} to the gallium driver dir
 
-Eric Engestrom (2):
-      rpi3/ci: update piglit & deqp expectations
-      rpi4/ci: skip more of the dEQP-VK.ssbo.phys.layout.* tests that timeout occasionally
+Eric Engestrom (3):
+      rpi3/ci: add flake seen today
+      rpi4/ci: add timeouts seen today
+      rpi5/ci: add flake seen today
 
-Eric R. Smith (1):
-      panfrost: fix panfrost drm-shim
+Felix DeGrood (1):
+      driconf: Change vendorid on Palworld for Intel
 
-Hans-Kristian Arntzen (4):
-      wsi/x11: Rewrite implementation to always use threads.
-      wsi/x11: Implement VK_EXT_swapchain_maintenance1.
-      wsi/x11: Keep track of multiple presentation requests.
-      wsi/x11: Make chain->status atomic.
+Guilherme Gallo (2):
+      ci/lava: Detect hard resets during test phase
+      bin/ci: Don't submit jobs on integration test
 
-Juan A. Suarez Romero (1):
-      v3dv/ci: increase timeout for full jobs in 30min
+Juan A. Suarez Romero (2):
+      ci: disable Igalia farm
+      Revert "ci: disable Igalia farm"
 
-Karol Herbst (6):
-      nir: rework and fix rotate lowering
-      rusticl/program: rework debug logging option
-      rusticl/spirv: do not attempt to parse spirv after failed link
-      rusticl/spirv: use bool::then_Some inside SPIRVBin::link
-      rusticl/program: add clc_validator_options helper function
-      rusticl/program: add debug option to validate internal spirvs
+Karol Herbst (3):
+      nak/opt_out: fix comparison in try_combine_outs
+      nak: simplify phi_dsts
+      nak: make it compile with clippy
 
-Konstantin Seurer (2):
-      llvmpipe: Stop refcounting sample functions
-      llvmpipe: Compile sample functioins on demand
+Lionel Landwerlin (10):
+      anv: fix pipeline executable properties with graphics libraries
+      isl: add print helpers for debug
+      anv: implement undocumented tile cache flush requirements
+      anv: reorder anv_astc_emu.c
+      anv: remove unused perfetto declarations
+      anv: rename layers entrypoints
+      anv: add BO flag for internal driver allocations
+      anv: track total state stream allocated blocks from the pool
+      anv: track imported ray tracing pipeline groups
+      anv: initial RMV support
 
-Lionel Landwerlin (1):
-      anv: using a single struct for kernel upload
+Rhys Perry (3):
+      radv: do nir_shader_gather_info after radv_nir_lower_rt_abi
+      nir/lower_non_uniform: set non_uniform=false when lowering is not needed
+      nir/lower_shader_calls: remove CF before nir_opt_if
 
-Sagar Ghuge (1):
-      intel/fs: Track instance id in gs_thread_payload
-
-Samuel Pitoiset (2):
-      radv: fix indirect dispatches on the compute queue on GFX7
-      radv: fix indirect draws with NULL index buffer on GFX10
+Rob Clark (1):
+      tu/drm/virtio: Fix dmabuf import
 
 Sil Vilerino (1):
-      d3d12: Implement cap for PIPE_VIDEO_CAP_ENC_INTRA_REFRESH
+      d3d12: Clean up H264 video decode interlaced code path
 
-Yiwei Zhang (6):
-      venus: fix pipeline layout lifetime
-      venus: drop some redundant comment
-      venus: fix pipeline derivatives
-      venus: fix to respect the final pipeline layout
-      venus: allow tls ring submission to utilize the entire ring shmem
-      venus: default to enable GPL
+Tapani Pälli (2):
+      iris: replace constant cache invalidate with hdc flush
+      anv: move *bits_for_access_flags to genX_cmd_buffer
 
