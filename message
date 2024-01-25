@@ -1,116 +1,102 @@
-Updating from 42fc83a6e3cbf4521f7c2d2acf26bdf22dd73f83 to fdf6b22ffe7d63121bd7a9170639e79a77b59bb6
+Updating from fdf6b22ffe7d63121bd7a9170639e79a77b59bb6 to f85ad92dae82b42983eb8023133a6fe8ced4aa81
 
-Benjamin Lee (5):
-      nak: implement rro op on SM50
-      nak: use rro when emitting mufu on SM50
-      nak: implement kill op on SM50
-      nak: implement cs2r op on SM50
-      nak: handle nop ops from NAK IR on SM50
+Boris Brezillon (1):
+      panfrost: Clamp the render area to the damage region
 
-Boris Brezillon (57):
-      panfrost: Kill unused forward declarations in pan_texture.h
-      panfrost: Add a per-gen panfrost_format_from_pipe_format() helper
-      panfrost: Add a per-gen panfrost_blendable_format_from_pipe_format() helper
-      panfrost: Make panfrost_format_to_bifrost_blend() a per-gen helper
-      panfrost: Add panfrost_[blendable]_format_table() helpers
-      panfrost: Move panfrost_is_yuv() to pan_format.h
-      panfrost: Move YUV-debugging out of panfrost_new_texture()
-      panfrost: Stop passing a panfrost_device to panfrost_new_texture()
-      panfrost: Don't pass a panfrost_device to panfrost_format_supports_afbc()
-      panfrost: Don't pass a panfrost_device to panfrost_afbc_can_tile()
-      panfrost: Stop passing a panfrost_device to pan_blend_get_internal_desc()
-      panfrost: Stop exposing pan_blend_create_shader()
-      panfrost: Stop passing a panfrost_device to pan_blend_create_shader()
-      panfrost: Stop passing a panfrost_device to pan_inline_rt_conversion()
-      panfrost: Make the pan_blend logic panfrost_device-agnostic
-      panfrost: Get rid of unused panfrost_device arguments in pan_blitter.c
-      panfrost: Pass the tile buffer budget through pan_fb_info
-      panfrost: Pass the sample position array through pan_fb_info
-      panfrost: Pass no_hierarchical_tiling info through pan_tiler_context
-      panfrost: Pass tiler heap info through pan_tiler_context
-      panvk: Inline pan_wls_mem_size()
-      panfrost: Make pan_desc.{c,h} panfrost_device agnostic
-      panfrost: Drop unused panfrost_device forward declaration in pan_shader.h
-      panfrost: Make pan_layout.c panfrost_device agnostic
-      panfrost: Make pan_sample.c panfrost_device agnostic
-      panfrost: Make pan_encoder.h panfrost_device agnostic
-      panfrost: Remove unused header inclusions from pan_blitter.h
-      panfrost: Make pan_blitter.h includable from non per-gen files
-      panfrost: Make pan_blitter.{c,h} panfrost_device agnostic
-      panfrost: Make pan_indirect_dispatch panfrost_device agnostic
-      panfrost: Make pan_pool.h panfrost_{device,bo} agnostic
-      panfrost: Make pan_props.c panfrost_device agnostic
-      panfrost: Make pan_texture.{c,h} panfrost_bo agnostic
-      panfrost: Make pan_desc.{c,h} panfrost_bo agnostic
-      panfrost: Remove uneeded pan_device.h inclusions
-      panfrost: Make panfrost_texfeatures.c panfrost_device agnostic
-      panfrost: Make pan_perf panfrost_device agnostic
-      panfrost: Add a helper to retrieve a panfrost_bo from a pan_kmod_bo
-      panvk: Get rid of unused pdev arguments passed to some meta helpers
-      panvk: Stop passing panfrost_device around in internal meta helpers
-      panvk: Store various physical device properties at the physical_device level
-      panvk: Use vk_device::drm_fd instead of going back to the physical device
-      panvk: Move panfrost_device and panvk_meta to panvk_device
-      panvk: Add a decode context at the panvk_device level
-      panvk: Instantiate our own blitter/blend_shader caches
-      panvk: Add pan_kmod_{vm,dev} objects to panvk_device
-      panvk: Add the concept of private BO
-      panvk: Transition panvk_pool to panvk_priv_bo
-      panvk: Transition panvk_descriptor_set to panvk_priv_bo
-      panvk: Transition panvk_pipeline to panvk_priv_bo
-      panvk: Transition panvk_{image,buffer}_view to panvk_priv_bo
-      panvk: Track blit src/dst using pan_kmod_bo objects
-      panvk: Keep a ref to a pan_kmod_bo in panvk_image
-      panvk: Keep a ref to a pan_kmod_bo in panvk_buffer
-      panvk: Keep tiler_heap and sample_positions BOs at the panvk_device level
-      panvk: Move away from panfrost_{bo,device}
-      panfrost: Move pan_{bo,device}.{c,h} to the gallium driver dir
+Christian Gmeiner (1):
+      .gitignore: Add .venv folder
 
-Eric Engestrom (3):
-      rpi3/ci: add flake seen today
-      rpi4/ci: add timeouts seen today
-      rpi5/ci: add flake seen today
+Dave Airlie (1):
+      gallivm: passing fp16_split_fp64 to fp16 lowering.
 
-Felix DeGrood (1):
-      driconf: Change vendorid on Palworld for Intel
+Eric Engestrom (4):
+      docs: add release notes for 23.3.4
+      docs: update calendar for 23.3.4
+      docs: add sha256sum for 23.3.4
+      docs: update calendar for 24.0.0-rc3
+
+Faith Ekstrand (2):
+      nvk: Don't exnore ExternalImageFormatInfo
+      nvk: Set maxInlineUniformTotalSize
+
+Friedrich Vock (2):
+      nir: Make is_trivial_deref_cast public
+      nir: Handle casts in nir_opt_copy_prop_vars
+
+Georg Lehmann (6):
+      aco: fix printing dpp8
+      aco: validate v_permlane opsel correctly
+      aco: support v_permlane64_b32
+      aco/gfx11: use v_nop to resolve VcmpxPermlaneHazard
+      aco/gfx11: resolve VcmpxPermlaneHazard for v_permlane64
+      aco: implement rotate
 
 Guilherme Gallo (2):
-      ci/lava: Detect hard resets during test phase
-      bin/ci: Don't submit jobs on integration test
+      ci/lava: Ignore DUT feedback messages
+      ci/lava: Fix the integration test
 
-Juan A. Suarez Romero (2):
-      ci: disable Igalia farm
+Ian Romanick (1):
+      intel/fs: Fix shift counts for 8- and 16-bit types
+
+Jesse Natalie (5):
+      microsoft/compiler: Add feature flags for new comparison sampling ops
+      dzn: Implement maintenance3 VariableDescriptorCountLayoutSupport
+      dzn: Fix enhanced barrier layout for depth blits
+      dzn: Handle VkBindImageMemorySwapchainInfoKHR
+      dzn: Disable depth/stencil for partial binding from dynamic rendering
+
+José Roberto de Souza (1):
+      anv: Fix calculation of syncs required in Xe KMD
+
+Juan A. Suarez Romero (1):
       Revert "ci: disable Igalia farm"
 
-Karol Herbst (3):
-      nak/opt_out: fix comparison in try_combine_outs
-      nak: simplify phi_dsts
-      nak: make it compile with clippy
+Karol Herbst (17):
+      rusticl/meson: use rust_abi instead of rust_crate_type
+      rust/spirv: fix clippy lint on unneeded late initialization
+      rusticl/kernel: check that local size on dispatch doesn't exceed limits
+      nak/meson: specify rust flags globally and allow some clippy lints
+      nak: fix clippy::extra_unused_lifetimes warnings
+      nak: fix clippy::mem_replace_with_default warnings
+      nak: fix clippy::useless_conversion warnings
+      nak: fix clippy::needless_lifetimes warnings
+      nak: fix clippy::needless_borrow warnings
+      nak: fix clippy::while_let_loop warnings
+      nak: fix clippy::match_like_matches_macro warnings
+      nak: fix clippy::needless_return warnings
+      nak: fix clippy::redundant_closure warnings
+      nak: fix clippy::unwrap_or_default warnings
+      nak: fix clippy::manual_while_let_some warnings
+      nak: fix clippy::clone_on_copy warnings
+      nak: fix clippy::single_match warnings
 
-Lionel Landwerlin (10):
-      anv: fix pipeline executable properties with graphics libraries
-      isl: add print helpers for debug
-      anv: implement undocumented tile cache flush requirements
-      anv: reorder anv_astc_emu.c
-      anv: remove unused perfetto declarations
-      anv: rename layers entrypoints
-      anv: add BO flag for internal driver allocations
-      anv: track total state stream allocated blocks from the pool
-      anv: track imported ray tracing pipeline groups
-      anv: initial RMV support
+Kenneth Graunke (3):
+      iris: Don't return timestamps modulo 36-bits
+      intel/dev: Fix typo (ajust -> adjust)
+      iris: Implement query_memory_info() on discrete cards
 
-Rhys Perry (3):
-      radv: do nir_shader_gather_info after radv_nir_lower_rt_abi
-      nir/lower_non_uniform: set non_uniform=false when lowering is not needed
-      nir/lower_shader_calls: remove CF before nir_opt_if
+Mike Blumenkrantz (1):
+      zink: set more dynamic states when using shader objects
 
-Rob Clark (1):
-      tu/drm/virtio: Fix dmabuf import
+Rhys Perry (1):
+      aco: fix labelling of s_not with constant
 
-Sil Vilerino (1):
-      d3d12: Clean up H264 video decode interlaced code path
+Rohan Garg (1):
+      isl,blorp,anv: introduce ISL_TILING_64_XE2 for Xe2+ platforms
 
-Tapani Pälli (2):
-      iris: replace constant cache invalidate with hdc flush
-      anv: move *bits_for_access_flags to genX_cmd_buffer
+Samuel Pitoiset (2):
+      radv: remove unused parameter to gather_shader_info_mesh()
+      radv: add a per-stage key field for mesh shaders with a task shader
+
+Tomeu Vizoso (10):
+      ci: disable Igalia farm
+      gallium/util: Fix pipe_buffer_copy
+      mesa: Import TensorFlow Lite headers
+      teflon: Initial commit
+      etnaviv: Update headers from rnndb
+      etnaviv: Add a bunch of new params for NPUs
+      etnaviv: Don't emit boilerplate for compute only contexts
+      etnaviv: Use NN cores to accelerate convolutions
+      etnaviv: Use TP cores to accelerate tensor transformations
+      teflon: Add table with known supported models to docs
 
