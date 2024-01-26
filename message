@@ -1,102 +1,92 @@
-Updating from fdf6b22ffe7d63121bd7a9170639e79a77b59bb6 to f85ad92dae82b42983eb8023133a6fe8ced4aa81
+Updating from f85ad92dae82b42983eb8023133a6fe8ced4aa81 to cd8b546205f3fd4c915fd99c9387df449c5bb80e
 
-Boris Brezillon (1):
-      panfrost: Clamp the render area to the damage region
+Andres Calderon Jaramillo (1):
+      radeonsi: get enc/dec caps from kernel only on amdgpu
 
-Christian Gmeiner (1):
-      .gitignore: Add .venv folder
+Caio Oliveira (2):
+      intel/compiler: Enable lower_rotate_to_shuffle in subgroup lowering
+      anv: Advertise VK_KHR_shader_subgroup_rotate
 
-Dave Airlie (1):
-      gallivm: passing fp16_split_fp64 to fp16 lowering.
+Connor Abbott (1):
+      freedreno: Add a7xx crashdump-related registers and enums
 
-Eric Engestrom (4):
-      docs: add release notes for 23.3.4
-      docs: update calendar for 23.3.4
-      docs: add sha256sum for 23.3.4
-      docs: update calendar for 24.0.0-rc3
+Constantine Shablia (2):
+      panvk: implement vkGetBufferDeviceAddress
+      panvk: advertise bufferDeviceAddress
 
-Faith Ekstrand (2):
-      nvk: Don't exnore ExternalImageFormatInfo
-      nvk: Set maxInlineUniformTotalSize
+Daniel Stone (1):
+      egl: Return BAD_CONFIG when robust access unsupported
+
+Dario Mylonopoulos (1):
+      llvmpipe: fixed race condition in lp_rast_destroy that causes a crash on windows
+
+David Heidelberg (1):
+      ci: shorter kernel tag, included Vivante NPU patches
+
+Dmitry Baryshkov (2):
+      freedreno/drm: don't crash for unsupported devices
+      freedreno/regs: define the wide bus enable bit in DSI_VID_CFG0
+
+Eric Engestrom (2):
+      ci_run_n_monitor: drop always-true condition
+      ci_run_n_monitor: allow passing multiple targets
+
+Faith Ekstrand (1):
+      nak: Fix TCS output reads
 
 Friedrich Vock (2):
-      nir: Make is_trivial_deref_cast public
-      nir: Handle casts in nir_opt_copy_prop_vars
+      radv/amdgpu: Fix build on BSD
+      winsys/amdgpu: Fix build on BSD
 
-Georg Lehmann (6):
-      aco: fix printing dpp8
-      aco: validate v_permlane opsel correctly
-      aco: support v_permlane64_b32
-      aco/gfx11: use v_nop to resolve VcmpxPermlaneHazard
-      aco/gfx11: resolve VcmpxPermlaneHazard for v_permlane64
-      aco: implement rotate
+Georg Lehmann (1):
+      radv: enable VK_KHR_shader_subgroup_rotate
 
-Guilherme Gallo (2):
-      ci/lava: Ignore DUT feedback messages
-      ci/lava: Fix the integration test
+Guilherme Gallo (4):
+      bin/ci: Propagate the token to GitlabGQL
+      bin/ci: Move get_token_from_default_dir to common
+      bin/ci: Refactor read_token function
+      bin/ci: Add GitLab basic token validation
 
-Ian Romanick (1):
-      intel/fs: Fix shift counts for 8- and 16-bit types
+Jesse Natalie (7):
+      spirv2dxil: Fix the spirv2dxil command line tool
+      spirv2dxil: Handle aliasing/overlapping UBO/SSBO variables
+      util: Detect arm64ec as aarch64 (and x86_64)
+      glsl: Work around MSVC arm64 optimizer bug
+      dzn: Don't set view instancing mask until after the PSO
+      dzn: Fix path passed to CreateDeviceFactory
+      d3d12: Fix path passed to CreateDeviceFactory
 
-Jesse Natalie (5):
-      microsoft/compiler: Add feature flags for new comparison sampling ops
-      dzn: Implement maintenance3 VariableDescriptorCountLayoutSupport
-      dzn: Fix enhanced barrier layout for depth blits
-      dzn: Handle VkBindImageMemorySwapchainInfoKHR
-      dzn: Disable depth/stencil for partial binding from dynamic rendering
-
-José Roberto de Souza (1):
-      anv: Fix calculation of syncs required in Xe KMD
-
-Juan A. Suarez Romero (1):
-      Revert "ci: disable Igalia farm"
-
-Karol Herbst (17):
-      rusticl/meson: use rust_abi instead of rust_crate_type
-      rust/spirv: fix clippy lint on unneeded late initialization
-      rusticl/kernel: check that local size on dispatch doesn't exceed limits
-      nak/meson: specify rust flags globally and allow some clippy lints
-      nak: fix clippy::extra_unused_lifetimes warnings
-      nak: fix clippy::mem_replace_with_default warnings
-      nak: fix clippy::useless_conversion warnings
-      nak: fix clippy::needless_lifetimes warnings
-      nak: fix clippy::needless_borrow warnings
-      nak: fix clippy::while_let_loop warnings
-      nak: fix clippy::match_like_matches_macro warnings
-      nak: fix clippy::needless_return warnings
-      nak: fix clippy::redundant_closure warnings
-      nak: fix clippy::unwrap_or_default warnings
-      nak: fix clippy::manual_while_let_some warnings
-      nak: fix clippy::clone_on_copy warnings
-      nak: fix clippy::single_match warnings
+Karol Herbst (8):
+      rusticl/util: add a wrapper around "thread-safe" C types
+      rusticl/mesa/device: convert to ThreadSafeCPtr
+      rusticl/mesa/screen: convert to ThreadSafeCPtr
+      rusticl/mesa: add thread-safe wrapper for pipe_image_views
+      rusticl/context: store SVM pointers as usize
+      rusticl/gl: mark GLCtxManager as Send + Sync
+      rusticl/mem: make Mem Send/Sync by storing mapping ptrs as usize
+      rusticl/program: mark NirKernelBuild as Send and Sync
 
 Kenneth Graunke (3):
-      iris: Don't return timestamps modulo 36-bits
-      intel/dev: Fix typo (ajust -> adjust)
-      iris: Implement query_memory_info() on discrete cards
+      intel/nir: Pass devinfo and prog_data to brw_nir_lower_cs_intrinsics
+      intel: Add driver support for hardware generated local invocation IDs
+      intel: Use hardware generated compute shader local invocation IDs
 
-Mike Blumenkrantz (1):
-      zink: set more dynamic states when using shader objects
+Lionel Landwerlin (2):
+      vulkan/runtime: handle new image layout
+      anv: don't prevent L1 untyped cache flush in 3D mode
 
-Rhys Perry (1):
-      aco: fix labelling of s_not with constant
+Mark Collins (1):
+      tu/kgsl: Fix sync_wait'd FD in kgsl_syncobj_wait
 
 Rohan Garg (1):
-      isl,blorp,anv: introduce ISL_TILING_64_XE2 for Xe2+ platforms
+      anv: untyped data port flush required when a pipeline sets the VK_ACCESS_2_SHADER_STORAGE_READ_BIT
 
-Samuel Pitoiset (2):
-      radv: remove unused parameter to gather_shader_info_mesh()
-      radv: add a per-stage key field for mesh shaders with a task shader
+Samuel Pitoiset (4):
+      vulkan: bump headers/registry to 1.3.276
+      lavapipe: fix build since vulkan spec update
+      vulkan: promote VK_EXT_line_rasterization to KHR
+      vulkan: promote VK_EXT_index_type_uint8 to KHR
 
-Tomeu Vizoso (10):
-      ci: disable Igalia farm
-      gallium/util: Fix pipe_buffer_copy
-      mesa: Import TensorFlow Lite headers
-      teflon: Initial commit
-      etnaviv: Update headers from rnndb
-      etnaviv: Add a bunch of new params for NPUs
-      etnaviv: Don't emit boilerplate for compute only contexts
-      etnaviv: Use NN cores to accelerate convolutions
-      etnaviv: Use TP cores to accelerate tensor transformations
-      teflon: Add table with known supported models to docs
+Tranquillity Codes (1):
+      intel: Skip ioctls for querying device info when hardware is unsupported
 
