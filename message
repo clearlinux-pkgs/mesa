@@ -1,112 +1,22 @@
-Updating from cd8b546205f3fd4c915fd99c9387df449c5bb80e to a0a453e43f6efec864267a20a555a5c1ffe7eabc
+Updating from a0a453e43f6efec864267a20a555a5c1ffe7eabc to 68b3b1573b4abd732957c8fc5ee7afd3dc68927b
 
-Eric Engestrom (10):
-      ci/deqp: fix default target check when target is not specified
-      ci/deqp: simplify version log dump
-      ci/deqp: avoid storing the huge list of vk tests on android builds
-      ci/deqp: move editable part to the top of the file
-      ci/deqp: split vk and gl builds
-      ci/deqp: drop the implicit DEQP_TARGET; explicitly set `default` in VK builds
-      ci/deqp: only compile EGL tests in GL builds, not VK builds
-      ci/deqp: only compile the test binaries that are relevant to the build
-      ci/deqp: only keep the mustpass lists that are relevant to the build
-      ci: bump the image tags to rebuild all the deqp variants
+Echo J (1):
+      nvk: Set ICD version to 1.3
 
-Faith Ekstrand (7):
-      anv: Add helpers for getting the surface state from an image view
-      anv: Advertise VK_EXT_attachment_feedback_loop_layout
-      nak: Choose S2R vs CS2R based on sysval index
-      nak: Add a source barrier intrinsic
-      nak: Loop to ensure we get accurate shader clocks
-      nvk: Stop requiring dedicated allocations
-      nvk: Advertise Vulkan 1.3
+Faith Ekstrand (3):
+      nvk: Do a second submit to check for errors in the sync case
+      nvk: Whitespace fixes
+      nvk: Disable all cbufs in nvk_queue_init_context_draw_state()
 
-Javier Martinez Canillas (1):
-      gallium: Add ssd130x to the list of kmsro drivers
+Max R (1):
+      d3d10umd: Fix compilation
 
-Juston Li (6):
-      venus: refactor query feedback cmds
-      venus: acquire mutex when recycling query feedback cmds
-      venus: free query batches for VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT
-      venus: add comments for query feedback batch free list
-      venus: recycle linked query feedback immediately during submission
-      venus: handle empty resolved query feedback list
+Sebastian Wick (1):
+      radeonsi: Destroy queues before the aux contexts
 
-Krzysztof Kurek (1):
-      panfrost: fix shift overflow in `bi_fold_constant`
-
-Lionel Landwerlin (15):
-      anv: promote EXT_index_type_uint8 to KHR
-      anv: promote EXT_line_rasterization to KHR
-      anv: promote EXT_load_store_op_none to KHR
-      anv: add missing alignment for AUX-TT mapping
-      intel/ds: track predication of blorp operations
-      vulkan/runtime: add helper to query attachment layout
-      anv: ensure consistent layout transitions in render passes
-      anv: add check that in renderpass barriers apply to attachments
-      anv: handle image feedback loop usage
-      anv: implement VK_EXT_attachment_feedback_loop_dynamic_state
-      anv/hasvk: don't report error when intel_get_device_info_from_fd fails
-      anv: factor out aux-tt binding logic for future reuse
-      anv: rename aux_tt image field
-      anv: retain ccs image binding address
-      anv: fix transfer barriers flushes with compute queue
-
-Louis-Francis Ratté-Boulianne (4):
-      panfrost: factor out method to check whether we can discard resource
-      panfrost: add copy_resource flag to pan_resource_modifier_convert
-      panfrost: add can_discard flag to pan_legalize_afbc_format
-      panfrost: Legalize before updating part of a AFBC-packed texture
-
-Pavel Ondračka (8):
-      r300/ci: add dEQP on RV380
-      r300: remove backend SLE and SGT support
-      r300: add r300_is_only_used_as_float helper
-      r300: optimize out more modifiers produced later
-      r300: lower comparison ops early in NIR
-      r300: remove SGE, SNE, SLT, SGE lowering in the backend
-      r300: remove the remaining of backend constant folding
-      r300: remove backend support for SUB
-
-Pierre-Eric Pelloux-Prayer (4):
-      radeonsi: emit cache flushes before draw registers
-      radeonsi: adjust flags for si_compute_shorten_ubyte_buffer
-      winsys/amdgpu: use syncobj rather than amdgpu fence
-      ac, radeonsi: remove has_syncobj, has_fence_to_handle
-
-Rohan Garg (1):
-      anv: factor out common code for determining surface usage from a VkDescriptorType
-
-Ryan Neph (1):
-      virgl: use PIPE_MAX_SAMPLERS in bind_samplers_states
-
-Samuel Pitoiset (19):
-      radv: add a helper for binding the custom blend mode
-      radv: add a helper to get the VGT_GS_OUT value
-      radv: prevent accessing NULL pipelines when emitting VBO with ESO
-      radv: re-emit the TCS epilog when a new TCS is bound
-      radv: enable prologs/epilogs in-memory cache for shader objects
-      radv: add required NV entrypoints for VK_EXT_shader_object
-      radv: initialize default dynamic state when beginning a new cmdbuf
-      radv: add radv_shader_stage::next_stage field
-      radv: add radv_shader_layout::dynamic_offset_count
-      radv: add support for creating/destroying shader objects
-      radv: make some pipeline graphics helpers non-static for ESO
-      radv: add support for binding/emitting shader objects
-      radv: advertise VK_EXT_shader_object on GFX6-8
-      radv: advertise VK_KHR_load_store_op_none
-      radv: promote VK_EXT_line_rasterization to KHR
-      radv: advertise VK_KHR_line_rasterization
-      radv: promote VK_EXT_index_type_uint8 to KHR
-      radv: advertise VK_KHR_index_type_uint8
-      radv: use device->vk.enabled_features instead of iterating twice
-
-Tatsuyuki Ishi (4):
-      radv: Add radv_spirv_to_nir_options that summarize early gfx states.
-      radv: Rename cache_search_nir to cache_lookup_nir_handle.
-      radv: Re-sort RADV_PERFTEST env vars in docs
-      radv: Implement NIR caching behind RADV_PERFTEST=nircache.
-
-Vlad Schiller (1):
-      pvr: Implement VK_EXT_memory_budget
+Thomas H.P. Andersen (4):
+      nvk: promote VK_EXT_index_type_uint8 to KHR
+      nvk: promote VK_EXT_line_rasterization to KHR
+      nvk: promote load_store_op_none to KHR
+      docs: update features.txt for nvk
 
