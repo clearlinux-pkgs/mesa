@@ -1,22 +1,38 @@
-Updating from a0a453e43f6efec864267a20a555a5c1ffe7eabc to 68b3b1573b4abd732957c8fc5ee7afd3dc68927b
+Updating from 68b3b1573b4abd732957c8fc5ee7afd3dc68927b to c4b32f9e90b7204735e6adf1f60c178bf85752e7
 
-Echo J (1):
-      nvk: Set ICD version to 1.3
+David Heidelberg (4):
+      ci: disable Valve farm in Keywords
+      ci: bump libdrm to 2.4.120
+      ci/VK-GL-CTS: add patches to fix dEQP-VK.glsl.derivate crashes
+      ci: Valve farm (Keywords location) works again
 
-Faith Ekstrand (3):
-      nvk: Do a second submit to check for errors in the sync case
-      nvk: Whitespace fixes
-      nvk: Disable all cbufs in nvk_queue_init_context_draw_state()
+Eric Engestrom (1):
+      Revert "bin/ci: Add GitLab basic token validation"
 
-Max R (1):
-      d3d10umd: Fix compilation
+Gert Wollny (3):
+      r600: lower dround_even also on hardware that supports fp64
+      virgl: Use better reporting for mirror_clamp features
+      ci: Upref virglrenderer
 
-Sebastian Wick (1):
-      radeonsi: Destroy queues before the aux contexts
+Hans-Kristian Arntzen (3):
+      wsi/wl: Refactor out code to update current present ID.
+      wsi/wl: Improve fallback for present_wait.
+      wsi/common: Allow KHR_present_wait on WL.
 
-Thomas H.P. Andersen (4):
-      nvk: promote VK_EXT_index_type_uint8 to KHR
-      nvk: promote VK_EXT_line_rasterization to KHR
-      nvk: promote load_store_op_none to KHR
-      docs: update features.txt for nvk
+Lionel Landwerlin (3):
+      vulkan/runtime: handle new dynamic states for attachment remapping
+      docs/features: drop gen8+/gen9+ on Anv
+      docs/features: synchronize new features for Anv
+
+Samuel Pitoiset (10):
+      radv: fix segfault when getting device vm fault info
+      radv/ci: enable RADV_PERFTEST=shader_object for vkcts-polaris10-valve
+      radv: refactor gfx103_pipeline_emit_vgt_draw_payload_cntl()
+      radv: refactor gfx103_pipeline_emit_vrs_state()
+      radv: use the non-emitted graphics pipeline for the needed dynamic states
+      radv: fix the late scissor emission workaround with ESO on GFX9
+      radv: set NGG fields in vgt_shader_key for ESO on GFX10+
+      radv: do not ignore RADV_DYNAMIC_FRAGMENT_SHADING_RATE for ESO on GFX10.3+
+      radv: emit more default states for ESO on GFX10.3+
+      radv: export alpha-to-coverage via MRTZ for ESO on GFX11
 
