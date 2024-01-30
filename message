@@ -1,38 +1,57 @@
-Updating from 68b3b1573b4abd732957c8fc5ee7afd3dc68927b to c4b32f9e90b7204735e6adf1f60c178bf85752e7
+Updating from c4b32f9e90b7204735e6adf1f60c178bf85752e7 to 3304c6ca01ed89945c0c145b8474e59a7098eb8e
 
-David Heidelberg (4):
-      ci: disable Valve farm in Keywords
-      ci: bump libdrm to 2.4.120
-      ci/VK-GL-CTS: add patches to fix dEQP-VK.glsl.derivate crashes
-      ci: Valve farm (Keywords location) works again
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to e9316bcd12544aaf7e753ce37fe50d64165d9598
+
+Corentin Noël (5):
+      zink: Initialize zink_shader_object
+      zink: Initialize zink_bindless_descriptor to zero on creation
+      zink: Initialize pipe_query_result
+      zink: Do not shadow the variable ret
+      zink: Avoid variable shadowing everywhere
+
+Daniel Almeida (6):
+      nak/sm50: add support for isberd
+      nak: sm50: add support for OpOut
+      nak: sm50: fadd: ensure src[0] is in a register
+      nak/sm50: legalize: display instruction on panic
+      nak/sm50: add support for brev
+      nak: sm50: fix some legalization issues
+
+David (Ming Qiang) Wu (1):
+      frontends/va: make vlVaSyncSurface blocking
 
 Eric Engestrom (1):
-      Revert "bin/ci: Add GitLab basic token validation"
+      Reapply "bin/ci: Add GitLab basic token validation"
 
-Gert Wollny (3):
-      r600: lower dround_even also on hardware that supports fp64
-      virgl: Use better reporting for mirror_clamp features
-      ci: Upref virglrenderer
+Haihao Xiang (1):
+      anv: Fix typo in transition_color_buffer
 
-Hans-Kristian Arntzen (3):
-      wsi/wl: Refactor out code to update current present ID.
-      wsi/wl: Improve fallback for present_wait.
-      wsi/common: Allow KHR_present_wait on WL.
+Jesse Natalie (4):
+      microsoft/compiler: Use double pack/unpack instead of int for reduce ops on doubles
+      dzn: Add a stencil blit fallback
+      dzn: Add missing condition to immutable sampler init loop
+      dzn: Add missing blit source barriers for enhanced barriers
 
-Lionel Landwerlin (3):
-      vulkan/runtime: handle new dynamic states for attachment remapping
-      docs/features: drop gen8+/gen9+ on Anv
-      docs/features: synchronize new features for Anv
+Juan A. Suarez Romero (1):
+      v3d/ci: update expected results
 
-Samuel Pitoiset (10):
-      radv: fix segfault when getting device vm fault info
-      radv/ci: enable RADV_PERFTEST=shader_object for vkcts-polaris10-valve
-      radv: refactor gfx103_pipeline_emit_vgt_draw_payload_cntl()
-      radv: refactor gfx103_pipeline_emit_vrs_state()
-      radv: use the non-emitted graphics pipeline for the needed dynamic states
-      radv: fix the late scissor emission workaround with ESO on GFX9
-      radv: set NGG fields in vgt_shader_key for ESO on GFX10+
-      radv: do not ignore RADV_DYNAMIC_FRAGMENT_SHADING_RATE for ESO on GFX10.3+
-      radv: emit more default states for ESO on GFX10.3+
-      radv: export alpha-to-coverage via MRTZ for ESO on GFX11
+Konstantin Seurer (2):
+      radv/rt: Use doubles inside intersect_ray_amd_software_tri
+      llvmpipe: Fix building with llvm11
+
+Marek Olšák (7):
+      mesa,gallium: move the thread scheduler to src/util
+      gallium: rename PIPE_.._PIN_THREADS_TO_L3_CACHE -> .._UPDATE_THREAD_SCHEDULING
+      st/mesa: rename ST_L3_PINNING_DISABLED -> ST_THREAD_SCHEDULER_DISABLED
+      util: add mesa_pin_threads environment variable that sets a static affinity mask
+      glthread: apply the thread scheduling policy when the context is created
+      glthread: apply the thread scheduling policy when a batch executes synchronously
+      gallium/hud: add "csv" option to print values to stdout as CSV
+
+Rob Clark (1):
+      freedreno/drm: Submit should hold ref to device
+
+Sil Vilerino (1):
+      frontends/va, d3d12: Fix PIPE_VIDEO_SLICE_MODE_MAX_SLICE_SICE -> PIPE_VIDEO_SLICE_MODE_MAX_SLICE_SIZE typo
 
