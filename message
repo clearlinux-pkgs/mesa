@@ -1,57 +1,127 @@
-Updating from c4b32f9e90b7204735e6adf1f60c178bf85752e7 to 3304c6ca01ed89945c0c145b8474e59a7098eb8e
+Updating from 3304c6ca01ed89945c0c145b8474e59a7098eb8e to 445aacb4217cbf5fb7be604c5484eb84c3c06497
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to e9316bcd12544aaf7e753ce37fe50d64165d9598
+Antoine Coutant (1):
+      clc: retrieve libclang path at runtime.
 
-Corentin Noël (5):
-      zink: Initialize zink_shader_object
-      zink: Initialize zink_bindless_descriptor to zero on creation
-      zink: Initialize pipe_query_result
-      zink: Do not shadow the variable ret
-      zink: Avoid variable shadowing everywhere
+Bas Nieuwenhuizen (1):
+      util/disk_cache: Add marker on cache usage.
 
-Daniel Almeida (6):
-      nak/sm50: add support for isberd
-      nak: sm50: add support for OpOut
-      nak: sm50: fadd: ensure src[0] is in a register
-      nak/sm50: legalize: display instruction on panic
-      nak/sm50: add support for brev
-      nak: sm50: fix some legalization issues
+Christian Gmeiner (1):
+      etnaviv/isa: Add missing dep of encode.py/decode.py calls on isa.py
 
-David (Ming Qiang) Wu (1):
-      frontends/va: make vlVaSyncSurface blocking
+Daniel Schürmann (3):
+      spirv: Fix SpvOpExpectKHR
+      vulkan: enable VK_KHR_shader_expect_assume
+      spirv: Update headers and grammar JSON
 
-Eric Engestrom (1):
-      Reapply "bin/ci: Add GitLab basic token validation"
+Eric Engestrom (5):
+      util: rename __check_suid() to __normal_user()
+      tree-wide: use __normal_user() everywhere instead of writing the check manually
+      zink+anv/ci: add a couple more flakes
+      util: simplify logic in __normal_user()
+      util: check for setgid() as well in __normal_user()
 
-Haihao Xiang (1):
-      anv: Fix typo in transition_color_buffer
+Faith Ekstrand (2):
+      nvk: Call lower_compute_system_values after zer_initialize_workgroup_memory
+      nak/nir: Stop lowering load_local_invocation_index
 
-Jesse Natalie (4):
-      microsoft/compiler: Use double pack/unpack instead of int for reduce ops on doubles
-      dzn: Add a stencil blit fallback
-      dzn: Add missing condition to immutable sampler init loop
-      dzn: Add missing blit source barriers for enhanced barriers
+Felix DeGrood (1):
+      driconf: Fake vendorid for RDR2
 
-Juan A. Suarez Romero (1):
-      v3d/ci: update expected results
+Gert Wollny (22):
+      zink: Factor out create buffer from resource_object_create
+      zink: shorten lifetime of success variable in resource_object_create
+      zink: Factor out create sampler conversion in resource_object_create
+      zink: factor out get_format_feature_flags in resource_object_create
+      zink: factor out get_image_memory_requirement in resource_object_create
+      zink: reduce number of #ifdefs in resource_create_object
+      zink: extract get_export_flags from resource_object_create
+      zink: extract function allocate_bo from resource_create_object
+      zink: redesign the allocation try loop to test all heaps
+      zink: extract function create_image from resource_object_create
+      zink: extract function update_alloc_info from resource_object_create
+      zink: extract update_obj_info from resource_object_create
+      zink: extract debug_resource_mem from resource_object_create
+      zink: drop duplicate assignment to obj->alignment
+      zink: extract allocate_bo_and_update_obj from resource_object_create
+      zink: Move more code to create_image and create_buffer
+      zink: simplify call to get_export_flags
+      zink: remove duplicate arguments and use VkMemoryRequirements locally
+      zink: use enums as return values in resource_object_create
+      radv: Fix compilation with gcc-13 and tsan enabled
+      nir/lower_int64: Fix compilation with gcc-13 and tsan enabled
+      nir/builder: Fix compilation with gcc-13 when tsan is enabled
 
-Konstantin Seurer (2):
-      radv/rt: Use doubles inside intersect_ray_amd_software_tri
-      llvmpipe: Fix building with llvm11
+Hyunjun Ko (1):
+      anv/video: fix out-of-bounds read
 
-Marek Olšák (7):
-      mesa,gallium: move the thread scheduler to src/util
-      gallium: rename PIPE_.._PIN_THREADS_TO_L3_CACHE -> .._UPDATE_THREAD_SCHEDULING
-      st/mesa: rename ST_L3_PINNING_DISABLED -> ST_THREAD_SCHEDULER_DISABLED
-      util: add mesa_pin_threads environment variable that sets a static affinity mask
-      glthread: apply the thread scheduling policy when the context is created
-      glthread: apply the thread scheduling policy when a batch executes synchronously
-      gallium/hud: add "csv" option to print values to stdout as CSV
+Iago Toral Quiroga (13):
+      broadcom/compiler: fix incorrect flags setup in non-uniform if path
+      broadcom/compiler: fix incorrect flags update for subgroup elect
+      broadcom/compiler: add new SFU instructions in V3D 7.x
+      broadcom/compiler: don't move subgroup reduction instructions above setmsf
+      broadcom/compiler: support subgroup ballot
+      broadcom/compiler: support subgroup shuffle
+      broadcom/compiler: support subgroup vote
+      broadcom/compiler: support subgroup quad
+      v3dv: expose more subgroup features on V3D 7.x
+      broadcom/compiler: be more careful with unifa in non-uniform control flow
+      brodcom/compiler: implement non-compute TSY barrier
+      broadcom/compiler: support subgroup reduction operations from fragment shaders
+      v3dv: allow subgroup operations in fragment shaders
 
-Rob Clark (1):
-      freedreno/drm: Submit should hold ref to device
+Karol Herbst (2):
+      meson: remove opencl-external-clang-headers option and rely on shared-llvm
+      clc: force fPIC for every user when using shared LLVM
+
+Konstantin Seurer (8):
+      nir/print: Don't print shared_size twice
+      nir/print: Rename workgroup-size to workgroup_size
+      radv/radix_sort: clang-format
+      radv: Reduce the amount of radv_device_to_handle calls
+      radv: Make radv_write_user_event_marker non-static
+      radv: Emit user events during acceleration structure builds
+      radv: Skip unused acceleration structure build paths
+      radv/sqtt: Set SeparateCompiled for monolithic RT pipelines
+
+Leo Liu (1):
+      radeonsi: fix video processing path without VPE enabled
+
+Martin Roukala (né Peres) (3):
+      radeonsi/ci: update vangogh's expectations after piglit uprev
+      zink/ci: update navi31's expectations after piglit uprev
+      zink/ci: update polaris10's expectations after piglit uprev
+
+Mike Blumenkrantz (3):
+      lavapipe: KHR_dynamic_rendering_local_read
+      zink: always map descriptor buffers as COHERENT
+      zink: fix descriptor buffer unmaps on screen destroy
+
+Samuel Pitoiset (16):
+      radv: fix detecting invalid binaries with ESO
+      radv: fix emitting tess domain origin for merged TES+GS on GFX9
+      radv: emit required programming for tess on GFX10+ in radv_emit_hw_vs()
+      radv: rebind mesh/task shaders when restoring meta context
+      radv: determine next stage for mesh/task with ESO
+      radv: ignore unneeded dynamic states with mesh shaders and ESO
+      radv: determine the last VGT api stage with mesh shaders and ESO
+      radv: bind and emit mesh/task shaders with ESO
+      radv: prevent crashes when a task shader is compiled unlinked with ESO
+      radv: init the shader key in radv_shader_stage_init() for ESO
+      radv: add support for VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT
+      radv: add a helper to know if device fault detection is enabled
+      radv: refactor dumping GPU hang reports by using chunks
+      radv: add support for keeping GPU hang reports in memory
+      radv: export GPU hang reports through VK_EXT_device_fault
+      radv: enable deviceFaultVendorBinary if RADV_DEBUG=hang is set
 
 Sil Vilerino (1):
-      frontends/va, d3d12: Fix PIPE_VIDEO_SLICE_MODE_MAX_SLICE_SICE -> PIPE_VIDEO_SLICE_MODE_MAX_SLICE_SIZE typo
+      d3d12: d3d12_video_encoder_negotiate_current_h264_slices_configuration to use correct mode when intra-refresh is on
+
+Yiwei Zhang (2):
+      venus: force async pipeline create on threads creating descriptor pools
+      venus: use obj handle instead of id in device memory report
+
+Zan Dobersek (1):
+      freedreno: add fd_rd_output facilities for gzip-compressed RD dumps
 
