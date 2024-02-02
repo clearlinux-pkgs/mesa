@@ -1,100 +1,96 @@
-Updating from 445aacb4217cbf5fb7be604c5484eb84c3c06497 to eb4effeead405cc388d310c322a044757afd8fc6
+Updating from eb4effeead405cc388d310c322a044757afd8fc6 to 2085d6043804c316939ac47d6b334007872655b7
 
-Alejandro Piñeiro (1):
-      v3dv: expose VK_EXT_depth_clip_enable
+Blisto (1):
+      driconf: set vk_x11_strict_image_count for Atlas Fallen Vulkan
 
-Daniel Schürmann (1):
-      aco/insert_exec_mask: Fix unconditional demote at top-level control flow.
+Dave Airlie (2):
+      vulkan: update registry/includes to 1.3.277
+      vulkan/video: add AV1 decode support to common code
 
-Dave Airlie (3):
-      nvk: allow 3d compressed textures
-      nvk: mem cannot be null in binding buffers/images.
-      zink: use sparse residency for buffers.
+Eric Engestrom (5):
+      docs/calendar: add 24.1 branchpoint and release schedule
+      ci: drop dash in image tags dates
+      ci: enforce maximum image tag length
+      ci: reduce maximum image tags length from 30 to 20
+      ci: explain purpose of the word after the date in image tags
 
-Dylan Baker (2):
-      intel/vulkan: assume() that we don't use "ISL_NUM_FORMATS"
-      intel/hasvk: assume() we don't get ISL_NUM_FORMATS
+Gert Wollny (7):
+      zink: extract check_unordered_exec from zink_get_cmdbuf
+      zink: remove duplicate check and assignment in zink_resource_image_needs_barrier
+      zink: extract emit_memory_barrier from zink_resource_image_barrier
+      zink: extract emit_memory_barrier::for_buffer from  zink_resource_buffer_barrier
+      zink: extract update_unordered_access_and_get_cmdbuf
+      zink/sync: remove duplicate assignments in UNSYNCHRONIZED case
+      zink: move zink_resource_copies_reset out of exportable_lock
 
-Eric Engestrom (12):
-      ci: always skip dEQP-VK.info.device_extensions
-      vk/util: fix 'beta' check for physical device features
-      vk/util: fix 'beta' check for physical device properties
-      ci: when specifying a driver remove all other ones
-      docs: update calendar for 24.0.0
-      docs: add release notes for 24.0.0
-      docs: add sha256sum for 24.0.0
-      docs/release-calendar: add planned 24.0.x bugfix releases
-      docs: add release notes for 23.3.5
-      docs: update calendar for 23.3.5
-      docs: add sha256sum for 23.3.5
-      v3d-rpi4-gl: reduce the parallelism from 10 to 8
+Ian Romanick (7):
+      intel/rt: Don't directly generate umul_32x16
+      intel/compiler/xe2: Update get_sampler_lowered_simd_width
+      intel/fs: Move opcode modification before the switch that emits srcs
+      intel/compiler/xe2: Use new sample_*_mlod messages
+      nir: Pack texture LOD and array index to a single 32-bit value
+      intel/compiler/xe2: Emit texture instructions w/ combined LOD and array index
+      intel/compiler/xe2: Set SIMD mode for sampler messages
 
-Erik Faye-Lund (1):
-      mesa/main: add support for EXT_texture_storage
+Jesse Natalie (10):
+      microsoft/compiler: Respect ACCESS_COHERENT in UAV variable data
+      microsoft/compiler: Add a pass for promoting ACCESS_COHERENT on loads/stores
+      spirv2dxil: Lower the Vulkan memory model and coherent loads/stores
+      dzn: Add missing handling of VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT
+      dzn: Add barrier to copy source for DispatchIndirect copies
+      dzn: Support non-static samplers for meta
+      dzn: Add a debug flag for forcing off native view instancing
+      dzn: Don't resolve for RESOLVE_MODE_NONE
+      dzn: Use correct format for depth/stencil resolves
+      dzn: Use blits for all non-averaging resolves
 
-Faith Ekstrand (15):
-      nil: Set the level offset to 0 in nil_image_for_level
-      nvk: Fix whitespace in nvk_image.c
-      nouveau/winsys: Re-order channel creation
-      nouveau/winsys: Allow only allocating a subset of engines
-      nvk/queue: Pull DRM specfc stuff into nvk_queue_drm.c
-      nvk/queue: Refactor the push builder a bit
-      nvk: Move the nouveau_ws_context to nvk_queue
-      nvk: Add an array of queue families to nvk_physical_device
-      nvk/queue: Rework context state init
-      nvk/queue: Only initialize the necessary engines
-      nvk: Use VM_BIND for contiguous heaps instead of copying
-      nvk: Only map heaps that explicitly request maps
-      nvk: Add an upload queue
-      nvk: Add an upload queue to nvk_device
-      nvk: Use the upload queue for shader uploads
+Konstantin Seurer (1):
+      radv/sqtt: Handle ray tracing pipelines with no traversal shader
 
-Friedrich Vock (9):
-      util: Provide a secure_getenv fallback for platforms without it
-      vulkan: Use secure_getenv for trigger files
-      aux/trace: Guard triggers behind __normal_user
-      vtn: Use secure_getenv for shader dumping
-      mesa/main: Use secure_getenv for shader dumping
-      radv: Use secure_getenv in radv_builtin_cache_path
-      radv: Use secure_getenv for RADV_THREAD_TRACE_TRIGGER
-      util/disk_cache: Use secure_getenv to determine cache directories
-      radv/rt: Write inactive node data in ALWAYS_ACTIVE workaround
+Mike Blumenkrantz (6):
+      zink: add a tu flake
+      zink: prune dmabuf export tracking when adding resource binds
+      zink: fix sparse bo placement
+      zink: zero allocate resident_defs array in ntv
+      zink: move sparse lowering up in file
+      zink: run sparse lowering after all optimization passes
 
-Gert Wollny (1):
-      zink: Fix return type and values of create_buffer and create_images
+Roland Scheidegger (1):
+      auxiliary/draw: fix streamout overflow calculation
 
-José Roberto de Souza (1):
-      iris: Avoid read of uninitialized value in blorp_clear_stencil_as_rgba()
+Sagar Ghuge (1):
+      intel/compiler/xe2: Handle 6-bit message type for Gfx20+
 
-Lionel Landwerlin (2):
-      vulkan/multialloc: bump max number to 16
-      vulkan/runtime: rework VK_KHR_dynamic_rendering_local_read state tracking
+Samuel Pitoiset (11):
+      radv: remove radv_graphics_state_key::dynamic_patch_control_points
+      radv: determine the workgroup size for TCS earlier
+      radv: set the default workgroup size for VS as LS
+      radv: constify radv_device in radv_emit_shader_pointer()
+      radv: check active NIR stages before trying to merge shaders on GFX9+
+      radv: only merge shader info stages if both stages exist on GFX9+
+      radv: rework shader arguments for separate compilation of VS+TCS on GFX9+
+      radv: always mark drawid/base_instance used with ESO
+      radv: force TCS stage for VS as LS compiled separately on GFX9+
+      radv: always emit PGM_RSRC1_HS when emitting the TCS epilog state
+      radv: add support for emitting VS+TCS compiled separately on GFX9+
 
-Luc Ma (1):
-      gallium/u_blitter: Fix a few uninitialized fb_state
+Timothy Arceri (1):
+      glsl: don't tree graft globals
 
-Max R (3):
-      winsys/gdi: Handle R8G8B8 formats
-      winsys/gdi: Custom acquisition of hDC
-      d3d10umd: Use flush_frontbuffer for Present
-
-Mike Blumenkrantz (1):
-      lavapipe: RM2024 extension promotions
-
-Pierre-Eric Pelloux-Prayer (3):
-      radeonsi: try to disable dcc if compute_blit is the only option
-      meson: require libelf when radeonsi is built
-      egl/drm: flush before calling get_back_bo
-
-Sagar Ghuge (2):
-      vulkan/runtime: Track VkSharingMode in vk_image
-      anv: Disable compression if we have concurrent sharing mode
-
-Tapani Pälli (1):
-      anv: use workaround framework for Wa_22018402687
-
-Timothy Arceri (3):
-      glsl: add nir version of validate_geometry_shader_emissions()
-      glsl: use nir version of geom stream validation
-      glsl: remove now unused GLSL IR validate_geometry_shader_emissions()
+Yiwei Zhang (15):
+      anv: refactor wsi_memory_allocate_info handling
+      anv: optimize the implicit fencing support of external memory
+      anv: extend implicit fencing support for case requiring implicit write
+      vulkan/util: drop redundant code gen from vk_extensions_gen.py
+      vulkan/runtime: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      v3dv: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      venus: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      hasvk: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      anv: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      radv: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      turnip: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      egl: refactor to use DETECT_OS_ANDROID instead of ANDROID
+      gallium: refactor to use DETECT_OS_ANDROID
+      util: refactor to use DETECT_OS_ANDROID
+      meson: drop -DANDROID
 
