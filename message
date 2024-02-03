@@ -1,96 +1,70 @@
-Updating from eb4effeead405cc388d310c322a044757afd8fc6 to 2085d6043804c316939ac47d6b334007872655b7
+Updating from 2085d6043804c316939ac47d6b334007872655b7 to fcce9cc835be3bbfe3285ef89d5dc4ceb5e7e7bc
 
-Blisto (1):
-      driconf: set vk_x11_strict_image_count for Atlas Fallen Vulkan
+Connor Abbott (5):
+      ir3/ra: Add specialized shared register RA/spilling
+      ir3: Set branchstack earlier
+      ir3: Rewrite (jp) and branchstack handling
+      ir3: Calculate physical edges correctly
+      ir3: Fix comment thinko
 
-Dave Airlie (2):
-      vulkan: update registry/includes to 1.3.277
-      vulkan/video: add AV1 decode support to common code
+Daniel Schürmann (3):
+      aco/insert_exec_mask: tiny refactor
+      aco: always terminate quads if they have been demoted entirely
+      aco/insert_exec_mask: Reduce latency when switching to WQM.
 
 Eric Engestrom (5):
-      docs/calendar: add 24.1 branchpoint and release schedule
-      ci: drop dash in image tags dates
-      ci: enforce maximum image tag length
-      ci: reduce maximum image tags length from 30 to 20
-      ci: explain purpose of the word after the date in image tags
+      panfrost: fix UB caused by shifting signed int too far
+      ci_run_n_monitor: avoid spamming a ton of "new status: created" for all the jobs at the beginning
+      ci: build panvk in debian-vulkan job
+      nouveau/tests: fix null dereference
+      ci: build nvk in debian-vulkan job
 
-Gert Wollny (7):
-      zink: extract check_unordered_exec from zink_get_cmdbuf
-      zink: remove duplicate check and assignment in zink_resource_image_needs_barrier
-      zink: extract emit_memory_barrier from zink_resource_image_barrier
-      zink: extract emit_memory_barrier::for_buffer from  zink_resource_buffer_barrier
-      zink: extract update_unordered_access_and_get_cmdbuf
-      zink/sync: remove duplicate assignments in UNSYNCHRONIZED case
-      zink: move zink_resource_copies_reset out of exportable_lock
+Erik Faye-Lund (1):
+      mesa: fix error-handling for ETC2/RGTC textures
 
-Ian Romanick (7):
-      intel/rt: Don't directly generate umul_32x16
-      intel/compiler/xe2: Update get_sampler_lowered_simd_width
-      intel/fs: Move opcode modification before the switch that emits srcs
-      intel/compiler/xe2: Use new sample_*_mlod messages
-      nir: Pack texture LOD and array index to a single 32-bit value
-      intel/compiler/xe2: Emit texture instructions w/ combined LOD and array index
-      intel/compiler/xe2: Set SIMD mode for sampler messages
+Gert Wollny (1):
+      zink: remove invalid scope in bo allocation loop
 
-Jesse Natalie (10):
-      microsoft/compiler: Respect ACCESS_COHERENT in UAV variable data
-      microsoft/compiler: Add a pass for promoting ACCESS_COHERENT on loads/stores
-      spirv2dxil: Lower the Vulkan memory model and coherent loads/stores
-      dzn: Add missing handling of VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT
-      dzn: Add barrier to copy source for DispatchIndirect copies
-      dzn: Support non-static samplers for meta
-      dzn: Add a debug flag for forcing off native view instancing
-      dzn: Don't resolve for RESOLVE_MODE_NONE
-      dzn: Use correct format for depth/stencil resolves
-      dzn: Use blits for all non-averaging resolves
+Gurchetan Singh (1):
+      vk_image.c: #ifndef _WIN32 --> DETECT_OS_LINUX + DETECT_OS_BSD
 
-Konstantin Seurer (1):
-      radv/sqtt: Handle ray tracing pipelines with no traversal shader
+Job Noorman (4):
+      ir3: fix setting shared flag on parallel copy arguments
+      ir3: optimize read_first.macro to a mov
+      ir3: fix printing of brcst.active and quad_shuffle
+      ir3: optimize subgroup operations using brcst.active
 
-Mike Blumenkrantz (6):
-      zink: add a tu flake
-      zink: prune dmabuf export tracking when adding resource binds
-      zink: fix sparse bo placement
-      zink: zero allocate resident_defs array in ntv
-      zink: move sparse lowering up in file
-      zink: run sparse lowering after all optimization passes
+Konstantin Seurer (8):
+      radv/rt: Lower ray payloads like hit attribs
+      radv/rra: Rename rra_chunk_type to rra_chunk_version
+      radv/rra: Use memcpy for chunk descriptions
+      radv/rra: Remove useless variable
+      radv/rra: Refactor error handling
+      radv/rra: Dump basic ray history tokens
+      docs: Document RADV_RRA_TRACE_HISTORY_SIZE
+      radv/rra: Implement ahit/isec counters
 
-Roland Scheidegger (1):
-      auxiliary/draw: fix streamout overflow calculation
+Marek Olšák (6):
+      nir: remove INTERP_MODE_COLOR
+      nir: relax validation failure for generic TCS outputs with no_varying
+      nir: remove and replace underused option pack_varying_options
+      nir: replace lower_io_variables with a GLSL NIR flag
+      nir: add a lower_mediump_io callback into options
+      nir: add vertex divergence into nir_divergence_analysis
 
-Sagar Ghuge (1):
-      intel/compiler/xe2: Handle 6-bit message type for Gfx20+
+Rob Clark (1):
+      freedreno/drm: Fix teardown crash harder
 
-Samuel Pitoiset (11):
-      radv: remove radv_graphics_state_key::dynamic_patch_control_points
-      radv: determine the workgroup size for TCS earlier
-      radv: set the default workgroup size for VS as LS
-      radv: constify radv_device in radv_emit_shader_pointer()
-      radv: check active NIR stages before trying to merge shaders on GFX9+
-      radv: only merge shader info stages if both stages exist on GFX9+
-      radv: rework shader arguments for separate compilation of VS+TCS on GFX9+
-      radv: always mark drawid/base_instance used with ESO
-      radv: force TCS stage for VS as LS compiled separately on GFX9+
-      radv: always emit PGM_RSRC1_HS when emitting the TCS epilog state
-      radv: add support for emitting VS+TCS compiled separately on GFX9+
+Samuel Pitoiset (2):
+      radv: do not allow to enable VK_EXT_shader_object with LLVM
+      radv: add a workaround for mipmaps and minLOD on GFX6-8
 
-Timothy Arceri (1):
-      glsl: don't tree graft globals
+Sergi Blanch Torne (1):
+      ci: disable Collabora's farm due to maintance
 
-Yiwei Zhang (15):
-      anv: refactor wsi_memory_allocate_info handling
-      anv: optimize the implicit fencing support of external memory
-      anv: extend implicit fencing support for case requiring implicit write
-      vulkan/util: drop redundant code gen from vk_extensions_gen.py
-      vulkan/runtime: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      v3dv: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      venus: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      hasvk: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      anv: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      radv: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      turnip: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      egl: refactor to use DETECT_OS_ANDROID instead of ANDROID
-      gallium: refactor to use DETECT_OS_ANDROID
-      util: refactor to use DETECT_OS_ANDROID
-      meson: drop -DANDROID
+Tapani Pälli (1):
+      intel/blorp: add a TODO note about stencil buffer resolve
+
+Yiwei Zhang (1):
+      venus: update tracepoints to align with later optimizations
 
