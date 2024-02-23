@@ -4,7 +4,7 @@ set -e -o pipefail -x
 if ! test `find "timestamp" -mmin +1500`
 then
     echo "not old enough"
-#    exit
+    exit
 fi
 
 BASE_URL=https://gitlab.freedesktop.org/mesa/mesa/-/archive/

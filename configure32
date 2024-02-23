@@ -3,4 +3,4 @@
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915
 -Dglvnd=false
 -Dtools=""
--Dintel-clc=disabled
+-Dintel-clc=system

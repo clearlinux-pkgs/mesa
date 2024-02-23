@@ -41,3 +41,4 @@ yasm
 SPIRV-Tools-dev
 pypi-ply
 libclc-dev
+mesa-bin

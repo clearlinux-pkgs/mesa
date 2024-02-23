@@ -1,0 +1,11 @@
+--- mesa-c3ceec6cd8533a5a5f3ccaf687308dee2f097a99/src/intel/vulkan/grl/include/GRLOCLCompatibility.h~	2024-02-23 16:26:27.000000000 +0000
++++ mesa-c3ceec6cd8533a5a5f3ccaf687308dee2f097a99/src/intel/vulkan/grl/include/GRLOCLCompatibility.h	2024-02-23 18:43:56.269533910 +0000
+@@ -25,7 +25,7 @@
+ typedef uint8_t  uchar;
+ typedef uint16_t ushort;
+ typedef uint32_t uint;
+-typedef uint64_t ulong;
++//typedef uint64_t ulong;
+ 
+ #define __constant
+ #define __global

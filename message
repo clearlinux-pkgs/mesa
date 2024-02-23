@@ -1,8 +1,36 @@
-Updating from d096523af095f657b93ee66934f8cafe54abf228 to c3ceec6cd8533a5a5f3ccaf687308dee2f097a99
+Updating from c3ceec6cd8533a5a5f3ccaf687308dee2f097a99 to c9abb7ff6ef35de3fa2975fd1c1b4a76769a7804
 
-Biju Das (1):
-      gallium: Add Renesas rzg2l-du DRM entry point
-
-Chris Rankin (1):
-      vdpau: Refactor query for video surface formats.
+Marek Olšák (32):
+      glthread: re-enable thread scheduling in st/mesa when glthread is disabled
+      glthread: use _mesa_glthread_fence_call() instead of duplicating that code
+      glthread: add no_error variants of glDrawElements*
+      glthread: add no_error variants of glDrawArrays*
+      glthread: remove cmd_size from constant-sized calls
+      glthread: clean up how vertex stride is packed
+      glthread: pack "size" in Pointer calls as 16 bits
+      mesa: deduplicate get_index_size_shift code
+      mesa: deduplicate is_index_type_valid code
+      glthread: pack the primitive type to 8 bits
+      glthread: pack the index type to 8 bits
+      glthread: rewrite glDrawElements call packing
+      glthread: rewrite glDrawArrays call packing
+      glapi: fix type names for glthread and handle all types
+      glthread: sort fixed-sized parameters before returning them
+      glthread: move global marshal_XML.py functions into class marshal_function
+      glthread: precompute fixed_params and variable_params lists
+      gltrhead: merge 3 blocks conditional on marshal_sync in print_async_body
+      glthread: separate unmarshal function generation into print_unmarshal_func
+      glthread: separate marshal code generation into print_marshal_async_code
+      glthread: remove "if True" from print_marshal_async_code
+      glapi: pass pointer size to python for glthread from meson
+      glthread: pack glVertexAttribPointer calls better
+      glthread: fix multi draws with a negative draw count
+      glthread: pack uploaded user vertex buffers and offsets better
+      glthread: deduplicate batch finalization code
+      glthread: don't check cmd_size for small variable-sized calls
+      glthread: use marshal_count instead of count for more functions
+      glthread: rewrite glBindBuffer packing
+      glthread: add a packed variant of glDrawElements with 16-bit count and indices
+      glthread: add a packed version of DrawElementsUserBuf
+      glthread: generate packed versions of gl*Pointer/Offset calls
 
