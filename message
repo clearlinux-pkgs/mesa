@@ -1,70 +1,8 @@
-Updating from 2085d6043804c316939ac47d6b334007872655b7 to fcce9cc835be3bbfe3285ef89d5dc4ceb5e7e7bc
+Updating from d096523af095f657b93ee66934f8cafe54abf228 to c3ceec6cd8533a5a5f3ccaf687308dee2f097a99
 
-Connor Abbott (5):
-      ir3/ra: Add specialized shared register RA/spilling
-      ir3: Set branchstack earlier
-      ir3: Rewrite (jp) and branchstack handling
-      ir3: Calculate physical edges correctly
-      ir3: Fix comment thinko
+Biju Das (1):
+      gallium: Add Renesas rzg2l-du DRM entry point
 
-Daniel Schürmann (3):
-      aco/insert_exec_mask: tiny refactor
-      aco: always terminate quads if they have been demoted entirely
-      aco/insert_exec_mask: Reduce latency when switching to WQM.
-
-Eric Engestrom (5):
-      panfrost: fix UB caused by shifting signed int too far
-      ci_run_n_monitor: avoid spamming a ton of "new status: created" for all the jobs at the beginning
-      ci: build panvk in debian-vulkan job
-      nouveau/tests: fix null dereference
-      ci: build nvk in debian-vulkan job
-
-Erik Faye-Lund (1):
-      mesa: fix error-handling for ETC2/RGTC textures
-
-Gert Wollny (1):
-      zink: remove invalid scope in bo allocation loop
-
-Gurchetan Singh (1):
-      vk_image.c: #ifndef _WIN32 --> DETECT_OS_LINUX + DETECT_OS_BSD
-
-Job Noorman (4):
-      ir3: fix setting shared flag on parallel copy arguments
-      ir3: optimize read_first.macro to a mov
-      ir3: fix printing of brcst.active and quad_shuffle
-      ir3: optimize subgroup operations using brcst.active
-
-Konstantin Seurer (8):
-      radv/rt: Lower ray payloads like hit attribs
-      radv/rra: Rename rra_chunk_type to rra_chunk_version
-      radv/rra: Use memcpy for chunk descriptions
-      radv/rra: Remove useless variable
-      radv/rra: Refactor error handling
-      radv/rra: Dump basic ray history tokens
-      docs: Document RADV_RRA_TRACE_HISTORY_SIZE
-      radv/rra: Implement ahit/isec counters
-
-Marek Olšák (6):
-      nir: remove INTERP_MODE_COLOR
-      nir: relax validation failure for generic TCS outputs with no_varying
-      nir: remove and replace underused option pack_varying_options
-      nir: replace lower_io_variables with a GLSL NIR flag
-      nir: add a lower_mediump_io callback into options
-      nir: add vertex divergence into nir_divergence_analysis
-
-Rob Clark (1):
-      freedreno/drm: Fix teardown crash harder
-
-Samuel Pitoiset (2):
-      radv: do not allow to enable VK_EXT_shader_object with LLVM
-      radv: add a workaround for mipmaps and minLOD on GFX6-8
-
-Sergi Blanch Torne (1):
-      ci: disable Collabora's farm due to maintance
-
-Tapani Pälli (1):
-      intel/blorp: add a TODO note about stencil buffer resolve
-
-Yiwei Zhang (1):
-      venus: update tracepoints to align with later optimizations
+Chris Rankin (1):
+      vdpau: Refactor query for video surface formats.
 
