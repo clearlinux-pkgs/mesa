@@ -1,36 +1,166 @@
-Updating from c3ceec6cd8533a5a5f3ccaf687308dee2f097a99 to c9abb7ff6ef35de3fa2975fd1c1b4a76769a7804
+Updating from 83f3b1d76acf699781f06ada5d1315329da2e30b to 6e33b39b46c742a02daa69e13fb924c20098e286
 
-Marek Olšák (32):
-      glthread: re-enable thread scheduling in st/mesa when glthread is disabled
-      glthread: use _mesa_glthread_fence_call() instead of duplicating that code
-      glthread: add no_error variants of glDrawElements*
-      glthread: add no_error variants of glDrawArrays*
-      glthread: remove cmd_size from constant-sized calls
-      glthread: clean up how vertex stride is packed
-      glthread: pack "size" in Pointer calls as 16 bits
-      mesa: deduplicate get_index_size_shift code
-      mesa: deduplicate is_index_type_valid code
-      glthread: pack the primitive type to 8 bits
-      glthread: pack the index type to 8 bits
-      glthread: rewrite glDrawElements call packing
-      glthread: rewrite glDrawArrays call packing
-      glapi: fix type names for glthread and handle all types
-      glthread: sort fixed-sized parameters before returning them
-      glthread: move global marshal_XML.py functions into class marshal_function
-      glthread: precompute fixed_params and variable_params lists
-      gltrhead: merge 3 blocks conditional on marshal_sync in print_async_body
-      glthread: separate unmarshal function generation into print_unmarshal_func
-      glthread: separate marshal code generation into print_marshal_async_code
-      glthread: remove "if True" from print_marshal_async_code
-      glapi: pass pointer size to python for glthread from meson
-      glthread: pack glVertexAttribPointer calls better
-      glthread: fix multi draws with a negative draw count
-      glthread: pack uploaded user vertex buffers and offsets better
-      glthread: deduplicate batch finalization code
-      glthread: don't check cmd_size for small variable-sized calls
-      glthread: use marshal_count instead of count for more functions
-      glthread: rewrite glBindBuffer packing
-      glthread: add a packed variant of glDrawElements with 16-bit count and indices
-      glthread: add a packed version of DrawElementsUserBuf
-      glthread: generate packed versions of gl*Pointer/Offset calls
+Boyuan Zhang (1):
+      meson: bump the minimal required vdpau version to 1.4
+
+Caio Oliveira (9):
+      intel/brw: Use fs_visitor instead of backend_shader in various passes
+      intel/brw: Fold fs_instruction_scheduler into instruction_scheduler
+      intel/brw: Change cfg_t to refer to fs_visitor
+      intel/brw: Move dump_* functions into fs_visitor
+      intel/brw: Fold backend_shader into fs_visitor
+      intel/brw: Remove extra stage_prog_data field in fs_visitor
+      intel/brw: Remove brw_shader.h
+      intel/meson: Add dependencies for brw and elk
+      intel/compiler: Remove nir_print_instr hack in disasm_info
+
+Chia-I Wu (3):
+      radv: hide the sparse queue when radv_legacy_sparse_binding
+      radv: hide the sparse queue on older kernels
+      radv: set VK_SYNC_FEATURE_GPU_MULTI_WAIT
+
+Daniel Stone (1):
+      egl/wayland: Remove EGL_WL_create_wayland_buffer_from_image
+
+Danylo Piliaiev (1):
+      tu: Update prim restart state when we switch from/to indexed draw
+
+Dave Airlie (1):
+      nvk: free leaked cmd_buffer descriptors state.
+
+David Heidelberg (2):
+      ci: temporarily disable Collabora farm
+      ci: enable Collabora farm
+
+David Rosca (3):
+      frontends/va: Separate QP for I/P/B frames
+      radeonsi/vcn: Use temporal_layer_index to select temporal layer
+      radeonsi/vcn: Implement separate QP for I/P/B frames
+
+Derek Foreman (4):
+      vulkan/wsi/wayland: Remove confusing comment
+      vulkan/wsi/wayland: Adjust presentation id locking
+      vulkan/wsi/wayland: Use wl_display_dispatch_queue_timeout
+      vulkan/wsi/wayland: More descriptive name for swapchain queue
+
+Eric Engestrom (7):
+      docs: add release notes for 24.0.2
+      docs: add sha256sum for 24.0.2
+      docs: update calendar for 24.0.2
+      ci_run_n_monitor: fix handling of optional jobs again
+      ci_run_n_monitor: read job logs as utf-8
+      vk/util: trivial cleanups in vk_icd_gen.py
+      vk/util: print a nice error in vk_icd_gen.py when VK_HEADER_VERSION is not defined
+
+Faith Ekstrand (7):
+      vulkan/pipeline: Whitespace fix
+      vulkan/pipeline: Handle fully compiled library shaders properly
+      nvk: Advertise VK_KHR_pipeline_library
+      docs/nvk: Update the conformance status section
+      docs/nvk: Update the NVK_DEBUG docs
+      docs/nvk: Document NAK_DEBUG
+      nil: Enable A8_UNORM for storage buffers
+
+Friedrich Vock (1):
+      radv/rt: Handle monolithic pipelines in capture/replay
+
+Hans-Kristian Arntzen (1):
+      wsi/wayland: Replace surface pilfer with retired bool.
+
+Ian Romanick (1):
+      i915: Fix value returned for PIPE_CAP_MAX_TEXTURE_CUBE_LEVELS
+
+Jesse Natalie (2):
+      dzn: Fix conditions for barrier in texture-converting copy case
+      wgl: Check for stw_device->screen before trying to destroy it
+
+José Roberto de Souza (2):
+      iris: Add IRIS_HEAP_DEVICE_LOCAL_CPU_VISIBLE_SMALL_BAR heap type
+      iris: Force lmem cpu accessible for bos with clear-color
+
+Kenneth Graunke (13):
+      intel/brw: Delete enum brw_urb_write_flags
+      intel/brw: Delete more unused defines
+      intel/brw: Delete legacy SFIDs
+      intel/brw: Delete SIMD4x2 URB opcodes
+      intel/brw: Delete more unused compression stuff
+      intel/brw: Delete SINCOS
+      intel/brw: Delete constant_buffer_0_is_relative
+      intel/brw: Delete compiler->supports_shader_constants
+      intel/brw: Delete enum gfx6_gather_sampler_wa
+      intel/brw: Delete brw_wm_prog_key::line_aa
+      intel/brw: Delete unnecessary brw_wm_prog_data fields
+      intel/brw: Delete some swizzling functions
+      intel/brw: Delete brw_eu_util.c
+
+Lionel Landwerlin (21):
+      anv: optimize push descriptor updates
+      anv: add new heap/pool for descriptor buffers
+      anv: create new helper for small allocations
+      anv: add a second dynamic state heap for descriptor buffers
+      anv: move aux-tt to general state pool
+      anv: allocate slice_hash for descriptor buffer
+      anv: allocate border colors for descriptor buffers
+      anv: allocate fsr states for descriptor buffer
+      anv: implement data write entry points for EXT_descriptor_buffer
+      anv: compute a sampler hash based on parameters
+      anv: add embedded sampler parameters in descriptor set layout hash
+      intel/fs: add plumbing for embedded samplers
+      nir: add additional flag to resource_intel for embedded samplers
+      anv: add embedded sampler support
+      anv: add new helper to update  binding table pool offset
+      anv: add descriptor set layout support for descriptor buffers
+      anv: add pipeline/shader support for descriptor buffers
+      anv: handle push descriptor writes with descriptor buffers
+      anv: implement descriptor buffer binding
+      anv: disable mutable combined image/sampler in descriptor buffer
+      anv: expose VK_EXT_descriptor_buffer
+
+Mike Blumenkrantz (37):
+      gallium: add a nboxes param to flush_frontbuffer
+      winsys/sw: propagate nboxes to displaytarget_display()
+      drisw: plumb through a swapBuffersWithDamage interface
+      egl/wayland/sw: move swrast_update_buffers() directly into swapbuffers
+      egl/wayland/sw: move dri2_wl_swrast_commit_backbuffer() directly into swapbuffers
+      egl/wayland: unify back/current swapping between zink and swrast
+      egl/wayland/sw: split out surface attach from dri2_wl_swrast_commit_backbuffer()
+      egl/wayland/sw: call dri2_wl_swrast_attach_backbuffer() before swap
+      egl/wayland/sw: trigger damage from put_image2
+      egl/wayland/sw: move partial->full copy promotion to swapbuffers
+      egl/wayland/sw: fix no-op updating of current backbuffer
+      egl/wayland/sw: pass damage region through from put_image2 to wl_surface_damage
+      egl/wayland/sw: clamp putimage geometry to surface size
+      drisw/xlib: loop over all the boxes in display() hook
+      drisw/winsys: loop over all the boxes in display()
+      drisw: pass all frontend swapbuffer damage rects through
+      egl/kopper: plumb through SwapBuffersWithDamage
+      egl/kopper: advertise EXT_swap_buffers_with_damage only in non-sw mode
+      egl/wayland: split out kopper vtable
+      egl/wayland: add a separate hook for kopper buffer age
+      egl/wayland: split out kopper swapbuffers functions
+      egl/kopper: call swrast buffer age query for kopper+swrast
+      kopper: set drawable buffer age
+      egl/wayland/kopper: actually call kopper swapbuffer functions
+      egl/wayland: split out kopper update_buffers
+      egl/wayland: delete swrast references to zink
+      zink: fix stencil-only blitting with stencil fallback
+      zink: make zink_kopper_present_info public
+      zink: use a slab allocator for zink_kopper_present_info
+      zink: hook up VK_KHR_incremental_present
+      zink: use VK_KHR_incremental_present to propagate damage rects
+      zink: hook up KHR_partial_update
+      vulkan/dispatch_table: add an uncompacted version of the table
+      zink: use uncompacted vk_dispatch_table
+      egl/dri2: use the right egl platform enum
+      glx: only print zink failure-to-load messages if explicitly requested
+      zink: stop enabling EXT_conservative_rasterization
+
+Nanley Chery (3):
+      iris: Don't memset the extra_aux memory range
+      iris: Don't memset CCS on integrated gfx12
+      iris: Enable pass-through state init for gfx12 CCS
+
+Tapani Pälli (2):
+      iris: make sure aux is disabled for external objects
+      anv: make sure aux is disabled for memory objects
 
