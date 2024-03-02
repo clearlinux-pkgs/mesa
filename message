@@ -1,166 +1,166 @@
-Updating from 83f3b1d76acf699781f06ada5d1315329da2e30b to 6e33b39b46c742a02daa69e13fb924c20098e286
+Updating from 6e33b39b46c742a02daa69e13fb924c20098e286 to 63d2aa4eb645e32ea3d5aea453a45aa6a3412e15
 
-Boyuan Zhang (1):
-      meson: bump the minimal required vdpau version to 1.4
+Alyssa Rosenzweig (2):
+      panfrost: Add a library to build CSF command streams
+      panfrost: Add support for the CSF job frontend
 
-Caio Oliveira (9):
-      intel/brw: Use fs_visitor instead of backend_shader in various passes
-      intel/brw: Fold fs_instruction_scheduler into instruction_scheduler
-      intel/brw: Change cfg_t to refer to fs_visitor
-      intel/brw: Move dump_* functions into fs_visitor
-      intel/brw: Fold backend_shader into fs_visitor
-      intel/brw: Remove extra stage_prog_data field in fs_visitor
-      intel/brw: Remove brw_shader.h
-      intel/meson: Add dependencies for brw and elk
-      intel/compiler: Remove nir_print_instr hack in disasm_info
+Anton Bambura (2):
+      panfrost: Enable Mali-T600
+      docs/panfrost: Document Mali-T600 support
 
-Chia-I Wu (3):
-      radv: hide the sparse queue when radv_legacy_sparse_binding
-      radv: hide the sparse queue on older kernels
-      radv: set VK_SYNC_FEATURE_GPU_MULTI_WAIT
+Bas Nieuwenhuizen (6):
+      radv: Add winsys argument to buffer map/unmap.
+      radv/winsys: Use radv_buffer_map wrapper.
+      radv/amdgpu: Use mmap directly.
+      radv: Support for mapping a buffer at a fixed address.
+      radv: Implement reserving the VA range on unmap.
+      radv: Expose VK_EXT_map_memory_placed.
 
-Daniel Stone (1):
-      egl/wayland: Remove EGL_WL_create_wayland_buffer_from_image
+Bob Beckett (2):
+      panfrost: Add an entry for panthor in the renderonly_drivers[] array
+      panfrost: Add the gallium glue to get panfrost loaded when panthor is detected
 
-Danylo Piliaiev (1):
-      tu: Update prim restart state when we switch from/to indexed draw
+Boris Brezillon (21):
+      pan/kmod: Fix typo in pan_kmod_vm_op_check() helper
+      pan/kmod: Add a PAN_KMOD_VM_FLAG_TRACK_ACTIVITY flag
+      pan/kmod: Reject pre 1.1 panfrost kernel drivers
+      panfrost: Rework the way we compute thread info
+      panfrost: Prepare support for GPU variants
+      pan/perf: Reject panthor kernel driver
+      drm-uapi: Add panthor uAPI
+      pan/kmod: Add a backend for panthor
+      panfrost: Add v10 support to libpanfrost
+      pan/genxml: Various CS related improvements in v10.xml
+      pan/decode: Introduce the concept of usermode queue
+      panfrost: Don't allocate a tiler heap buffer on v10+
+      pan/genxml: Make sure pan_pack() evaluates 'dst' only once
+      panfrost: Relax position result alignment constraint on v10+
+      panfrost: Add arch-specific context init/cleanup hooks
+      panfrost: Add a panfrost_context_reinit() helper
+      panfrost: Add a cleanup_batch() method to panfrost_vtable
+      panfrost: Enable v10 in the gallium driver
+      panfrost: Advertize G610 support
+      panfrost: Advertize G310 support
+      panfrost: Update the release note to mention G310/G610 addition
 
-Dave Airlie (1):
-      nvk: free leaked cmd_buffer descriptors state.
+Caio Oliveira (11):
+      intel/brw: Use C++ for brw_disasm_info.c
+      intel/brw: Hide the definition of cfg_t et al from C code
+      intel/brw: Use fs_inst in cfg_t
+      intel/brw: Use fs_inst explicitly in various passes
+      intel/brw: Use fs_inst in disasm_annotate()
+      intel/brw: Move functions from backend_instruction into fs_inst
+      intel/brw: Fold backend_instruction into fs_inst
+      intel/brw: Remove typedefs from fs_builder
+      intel/brw: Fold backend_reg into fs_reg
+      intel/brw: Simplify usage of reg immediate helpers
+      intel/compiler: Fix SIMD lowering when instruction needs a larger SIMD
 
-David Heidelberg (2):
-      ci: temporarily disable Collabora farm
-      ci: enable Collabora farm
+Christian Gmeiner (1):
+      etnaviv: Remove no_oneconst_limit from etna_inst
 
-David Rosca (3):
-      frontends/va: Separate QP for I/P/B frames
-      radeonsi/vcn: Use temporal_layer_index to select temporal layer
-      radeonsi/vcn: Implement separate QP for I/P/B frames
+Daniel Schürmann (1):
+      radv: fix initialization of radv_shader_layout->use_dynamic_descriptors
 
-Derek Foreman (4):
-      vulkan/wsi/wayland: Remove confusing comment
-      vulkan/wsi/wayland: Adjust presentation id locking
-      vulkan/wsi/wayland: Use wl_display_dispatch_queue_timeout
-      vulkan/wsi/wayland: More descriptive name for swapchain queue
+Eric Engestrom (9):
+      ci/android: use a specific version of android-cuttlefish
+      ci: document which image tags to bump when touching build-mold.sh
+      ci: uprev mold to the latest release
+      ci/image-tags: move KERNEL_ROOTFS_TAG to group the test images together
+      ci/deqp: only apply the android patches to the android build
+      ci/deqp: build deqp-egl using mold as well
+      ci/deqp: make deql-egl for android less of a special case
+      ci/deqp: control the GL release independently of VK
+      ci/deqp: control the GLES release independently of GL
 
-Eric Engestrom (7):
-      docs: add release notes for 24.0.2
-      docs: add sha256sum for 24.0.2
-      docs: update calendar for 24.0.2
-      ci_run_n_monitor: fix handling of optional jobs again
-      ci_run_n_monitor: read job logs as utf-8
-      vk/util: trivial cleanups in vk_icd_gen.py
-      vk/util: print a nice error in vk_icd_gen.py when VK_HEADER_VERSION is not defined
-
-Faith Ekstrand (7):
-      vulkan/pipeline: Whitespace fix
-      vulkan/pipeline: Handle fully compiled library shaders properly
-      nvk: Advertise VK_KHR_pipeline_library
-      docs/nvk: Update the conformance status section
-      docs/nvk: Update the NVK_DEBUG docs
-      docs/nvk: Document NAK_DEBUG
-      nil: Enable A8_UNORM for storage buffers
+Erik Faye-Lund (1):
+      panvk: do not handle illegal null
 
 Friedrich Vock (1):
-      radv/rt: Handle monolithic pipelines in capture/replay
-
-Hans-Kristian Arntzen (1):
-      wsi/wayland: Replace surface pilfer with retired bool.
-
-Ian Romanick (1):
-      i915: Fix value returned for PIPE_CAP_MAX_TEXTURE_CUBE_LEVELS
+      vulkan/runtime: Allow more than 8 DRM devices
 
 Jesse Natalie (2):
-      dzn: Fix conditions for barrier in texture-converting copy case
-      wgl: Check for stw_device->screen before trying to destroy it
+      spirv2dxil: Set push constant register space to nonzero
+      microsoft/compiler: Remove deref load/store/atomic ops that statically go out of array bounds
 
-José Roberto de Souza (2):
-      iris: Add IRIS_HEAP_DEVICE_LOCAL_CPU_VISIBLE_SMALL_BAR heap type
-      iris: Force lmem cpu accessible for bos with clear-color
+Job Noorman (20):
+      ir3: add disassembly for flat.b
+      ir3: update a0/a1 users when cloning instructions
+      ir3: fix alignment of spill slots
+      ir3: validate instruction block pointer
+      ir3: add terminators to blocks
+      ir3: fix instruction count before kill_sched
+      ir3: print branch sources
+      ir3: remove OPC_B and brtype from cat0
+      ir3: remove comp1/2 from cat0
+      ir3: allow liveness calculation for different register types
+      ir3: allow finding SSA uses for a subset of uses
+      ir3: implement RA for predicate registers
+      ir3: validate no registers are invalid after RA
+      ir3: integrate predicates into RA validation
+      ir3: optimize bitwise ops that can directly write predicates
+      ir3: insert predicate conversions after their source
+      ir3: fold negations into cmps.ne zero
+      nir: add search helper is_only_used_by_if
+      ir3: fold and/or and negations into branches
+      freedreno/ci: Update pixmark-piano-v2 hash
 
-Kenneth Graunke (13):
-      intel/brw: Delete enum brw_urb_write_flags
-      intel/brw: Delete more unused defines
-      intel/brw: Delete legacy SFIDs
-      intel/brw: Delete SIMD4x2 URB opcodes
-      intel/brw: Delete more unused compression stuff
-      intel/brw: Delete SINCOS
-      intel/brw: Delete constant_buffer_0_is_relative
-      intel/brw: Delete compiler->supports_shader_constants
-      intel/brw: Delete enum gfx6_gather_sampler_wa
-      intel/brw: Delete brw_wm_prog_key::line_aa
-      intel/brw: Delete unnecessary brw_wm_prog_data fields
-      intel/brw: Delete some swizzling functions
-      intel/brw: Delete brw_eu_util.c
+José Roberto de Souza (1):
+      iris/xe: Consider pat_index while unbinding the bo
 
-Lionel Landwerlin (21):
-      anv: optimize push descriptor updates
-      anv: add new heap/pool for descriptor buffers
-      anv: create new helper for small allocations
-      anv: add a second dynamic state heap for descriptor buffers
-      anv: move aux-tt to general state pool
-      anv: allocate slice_hash for descriptor buffer
-      anv: allocate border colors for descriptor buffers
-      anv: allocate fsr states for descriptor buffer
-      anv: implement data write entry points for EXT_descriptor_buffer
-      anv: compute a sampler hash based on parameters
-      anv: add embedded sampler parameters in descriptor set layout hash
-      intel/fs: add plumbing for embedded samplers
-      nir: add additional flag to resource_intel for embedded samplers
-      anv: add embedded sampler support
-      anv: add new helper to update  binding table pool offset
-      anv: add descriptor set layout support for descriptor buffers
-      anv: add pipeline/shader support for descriptor buffers
-      anv: handle push descriptor writes with descriptor buffers
-      anv: implement descriptor buffer binding
-      anv: disable mutable combined image/sampler in descriptor buffer
-      anv: expose VK_EXT_descriptor_buffer
+Karol Herbst (1):
+      rusticl/event: we need to call the CL_COMPLETE callback on errors as well
 
-Mike Blumenkrantz (37):
-      gallium: add a nboxes param to flush_frontbuffer
-      winsys/sw: propagate nboxes to displaytarget_display()
-      drisw: plumb through a swapBuffersWithDamage interface
-      egl/wayland/sw: move swrast_update_buffers() directly into swapbuffers
-      egl/wayland/sw: move dri2_wl_swrast_commit_backbuffer() directly into swapbuffers
-      egl/wayland: unify back/current swapping between zink and swrast
-      egl/wayland/sw: split out surface attach from dri2_wl_swrast_commit_backbuffer()
-      egl/wayland/sw: call dri2_wl_swrast_attach_backbuffer() before swap
-      egl/wayland/sw: trigger damage from put_image2
-      egl/wayland/sw: move partial->full copy promotion to swapbuffers
-      egl/wayland/sw: fix no-op updating of current backbuffer
-      egl/wayland/sw: pass damage region through from put_image2 to wl_surface_damage
-      egl/wayland/sw: clamp putimage geometry to surface size
-      drisw/xlib: loop over all the boxes in display() hook
-      drisw/winsys: loop over all the boxes in display()
-      drisw: pass all frontend swapbuffer damage rects through
-      egl/kopper: plumb through SwapBuffersWithDamage
-      egl/kopper: advertise EXT_swap_buffers_with_damage only in non-sw mode
-      egl/wayland: split out kopper vtable
-      egl/wayland: add a separate hook for kopper buffer age
-      egl/wayland: split out kopper swapbuffers functions
-      egl/kopper: call swrast buffer age query for kopper+swrast
-      kopper: set drawable buffer age
-      egl/wayland/kopper: actually call kopper swapbuffer functions
-      egl/wayland: split out kopper update_buffers
-      egl/wayland: delete swrast references to zink
-      zink: fix stencil-only blitting with stencil fallback
-      zink: make zink_kopper_present_info public
-      zink: use a slab allocator for zink_kopper_present_info
-      zink: hook up VK_KHR_incremental_present
-      zink: use VK_KHR_incremental_present to propagate damage rects
-      zink: hook up KHR_partial_update
-      vulkan/dispatch_table: add an uncompacted version of the table
-      zink: use uncompacted vk_dispatch_table
-      egl/dri2: use the right egl platform enum
-      glx: only print zink failure-to-load messages if explicitly requested
-      zink: stop enabling EXT_conservative_rasterization
+Kenneth Graunke (6):
+      intel/brw: Change unit tests to use TEX_LOGICAL instead of TEX
+      intel/brw: Delete SHADER_OPCODE_TXF_CMS[_LOGICAL]
+      intel/brw: Delete SHADER_OPCODE_TXF_UMS
+      intel/brw: Allow CSE on TXF_CMS_W_GFX12_LOGICAL
+      intel/brw: Delete legacy texture opcodes
+      intel/brw: Mark FIND[_LAST]_LIVE_CHANNEL as not writing the flag
 
-Nanley Chery (3):
-      iris: Don't memset the extra_aux memory range
-      iris: Don't memset CCS on integrated gfx12
-      iris: Enable pass-through state init for gfx12 CCS
+Konstantin Seurer (2):
+      radv/rra: Avoid reading past the ray history buffer
+      radv/meta: Add shader - device mapping for radv_build_printf
 
-Tapani Pälli (2):
-      iris: make sure aux is disabled for external objects
-      anv: make sure aux is disabled for memory objects
+Lionel Landwerlin (1):
+      anv: fix non matching image/view format attachment resolve
+
+Luca Bacci (1):
+      meson,windows: Use relative paths in Vulkan ICD manifest files
+
+Nanley Chery (1):
+      isl: Pick a better initial state for zeroed MCS
+
+Rohan Garg (1):
+      intel/compiler: Xe2+ can do URB load/store with a byte offset
+
+Roland Scheidegger (1):
+      auxiliary/rtasm: fix unaligned stores
+
+Sagar Ghuge (1):
+      anv/xe: Consider pat_index while unbinding the bo
+
+Samuel Pitoiset (18):
+      radv: get the pipeline layout info from the push constant token with DGC
+      radv: add a helper to calculate the compute resource limits
+      radv: add a function to get compute pipeline metadata for DGC
+      radv: add support for VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV
+      radv: implement vkGetPipelineIndirectXXX() for DGC
+      radv: implement vkCmdUpdatePipelineIndirectBufferNV()
+      radv: implement indirect compute pipeline binds with DGC
+      radv: handle indirect pipeline binds with scratch and DGC
+      radv: force shader BOs to be local BOS with DGC indirect compute pipelines
+      radv: enable deviceGeneratedComputePipelines
+      radv: fix conditional rendering on compute queue on GFX6
+      radv: add missing conditional rendering for indirect dispatches on GFX6
+      radv: add a helper to emit PKT3_COND_EXEC
+      radv: add a new user SGPR for NGG shaders compiled separately with ESO
+      radv: lower lds_ngg_{gs_out_vertex_base,_scratch_base} with ESO
+      radv: add support for emitting NGG shaders with ESO
+      radv: allow RADV_PERFTEST=shader_object on GFX11
+      radv: enable radv_zero_vram for RAGE2
+
+Sil Vilerino (1):
+      d3d12: Do not use PIPE_BIND_DISPLAY_TARGET for d3d12_video_buffer
 
