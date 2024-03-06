@@ -1,166 +1,88 @@
-Updating from 6e33b39b46c742a02daa69e13fb924c20098e286 to 63d2aa4eb645e32ea3d5aea453a45aa6a3412e15
+Updating from 0df9571bfb1a2fec1361fddda25db1bb9c3dac9e to ac391536ebdbb7c93c4906e674d8ff86827e61fa
 
-Alyssa Rosenzweig (2):
-      panfrost: Add a library to build CSF command streams
-      panfrost: Add support for the CSF job frontend
+Chia-I Wu (1):
+      aco: fix nir_op_pack_32_4x8 handling
 
-Anton Bambura (2):
-      panfrost: Enable Mali-T600
-      docs/panfrost: Document Mali-T600 support
+Christian Gmeiner (2):
+      isaspec: encode: Constify encode.type
+      isaspec: encode: Constify bitset_params
 
-Bas Nieuwenhuizen (6):
-      radv: Add winsys argument to buffer map/unmap.
-      radv/winsys: Use radv_buffer_map wrapper.
-      radv/amdgpu: Use mmap directly.
-      radv: Support for mapping a buffer at a fixed address.
-      radv: Implement reserving the VA range on unmap.
-      radv: Expose VK_EXT_map_memory_placed.
+Dave Airlie (1):
+      nvk: only unmap heap bos that were mapped
 
-Bob Beckett (2):
-      panfrost: Add an entry for panthor in the renderonly_drivers[] array
-      panfrost: Add the gallium glue to get panfrost loaded when panthor is detected
+David Heidelberg (4):
+      ci/intel: decompose anv-tgl-test so we can specify custom devices for TGL
+      ci/intel: add acer-cp514-2h-11{30,60}g7-volteer
+      ci/intel: move machine definition to the intel-tgl-skqp job
+      ci/intel: split asus-cx9400-volteer into acer-cp514-2h-11{30,60}g7-volteer
 
-Boris Brezillon (21):
-      pan/kmod: Fix typo in pan_kmod_vm_op_check() helper
-      pan/kmod: Add a PAN_KMOD_VM_FLAG_TRACK_ACTIVITY flag
-      pan/kmod: Reject pre 1.1 panfrost kernel drivers
-      panfrost: Rework the way we compute thread info
-      panfrost: Prepare support for GPU variants
-      pan/perf: Reject panthor kernel driver
-      drm-uapi: Add panthor uAPI
-      pan/kmod: Add a backend for panthor
-      panfrost: Add v10 support to libpanfrost
-      pan/genxml: Various CS related improvements in v10.xml
-      pan/decode: Introduce the concept of usermode queue
-      panfrost: Don't allocate a tiler heap buffer on v10+
-      pan/genxml: Make sure pan_pack() evaluates 'dst' only once
-      panfrost: Relax position result alignment constraint on v10+
-      panfrost: Add arch-specific context init/cleanup hooks
-      panfrost: Add a panfrost_context_reinit() helper
-      panfrost: Add a cleanup_batch() method to panfrost_vtable
-      panfrost: Enable v10 in the gallium driver
-      panfrost: Advertize G610 support
-      panfrost: Advertize G310 support
-      panfrost: Update the release note to mention G310/G610 addition
+Faith Ekstrand (5):
+      vulkan/pipeline: Always init pipeline cache objects
+      nak: Fix printing of OpIsberd
+      nak/sm50: Fix encoding of immediates in OpFFma
+      nak/sm50: Use OpBfe instead of OpBRev for nir_op_find_lsb
+      nak: Support F2I for 8-bit integers on SM50
 
-Caio Oliveira (11):
-      intel/brw: Use C++ for brw_disasm_info.c
-      intel/brw: Hide the definition of cfg_t et al from C code
-      intel/brw: Use fs_inst in cfg_t
-      intel/brw: Use fs_inst explicitly in various passes
-      intel/brw: Use fs_inst in disasm_annotate()
-      intel/brw: Move functions from backend_instruction into fs_inst
-      intel/brw: Fold backend_instruction into fs_inst
-      intel/brw: Remove typedefs from fs_builder
-      intel/brw: Fold backend_reg into fs_reg
-      intel/brw: Simplify usage of reg immediate helpers
-      intel/compiler: Fix SIMD lowering when instruction needs a larger SIMD
-
-Christian Gmeiner (1):
-      etnaviv: Remove no_oneconst_limit from etna_inst
-
-Daniel Schürmann (1):
-      radv: fix initialization of radv_shader_layout->use_dynamic_descriptors
-
-Eric Engestrom (9):
-      ci/android: use a specific version of android-cuttlefish
-      ci: document which image tags to bump when touching build-mold.sh
-      ci: uprev mold to the latest release
-      ci/image-tags: move KERNEL_ROOTFS_TAG to group the test images together
-      ci/deqp: only apply the android patches to the android build
-      ci/deqp: build deqp-egl using mold as well
-      ci/deqp: make deql-egl for android less of a special case
-      ci/deqp: control the GL release independently of VK
-      ci/deqp: control the GLES release independently of GL
-
-Erik Faye-Lund (1):
-      panvk: do not handle illegal null
+Felix DeGrood (1):
+      driconf: add SotTR DX12 to Intel XeSS workaround
 
 Friedrich Vock (1):
-      vulkan/runtime: Allow more than 8 DRM devices
+      radv: Set SCRATCH_EN for RT pipelines based on dynamic stack size
 
-Jesse Natalie (2):
-      spirv2dxil: Set push constant register space to nonzero
-      microsoft/compiler: Remove deref load/store/atomic ops that statically go out of array bounds
+Georg Lehmann (8):
+      nir: remove rotate scope
+      nir/divergence_analysis: fix subgroup mask
+      aco: create pseudo instructions with correct struct
+      aco/post-ra: rename overwritten_subdword to allow additional uses
+      aco/post-ra: assume scc is going to be overwritten by phis at end of blocks
+      aco: store if pseudo instr needs scratch reg
+      aco/post-ra: track pseudo scratch sgpr/scc clobber
+      aco/ssa_elimination: check if pseudo scratch reg overwrittes regs used for v_cmpx opt
 
-Job Noorman (20):
-      ir3: add disassembly for flat.b
-      ir3: update a0/a1 users when cloning instructions
-      ir3: fix alignment of spill slots
-      ir3: validate instruction block pointer
-      ir3: add terminators to blocks
-      ir3: fix instruction count before kill_sched
-      ir3: print branch sources
-      ir3: remove OPC_B and brtype from cat0
-      ir3: remove comp1/2 from cat0
-      ir3: allow liveness calculation for different register types
-      ir3: allow finding SSA uses for a subset of uses
-      ir3: implement RA for predicate registers
-      ir3: validate no registers are invalid after RA
-      ir3: integrate predicates into RA validation
-      ir3: optimize bitwise ops that can directly write predicates
-      ir3: insert predicate conversions after their source
-      ir3: fold negations into cmps.ne zero
-      nir: add search helper is_only_used_by_if
-      ir3: fold and/or and negations into branches
-      freedreno/ci: Update pixmark-piano-v2 hash
+Jesse Natalie (3):
+      microsoft/compiler: Remove code after discard/terminate in later optimization steps
+      wgl: Initialize DEVMODE struct
+      d3d12: Point sprite lowering pass needs to handle arrays
 
-José Roberto de Souza (1):
-      iris/xe: Consider pat_index while unbinding the bo
+Job Noorman (2):
+      ir3: fix freeing incorrect register in loops
+      ir3: fix returning false instead of NULL
 
-Karol Herbst (1):
-      rusticl/event: we need to call the CL_COMPLETE callback on errors as well
+Kenneth Graunke (9):
+      intel/brw: Replace CS_OPCODE_CS_TERMINATE with SHADER_OPCODE_SEND
+      intel/brw: Avoid copy propagating any fixed registers into EOTs
+      intel/brw: Handle SHADER_OPCODE_SEND without src[3] in copy prop
+      intel/brw: Add assertions that EOT messages live in g112+
+      intel/brw: Copy the smaller payload in fixup_sends_duplicate_payload
+      intel/brw: Make register coalescing obey the g112-g127 restriction
+      intel/brw: Call constant combining after copy propagation/algebraic
+      intel/brw: Remove SIMD lowering to a larger SIMD size
+      intel/brw: Unindent code after previous change
 
-Kenneth Graunke (6):
-      intel/brw: Change unit tests to use TEX_LOGICAL instead of TEX
-      intel/brw: Delete SHADER_OPCODE_TXF_CMS[_LOGICAL]
-      intel/brw: Delete SHADER_OPCODE_TXF_UMS
-      intel/brw: Allow CSE on TXF_CMS_W_GFX12_LOGICAL
-      intel/brw: Delete legacy texture opcodes
-      intel/brw: Mark FIND[_LAST]_LIVE_CHANNEL as not writing the flag
+Lionel Landwerlin (2):
+      anv: remove some wrapping around mmap
+      anv: add support for VK_EXT_map_memory_placed
 
-Konstantin Seurer (2):
-      radv/rra: Avoid reading past the ray history buffer
-      radv/meta: Add shader - device mapping for radv_build_printf
+Mike Blumenkrantz (4):
+      lavapipe bump descriptor buffer address space limits
+      zink: fix PIPE_CAP_MAX_SHADER_PATCH_VARYINGS
+      zink: call CmdSetRasterizationStreamEXT when using shader objects
+      nvk: bump NVK_PUSH_MAX_SYNCS to 256
 
-Lionel Landwerlin (1):
-      anv: fix non matching image/view format attachment resolve
+Patrick Lerda (1):
+      radeonsi/gfx10: fix main_shader_part_ngg_es memory leak
 
-Luca Bacci (1):
-      meson,windows: Use relative paths in Vulkan ICD manifest files
-
-Nanley Chery (1):
-      isl: Pick a better initial state for zeroed MCS
+Rob Clark (1):
+      freedreno/a6xx: Add dual_color_blend_by_location
 
 Rohan Garg (1):
-      intel/compiler: Xe2+ can do URB load/store with a byte offset
+      anv: drop duplicated 3DSTATE_SLICE_TABLE_STATE_POINTERS emission
 
-Roland Scheidegger (1):
-      auxiliary/rtasm: fix unaligned stores
+Timur Kristóf (1):
+      aco: Eliminate SCC copies when possible.
 
-Sagar Ghuge (1):
-      anv/xe: Consider pat_index while unbinding the bo
-
-Samuel Pitoiset (18):
-      radv: get the pipeline layout info from the push constant token with DGC
-      radv: add a helper to calculate the compute resource limits
-      radv: add a function to get compute pipeline metadata for DGC
-      radv: add support for VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV
-      radv: implement vkGetPipelineIndirectXXX() for DGC
-      radv: implement vkCmdUpdatePipelineIndirectBufferNV()
-      radv: implement indirect compute pipeline binds with DGC
-      radv: handle indirect pipeline binds with scratch and DGC
-      radv: force shader BOs to be local BOS with DGC indirect compute pipelines
-      radv: enable deviceGeneratedComputePipelines
-      radv: fix conditional rendering on compute queue on GFX6
-      radv: add missing conditional rendering for indirect dispatches on GFX6
-      radv: add a helper to emit PKT3_COND_EXEC
-      radv: add a new user SGPR for NGG shaders compiled separately with ESO
-      radv: lower lds_ngg_{gs_out_vertex_base,_scratch_base} with ESO
-      radv: add support for emitting NGG shaders with ESO
-      radv: allow RADV_PERFTEST=shader_object on GFX11
-      radv: enable radv_zero_vram for RAGE2
-
-Sil Vilerino (1):
-      d3d12: Do not use PIPE_BIND_DISPLAY_TARGET for d3d12_video_buffer
+Yonggang Luo (3):
+      treewide: Remove vulkan/runtime vulkan/util prefix in include path
+      freedreno/vulkan: Use vk_dynamic_graphics_state_init instead of direct assignment
+      vulkan/runtime: Mark vk_default_dynamic_graphics_state to be private
 

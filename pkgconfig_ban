@@ -65,3 +65,5 @@ lavacli
 llvmspirvlib
 32spirv-tools
 32gtk+-3.0
+syn
+32syn
