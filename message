@@ -1,88 +1,121 @@
-Updating from 0df9571bfb1a2fec1361fddda25db1bb9c3dac9e to ac391536ebdbb7c93c4906e674d8ff86827e61fa
+Updating from ac391536ebdbb7c93c4906e674d8ff86827e61fa to 2665badcfe998ba7e2632bb7b1a49270542d67f3
 
-Chia-I Wu (1):
-      aco: fix nir_op_pack_32_4x8 handling
+Amber (1):
+      tu: wideLines support for a7xx.
 
-Christian Gmeiner (2):
-      isaspec: encode: Constify encode.type
-      isaspec: encode: Constify bitset_params
+Christian Gmeiner (1):
+      etnaviv: Remove not used etna_assemble_set_imm(..)
 
-Dave Airlie (1):
-      nvk: only unmap heap bos that were mapped
+Daniel Schürmann (1):
+      aco: rematerialize constants in every basic block during optimizer
 
-David Heidelberg (4):
-      ci/intel: decompose anv-tgl-test so we can specify custom devices for TGL
-      ci/intel: add acer-cp514-2h-11{30,60}g7-volteer
-      ci/intel: move machine definition to the intel-tgl-skqp job
-      ci/intel: split asus-cx9400-volteer into acer-cp514-2h-11{30,60}g7-volteer
+Danylo Piliaiev (1):
+      tu: Fix dynamic state not always being emitted
 
-Faith Ekstrand (5):
-      vulkan/pipeline: Always init pipeline cache objects
-      nak: Fix printing of OpIsberd
-      nak/sm50: Fix encoding of immediates in OpFFma
-      nak/sm50: Use OpBfe instead of OpBRev for nir_op_find_lsb
-      nak: Support F2I for 8-bit integers on SM50
+Eric Engestrom (2):
+      ci/venus-lavapipe: drop unused DEQP_VER that's being overwritten by DEQP_SUITE anyway
+      ci/lavapipe: fold `DEQP_VER: vk` and drop .deqp-test-vk
+
+Faith Ekstrand (3):
+      nvk: Return os_page_size for minMemoryMapAlignment
+      nouveau: Import g_nv_name_released.h from NVIDIA OGK
+      nvk: Report official GPU names from NVIDIA when we have them
 
 Felix DeGrood (1):
-      driconf: add SotTR DX12 to Intel XeSS workaround
+      iris: Increase target batch size to 128 KB
 
-Friedrich Vock (1):
-      radv: Set SCRATCH_EN for RT pipelines based on dynamic stack size
+Gert Wollny (2):
+      zink: use only ZINK_BIND_DESCRIPTOR
+      zink: decrease aggressiveness of increasing descriptor data space adaptive
 
-Georg Lehmann (8):
-      nir: remove rotate scope
-      nir/divergence_analysis: fix subgroup mask
-      aco: create pseudo instructions with correct struct
-      aco/post-ra: rename overwritten_subdword to allow additional uses
-      aco/post-ra: assume scc is going to be overwritten by phis at end of blocks
-      aco: store if pseudo instr needs scratch reg
-      aco/post-ra: track pseudo scratch sgpr/scc clobber
-      aco/ssa_elimination: check if pseudo scratch reg overwrittes regs used for v_cmpx opt
+Jesse Natalie (1):
+      nir_lower_tex_shadow: For old-style shadows, use vec4(result, 0, 0, 1)
 
-Jesse Natalie (3):
-      microsoft/compiler: Remove code after discard/terminate in later optimization steps
-      wgl: Initialize DEVMODE struct
-      d3d12: Point sprite lowering pass needs to handle arrays
+Jonathan Gray (1):
+      intel/dev: update DG2 device names
 
-Job Noorman (2):
-      ir3: fix freeing incorrect register in loops
-      ir3: fix returning false instead of NULL
+Konstantin Seurer (9):
+      vulkan/cmd_queue: Implement CmdBuildAccelerationStructuresKHR
+      lavapipe: Implement VK_KHR_acceleration_structure
+      lavapipe: Add ray traversal code
+      lavapipe: Implement VK_KHR_ray_query
+      lavapipe: Advertise VK_KHR_deferred_host_operations
+      lavapipe: Advertise VK_KHR_acceleration_structure
+      lavapipe: Advertise VK_KHR_ray_query
+      lavapipe/ci: Document ray query failures
+      docs: Document lavapipe ray tracing features
 
-Kenneth Graunke (9):
-      intel/brw: Replace CS_OPCODE_CS_TERMINATE with SHADER_OPCODE_SEND
-      intel/brw: Avoid copy propagating any fixed registers into EOTs
-      intel/brw: Handle SHADER_OPCODE_SEND without src[3] in copy prop
-      intel/brw: Add assertions that EOT messages live in g112+
-      intel/brw: Copy the smaller payload in fixup_sends_duplicate_payload
-      intel/brw: Make register coalescing obey the g112-g127 restriction
-      intel/brw: Call constant combining after copy propagation/algebraic
-      intel/brw: Remove SIMD lowering to a larger SIMD size
-      intel/brw: Unindent code after previous change
+Lionel Landwerlin (6):
+      anv: delay internal shader upload to when needed
+      anv: fix companion command buffer initialization
+      anv: fix incorrect ISL usage in buffer view creation
+      anv/iris/blorp: use the right MOCS values for each engine
+      anv: try to keep the pipeline in GPGPU mode when buffer transfer ops
+      anv: don't copy the null descriptor from the GPU memory
 
-Lionel Landwerlin (2):
-      anv: remove some wrapping around mmap
-      anv: add support for VK_EXT_map_memory_placed
+Mark Janes (1):
+      intel/dev: declare workarounds required by ATSM platforms
 
-Mike Blumenkrantz (4):
-      lavapipe bump descriptor buffer address space limits
-      zink: fix PIPE_CAP_MAX_SHADER_PATCH_VARYINGS
-      zink: call CmdSetRasterizationStreamEXT when using shader objects
-      nvk: bump NVK_PUSH_MAX_SYNCS to 256
+Mike Blumenkrantz (2):
+      zink: update nvk baseline
+      util/blitter: iterate samples in stencil_fallback
 
 Patrick Lerda (1):
-      radeonsi/gfx10: fix main_shader_part_ngg_es memory leak
+      r300: enable R400 cos and sin hardware vertex shader opcodes
 
-Rob Clark (1):
-      freedreno/a6xx: Add dual_color_blend_by_location
+Rhys Perry (18):
+      aco: don't combine linear and normal VGPR copies
+      aco/ra: disable p_start_linear_vgpr allocation hint
+      aco: allow p_start_linear_vgpr to use multiple operands
+      aco: require linear vgpr uses to be late kill
+      aco: only allow linear vgpr kills in top-level blocks
+      aco/ra: constify various RegisterFile
+      aco/ra: move parallelcopy creation into helper
+      aco/ra: change get_reg_bounds() helper
+      aco/ra: rework linear VGPR allocation
+      aco/ra: disable live range splitting of linear vgprs
+      aco/ra: emit linear VGPR parallel copy separately
+      aco/tests: add tests for linear VGPR register allocation
+      aco: optimize for purely linear VGPR copies
+      nir/algebraic: don't create 64-bit min/max/ior if lowered
+      nir/algebraic: remove duplicated iand(ien, ine)/ior(ieq, ieq) patterns
+      nir/algebraic: optimize 64-bit comparisons with zero'd halves to 32-bit
+      nir/lower_int64: allow 64-bit comparisons when lowering minmax
+      nir/search: fix nir_replace_instr() debug code
 
-Rohan Garg (1):
-      anv: drop duplicated 3DSTATE_SLICE_TABLE_STATE_POINTERS emission
+Rohan Garg (2):
+      anv, blorp: Set COMPUTE_WALKER Message SIMD field
+      intel/genxml: update PIPE_CONTROL so that we can decode it on the CCS
 
-Timur Kristóf (1):
-      aco: Eliminate SCC copies when possible.
+Samuel Pitoiset (4):
+      radv: always use ace_cs for the gang CS variable
+      radv: refactor emitting the view index for task shaders
+      radv: allocate a 32-bit value for the MEC fw bug with indirect mesh+task earlier
+      radv: stop passing radv_cmd_buffer to draw functions with task shaders
 
-Yonggang Luo (3):
-      treewide: Remove vulkan/runtime vulkan/util prefix in include path
-      freedreno/vulkan: Use vk_dynamic_graphics_state_init instead of direct assignment
-      vulkan/runtime: Mark vk_default_dynamic_graphics_state to be private
+Sil Vilerino (7):
+      d3d12: AV1 encode - Configure CQP using qp and new qp_inter parameters
+      d3d12: H264 encode - Update CQP using current frame type as per VA frontend change
+      d3d12: HEVC encode - Update CQP using current frame type as per VA frontend change
+      frontend/va: Support media only post proc without compositor using shaders or surfaces
+      frontend/va: Use get_resources in VaDeriveImage for media only devices without get_surfaces support
+      d3d12: Add partial media, compute, graphics support with CORE and GENERIC feature levels
+      d3d12: Refactor graphics functions from context and blit to separate files
+
+Teng, Jin Chung (1):
+      d3d12: HEVC Encode - Query slice config mode based on user slice setting
+
+Timothy Arceri (3):
+      glsl: implement nir version of lower discard flow
+      glsl: make use of nir lower discard flow
+      glsl: remove now unused glsl ir lower discard pass
+
+Vasily Khoruzhick (4):
+      lima: ppir: always use vec4 for output register
+      lima: ppir: use dummy program if FS has empty body
+      lima: gpir: abort compilation if load_uniform instrinsic src isn't const
+      lima: update expected CI failures
+
+qbojj (1):
+      vulkan: Fix calculation of flags in vk_graphics_pipeline_state_fill
 
