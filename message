@@ -1,107 +1,72 @@
-Updating from 2665badcfe998ba7e2632bb7b1a49270542d67f3 to 26da033c91e50edcd05662902466668a92136cc2
+Updating from 26da033c91e50edcd05662902466668a92136cc2 to 3b05ebaa625428ac3590a7ba1848a6234a572db4
 
-Caio Oliveira (38):
-      intel/elk: Remove split sends
-      intel/elk: Remove DPAS opcode
-      intel/elk: Remove BTD and RT opcodes
-      intel/elk: Remove DP4A opcode
-      intel/elk: Remove ROR and ROL opcodes
-      intel/elk: Remove IADD3 opcode
-      intel/elk: Remove EU compaction logic for Gfx9+
-      intel/elk: Remove encoding for Gfx9+
-      intel/elk: Remove SYNC opcode and SWSB annotations
-      intel/elk: Remove Gfx12 SFIDs and related LSC code
-      intel/elk: Remove Gfx9+ sampler messages and modes
-      intel/elk: Rename symbols for A64 OWord Block R/W messages
-      intel/elk: Remove Gfx9+ dataport messages
-      intel/elk: Remove FB_READ opcodes
-      intel/elk: Remove Gfx12.5 URB message
-      intel/elk: Remove ex_desc and ex_mlen from elk_inst
-      intel/elk: Remove Xe2 logical sends lowering
-      intel/elk: Remove unused sources from ELK_SHADER_OPCODE_SEND
-      intel/elk: Remove unused SEND features
-      intel/elk: Remove validation code for Gfx9+
-      intel/elk: Remove Gfx9+ from nir conversion
-      intel/elk: Remove Gfx9+ from compile/run functions
-      intel/elk: Remove FB_WRITE_LOGICAL_SRC_SRC_STENCIL
-      intel/elk: Remove Gfx9+ from passes
-      intel/elk: Remove Gfx9+ from thread payload
-      intel/elk: Remove Gfx9+ from EU emission
-      intel/elk: Remove coarse pixel handling
-      intel/elk: Remove Gfx9+ from FS generator
-      intel/elk: Remove Gfx9+ from Reg related code
-      intel/elk: Remove Gfx9+ from asm grammar
-      intel/elk: Remove Gfx9+ from disasm
-      intel/elk: Remove Gfx9+ from NIR auxiliary code
-      intel/elk: Remove use_tcs_multi_patch
-      intel/elk: Remove Gfx9+-only passes
-      intel/elk: Remove uses of intel_device_info_is_9lp()
-      intel/elk: Remove remaining Gfx9+ code
-      intel/elk: Remove multi-polygon support
-      intel/elk: Clean up unused code in elk_compiler.h
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 1e631479c0b477006dd7561c55e06269d2878d8d
 
-Chris Rankin (2):
-      meson: bump the minimal required vdpau version to 1.5
-      frontends/vdpau: Add support for VDPAU AV1 decoding.
+David Heidelberg (3):
+      intel/tools: avoid invalid time and file bits combination
+      ci/deqp: backport Implement support for the EGL_EXT_config_select_group extension GL-CTS patch
+      ci/freedreno: update expectations comment
 
-Corentin Noël (1):
-      ci: Update virglrenderer and crosvm
+Faith Ekstrand (12):
+      nvk: Use row_stride_B instead of width for render and copies
+      nil: Rework tiling calculations
+      nil: Add a concept of width to tile sizes
+      nil: Add a concept of sliced 3D image views
+      nvk: Use "real" 3D image views
+      nvk/queue: Add a push_bind helper
+      nvk: Refactor opaque image binds
+      nvk/queue: Add support for non-opaque sparse binds
+      nak: Rename resident to fault
+      nak: Plumb is_sparse through from NIR for texture ops
+      nak/nir: Add sparse support to shrink_image_load()
+      nak: Wire up sparse residency for texture ops
 
-David Heidelberg (1):
-      drm-shim: Avoid invalid file and time bits combination
+José Roberto de Souza (2):
+      anv: Call flush_pipeline_select_gpgpu() for compute engines in compute code paths
+      anv: Skip cmd_buffer_emit_bt_pool_base_address() in blitter and video engines
 
-Eric R. Smith (1):
-      panfrost: protect alpha calculation from accessing non-existent component
+Mohamed Ahmed (10):
+      nil: change image_level_size() to take tiling in account
+      nil: Add helper function to get tile size in pixels
+      nil: Add helpers for conversion from pixel values to tiles
+      nil: Expose tiling_extent_B()
+      nil: Add support for sparse resident images
+      nvk: add sparse queries
+      nvk: enable sparse residency features
+      nak: wire up shader resource residency intrinsics
+      nak: wire up sparse image loads
+      nvk: advertise shader resource residency
 
-Felix DeGrood (1):
-      intel/ds: add pipe control reasons to perfetto flushes
+Paulo Zanoni (4):
+      anv/sparse: don't issue a single bind operation per vm_bind ioctl
+      anv/sparse: leave the semaphore waits and signals to the vm_bind ioctl
+      anv/sparse: don't use the bind_timeline when doing sparse binding
+      anv: change the vm_bind-related kmd_backend vfuncs to return VkResult
 
-Friedrich Vock (1):
-      radv/rt: Fix frontface culling with emulated RT
+Samuel Pitoiset (2):
+      radv/ci: enable RADV_PERFTEST=shader_object for VKCTS jobs on GFX10+
+      radv/ci: mark dEQP-VK.shader_object.binding.mesh_swap_task as flake on NAVI21
 
-Gert Wollny (1):
-      zink/nir-to-spirv: Make sure sampleid for InterpolateAtSample is int
+Sil Vilerino (3):
+      d3d12: Add GetDesc wrapper for ID3D12Heap
+      d3d12: Only check D3D12_FEATURE_DATA_PLACED_RESOURCE_SUPPORT_INFO for D3D_FEATURE_LEVEL_1_0_GENERIC
+      d3d12: Video Encode - Add driver workaround for rate control reconfiguration
 
-Iván Briano (1):
-      anv, hasvk: pMutableDescriptorTypeLists can be out of range on pool creation
+Valentine Burley (4):
+      tu: Promote VK_EXT_index_type_uint8 to KHR
+      tu: Promote VK_EXT_load_store_op_none to KHR
+      tu: Promote VK_EXT_line_rasterization to KHR
+      docs: Update features.txt for anv, nvk and tu
 
-Jesse Natalie (2):
-      spirv2dxil: Support buffer_device_address
-      dzn: Support bufferDeviceAddress
+Yiwei Zhang (5):
+      venus: fix ffb batch prepare for a corner case and avoid a memcpy UB
+      vulkan: remove unused wsi_common_entrypoints include and dep
+      vulkan: properly ensure wsi_entrypoints header gen order
+      vulkan: remove header files from lib source files
+      vulkan: refactor the runtime header gen order dependency
 
-Kenneth Graunke (1):
-      iris: Fix tessellation evaluation shaders that use scratch
-
-Konstantin Seurer (9):
-      vulkan: Implement DebugMarkerSetObjectNameEXT
-      radv/rt: Implement RADV_DEBUG=shaderstats
-      radv/rt: Add radv_ray_tracing_stage_info
-      radv/rt: Fixup constant args
-      aco: Only fix used variables to registers
-      radv/rt: Avoid passing unused data to the next stage
-      radv/rt: Inline constant trace_ray srcs into the traversal shader
-      radv/rt: Inline constant information about ray flags
-      radv/rt: Fix raygen_imported condition
-
-Rhys Perry (1):
-      aco: don't pass constant to is_overwritten_since()
-
-Samuel Pitoiset (7):
-      radv/ci: remove RT tests from the VANGOGH skip list
-      radv/ci: remove dEQP-VK.robustness.* from the VANGOGH skip list
-      radv: disable NGG in more situations with ESO on GFX10/GFX10.3
-      radv: implement has_vgt_flush_ngg_legacy_bug for ESO
-      radv: allow RADV_PERFTEST=shader_object on GFX10/GFX10.3
-      radv,aco: stop duplicating PS/TCS epilog fields
-      radv: add a helper to emit PS/TCS epilogs
-
-Timur Kristóf (1):
-      radv: Lower mesh shader draw ID to zero when they have a task shader.
-
-Yiwei Zhang (1):
-      vulkan: fix runtime libraries' dep against generated headers
-
-Yonggang Luo (2):
-      Revert "meson/vulkan/util: allow venus to drop compiler deps"
-      vulkan: allow building venus without libcompiler
+Zan Dobersek (2):
+      vulkan/rmv: enable logging miscellaneous internal resources
+      tu: add RMV support
 
