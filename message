@@ -1,72 +1,14 @@
-Updating from 26da033c91e50edcd05662902466668a92136cc2 to 3b05ebaa625428ac3590a7ba1848a6234a572db4
+Updating from 3b05ebaa625428ac3590a7ba1848a6234a572db4 to e1afffe7fa7bd8e1cd1f7e58cfa2f33faf889628
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 1e631479c0b477006dd7561c55e06269d2878d8d
+Caio Oliveira (1):
+      intel/brw: Use hstride instead of stride for accumulator
 
-David Heidelberg (3):
-      intel/tools: avoid invalid time and file bits combination
-      ci/deqp: backport Implement support for the EGL_EXT_config_select_group extension GL-CTS patch
-      ci/freedreno: update expectations comment
+David Heidelberg (1):
+      ci/deqp: add EGL patch for correct suite (GLES, not GL)
 
-Faith Ekstrand (12):
-      nvk: Use row_stride_B instead of width for render and copies
-      nil: Rework tiling calculations
-      nil: Add a concept of width to tile sizes
-      nil: Add a concept of sliced 3D image views
-      nvk: Use "real" 3D image views
-      nvk/queue: Add a push_bind helper
-      nvk: Refactor opaque image binds
-      nvk/queue: Add support for non-opaque sparse binds
-      nak: Rename resident to fault
-      nak: Plumb is_sparse through from NIR for texture ops
-      nak/nir: Add sparse support to shrink_image_load()
-      nak: Wire up sparse residency for texture ops
+Marek Olšák (1):
+      amd: update addrlib
 
-José Roberto de Souza (2):
-      anv: Call flush_pipeline_select_gpgpu() for compute engines in compute code paths
-      anv: Skip cmd_buffer_emit_bt_pool_base_address() in blitter and video engines
-
-Mohamed Ahmed (10):
-      nil: change image_level_size() to take tiling in account
-      nil: Add helper function to get tile size in pixels
-      nil: Add helpers for conversion from pixel values to tiles
-      nil: Expose tiling_extent_B()
-      nil: Add support for sparse resident images
-      nvk: add sparse queries
-      nvk: enable sparse residency features
-      nak: wire up shader resource residency intrinsics
-      nak: wire up sparse image loads
-      nvk: advertise shader resource residency
-
-Paulo Zanoni (4):
-      anv/sparse: don't issue a single bind operation per vm_bind ioctl
-      anv/sparse: leave the semaphore waits and signals to the vm_bind ioctl
-      anv/sparse: don't use the bind_timeline when doing sparse binding
-      anv: change the vm_bind-related kmd_backend vfuncs to return VkResult
-
-Samuel Pitoiset (2):
-      radv/ci: enable RADV_PERFTEST=shader_object for VKCTS jobs on GFX10+
-      radv/ci: mark dEQP-VK.shader_object.binding.mesh_swap_task as flake on NAVI21
-
-Sil Vilerino (3):
-      d3d12: Add GetDesc wrapper for ID3D12Heap
-      d3d12: Only check D3D12_FEATURE_DATA_PLACED_RESOURCE_SUPPORT_INFO for D3D_FEATURE_LEVEL_1_0_GENERIC
-      d3d12: Video Encode - Add driver workaround for rate control reconfiguration
-
-Valentine Burley (4):
-      tu: Promote VK_EXT_index_type_uint8 to KHR
-      tu: Promote VK_EXT_load_store_op_none to KHR
-      tu: Promote VK_EXT_line_rasterization to KHR
-      docs: Update features.txt for anv, nvk and tu
-
-Yiwei Zhang (5):
-      venus: fix ffb batch prepare for a corner case and avoid a memcpy UB
-      vulkan: remove unused wsi_common_entrypoints include and dep
-      vulkan: properly ensure wsi_entrypoints header gen order
-      vulkan: remove header files from lib source files
-      vulkan: refactor the runtime header gen order dependency
-
-Zan Dobersek (2):
-      vulkan/rmv: enable logging miscellaneous internal resources
-      tu: add RMV support
+Mike Blumenkrantz (1):
+      mesa: fix CopyTexImage format compatibility checks for ES
 
