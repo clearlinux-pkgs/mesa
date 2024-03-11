@@ -1,14 +1,46 @@
-Updating from 3b05ebaa625428ac3590a7ba1848a6234a572db4 to e1afffe7fa7bd8e1cd1f7e58cfa2f33faf889628
+Updating from e1afffe7fa7bd8e1cd1f7e58cfa2f33faf889628 to 24cedcf838f1008810ef689f35da97de0ae72a48
 
-Caio Oliveira (1):
-      intel/brw: Use hstride instead of stride for accumulator
+Christian Gmeiner (1):
+      etnaviv: Fix how we determine the max supported number of varyings
 
-David Heidelberg (1):
-      ci/deqp: add EGL patch for correct suite (GLES, not GL)
+Echo J (1):
+      nak: Rip out a few dead_code statements
 
-Marek Olšák (1):
-      amd: update addrlib
+Faith Ekstrand (4):
+      nil: Fix a typo in a comment
+      nvk: Document the register name for the helper load workaround
+      nvk: Always wait for the FALCON in set_priv_reg
+      nvk: Disable the Out Of Range Address exception
 
-Mike Blumenkrantz (1):
-      mesa: fix CopyTexImage format compatibility checks for ES
+Juan A. Suarez Romero (4):
+      v3d,v3d: use new simulator
+      v3dv: disable Early Z for multisampled 16-bit depth buffers
+      v3d: disable Early Z for multisampled 16-bit depth buffers
+      broadcom/compiler: fix SFU check for 7.1
+
+Luigi Santivetti (1):
+      pvr: return the OS page size for minMemoryMapAlignment
+
+Mary Guillemard (7):
+      pan/bi: assert indices when offsets are present in bi_emit_tex_valhall
+      pan/lib: Remove variables in blitter
+      pan/bi: Rework indices for tex on Valhall
+      pan/bi: Rework indices for image on Valhall
+      pan/bi: Rework indices for attributes on Valhall
+      pan/bi: Lower ubo table in indices for Valhall
+      panfrost, pan/lib: Move pan_resource_table to panfrost
+
+Samuel Pitoiset (6):
+      radv: stop using the custom blend mode for PS epilogs
+      radv: re-emit RB+ state with PS epilogs only when the col format changes
+      radv: fix emitting default blend state for PS without epilogs and ESO
+      radv: allow RADV_PERFTEST=shader_object on all GFX9 GPUs
+      radvi/ci: enable RADV_PERFTEST=shader_object for RENOIR
+      util/u_debug: fix parsing of "all" again
+
+Tapani Pälli (1):
+      anv: use workaround framework for Wa_16013000631
+
+Yonggang Luo (1):
+      glx: Remove DEBUG code in xfont.c
 
