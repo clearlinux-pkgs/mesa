@@ -1,46 +1,119 @@
-Updating from e1afffe7fa7bd8e1cd1f7e58cfa2f33faf889628 to 24cedcf838f1008810ef689f35da97de0ae72a48
+Updating from 24cedcf838f1008810ef689f35da97de0ae72a48 to d7def3ccdf4ac7f436dcd27342851179b68bee42
 
-Christian Gmeiner (1):
-      etnaviv: Fix how we determine the max supported number of varyings
+Boris Brezillon (2):
+      vk/meta: Add the PUSH_DESCRIPTOR_BIT flag when creating blit pipeline layouts
+      vk/meta: Fix base_type selection in build_{clear,blit}_shader()
 
-Echo J (1):
-      nak: Rip out a few dead_code statements
+Eric Engestrom (8):
+      docs: delay 24.1 branchpoint by 2 weeks
+      vk/update-aliases: drop VK_ERROR_ prefix substitution
+      ci/deqp-runner: do a release build instead of debug
+      ci/deqp-runner: set android rust target in the caller (debian/x86_64_test-android.sh)
+      ci/deqp-runner: bring "install from crate" & "install from git" to feature parity
+      ci/deqp-runner: update repo url
+      ci/deqp-runner: fix list of image tags to update
+      ci/image-tags: re-generate all the images building deqp-runner
 
-Faith Ekstrand (4):
-      nil: Fix a typo in a comment
-      nvk: Document the register name for the helper load workaround
-      nvk: Always wait for the FALCON in set_priv_reg
-      nvk: Disable the Out Of Range Address exception
+Erik Faye-Lund (3):
+      panfrost: give afbc-packing its own flag
+      panfrost: add driconf infrastructure
+      panfrost: add pan_force_afbc_packing driconf
 
-Juan A. Suarez Romero (4):
-      v3d,v3d: use new simulator
-      v3dv: disable Early Z for multisampled 16-bit depth buffers
-      v3d: disable Early Z for multisampled 16-bit depth buffers
-      broadcom/compiler: fix SFU check for 7.1
+Faith Ekstrand (9):
+      nvk: Drop a bunch of dev->pdev and just use pdev
+      nvk: Add and use more cmd_buffer_*_cls helpers
+      nvk: Replace more dev->pdev with nvk_device_physical()
+      nvk: Drop nvk_device::pdev
+      zink: Remove interpolateAtSample() when not multi-sampling
+      nil: Move Z slice offset calculations to a helper
+      nvk: Add a nil_image helper variable in BeginRendering
+      nvk: Manually offset array and Z slices in BeginRendering
+      nil: Advertise support for PIPE_FORMAT_R5G6B5_UNORM
 
-Luigi Santivetti (1):
-      pvr: return the OS page size for minMemoryMapAlignment
+Friedrich Vock (2):
+      radv/rt: Force active leaves for every updateable accel struct
+      radv,driconf: Remove active accel struct workaround
 
-Mary Guillemard (7):
-      pan/bi: assert indices when offsets are present in bi_emit_tex_valhall
-      pan/lib: Remove variables in blitter
-      pan/bi: Rework indices for tex on Valhall
-      pan/bi: Rework indices for image on Valhall
-      pan/bi: Rework indices for attributes on Valhall
-      pan/bi: Lower ubo table in indices for Valhall
-      panfrost, pan/lib: Move pan_resource_table to panfrost
+Hyunjun Ko (1):
+      anv/video: fix scan order for scaling lists on H265 decoding.
 
-Samuel Pitoiset (6):
-      radv: stop using the custom blend mode for PS epilogs
-      radv: re-emit RB+ state with PS epilogs only when the col format changes
-      radv: fix emitting default blend state for PS without epilogs and ESO
-      radv: allow RADV_PERFTEST=shader_object on all GFX9 GPUs
-      radvi/ci: enable RADV_PERFTEST=shader_object for RENOIR
-      util/u_debug: fix parsing of "all" again
+Iván Briano (1):
+      compiler/types: fix serialization of cooperative matrix
 
-Tapani Pälli (1):
-      anv: use workaround framework for Wa_16013000631
+José Roberto de Souza (2):
+      intel: Drop pre-production steppings
+      anv: Fix Xe KMD userptr unbind
 
-Yonggang Luo (1):
-      glx: Remove DEBUG code in xfont.c
+Juan A. Suarez Romero (3):
+      v3dv: mark some promoted extensions as supported
+      v3d: add load_fep_w_v3d intrinsic
+      v3d: fix line coords with perspective projection
+
+Juston Li (1):
+      venus: fix VkDeviceGroupSubmitInfo cmd counts from feedback
+
+Karol Herbst (2):
+      rusticl/kernel: assign sampler locations before DCEing variables
+      rusticl/device: support query_memory_info to retrieve available memory
+
+Lionel Landwerlin (1):
+      intel/fs: fixup sampler header message
+
+Marek Olšák (23):
+      mesa: deduplicate initialization of gl_pixelstore_attrib
+      mesa: move struct gl_pixelstore_attrib into glthread.h
+      glthread: track glPixelStore(GL_UNPACK_*)
+      glthread: execute small glBitmap asynchronously
+      glthread: execute small glDrawPixels asynchronously
+      glthread: invert _mesa_glthread_has_no_{un}pack_buffer by removing the negation
+      amd/registers: add correct gfx11.x enums for BINNING_MODE
+      radeonsi: disable binning correctly on gfx11.5
+      radeonsi/gfx11: fix programming of PA_SC_BINNER_CNTL_1.MAX_ALLOC_COUNT
+      radeonsi/gfx10.3: add a GPU hang workaround for legacy tess+GS
+      radeonsi: allocate only one set of tessellation rings per device
+      radeonsi/gfx11: program the attribute ring right before draws
+      radeonsi: program tessellation rings right before draws
+      radeonsi/gfx11: program SAMPLE_MASK_TRACKER_WATERMARK optimally for APUs
+      ac: use the gfx11 shadowed register tables for gfx11.5
+      radeonsi/gfx11: add missing DCC_RD_POLICY setting
+      radeonsi: add radeonsi_cache_rb_gl2 option enabling GL2 caching for CB and DB
+      nir/divergence_analysis: change function prototypes
+      nir/divergence_analysis: load_primitive_id is convergent within a primitive
+      nir/divergence_analysis: load_instance_id is convergent within a primitive
+      nir/divergence_analysis: handle derefs of system values
+      nir: print nir_io_semantics::invariant
+      nir: add nir_block::divergent to indicate a divergent entry condition
+
+Mike Blumenkrantz (8):
+      zink: update nvk baseline with nvk changes
+      driconf: add radv_zero_vram for Crystal Project (1637730)
+      zink: update nv baseline
+      zink: track whether shaders use load_barycentric_at_sample
+      zink: apply zink_shader::uses_sample to fs variant updating
+      zink: destroy batch states after copy context
+      zink: set VkExternalMemoryBufferCreateInfo for opaque fds too
+      zink: simplify vb masking on bind
+
+Paulo Zanoni (2):
+      anv: add an anv_pipe_bits bit to allow invalidating the TLB
+      anv/trtt: invalidate the TLB after writing TR-TT entries
+
+Qiang Yu (1):
+      radeonsi: split RADEON_USAGE_NEEDS_IMPLICIT_SYNC into CB and DB flags
+
+Samuel Pitoiset (4):
+      ci: use Linux kernel 6.6 for RADV
+      radv/ci: update list of flakes for VKCTS jobs
+      zink/ci: update list of flakes for RADV jobs
+      ac/nir: fix exporting NGG streamout outputs with implicit PrimId from VS/TES
+
+Tapani Pälli (3):
+      anv: setup distribution granularity with Wa_14019166699
+      iris: refactor function that checks primitive id usage
+      iris: setup distribution granularity with Wa_14019166699
+
+Timothy Arceri (3):
+      glsl: make an explicitly safe version of visit_exec_list()
+      glsl_to_nir: never convert instructions after jump
+      glsl: remove unrequired do_lower_jumps() call
 
