@@ -15,7 +15,6 @@
 -Dzstd=enabled
 -Dshader-cache=enabled
 -Dopengl=true
--Dintel-xe-kmd=enabled
 -Dtools="intel-ui"
 -Dintel-clc=enabled
 -Dinstall-intel-clc=true
