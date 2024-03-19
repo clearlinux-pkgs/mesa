@@ -1,52 +1,120 @@
-Updating from eac703f69128d5aa6879c9becbad627ce08a7920 to 995727e57501f7a35eb5e6797124f8ec3d6911a0
+Updating from 995727e57501f7a35eb5e6797124f8ec3d6911a0 to d1cac5ed0566ed02f1a522cc690ab5cda1880ec0
 
-Amber (2):
-      tu: Add MESA_VK_DYNAMIC_RS_LINE_WIDTH to tu_rast_state.
-      tu: re-emit vertex buffer on MESA_VK_DYNAMIC_VI_BINDINGS_VALID dirty.
+Caio Oliveira (3):
+      intel/brw: Implement quad_vote_any and quad_vote_all
+      intel/brw: Use predicates for quad_vote_any and quad_vote_all when available
+      anv: Enable VK_KHR_shader_quad_control
 
-Benjamin Tissoires (1):
-      CI: add mr-label-maker.yml config
+Connor Abbott (15):
+      freedreno/afuc: Decode (peek) modifier
+      freedreno/afuc: Add missing ALU encode case for bic
+      freedreno/afuc: Bump max instructions for a7xx
+      freedreno/afuc: Fix setbit/clrbit parsing
+      freedreno/afuc: Use left recursion in parser
+      freedreno/afuc: Improve jump table handling
+      freedreno/afuc: Add .align directive
+      freedreno/afuc: Add more general T_IDENTIFIER in lexer
+      freedreno/afuc: Add support for multiple sections when assembling
+      freedreno/afuc: Allow -e option on a7xx
+      freedreno/afuc: Emulate THREAD_SYNC on a660
+      freedreno/afuc: Run entire bootstrap routine
+      freedreno/afuc: Add a7xx test case
+      freedreno/afuc: Add magic control reg values for a740
+      freedreno/afuc: Add section on reassembling firmwares and relocations
 
-David Rosca (1):
-      radv/video: Set maxActiveReferencePictures to 16 for H264/5
+Daniel Schürmann (3):
+      aco: reorder code and use namespaces in aco_interface.cpp
+      aco/util: small_vec few additions
+      aco: use small_vec as Block::edge_vec for predecessors and successors
 
-Eric Engestrom (3):
-      ci/deqp: backport fix for dEQP-VK.wsi.direct_drm.* bug
-      vc4/ci: add flake
-      radeonsi/ci: udpate expected failures
+Danylo Piliaiev (2):
+      freedreno/devices: Do not write to 8E79 on a750, KGSL has it protected
+      freedreno/replay: Use real queueid for submissions and waits
 
-Georg Lehmann (4):
-      aco/builder: improve v_mul_imm for negative imm
-      aco/builder: use 24bit mul if low bits of imm are zero
-      aco/optimizer: combine v_mul_i32_i24 and add to mad
-      aco: avoid full 32bit imul for uniform reduce/scan
+Echo J (1):
+      nvk: Add NVK to the Vulkan device name
 
-Gert Wollny (1):
-      nir-to-spirv: Cast SSBO input pointer when needed
+Eric Engestrom (1):
+      r300: mark new fails
 
-Juan A. Suarez Romero (3):
-      compiler,gallium: move u_reduced_prim to common
-      v3dv: assume that rasterization state can be NULL
-      v3dv: enable smooth line rendering
+Gert Wollny (2):
+      zink: set handle type also for user memory
+      zink: acquire - maybe clear timeout after waiting for presentation fence
 
-Konstantin Seurer (1):
-      zink: Handle aoa derefs of images
+Iago Toral Quiroga (20):
+      v3dv: fix subpass clear with draw call for multi-layered framebuffers
+      v3dv: always set view index before drawing
+      v3dv: fix copying v3dv_end_query_info into primaries from secondaries
+      v3dv: refactor checking and adding pending jobs
+      v3dv: add a helper to constrain clip window to render area
+      v3dv: add helper to check if we need to use a draw for a depth/stencil clear
+      v3dv: add helper to build a render pass for dynamic rendering
+      v3dv: add a helper to setup a framebuffer for dynamic rendering
+      v3dv: add a vk_render_pass_state to pipelines
+      v3dv: don't assume that pipelines have a render pass
+      v3dv: implement vkCmdBeginRendering and vkCmdEndRendering
+      v3dv: implement dynamic rendering resume/suspend
+      v3dv: rename SECONDARY job type to INCOMPLETE
+      v3dv: fix resume address patching for secondary command buffers
+      v3dv: handle render pass continue flag with dynamic passes
+      v3dv: also emit subpass clears with secondary command buffers
+      v3dv: enable VK_KHR_dynamic_rendering
+      broadcom/ci: skips for tests that don't check for extension support correctly
+      broadcom/ci: add new expected test failures
+      broadcom/ci: add a test that fails only in CI
 
-Mike Blumenkrantz (4):
-      mesa/st: add 'base_serialized_nir'
-      mesa/st: add is_draw_shader param to st_finalize_nir
-      mesa/st: when creating draw shader variants, use the base nir and skip driver opts
-      mesa/st: use sanitized shader keys for feedback draws
+Ian Romanick (1):
+      intel/fs: Don't allow 0 stride on MOV destination
 
-Nikita Popov (1):
-      Pass no-verify-fixpoint option to instcombine in LLVM 18
+Kenneth Graunke (2):
+      ra: Add debug functions for printing spill costs and benefits
+      intel/fs: Avoid generating useless UNDEFs for every SSA def
 
-Valentine Burley (1):
-      tu/rmv: Remove tu_rmv_DebugMarkerSetObjectNameEXT
+Konstantin Seurer (10):
+      ac: Annotate context rolls
+      ac/parse_ib: Replace the parameter list with ac_ib_parser
+      ac/parse_ib: Implement annotations
+      radv: Add support for IB annotations
+      radv: Add an IB annotation layer
+      ac: Improve context roll readability
+      radv: Use radv_buffer_map for parsing IBs
+      radv/rt: Use 32-bit offsets for load_sbt_entry
+      radv: Skip more acceleration structure build markers
+      radv/printf: Use fprintf instead of printf
 
-duncan.hopkins (4):
-      glx: Switched DRI2 functions over to use Apple specific alternatives and extension name.
-      meson: relaxed some meson restrictions on MacOS/Apple allowing for wider build support.
-      apple: Extended Apple feature support using GLX_USE_APPLE.
-      apple: Meson defines GLX_USE_APPLE to allow for Gallium drivers to work on MacOS.
+Lucas Stach (4):
+      etnaviv: don't use int filter for depth textures
+      etnaviv: tex_desc: emit texture comparator
+      etnaviv: fix fixpoint conversion of negative values
+      ci/etnaviv: update expectations
+
+Marek Olšák (3):
+      radeonsi/ci: run GLCTS, ESCTS, and dEQP from the glcts directory
+      radeonsi/ci: update failures
+      Unbreak Viewperf by reverting "util: use crc32_z instead of crc32 and bump zlib dep to 1.2.9"
+
+Mary Guillemard (5):
+      drm-shim: Add io region handling in mmap
+      panfrost: Add support for Panthor in drm-shim
+      docs: Document Mali-G610 in drm-shim section
+      panfrost: group up stubbed params in drm-shim
+      nouveau: Add support for TERT opcodes in vk_push_print
+
+Pierre-Eric Pelloux-Prayer (1):
+      winsys/radeon: pass priv instead NULL to radeon_bo_can_reclaim
+
+Rhys Perry (1):
+      aco/util: add small_vec
+
+Samuel Pitoiset (3):
+      radv: fix occlusion queries with MSAA and no attachments
+      radv: add radv_force_pstate_peak_gfx11_dgpu and enable it for Helldivers 2
+      zink/ci: enable RADV_PERFTEST=shader_object for polaris10
+
+Timur Kristóf (2):
+      radv: Extract input and output stride info to new functions.
+      radv: Use mapped driver locations for determining I/O strides.
+
+Yonggang Luo (1):
+      util: Cleanup strtod.(h|c) by introduce _mesa_get_locale
 
