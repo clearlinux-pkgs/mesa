@@ -1,120 +1,67 @@
-Updating from 995727e57501f7a35eb5e6797124f8ec3d6911a0 to d1cac5ed0566ed02f1a522cc690ab5cda1880ec0
+Updating from d1cac5ed0566ed02f1a522cc690ab5cda1880ec0 to 5ee8fd6b497ce0cbabac199e6e922085b547857a
 
-Caio Oliveira (3):
-      intel/brw: Implement quad_vote_any and quad_vote_all
-      intel/brw: Use predicates for quad_vote_any and quad_vote_all when available
-      anv: Enable VK_KHR_shader_quad_control
+Joshua Ashton (5):
+      anv: Enable EXT_swapchain_maintenance1
+      v3dv: Enable EXT_swapchain_maintenance1
+      lavapipe: Enable EXT_swapchain_maintenance1
+      v3dv: Enable EXT_swapchain_colorspace
+      lavapipe: Enable EXT_swapchain_colorspace
 
-Connor Abbott (15):
-      freedreno/afuc: Decode (peek) modifier
-      freedreno/afuc: Add missing ALU encode case for bic
-      freedreno/afuc: Bump max instructions for a7xx
-      freedreno/afuc: Fix setbit/clrbit parsing
-      freedreno/afuc: Use left recursion in parser
-      freedreno/afuc: Improve jump table handling
-      freedreno/afuc: Add .align directive
-      freedreno/afuc: Add more general T_IDENTIFIER in lexer
-      freedreno/afuc: Add support for multiple sections when assembling
-      freedreno/afuc: Allow -e option on a7xx
-      freedreno/afuc: Emulate THREAD_SYNC on a660
-      freedreno/afuc: Run entire bootstrap routine
-      freedreno/afuc: Add a7xx test case
-      freedreno/afuc: Add magic control reg values for a740
-      freedreno/afuc: Add section on reassembling firmwares and relocations
+Juan A. Suarez Romero (1):
+      broadcom/ci: add new expected failures
 
-Daniel Schürmann (3):
-      aco: reorder code and use namespaces in aco_interface.cpp
-      aco/util: small_vec few additions
-      aco: use small_vec as Block::edge_vec for predecessors and successors
+Juston Li (1):
+      venus: extend device format prop cache with VkFormatProperties3
 
-Danylo Piliaiev (2):
-      freedreno/devices: Do not write to 8E79 on a750, KGSL has it protected
-      freedreno/replay: Use real queueid for submissions and waits
+Kenneth Graunke (3):
+      intel/brw: Split out 64-bit lowering from algebraic optimizations
+      intel/brw: Don't consider UNIFORM_PULL_CONSTANT_LOAD a send-from-GRF
+      intel/brw: Eliminate top-level FIND_LIVE_CHANNEL & BROADCAST once
 
-Echo J (1):
-      nvk: Add NVK to the Vulkan device name
+Lionel Landwerlin (2):
+      anv: track embedded sampler counts in layouts
+      anv: allocate pipeline bindings tables dynamically on the heap
 
-Eric Engestrom (1):
-      r300: mark new fails
+Mark Collins (11):
+      fd/replay: Fix wrbuffer name extraction
+      fd/replay: Dump wrbuf into cwd rather than exe directory
+      fd/replay: Clamp dumped wrbuf to buffer size
+      fd/replay: Clear wrbufs after submitting cmdstreams for DRM
+      fd/replay: Add wrbuf support for KGSL/DXG
+      fd/replay: Error when VMA AS allocation fails
+      fd/replay+rddecompiler: Add option to clear wrbufs at start
+      fd/rddecompiler: Disable IR3 cache for replay context
+      fd/decode: Build generate_rd executable rather
+      fd/replay: Use generate_rd as default CS generator
+      fd/decode: Fix "OPTSIONS" typo in help messages
 
-Gert Wollny (2):
-      zink: set handle type also for user memory
-      zink: acquire - maybe clear timeout after waiting for presentation fence
+Mark Janes (1):
+      intel/dev: remove pci revision from shader cache key
 
-Iago Toral Quiroga (20):
-      v3dv: fix subpass clear with draw call for multi-layered framebuffers
-      v3dv: always set view index before drawing
-      v3dv: fix copying v3dv_end_query_info into primaries from secondaries
-      v3dv: refactor checking and adding pending jobs
-      v3dv: add a helper to constrain clip window to render area
-      v3dv: add helper to check if we need to use a draw for a depth/stencil clear
-      v3dv: add helper to build a render pass for dynamic rendering
-      v3dv: add a helper to setup a framebuffer for dynamic rendering
-      v3dv: add a vk_render_pass_state to pipelines
-      v3dv: don't assume that pipelines have a render pass
-      v3dv: implement vkCmdBeginRendering and vkCmdEndRendering
-      v3dv: implement dynamic rendering resume/suspend
-      v3dv: rename SECONDARY job type to INCOMPLETE
-      v3dv: fix resume address patching for secondary command buffers
-      v3dv: handle render pass continue flag with dynamic passes
-      v3dv: also emit subpass clears with secondary command buffers
-      v3dv: enable VK_KHR_dynamic_rendering
-      broadcom/ci: skips for tests that don't check for extension support correctly
-      broadcom/ci: add new expected test failures
-      broadcom/ci: add a test that fails only in CI
+Mary Strodl (1):
+      rusticl: set OCL_ICD_VENDORS as directory, not file
 
-Ian Romanick (1):
-      intel/fs: Don't allow 0 stride on MOV destination
+Mike Blumenkrantz (1):
+      zink: do io fixup on patch variables too
 
-Kenneth Graunke (2):
-      ra: Add debug functions for printing spill costs and benefits
-      intel/fs: Avoid generating useless UNDEFs for every SSA def
+Nanley Chery (2):
+      iris: Report the correct modifier for Tile4 images
+      iris: Use resource_get_param in resource_get_handle
 
-Konstantin Seurer (10):
-      ac: Annotate context rolls
-      ac/parse_ib: Replace the parameter list with ac_ib_parser
-      ac/parse_ib: Implement annotations
-      radv: Add support for IB annotations
-      radv: Add an IB annotation layer
-      ac: Improve context roll readability
-      radv: Use radv_buffer_map for parsing IBs
-      radv/rt: Use 32-bit offsets for load_sbt_entry
-      radv: Skip more acceleration structure build markers
-      radv/printf: Use fprintf instead of printf
+Rhys Perry (3):
+      radv: use dual_color_blend_by_location with Half-Life Alyx
+      aco/cssa: reset equal_anc_out if merging fails
+      aco/cssa: update comments
 
-Lucas Stach (4):
-      etnaviv: don't use int filter for depth textures
-      etnaviv: tex_desc: emit texture comparator
-      etnaviv: fix fixpoint conversion of negative values
-      ci/etnaviv: update expectations
+Rob Clark (1):
+      freedreno/a6xx: Fix z/s preserving sysmem clear blit
 
-Marek Olšák (3):
-      radeonsi/ci: run GLCTS, ESCTS, and dEQP from the glcts directory
-      radeonsi/ci: update failures
-      Unbreak Viewperf by reverting "util: use crc32_z instead of crc32 and bump zlib dep to 1.2.9"
+Samuel Pitoiset (1):
+      radv: add a workaround for null IBO on GFX6
 
-Mary Guillemard (5):
-      drm-shim: Add io region handling in mmap
-      panfrost: Add support for Panthor in drm-shim
-      docs: Document Mali-G610 in drm-shim section
-      panfrost: group up stubbed params in drm-shim
-      nouveau: Add support for TERT opcodes in vk_push_print
+Timur Kristóf (1):
+      aco: Allow passing constant operand to is_overwritten_since.
 
-Pierre-Eric Pelloux-Prayer (1):
-      winsys/radeon: pass priv instead NULL to radeon_bo_can_reclaim
-
-Rhys Perry (1):
-      aco/util: add small_vec
-
-Samuel Pitoiset (3):
-      radv: fix occlusion queries with MSAA and no attachments
-      radv: add radv_force_pstate_peak_gfx11_dgpu and enable it for Helldivers 2
-      zink/ci: enable RADV_PERFTEST=shader_object for polaris10
-
-Timur Kristóf (2):
-      radv: Extract input and output stride info to new functions.
-      radv: Use mapped driver locations for determining I/O strides.
-
-Yonggang Luo (1):
-      util: Cleanup strtod.(h|c) by introduce _mesa_get_locale
+Zan Dobersek (1):
+      freedreno/fdl: avoid overflow in layout size computations
 
