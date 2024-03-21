@@ -1,67 +1,111 @@
-Updating from d1cac5ed0566ed02f1a522cc690ab5cda1880ec0 to 5ee8fd6b497ce0cbabac199e6e922085b547857a
+Updating from 5ee8fd6b497ce0cbabac199e6e922085b547857a to b2ee98d2dbde3042d9ba40c741a95c511f3a3cd0
 
-Joshua Ashton (5):
-      anv: Enable EXT_swapchain_maintenance1
-      v3dv: Enable EXT_swapchain_maintenance1
-      lavapipe: Enable EXT_swapchain_maintenance1
-      v3dv: Enable EXT_swapchain_colorspace
-      lavapipe: Enable EXT_swapchain_colorspace
+Caio Oliveira (1):
+      intel/brw: Handle Xe2 in brw_fs_opt_zero_samples
 
-Juan A. Suarez Romero (1):
-      broadcom/ci: add new expected failures
+Christian Gmeiner (11):
+      isaspec: Remove not used isa_decode_hook
+      isaspec: deocde: Hide all the internals ISA details
+      isaspec: decode: Add isa specific functions
+      isaspec: decode: Make isa_decode_bitset(..) private
+      freedreno/isa: Rework meson dependency for libir3decode
+      etnaviv: isa: Rework meson dependency for libetnaviv_decode
+      isaspec: deocde: Make isa_bitset arrays static
+      isaspec: deocde: Make isa_decode_field(..) private
+      isaspec: decode: Add libisaspec
+      isaspec: deocde: Remove generic functions from public interface
+      etnaviv: isa: Define a dontcare bit in atomic instructions
 
-Juston Li (1):
-      venus: extend device format prop cache with VkFormatProperties3
+David Heidelberg (1):
+      util: move gen_zipped_file into generic util and rename to gen_zipped_xml_file
 
-Kenneth Graunke (3):
-      intel/brw: Split out 64-bit lowering from algebraic optimizations
-      intel/brw: Don't consider UNIFORM_PULL_CONSTANT_LOAD a send-from-GRF
-      intel/brw: Eliminate top-level FIND_LIVE_CHANNEL & BROADCAST once
+Dylan Baker (1):
+      meson: Allow building intel-clc for the host if it can be run
 
-Lionel Landwerlin (2):
-      anv: track embedded sampler counts in layouts
-      anv: allocate pipeline bindings tables dynamically on the heap
+Echo J (2):
+      nvk: Advertise VK_VALVE_mutable_descriptor_type
+      nvk: Implement calibrated timestamps
 
-Mark Collins (11):
-      fd/replay: Fix wrbuffer name extraction
-      fd/replay: Dump wrbuf into cwd rather than exe directory
-      fd/replay: Clamp dumped wrbuf to buffer size
-      fd/replay: Clear wrbufs after submitting cmdstreams for DRM
-      fd/replay: Add wrbuf support for KGSL/DXG
-      fd/replay: Error when VMA AS allocation fails
-      fd/replay+rddecompiler: Add option to clear wrbufs at start
-      fd/rddecompiler: Disable IR3 cache for replay context
-      fd/decode: Build generate_rd executable rather
-      fd/replay: Use generate_rd as default CS generator
-      fd/decode: Fix "OPTSIONS" typo in help messages
+Eric Engestrom (1):
+      v3dv/ci: update expectations
 
-Mark Janes (1):
-      intel/dev: remove pci revision from shader cache key
+Faith Ekstrand (1):
+      nvk: Move the mutableDescriptorType enable
 
-Mary Strodl (1):
-      rusticl: set OCL_ICD_VENDORS as directory, not file
+Francisco Jerez (10):
+      intel/brw/xe2: Render target reads have been removed from the hardware.
+      intel/brw/xe2+: Update encoding of FB write descriptor message control.
+      intel/brw/xe2+: Update encoding of FB write extended descriptor.
+      intel/brw/xe2+: Double allowed SIMD width of FB write SEND messages.
+      intel/brw/xe2+: Allow FS stencil output in SIMD16 dispatch mode.
+      intel/brw/xe2+: Allow dual-source blending in SIMD16 mode.
+      intel/blorp/xe2+: Don't use replicated-data clears.
+      intel/brw/gfx12: Setup PS thread payload registers required for ALU-based pixel interpolation.
+      intel/brw/xe2+: Setup PS thread payload registers required for ALU-based pixel interpolation.
+      iris/xe2+: Disable coherent framebuffer fetch.
 
-Mike Blumenkrantz (1):
-      zink: do io fixup on patch variables too
+Iago Toral Quiroga (1):
+      broadcom/ci: add skips for unsupported features
 
-Nanley Chery (2):
-      iris: Report the correct modifier for Tile4 images
-      iris: Use resource_get_param in resource_get_handle
+Ian Romanick (3):
+      intel/brw/xe2: Correctly disassemble RT write subtypes
+      intel/brw: Fix handling of accumulator register numbers
+      intel/brw: Allow SIMD16 F and HF type conversion moves
 
-Rhys Perry (3):
-      radv: use dual_color_blend_by_location with Half-Life Alyx
-      aco/cssa: reset equal_anc_out if merging fails
-      aco/cssa: update comments
+José Roberto de Souza (5):
+      intel/tools/error_decode: Fix parsing in Xe decoder
+      intel/tools/error_decode: Add function to print batch in Xe decoder
+      intel/tools/error_decode: Parse HW context in Xe decoder
+      iris: Move tiling_to_modifier() implementation to i915 folder
+      iris: Remove i915_drm.h include from iris_indirect_gen.c
 
-Rob Clark (1):
-      freedreno/a6xx: Fix z/s preserving sysmem clear blit
+Karol Herbst (1):
+      rusticl/util: make create_pipe_box indepentend of pipe_box's field types
+
+Lionel Landwerlin (1):
+      anv: avoid partially compiled warning with GPL
+
+Marek Olšák (2):
+      gallium: use u_box_3d to initialize pipe_box instead of non-designated initializers
+      gallium: increase the size of pipe_box y, height fields to allow bigger textures
+
+Mike Blumenkrantz (3):
+      zink: defer present barrier to flush if a clear is pending
+      zink: clamp present region size
+      zink: clamp swapchain renderarea instead of asserting
+
+Patrick Lerda (1):
+      ac/llvm,radeonsi: fix memory leaks triggered by ac_nir_translate() errors
+
+Paulo Zanoni (1):
+      anv: don't leak device->vma_samplers
+
+Robert Mader (1):
+      crocus: Support offset query for multi-planar planes
+
+Rohan Garg (8):
+      intel/brw: Use the dimensions supplied in the instruction
+      intel/brw: Cleanup send generation
+      intel/brw: Update written size depending on the LSC message
+      intel/brw: Set the right cache control bits for xe2
+      intel/brw: Adjust src1 length bits for xe2+
+      anv,blorp: implement restrictions from WA 1406738321
+      anv: 3D surfaces have fewer layers for higher miplevels
+      isl: enable CCS for 3D surfaces on gen12.5 and above
 
 Samuel Pitoiset (1):
-      radv: add a workaround for null IBO on GFX6
+      zink/ci: update CI lists
 
-Timur Kristóf (1):
-      aco: Allow passing constant operand to is_overwritten_since.
+Valentine Burley (1):
+      nvk: Trivially expose three VK_GOOGLE extensions
 
-Zan Dobersek (1):
-      freedreno/fdl: avoid overflow in layout size computations
+Vignesh Raman (1):
+      Split debian-build-testing job
+
+duncan.hopkins (5):
+      zink: Fixed header location and compiling issue with [[deprecated]] from newer MoltenVK versions.
+      zink: use portability EXT on Apple.
+      zink: stopped the use of VkFormatProperties3 if the reported API is less than 1.3 or VK_KHR_format_feature_flags2 not present.
+      zink: removed `MESA_PRIM_QUADS` from the supported `PIPE_CAP_SUPPORTED_PRIM_MODES`.
+      zink: Avoid issues when kopper tries using XCB WSI on Apple.
 
