@@ -1,111 +1,94 @@
-Updating from 5ee8fd6b497ce0cbabac199e6e922085b547857a to b2ee98d2dbde3042d9ba40c741a95c511f3a3cd0
+Updating from b2ee98d2dbde3042d9ba40c741a95c511f3a3cd0 to 60231e6d6f78ac1251e9ad9c223f482236017f55
 
-Caio Oliveira (1):
-      intel/brw: Handle Xe2 in brw_fs_opt_zero_samples
-
-Christian Gmeiner (11):
-      isaspec: Remove not used isa_decode_hook
-      isaspec: deocde: Hide all the internals ISA details
-      isaspec: decode: Add isa specific functions
-      isaspec: decode: Make isa_decode_bitset(..) private
-      freedreno/isa: Rework meson dependency for libir3decode
-      etnaviv: isa: Rework meson dependency for libetnaviv_decode
-      isaspec: deocde: Make isa_bitset arrays static
-      isaspec: deocde: Make isa_decode_field(..) private
-      isaspec: decode: Add libisaspec
-      isaspec: deocde: Remove generic functions from public interface
-      etnaviv: isa: Define a dontcare bit in atomic instructions
+Benjamin Tissoires (2):
+      .mr-label-maker.yml: fix wrong label
+      CI: add a test for checking the validity of .mr-label-maker.yml
 
 David Heidelberg (1):
-      util: move gen_zipped_file into generic util and rename to gen_zipped_xml_file
+      ci/r300: implement rules for d3d9 testing
+
+Dmitry Baryshkov (9):
+      freedreno/registers: fix generation dependencies
+      freedreno/registers: add missing copyright imports
+      freedreno/registers: inline mdp4_csc group
+      freedreno/registers: fix WB doffsets array in mdp5.xml
+      freedreno/registers: support processing display display headers
+      freedreno/registers: limit the rules schema
+      freedreno/registers: drop unsupported features from schema
+      freedreno/rnn: drop headergen2
+      freedreno/rnn: drop custom aprintf function
 
 Dylan Baker (1):
-      meson: Allow building intel-clc for the host if it can be run
+      intel/brw: track last successful pass and leave the loop early
 
-Echo J (2):
-      nvk: Advertise VK_VALVE_mutable_descriptor_type
-      nvk: Implement calibrated timestamps
+Eric Engestrom (5):
+      v3d/ci: mark spec@ext_framebuffer_blit@fbo-blit-check-limits as fixed
+      vc4/ci: add another `spec@!opengl 1.1@depthstencil-default_fb-drawpixels` flake
+      vc4/ci: add another `spec@arb_vertex_buffer_object@vbo-subdata-many draw` flake
+      v3dv/ci: mark the `dEQP-VK.wsi.*.maintenance1.deferred_alloc.*` flakes seen so far as happening on all platforms
+      v3dv/ci: add other flakes seen during nightly run
 
-Eric Engestrom (1):
-      v3dv/ci: update expectations
+Hans-Kristian Arntzen (1):
+      wsi/wayland: Init outstanding list earlier.
 
-Faith Ekstrand (1):
-      nvk: Move the mutableDescriptorType enable
+Jesse Natalie (2):
+      wgl: Delete unused context param to swap
+      wgl: Check for null before dereferencing ctx in swap
 
-Francisco Jerez (10):
-      intel/brw/xe2: Render target reads have been removed from the hardware.
-      intel/brw/xe2+: Update encoding of FB write descriptor message control.
-      intel/brw/xe2+: Update encoding of FB write extended descriptor.
-      intel/brw/xe2+: Double allowed SIMD width of FB write SEND messages.
-      intel/brw/xe2+: Allow FS stencil output in SIMD16 dispatch mode.
-      intel/brw/xe2+: Allow dual-source blending in SIMD16 mode.
-      intel/blorp/xe2+: Don't use replicated-data clears.
-      intel/brw/gfx12: Setup PS thread payload registers required for ALU-based pixel interpolation.
-      intel/brw/xe2+: Setup PS thread payload registers required for ALU-based pixel interpolation.
-      iris/xe2+: Disable coherent framebuffer fetch.
+Kenneth Graunke (4):
+      intel/brw: Fix check for 64-bit SEL lowering types
+      intel/brw: Assert that min/max are not happening in 64-bit SEL lowering
+      intel/brw: Use correct execution pipe for lowering SEL on DF
+      intel/brw: Unify DF and Q/UQ lowering for MOV
 
-Iago Toral Quiroga (1):
-      broadcom/ci: add skips for unsupported features
+Marek Olšák (9):
+      nir: rename AMD XFB intrinsics to *_gfx11_amd
+      nir,amd: add nir_intrinsic_load_debug_log_desc_amd and its use
+      aco: implement aco_is_gpu_supported using switch statement
+      aco: add a helper printing shader asm by disassembling via LLVM
+      ac/llvm: remove remnants of gfx10 NGG streamout
+      radeonsi: implement the shader debug log from ac_nir_store_debug_log_amd
+      nir/validate: validate interp_mode of load_barycentric_*
+      nir/lower_io: add nir_io_semantics::interp_explicit_strict
+      nir/validate: validate more fields of nir_io_semantics
 
-Ian Romanick (3):
-      intel/brw/xe2: Correctly disassemble RT write subtypes
-      intel/brw: Fix handling of accumulator register numbers
-      intel/brw: Allow SIMD16 F and HF type conversion moves
+Mark Janes (1):
+      intel/compiler: drop unused ray-tracing fields from cache hash
 
-José Roberto de Souza (5):
-      intel/tools/error_decode: Fix parsing in Xe decoder
-      intel/tools/error_decode: Add function to print batch in Xe decoder
-      intel/tools/error_decode: Parse HW context in Xe decoder
-      iris: Move tiling_to_modifier() implementation to i915 folder
-      iris: Remove i915_drm.h include from iris_indirect_gen.c
+Matthew Waters (1):
+      teximage: allow glCopyTex{Sub}Image[123]D into R/RG textures with OpenGL ES 2.0
 
-Karol Herbst (1):
-      rusticl/util: make create_pipe_box indepentend of pipe_box's field types
+Pierre-Eric Pelloux-Prayer (2):
+      radeonsi: preserve alpha if needed in kill_ps_outputs_cb
+      amd: fix addrlib regression
 
-Lionel Landwerlin (1):
-      anv: avoid partially compiled warning with GPL
+Rhys Perry (9):
+      aco: fix GFX6 buffer_load_dwordx4 opcode number
+      aco: rename opcode->instruction
+      aco: refactor VOPC opcode list
+      aco: use single tuple for all opcode numbers
+      aco: use op()
+      aco: move dot/wmma instructions into VOP3P list
+      aco: unify MIMG opcode lists
+      aco/gfx11: fix scratch ST mode assembly
+      aco: split instruction assembly into functions
 
-Marek Olšák (2):
-      gallium: use u_box_3d to initialize pipe_box instead of non-designated initializers
-      gallium: increase the size of pipe_box y, height fields to allow bigger textures
+Samuel Pitoiset (3):
+      radv: always export MRTZ in FS epilogs with ESO on GFX11
+      radv: trigger a new PS epilog when the framebuffer is dirty with ESO
+      zink/ci: allow RADV_PERFTEST=shader_object on NAVI31
 
-Mike Blumenkrantz (3):
-      zink: defer present barrier to flush if a clear is pending
-      zink: clamp present region size
-      zink: clamp swapchain renderarea instead of asserting
+Thomas H.P. Andersen (2):
+      nvk: support driconf option force_vk_vendor
+      driconf: override vendor id for X4 Foundations on NVK
 
-Patrick Lerda (1):
-      ac/llvm,radeonsi: fix memory leaks triggered by ac_nir_translate() errors
+Yonggang Luo (4):
+      meson: Extract with_mesa_debug and with_mesa_ndebug for latter usage
+      meson: Define MESA_DEBUG for latter usage
+      treewide: Replace usage of macro DEBUG with MESA_DEBUG when possible
+      meson: Remove the non-used -DDEBUG manually
 
-Paulo Zanoni (1):
-      anv: don't leak device->vma_samplers
-
-Robert Mader (1):
-      crocus: Support offset query for multi-planar planes
-
-Rohan Garg (8):
-      intel/brw: Use the dimensions supplied in the instruction
-      intel/brw: Cleanup send generation
-      intel/brw: Update written size depending on the LSC message
-      intel/brw: Set the right cache control bits for xe2
-      intel/brw: Adjust src1 length bits for xe2+
-      anv,blorp: implement restrictions from WA 1406738321
-      anv: 3D surfaces have fewer layers for higher miplevels
-      isl: enable CCS for 3D surfaces on gen12.5 and above
-
-Samuel Pitoiset (1):
-      zink/ci: update CI lists
-
-Valentine Burley (1):
-      nvk: Trivially expose three VK_GOOGLE extensions
-
-Vignesh Raman (1):
-      Split debian-build-testing job
-
-duncan.hopkins (5):
-      zink: Fixed header location and compiling issue with [[deprecated]] from newer MoltenVK versions.
-      zink: use portability EXT on Apple.
-      zink: stopped the use of VkFormatProperties3 if the reported API is less than 1.3 or VK_KHR_format_feature_flags2 not present.
-      zink: removed `MESA_PRIM_QUADS` from the supported `PIPE_CAP_SUPPORTED_PRIM_MODES`.
-      zink: Avoid issues when kopper tries using XCB WSI on Apple.
+duncan.hopkins (2):
+      zink/apple: added `moltenvk-dir` search to allow MoltenVK to be sourced from brew.
+      zink/apple: update docs to reflect the current status of Zink on macOS.
 
