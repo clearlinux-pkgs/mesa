@@ -1,94 +1,12 @@
-Updating from b2ee98d2dbde3042d9ba40c741a95c511f3a3cd0 to 60231e6d6f78ac1251e9ad9c223f482236017f55
+Updating from 60231e6d6f78ac1251e9ad9c223f482236017f55 to 72e1e6e120611e4df020fa0f77e8048568796ec5
 
-Benjamin Tissoires (2):
-      .mr-label-maker.yml: fix wrong label
-      CI: add a test for checking the validity of .mr-label-maker.yml
+Eric Engestrom (1):
+      ci: fix shader-db job existence condition
 
-David Heidelberg (1):
-      ci/r300: implement rules for d3d9 testing
+Ian Romanick (1):
+      intel/brw: Remove last vestiges of could_coissue
 
-Dmitry Baryshkov (9):
-      freedreno/registers: fix generation dependencies
-      freedreno/registers: add missing copyright imports
-      freedreno/registers: inline mdp4_csc group
-      freedreno/registers: fix WB doffsets array in mdp5.xml
-      freedreno/registers: support processing display display headers
-      freedreno/registers: limit the rules schema
-      freedreno/registers: drop unsupported features from schema
-      freedreno/rnn: drop headergen2
-      freedreno/rnn: drop custom aprintf function
-
-Dylan Baker (1):
-      intel/brw: track last successful pass and leave the loop early
-
-Eric Engestrom (5):
-      v3d/ci: mark spec@ext_framebuffer_blit@fbo-blit-check-limits as fixed
-      vc4/ci: add another `spec@!opengl 1.1@depthstencil-default_fb-drawpixels` flake
-      vc4/ci: add another `spec@arb_vertex_buffer_object@vbo-subdata-many draw` flake
-      v3dv/ci: mark the `dEQP-VK.wsi.*.maintenance1.deferred_alloc.*` flakes seen so far as happening on all platforms
-      v3dv/ci: add other flakes seen during nightly run
-
-Hans-Kristian Arntzen (1):
-      wsi/wayland: Init outstanding list earlier.
-
-Jesse Natalie (2):
-      wgl: Delete unused context param to swap
-      wgl: Check for null before dereferencing ctx in swap
-
-Kenneth Graunke (4):
-      intel/brw: Fix check for 64-bit SEL lowering types
-      intel/brw: Assert that min/max are not happening in 64-bit SEL lowering
-      intel/brw: Use correct execution pipe for lowering SEL on DF
-      intel/brw: Unify DF and Q/UQ lowering for MOV
-
-Marek Olšák (9):
-      nir: rename AMD XFB intrinsics to *_gfx11_amd
-      nir,amd: add nir_intrinsic_load_debug_log_desc_amd and its use
-      aco: implement aco_is_gpu_supported using switch statement
-      aco: add a helper printing shader asm by disassembling via LLVM
-      ac/llvm: remove remnants of gfx10 NGG streamout
-      radeonsi: implement the shader debug log from ac_nir_store_debug_log_amd
-      nir/validate: validate interp_mode of load_barycentric_*
-      nir/lower_io: add nir_io_semantics::interp_explicit_strict
-      nir/validate: validate more fields of nir_io_semantics
-
-Mark Janes (1):
-      intel/compiler: drop unused ray-tracing fields from cache hash
-
-Matthew Waters (1):
-      teximage: allow glCopyTex{Sub}Image[123]D into R/RG textures with OpenGL ES 2.0
-
-Pierre-Eric Pelloux-Prayer (2):
-      radeonsi: preserve alpha if needed in kill_ps_outputs_cb
-      amd: fix addrlib regression
-
-Rhys Perry (9):
-      aco: fix GFX6 buffer_load_dwordx4 opcode number
-      aco: rename opcode->instruction
-      aco: refactor VOPC opcode list
-      aco: use single tuple for all opcode numbers
-      aco: use op()
-      aco: move dot/wmma instructions into VOP3P list
-      aco: unify MIMG opcode lists
-      aco/gfx11: fix scratch ST mode assembly
-      aco: split instruction assembly into functions
-
-Samuel Pitoiset (3):
-      radv: always export MRTZ in FS epilogs with ESO on GFX11
-      radv: trigger a new PS epilog when the framebuffer is dirty with ESO
-      zink/ci: allow RADV_PERFTEST=shader_object on NAVI31
-
-Thomas H.P. Andersen (2):
-      nvk: support driconf option force_vk_vendor
-      driconf: override vendor id for X4 Foundations on NVK
-
-Yonggang Luo (4):
-      meson: Extract with_mesa_debug and with_mesa_ndebug for latter usage
-      meson: Define MESA_DEBUG for latter usage
-      treewide: Replace usage of macro DEBUG with MESA_DEBUG when possible
-      meson: Remove the non-used -DDEBUG manually
-
-duncan.hopkins (2):
-      zink/apple: added `moltenvk-dir` search to allow MoltenVK to be sourced from brew.
-      zink/apple: update docs to reflect the current status of Zink on macOS.
+Paulo Zanoni (2):
+      anv: set shaderFloat64 to true when fp64_workaround_enabled
+      driconf/anv: set fp64_workaround_enabled to DIRT 5
 
