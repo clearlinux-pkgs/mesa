@@ -1,21 +1,124 @@
-Updating from 72e1e6e120611e4df020fa0f77e8048568796ec5 to f351e4be11e2dbcfe99d0c0219ebdfd99e14b629
+Updating from f351e4be11e2dbcfe99d0c0219ebdfd99e14b629 to bf5d203f240bf26d74c63127a8bc62745972242e
 
-Alan Liu (1):
-      radeonsi/vpe: support vpe 1.1
+Boris Brezillon (1):
+      panvk: Disable global offset on varying and non-VS attribute descriptors
 
-Eric Engestrom (6):
-      v3dv/ci: assume dEQP-VK.wsi.wayland.swapchain.simulate_oom.* have been fixed
-      v3dv/ci: add more flakes
-      v3dv/ci: assume list of dEQP-VK.wsi.*.maintenance1.present_modes.* flakes is the same between xcb & xlib and between rpi4 & rpi5
-      ci: enable MESA_VK_ABORT_ON_DEVICE_LOSS globally
-      ci/deqp-runner: split gl & gles groups to use the correct binary
-      ci/deqp-runner: print deqp-gles version log as well
+Christian Gmeiner (16):
+      etnaviv: isa: Add name attributes
+      etnaviv: isa: Generate c header containing enums
+      etnaviv: isa: Generate opcode enum
+      etnaviv: isa: Add an empty libetnaviv_encode
+      etnaviv: Link against libetnaviv_encode
+      etnaviv: Move struct etna_inst to src/etnaviv
+      etnaviv: isa: Make use of generated enums
+      etnaviv: isa: Add rouding to etna_inst
+      etnaviv: Set dst.use for MOVAR
+      etnaviv: isa: Add encode support
+      etnaviv: isa: Add isa_assemble_instruction(..)
+      etnaviv: Switch to isa_assemble_instruction(..)
+      etnaviv: Move swizzle related macros to scr/etnaviv
+      etnaviv: Switch to macros from isa.h
+      etnaviv: Remove isa.xml.h
+      etnaviv: Do not set tex.amode for rounding
 
-Jesse Natalie (1):
-      nir_tests: Add /bigobj when compiling with MSVC
+Daniel Schürmann (13):
+      aco/spill: refactor SSA repairing
+      aco/spill: don't allocate extra spill_id for phi operands in add_coupling_code()
+      aco/spill: add spills_entry interferences only when necessary
+      aco/spill: refactor adding spilled vars into separate function add_to_spills()
+      aco/spill: keep live-out variables spilled at branch blocks
+      aco/spill: don't prefer to spill phis at merge blocks
+      aco/spill: add interferences with variables spilled at loop headers
+      aco/spill: avoid re-spilling loop-carried variables in process_block()
+      aco/spill: avoid re-spilling loop-carried variables in add_coupling_code()
+      aco/spill: keep loop-carried variables spilled at loop headers
+      aco/spill: keep loop-carried variables spilled at merge blocks
+      aco/spill: select more loop-carried variables to be spilled
+      aco/spill: keep loop variables spilled during nested loops
 
-Lucas Fryzek (3):
-      egl/wayland/sw: don't invert y `wl_surface_damage_buffer`
-      drisw/winsys: Flip y coordinate when creating pipe boxes
-      drisw: clamp damage region to texture bounds
+Danylo Piliaiev (1):
+      freedreno,tu/a7xx: Add PC_TESS_PARAM_SIZE and PC_TESS_FACTOR_SIZE
+
+Dave Airlie (1):
+      radv/video: fix h265 decode with unaligned w/h
+
+Dylan Baker (1):
+      nvk: drop meson version check that is always true
+
+Eric Engestrom (3):
+      ci: deduplicate converting the current job runtime into %M:%S
+      ci: convert the job start date into a timestamp only once
+      ci: simplify unnecessarily complex printf
+
+Faith Ekstrand (25):
+      nir: Take a nir_def in nir_goto_if()
+      nir/print: Inline print_ssa_use()
+      nir/builder: Correctly handle decl_reg or undef as the first instruction
+      nir: Improve the comment for nir_block::imm_dom
+      nir: Add a sort_unstructured_blocks() helper
+      nir: Validate that unstructured blocks are in reverse PDFS order
+      nir/lower_reg: Remove dead reg_decl intrinsics
+      nir/lower_reg: Support unstructured control-flow
+      nir/repair_ssa: Support unstructured control-flow
+      nir/gather_types: Support unstructured control-flow
+      nir: Mark divergent regs in phis_to_regs_block()
+      nir: Add a lower_terminate_to_demote pass
+      nak: Add a copy_fs_outputs_nv intrinsic
+      nak: Move barrier removal into its own pass
+      nak: Add a condition to bar_break_nv
+      nak/nir: Add a control-flow lowering pass
+      nak: Add more NIR wrappers for walking the NIR CFG
+      nak: Add NIR helpers for jump instructions
+      nak: Add helpers for emitting jumps
+      nak: Handle unstructured NIR
+      nak: Use the new lowering pass on SM70+
+      nak: Remove the old barriers pass
+      nak/nir: Use nir_lower_terminate_to_demote()
+      nvk: Advertise VK_KHR_shader_maximal_reconvergence
+      nvk: Advertise VK_KHR_shader_subgroup_uniform_control_flow
+
+Jesse Natalie (6):
+      dzn: Include vulkan_core.h instead of vulkan.h in the device enum header
+      dzn: Initialize memoryTypeBits for querying properties on imported handles
+      microsoft/compiler: domainLocation component index needs to be i8
+      microsoft/compiler: Disable GS streams workaround for validator 1.8
+      ci/windows: Update DirectX-Headers, Agility SDK, zlib, DXC, and WARP
+      ci/debian: Update DirectX-Headers
+
+José Roberto de Souza (1):
+      intel/decoder: Fix binding table pointer entry being marked as invalid
+
+Mike Blumenkrantz (1):
+      zink: set dynamic rendering color attachment layouts
+
+Rob Clark (6):
+      freedreno/pps: Don't re-init perfcntrs
+      freedreno: Add bo usage hints
+      freedreno/drm: Add perfetto memory tracing
+      tu: Add perfetto memory tracing
+      pps: Enable memory traces
+      pps: Config tweaks to avoid loosing traces
+
+Ruijing Dong (3):
+      radeonsi/vcn: add enc surface alignment caps
+      frontends/va: add surface alignment attribute
+      radeonsi/vcn: update to use correct padding size.
+
+Samuel Pitoiset (3):
+      radv: invalidate L2 metadata for VK_ACCESS_2_MEMORY_READ_BIT
+      radv: make sure to disable NGG culling with TES when the FS stage is unknown
+      zink/ci: enable RADV_PERFTEST=shader_object for NAVI10/VANGOGH
+
+Yiwei Zhang (7):
+      venus: avoid excessive ring notifications
+      venus: further reduce idle timeout from 5ms to 1ms
+      venus: add enum vn_relax_reason
+      venus: avoid constant busy wait for query result waiting
+      venus: deprecate unused perf env vars
+      venus: decorate cmd enqueue macro internals with compiler hints
+      venus: add a more relaxed polling strategy
+
+Yusuf Khan (2):
+      nvk: remove some dead code files
+      nvk: fix valve segfault from setting a descriptor set from NULL
 
