@@ -1,124 +1,82 @@
-Updating from f351e4be11e2dbcfe99d0c0219ebdfd99e14b629 to bf5d203f240bf26d74c63127a8bc62745972242e
+Updating from bf5d203f240bf26d74c63127a8bc62745972242e to 9e3932e99018bbb3ae0ae716bd7d9f53fcebf698
 
-Boris Brezillon (1):
-      panvk: Disable global offset on varying and non-VS attribute descriptors
+Boris Brezillon (7):
+      panfrost: Move the image attribute offset adjustment to a NIR pass
+      panvk: Implement dynamic rendering entry points
+      nir: Extend nir_get_io_offset_src_number() to support load_push_constant
+      nir: Extend nir_lower_mem_access_bit_sizes() to support push constants
+      pan/bi: Lower push constant accesses
+      pan/bi: Lower load_push_constant with dynamic indexing
+      pan/bi: Update the push constant count when emitting load_push_constant
 
-Christian Gmeiner (16):
-      etnaviv: isa: Add name attributes
-      etnaviv: isa: Generate c header containing enums
-      etnaviv: isa: Generate opcode enum
-      etnaviv: isa: Add an empty libetnaviv_encode
-      etnaviv: Link against libetnaviv_encode
-      etnaviv: Move struct etna_inst to src/etnaviv
-      etnaviv: isa: Make use of generated enums
-      etnaviv: isa: Add rouding to etna_inst
-      etnaviv: Set dst.use for MOVAR
-      etnaviv: isa: Add encode support
-      etnaviv: isa: Add isa_assemble_instruction(..)
-      etnaviv: Switch to isa_assemble_instruction(..)
-      etnaviv: Move swizzle related macros to scr/etnaviv
-      etnaviv: Switch to macros from isa.h
-      etnaviv: Remove isa.xml.h
-      etnaviv: Do not set tex.amode for rounding
+Charlie Turner (1):
+      {vulkan,radv,anv}/video: fix issue in H264 scaling lists derivation
 
-Daniel Schürmann (13):
-      aco/spill: refactor SSA repairing
-      aco/spill: don't allocate extra spill_id for phi operands in add_coupling_code()
-      aco/spill: add spills_entry interferences only when necessary
-      aco/spill: refactor adding spilled vars into separate function add_to_spills()
-      aco/spill: keep live-out variables spilled at branch blocks
-      aco/spill: don't prefer to spill phis at merge blocks
-      aco/spill: add interferences with variables spilled at loop headers
-      aco/spill: avoid re-spilling loop-carried variables in process_block()
-      aco/spill: avoid re-spilling loop-carried variables in add_coupling_code()
-      aco/spill: keep loop-carried variables spilled at loop headers
-      aco/spill: keep loop-carried variables spilled at merge blocks
-      aco/spill: select more loop-carried variables to be spilled
-      aco/spill: keep loop variables spilled during nested loops
+Danylo Piliaiev (3):
+      tu: Update RP state depending on pipeline in first RP draw
+      tu: Emit non-draw-state state at the first draw call
+      freedreno/devices: Add A740v3 from Quest 3
 
-Danylo Piliaiev (1):
-      freedreno,tu/a7xx: Add PC_TESS_PARAM_SIZE and PC_TESS_FACTOR_SIZE
+Eric Engestrom (2):
+      radv/ci: sort tahiti flakes
+      radv/ci: add a bunch of flakes seen recently
 
-Dave Airlie (1):
-      radv/video: fix h265 decode with unaligned w/h
+Faith Ekstrand (12):
+      nak/nir: Emit nir_intrinsic_ald_nv directly for system values
+      nak/nir: Rename load_interpolated_input
+      nak/nir: Add a load_fs_input hepler for flat inputs
+      nak/nir: Emit nir_intrinsic_ipa_nv directly for FS system values
+      nak/nir: Use nir_io_semantics for varyings and attributes
+      nak: Break lower_fs_inputs into its own file
+      nak/nir: Clean up lower_fs_inputs a bit
+      nak: Call nir_lower_io_to_temporaries for FS outputs
+      nak/nir: Use nir_io_semantics for FS outputs
+      nak: Drop lower_io_arrays_to_elements_no_indirects for FS outputs
+      nak: Simplify over-all I/O lowering
+      nak: Don't write undefined FS outputs
 
-Dylan Baker (1):
-      nvk: drop meson version check that is always true
+Gert Wollny (1):
+      nir_to_spirv: Allow LOD for external images
 
-Eric Engestrom (3):
-      ci: deduplicate converting the current job runtime into %M:%S
-      ci: convert the job start date into a timestamp only once
-      ci: simplify unnecessarily complex printf
+Iago Toral Quiroga (1):
+      v3dv: fix image creation when exceeding maxResourceSize
 
-Faith Ekstrand (25):
-      nir: Take a nir_def in nir_goto_if()
-      nir/print: Inline print_ssa_use()
-      nir/builder: Correctly handle decl_reg or undef as the first instruction
-      nir: Improve the comment for nir_block::imm_dom
-      nir: Add a sort_unstructured_blocks() helper
-      nir: Validate that unstructured blocks are in reverse PDFS order
-      nir/lower_reg: Remove dead reg_decl intrinsics
-      nir/lower_reg: Support unstructured control-flow
-      nir/repair_ssa: Support unstructured control-flow
-      nir/gather_types: Support unstructured control-flow
-      nir: Mark divergent regs in phis_to_regs_block()
-      nir: Add a lower_terminate_to_demote pass
-      nak: Add a copy_fs_outputs_nv intrinsic
-      nak: Move barrier removal into its own pass
-      nak: Add a condition to bar_break_nv
-      nak/nir: Add a control-flow lowering pass
-      nak: Add more NIR wrappers for walking the NIR CFG
-      nak: Add NIR helpers for jump instructions
-      nak: Add helpers for emitting jumps
-      nak: Handle unstructured NIR
-      nak: Use the new lowering pass on SM70+
-      nak: Remove the old barriers pass
-      nak/nir: Use nir_lower_terminate_to_demote()
-      nvk: Advertise VK_KHR_shader_maximal_reconvergence
-      nvk: Advertise VK_KHR_shader_subgroup_uniform_control_flow
+Jan Beich (1):
+      util: mimic KCMP_FILE via KERN_FILE on DragonFly and FreeBSD
 
-Jesse Natalie (6):
-      dzn: Include vulkan_core.h instead of vulkan.h in the device enum header
-      dzn: Initialize memoryTypeBits for querying properties on imported handles
-      microsoft/compiler: domainLocation component index needs to be i8
-      microsoft/compiler: Disable GS streams workaround for validator 1.8
-      ci/windows: Update DirectX-Headers, Agility SDK, zlib, DXC, and WARP
-      ci/debian: Update DirectX-Headers
+Jesse Natalie (8):
+      nir: Handle ptr_as_array for build_deref_follower
+      microsoft/compiler: Don't store static-indexing handles that are dynamically emitted
+      microsoft/clc: When possible, compute a part-constant "pointer" value for kernel inputs
+      microsoft/compiler: Simplify code emitting CL globals
+      clc: Move libclc helpers back to microsoft/clc
+      microsoft/clc: Add linkage capability to libclc build to silence warning
+      microsoft/clc: Adjust order of UAV binding assignment
+      microsoft/clc: Install clon12compiler
 
-José Roberto de Souza (1):
-      intel/decoder: Fix binding table pointer entry being marked as invalid
+Kenneth Graunke (1):
+      Revert "intel/brw: Don't consider UNIFORM_PULL_CONSTANT_LOAD a send-from-GRF"
 
-Mike Blumenkrantz (1):
-      zink: set dynamic rendering color attachment layouts
+Lionel Landwerlin (6):
+      blorp: handle a few allocation failure cases
+      anv: fix invalid border color free
+      anv: fix block pool allocation failure
+      anv: fix temporary state pool allocation failures
+      anv: fix bitfield checks in gfx runtime flushing
+      anv: fix query clearing with blorp compute operations
 
-Rob Clark (6):
-      freedreno/pps: Don't re-init perfcntrs
-      freedreno: Add bo usage hints
-      freedreno/drm: Add perfetto memory tracing
-      tu: Add perfetto memory tracing
-      pps: Enable memory traces
-      pps: Config tweaks to avoid loosing traces
+Patrick Lerda (1):
+      r300: fix NIR passes regression
 
-Ruijing Dong (3):
-      radeonsi/vcn: add enc surface alignment caps
-      frontends/va: add surface alignment attribute
-      radeonsi/vcn: update to use correct padding size.
+Rob Clark (1):
+      freedreno/registers: Add license header
 
-Samuel Pitoiset (3):
-      radv: invalidate L2 metadata for VK_ACCESS_2_MEMORY_READ_BIT
-      radv: make sure to disable NGG culling with TES when the FS stage is unknown
-      zink/ci: enable RADV_PERFTEST=shader_object for NAVI10/VANGOGH
+Sil Vilerino (1):
+      d3d12: Implement PIPE_VIDEO_CAP_ENC_SURFACE_ALIGNMENT
 
-Yiwei Zhang (7):
-      venus: avoid excessive ring notifications
-      venus: further reduce idle timeout from 5ms to 1ms
-      venus: add enum vn_relax_reason
-      venus: avoid constant busy wait for query result waiting
-      venus: deprecate unused perf env vars
-      venus: decorate cmd enqueue macro internals with compiler hints
-      venus: add a more relaxed polling strategy
-
-Yusuf Khan (2):
-      nvk: remove some dead code files
-      nvk: fix valve segfault from setting a descriptor set from NULL
+Valentine Burley (4):
+      tu: Expose VK_KHR_surface_protected_capabilities
+      tu: Trivially expose three VK_GOOGLE extensions
+      docs: Update features.txt for tu
+      docs: Update features.txt and new_features.txt for anv and nvk
 
