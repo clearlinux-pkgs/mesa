@@ -1,137 +1,69 @@
-Updating from 9e3932e99018bbb3ae0ae716bd7d9f53fcebf698 to 46127a4ba747b98e76071361f3eb85480e772e43
-
-Boris Brezillon (37):
-      panvk: Move some macros to panvk_macros.h
-      panvk: Move image related definitions to panvk_image.{h,c}
-      panvk: Move the VkBuffer logic to its own source file
-      panvk: Move the VkBufferView logic to its own file
-      panvk: Move the VkDeviceMemory logic to panvk_device_memory.{c,h}
-      panvk: Move the VkSampler logic to its own file
-      panvk: Move panvk_pipeline definition to panvk_pipeline.h
-      panvk: Move VkImageView logic to its own source files
-      panvk: Move the VkEvent logic to panvk_event.{c,h}
-      panvk: Move panvk_descriptor_{set,pool} definitions to panvk_descriptor_set.h
-      panvk: Move VkDescriptorSetLayout logic to panvk_descriptor_set_layout.{c,h}
-      panvk: Move VkPipelineLayout logic to its own file
-      panvk: Move shader related definitions to panvk_[vX_]shader.{c,h}
-      panvk: Kill panvk_[vX_]cs.{c,h}
-      panvk: Move panvk_{draw,dispatch}_info definitions to panvk_vX_cmd_buffer.c
-      panvk: Move the VkCommandPool logic to panvk_cmd_pool.{c,h}
-      panvk: Move VkQueue logic to panvk_[vX_]queue.{c,h}
-      panvk: Add a panvk_arch_dispatch_ret() variant
-      panvk: Make the device creation/destruction per-arch
-      panvk: Move the VkInstance logic to panvk_instance.{c,h}
-      panvk: Move the VkPhysicalDevice logic to panvk_physical_device.{c,h}
-      panvk: Move panvk_meta definitions to panvk_meta.h
-      panvk: Move panvk_device definition to panvk_device.h
-      panvk: Move the panvk_cmd_buffer definitions in panvk_cmd_buffer.h
-      panvk: Move the panvk_priv_bo logic to panvk_priv_bo.{c,h}
-      panvk: Move panvk_wsi definitions to panvk_wsi.h
-      panvk: Kill panvk_private.h
-      panvk: Make panvk_buffer_view per-gen
-      panvk: Make panvk_image_view per-gen
-      panvk: Make panvk_sampler a per-gen
-      panvk: Make panvk_cmd_buffer per-gen
-      panvk: Make panvk_shader per-gen
-      panvk: Make panvk_descriptor_set per-gen
-      panvk: Make panvk_descriptor_set_layout per-gen
-      panvk: Make panvk_pipeline per-gen
-      panvk: Make panvk_queue per-gen
-      panvk: Make panvk_pipeline_layout per-gen
-
-Christian Gmeiner (1):
-      ci/etnaviv: Remove duplicates
-
-Corentin Noël (1):
-      zink: Removed unused function
+Updating from 9fad2922fb4e1b7fc5e657980fdbdcd0baec106d to 1b6c9a8f68549666310efb57334a941d0c5d5d00
 
 David Heidelberg (1):
-      ci/svga: add missed test and gl-rules include
+      docs: we support EGL 1.5 for a long time
 
-David Stern (1):
-      vulkan/wsi/x11: Explicitly discard errors from xcb_present_pixmap.
+Eric Engestrom (21):
+      docs: mesa also implements gles 3.0+
+      docs/egl: various wording improvements
+      ci: take kws farm offline
+      ci: restore kws farm
+      radv/ci: simplify tahiti flakes list
+      ci: fold .test-check into its only user, python-test
+      ci: run python-test when editing the CI itself
+      ci: run python-test automatically only in merge pipelines
+      docs/macos: drop reference to former github mirror
+      docs/nir: vec4 reference
+      docs/envvars: fix reference
+      docs/isl: fix references to ISL_AUX_USAGE_CCS_*
+      docs/isl: stop trying to link to classic drivers code
+      docs/isl: VK_FORMAT_xxx_PACKEDn is not a real format, don't try to link to it
+      docs/isl: fix enum references
+      docs: fix inline c identifier reference -> inline code
+      isl: fix inline c identifier reference -> inline code
+      nir: add missing stdint include
+      docs/anv: fix envvar documentation
+      docs/nvk: fix envvar documentation
+      ci: mark vmware farm as offline
 
-Eric Engestrom (8):
-      v3dv/ci: track regression
-      rpi/ci: add flakes
-      radv/ci: add more flakes
-      v3dv/ci: add more flakes
-      docs: update calendar for 24.0.3
-      docs: update calendar for 24.0.4
-      docs: add release notes for 24.0.4
-      docs: add sha256sum for 24.0.4
+Kenneth Graunke (6):
+      intel/brw: Fix generate_mov_indirect to check has_64bit_int not float
+      intel/brw: Fix lower_regioning for BROADCAST, MOV_INDIRECT on Q types
+      intel/brw: Update comments for indirect MOV splitting
+      intel/brw: Don't mention gfx7 limitations in shuffle comments
+      intel/brw: Drop dead CHV checks.
+      intel/brw: Drop align16 support in brw_broadcast()
 
-Erik Faye-Lund (1):
-      gallium: remove always-false parameter
+Paulo Zanoni (2):
+      anv/xe: don't leak xe_syncs during trtt submission
+      anv/xe: don't overwrite the result from vk_sync_wait()
 
-Job Noorman (1):
-      freedreno/registers: fix installation of schema
+Samuel Pitoiset (13):
+      radv: implement alpha-to-one
+      radv: advertise alphaToOne
+      radv: advertise extendedDynamicState3AlphaToOneEnable with ACO
+      docs: add alpha-to-one features for RADV
+      radv: rename radv_physical_device variables to pdev everywhere
+      radv/winsys: rename gpu_info to pci_ids in the null winsys
+      radv: rename radeon_info variables to gpu_info everywhere
+      radv: rename radv_physical_device::rad_info to info
+      radv: remove radv_device::physical_device
+      radv: remove radv_queue::device
+      radv: remove radv_cmd_buffer::device
+      radv: remove radv_device::instance
+      radv: remove radv_physical_device::instance
 
-Kenneth Graunke (9):
-      intel/brw: Fix opt_split_sends() to allow for FIXED_GRF send sources
-      intel/brw: Fix register coalescing's LOAD_PAYLOAD dst offset handling
-      intel/brw: Fix destination stride assertion in copy propagation
-      intel/brw: Allow changing types for LOAD_PAYLOAD with 1 source
-      intel/brw: Delete brw_fs_lower_minmax
-      anv, hasvk: Save the original instance ID
-      anv, hasvk: Move multiview remapping loop below output stores
-      anv, hasvk: Fix nir_lower_multiview to re-emit outputs before EmitVertex
-      intel/brw: Stop checking mlen on math opcodes in CSE pass
+Sathishkumar S (3):
+      ac/gpu_info: fix regression in vulkan hw decode
+      radeonsi/vcn: use num_instances from radeon_info
+      ac/gpu_info: update multimedia info
 
-Lionel Landwerlin (3):
-      blorp: add support for cached dynamic states
-      anv: reduce blorp dynamic state emissions
-      anv: optimize emission of dynamic state with blorp
+Sergi Blanch Torne (1):
+      ci: Nightly run expectations update
 
-Lucas Stach (1):
-      etnaviv: fix depth writes without testing
+Tapani Pälli (1):
+      anv: disable fcv optimization on >= gfx125
 
-Martin Krastev (2):
-      svga/ci: land vmware mesa-ci lava farm
-      svga/ci: workaround vmware farm's inability to use public DNS 8.8.8.8
-
-Mary Guillemard (1):
-      nouveau: Fix NINC TERT handling in vk_push_print
-
-Mike Blumenkrantz (4):
-      radv: inline radv_device_fault_detection_enabled
-      ci: bump VVL to v1.3.281
-      nir/divergence: add zink intrinsics
-      nir/opt_varyings: update alu type when rewriting src/dest for moved ops
-
-Philipp Zabel (1):
-      rusticl: work around reference-to-mutable-static warnings
-
-Samuel Pitoiset (12):
-      radv/rmv: add missing logging when sparse BOs are destroyed
-      radv/rmv: add missing logging when events are destroyed
-      radv/rmv: fix logging of per-queue destroyed BOs
-      radv/rmv: fix logging sparse residency
-      radv/winsys: move BO size to radeon_winsys_bo
-      radv/rmv: remove BO size parameter in radv_rmv_log_bo_allocate()
-      radv: make some create resources helpers static
-      radv/rmv: remove unnecessary is_internal parameter to some helpers
-      radv: add radv_bo_{create,destroy}() helpers
-      radv/rmv: prevent logging BOs allocated in GDS/OA domains
-      radv/rmv: log allocated/destroyed BOs in radv_buffer_{create,destroy}()
-      radv: add radv_bo_virtual_bind() helper
-
-Timur Kristóf (2):
-      radv/llvm: Remove dead code.
-      radv: Allow NGG culling with LLVM.
-
-Vlad Schiller (1):
-      pvr: Implement VK_KHR_index_type_uint8
-
-Yonggang Luo (7):
-      intel/meson: Remove redundant inc_gallium
-      radv: Remove redundant inc_gallium
-      radv: Rename src/amd/vulkan/vk_format.h to src/amd/vulkan/radv_formats.h
-      vulkan: Move vk_format_is_alpha and vk_format_is_alpha_on_msb into vk_format.h from pvr
-      pvr: inline and remove vk_format_get_channel_width
-      pvr: Merge imagination/vulkan/vk_format.h into imagination/vulkan/pvr_formats.h
-      pvr: Add pvr_ prefix for vk_format_* functions in pvr_formats.h
-
-Yusuf Khan (1):
-      crocus: fix potential null pointer dereference if transfer_mapping fails
+Zan Dobersek (1):
+      fd: enable prefixing the RD output filename
 
