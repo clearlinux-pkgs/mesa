@@ -1,69 +1,96 @@
-Updating from 9fad2922fb4e1b7fc5e657980fdbdcd0baec106d to 1b6c9a8f68549666310efb57334a941d0c5d5d00
+Updating from 1b6c9a8f68549666310efb57334a941d0c5d5d00 to 16c96b0e9358c8727f9af29a7fc7fe9879cad45a
 
-David Heidelberg (1):
-      docs: we support EGL 1.5 for a long time
+Eric Engestrom (11):
+      ci: add missing rule to disable vmware farm
+      ci: raise the log level threshold of spirv logs
+      docs/envvars: document some vulkan loader env vars
+      docs: replace references to the deprecated VK_ICD_FILENAMES with the new VK_DRIVER_FILES
+      docs: replace references to the deprecated VK_INSTANCE_LAYERS with the new VK_LOADER_LAYERS_ENABLE
+      docs/zink: format the envvar value as code instead of plain text
+      meson: add VK_DRIVER_FILES to devenv, alongside the old VK_ICD_FILENAMES
+      ci: drop unused VK_ICD_FILENAMES passthrough from jobs to tests
+      ci: use the new VK_DRIVER_FILES env var
+      ci/deqp: backport fix for dEQP-VK.pipeline.*.render_to_image.*.huge.*
+      ci: fix nightly build
 
-Eric Engestrom (21):
-      docs: mesa also implements gles 3.0+
-      docs/egl: various wording improvements
-      ci: take kws farm offline
-      ci: restore kws farm
-      radv/ci: simplify tahiti flakes list
-      ci: fold .test-check into its only user, python-test
-      ci: run python-test when editing the CI itself
-      ci: run python-test automatically only in merge pipelines
-      docs/macos: drop reference to former github mirror
-      docs/nir: vec4 reference
-      docs/envvars: fix reference
-      docs/isl: fix references to ISL_AUX_USAGE_CCS_*
-      docs/isl: stop trying to link to classic drivers code
-      docs/isl: VK_FORMAT_xxx_PACKEDn is not a real format, don't try to link to it
-      docs/isl: fix enum references
-      docs: fix inline c identifier reference -> inline code
-      isl: fix inline c identifier reference -> inline code
-      nir: add missing stdint include
-      docs/anv: fix envvar documentation
-      docs/nvk: fix envvar documentation
-      ci: mark vmware farm as offline
+Erik Faye-Lund (1):
+      panvk: use integers instead of strings
 
-Kenneth Graunke (6):
-      intel/brw: Fix generate_mov_indirect to check has_64bit_int not float
-      intel/brw: Fix lower_regioning for BROADCAST, MOV_INDIRECT on Q types
-      intel/brw: Update comments for indirect MOV splitting
-      intel/brw: Don't mention gfx7 limitations in shuffle comments
-      intel/brw: Drop dead CHV checks.
-      intel/brw: Drop align16 support in brw_broadcast()
+Georg Lehmann (1):
+      aco/ra: use SDWA for 16bit instructions when the second byte is blocked
 
-Paulo Zanoni (2):
-      anv/xe: don't leak xe_syncs during trtt submission
-      anv/xe: don't overwrite the result from vk_sync_wait()
+Iago Toral Quiroga (2):
+      v3dv: require multisync kernel
+      v3dv: drop single sync kernel interface
 
-Samuel Pitoiset (13):
-      radv: implement alpha-to-one
-      radv: advertise alphaToOne
-      radv: advertise extendedDynamicState3AlphaToOneEnable with ACO
-      docs: add alpha-to-one features for RADV
-      radv: rename radv_physical_device variables to pdev everywhere
-      radv/winsys: rename gpu_info to pci_ids in the null winsys
-      radv: rename radeon_info variables to gpu_info everywhere
-      radv: rename radv_physical_device::rad_info to info
-      radv: remove radv_device::physical_device
-      radv: remove radv_queue::device
-      radv: remove radv_cmd_buffer::device
-      radv: remove radv_device::instance
-      radv: remove radv_physical_device::instance
+Joshua Ashton (15):
+      wsi: Pass wsi_drm_image_params to wsi_configure_native_image
+      wsi: Pass wsi_drm_image_params to wsi_configure_prime_image
+      wsi: Add explicit_sync to wsi_image_info
+      wsi: Add explicit_sync to wsi_drm_image_params
+      build: Add linux-drm-syncobj-v1 wayland protocol
+      wsi: Track if timeline semaphores are supported
+      wsi: Add acquired member to wsi_image
+      wsi: Track CPU side present ordering via a serial
+      wsi: Get timeline semaphore exportable handle types
+      wsi: Add common infrastructure for explicit sync
+      ci: Bump wayland-protocols version to 1.34
+      ci: Bump DEBIAN_BASE_TAG for now
+      meson: Update wayland-protocols wrap to 1.34
+      meson: Bump wayland-protocols requirement to 1.34
+      wsi: Implement linux-drm-syncobj-v1
 
-Sathishkumar S (3):
-      ac/gpu_info: fix regression in vulkan hw decode
-      radeonsi/vcn: use num_instances from radeon_info
-      ac/gpu_info: update multimedia info
+Kai Wasserbäch (2):
+      fix(FTBFS): clc: adapt to new LLVM 19 DiagnosticHandlerTy
+      fix(FTBFS): clover: adapt to new LLVM 19 DiagnosticHandlerTy
 
-Sergi Blanch Torne (1):
-      ci: Nightly run expectations update
+Mary Strodl (1):
+      NirShader: don't fail on null constant_buffer
 
-Tapani Pälli (1):
-      anv: disable fcv optimization on >= gfx125
+Mike Blumenkrantz (3):
+      zink: don't use set_foreach_remove with dmabuf_exports
+      zink: make descriptor pool creation more robust
+      zink: fix shaderdb pipeline compile
 
-Zan Dobersek (1):
-      fd: enable prefixing the RD output filename
+Patrick Lerda (1):
+      r300: fix constants_remap_table memory leak related to the dummy shader path
+
+Rob Clark (1):
+      egl/android: Fix gl_config dereference
+
+Samuel Pitoiset (19):
+      radv: declare radv_cmd_update_descriptor_xxx() in radv_descriptor_set.h
+      radv: declare format related functions in radv_formats.h
+      radv: pass a radv_physical_device to radv_use_llvm_for_stage()
+      radv: move radv_device_supports_etc() to radv_physical_device.c
+      radv: move some VK_DEFINE_NONDISP_HANDLE_CASTS to radv_descriptor_set.h
+      radv: add radv_sampler.h
+      radv: add radv_event.h
+      radv: add radv_buffer_view.h
+      radv: add radv_buffer.h
+      radv: add radv_video.h
+      radv: add radv_image.h
+      radv: add radv_image_view.h
+      radv: add radv_query.h
+      radv: add radv_perfcounter.h
+      radv: add radv_device_generated_commands.h
+      radv: enable radv_zero_vram for Red Dead Redemption 2
+      vulkan/debug_utils: add a helper for reporting address binding
+      radv: implement VK_EXT_device_address_binding_report
+      radv: advertise VK_EXT_device_address_binding_report
+
+Timur Kristóf (8):
+      radv: Add number of LS and HS outputs to tcs_offchip_layout.
+      radv: Change input patch size in TCS offchip layout to match RadeonSI.
+      radv: Change number of patches in TCS offchip layout to match RadeonSI.
+      radv: Include output patch size in TCS offchip layout.
+      radv: Reuse TCS offchip layout between TCS and TES.
+      nir/gather_info: Record per-primitive outputs without variables.
+      nir: Record per-primitive inputs without variables.
+      nir/recompute_io_bases: Sort per-primitive PS inputs last.
+
+Yonggang Luo (3):
+      util: Fixes futex_wait on win32
+      util: futex_wait use TIME_MONOTONIC on win32 for consistence with other platform
+      util: Turn futex_wake parameter to int32_t for consistence across platforms
 
