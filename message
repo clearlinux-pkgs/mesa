@@ -1,96 +1,141 @@
-Updating from 1b6c9a8f68549666310efb57334a941d0c5d5d00 to 16c96b0e9358c8727f9af29a7fc7fe9879cad45a
+Updating from 16c96b0e9358c8727f9af29a7fc7fe9879cad45a to 9fe9681db1e5dd968d6853aeb9a9e2e8a8eb8cb9
 
-Eric Engestrom (11):
-      ci: add missing rule to disable vmware farm
-      ci: raise the log level threshold of spirv logs
-      docs/envvars: document some vulkan loader env vars
-      docs: replace references to the deprecated VK_ICD_FILENAMES with the new VK_DRIVER_FILES
-      docs: replace references to the deprecated VK_INSTANCE_LAYERS with the new VK_LOADER_LAYERS_ENABLE
-      docs/zink: format the envvar value as code instead of plain text
-      meson: add VK_DRIVER_FILES to devenv, alongside the old VK_ICD_FILENAMES
-      ci: drop unused VK_ICD_FILENAMES passthrough from jobs to tests
-      ci: use the new VK_DRIVER_FILES env var
-      ci/deqp: backport fix for dEQP-VK.pipeline.*.render_to_image.*.huge.*
-      ci: fix nightly build
+Connor Abbott (2):
+      freedreno/a7xx: Add CP_CCHE_INVALIDATE
+      tu: Implement CCHE invalidation
 
-Erik Faye-Lund (1):
-      panvk: use integers instead of strings
+Corentin Noël (1):
+      zink: Removed unused num_texel_buffers member
 
-Georg Lehmann (1):
-      aco/ra: use SDWA for 16bit instructions when the second byte is blocked
+Eric Engestrom (1):
+      ci: fix nightly build (v2)
 
-Iago Toral Quiroga (2):
-      v3dv: require multisync kernel
-      v3dv: drop single sync kernel interface
+Eric R. Smith (1):
+      panfrost: mark indirect compute buffer as read
 
-Joshua Ashton (15):
-      wsi: Pass wsi_drm_image_params to wsi_configure_native_image
-      wsi: Pass wsi_drm_image_params to wsi_configure_prime_image
-      wsi: Add explicit_sync to wsi_image_info
-      wsi: Add explicit_sync to wsi_drm_image_params
-      build: Add linux-drm-syncobj-v1 wayland protocol
-      wsi: Track if timeline semaphores are supported
-      wsi: Add acquired member to wsi_image
-      wsi: Track CPU side present ordering via a serial
-      wsi: Get timeline semaphore exportable handle types
-      wsi: Add common infrastructure for explicit sync
-      ci: Bump wayland-protocols version to 1.34
-      ci: Bump DEBIAN_BASE_TAG for now
-      meson: Update wayland-protocols wrap to 1.34
-      meson: Bump wayland-protocols requirement to 1.34
-      wsi: Implement linux-drm-syncobj-v1
+Ganesh Belgur Ramachandra (1):
+      compiler,glsl: fix warning when -finstrument-functions is used
 
-Kai Wasserbäch (2):
-      fix(FTBFS): clc: adapt to new LLVM 19 DiagnosticHandlerTy
-      fix(FTBFS): clover: adapt to new LLVM 19 DiagnosticHandlerTy
+Iago Toral Quiroga (4):
+      v3dv: add a v3dv_job_clone helper
+      v3dv: fix job pointers from cloned CLs
+      v3dv: store the offset of the BRANCH instruction in a CL
+      v3dv: fix job suspend with command buffer simultaneous use flag
 
-Mary Strodl (1):
-      NirShader: don't fail on null constant_buffer
+Jesse Natalie (1):
+      d3d12: Fix d3d12_lower_triangle_strip if multiple vars are in a single location
 
-Mike Blumenkrantz (3):
-      zink: don't use set_foreach_remove with dmabuf_exports
-      zink: make descriptor pool creation more robust
-      zink: fix shaderdb pipeline compile
+Job Noorman (3):
+      zink: print shaderdb info via debug message callback
+      ir3: calculate SSA uses at the start of predicates RA
+      ir3: fix finding uses of reloaded defs in predicates RA
 
-Patrick Lerda (1):
-      r300: fix constants_remap_table memory leak related to the dummy shader path
+José Roberto de Souza (4):
+      anv: Set STATE_COMPUTE_MODE mask bit when zeroing compute mode
+      intel/genxml: Add more instdone registers
+      intel/genxml/gfx125: Fix definition of INTERFACE_DESCRIPTOR_DATA::Thread group dispatch size
+      intel/genxml/xe2: Update definition of INTERFACE_DESCRIPTOR_DATA
 
-Rob Clark (1):
-      egl/android: Fix gl_config dereference
+Marek Olšák (1):
+      nir/opt_varyings: handle load_input_vertex
 
-Samuel Pitoiset (19):
-      radv: declare radv_cmd_update_descriptor_xxx() in radv_descriptor_set.h
-      radv: declare format related functions in radv_formats.h
-      radv: pass a radv_physical_device to radv_use_llvm_for_stage()
-      radv: move radv_device_supports_etc() to radv_physical_device.c
-      radv: move some VK_DEFINE_NONDISP_HANDLE_CASTS to radv_descriptor_set.h
-      radv: add radv_sampler.h
-      radv: add radv_event.h
-      radv: add radv_buffer_view.h
-      radv: add radv_buffer.h
-      radv: add radv_video.h
-      radv: add radv_image.h
-      radv: add radv_image_view.h
-      radv: add radv_query.h
-      radv: add radv_perfcounter.h
-      radv: add radv_device_generated_commands.h
-      radv: enable radv_zero_vram for Red Dead Redemption 2
-      vulkan/debug_utils: add a helper for reporting address binding
-      radv: implement VK_EXT_device_address_binding_report
-      radv: advertise VK_EXT_device_address_binding_report
+Mike Blumenkrantz (30):
+      zink: delete some ntv dead code
+      zink: always sort io variables by location after re-creating them
+      zink: use outputs_written mask to detect edge flag usage
+      zink: update xfb info after lower_to_scalar
+      zink: run scan_nir before variable rework
+      zink: apply component offset for CLIP/CULL DIST1 location derefs
+      zink: manually calc clip/cull distance sizes
+      zink: add a helper to detect clip/cull dist locations
+      zink: always use shader sizes for clip/cull dist variables
+      zink: fix generated variable expansion
+      zink: check for arrayness rather than tess io vars for indirect array vars
+      zink: track a mask of arrayed io locations on shaders
+      zink: call gather_info during shader creation
+      zink: always check patch io during rework_io_vars
+      zink: don't clobber indirect array reads with missing components
+      zink: fix io slot calculation for vertex inputs in add_derefs
+      zink: fix add_derefs case for compact arrays
+      zink: only use location_frac for deref array indexing for compact variables
+      llvmpipe: fix DRAW_USE_LLVM=0
+      nir/lower_wpos_ytransform: move new value load to start of function, reuse
+      nir/lower_wpos_ytransform: reuse input zw components for fragcoord rewrite
+      nir/lower_wpos_ytransform: update comment to reflect variable usage
+      nir/lower_wpos_ytransform: scalarize emit_wpos_adjustment
+      nir/lower_wpos_ytransform: fix for lowered io
+      glsl: handle xfb resources for spirv before running varying opts
+      mesa: clamp binary pointer in ShaderBinary if length==0
+      gallium: rework PIPE_CAP_POINT_SIZE_FIXED
+      zink: delete some maintenance5 psiz pruning
+      zink: fix add_derefs for partial interp loads of derefs
+      zink: assert that ntv interp handling isn't doing implicit component expansion
 
-Timur Kristóf (8):
-      radv: Add number of LS and HS outputs to tcs_offchip_layout.
-      radv: Change input patch size in TCS offchip layout to match RadeonSI.
-      radv: Change number of patches in TCS offchip layout to match RadeonSI.
-      radv: Include output patch size in TCS offchip layout.
-      radv: Reuse TCS offchip layout between TCS and TES.
-      nir/gather_info: Record per-primitive outputs without variables.
-      nir: Record per-primitive inputs without variables.
-      nir/recompute_io_bases: Sort per-primitive PS inputs last.
+Rob Clark (2):
+      freedreno/drm/virtio: Fix deadlock on exit
+      freedreno+virgl: Add missing driconf
 
-Yonggang Luo (3):
-      util: Fixes futex_wait on win32
-      util: futex_wait use TIME_MONOTONIC on win32 for consistence with other platform
-      util: Turn futex_wake parameter to int32_t for consistence across platforms
+Rohan Garg (3):
+      iris: slow clear higher miplevels on single sampled 8bpp resources that have TILE64
+      intel/blorp: add fast clear rectangle dimensions for single sampled TILE64 CCS surfaces
+      isl: allow CCS on single sampled TILE64 surfaces
+
+Samuel Pitoiset (15):
+      radv: move radv_prim_vertex_count to si_cmd_buffer.c
+      radv: move radv_userdata_locations to radv_shader_args.h
+      radv: move radv_shader_{layout,stage} to radv_shader.h
+      radv: add radv_device_memory.h
+      radv: add radv_instance.h
+      radv: add radv_queue.h
+      radv: add radv_physical_device.h
+      radv: add radv_rra.h
+      radv: add radv_device.h
+      radv: add radv_pipeline_cache.h
+      radv: add radv_pipeline.h
+      radv: add radv_pipeline_compute.h
+      radv: add radv_pipeline_rt.h
+      radv: add radv_pipeline_graphics.h
+      radv: add radv_wsi.h
+
+Sil Vilerino (4):
+      d3d12: Fix leak of batch->bos on video-only builds
+      d3d12: Fix leak dxil_module::serialized_dependency_table
+      d3d12: Fix util_blitter_destroy destruction ordering
+      vl_win32_screen_create: Take ownership of winsys injected to created d3d12_screen
+
+Timur Kristóf (20):
+      ac/nir: Introduce ac_nir_calc_io_offset_mapped.
+      ac/nir/tess: Load tess factors from variable when they are passed in registers.
+      ac/nir/tess: Clarify when a TCS output is stored in LDS or VRAM.
+      ac/nir/tess: Return undef when loading an unwritten TCS output.
+      ac/nir/tess: Map TCS LDS IO locations without gaps.
+      ac/nir/tess: Calculate reserved LDS outputs based on IO info.
+      ac/nir/tess: Remove superfluous args for reserved TCS outputs.
+      ac/nir/tess: Clarify when VS-TCS I/O can use registers.
+      radv: Only add extra dword to LS-HS stride when there are LS outputs.
+      radv: Pass key structures to gather intrinsic info.
+      radv: Extract gather_load_vs_input_info function.
+      radv: Slightly refactor gather_intrinsic_store_output_info.
+      radv: Record PS input clip/cull mask instead of number.
+      radv: Use NIR IO semantics to determine GS output info.
+      radv: Add helper for determining per-attribute vertex buffer descriptors.
+      radv: Add helper to determine usage of VS prologs.
+      radv: Remove unused VS input usage mask.
+      radv: Use NIR IO semantics to determine VS input info.
+      radv: Use IO semantic location for shader output info.
+      aco/optimizer_postRA: Remove a check from SCC no-compare optimization.
+
+Yiwei Zhang (9):
+      venus: cleanup 2 TODOs from 1.3 support
+      venus: remove obsolete TODOs
+      venus: use STACK_ARRAY to simplify modifier query
+      venus: use STACK_ARRAY to simplify BindBufferMemory2
+      venus: use STACK_ARRAY to simplify BindImageMemory2
+      venus: use STACK_ARRAY to simplify render pass creation
+      venus: use STACK_ARRAY to simplify physical device enumeration
+      venus: use STACK_ARRAY to simplify set layout creation
+      venus: use STACK_ARRAY to simplify sync wait
+
+daoxiang.gong (1):
+      zink - Fix for minLod and maxLod when mipmap filter is disabled
 
