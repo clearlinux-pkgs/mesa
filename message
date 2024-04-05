@@ -1,141 +1,167 @@
-Updating from 16c96b0e9358c8727f9af29a7fc7fe9879cad45a to 9fe9681db1e5dd968d6853aeb9a9e2e8a8eb8cb9
+Updating from 9fe9681db1e5dd968d6853aeb9a9e2e8a8eb8cb9 to 14ba56718ffc85dfde8337e056bc936f39dc2114
 
-Connor Abbott (2):
-      freedreno/a7xx: Add CP_CCHE_INVALIDATE
-      tu: Implement CCHE invalidation
+Corentin Noël (2):
+      zink: Removed unused push_valid member
+      zink: Remove ctx from zink_gfx_program
 
-Corentin Noël (1):
-      zink: Removed unused num_texel_buffers member
+Dave Airlie (1):
+      mesa: reorder st context teardown
 
-Eric Engestrom (1):
-      ci: fix nightly build (v2)
+Erico Nunes (1):
+      ci: enable shader-db on lima
 
-Eric R. Smith (1):
-      panfrost: mark indirect compute buffer as read
+Faith Ekstrand (2):
+      nvk: Add a _pad field to nvk_cbuf
+      nvk: Delete dead descriptor code
 
-Ganesh Belgur Ramachandra (1):
-      compiler,glsl: fix warning when -finstrument-functions is used
+Georg Lehmann (1):
+      aco/vn: remove instruction hash templates
 
-Iago Toral Quiroga (4):
-      v3dv: add a v3dv_job_clone helper
-      v3dv: fix job pointers from cloned CLs
-      v3dv: store the offset of the BRANCH instruction in a CL
-      v3dv: fix job suspend with command buffer simultaneous use flag
+Gert Wollny (2):
+      zink: ctx->last_fence really wants to be a batch_state, so accomodate it
+      zink: another fence that is better off as a batch state
 
-Jesse Natalie (1):
-      d3d12: Fix d3d12_lower_triangle_strip if multiple vars are in a single location
+Ian Romanick (6):
+      intel/compiler: Ensure load_barycentric_at_sample and load_interpolated_input remain together
+      intel/brw: Don't call nir_opt_remove_phis before nir_convert_from_ssa
+      intel/elk: Don't call nir_opt_remove_phis before nir_convert_from_ssa
+      intel/brw: Delete stray nir_opt_dce
+      intel/elk: Delete stray nir_opt_dce
+      intel/brw/xe2+: Implement Wa 22016140776
 
-Job Noorman (3):
-      zink: print shaderdb info via debug message callback
-      ir3: calculate SSA uses at the start of predicates RA
-      ir3: fix finding uses of reloaded defs in predicates RA
+Jesse Natalie (32):
+      microsoft/compiler: When sorting variables, put unused variables last
+      microsoft/compiler: Move kill-unused/undefined varying pass from spirv to common
+      microsoft/compiler: Simplify I/O component type enum handling
+      microsoft/compiler: Expect front-facing var as an input
+      microsoft/compiler: Improve linking helpers
+      microsoft/compiler: Don't duplicate work from gather_info in var sorting
+      d3d12: Move some lowering passes to pre-variant
+      d3d12: Lower uniforms to UBO by nir options
+      d3d12: Minor logging improvements
+      d3d12: Fix var splitting pass writemasks
+      d3d12: Explicitly add tess factor vars to tess signatures
+      d3d12: Forward front-facing for passthrough GS
+      d3d12: Capture always_active_io in varying data
+      d3d12: Use TES inputs rather than VS outputs for TCS variant key
+      d3d12: Add primitive ID sysval to input bitmask (for GS in)
+      d3d12: Gather info less and before the final compilation steps
+      d3d12: Remove variables instead of adding them for linking
+      d3d12: Don't compile useless variants during shader creation
+      microsoft/compiler: Add a fractional var mask for variable sorting
+      d3d12: Set fractional var masks
+      d3d12: Add a debug flag for loading WinPixGpuCapturer.dll
+      ci/windows: Bump Agility SDK to 1.613.2 for ExecuteIndirect validation fix
+      microsoft/compiler: Handle base vertex/instance sysvals as DXIL intrinsics
+      spirv2dxil: Support passing first vertex / base instance to DXIL backend
+      spirv2dxil: Output more specific metadata for whether draw sysvals are needed
+      dzn: Delete dzn structs for indirect draw args and use D3D ones
+      dzn: Query options21
+      dzn: Understand whether first-vertex and base-instance are needed for a pipeline
+      dzn: Update pipeline cache params to take all options into account
+      dzn: Rework indirect drawing keys for shaders and command signatures
+      dzn: Add a hash table of command signatures with non-default strides
+      dzn: Don't copy app indirect args if we don't need to
 
-José Roberto de Souza (4):
-      anv: Set STATE_COMPUTE_MODE mask bit when zeroing compute mode
-      intel/genxml: Add more instdone registers
-      intel/genxml/gfx125: Fix definition of INTERFACE_DESCRIPTOR_DATA::Thread group dispatch size
-      intel/genxml/xe2: Update definition of INTERFACE_DESCRIPTOR_DATA
+Job Noorman (4):
+      ir3-disasm: run clang-format
+      ir3-disasm: remove unused #includes
+      ir3-disasm: add options to specify GPU by chip ID or name
+      ir3-disasm: add option to disassemble hex number
 
-Marek Olšák (1):
-      nir/opt_varyings: handle load_input_vertex
+Jordan Justen (2):
+      intel/dev/mesa_defs.json: Add LNL WA entries
+      intel/dev: Add 0x56be and 0x56bf DG2 PCI IDs
 
-Mike Blumenkrantz (30):
-      zink: delete some ntv dead code
-      zink: always sort io variables by location after re-creating them
-      zink: use outputs_written mask to detect edge flag usage
-      zink: update xfb info after lower_to_scalar
-      zink: run scan_nir before variable rework
-      zink: apply component offset for CLIP/CULL DIST1 location derefs
-      zink: manually calc clip/cull distance sizes
-      zink: add a helper to detect clip/cull dist locations
-      zink: always use shader sizes for clip/cull dist variables
-      zink: fix generated variable expansion
-      zink: check for arrayness rather than tess io vars for indirect array vars
-      zink: track a mask of arrayed io locations on shaders
-      zink: call gather_info during shader creation
-      zink: always check patch io during rework_io_vars
-      zink: don't clobber indirect array reads with missing components
-      zink: fix io slot calculation for vertex inputs in add_derefs
-      zink: fix add_derefs case for compact arrays
-      zink: only use location_frac for deref array indexing for compact variables
-      llvmpipe: fix DRAW_USE_LLVM=0
-      nir/lower_wpos_ytransform: move new value load to start of function, reuse
-      nir/lower_wpos_ytransform: reuse input zw components for fragcoord rewrite
-      nir/lower_wpos_ytransform: update comment to reflect variable usage
-      nir/lower_wpos_ytransform: scalarize emit_wpos_adjustment
-      nir/lower_wpos_ytransform: fix for lowered io
-      glsl: handle xfb resources for spirv before running varying opts
-      mesa: clamp binary pointer in ShaderBinary if length==0
-      gallium: rework PIPE_CAP_POINT_SIZE_FIXED
-      zink: delete some maintenance5 psiz pruning
-      zink: fix add_derefs for partial interp loads of derefs
-      zink: assert that ntv interp handling isn't doing implicit component expansion
+Lionel Landwerlin (6):
+      anv: fix protected memory allocations
+      anv: pull surface state copies for secondary in one loop
+      anv: disable protected content around surface state copies
+      anv: disable generated draws in protected command buffers
+      anv: update protection fault property
+      anv: fix incorrect blorp dynamic state heap usage
 
-Rob Clark (2):
-      freedreno/drm/virtio: Fix deadlock on exit
-      freedreno+virgl: Add missing driconf
+Mike Blumenkrantz (14):
+      egl/x11: disable swapbufferswithdamage for zink without kopper
+      glx/egl: fix LIBGL_KOPPER_DISABLE
+      glsl: set PSIZ bit in outputs_written when injecting a 1.0 psiz write
+      nir/lower_clamp_color_outputs: fix use with lowered io
+      nir/lower_flatshade: break out location checking
+      nir/lower_flatshade: fix with lowered io
+      nir/lower_alpha_test: fix use with lowered io
+      nir/lower_two_sided_color: rework for lowered io
+      nir/lower_drawpixels: fix for lowered io
+      nir/lower_clip_disable: fix for lowered io
+      nir/lower_point_size_mov: rework.
+      nir/lower_point_size_mov: fix for lowered io
+      nir/texcoord_replace: fix scalarized io handling
+      nir/dominance: fix comment
 
-Rohan Garg (3):
-      iris: slow clear higher miplevels on single sampled 8bpp resources that have TILE64
-      intel/blorp: add fast clear rectangle dimensions for single sampled TILE64 CCS surfaces
-      isl: allow CCS on single sampled TILE64 surfaces
+Nanley Chery (5):
+      intel/isl: Remove inconsistency when choosing Tile64
+      intel/isl: Remove inconsistency when encoding Tile64
+      intel/isl: Remove a CCS_D check from gfx12+ code
+      intel/isl: Enable a 64KB alignment WA for flat-CCS
+      intel/isl: Use Tile64 to align images for CCS WA
 
-Samuel Pitoiset (15):
-      radv: move radv_prim_vertex_count to si_cmd_buffer.c
-      radv: move radv_userdata_locations to radv_shader_args.h
-      radv: move radv_shader_{layout,stage} to radv_shader.h
-      radv: add radv_device_memory.h
-      radv: add radv_instance.h
-      radv: add radv_queue.h
-      radv: add radv_physical_device.h
-      radv: add radv_rra.h
-      radv: add radv_device.h
-      radv: add radv_pipeline_cache.h
-      radv: add radv_pipeline.h
-      radv: add radv_pipeline_compute.h
-      radv: add radv_pipeline_rt.h
-      radv: add radv_pipeline_graphics.h
-      radv: add radv_wsi.h
+Rhys Perry (6):
+      nir: add mqsad_4x8, shfr and nir_opt_mqsad
+      aco: implement mqsad_4x8 and shfr
+      ac/llvm: implement mqsad_4x8 and shfr
+      amd: set has_shfr32=true
+      radv: optimize msad_4x8 to mqsad_4x8
+      radv: memset radv_pipeline_cache_object data
 
-Sil Vilerino (4):
-      d3d12: Fix leak of batch->bos on video-only builds
-      d3d12: Fix leak dxil_module::serialized_dependency_table
-      d3d12: Fix util_blitter_destroy destruction ordering
-      vl_win32_screen_create: Take ownership of winsys injected to created d3d12_screen
+Samuel Pitoiset (44):
+      radv: add radv_sqtt.h
+      radv: add radv_shader_object.h
+      radv: add radv_spm.h
+      radv: add radv_cmd_buffer.h
+      radv: add radv_rmv.h
+      radv: add radv_cp_reg_shadowing.h
+      radv: add radv_printf.h
+      radv: move radv_get_tdr_timeout_for_ip() to radv_query.h
+      radv: move radv_queue_ring() to radv_queue.c
+      radv: add radv_nir_to_llvm.h
+      radv: add radv_android.h
+      radv: add radv_shader_info.h
+      radv: move CP DMA related code to radv_cp_dma.c/h
+      radv: move more cmd buffer related code to radv_cmd_buffer.c
+      radv: merge radv_write_guardband() with radv_emit_guardband_state()
+      radv: merge radv_write_scissors() with radv_emit_scissor()
+      radv: move radv_get_viewport_xform() to radv_pipeline_graphics.c
+      radv: move radv_create_gfx_config() to radv_device.c
+      radv: move radv_emit_{compute,graphics}() to radv_queue.c
+      radv: move code related to sample positions to radv_device.c
+      radv: rename si_cmd_buffer.c to radv_cs.c
+      radv: remove unused radv_printflike()
+      radv: remove pre-declarations needed for WSI entrypoints
+      radv: remove remaining forward declarations and comments in radv_private.h
+      radv: replace RADV_FROM_HANDLE by VK_FROM_HANDLE
+      radv: add missing endif comment for some headers
+      radv: rename remaining phys_dev occurrences to pdev
+      radv: replace radv_minify() by u_minify()
+      radv: replace align_{u32,u64}() by align{64}()
+      radv: replace align_u32_npot() by ALIGN_NPOT
+      radv: replace radv_float_to_{u,s}fixed() by util_{un}signed_fixed()
+      util: add util_is_aligned()
+      radv: replace radv_is_aligned() by util_is_aligned()
+      radv: move RADV_SUPPORT_CALIBRATED_TIMESTAMPS to radv_physical_device.c
+      radv: move RADV_API_VERSION to radv_instance.h
+      radv: move CLOCK_MONOTONIC_RAW define to radv_physical_device.h
+      radv: move RADV_USE_WSI_PLATFORM define to radv_wsi.h
+      radv: remove radv_private.h
+      radv: make radv_get_vgt_index_size() static
+      radv: move radv_get_user_sgpr() to radv_shader.c
+      radv: move radv_queue_family_to_ring() to radv_queue.c
+      radv: remove old comment in radv_cs.c
+      radv: move radv_printf_data to radv_printf.h
+      radv: make sure the heap budget is less than or equal to the heap size
 
-Timur Kristóf (20):
-      ac/nir: Introduce ac_nir_calc_io_offset_mapped.
-      ac/nir/tess: Load tess factors from variable when they are passed in registers.
-      ac/nir/tess: Clarify when a TCS output is stored in LDS or VRAM.
-      ac/nir/tess: Return undef when loading an unwritten TCS output.
-      ac/nir/tess: Map TCS LDS IO locations without gaps.
-      ac/nir/tess: Calculate reserved LDS outputs based on IO info.
-      ac/nir/tess: Remove superfluous args for reserved TCS outputs.
-      ac/nir/tess: Clarify when VS-TCS I/O can use registers.
-      radv: Only add extra dword to LS-HS stride when there are LS outputs.
-      radv: Pass key structures to gather intrinsic info.
-      radv: Extract gather_load_vs_input_info function.
-      radv: Slightly refactor gather_intrinsic_store_output_info.
-      radv: Record PS input clip/cull mask instead of number.
-      radv: Use NIR IO semantics to determine GS output info.
-      radv: Add helper for determining per-attribute vertex buffer descriptors.
-      radv: Add helper to determine usage of VS prologs.
-      radv: Remove unused VS input usage mask.
-      radv: Use NIR IO semantics to determine VS input info.
-      radv: Use IO semantic location for shader output info.
-      aco/optimizer_postRA: Remove a check from SCC no-compare optimization.
-
-Yiwei Zhang (9):
-      venus: cleanup 2 TODOs from 1.3 support
-      venus: remove obsolete TODOs
-      venus: use STACK_ARRAY to simplify modifier query
-      venus: use STACK_ARRAY to simplify BindBufferMemory2
-      venus: use STACK_ARRAY to simplify BindImageMemory2
-      venus: use STACK_ARRAY to simplify render pass creation
-      venus: use STACK_ARRAY to simplify physical device enumeration
-      venus: use STACK_ARRAY to simplify set layout creation
-      venus: use STACK_ARRAY to simplify sync wait
-
-daoxiang.gong (1):
-      zink - Fix for minLod and maxLod when mipmap filter is disabled
+Timur Kristóf (5):
+      radv: Use NIR IO semantics to determine FS input info.
+      radv: Remove I/O variables after nir_lower_io.
+      radv: Slightly refactor the determination of max_ps_params.
+      radv: Increase maximum allowed PS params for enabling NGG culling.
+      radv: Remove unused gfx_level from gfx10_emit_ge_pc_alloc.
 
