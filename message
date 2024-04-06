@@ -1,167 +1,111 @@
-Updating from 9fe9681db1e5dd968d6853aeb9a9e2e8a8eb8cb9 to 14ba56718ffc85dfde8337e056bc936f39dc2114
+Updating from 14ba56718ffc85dfde8337e056bc936f39dc2114 to fe36cf6cad9b226dff993a8f1f8f0bf451f095c5
 
-Corentin Noël (2):
-      zink: Removed unused push_valid member
-      zink: Remove ctx from zink_gfx_program
+David Heidelberg (2):
+      ci/amd: meld radv-traces into radv-raven-traces
+      ci/amd: drop old PIGLIT_REPLAY_DESCRIPTION_FILE surpassed by PIGLIT_TRACES_FILE
 
-Dave Airlie (1):
-      mesa: reorder st context teardown
+Eric Engestrom (6):
+      ci/llvmpipe: make sure manual jobs don't auto-retry
+      ci/llvmpipe: fix out of date fails list
+      ci/lavapipe: fix out of date fails list
+      ci/lavapipe: skip test that sometimes times out
+      ci: add nightly full run of llvmpipe
+      ci: add nightly full run of lavapipe
 
-Erico Nunes (1):
-      ci: enable shader-db on lima
+Gert Wollny (16):
+      ntv: remove store_def_raw
+      ntv: remove store_ssa_def
+      ntv: pass def->index to store_def
+      ntv: simplify increasing the number of dest componnets for sparse tex
+      zink/ntv: introduce structure using the source params
+      zink/ntv: extract get_tex_srcs
+      zink/ntv: use new struct to pass texture parameters
+      zink/ntv: extract find_sampler_and_texture_index
+      zink/ntv: simplify evaluation of sampled_type
+      zink/ntv: extract get_texture_load
+      zink/ntv: extract get_texop_dest_type
+      zink/ntv: Extract move_tex:proj_into_coord
+      zink/ntv: replace if-chain with switch in emit_tex
+      zink/ntv: extract picking the image to load from
+      zink/ntv: extract emit_tex_readop as function that reads texture pixel data
+      zink/ntv: pull result out of cases and use a common store_def
 
-Faith Ekstrand (2):
-      nvk: Add a _pad field to nvk_cbuf
-      nvk: Delete dead descriptor code
+Jesse Natalie (1):
+      glsl: Use a stable attr sort for VS in / FS out
 
-Georg Lehmann (1):
-      aco/vn: remove instruction hash templates
+José Roberto de Souza (1):
+      anv: Create protected engine context when i915 supports vm control
 
-Gert Wollny (2):
-      zink: ctx->last_fence really wants to be a batch_state, so accomodate it
-      zink: another fence that is better off as a batch state
+Lionel Landwerlin (3):
+      intel/fs: printout a couple of more late compile steps
+      intel/fs: fixup instruction scheduling last grf write tracking
+      anv: add missing data flush out of L3 for transform feedback writes
 
-Ian Romanick (6):
-      intel/compiler: Ensure load_barycentric_at_sample and load_interpolated_input remain together
-      intel/brw: Don't call nir_opt_remove_phis before nir_convert_from_ssa
-      intel/elk: Don't call nir_opt_remove_phis before nir_convert_from_ssa
-      intel/brw: Delete stray nir_opt_dce
-      intel/elk: Delete stray nir_opt_dce
-      intel/brw/xe2+: Implement Wa 22016140776
+Lucas Fryzek (12):
+      llvmpipe: explicitly reject (most) yuv formats
+      gallium: Add dmabuf arg to memory fd allocation API
+      llvmpipe: Implement dmabuf handling
+      drisw: reuse kopper image extension vtable if modifiers/dmabuf is supported
+      llvmpipe: conditionally export PIPE_CAP_DMABUF
+      lavapipe: support VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT
+      lavapipe: EXT_external_memory_dma_buf
+      llvmpipe: make it possible to import and bind unbacked resources
+      lavapipe: include drm_fourcc.h
+      lavapipe: check drm modifier info during image create
+      lavapipe: EXT_image_drm_format_modifier
+      venus/ci: Add patch for modifiers test to check import/export bits
 
-Jesse Natalie (32):
-      microsoft/compiler: When sorting variables, put unused variables last
-      microsoft/compiler: Move kill-unused/undefined varying pass from spirv to common
-      microsoft/compiler: Simplify I/O component type enum handling
-      microsoft/compiler: Expect front-facing var as an input
-      microsoft/compiler: Improve linking helpers
-      microsoft/compiler: Don't duplicate work from gather_info in var sorting
-      d3d12: Move some lowering passes to pre-variant
-      d3d12: Lower uniforms to UBO by nir options
-      d3d12: Minor logging improvements
-      d3d12: Fix var splitting pass writemasks
-      d3d12: Explicitly add tess factor vars to tess signatures
-      d3d12: Forward front-facing for passthrough GS
-      d3d12: Capture always_active_io in varying data
-      d3d12: Use TES inputs rather than VS outputs for TCS variant key
-      d3d12: Add primitive ID sysval to input bitmask (for GS in)
-      d3d12: Gather info less and before the final compilation steps
-      d3d12: Remove variables instead of adding them for linking
-      d3d12: Don't compile useless variants during shader creation
-      microsoft/compiler: Add a fractional var mask for variable sorting
-      d3d12: Set fractional var masks
-      d3d12: Add a debug flag for loading WinPixGpuCapturer.dll
-      ci/windows: Bump Agility SDK to 1.613.2 for ExecuteIndirect validation fix
-      microsoft/compiler: Handle base vertex/instance sysvals as DXIL intrinsics
-      spirv2dxil: Support passing first vertex / base instance to DXIL backend
-      spirv2dxil: Output more specific metadata for whether draw sysvals are needed
-      dzn: Delete dzn structs for indirect draw args and use D3D ones
-      dzn: Query options21
-      dzn: Understand whether first-vertex and base-instance are needed for a pipeline
-      dzn: Update pipeline cache params to take all options into account
-      dzn: Rework indirect drawing keys for shaders and command signatures
-      dzn: Add a hash table of command signatures with non-default strides
-      dzn: Don't copy app indirect args if we don't need to
+Mary Guillemard (7):
+      nak: Support unaligned swizzles in 8/16 bits vec srcs
+      nak: move folding logic to Src::fold_imm
+      nak: Add F16 and F16v2 sources
+      nak: Improve copy propagation pass to handle F16
+      nak: Add 16-bits float operations
+      nvk: Advertise shaderFloat16
+      nvk: Allow various alu op to be vectorized for 2xfp16
 
-Job Noorman (4):
-      ir3-disasm: run clang-format
-      ir3-disasm: remove unused #includes
-      ir3-disasm: add options to specify GPU by chip ID or name
-      ir3-disasm: add option to disassemble hex number
+Mike Blumenkrantz (17):
+      drisw: reorder image extensions
+      sw_winsys: add displaytarget_create_mapped
+      winsys/null: implement displaytarget_create_mapped
+      winsys/drisw: implement displaytarget_create_mapped
+      winsys/drisw: implement dmabuf handling
+      lavapipe: add a function for asserting external memory handle types
+      winsys: add WINSYS_HANDLE_TYPE_UNBACKED
+      winsys: add more stride members to winsys_handle
+      lavapipe: EXT_queue_family_foreign
+      lavapipe: rework mem handle type assert to handle dmabuf
+      lavapipe: handle drm image format queries
+      lavapipe: handle drm image imports
+      docs: update lavapipe features
+      nir: add compact_arrays to nir_shader_compiler_options
+      nir/gather_info: fix gathering for compact arrayed builtins
+      zink: set compact_arrays in compiler options
+      microsoft/compiler: set compact_arrays in compiler options
 
-Jordan Justen (2):
-      intel/dev/mesa_defs.json: Add LNL WA entries
-      intel/dev: Add 0x56be and 0x56bf DG2 PCI IDs
+Timothy Arceri (15):
+      nir: add max_array_access data field
+      nir: add implicit_sized_array data field
+      glsl: add resize_tes_inputs() to the nir linker
+      nir: add variable field from_ssbo_unsized_array
+      glsl: don't remove redefined per vertex block
+      glsl: add nir implemenation of block validation
+      glsl: switch to NIR block validation
+      glsl: call new nir resize_tes_inputs() pass
+      glsl: remove now unused resize_tes_inputs()
+      glsl: remove now unused glsl ir block validation
+      glsl: move some linking calls to gl_nir_link_glsl()
+      glsl: switch verify_subroutine_associated_funcs() to nir
+      nir: add subroutine fields to nir_function
+      glsl: move link_assign_subroutine_types() to the nir linker
+      glsl: move check_explicit_uniform_locations() to NIR linker
 
-Lionel Landwerlin (6):
-      anv: fix protected memory allocations
-      anv: pull surface state copies for secondary in one loop
-      anv: disable protected content around surface state copies
-      anv: disable generated draws in protected command buffers
-      anv: update protection fault property
-      anv: fix incorrect blorp dynamic state heap usage
-
-Mike Blumenkrantz (14):
-      egl/x11: disable swapbufferswithdamage for zink without kopper
-      glx/egl: fix LIBGL_KOPPER_DISABLE
-      glsl: set PSIZ bit in outputs_written when injecting a 1.0 psiz write
-      nir/lower_clamp_color_outputs: fix use with lowered io
-      nir/lower_flatshade: break out location checking
-      nir/lower_flatshade: fix with lowered io
-      nir/lower_alpha_test: fix use with lowered io
-      nir/lower_two_sided_color: rework for lowered io
-      nir/lower_drawpixels: fix for lowered io
-      nir/lower_clip_disable: fix for lowered io
-      nir/lower_point_size_mov: rework.
-      nir/lower_point_size_mov: fix for lowered io
-      nir/texcoord_replace: fix scalarized io handling
-      nir/dominance: fix comment
-
-Nanley Chery (5):
-      intel/isl: Remove inconsistency when choosing Tile64
-      intel/isl: Remove inconsistency when encoding Tile64
-      intel/isl: Remove a CCS_D check from gfx12+ code
-      intel/isl: Enable a 64KB alignment WA for flat-CCS
-      intel/isl: Use Tile64 to align images for CCS WA
-
-Rhys Perry (6):
-      nir: add mqsad_4x8, shfr and nir_opt_mqsad
-      aco: implement mqsad_4x8 and shfr
-      ac/llvm: implement mqsad_4x8 and shfr
-      amd: set has_shfr32=true
-      radv: optimize msad_4x8 to mqsad_4x8
-      radv: memset radv_pipeline_cache_object data
-
-Samuel Pitoiset (44):
-      radv: add radv_sqtt.h
-      radv: add radv_shader_object.h
-      radv: add radv_spm.h
-      radv: add radv_cmd_buffer.h
-      radv: add radv_rmv.h
-      radv: add radv_cp_reg_shadowing.h
-      radv: add radv_printf.h
-      radv: move radv_get_tdr_timeout_for_ip() to radv_query.h
-      radv: move radv_queue_ring() to radv_queue.c
-      radv: add radv_nir_to_llvm.h
-      radv: add radv_android.h
-      radv: add radv_shader_info.h
-      radv: move CP DMA related code to radv_cp_dma.c/h
-      radv: move more cmd buffer related code to radv_cmd_buffer.c
-      radv: merge radv_write_guardband() with radv_emit_guardband_state()
-      radv: merge radv_write_scissors() with radv_emit_scissor()
-      radv: move radv_get_viewport_xform() to radv_pipeline_graphics.c
-      radv: move radv_create_gfx_config() to radv_device.c
-      radv: move radv_emit_{compute,graphics}() to radv_queue.c
-      radv: move code related to sample positions to radv_device.c
-      radv: rename si_cmd_buffer.c to radv_cs.c
-      radv: remove unused radv_printflike()
-      radv: remove pre-declarations needed for WSI entrypoints
-      radv: remove remaining forward declarations and comments in radv_private.h
-      radv: replace RADV_FROM_HANDLE by VK_FROM_HANDLE
-      radv: add missing endif comment for some headers
-      radv: rename remaining phys_dev occurrences to pdev
-      radv: replace radv_minify() by u_minify()
-      radv: replace align_{u32,u64}() by align{64}()
-      radv: replace align_u32_npot() by ALIGN_NPOT
-      radv: replace radv_float_to_{u,s}fixed() by util_{un}signed_fixed()
-      util: add util_is_aligned()
-      radv: replace radv_is_aligned() by util_is_aligned()
-      radv: move RADV_SUPPORT_CALIBRATED_TIMESTAMPS to radv_physical_device.c
-      radv: move RADV_API_VERSION to radv_instance.h
-      radv: move CLOCK_MONOTONIC_RAW define to radv_physical_device.h
-      radv: move RADV_USE_WSI_PLATFORM define to radv_wsi.h
-      radv: remove radv_private.h
-      radv: make radv_get_vgt_index_size() static
-      radv: move radv_get_user_sgpr() to radv_shader.c
-      radv: move radv_queue_family_to_ring() to radv_queue.c
-      radv: remove old comment in radv_cs.c
-      radv: move radv_printf_data to radv_printf.h
-      radv: make sure the heap budget is less than or equal to the heap size
-
-Timur Kristóf (5):
-      radv: Use NIR IO semantics to determine FS input info.
-      radv: Remove I/O variables after nir_lower_io.
-      radv: Slightly refactor the determination of max_ps_params.
-      radv: Increase maximum allowed PS params for enabling NGG culling.
-      radv: Remove unused gfx_level from gfx10_emit_ge_pc_alloc.
+Timur Kristóf (7):
+      ac/nir/ngg: Don't create dummy output variable for primitive ID.
+      ac/nir/ngg: Use IO semantics for determining instance rate inputs.
+      ac/nir/ngg: Rename confusing driver_location variable in mesh shader lowering.
+      radv: Use NIR IO semantics for VS input location mapping.
+      radv: Don't set driver locations for mesh shaders.
+      radv: Don't set driver locations for FS outputs.
+      radv: Don't set driver locations for last pre-rasterization stage.
 
