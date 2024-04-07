@@ -1,111 +1,17 @@
-Updating from 14ba56718ffc85dfde8337e056bc936f39dc2114 to fe36cf6cad9b226dff993a8f1f8f0bf451f095c5
+Updating from fe36cf6cad9b226dff993a8f1f8f0bf451f095c5 to aac2a31b3d3d4bd2aefdc10cb50a8d8b2e2ab4bf
 
-David Heidelberg (2):
-      ci/amd: meld radv-traces into radv-raven-traces
-      ci/amd: drop old PIGLIT_REPLAY_DESCRIPTION_FILE surpassed by PIGLIT_TRACES_FILE
+Eric Engestrom (5):
+      gallium/dri: reuse existing meson variables
+      meson: regroup glvnd lines to get an easier-to-review diff in the next commit
+      meson: turn `glvnd` option into a feature
+      ci: explicitly disable glvnd to avoid regression when making it auto
+      meson: auto-enable glvnd when libglvnd is installed
 
-Eric Engestrom (6):
-      ci/llvmpipe: make sure manual jobs don't auto-retry
-      ci/llvmpipe: fix out of date fails list
-      ci/lavapipe: fix out of date fails list
-      ci/lavapipe: skip test that sometimes times out
-      ci: add nightly full run of llvmpipe
-      ci: add nightly full run of lavapipe
+Eric R. Smith (1):
+      gallium: handle copy_image of depth textures
 
-Gert Wollny (16):
-      ntv: remove store_def_raw
-      ntv: remove store_ssa_def
-      ntv: pass def->index to store_def
-      ntv: simplify increasing the number of dest componnets for sparse tex
-      zink/ntv: introduce structure using the source params
-      zink/ntv: extract get_tex_srcs
-      zink/ntv: use new struct to pass texture parameters
-      zink/ntv: extract find_sampler_and_texture_index
-      zink/ntv: simplify evaluation of sampled_type
-      zink/ntv: extract get_texture_load
-      zink/ntv: extract get_texop_dest_type
-      zink/ntv: Extract move_tex:proj_into_coord
-      zink/ntv: replace if-chain with switch in emit_tex
-      zink/ntv: extract picking the image to load from
-      zink/ntv: extract emit_tex_readop as function that reads texture pixel data
-      zink/ntv: pull result out of cases and use a common store_def
-
-Jesse Natalie (1):
-      glsl: Use a stable attr sort for VS in / FS out
-
-José Roberto de Souza (1):
-      anv: Create protected engine context when i915 supports vm control
-
-Lionel Landwerlin (3):
-      intel/fs: printout a couple of more late compile steps
-      intel/fs: fixup instruction scheduling last grf write tracking
-      anv: add missing data flush out of L3 for transform feedback writes
-
-Lucas Fryzek (12):
-      llvmpipe: explicitly reject (most) yuv formats
-      gallium: Add dmabuf arg to memory fd allocation API
-      llvmpipe: Implement dmabuf handling
-      drisw: reuse kopper image extension vtable if modifiers/dmabuf is supported
-      llvmpipe: conditionally export PIPE_CAP_DMABUF
-      lavapipe: support VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT
-      lavapipe: EXT_external_memory_dma_buf
-      llvmpipe: make it possible to import and bind unbacked resources
-      lavapipe: include drm_fourcc.h
-      lavapipe: check drm modifier info during image create
-      lavapipe: EXT_image_drm_format_modifier
-      venus/ci: Add patch for modifiers test to check import/export bits
-
-Mary Guillemard (7):
-      nak: Support unaligned swizzles in 8/16 bits vec srcs
-      nak: move folding logic to Src::fold_imm
-      nak: Add F16 and F16v2 sources
-      nak: Improve copy propagation pass to handle F16
-      nak: Add 16-bits float operations
-      nvk: Advertise shaderFloat16
-      nvk: Allow various alu op to be vectorized for 2xfp16
-
-Mike Blumenkrantz (17):
-      drisw: reorder image extensions
-      sw_winsys: add displaytarget_create_mapped
-      winsys/null: implement displaytarget_create_mapped
-      winsys/drisw: implement displaytarget_create_mapped
-      winsys/drisw: implement dmabuf handling
-      lavapipe: add a function for asserting external memory handle types
-      winsys: add WINSYS_HANDLE_TYPE_UNBACKED
-      winsys: add more stride members to winsys_handle
-      lavapipe: EXT_queue_family_foreign
-      lavapipe: rework mem handle type assert to handle dmabuf
-      lavapipe: handle drm image format queries
-      lavapipe: handle drm image imports
-      docs: update lavapipe features
-      nir: add compact_arrays to nir_shader_compiler_options
-      nir/gather_info: fix gathering for compact arrayed builtins
-      zink: set compact_arrays in compiler options
-      microsoft/compiler: set compact_arrays in compiler options
-
-Timothy Arceri (15):
-      nir: add max_array_access data field
-      nir: add implicit_sized_array data field
-      glsl: add resize_tes_inputs() to the nir linker
-      nir: add variable field from_ssbo_unsized_array
-      glsl: don't remove redefined per vertex block
-      glsl: add nir implemenation of block validation
-      glsl: switch to NIR block validation
-      glsl: call new nir resize_tes_inputs() pass
-      glsl: remove now unused resize_tes_inputs()
-      glsl: remove now unused glsl ir block validation
-      glsl: move some linking calls to gl_nir_link_glsl()
-      glsl: switch verify_subroutine_associated_funcs() to nir
-      nir: add subroutine fields to nir_function
-      glsl: move link_assign_subroutine_types() to the nir linker
-      glsl: move check_explicit_uniform_locations() to NIR linker
-
-Timur Kristóf (7):
-      ac/nir/ngg: Don't create dummy output variable for primitive ID.
-      ac/nir/ngg: Use IO semantics for determining instance rate inputs.
-      ac/nir/ngg: Rename confusing driver_location variable in mesh shader lowering.
-      radv: Use NIR IO semantics for VS input location mapping.
-      radv: Don't set driver locations for mesh shaders.
-      radv: Don't set driver locations for FS outputs.
-      radv: Don't set driver locations for last pre-rasterization stage.
+Faith Ekstrand (3):
+      nvk: Add a _pad field to nvk_fs_key
+      nvk: Add a bunch of -Wpadded errors
+      vulkan: Add a bunch of -Wpadded errors
 
