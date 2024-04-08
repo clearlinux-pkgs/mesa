@@ -1,17 +1,33 @@
-Updating from fe36cf6cad9b226dff993a8f1f8f0bf451f095c5 to aac2a31b3d3d4bd2aefdc10cb50a8d8b2e2ab4bf
+Updating from aac2a31b3d3d4bd2aefdc10cb50a8d8b2e2ab4bf to 856db21acd8232f0d6ba825e5ef583f4de49b60b
 
-Eric Engestrom (5):
-      gallium/dri: reuse existing meson variables
-      meson: regroup glvnd lines to get an easier-to-review diff in the next commit
-      meson: turn `glvnd` option into a feature
-      ci: explicitly disable glvnd to avoid regression when making it auto
-      meson: auto-enable glvnd when libglvnd is installed
+Eric Engestrom (2):
+      mr-label-maker: include */gitlab-ci-inc.yml in GitLab CI changes
+      mr-label-maker: be explicit about the various CI files
 
-Eric R. Smith (1):
-      gallium: handle copy_image of depth textures
+Erik Faye-Lund (2):
+      panfrost: silence compiler warning
+      panfrost: add tiler-heap driconfs
 
-Faith Ekstrand (3):
-      nvk: Add a _pad field to nvk_fs_key
-      nvk: Add a bunch of -Wpadded errors
-      vulkan: Add a bunch of -Wpadded errors
+Hyunjun Ko (1):
+      anv/video: Fix to set correct offset and size for parsing h265 slice header.
+
+Lionel Landwerlin (2):
+      anv: mark descriptors & pipeline dirty after blorp compute
+      isl: set NullPageCoherencyEnable for depth/stencil sparse surfaces
+
+Lucas Stach (2):
+      etnaviv: rs: take src dimensions into account when increasing height alignment
+      etnaviv: use correct blit box sizes when copying resource
+
+M Henning (1):
+      nvk: Early-out impossible descriptor allocations
+
+Samuel Pitoiset (3):
+      radv: use SPDX-License-Identifier
+      radv: enable VK_EXT_shader_object by default
+      aco: use SPDX-License-Identifier
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's farm due to maintance
+      Revert "ci: disable Collabora's farm due to maintance"
 
