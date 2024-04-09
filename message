@@ -1,33 +1,119 @@
-Updating from aac2a31b3d3d4bd2aefdc10cb50a8d8b2e2ab4bf to 856db21acd8232f0d6ba825e5ef583f4de49b60b
+Updating from 856db21acd8232f0d6ba825e5ef583f4de49b60b to fdffa675f9979a11cdd0b9fbd23f9da02ed816d8
 
-Eric Engestrom (2):
-      mr-label-maker: include */gitlab-ci-inc.yml in GitLab CI changes
-      mr-label-maker: be explicit about the various CI files
+Axel Davy (5):
+      frontend/nine: Fix ff ps key
+      frontend/nine: Fix programmable vs check
+      frontend/nine: Fix missing light flag check
+      frontend/nine: Fix destruction race
+      frontend/nine: Reset should EndScene
 
-Erik Faye-Lund (2):
-      panfrost: silence compiler warning
-      panfrost: add tiler-heap driconfs
+Christian Gmeiner (1):
+      ci/etnaviv: Do not skip tex-miplevel piglits
 
-Hyunjun Ko (1):
-      anv/video: Fix to set correct offset and size for parsing h265 slice header.
+Connor Abbott (7):
+      nir/divergence_analysis: Add ir3-specific intrinsics
+      nir/divergence_analysis: Add uniform_load_tears option
+      nir/divergence_analysis: Fix load_view_index divergence in VS
+      ir3: Allow single-predecessor phis
+      ir3: Run divergence analysis at the end
+      ir3: Remove loop shared copy check
+      ir3: Use divergence analysis for (jp) and physical CFG
 
-Lionel Landwerlin (2):
-      anv: mark descriptors & pipeline dirty after blorp compute
-      isl: set NullPageCoherencyEnable for depth/stencil sparse surfaces
+Daniel Almeida (5):
+      meson,ci: Add the paste crate
+      nil: Add the start of a Rust library
+      nil: Rewrite nil_format in rust
+      nil: Re-implement nil_image in Rust
+      nil: Rewrite the TIC code in Rust
 
-Lucas Stach (2):
-      etnaviv: rs: take src dimensions into account when increasing height alignment
-      etnaviv: use correct blit box sizes when copying resource
+David Heidelberg (6):
+      frontend/nine: fix typos
+      r600: update licensing to SPDX header
+      r600: add license header to r600_formats.h
+      r600: add license info to the r600_opcodes.h
+      r600: add license information to the sfn_shader_gs.h
+      r600: fix typos
 
-M Henning (1):
-      nvk: Early-out impossible descriptor allocations
+Eric R. Smith (1):
+      panfrost: fix polygon offset calculation for floating point Z
 
-Samuel Pitoiset (3):
-      radv: use SPDX-License-Identifier
-      radv: enable VK_EXT_shader_object by default
-      aco: use SPDX-License-Identifier
+Faith Ekstrand (16):
+      nouveau: Move .rustfmt.toml from NAK to src/nouveau/
+      nouveau: Use hyphenated arguments to class_parser.py
+      nouveau/headers: Add initial Rust bindings
+      nouveau/headers: Add Rust bindings for texture headers
+      ci: Add cbindgen to the build images
+      nil: Move nil_tic_format to nil_format_table.h
+      nil: Move to a single header file
+      nvk: Stop using nvk_extent4d short names
+      nil: Rename nil_tiling::gob_height_8 to gob_height_is_8
+      nak/bitview: Add a SetField<f32> implementation
+      nil: Delete unused USAGE bits
+      nil: Make the Rust library the primary build target
+      nil: Add Extent/Offset4D::new() helpers
+      nil: Drop the nil_extent/offset4d() helpers
+      nil: Take a format in el_to_B()
+      nil: Enforce units via Rust types
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's farm due to maintance
-      Revert "ci: disable Collabora's farm due to maintance"
+Konstantin Seurer (20):
+      nir/print: Fix printing booleans with bit_size>1
+      nir/serialize: Encode data for temporaries
+      nir: Add lavapipe ray tracing intrinsics
+      llvmpipe: Fix function call handling
+      lavapipe: Add lvp_spirv_to_nir
+      lavapipe: Make lvp_shader_init non-static
+      lavapipe: Make lvp_create_pipeline_nir non-static
+      lavapipe: Lower mem_constant variables
+      lavapipe: Defer binding compute state
+      lavapipe: Remove unused ray tracing variables
+      lavapipe: Add more ray tracing helpers
+      lavapipe: Pass lvp_ray_flags into lvp_aabb_intersection_cb
+      lavapipe: Use the pipeline type in get_pcbuf_size
+      lavapipe: Inline fill_ubo0
+      lavapipe: Add an api_stage parameter to update_pcbuf
+      lavapipe: Fix a memory leak in lvp_push_internal_buffer
+      lavapipe: Implement VK_KHR_ray_tracing_pipeline
+      lavapipe: Implement KHR_ray_tracing_maintenance1
+      lavapipe: Implement VK_EXT_pipeline_library_group_handles
+      lavapipe: Implement VK_KHR_ray_tracing_position_fetch
+
+Lionel Landwerlin (1):
+      anv: only check patch_control_points changes in runtime flush
+
+Paul Gofman (3):
+      glsl: allow out arrays in #110 with allow_glsl_120_subset_in_110
+      driconf: add a workaround for Joe Danger 2
+      driconf: add a workaround for Joe Danger
+
+Paulo Zanoni (2):
+      vulkan: don't zero-initialize STACK_ARRAY()'s stack array
+      anv, iris: add missing CS_STALL bit for GPGPU texture invalidation
+
+Pavel Ondračka (1):
+      nir/lower_vec_to_regs: always set cursor before inserting decl_reg
+
+Rhys Perry (8):
+      nir: add nir_remove_after_cf_node helper
+      aco: remove unreachable merge blocks
+      aco: ensure loop exits exist in NIR
+      aco: save/reset/combine has_divergent_continue in uniform branches
+      nir,aco: add test intrinsics
+      aco/tests: add isel test helpers
+      aco/tests: add control flow tests
+      aco: assume no unreachable blocks
+
+Samuel Pitoiset (2):
+      ci: uprev vkd3d-proton to c3b385606a93baed42482d822805e0d9c2f3f603
+      docs: mark VK_KHR_maintenance6 as DONE for RADV
+
+Sil Vilerino (1):
+      d3d12/ci: Add vainfo with appverifier CI check
+
+Zack Rusin (1):
+      svga: Fix instanced draw detection
+
+Zan Dobersek (3):
+      tu/autotune: use SAMPLE_COUNT_END_OFFSET when writing the ending sample count
+      tu: RB_SAMPLE_COUNT_ADDR is also used on a7xx
+      tu/query: improve CP_EVENT_WRITE7::ZPASS_DONE usage
 
