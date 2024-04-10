@@ -1,119 +1,91 @@
-Updating from 856db21acd8232f0d6ba825e5ef583f4de49b60b to fdffa675f9979a11cdd0b9fbd23f9da02ed816d8
+Updating from fdffa675f9979a11cdd0b9fbd23f9da02ed816d8 to 1f4662cc4ed0c5b87479eb71e53a1320ab1b414b
 
-Axel Davy (5):
-      frontend/nine: Fix ff ps key
-      frontend/nine: Fix programmable vs check
-      frontend/nine: Fix missing light flag check
-      frontend/nine: Fix destruction race
-      frontend/nine: Reset should EndScene
+Chia-I Wu (1):
+      radv: fix 2d/3d image copy on compute queue
 
 Christian Gmeiner (1):
-      ci/etnaviv: Do not skip tex-miplevel piglits
+      etnaviv: Remove offline shader compiler
 
-Connor Abbott (7):
-      nir/divergence_analysis: Add ir3-specific intrinsics
-      nir/divergence_analysis: Add uniform_load_tears option
-      nir/divergence_analysis: Fix load_view_index divergence in VS
-      ir3: Allow single-predecessor phis
-      ir3: Run divergence analysis at the end
-      ir3: Remove loop shared copy check
-      ir3: Use divergence analysis for (jp) and physical CFG
+Corentin Noël (2):
+      ci: Change propagated variables into an array
+      ci: Add VK_DRIVER_FILES passthrough from jobs to tests
 
-Daniel Almeida (5):
-      meson,ci: Add the paste crate
-      nil: Add the start of a Rust library
-      nil: Rewrite nil_format in rust
-      nil: Re-implement nil_image in Rust
-      nil: Rewrite the TIC code in Rust
+David Rosca (2):
+      frontends/vdpau: Fix cdef strengths and lr_unit_shift in AV1 decode
+      frontends/vdpau: Support creating VDP_CHROMA_TYPE_420_16 surfaces
 
-David Heidelberg (6):
-      frontend/nine: fix typos
-      r600: update licensing to SPDX header
-      r600: add license header to r600_formats.h
-      r600: add license info to the r600_opcodes.h
-      r600: add license information to the sfn_shader_gs.h
-      r600: fix typos
+Georg Lehmann (10):
+      aco: use v1 definition for v_interp_p1lv_f16
+      aco/assembler: add vintrp high_16bit support
+      aco: swap opsel and wait_exp for vinterp
+      aco: support high_16bits FS IO
+      aco/tests: add assembler tests for interp high_16bits
+      aco/gfx9: all non legacy opsel instructions only write 16bits
+      aco: use v_interp_p2_f16 opsel
+      aco: add ra test for hi v_interp_p2_f16
+      radv: sink alu
+      radv: move alu
 
-Eric R. Smith (1):
-      panfrost: fix polygon offset calculation for floating point Z
+Gert Wollny (1):
+      zink: if AcquireNextImageKHR fails with VK_NOT_READY or VK_TIMEOUT retry
 
-Faith Ekstrand (16):
-      nouveau: Move .rustfmt.toml from NAK to src/nouveau/
-      nouveau: Use hyphenated arguments to class_parser.py
-      nouveau/headers: Add initial Rust bindings
-      nouveau/headers: Add Rust bindings for texture headers
-      ci: Add cbindgen to the build images
-      nil: Move nil_tic_format to nil_format_table.h
-      nil: Move to a single header file
-      nvk: Stop using nvk_extent4d short names
-      nil: Rename nil_tiling::gob_height_8 to gob_height_is_8
-      nak/bitview: Add a SetField<f32> implementation
-      nil: Delete unused USAGE bits
-      nil: Make the Rust library the primary build target
-      nil: Add Extent/Offset4D::new() helpers
-      nil: Drop the nil_extent/offset4d() helpers
-      nil: Take a format in el_to_B()
-      nil: Enforce units via Rust types
+Hans-Kristian Arntzen (1):
+      vulkan/runtime: Check correct callback list for binding report.
 
-Konstantin Seurer (20):
-      nir/print: Fix printing booleans with bit_size>1
-      nir/serialize: Encode data for temporaries
-      nir: Add lavapipe ray tracing intrinsics
-      llvmpipe: Fix function call handling
-      lavapipe: Add lvp_spirv_to_nir
-      lavapipe: Make lvp_shader_init non-static
-      lavapipe: Make lvp_create_pipeline_nir non-static
-      lavapipe: Lower mem_constant variables
-      lavapipe: Defer binding compute state
-      lavapipe: Remove unused ray tracing variables
-      lavapipe: Add more ray tracing helpers
-      lavapipe: Pass lvp_ray_flags into lvp_aabb_intersection_cb
-      lavapipe: Use the pipeline type in get_pcbuf_size
-      lavapipe: Inline fill_ubo0
-      lavapipe: Add an api_stage parameter to update_pcbuf
-      lavapipe: Fix a memory leak in lvp_push_internal_buffer
-      lavapipe: Implement VK_KHR_ray_tracing_pipeline
-      lavapipe: Implement KHR_ray_tracing_maintenance1
-      lavapipe: Implement VK_EXT_pipeline_library_group_handles
-      lavapipe: Implement VK_KHR_ray_tracing_position_fetch
+Jesse Natalie (1):
+      d3d12: Include <shlobj.h> with lowercase name
 
-Lionel Landwerlin (1):
-      anv: only check patch_control_points changes in runtime flush
+Jonathan Gray (2):
+      intel/dev: update DG2 device names
+      intel/dev: update DG2 device names
 
-Paul Gofman (3):
-      glsl: allow out arrays in #110 with allow_glsl_120_subset_in_110
-      driconf: add a workaround for Joe Danger 2
-      driconf: add a workaround for Joe Danger
+Konstantin Seurer (1):
+      radv: Destroy leaf_updateable_pipeline
 
-Paulo Zanoni (2):
-      vulkan: don't zero-initialize STACK_ARRAY()'s stack array
-      anv, iris: add missing CS_STALL bit for GPGPU texture invalidation
+Lucas Fryzek (2):
+      lp: Wrap udmabuf usage in HAVE_LIBDRM ifdef
+      ci/lp: Remove ext buffer YUV tests from fails
 
-Pavel Ondračka (1):
-      nir/lower_vec_to_regs: always set cursor before inserting decl_reg
+M Henning (3):
+      nak: Fix ldg/stg/atomg encoding to use globalmem
+      nak: Set fewer bits in writes_color
+      nak: Use undef for unset FSOut components
 
-Rhys Perry (8):
-      nir: add nir_remove_after_cf_node helper
-      aco: remove unreachable merge blocks
-      aco: ensure loop exits exist in NIR
-      aco: save/reset/combine has_divergent_continue in uniform branches
-      nir,aco: add test intrinsics
-      aco/tests: add isel test helpers
-      aco/tests: add control flow tests
-      aco: assume no unreachable blocks
+Martin Krastev (1):
+      svga/ci: re-enable vmware farm
 
-Samuel Pitoiset (2):
-      ci: uprev vkd3d-proton to c3b385606a93baed42482d822805e0d9c2f3f603
-      docs: mark VK_KHR_maintenance6 as DONE for RADV
+Mike Blumenkrantz (1):
+      lavapipe: don't clamp index buffer size for null index buffer draws
 
-Sil Vilerino (1):
-      d3d12/ci: Add vainfo with appverifier CI check
+Peyton Lee (1):
+      radeonsi/vpe: add support for p010
 
-Zack Rusin (1):
-      svga: Fix instanced draw detection
+Samuel Pitoiset (13):
+      radv: determine if the cache is disabled at device creation time
+      radv: add skip_shaders_cache also for compute/rt pipelines
+      radv: stop using a graphics pipeline for generating the graphics key
+      radv/rt: constify device in radv_init_rt_stage_hashes()
+      radv/rt: handle creation feedback like graphics/compute pipelines
+      radv/rt: stop passing pCreateInfo to radv_ray_tracing_pipeline_cache_search()
+      radv/rmv: fix missing image bind logging for WSI images
+      radv: fix missing addr binding report for WSI image binds
+      radv: fix addr binding report for disjoint image binds
+      radv/rmv: fix image binds logging for disjoint images
+      radv: add a helper to set image bindings
+      radv: fix missing unbind report when an image is destroyed
+      radv: fix missing unbind report when a buffer is destroyed
 
-Zan Dobersek (3):
-      tu/autotune: use SAMPLE_COUNT_END_OFFSET when writing the ending sample count
-      tu: RB_SAMPLE_COUNT_ADDR is also used on a7xx
-      tu/query: improve CP_EVENT_WRITE7::ZPASS_DONE usage
+Tapani Pälli (2):
+      intel/blorp: remove unused blorp batch flag
+      intel/compiler: add assert for Wa_22017182272
+
+Yiwei Zhang (8):
+      venus: rely on enum vn_descriptor_type for internal trackings
+      venus: move async_set_allocation check outside helpers
+      venus: set alloc to skip earlier for reserved and invalid bindings
+      venus: optimize mutable state restore
+      venus: misc set alloc and cleanup refactors
+      venus: drop vn_should_sanitize_descriptor_set_writes
+      venus: refactor descriptor set update and push
+      venus: use STACK_ARRAY to simplify descriptor set update and push
 
