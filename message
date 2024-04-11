@@ -1,91 +1,90 @@
-Updating from fdffa675f9979a11cdd0b9fbd23f9da02ed816d8 to 1f4662cc4ed0c5b87479eb71e53a1320ab1b414b
+Updating from 1f4662cc4ed0c5b87479eb71e53a1320ab1b414b to f419a8be904d9aac52186252920b30b82fdad406
 
-Chia-I Wu (1):
-      radv: fix 2d/3d image copy on compute queue
+Connor Abbott (3):
+      freedreno/afuc: Switch to using the GPU ID in the firmware
+      freedreno/afuc: Add a7xx new-style branch instructions
+      freedreno/afuc: Add initial support for a750
 
-Christian Gmeiner (1):
-      etnaviv: Remove offline shader compiler
+Dave Airlie (10):
+      vulkan/video: copy the profile over for h264 encode.
+      radv/video: export unified queue header/tail functions.
+      radv: add direct cs emit for a dword.
+      radv: add encoder queue support pieces and encoder queries.
+      radv/video: add parameter patching calls.
+      radv/video: add initial support for encoding with h264.
+      radv/video: add h265 encode support
+      radv/video: enable video encoding behind perftest flag
+      radv/video: handle encode control parameters better.
+      radv/video: don't advertise timestamp bits for decode/encode
 
-Corentin Noël (2):
-      ci: Change propagated variables into an array
-      ci: Add VK_DRIVER_FILES passthrough from jobs to tests
+David Heidelberg (1):
+      ci: disable sona devices, all devices are offline
 
-David Rosca (2):
-      frontends/vdpau: Fix cdef strengths and lr_unit_shift in AV1 decode
-      frontends/vdpau: Support creating VDP_CHROMA_TYPE_420_16 surfaces
+Eric Engestrom (3):
+      docs: add release notes for 24.0.5
+      docs: update calendar for 24.0.5
+      docs: add sha256sum for 24.0.5
 
-Georg Lehmann (10):
-      aco: use v1 definition for v_interp_p1lv_f16
-      aco/assembler: add vintrp high_16bit support
-      aco: swap opsel and wait_exp for vinterp
-      aco: support high_16bits FS IO
-      aco/tests: add assembler tests for interp high_16bits
-      aco/gfx9: all non legacy opsel instructions only write 16bits
-      aco: use v_interp_p2_f16 opsel
-      aco: add ra test for hi v_interp_p2_f16
-      radv: sink alu
-      radv: move alu
+Erik Kurzinger (1):
+      wsi/wayland: don't use explicit sync with sw
 
-Gert Wollny (1):
-      zink: if AcquireNextImageKHR fails with VK_NOT_READY or VK_TIMEOUT retry
+Georg Lehmann (2):
+      nir: don't try to optimize exclusive min/max scan to inclusive
+      nir: rename to nir_opt_16bit_tex_image
 
-Hans-Kristian Arntzen (1):
-      vulkan/runtime: Check correct callback list for binding report.
+Gert Wollny (7):
+      meson: Add blacklist when compiling with tsan
+      futex: disable futexes when compiling with tsan
+      util/u_queue: read fence->signalled locked with TSAN
+      tsan-blacklist: ignore race when reading lp_fence signalled status
+      llvmpipe: Don't emit certain debug code when TSAN is enabled
+      tsan-blacklist: Ignore race in get_max_abs_timeout_ns
+      tsan-blacklist: surpress two race conditions in TC
 
-Jesse Natalie (1):
-      d3d12: Include <shlobj.h> with lowercase name
+Hannes Mann (2):
+      gallium/pipe: Add contiguous planes per-surface attribute
+      frontends/va: Only export one handle for contiguous planes
 
-Jonathan Gray (2):
-      intel/dev: update DG2 device names
-      intel/dev: update DG2 device names
+Job Noorman (1):
+      freedreno,computerator: support initialization of buffers
 
-Konstantin Seurer (1):
-      radv: Destroy leaf_updateable_pipeline
+Jonathan Gray (1):
+      intel/dev: 0x7d45 is mtl-u not mtl-h
 
-Lucas Fryzek (2):
-      lp: Wrap udmabuf usage in HAVE_LIBDRM ifdef
-      ci/lp: Remove ext buffer YUV tests from fails
+Jordan Justen (1):
+      intel/dev: Change ATS-M 0x56c2 string from 170G to 170V
 
-M Henning (3):
-      nak: Fix ldg/stg/atomg encoding to use globalmem
-      nak: Set fewer bits in writes_color
-      nak: Use undef for unset FSOut components
+Juan A. Suarez Romero (1):
+      v3d: configure polygon mode when enabled
 
-Martin Krastev (1):
-      svga/ci: re-enable vmware farm
+Lucas Stach (1):
+      etnaviv: fix separate depth/stencil clears
 
-Mike Blumenkrantz (1):
-      lavapipe: don't clamp index buffer size for null index buffer draws
+Mike Blumenkrantz (4):
+      v3d: set use_clipdist_array=true for lower_clip?
+      nir/lower_clip: surgerize for lowered io
+      nir/lower_clip: handle scalarized io
+      zink: block LA formats with srgb
 
-Peyton Lee (1):
-      radeonsi/vpe: add support for p010
+Rhys Perry (2):
+      aco: don't include the clause in VMEM_CLAUSE_MAX_GRAB_DIST
+      aco: remove occupancy check in dealloc_vgprs()
 
-Samuel Pitoiset (13):
-      radv: determine if the cache is disabled at device creation time
-      radv: add skip_shaders_cache also for compute/rt pipelines
-      radv: stop using a graphics pipeline for generating the graphics key
-      radv/rt: constify device in radv_init_rt_stage_hashes()
-      radv/rt: handle creation feedback like graphics/compute pipelines
-      radv/rt: stop passing pCreateInfo to radv_ray_tracing_pipeline_cache_search()
-      radv/rmv: fix missing image bind logging for WSI images
-      radv: fix missing addr binding report for WSI image binds
-      radv: fix addr binding report for disjoint image binds
-      radv/rmv: fix image binds logging for disjoint images
-      radv: add a helper to set image bindings
-      radv: fix missing unbind report when an image is destroyed
-      radv: fix missing unbind report when a buffer is destroyed
+Sagar Ghuge (1):
+      anv: Fix typo in DestinationAlphaBlendFactor value
 
-Tapani Pälli (2):
-      intel/blorp: remove unused blorp batch flag
-      intel/compiler: add assert for Wa_22017182272
+Samuel Pitoiset (3):
+      radv/rt: remove dead code about intersection shaders in radv_pipeline_get_shader_key()
+      radv: add a helper for hashing pipelines
+      radv: rework and add a helper for hashing a compute pipeline
 
-Yiwei Zhang (8):
-      venus: rely on enum vn_descriptor_type for internal trackings
-      venus: move async_set_allocation check outside helpers
-      venus: set alloc to skip earlier for reserved and invalid bindings
-      venus: optimize mutable state restore
-      venus: misc set alloc and cleanup refactors
-      venus: drop vn_should_sanitize_descriptor_set_writes
-      venus: refactor descriptor set update and push
-      venus: use STACK_ARRAY to simplify descriptor set update and push
+Timur Kristóf (5):
+      radv: Keep track of TCS outputs that need LDS.
+      radv: Remove dead code for creating per-patch IO mask.
+      radv: Add radv_gather_unlinked_io_mask to shader info header.
+      radv: Always use fixed I/O locations for TCS outputs in VRAM.
+      radv: Clean up gathering linked I/O info.
+
+Vignesh Raman (1):
+      ci: Implement support for replaying ANGLE restricted traces
 
