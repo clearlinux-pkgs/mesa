@@ -1,90 +1,62 @@
-Updating from 1f4662cc4ed0c5b87479eb71e53a1320ab1b414b to f419a8be904d9aac52186252920b30b82fdad406
+Updating from f419a8be904d9aac52186252920b30b82fdad406 to e511ffea4b9e298217813a2148f86910a4cdcd8b
 
-Connor Abbott (3):
-      freedreno/afuc: Switch to using the GPU ID in the firmware
-      freedreno/afuc: Add a7xx new-style branch instructions
-      freedreno/afuc: Add initial support for a750
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to dd6f7eaf82e8dd442da28b346c236141cbcce0b1
 
-Dave Airlie (10):
-      vulkan/video: copy the profile over for h264 encode.
-      radv/video: export unified queue header/tail functions.
-      radv: add direct cs emit for a dword.
-      radv: add encoder queue support pieces and encoder queries.
-      radv/video: add parameter patching calls.
-      radv/video: add initial support for encoding with h264.
-      radv/video: add h265 encode support
-      radv/video: enable video encoding behind perftest flag
-      radv/video: handle encode control parameters better.
-      radv/video: don't advertise timestamp bits for decode/encode
+Danylo Piliaiev (1):
+      ir3: Do not set clip/cull mask if no one writes clip/cull
+
+Dave Airlie (1):
+      egl/dri2: don't bind dri2 for zink
 
 David Heidelberg (1):
-      ci: disable sona devices, all devices are offline
+      ci/intel: sona device_type is back online
 
-Eric Engestrom (3):
-      docs: add release notes for 24.0.5
-      docs: update calendar for 24.0.5
-      docs: add sha256sum for 24.0.5
+Lionel Landwerlin (1):
+      anv: increase maxResourceDescriptorBufferRange on DG2+
 
-Erik Kurzinger (1):
-      wsi/wayland: don't use explicit sync with sw
+Martin Krastev (1):
+      svga/ci: add two new piglit flakes to svga
 
-Georg Lehmann (2):
-      nir: don't try to optimize exclusive min/max scan to inclusive
-      nir: rename to nir_opt_16bit_tex_image
+Mike Blumenkrantz (13):
+      llvmpipe: clamp 32bit query results to low 32 bits rather than MIN
+      lavapipe: clamp 32bit query results to low 32 bits rather than MIN
+      agx: set compact_arrays in compiler options
+      v3d: set compact_arrays in compiler options
+      intel: set compact_arrays in compiler options
+      freedreno: set compact_arrays in compiler options
+      glsl: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and check compact_arrays
+      ttn: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and check compact_arrays
+      glsl: move an assert from st_context over to avoid using PIPE_CAP_NIR_COMPACT_ARRAYS
+      mesa: delete LowerCombinedClipCullDistance from consts
+      st/program: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and use compact_arrays
+      nine: stop checking PIPE_CAP_NIR_COMPACT_ARRAYS and use compact_arrays
+      gallium: delete PIPE_CAP_NIR_COMPACT_ARRAYS
 
-Gert Wollny (7):
-      meson: Add blacklist when compiling with tsan
-      futex: disable futexes when compiling with tsan
-      util/u_queue: read fence->signalled locked with TSAN
-      tsan-blacklist: ignore race when reading lp_fence signalled status
-      llvmpipe: Don't emit certain debug code when TSAN is enabled
-      tsan-blacklist: Ignore race in get_max_abs_timeout_ns
-      tsan-blacklist: surpress two race conditions in TC
+Patrick Lerda (1):
+      r300: fix r300_draw_elements() behavior
 
-Hannes Mann (2):
-      gallium/pipe: Add contiguous planes per-surface attribute
-      frontends/va: Only export one handle for contiguous planes
-
-Job Noorman (1):
-      freedreno,computerator: support initialization of buffers
-
-Jonathan Gray (1):
-      intel/dev: 0x7d45 is mtl-u not mtl-h
-
-Jordan Justen (1):
-      intel/dev: Change ATS-M 0x56c2 string from 170G to 170V
-
-Juan A. Suarez Romero (1):
-      v3d: configure polygon mode when enabled
-
-Lucas Stach (1):
-      etnaviv: fix separate depth/stencil clears
-
-Mike Blumenkrantz (4):
-      v3d: set use_clipdist_array=true for lower_clip?
-      nir/lower_clip: surgerize for lowered io
-      nir/lower_clip: handle scalarized io
-      zink: block LA formats with srgb
-
-Rhys Perry (2):
-      aco: don't include the clause in VMEM_CLAUSE_MAX_GRAB_DIST
-      aco: remove occupancy check in dealloc_vgprs()
+Pavel Ondračka (3):
+      r300: check for the extra restrictions on presubtract swizzles
+      r300: move presubtract pass later
+      r300: optimize swizzle for inline constants
 
 Sagar Ghuge (1):
-      anv: Fix typo in DestinationAlphaBlendFactor value
+      anv: Use appropriate argument format for indirect draw
 
-Samuel Pitoiset (3):
-      radv/rt: remove dead code about intersection shaders in radv_pipeline_get_shader_key()
-      radv: add a helper for hashing pipelines
-      radv: rework and add a helper for hashing a compute pipeline
+Samuel Pitoiset (1):
+      radv: stop ignoring shader stages that don't need to be imported with GPL
 
-Timur Kristóf (5):
-      radv: Keep track of TCS outputs that need LDS.
-      radv: Remove dead code for creating per-patch IO mask.
-      radv: Add radv_gather_unlinked_io_mask to shader info header.
-      radv: Always use fixed I/O locations for TCS outputs in VRAM.
-      radv: Clean up gathering linked I/O info.
+Timothy Arceri (8):
+      glsl: move mode_string() to helper
+      glsl: add some data members to nir_variable
+      glsl: make validate_intrastage_arrays() usable across files
+      glsl: move cross_validate_uniforms() to the nir linker
+      glsl: use shader info to store gs verts
+      glsl: use info from shader when linking
+      glsl: move validate_{stage}_shader_executable() to the nir linker
+      glsl: remove now unused do_dead_functions()
 
-Vignesh Raman (1):
-      ci: Implement support for replaying ANGLE restricted traces
+nyanmisaka (1):
+      radeonsi/uvd_enc: update to use correct padding size
 
