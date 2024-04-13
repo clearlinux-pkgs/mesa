@@ -1,62 +1,75 @@
-Updating from f419a8be904d9aac52186252920b30b82fdad406 to e511ffea4b9e298217813a2148f86910a4cdcd8b
+Updating from e511ffea4b9e298217813a2148f86910a4cdcd8b to 6cc780173a8b1f427b434d59c4a32c5f553e661c
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to dd6f7eaf82e8dd442da28b346c236141cbcce0b1
-
-Danylo Piliaiev (1):
-      ir3: Do not set clip/cull mask if no one writes clip/cull
-
-Dave Airlie (1):
-      egl/dri2: don't bind dri2 for zink
+Christian Gmeiner (23):
+      etnaviv: Introduce common etna_core_info
+      etnaviv: drm: Make use of etna_core_info
+      etnaviv: drm: Add etna_gpu_get_core_info(..)
+      etnaviv: Switch to etna_core_info
+      etnaviv: Move hw header to common place
+      etnaviv: Introduce etna_feature enum
+      etnaviv: common: Add feature bitset
+      etnaviv: drm: Initialize etna_core_info based on kernel features
+      etnaviv: Switch to etna_core APIs
+      etnaviv: drm: Query some id values in etna_gpu_new(..)
+      etnaviv: hwdb: Import gc_feature_database from NXP
+      etnaviv: hwdb: Import gc_feature_database from Amlogic
+      etnaviv: hwdb: Import gc_feature_database from ST
+      ci: Install python3-pycparser in build container
+      etnaviv: hwdb: Generate hwdb.h
+      etnaviv: hwdb: Add etna_query_feature_db(..)
+      etnaviv: drm: Make use of hwdb
+      etnaviv: common: Add enum etna_core_type
+      etnaviv: common: Add some limit values
+      etnaviv: hwdb: Fill limits
+      etnaviv: drm: Fill limits
+      etnaviv: Copy values from etna_core_info
+      etnaviv: drm: Remove fallback value for ETNA_GPU_NUM_CONSTANTS
 
 David Heidelberg (1):
-      ci/intel: sona device_type is back online
+      ci: temporarily disable Android test builds
 
-Lionel Landwerlin (1):
-      anv: increase maxResourceDescriptorBufferRange on DG2+
+M Henning (2):
+      nak: Remove old union_find implementation
+      nak: Rewrite union_find and use it in repair_ssa
 
-Martin Krastev (1):
-      svga/ci: add two new piglit flakes to svga
+Marek Olšák (13):
+      ac/surface: add radeon_surf::thick_tiling
+      ac/nir: allow 16-bit results for resinfo
+      ac/llvm: simplify extracting an element in get_image_coords
+      ac/llvm: add support for 16-bit coordinates (A16) for image (non-sampler) opcodes
+      ac/llvm: allow image loads to return less than 4 components, trim DMASK
+      ac/llvm: remove handling of input and output loads/stores that are lowered
+      ac/llvm: remove unused fields of ac_shader_abi
+      ac/llvm: simplify the optimization barrier and apply it to the whole vector
+      ac: add helper ac_get_ip_type_string to remove duplication
+      nir: add more build helpers
+      nir: allow FP16 in nir_format_linear_to_srgb
+      nir: add nir_intrinsic_optimization_barrier_sgpr_amd
+      nir: change "user_data_amd" sysval from 4 to 8 components
 
-Mike Blumenkrantz (13):
-      llvmpipe: clamp 32bit query results to low 32 bits rather than MIN
-      lavapipe: clamp 32bit query results to low 32 bits rather than MIN
-      agx: set compact_arrays in compiler options
-      v3d: set compact_arrays in compiler options
-      intel: set compact_arrays in compiler options
-      freedreno: set compact_arrays in compiler options
-      glsl: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and check compact_arrays
-      ttn: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and check compact_arrays
-      glsl: move an assert from st_context over to avoid using PIPE_CAP_NIR_COMPACT_ARRAYS
-      mesa: delete LowerCombinedClipCullDistance from consts
-      st/program: stop using PIPE_CAP_NIR_COMPACT_ARRAYS and use compact_arrays
-      nine: stop checking PIPE_CAP_NIR_COMPACT_ARRAYS and use compact_arrays
-      gallium: delete PIPE_CAP_NIR_COMPACT_ARRAYS
+Mike Blumenkrantz (7):
+      zink: set indirect io compiler flags
+      zink: set lower_to_scalar
+      zink: rework rework_io_vars
+      zink: set nir_io_glsl_lower_derefs in compiler options
+      zink: add a pass to fix vertex input locations
+      zink: enable opt_varyings with ZINK_DEBUG=ioopt
+      zink: ci updates
 
-Patrick Lerda (1):
-      r300: fix r300_draw_elements() behavior
+Pavel Ondračka (6):
+      r300: inline unoptimized_ra ntr option
+      r300: get rid of the unused ubo_vec4_max ntr option
+      r300: remove the ntr lower_cmp option
+      r300: move lower_fabb option out of the options struct
+      r300: remove nir_to_rc_options wrapper
+      r300/ci: failures list update
 
-Pavel Ondračka (3):
-      r300: check for the extra restrictions on presubtract swizzles
-      r300: move presubtract pass later
-      r300: optimize swizzle for inline constants
+Timothy Arceri (4):
+      glsl: remove FragDepthLayout field
+      glsl: remove ActiveStreamMask field
+      glsl: remove UsesEndPrimitive field
+      glsl: inline _mesa_copy_linked_program_data()
 
-Sagar Ghuge (1):
-      anv: Use appropriate argument format for indirect draw
-
-Samuel Pitoiset (1):
-      radv: stop ignoring shader stages that don't need to be imported with GPL
-
-Timothy Arceri (8):
-      glsl: move mode_string() to helper
-      glsl: add some data members to nir_variable
-      glsl: make validate_intrastage_arrays() usable across files
-      glsl: move cross_validate_uniforms() to the nir linker
-      glsl: use shader info to store gs verts
-      glsl: use info from shader when linking
-      glsl: move validate_{stage}_shader_executable() to the nir linker
-      glsl: remove now unused do_dead_functions()
-
-nyanmisaka (1):
-      radeonsi/uvd_enc: update to use correct padding size
+Yiwei Zhang (1):
+      venus: use more relaxed profile for TLS ring seqno wait
 
