@@ -1,75 +1,24 @@
-Updating from e511ffea4b9e298217813a2148f86910a4cdcd8b to 6cc780173a8b1f427b434d59c4a32c5f553e661c
+Updating from 6cc780173a8b1f427b434d59c4a32c5f553e661c to 2b1031ec10cab1aa22a9827e20e2748d2ef7508f
 
-Christian Gmeiner (23):
-      etnaviv: Introduce common etna_core_info
-      etnaviv: drm: Make use of etna_core_info
-      etnaviv: drm: Add etna_gpu_get_core_info(..)
-      etnaviv: Switch to etna_core_info
-      etnaviv: Move hw header to common place
-      etnaviv: Introduce etna_feature enum
-      etnaviv: common: Add feature bitset
-      etnaviv: drm: Initialize etna_core_info based on kernel features
-      etnaviv: Switch to etna_core APIs
-      etnaviv: drm: Query some id values in etna_gpu_new(..)
-      etnaviv: hwdb: Import gc_feature_database from NXP
-      etnaviv: hwdb: Import gc_feature_database from Amlogic
-      etnaviv: hwdb: Import gc_feature_database from ST
-      ci: Install python3-pycparser in build container
-      etnaviv: hwdb: Generate hwdb.h
-      etnaviv: hwdb: Add etna_query_feature_db(..)
-      etnaviv: drm: Make use of hwdb
-      etnaviv: common: Add enum etna_core_type
-      etnaviv: common: Add some limit values
-      etnaviv: hwdb: Fill limits
-      etnaviv: drm: Fill limits
-      etnaviv: Copy values from etna_core_info
-      etnaviv: drm: Remove fallback value for ETNA_GPU_NUM_CONSTANTS
+Konstantin Seurer (5):
+      lavapipe: Handle accel struct queries in handle_copy_query_pool_results
+      lavapipe: Implement ray_tracing_maintenance1 queries
+      lavapipe: Do nort use NIR_PASS during lowering
+      lavapipe: Handle multiple planes in GetDescriptorEXT
+      lavapipe: Explicitely support ycbcr formats
 
-David Heidelberg (1):
-      ci: temporarily disable Android test builds
-
-M Henning (2):
-      nak: Remove old union_find implementation
-      nak: Rewrite union_find and use it in repair_ssa
-
-Marek Olšák (13):
-      ac/surface: add radeon_surf::thick_tiling
-      ac/nir: allow 16-bit results for resinfo
-      ac/llvm: simplify extracting an element in get_image_coords
-      ac/llvm: add support for 16-bit coordinates (A16) for image (non-sampler) opcodes
-      ac/llvm: allow image loads to return less than 4 components, trim DMASK
-      ac/llvm: remove handling of input and output loads/stores that are lowered
-      ac/llvm: remove unused fields of ac_shader_abi
-      ac/llvm: simplify the optimization barrier and apply it to the whole vector
-      ac: add helper ac_get_ip_type_string to remove duplication
-      nir: add more build helpers
-      nir: allow FP16 in nir_format_linear_to_srgb
-      nir: add nir_intrinsic_optimization_barrier_sgpr_amd
-      nir: change "user_data_amd" sysval from 4 to 8 components
-
-Mike Blumenkrantz (7):
-      zink: set indirect io compiler flags
-      zink: set lower_to_scalar
-      zink: rework rework_io_vars
-      zink: set nir_io_glsl_lower_derefs in compiler options
-      zink: add a pass to fix vertex input locations
-      zink: enable opt_varyings with ZINK_DEBUG=ioopt
-      zink: ci updates
-
-Pavel Ondračka (6):
-      r300: inline unoptimized_ra ntr option
-      r300: get rid of the unused ubo_vec4_max ntr option
-      r300: remove the ntr lower_cmp option
-      r300: move lower_fabb option out of the options struct
-      r300: remove nir_to_rc_options wrapper
-      r300/ci: failures list update
-
-Timothy Arceri (4):
-      glsl: remove FragDepthLayout field
-      glsl: remove ActiveStreamMask field
-      glsl: remove UsesEndPrimitive field
-      glsl: inline _mesa_copy_linked_program_data()
-
-Yiwei Zhang (1):
-      venus: use more relaxed profile for TLS ring seqno wait
+Timur Kristóf (13):
+      nir/print: Print per-primitive and explicit strict IO info.
+      nir/recompute_io_bases: Fix per-primitive inputs.
+      nir/gather_info: Clear per-primitive I/O masks at the beginning.
+      nir/lower_io_to_scalar: Support explicit (and per-vertex) FS inputs.
+      nir/lower_io_to_scalar: Support per-primitive outputs.
+      nir/opt_varyings: Allow optimizing primitive ID for MS -> FS.
+      nir/opt_varyings: Support per-primitive I/O.
+      nir/opt_varyings: Fix explicit and per-vertex FS inputs.
+      nir/opt_varyings: Add early return when producer stage is task.
+      nir/opt_varyings: Only propagate constant MS outputs, not other uniforms.
+      nir/opt_varyings: Debug print during relocate_slot.
+      nir/opt_varyings: Fix relocate_slot so it doesn't mix up 32-bit and 16-bit I/O.
+      nir/opt_varyings: Add workaround for RADV mesh shader multiview.
 
