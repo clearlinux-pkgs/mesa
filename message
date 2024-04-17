@@ -1,24 +1,130 @@
-Updating from 6cc780173a8b1f427b434d59c4a32c5f553e661c to 2b1031ec10cab1aa22a9827e20e2748d2ef7508f
+Updating from 2543f5a594f969722de4d3e4632aedebb5acbb73 to 363a90d0c45cfc25fba6f8e59e6c53fb610846e8
 
-Konstantin Seurer (5):
-      lavapipe: Handle accel struct queries in handle_copy_query_pool_results
-      lavapipe: Implement ray_tracing_maintenance1 queries
-      lavapipe: Do nort use NIR_PASS during lowering
-      lavapipe: Handle multiple planes in GetDescriptorEXT
-      lavapipe: Explicitely support ycbcr formats
+Christian Gmeiner (2):
+      etnaviv: Switch to etna_core_disable_feature(..)
+      etnaviv: Fix disabling of features
 
-Timur Kristóf (13):
-      nir/print: Print per-primitive and explicit strict IO info.
-      nir/recompute_io_bases: Fix per-primitive inputs.
-      nir/gather_info: Clear per-primitive I/O masks at the beginning.
-      nir/lower_io_to_scalar: Support explicit (and per-vertex) FS inputs.
-      nir/lower_io_to_scalar: Support per-primitive outputs.
-      nir/opt_varyings: Allow optimizing primitive ID for MS -> FS.
-      nir/opt_varyings: Support per-primitive I/O.
-      nir/opt_varyings: Fix explicit and per-vertex FS inputs.
-      nir/opt_varyings: Add early return when producer stage is task.
-      nir/opt_varyings: Only propagate constant MS outputs, not other uniforms.
-      nir/opt_varyings: Debug print during relocate_slot.
-      nir/opt_varyings: Fix relocate_slot so it doesn't mix up 32-bit and 16-bit I/O.
-      nir/opt_varyings: Add workaround for RADV mesh shader multiview.
+Constantine Shablia (2):
+      vulkan/runtime: fix typo
+      mesa: fix typo
+
+David Heidelberg (1):
+      ci: disable Igalia farm
+
+Dylan Baker (1):
+      nouveau: require cbindgen >= 0.25
+
+Eric R. Smith (1):
+      panfrost: mark separate_stencil as valid when surface is valid
+
+Erik Kurzinger (1):
+      wsi/x11: support explicit sync
+
+Guilherme Gallo (2):
+      ci/a618: Rebalance a618-limozeen jobs
+      ci/a618: Add zink-tu-a618-full
+
+Hans-Kristian Arntzen (1):
+      radv: Store range rather than bo_size in VkBuffer/VkImage.
+
+Iván Briano (3):
+      nir/algebraic: avoid double lowering of some fp64 operations
+      nir/lower_doubles: preserve sign of zero if we are asked to
+      nir/lower_doubles: preserve NaN when asked to do so
+
+Jose Maria Casanova Crespo (2):
+      broadcom/compiler: needs_quad_helper_invocation enable PER_QUAD TMU access
+      ci: re-enable Igalia farm
+
+Joshua Ashton (1):
+      tu: Expose VK_EXT_surface/swapchain_maintenance1
+
+Juan A. Suarez Romero (1):
+      broadcom/ci: update expected results
+
+Kenneth Graunke (7):
+      intel/brw: Drop gfx7 scratch message setup code
+      intel/brw: Delete if_depth_in_loop
+      intel/brw: Delete fs_visitor::vgrf helper
+      intel/brw: Drop default size of 1 from bld.vgrf() calls
+      intel/brw: Use SHADER_OPCODE_SEND for coherent framebuffer reads
+      intel/brw: Replace FS_OPCODE_LINTERP with BRW_OPCODE_PLN
+      intel/brw: Make an fs_builder::SYNC helper
+
+Lionel Landwerlin (12):
+      anv: reuse vk_common_GetImageSubresourceLayout
+      anv: move all format props checks to anv_get_image_format_properties()
+      drirc: rename hasvk only option
+      vulkan: track compression control flags on vk_image
+      anv: implement VK_EXT_image_compression_control
+      anv: disable capture replay with descriptor buffer
+      anv: remove useless dynamic state allocation for samplers
+      anv: add capture/replay support for image with descriptor buffers
+      anv: add capture/replay support for buffer with descriptor buffers
+      anv: add a new reserved pool for capture/release
+      anv: enable shader border color capture/replay
+      anv: enable capture/replay with descriptor buffers
+
+Lucas Stach (1):
+      etnaviv: flip the switch on MSAA support
+
+Mike Blumenkrantz (2):
+      ci: kill piano trace globally
+      nir: print i/o variables in location order
+
+Paulo Zanoni (6):
+      anv/sparse: remove useless isl_surf_get_tile_info() call
+      anv/sparse: remove unnecessary popcount assertions
+      anv/sparse: adjust sparse_bind_image_memory debug messages
+      anv/sparse: remove unused dump_vk_sparse_memory_bind()
+      anv/sparse: replace device->using_sparse with device->num_sparse_resources
+      anv/sparse: rework anv_free_sparse_bindings() error handling
+
+Rhys Perry (2):
+      aco/tests: don't assume constructor order
+      aco/tests: remove LLVM 11 code
+
+Rob Clark (2):
+      freedreno: Update a618 xfails
+      ci: Add deqp fix for pipeline_statistics_3 tests
+
+Samuel Pitoiset (5):
+      radv: simplify importing pipeline layout with GPL
+      radv: return early when PS is NULL in radv_pipeline_init_blend_state()
+      radv: simplify checking for PS epilogs in radv_pipeline_init_blend_state()
+      radv: remove unused parameter in radv_skip_graphics_pipeline_compile()
+      radv: simplify the check for exporting multiview in the last VGT stage
+
+Stéphane Cerveau (1):
+      vulkan/video: hevc: b-frames can be reference or not
+
+Surafel Assefa (1):
+      radeonsi: Adds return on failure to get plane info
+
+Tapani Pälli (1):
+      anv: add dirty tracking for push constant data
+
+Timur Kristóf (8):
+      ac/nir/ngg: Remove support for loading mesh shader outputs.
+      ac/nir/ngg: Refactor MS primitive indices for scalarized IO.
+      ac/nir/ngg: Slightly refactor mesh shader cull flag stores.
+      ac/nir/ngg: Use just one IO semantics variable in MS output store.
+      ac/nir/ngg: Refactor update_ms_output_info.
+      ac/nir/ngg: Refactor MS output store into two functions.
+      ac/nir/ngg: Split 16-bit MS output stores by components.
+      ac/nir/ngg: Enable packing 16-bit mesh shader outputs.
+
+Valentine Burley (3):
+      tu: Move tu_BindImageMemory2() to tu_image.cc
+      tu: Replace TU_HAS_SURFACE with TU_USE_WSI_PLATFORM
+      tu: Fix missing implementation of creating images from swapchains
+
+Yiwei Zhang (7):
+      venus: avoid the redundant template entry
+      venus: fix to drop an extra ;
+      venus: simplify push descriptor update with template
+      venus: optimize set update template data population
+      venus: simplify need and ignore rules for desc image info
+      venus: use STACK_ARRAY to simplify set template update and push
+      venus: clean up legacy descriptor update template bits
 
