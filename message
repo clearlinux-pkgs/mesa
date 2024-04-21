@@ -1,115 +1,20 @@
-Updating from 40f39482e15cb5aa14abef6661a4d785bb6cd4b1 to 042b8a65d33d94e24ef037d0b1550ad70b6b4517
+Updating from d097a60d5762df2d557362deea84e275794d1e35 to 04f232ed99bb68ef7c5169173253d4cdfa840bce
 
-Arthur Huillet (1):
-      nvk: remove useless MME scratch 26 usage
+Konstantin (6):
+      ac/debug: Handle the output of recent umr versions
+      radv/debug: Canonicalize shader addr
+      radv: Canonicalize addresses in radv_find_shader
+      radv/debug: Try to find unbound shaders
+      radv/debug: Dump descriptor binding information
+      ac/parse_ib: Always print the value of the whole register
 
-Boris Brezillon (27):
-      panvk: Fix attach-less rendering
-      panvk: Fix the colorAttachmentCount check in begin_rendering_init_fbinfo()
-      pan/bi: Support fragment store_output() with a non-zero offset
-      panvk: Don't assume VkGraphicsPipelineCreateInfo::pColorBlendState != NULL
-      pan/bi: Allow subpass sampler dims
-      panvk: Fix input attachment support
-      panvk: Fill pan_tls_info::wls::instances
-      panvk: Make sure the sample_pattern is set in the tiler descriptor
-      panvk: We don't support resolve operations yet
-      pan/bi: Extend bi_emit_texc() to support wider direct tex/sampler idx
-      panvk: Don't assume pViewportState != NULL
-      panvk: Fix img2buf copies with image X offset not aligned on 16 pixels
-      panvk: Fix has_non_vs_attribute() test in panvk_draw_prepare_vs_attribs()
-      panvk: Make sure we pick a valid wrap_mode_r value for unnormalizedCoordinates
-      panvk: Fix depth/stencil image views
-      panvk: Make sure we have a decode context created when we need one
-      panvk: Don't advertize vertex_buffer cap on sRGB formats
-      panvk: Swizzle the border color on v7 when the format is BGR
-      panvk: Re-order things in panvk_physical_device_init()
-      panvk: Fill maxCustomBorderColorSamplers
-      panvk: Skip tiler jobs when the vertex shader doesn't write the position
-      panvk: Make sure we use the proper format for views of depth+stencil images
-      panvk: Abort on fault when PANVK_DEBUG=sync
-      panvk/ci: Make sure we catch GPU faults
-      panvk/ci: Enable dEQP-VK.pipeline.monolithic.*
-      panvk: Add support for KHR_push_descriptor
-      panvk/ci: Re-enable copy_and_blit tests
+Manuel Stoeckl (1):
+      util/disk_cache: try getenv(HOME) before getpwuid->pw_dir
 
-Eric Engestrom (10):
-      etnaviv: avoid re-defining prog_python
-      egl: drop dead dri2_dpy param in dri2_wl_visual_idx_from_config()
-      lavapipe: add 1 new failure and 1 new timeout since CTS uprev to 1.3.8.0
-      vk/overlay-layer: drop unused imports
-      vk/overlay-layer: fix None checks
-      vk/overlay-layer: simplify print and make it more readable
-      docs/rusticl: add an intro explaining what Rusticl is
-      wsi/x11: drop unused param in x11_present_to_x11_sw()
-      radv: initialize a couple of variables
-      util: simplify loop logic in util_format_get_first_non_void_channel()
-
-Erik Faye-Lund (1):
-      panfrost: implement a driver-specific max-miplevel
-
-Faith Ekstrand (2):
-      nil: cbindgen is required
-      nvk: Improve the unsupported handle type error
-
-Iago Toral Quiroga (1):
-      broadcom/compiler: enable perquad with uses_wide_subgroup_intrinsics
-
-Ian Romanick (1):
-      intel/brw/xe2+: Only apply Wa 22016140776 to math instructions
-
-Iván Briano (1):
-      anv, hasvk: check requirements for USAGE_INPUT_ATTACHMENT properly
-
-Jordan Justen (1):
-      intel/brw: Avoid getting a stride of 0 for nir_intrinsic_exclusive_scan
-
-José Roberto de Souza (8):
-      intel/tools/error2hangdump: Print out_filename when failed to open it
-      intel/tools/error2hangdump: Replace drm_i915_gem_engine_class by intel_engine_class
-      intel/tools: Move Xe KMD error decode functions to a separated file
-      intel/tools: Move ascii85_decode_char() to error_decode_lib
-      intel/tools: Move more Xe KMD error decode functions to error_decode_xe_lib
-      intel/tools/error2hangdump: Move code that will be shared with Xe parser to error2hangdump_lib
-      intel/tools/error2hangdump: Move i915 parser to a function
-      intel/tools/error2hangdump: Add Xe KMD support
-
-Lucas Fryzek (2):
-      llvmpipe: Only return null resource handle when dt is not mapped
-      llvmpipe: Only use udmabuf if header is found
-
-Mike Blumenkrantz (5):
-      nir/print: stop trying to match i/o vars using base/driver_location
-      zink: add ZINK_DEBUG=nopc to completely disable precompilation
-      zink: destroy shaderdb pipelines
-      zink: add VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR for shaderdb
-      brw/lower_a2c: fix for scalarized fs outputs
-
-Paulo Zanoni (8):
-      anv/xe: extract anv_vm_bind_to_drm_xe_vm_bind()
-      anv/xe: add a 'flags' parameter to the vm_bind() kmd_backend function
-      anv/xe: slightly improve error handling for the vm_bind ioctl
-      anv/xe: assert we're using drm_syncobjs only once
-      anv/xe: de-duplicate xe_exec_fill_sync()
-      anv/xe: rename and refactor xe_exec_fill_sync()
-      anv/sparse: fail the right way in anv_GetDeviceImageSparseMemoryRequirements()
-      anv: const-correct anv_{image,buffer}_is_sparse()
-
-Robin Kertels (1):
-      nvk: Enable EXT_nested_command_buffer.
-
-Samuel Pitoiset (3):
-      radv/ci: add one more flake since CTS 1.3.8.0 for RENOIR
-      radv/ci: update lists for TAHITI and Zink/Polaris10
-      radV/ci: reduce the parallelism of navi21 to 3
-
-Timur Kristóf (6):
-      radv: Run DCE before deleting I/O variables.
-      radv: Only consider interpolated inputs as 16-bit float.
-      radv: Refactor emitting PS input types.
-      radv: Remove superfluous bool arg from slot_to_ps_input.
-      radv: Allow using high 16 bits of PS input slots.
-      radv: Rename per_vertex_shaded_mask to explicit_strict_shaded_mask.
-
-Vignesh Raman (1):
-      ci: handle missing dri libraries during listing
+Timur Kristóf (5):
+      ac/nir/ngg: Implement packed 16-bit VS/TES outputs in non-dedicated slots.
+      ac/nir/ngg: Implement packed 16-bit GS outputs in non-dedicated slots.
+      ac/nir/lower_legacy_vs: Implement packed 16-bit VS/TES outputs in non-dedicated slots.
+      ac/nir/lower_legacy_gs: Implement packed 16-bit GS outputs in non-dedicated slots.
+      ac/nir/ngg: Fix packing 16-bit MS outputs.
 
