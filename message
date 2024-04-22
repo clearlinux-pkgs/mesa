@@ -1,20 +1,13 @@
-Updating from d097a60d5762df2d557362deea84e275794d1e35 to 04f232ed99bb68ef7c5169173253d4cdfa840bce
+Updating from 04f232ed99bb68ef7c5169173253d4cdfa840bce to e5f133ccc426a197c48a4e88f5377f943f078180
 
-Konstantin (6):
-      ac/debug: Handle the output of recent umr versions
-      radv/debug: Canonicalize shader addr
-      radv: Canonicalize addresses in radv_find_shader
-      radv/debug: Try to find unbound shaders
-      radv/debug: Dump descriptor binding information
-      ac/parse_ib: Always print the value of the whole register
+Gert Wollny (5):
+      r600/sfn: Add array element parent also to array
+      r600/sfn: Use dependecies to order barriers and LDS/RAT instructions
+      r600/sfn: call nir_lower_doubles explicitely
+      r600/sfn: when emitting fp64 op2 groups pre-load values
+      r600/sfn: Don't put b2f64 conversion into ALU group
 
-Manuel Stoeckl (1):
-      util/disk_cache: try getenv(HOME) before getpwuid->pw_dir
-
-Timur Kristóf (5):
-      ac/nir/ngg: Implement packed 16-bit VS/TES outputs in non-dedicated slots.
-      ac/nir/ngg: Implement packed 16-bit GS outputs in non-dedicated slots.
-      ac/nir/lower_legacy_vs: Implement packed 16-bit VS/TES outputs in non-dedicated slots.
-      ac/nir/lower_legacy_gs: Implement packed 16-bit GS outputs in non-dedicated slots.
-      ac/nir/ngg: Fix packing 16-bit MS outputs.
+Marek Olšák (2):
+      util: add new format helpers
+      util: import pipe_box and its helpers
 
