@@ -1,13 +1,83 @@
-Updating from 04f232ed99bb68ef7c5169173253d4cdfa840bce to e5f133ccc426a197c48a4e88f5377f943f078180
+Updating from e5f133ccc426a197c48a4e88f5377f943f078180 to 1e78d9aaca59a54724081b77b2a0c704f4a1ee88
 
-Gert Wollny (5):
-      r600/sfn: Add array element parent also to array
-      r600/sfn: Use dependecies to order barriers and LDS/RAT instructions
-      r600/sfn: call nir_lower_doubles explicitely
-      r600/sfn: when emitting fp64 op2 groups pre-load values
-      r600/sfn: Don't put b2f64 conversion into ALU group
+Boris Brezillon (1):
+      nir/lower_blend: Fix nir_blend_logicop() for 8/16-bit integer formats
 
-Marek Olšák (2):
-      util: add new format helpers
-      util: import pipe_box and its helpers
+Caio Oliveira (3):
+      intel/brw: Refactor FS validation macros
+      intel/brw: Remove two duplicated validate calls in optimizer
+      intel/brw: Move validate out of fs_visitor
+
+Christian Gmeiner (1):
+      etnaviv: drm: Drop NPU-related params
+
+Echo J (3):
+      vulkan: Add implicit pipeline caching support
+      nvk: Use implicit pipeline cache
+      nvk: Don't advertise residencyAlignedMipSize on MaxwellB+
+
+Eric Engestrom (2):
+      radeonsi/ci: update vangogh expectations after piglit uprev
+      llvmpipe/ci: update expectations after piglit uprev
+
+Eric R. Smith (1):
+      panfrost: fix an incorrect stencil clear optimization
+
+Erik Faye-Lund (3):
+      panfrost: use perf_debug_ctx instead of perf_debug
+      panfrost: perf_debug_ctx -> perf_debug
+      panfrost: use util_debug_message for perf_debug
+
+Faith Ekstrand (1):
+      nvk: Hash ycbcr conversions in the descriptor set layout hash
+
+Francisco Jerez (2):
+      intel/fs/gfx20+: Implement sub-dword integer regioning restrictions.
+      intel/fs/gfx20+: Handle subdword integer regioning restrictions in copy propagation.
+
+Guilherme Gallo (4):
+      ci/lava: A few formatting cleanups
+      ci/lava: Introduce unretriable exception handling
+      ci/lava: Don't run jobs if the remaining execution time is too short
+      ci/lava: Fix how exception entry in structured log
+
+Joshua Ashton (1):
+      radv: Properly initialize imageCreateFlags in GetPhysicalDeviceVideoFormatPropertiesKHR
+
+M Henning (2):
+      nak: Count GLOBAL_SIZE_OFFSET in bytes, not words
+      nvk: Don't use a descriptor cbuf if it's too large
+
+Mike Blumenkrantz (11):
+      zink: prune some piglit cts fails
+      loader: delete unused param from pipe_loader_vk_probe_dri()
+      glx: fix some indentation
+      glx: add an 'implicit' param to createScreen
+      glx: pass implicit load param through allocation
+      dri: plumb a 'implicit' param through createNewScreen interfaces
+      gbm: plumb an 'implicit' param through device creation
+      frontends/dri: plumb an 'implicit' param through screen init
+      pipe-loader: plumb a flag for implicit driver load through screen creation
+      zink: don't print error messages when failing an implicit driver load
+      glx: silence more implicit-load zink errors
+
+Rhys Perry (1):
+      radv: cache RT stage info
+
+Robert Mader (1):
+      panfrost: Use pipe resource helper
+
+Samuel Pitoiset (6):
+      radv/rt: remove unnecessary param to radv_ray_tracing_pipeline_cache_insert()
+      radv/rt: move radv_ray_tracing_pipeline::sha1 to radv_pipeline
+      radv: use radv_pipeline::sha1 for graphics/compute pipelines
+      radv: rework pipeline cache search helpers
+      radv: add RADV_DEBUG=psocachestats to report per-pipeline cache hits/misses
+      vulkan: pass cmdbuf level to vk_command_buffer_ops::create()
+
+Tomeu Vizoso (1):
+      etnaviv: Don't init the blitter in compute-only contexts
+
+Yonggang Luo (1):
+      broadcom/common: Now "util/box.h" is under src, so remove the FIXME
 
