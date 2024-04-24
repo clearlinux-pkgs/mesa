@@ -1,83 +1,81 @@
-Updating from e5f133ccc426a197c48a4e88f5377f943f078180 to 1e78d9aaca59a54724081b77b2a0c704f4a1ee88
+Updating from 1e78d9aaca59a54724081b77b2a0c704f4a1ee88 to ca861e8f754125f8880229bdcc6e278cd15003b0
 
-Boris Brezillon (1):
-      nir/lower_blend: Fix nir_blend_logicop() for 8/16-bit integer formats
+Bas Nieuwenhuizen (1):
+      radv: Fix differing aspect masks for multiplane image copies.
 
-Caio Oliveira (3):
-      intel/brw: Refactor FS validation macros
-      intel/brw: Remove two duplicated validate calls in optimizer
-      intel/brw: Move validate out of fs_visitor
+Caio Oliveira (2):
+      intel/brw: Support FIXED_GRF when generating code for CLUSTER_BROADCAST
+      intel/brw: Lower VGRFs to FIXED_GRFs earlier
 
-Christian Gmeiner (1):
-      etnaviv: drm: Drop NPU-related params
+Connor Abbott (2):
+      ir3: Don't use non-contiguous component masks for FS
+      ir3: Don't pack FS inlocs
 
-Echo J (3):
-      vulkan: Add implicit pipeline caching support
-      nvk: Use implicit pipeline cache
-      nvk: Don't advertise residencyAlignedMipSize on MaxwellB+
+Corentin Noël (2):
+      ci: Allow to pass LIBGL_ALWAYS_SOFTWARE to the guest environment
+      ci: Add zink-venus-lvp job
 
-Eric Engestrom (2):
-      radeonsi/ci: update vangogh expectations after piglit uprev
-      llvmpipe/ci: update expectations after piglit uprev
+David Heidelberg (1):
+      meson: implement split-debug
 
-Eric R. Smith (1):
-      panfrost: fix an incorrect stencil clear optimization
+Iago Toral Quiroga (2):
+      v3d/simulator: size counter_values array correctly on V3D 7.x
+      broadcom/ci: document external causes for some CTS 1.3.8 failures
 
-Erik Faye-Lund (3):
-      panfrost: use perf_debug_ctx instead of perf_debug
-      panfrost: perf_debug_ctx -> perf_debug
-      panfrost: use util_debug_message for perf_debug
+Job Noorman (6):
+      ir3: remove unnecessary tessellation epilogue
+      ir3: model predt/predf without sources
+      ir3: add support for precolored sources in predicate RA
+      ir3: add support for predication
+      freedreno/drm-shim: add a730, a740, and a750
+      freedreno/drm-shim: remove duplicate entry for a630
 
-Faith Ekstrand (1):
-      nvk: Hash ycbcr conversions in the descriptor set layout hash
+José Roberto de Souza (3):
+      iris: Add comments to BO_ALLOC flags
+      iris: Avoid creation of slabs and cache buckets of lmem heaps in integrated gpus
+      iris: Avoid allocation of not needed iris_bucket_cache
 
-Francisco Jerez (2):
-      intel/fs/gfx20+: Implement sub-dword integer regioning restrictions.
-      intel/fs/gfx20+: Handle subdword integer regioning restrictions in copy propagation.
+Juan A. Suarez Romero (1):
+      nir/lower_clip: update inputs/ouputs read/written bitmask
 
-Guilherme Gallo (4):
-      ci/lava: A few formatting cleanups
-      ci/lava: Introduce unretriable exception handling
-      ci/lava: Don't run jobs if the remaining execution time is too short
-      ci/lava: Fix how exception entry in structured log
+Leo Liu (1):
+      ac/gpu_info: Fix broken UVD firmware query
 
-Joshua Ashton (1):
-      radv: Properly initialize imageCreateFlags in GetPhysicalDeviceVideoFormatPropertiesKHR
+Mike Blumenkrantz (3):
+      mesa/st: don't use serialized_nir for cached shaders
+      zink: make NOREORDER mode context-based
+      zink: disable command reordering for compute-only contexts
 
-M Henning (2):
-      nak: Count GLOBAL_SIZE_OFFSET in bytes, not words
-      nvk: Don't use a descriptor cbuf if it's too large
+Pierre-Eric Pelloux-Prayer (2):
+      aco: don't use python 3.7+ feature in aco_opcodes.py
+      radv: don't use python 3.9 feature in radv_annotate_layer_gen.py
 
-Mike Blumenkrantz (11):
-      zink: prune some piglit cts fails
-      loader: delete unused param from pipe_loader_vk_probe_dri()
-      glx: fix some indentation
-      glx: add an 'implicit' param to createScreen
-      glx: pass implicit load param through allocation
-      dri: plumb a 'implicit' param through createNewScreen interfaces
-      gbm: plumb an 'implicit' param through device creation
-      frontends/dri: plumb an 'implicit' param through screen init
-      pipe-loader: plumb a flag for implicit driver load through screen creation
-      zink: don't print error messages when failing an implicit driver load
-      glx: silence more implicit-load zink errors
+Rhys Perry (5):
+      aco: include LDSDIR in latency/etc stats
+      aco: make store clauses more aggressively
+      aco: schedule LDSDIR instructions
+      aco: schedule LDS instructions
+      aco: split vop3p results
 
-Rhys Perry (1):
-      radv: cache RT stage info
-
-Robert Mader (1):
-      panfrost: Use pipe resource helper
+Sagar Ghuge (3):
+      isl: Update isl_swizzle_supports_rendering comment
+      isl: Update shader channel select for missing components
+      intel/compiler: Disassemble mlen/rlen/ex_mlen in units of registers
 
 Samuel Pitoiset (6):
-      radv/rt: remove unnecessary param to radv_ray_tracing_pipeline_cache_insert()
-      radv/rt: move radv_ray_tracing_pipeline::sha1 to radv_pipeline
-      radv: use radv_pipeline::sha1 for graphics/compute pipelines
-      radv: rework pipeline cache search helpers
-      radv: add RADV_DEBUG=psocachestats to report per-pipeline cache hits/misses
-      vulkan: pass cmdbuf level to vk_command_buffer_ops::create()
+      radv/amdgpu: do not use IB2 for nested command buffers
+      radv: track if nested command buffers uses indirect draws
+      radv: advertise VK_EXT_nested_command_buffer
+      ac,radeonsi: add helpers to compute the number of tess patches/lds size
+      radv: rework the number of tess patches computation
+      ac: allow to use 64K of LDS for tessellation on GFX9+
 
 Tomeu Vizoso (1):
-      etnaviv: Don't init the blitter in compute-only contexts
+      etnaviv/nn: Implement zero run length encoding of weights
+
+Yiwei Zhang (1):
+      venus: fix VkDeviceGroupSubmitInfo::deviceMask for feedback cmds
 
 Yonggang Luo (1):
-      broadcom/common: Now "util/box.h" is under src, so remove the FIXME
+      nouveau: Fixes error: unused import: `crate::nvh_classes_cl906f::*`
 
