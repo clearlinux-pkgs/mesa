@@ -43,3 +43,4 @@ pypi-ply
 libclc-dev
 mesa-bin
 rustc
+rust-bindgen

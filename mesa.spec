@@ -6,10 +6,10 @@
 # autospec commit: 5905be9
 #
 Name     : mesa
-Version  : 24.0+5158.a861e8f754
-Release  : 721
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ca861e8f754125f8880229bdcc6e278cd15003b0/mesa-24.0+5158-gca861e8f754.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ca861e8f754125f8880229bdcc6e278cd15003b0/mesa-24.0+5158-gca861e8f754.tar.bz2
+Version  : 24.0.6
+Release  : 722
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-24.0.6/mesa-mesa-24.0.6.tar.gz
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-24.0.6/mesa-mesa-24.0.6.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause MIT
@@ -75,6 +75,7 @@ BuildRequires : pkgconfig(xshmfence)
 BuildRequires : pkgconfig(xvmc)
 BuildRequires : pypi-mako
 BuildRequires : pypi-ply
+BuildRequires : rust-bindgen
 BuildRequires : rustc
 BuildRequires : valgrind
 BuildRequires : wayland-dev
@@ -181,17 +182,22 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-ca861e8f754125f8880229bdcc6e278cd15003b0
-cd %{_builddir}/mesa-ca861e8f754125f8880229bdcc6e278cd15003b0
+%setup -q -n mesa-mesa-24.0.6
+cd %{_builddir}/mesa-mesa-24.0.6
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+mkdir -p .cargo
+echo '[source.crates-io]' >> .cargo/config.toml
+echo 'replace-with = "vendored-sources"' >> .cargo/config.toml
+echo '[source.vendored-sources]' >> .cargo/config.toml
+echo 'directory = "vendor"' >> .cargo/config.toml
 pushd ..
-cp -a mesa-ca861e8f754125f8880229bdcc6e278cd15003b0 build32
+cp -a mesa-mesa-24.0.6 build32
 popd
 pushd ..
-cp -a mesa-ca861e8f754125f8880229bdcc6e278cd15003b0 buildavx2
+cp -a mesa-mesa-24.0.6 buildavx2
 popd
 
 %build
@@ -199,7 +205,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713954742
+export SOURCE_DATE_EPOCH=1714002119
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -231,8 +237,7 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dtools="intel-ui" \
--Dintel-clc=enabled \
--Dinstall-intel-clc=true  builddir
+-Dintel-clc=enabled  builddir
 ninja -v -C builddir
 GOAMD64=v3
 CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -march=x86-64-v3 " meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
@@ -253,8 +258,7 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dtools="intel-ui" \
--Dintel-clc=enabled \
--Dinstall-intel-clc=true  builddiravx2
+-Dintel-clc=enabled  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
@@ -280,8 +284,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dshader-cache=enabled \
 -Dopengl=true \
 -Dtools="intel-ui" \
--Dintel-clc=enabled \
--Dinstall-intel-clc=true -Dgallium-opencl=disabled \
+-Dintel-clc=enabled -Dgallium-opencl=disabled \
 -Dasm=false \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
 -Dglvnd=false \
@@ -304,10 +307,10 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-ca861e8f754125f8880229bdcc6e278cd15003b0/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
-cp %{_builddir}/mesa-ca861e8f754125f8880229bdcc6e278cd15003b0/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-ca861e8f754125f8880229bdcc6e278cd15003b0/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-ca861e8f754125f8880229bdcc6e278cd15003b0/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-mesa-%{version}/docs/license.rst %{buildroot}/usr/share/package-licenses/mesa/b27952910869458b2b165aaf1d70b77d3bd1be06 || :
+cp %{_builddir}/mesa-mesa-%{version}/src/amd/vulkan/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-mesa-%{version}/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-mesa-%{version}/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
 pushd ../build32/
 DESTDIR=%{buildroot} ninja -C builddir install
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -366,11 +369,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /V3/usr/bin/aubinator
 /V3/usr/bin/aubinator_error_decode
 /V3/usr/bin/aubinator_viewer
-/V3/usr/bin/brw_asm
-/V3/usr/bin/brw_disasm
-/V3/usr/bin/elk_asm
-/V3/usr/bin/elk_disasm
-/V3/usr/bin/intel_clc
+/V3/usr/bin/i965_asm
+/V3/usr/bin/i965_disasm
 /V3/usr/bin/intel_dev_info
 /V3/usr/bin/intel_error2aub
 /V3/usr/bin/intel_error2hangdump
@@ -379,11 +379,8 @@ rm -f %{buildroot}*/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/bin/aubinator
 /usr/bin/aubinator_error_decode
 /usr/bin/aubinator_viewer
-/usr/bin/brw_asm
-/usr/bin/brw_disasm
-/usr/bin/elk_asm
-/usr/bin/elk_disasm
-/usr/bin/intel_clc
+/usr/bin/i965_asm
+/usr/bin/i965_disasm
 /usr/bin/intel_dev_info
 /usr/bin/intel_dump_gpu
 /usr/bin/intel_error2aub
