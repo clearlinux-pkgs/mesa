@@ -17,4 +17,4 @@
 -Dopengl=true
 -Dtools="intel-ui"
 -Dintel-clc=enabled
-#-Dinstall-intel-clc=true
+-Dinstall-intel-clc=true

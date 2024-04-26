@@ -1,4 +1,4 @@
-24.0.6
+24.1+151.g3b3df7b8a98
 libepoxy-dev
 pkgconfig(32epoxy)
 pkgconfig(epoxy)
