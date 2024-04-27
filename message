@@ -1,175 +1,87 @@
-Updating from 46598758e7a2ce0b81610db612cb2beeb5c49a8d to 3b3df7b8a98c4171e402a7c4e7170b9d937aae09
+Updating from 3b3df7b8a98c4171e402a7c4e7170b9d937aae09 to 6ab4b2d7a063c525dc98c80f272643bc47f41f96
 
-Alejandro Piñeiro (2):
-      v3dv/cmd_buffer: always bind pipeline static state
-      v3dv/ci: dEQP-VK.dynamic_state.*.double_static_bind are fixed now
+Alejandro Piñeiro (11):
+      v3dv: port dynamic state tracking to use Mesa Vulkan
+      v3dv: provide implementation for vkCmdBindVertexBuffers2
+      v3dv: provide implementation for CmdSetViewportWithCount
+      v3dv: CullMode and FrontFace are dynamic now
+      v3dv: DepthBoundsTestEnable is dynamic now
+      v3dv: move depth CFG bits setting to cmd buffer emission
+      v3dv: ez_state/incompatible_ez_test could be recomputed at cmd_buffer
+      v3dv: PrimitiveTopology is now dynamic
+      v3dv: StencilOp and StencilTestEnable are now dynamic
+      v3dv/ci: update expected list due VK_EXT_extended_dynamic_state
+      v3dv: enable VK_EXT_extended_dynamic_state
 
-Boris Brezillon (7):
-      panvk: Prepare things so we can push sysvals to our push uniform buffer
-      panvk: Put dynamic uniform buffers at the end of the UBO array
-      panvk: Move the dynamic SSBO descriptors to their own UBO
-      panvk: Prepare dynamic buffer descriptors at bind time
-      panvk: Lower sysvals to push uniforms
-      panvk: Kill panvk_sysval_vec4
-      panfrost: do not write outside num_wg_sysval
+Connor Abbott (45):
+      ir3: Add scan_clusters_macro to ir3_valid_flags()
+      ir3: Add scan_clusters.macro to is_subgroup_cond_mov_macro()
+      ir3: Validate tied sources better
+      ir3/ra: Don't demote movmsk instructions to non-shared
+      ir3: Rewrite postsched dependency handling
+      ir3/legalize: Use define for register size
+      ir3: Rewrite regmask implementation
+      ir3/ra: Prepare for shared half-regs
+      ir3/ra: Fix printing shared reg file
+      ir3/ra: Prepare for shared phis
+      ir3: Fix lowering shared parallel copies with immed src
+      ir3/lower_pcopy: Fix immed/const flags for copy from shared
+      ir3: Fix shared parallel copy validation
+      ir3: Don't use swz with shared registers
+      ir3/lower_copies: Handle HW bug with shared half-floats
+      ir3/lower_copies: Fix "inaccessible" half reg lowering with shared regs
+      ir3/ra: Use ra_reg_get_num() for validating num
+      ir3: Use INVALID_REG in array store
+      ir3: Reset num when creating parallel copies
+      ir3: Validate that shared registers are in-bound
+      ir3: Allow propagation of normal->shared copies
+      ir3: Moves with shared destination are always legal
+      ir3/legalize: Take (ss) into account in WaR hazards
+      ir3/legalize: Remove bad (eq) micro-optimization
+      ir3/legalize: any/all/getone are non-prefetch helper users
+      ir3: Use correct category for OPC_PUSH_CONSTS_LOAD_MACRO
+      ir3: Add support for "scalar ALU"
+      ir3: Implement source restrictions for shared ALU
+      ir3: Validate scalar ALU sources
+      ir3: Immediate source for stc is invalid
+      ir3: Don't emit single-source collects
+      ir3/cp: Support swapping mad srcs for shared regs
+      ir3/cf: Don't fold shared conversions
+      ir3: Distinguish lowered shared->normal moves
+      ir3: Add support for ldc.u
+      ir3: Add builder support for shared immediates
+      ir3: Create reduce identity directly
+      ir3: Make type_flags() return a bitmask enum
+      ir3: Support scalar ALU in the builder
+      ir3: Add scalar ALU-specific passes
+      ir3: Get sources before emitting scan_clusters.macro
+      ir3: Rewrite shared reg handling when translating from NIR
+      ir3: Directly use shared registers when possible
+      ir3/nir: Fix imadsh_mix16 definition
+      ir3: Use scalar ALU instructions when possible
 
-Chia-I Wu (5):
-      gallium: add pipe_picture_desc::flush_flags
-      frontends/va: track whether there are imported/exported surfaces
-      frontends/va: set PIPE_FLUSH_ASYNC when possible
-      radeonsi: prep for pipe_picture_desc::flush_flags
-      radeonsi: respect pipe_picture_desc::flush_flags
+Eric Engestrom (1):
+      v3dv/ci: add rpi5 failure
 
-Christian Gmeiner (2):
-      isaspec: Add method to get the displayname of BitSetEnumValue
-      isaspec: Improve 'meta' handling
+Georg Lehmann (1):
+      spirv: preserve signed zero in modf
 
-Christopher Michael (2):
-      v3d: Move spec@arb_texture_view@rendering-formats, Crash in broadcom-rpi4-fails
-      v3d: Move spec@!opengl 1.1@getteximage-formats, Fail in broadcom-rpi4-fails
+Karmjit Mahil (1):
+      ir3: Don't set saturation on `flat.b`
 
-Colin Marc (1):
-      radv/video: don't truncate frame_num and POC to 32
+Matt Turner (1):
+      intel: Build float64 shader only for Vulkan
 
-Constantine Shablia (2):
-      pan/bi: fix 1D array tex coord lowering
-      pan/bi: clean up tex coord lowering
+Michel Dänzer (1):
+      wsi/wayland: Dispatch event queue in wsi_wl_swapchain_queue_present
 
-Daniel Schürmann (11):
-      aco/ra: fix kill flags after renaming fixed Operands
-      aco/ra: assert that the register file is empty after register allocation completed
-      aco/lower_phis: simplify check for uniform predecessors
-      aco: introduce aco_opcode::p_boolean_phi
-      aco/vn: copy-propagate trivial phis
-      aco/lower_phis: generalize init_state() so that it works with any scalar phis
-      aco/lower_phis: implement SGPR phi lowering
-      aco: use SGPR phi lowering for uniform phis in divergent merge blocks
-      aco: use SGPR phi lowering for all loop header phis
-      aco: use SGPR phi lowering for all scalar phis
-      aco/optimizer: remove p_linear_phi handling from optimizer
+Philipp Zabel (5):
+      etnaviv: drm: Suppress get-param error message for non-existent core
+      etnaviv: drm: Stop after model query failure
+      etnaviv: Pass npu to etna_screen_create in a separate parameter
+      etnaviv: Add a separate NPU pipe
+      etnaviv: Allow collecing both GPU and NPU specs
 
-David (Ming Qiang) Wu (1):
-      radeonsi/vcn: set accurate size for dec header and index_codec
-
-David Rosca (3):
-      radv/video: Set correct bit depth and format for 10bit input
-      radv/video: Check encode profiles and bit depth in capabilities query
-      radv/video: Report maxBitrate in encode capabilities
-
-Eric Engestrom (8):
-      panvk/ci: add WSI testing to all the deqp-vk jobs
-      lavapipe/ci: add WSI testing to all the deqp-vk jobs
-      freedreno/ci: add flake
-      lavapipe/ci: add flakes
-      ci: pass MESA_VK_ABORT_ON_DEVICE_LOSS through to the DUT
-      rpi3/ci: drop duplicate comment without any corresponding actual skip line
-      v3dv/ci: skip all the WSI tests, they are way too flaky to be worth it
-      spirv: deduplicate default debug log level
-
-Erik Faye-Lund (12):
-      panfrost: add PAN_MAX_TEXEL_BUFFER_ELEMENTS define
-      panfrost: clamp buffer-size to max-size
-      panfrost: remove nonsensical assert
-      panfrost: do not deref potentially null pointer
-      panfrost: check return-value from u_trim_pipe_prim
-      panfrost: assert that drmSyncobjWait returns 0
-      panfrost: check return-code of drmSyncobjWait
-      panfrost: correct first-tracking for signature
-      panvk: drop needless null-check
-      panvk: do not leak bindings
-      panvk: drop needless null-checks
-      panvk: avoid dereferencing a null-pointer
-
-Guilherme Gallo (2):
-      ci: Add S3 id_token for all jobs
-      ci: Use id_tokens for JWT auth
-
-Iván Briano (9):
-      compiler: reorder FLOAT_CONTROLS enums
-      nir: track some float controls bits per instruction
-      spirv: gather some float controls bits per instruction
-      nir: check inf/nan/sz preserve per-instruction
-      nir/algebraic: support float controls conditions per instruction
-      nir/algebraic: move float control conditions to be per instruction
-      vtn: support float controls2
-      anv: enable VK_KHR_shader_float_controls2
-      anv: check requirements for VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE
-
-Kenneth Graunke (11):
-      intel/brw: Delete gfx10 table for align1 3src type encoding
-      intel/brw: Drop NF type support
-      intel/brw: Rework BRW_REGISTER_TYPE's representation semantics
-      intel/brw: Stop using long BRW_REGISTER_TYPE enum names
-      intel/brw: Reindent after shortening BRW_REGISTER_TYPE_* to BRW_TYPE_*
-      intel/brw: Use newer brw_type_is_* shorter names
-      intel/brw: Replace brw_reg_type_from_bit_size by brw_type_with_size
-      intel/brw: Replace type_sz and brw_reg_type_to_size with brw_type_size_*
-      intel/brw: Combine a1/a16 3src type encoding functions
-      intel/brw: Combine a1/a16 3src type decoding functions
-      intel/brw: Rename brw_reg_type_to_hw_type to brw_type_encode
-
-Konstantin Seurer (1):
-      radv: Handle all dependencies of CmdWaitEvents2
-
-Lionel Landwerlin (15):
-      anv: reuse embedded samplers across shaders
-      anv: simplify multisampling check
-      anv: fixup indentation
-      anv: factor out wm_prog_data get in runtime flush
-      intel/brw: fixup wm_prog_data_barycentric_modes()
-      intel/fs: decouple alphaToCoverage from per sample dispatch
-      intel/brw: add min_sample_shading value in wm_prog_data
-      anv: track sample shading enable & min sample shading
-      anv: add dirty tracking of fs_msaa_flags in runtime
-      anv: move 3DSTATE_WM::BarycentricInterpolationMode programming to runtime
-      anv: move more PS_EXTRA programming to runtime
-      anv: move 3DSTATE_PS to partial packing
-      anv: move 3DSTATE_MULTISAMPLE to partial emission
-      anv: remove fs_msaa_flags from the graphics pipeline
-      anv: enable EDS3 AlphaToCoverageEnable & RasterizationSamples
-
-Mary Guillemard (3):
-      nak: Pass has_mod to all form of src2 requiring it
-      panvk: Ensure we lower load_base_workgroup_id to 0
-      panfrost: Skip new failure from VKCTS 1.3.8.x
-
-Mike Blumenkrantz (4):
-      glthread: check for invalid primitive modes in DrawElementsBaseVertex
-      zink: reconstruct features pnext after determining extension support
-      zink: prune zink_shader::programs under lock
-      zink: fully wait on all program fences during ctx destroy
-
-Rhys Perry (2):
-      aco/tests: add tests for hidden breaks/continues
-      aco/tests: add tests for divergent merge phi with undef
-
-Rohan Garg (1):
-      anv: formatting fix when printing pipe controls
-
-Ryan Neph (1):
-      venus: reclaim signal semaphore feedback resources for wasteful clients
-
-Samuel Pitoiset (3):
-      radv/rt: add radv_ray_tracing_state_key
-      radv/rt: pass radv_ray_tracing_state_key to radv_rt_pipeline_compile()
-      radv/rt: rework the helper that hashes a ray tracing pipeline
-
-Sil Vilerino (1):
-      d3d12: Fix static analysis issues due to bad parenthesis closing
-
-Timur Kristóf (6):
-      ac/nir/esgs: Slightly refactor emitting IO loads and stores.
-      ac/nir/tess: Slightly refactor emitting LS outputs.
-      ac/nir: Add helper macros for emitting IO code.
-      ac/nir/esgs: Implement packed 16-bit ES->GS I/O using helper macros.
-      ac/nir/tess: Implement packed 16-bit LS->HS I/O using helper macros.
-      ac/nir/tess: Implement packed 16-bit HS->TES I/O using helper macros.
-
-Tomeu Vizoso (1):
-      etnaviv/nn: Make parallel jobs disabled by default
-
-Yiwei Zhang (3):
-      venus: avoid client allocators for ring internals
-      venus: silence a stack array false alarm
-      venus: workaround excessive dma-buf import failure on turnip
+Yiwei Zhang (1):
+      venus: fix to destroy all pipeline handles on early error paths
 
