@@ -1,7 +1,41 @@
-Updating from 6ab4b2d7a063c525dc98c80f272643bc47f41f96 to cc9141f0449b84204172f5729ea3dbc1724239c0
+Updating from cc9141f0449b84204172f5729ea3dbc1724239c0 to 8248cc0bf45d0d7558cc3d77a63dcd078a96aa66
 
-Karol Herbst (3):
-      core/kernel: skip validating unique kernel signatures
-      rusticl/program: Arc the stored KernelInfo
-      rust/program: remove Program::kernels
+Christian Gmeiner (7):
+      etnaviv: isa: Drop capturing of python output
+      etnaviv: isa: Add clang-format special comments
+      etnaviv: isa: Print dst_full for ALU
+      etnaviv: isa: Switch to enum isa_thread
+      etnaviv: isa: Add more flags to etna_inst
+      etnaviv: isa: Rework modeling of left shift for store/load
+      etnaviv: isa: Add name for full writemask
+
+David Heidelberg (1):
+      turnip: rename tu_queue_submit struct to follow ODR
+
+David Rosca (3):
+      radeonsi/vcn: Allocate session buffer in VRAM
+      radeonsi/vcn: Fix 10bit HEVC VPS general_profile_compatibility_flags
+      radeonsi/vcn: Only enable VBAQ with rate control mode
+
+Eric Engestrom (1):
+      ci: mark microsoft farm as offline
+
+Erik Faye-Lund (2):
+      docs/panfrost: compact gpu-table
+      docs/panfrost: move details to separate articles
+
+Kenneth Graunke (5):
+      intel/brw: Don't use inst return value when it isn't needed
+      intel/brw: Make a helper for finding the largest of two types
+      intel/brw: Add builder helpers for math functions
+      intel/brw: Add builder helpers that allocate temporary destinations
+      intel/brw: Use new builder helpers that allocate a VGRF destination
+
+Konstantin Seurer (1):
+      nir/print: Do not access invalid indices of load_uniform
+
+Samuel Pitoiset (3):
+      radv/ci: add more flakes
+      radv: simplify DB_Z_INFO.NUM_SAMPLES with null ds target on GFX11
+      radv: remove bogus VkShaderCreateInfoEXT::flags being 0 assert for compute
 
