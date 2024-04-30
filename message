@@ -1,41 +1,56 @@
-Updating from cc9141f0449b84204172f5729ea3dbc1724239c0 to 8248cc0bf45d0d7558cc3d77a63dcd078a96aa66
+Updating from 8248cc0bf45d0d7558cc3d77a63dcd078a96aa66 to 11b060f41acf8fb297b64757f49b7cf0a8f8401c
 
-Christian Gmeiner (7):
-      etnaviv: isa: Drop capturing of python output
-      etnaviv: isa: Add clang-format special comments
-      etnaviv: isa: Print dst_full for ALU
-      etnaviv: isa: Switch to enum isa_thread
-      etnaviv: isa: Add more flags to etna_inst
-      etnaviv: isa: Rework modeling of left shift for store/load
-      etnaviv: isa: Add name for full writemask
+Christian Gmeiner (1):
+      mr-label-maker: Add teflon marker
 
-David Heidelberg (1):
-      turnip: rename tu_queue_submit struct to follow ODR
-
-David Rosca (3):
-      radeonsi/vcn: Allocate session buffer in VRAM
-      radeonsi/vcn: Fix 10bit HEVC VPS general_profile_compatibility_flags
-      radeonsi/vcn: Only enable VBAQ with rate control mode
+Connor Abbott (2):
+      ir3: Don't scalarize all SSBO instructions
+      ir3: Don't manually scalarize SSBO loads
 
 Eric Engestrom (1):
-      ci: mark microsoft farm as offline
+      meson: simplify `-gsplit-dwarf` compiler argument check
 
-Erik Faye-Lund (2):
-      docs/panfrost: compact gpu-table
-      docs/panfrost: move details to separate articles
+Erik Faye-Lund (1):
+      docs/panfrost: link to conformant products
 
-Kenneth Graunke (5):
-      intel/brw: Don't use inst return value when it isn't needed
-      intel/brw: Make a helper for finding the largest of two types
-      intel/brw: Add builder helpers for math functions
-      intel/brw: Add builder helpers that allocate temporary destinations
-      intel/brw: Use new builder helpers that allocate a VGRF destination
+Iago Toral Quiroga (2):
+      v3dv: fix VK_KHR_vertex_attribute_divisor
+      v3d,v3dv: stop hard-coding max attrib divisor
 
-Konstantin Seurer (1):
-      nir/print: Do not access invalid indices of load_uniform
+JCWasmx86 (1):
+      meson: Fix invalid kwarg name
 
-Samuel Pitoiset (3):
-      radv/ci: add more flakes
-      radv: simplify DB_Z_INFO.NUM_SAMPLES with null ds target on GFX11
-      radv: remove bogus VkShaderCreateInfoEXT::flags being 0 assert for compute
+Marek Olšák (10):
+      ac/gpu_info: set tcc_rb_non_coherent only if number of TCCs != number of RBs
+      ac/surface: disable DCC for 3D textures on gfx9 to improve performance
+      ac/surface: enable thick tiling for 3D textures for better perf on gfx6-8
+      radeonsi: don't invalidate L2 for internal compute without DCC stores
+      radeonsi: fix KHR-GL46.texture_lod_bias.texture_lod_bias_all on gfx10-11
+      radeonsi: validate IO semantics in scan_io_usage
+      radeonsi: add workarounds for DCC MSAA for gfx9-10
+      radeonsi: enable DCC for MSAA on gfx10-10.3
+      radeonsi: check for FMASK correctly in gfx10_get_bin_sizes
+      amd/ci: 17 piglit failures are fixed for raven
+
+Martin Krastev (2):
+      svga: convert license block to SPDX
+      svga: update timespan in copyright message
+
+Mike Blumenkrantz (3):
+      kopper: fix bufferage/swapinterval handling for non-window swapchains
+      zink: slightly better swapinterval failure handling
+      kopper: don't set drawable buffer age
+
+Patrick Lerda (1):
+      gallium/auxiliary/vl: fix typo which negatively impacts the src_stride initialization
+
+Samuel Pitoiset (8):
+      radv: simplify radv_emit_primitive_restart_enable()
+      radv: inline radv_get_pa_su_sc_mode_cntl() in radv_emit_culling()
+      radv: remove useless DB_Z_INFO.NUM_SAMPLES when emitting the MSAA state
+      radv: pre-compute VGT_TF_PARAM.DISTRIBUTION_MODE
+      radv: use the bound GS copy shader when emitting shader objects
+      radv: add GS copy shader BO to the cmdbuf BO list at bind time
+      radv: add RT prolog BO to the cmdbuf BO list at bind time
+      radv: add shaders BO to the cmdbuf BO list at bind time
 
