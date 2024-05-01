@@ -1,56 +1,48 @@
-Updating from 8248cc0bf45d0d7558cc3d77a63dcd078a96aa66 to 11b060f41acf8fb297b64757f49b7cf0a8f8401c
+Updating from 11b060f41acf8fb297b64757f49b7cf0a8f8401c to 0217a7c00722932a58f0bd659230443e4236cb65
 
-Christian Gmeiner (1):
-      mr-label-maker: Add teflon marker
+Eric Engestrom (18):
+      egl+glx: fix two #ifdef that should be #if like the rest
+      meson: always set USE_LIBGLVND
+      meson: use bool.to_int() instead of manually converting
+      lavapipe/ci: drop fixed test from failures
+      lavapipe/ci: add the rest of the failures introduced by the 1.3.8.2 uprev
+      lavapipe/ci: skip another test that goes over the timeout
+      meson: move tsan-blacklist.txt to build-support with the other build support files
+      llvmpipe/ci: fix indentation
+      llvmpipe/ci: only run jobs when their corresponding files are changed
+      lavapipe/ci: fix indentation
+      lavapipe/ci: avoid running all lavapipe jobs when llvmpipe ci is changed
+      lavapipe/ci: only run jobs when their corresponding files are changed
+      docs: update calendar for 24.1.0-rc2
+      llvmpipe/ci: trigger jobs on draw & gallivm changes
+      lavapipe/ci: trigger jobs on draw & gallivm changes
+      lavapipe/ci: add flakes seen lately
+      lavapipe/ci: generalize flakes list to all formats for these flaky tests
+      lavapipe/ci: skip ray tracing tests that sometimes time out
 
-Connor Abbott (2):
-      ir3: Don't scalarize all SSBO instructions
-      ir3: Don't manually scalarize SSBO loads
+Kenneth Graunke (12):
+      intel/brw: Print W/UW immediates correctly
+      intel/brw: Do not create empty basic blocks when removing instructions
+      intel/brw: Support CSE on more ops
+      intel/brw: Don't include unnecessary undefined values in texture results
+      intel/brw: Add a new VEC() helper.
+      intel/brw: Use VEC for load_const
+      intel/brw: Use VEC for gl_FragCoord
+      intel/brw: Use VEC for TCS/TES/GS input/output loads
+      intel/brw: Use VEC for FS outputs
+      intel/brw: Use VEC for output stores
+      intel/brw: Use VEC for NIR vec*() sources
+      intel/brw: Use VEC for emit_unzip()
 
-Eric Engestrom (1):
-      meson: simplify `-gsplit-dwarf` compiler argument check
+Marek Olšák (4):
+      nir: add ACCESS_CP_GE_COHERENT_AMD
+      nir: add nir_atomic_op_ordered_add_gfx12_amd
+      nir: add streamout intrinsics for AMD GFX12
+      nir: add sleep intrinsics for AMD
 
-Erik Faye-Lund (1):
-      docs/panfrost: link to conformant products
+Mike Blumenkrantz (1):
+      zink: handle swapchain currentExtent special value
 
-Iago Toral Quiroga (2):
-      v3dv: fix VK_KHR_vertex_attribute_divisor
-      v3d,v3dv: stop hard-coding max attrib divisor
-
-JCWasmx86 (1):
-      meson: Fix invalid kwarg name
-
-Marek Olšák (10):
-      ac/gpu_info: set tcc_rb_non_coherent only if number of TCCs != number of RBs
-      ac/surface: disable DCC for 3D textures on gfx9 to improve performance
-      ac/surface: enable thick tiling for 3D textures for better perf on gfx6-8
-      radeonsi: don't invalidate L2 for internal compute without DCC stores
-      radeonsi: fix KHR-GL46.texture_lod_bias.texture_lod_bias_all on gfx10-11
-      radeonsi: validate IO semantics in scan_io_usage
-      radeonsi: add workarounds for DCC MSAA for gfx9-10
-      radeonsi: enable DCC for MSAA on gfx10-10.3
-      radeonsi: check for FMASK correctly in gfx10_get_bin_sizes
-      amd/ci: 17 piglit failures are fixed for raven
-
-Martin Krastev (2):
-      svga: convert license block to SPDX
-      svga: update timespan in copyright message
-
-Mike Blumenkrantz (3):
-      kopper: fix bufferage/swapinterval handling for non-window swapchains
-      zink: slightly better swapinterval failure handling
-      kopper: don't set drawable buffer age
-
-Patrick Lerda (1):
-      gallium/auxiliary/vl: fix typo which negatively impacts the src_stride initialization
-
-Samuel Pitoiset (8):
-      radv: simplify radv_emit_primitive_restart_enable()
-      radv: inline radv_get_pa_su_sc_mode_cntl() in radv_emit_culling()
-      radv: remove useless DB_Z_INFO.NUM_SAMPLES when emitting the MSAA state
-      radv: pre-compute VGT_TF_PARAM.DISTRIBUTION_MODE
-      radv: use the bound GS copy shader when emitting shader objects
-      radv: add GS copy shader BO to the cmdbuf BO list at bind time
-      radv: add RT prolog BO to the cmdbuf BO list at bind time
-      radv: add shaders BO to the cmdbuf BO list at bind time
+Simon Ser (1):
+      glapi: fix param type in TexGenxOES
 
