@@ -1,48 +1,63 @@
-Updating from 11b060f41acf8fb297b64757f49b7cf0a8f8401c to 0217a7c00722932a58f0bd659230443e4236cb65
+Updating from 0217a7c00722932a58f0bd659230443e4236cb65 to bed4ad26ad050ac6ea38167411277b4f110eb48f
 
-Eric Engestrom (18):
-      egl+glx: fix two #ifdef that should be #if like the rest
-      meson: always set USE_LIBGLVND
-      meson: use bool.to_int() instead of manually converting
-      lavapipe/ci: drop fixed test from failures
-      lavapipe/ci: add the rest of the failures introduced by the 1.3.8.2 uprev
-      lavapipe/ci: skip another test that goes over the timeout
-      meson: move tsan-blacklist.txt to build-support with the other build support files
-      llvmpipe/ci: fix indentation
-      llvmpipe/ci: only run jobs when their corresponding files are changed
-      lavapipe/ci: fix indentation
-      lavapipe/ci: avoid running all lavapipe jobs when llvmpipe ci is changed
-      lavapipe/ci: only run jobs when their corresponding files are changed
-      docs: update calendar for 24.1.0-rc2
-      llvmpipe/ci: trigger jobs on draw & gallivm changes
-      lavapipe/ci: trigger jobs on draw & gallivm changes
-      lavapipe/ci: add flakes seen lately
-      lavapipe/ci: generalize flakes list to all formats for these flaky tests
-      lavapipe/ci: skip ray tracing tests that sometimes time out
+Amber (1):
+      tu: Disable depth and stencil tests when attachment state requires it
 
-Kenneth Graunke (12):
-      intel/brw: Print W/UW immediates correctly
-      intel/brw: Do not create empty basic blocks when removing instructions
-      intel/brw: Support CSE on more ops
-      intel/brw: Don't include unnecessary undefined values in texture results
-      intel/brw: Add a new VEC() helper.
-      intel/brw: Use VEC for load_const
-      intel/brw: Use VEC for gl_FragCoord
-      intel/brw: Use VEC for TCS/TES/GS input/output loads
-      intel/brw: Use VEC for FS outputs
-      intel/brw: Use VEC for output stores
-      intel/brw: Use VEC for NIR vec*() sources
-      intel/brw: Use VEC for emit_unzip()
+Christian Gmeiner (1):
+      etnaviv: isa: Do src swizzle with isaspec
 
-Marek Olšák (4):
-      nir: add ACCESS_CP_GE_COHERENT_AMD
-      nir: add nir_atomic_op_ordered_add_gfx12_amd
-      nir: add streamout intrinsics for AMD GFX12
-      nir: add sleep intrinsics for AMD
+Corentin Noël (1):
+      zink: Always call deinit_multi_pool_overflow when destroying zink_descriptor_pool_multi
 
-Mike Blumenkrantz (1):
-      zink: handle swapchain currentExtent special value
+Georg Lehmann (5):
+      aco/lower_to_hw: don't use regClass to identify subdword reductions
+      aco: add a subdword lowering pass
+      aco: add tests for lower_subdword
+      aco/ra: remove gfx6/7 subdword paths
+      aco/lower_to_hw: remove gfx6/7 subdword paths
 
-Simon Ser (1):
-      glapi: fix param type in TexGenxOES
+Iván Briano (2):
+      anv: fix casting to graphics_pipeline_base
+      anv: consolidate DestroyPipeline for graphics and graphics_lib
+
+Jesse Natalie (1):
+      nir_opt_algebraic: Add a couple optimizations for lowered unpack(pack())
+
+José Roberto de Souza (4):
+      intel/perf: Nuke platform_supported
+      intel/perf: Remove i915_drm.h include from gen_perf.py
+      intel/perf: Fix the error check of i915_add_config()
+      intel/perf: Change oa_format to uint64_t
+
+Juan A. Suarez Romero (1):
+      vc4/ci: update results
+
+Karmjit Mahil (1):
+      zink: Add missing currentExtent special value handling
+
+Marek Olšák (5):
+      nir: validate src_type of store_output intrinsics, require bit_size >= 16
+      nir: add more build helpers
+      nir: add shader_info::use_aco_amd
+      nir/lower_tex: support FMASK loads with a 16-bit sample index
+      nir/lower_image: support FMASK loads with a 16-bit sample index
+
+Rohan Garg (1):
+      anv: allocate space for generated indirect draw id's using the temporary allocation helper
+
+Samuel Pitoiset (1):
+      radv: emit compute pipelines directly from the cmdbuf
+
+Sviatoslav Peleshko (1):
+      anv: Fix descriptor sampler offsets assignment
+
+Timur Kristóf (5):
+      aco: Add missing nir_builder include.
+      ac/nir: Move some helpers to new file.
+      ac/nir: Add helper for pre-rasterization output info.
+      ac/nir/ngg: Use new pre-rasterization output info helper.
+      ac/nir/legacy: Use new pre-rasterization output info helper.
+
+Yusuf Khan (1):
+      nouveau: Fix crash when destination or source screen fences are null
 
