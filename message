@@ -1,63 +1,79 @@
-Updating from 0217a7c00722932a58f0bd659230443e4236cb65 to bed4ad26ad050ac6ea38167411277b4f110eb48f
+Updating from bed4ad26ad050ac6ea38167411277b4f110eb48f to 7de8a010876b6e1fdf7fc8cf15f3f0e10ba5c569
 
-Amber (1):
-      tu: Disable depth and stencil tests when attachment state requires it
+Alyssa Rosenzweig (1):
+      vulkan: optimize vk_dynamic_graphics_state_any_dirty
 
-Christian Gmeiner (1):
-      etnaviv: isa: Do src swizzle with isaspec
+Colin Marc (2):
+      vulkan/video: generate profile_tier_level structure correctly
+      vulkan/video: correctly set sub-layer ordering in H.265 VPS/SPS
 
-Corentin Noël (1):
-      zink: Always call deinit_multi_pool_overflow when destroying zink_descriptor_pool_multi
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 7aa7bc1b01d57b4b091c4fc82a94a6ff47f38ebf
 
-Georg Lehmann (5):
-      aco/lower_to_hw: don't use regClass to identify subdword reductions
-      aco: add a subdword lowering pass
-      aco: add tests for lower_subdword
-      aco/ra: remove gfx6/7 subdword paths
-      aco/lower_to_hw: remove gfx6/7 subdword paths
+Connor Abbott (2):
+      freedreno/a7xx: Add AQE-related registers from kgsl
+      freedreno/a7xx: Add A7XX_HLSQ_DP_STR location from kgsl
 
-Iván Briano (2):
-      anv: fix casting to graphics_pipeline_base
-      anv: consolidate DestroyPipeline for graphics and graphics_lib
+Daniel Schürmann (6):
+      radv: mark nir_opt_loop() as not idempotent
+      radv: move nir_opt_dead_cf() before nir_opt_loop()
+      panfrost: skip gles-3.0-transform-feedback-uniform-buffer-object on Mali G52 and G57
+      nir/loop_analyze: adjust negative (or huge) iteration count check for bit size
+      nir/opt_if: don't split ALU of phi into otherwise empty blocks
+      nir/opt_loop: add loop peeling optimization
 
-Jesse Natalie (1):
-      nir_opt_algebraic: Add a couple optimizations for lowered unpack(pack())
+Derek Foreman (11):
+      wsi/wayland: refactor wayland dispatch
+      egl/wayland: Use loader_wayland_dispatch
+      perfetto: Add flows
+      wsi/wayland: Add perfetto flows to image acquisition and presentation
+      wsi/wayland: Add flow id to presentation feedback
+      wsi/wayland: Add timing debugging
+      perfetto: Add simple support for counters
+      wsi/wayland: Add latency information to perfetto profiling
+      perfetto: Add some functions for timestamped events
+      wsi/wayland: Add a perfetto track for image presentation
+      wsi/wayland: Add tracepoint in wsi_wl_swapchain_wait_for_present
 
-José Roberto de Souza (4):
-      intel/perf: Nuke platform_supported
-      intel/perf: Remove i915_drm.h include from gen_perf.py
-      intel/perf: Fix the error check of i915_add_config()
-      intel/perf: Change oa_format to uint64_t
+Dmitry Osipenko (1):
+      venus: make cross-device optional
 
-Juan A. Suarez Romero (1):
-      vc4/ci: update results
+Eric Engestrom (1):
+      vc4/ci: add fails seen overnight
 
-Karmjit Mahil (1):
-      zink: Add missing currentExtent special value handling
+Faith Ekstrand (2):
+      nak: Don't saturate depth writes
+      nvk: Only clip Z with the guardband
 
-Marek Olšák (5):
-      nir: validate src_type of store_output intrinsics, require bit_size >= 16
-      nir: add more build helpers
-      nir: add shader_info::use_aco_amd
-      nir/lower_tex: support FMASK loads with a 16-bit sample index
-      nir/lower_image: support FMASK loads with a 16-bit sample index
+Gert Wollny (2):
+      zink/kopper: Wait for last QueuePresentKHR to finish before acquiring for readback
+      mesa/st: don't use base shader serialization when uniforms are not packed
 
-Rohan Garg (1):
-      anv: allocate space for generated indirect draw id's using the temporary allocation helper
+Kenneth Graunke (1):
+      intel/nir: Set src_type on TCS quads workaround store_output
 
-Samuel Pitoiset (1):
-      radv: emit compute pipelines directly from the cmdbuf
+Pavel Ondračka (5):
+      r300: replace constant size field with usemask
+      r300: move dead constants pass earlier for vertex shaders
+      r300: switch to a new constant remap table format
+      r300: compact scalar uniforms into empty slots
+      r300: better packing for immediates
 
-Sviatoslav Peleshko (1):
-      anv: Fix descriptor sampler offsets assignment
+Philipp Zabel (1):
+      etnaviv/nn: Pipe through input/accumulation buffer depth from hwdb
 
-Timur Kristóf (5):
-      aco: Add missing nir_builder include.
-      ac/nir: Move some helpers to new file.
-      ac/nir: Add helper for pre-rasterization output info.
-      ac/nir/ngg: Use new pre-rasterization output info helper.
-      ac/nir/legacy: Use new pre-rasterization output info helper.
+Samuel Pitoiset (7):
+      radv: precompute compute/task shader register values
+      radv: clear unwritten color attachments for monolithic PS earlier
+      radv: compact SPI_SHADER_COL_FORMAT as late as possible
+      radv: rename col_format_non_compacted to spi_shader_col_format
+      radv: store cb_shader_mask for fragment shaders and epilogs
+      radv: add a new dirty state for emitting the color output state
+      radv/ci: document a recent regression on GFX6-8
 
-Yusuf Khan (1):
-      nouveau: Fix crash when destination or source screen fences are null
+Sebastian Wick (1):
+      vulkan/wsi/wayland: refactor wsi_wl_swapchain_wait_for_present
+
+Thomas H.P. Andersen (1):
+      nvk: advertise EXT_depth_range_unrestricted
 
