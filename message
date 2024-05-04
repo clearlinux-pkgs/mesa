@@ -1,79 +1,18 @@
-Updating from bed4ad26ad050ac6ea38167411277b4f110eb48f to 7de8a010876b6e1fdf7fc8cf15f3f0e10ba5c569
-
-Alyssa Rosenzweig (1):
-      vulkan: optimize vk_dynamic_graphics_state_any_dirty
-
-Colin Marc (2):
-      vulkan/video: generate profile_tier_level structure correctly
-      vulkan/video: correctly set sub-layer ordering in H.265 VPS/SPS
-
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 7aa7bc1b01d57b4b091c4fc82a94a6ff47f38ebf
-
-Connor Abbott (2):
-      freedreno/a7xx: Add AQE-related registers from kgsl
-      freedreno/a7xx: Add A7XX_HLSQ_DP_STR location from kgsl
-
-Daniel Schürmann (6):
-      radv: mark nir_opt_loop() as not idempotent
-      radv: move nir_opt_dead_cf() before nir_opt_loop()
-      panfrost: skip gles-3.0-transform-feedback-uniform-buffer-object on Mali G52 and G57
-      nir/loop_analyze: adjust negative (or huge) iteration count check for bit size
-      nir/opt_if: don't split ALU of phi into otherwise empty blocks
-      nir/opt_loop: add loop peeling optimization
-
-Derek Foreman (11):
-      wsi/wayland: refactor wayland dispatch
-      egl/wayland: Use loader_wayland_dispatch
-      perfetto: Add flows
-      wsi/wayland: Add perfetto flows to image acquisition and presentation
-      wsi/wayland: Add flow id to presentation feedback
-      wsi/wayland: Add timing debugging
-      perfetto: Add simple support for counters
-      wsi/wayland: Add latency information to perfetto profiling
-      perfetto: Add some functions for timestamped events
-      wsi/wayland: Add a perfetto track for image presentation
-      wsi/wayland: Add tracepoint in wsi_wl_swapchain_wait_for_present
-
-Dmitry Osipenko (1):
-      venus: make cross-device optional
+Updating from 7de8a010876b6e1fdf7fc8cf15f3f0e10ba5c569 to 603982ea802b3846e91a943b413a7baf430e875d
 
 Eric Engestrom (1):
-      vc4/ci: add fails seen overnight
+      ci: uprev mold to 2.31.0
 
-Faith Ekstrand (2):
-      nak: Don't saturate depth writes
-      nvk: Only clip Z with the guardband
+Georg Lehmann (5):
+      ac/nir: explicitly use pack_half_2x16_rtz
+      radv, radeonsi: don't use D16 for f2f16_rtz
+      radv: always run nir_opt_16bit_tex_image
+      nir/opt_16bit_tex_image: pass options to opt_16bit_dest
+      nir/opt_16bit_tex_image: optimize packed conversions too
 
-Gert Wollny (2):
-      zink/kopper: Wait for last QueuePresentKHR to finish before acquiring for readback
-      mesa/st: don't use base shader serialization when uniforms are not packed
-
-Kenneth Graunke (1):
-      intel/nir: Set src_type on TCS quads workaround store_output
-
-Pavel Ondračka (5):
-      r300: replace constant size field with usemask
-      r300: move dead constants pass earlier for vertex shaders
-      r300: switch to a new constant remap table format
-      r300: compact scalar uniforms into empty slots
-      r300: better packing for immediates
-
-Philipp Zabel (1):
-      etnaviv/nn: Pipe through input/accumulation buffer depth from hwdb
-
-Samuel Pitoiset (7):
-      radv: precompute compute/task shader register values
-      radv: clear unwritten color attachments for monolithic PS earlier
-      radv: compact SPI_SHADER_COL_FORMAT as late as possible
-      radv: rename col_format_non_compacted to spi_shader_col_format
-      radv: store cb_shader_mask for fragment shaders and epilogs
-      radv: add a new dirty state for emitting the color output state
-      radv/ci: document a recent regression on GFX6-8
-
-Sebastian Wick (1):
-      vulkan/wsi/wayland: refactor wsi_wl_swapchain_wait_for_present
-
-Thomas H.P. Andersen (1):
-      nvk: advertise EXT_depth_range_unrestricted
+Ian Romanick (4):
+      intel/brw: Fix optimize_extract_to_float for i2f of unsigned extract
+      intel/brw: Avoid optimize_extract_to_float when it will just be undone later
+      intel/elk: Fix optimize_extract_to_float for i2f of unsigned extract
+      nir/algebraic: Optimize some extract_* expressions
 
