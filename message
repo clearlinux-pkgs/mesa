@@ -1,18 +1,8 @@
-Updating from 7de8a010876b6e1fdf7fc8cf15f3f0e10ba5c569 to 603982ea802b3846e91a943b413a7baf430e875d
+Updating from 603982ea802b3846e91a943b413a7baf430e875d to cd3871e7a41eb516ab85a4b13203daa22257d8bf
 
-Eric Engestrom (1):
-      ci: uprev mold to 2.31.0
-
-Georg Lehmann (5):
-      ac/nir: explicitly use pack_half_2x16_rtz
-      radv, radeonsi: don't use D16 for f2f16_rtz
-      radv: always run nir_opt_16bit_tex_image
-      nir/opt_16bit_tex_image: pass options to opt_16bit_dest
-      nir/opt_16bit_tex_image: optimize packed conversions too
-
-Ian Romanick (4):
-      intel/brw: Fix optimize_extract_to_float for i2f of unsigned extract
-      intel/brw: Avoid optimize_extract_to_float when it will just be undone later
-      intel/elk: Fix optimize_extract_to_float for i2f of unsigned extract
-      nir/algebraic: Optimize some extract_* expressions
+Mark Collins (4):
+      vdrm: Add fixed VA parameter for mapping memory
+      tu: Handle VkDeviceMemory BO unmapping in VkUnmapMemory
+      tu: Implement VK_EXT_map_memory_placed
+      docs/features: Add VK_EXT_map_memory_placed
 
