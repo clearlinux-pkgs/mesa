@@ -1,8 +1,78 @@
-Updating from 603982ea802b3846e91a943b413a7baf430e875d to cd3871e7a41eb516ab85a4b13203daa22257d8bf
+Updating from cd3871e7a41eb516ab85a4b13203daa22257d8bf to e32828f5fc4d8fac717fab113ab5c837ea2e2bc6
 
-Mark Collins (4):
-      vdrm: Add fixed VA parameter for mapping memory
-      tu: Handle VkDeviceMemory BO unmapping in VkUnmapMemory
-      tu: Implement VK_EXT_map_memory_placed
-      docs/features: Add VK_EXT_map_memory_placed
+Christian Gmeiner (2):
+      clc: Always use spir for 32 bit
+      etnaviv: Zero init all srcs passed to etna_emit_alu(..)
+
+David Rosca (2):
+      frontends/va: Fix AV1 slice_data_offset with multiple slice data buffers
+      Revert "radeonsi/vcn: AV1 skip the redundant bs resize"
+
+Eric Engestrom (1):
+      lavapipe/ci: skip two more timing out ray query tests
+
+Georg Lehmann (3):
+      aco/gfx11+: use v_cvt_pk_u8_f32 for 8bit constant copies
+      aco/gfx10: use v_add_u16 with literal for constant copies
+      aco/tests: simplify small constant copy test
+
+Juan A. Suarez Romero (2):
+      vc4/v3d/ci: update expected list
+      vc4: set src type on storing sample mask
+
+Karol Herbst (2):
+      nouveau: fix potential double-free in nouveau_drm_screen_create
+      nir: fix nir_shader_get_function_for_name for functions without names.
+
+Lionel Landwerlin (5):
+      anv: fixup alloc failure handling in reserved_array_pool
+      anv: fix leak of custom border colors
+      anv: avoid requirement to put flush_data as first field
+      anv: move device initialization as the last step of vkCreateDevice
+      anv: move empty_vs_input to physical device
+
+Mike Blumenkrantz (1):
+      zink: clean up accidental debug print
+
+Mykhailo Skorokhodov (2):
+      egl/wayland: Fix sRGB format look up for config
+      ci/lima: expect fail of window_8888_colorspace_srgb on wayland
+
+Oskar Viljasaar (4):
+      vulkan/properties: support Android in the property generator
+      v3dv: constify arguments of vendor/device id getters
+      v3dv: Use common runtime vk_properties
+      vulkan/properties: Document RENAMED_PROPERTIES in the property generator
+
+Patrick Lerda (1):
+      clover: fix pipe_box update regression
+
+Roman Stratiienko (6):
+      vulkan/android: Add basic u_gralloc support
+      vulkan/android: Add common vkGetSwapchainGrallocUsage{2}ANDROID
+      vulkan/android: Add android buffer classification to vk_image
+      vulkan/android: Add common helpers for the ANB extension
+      vulkan/android: Add common helpers for the AHB extension
+      vulkan/android: Add common vkGetAndroidHardwareBufferPropertiesANDROID
+
+Sagar Ghuge (1):
+      intel/compiler: Fix destination type for CMP/CMPN
+
+Samuel Pitoiset (8):
+      radv: split cmdbuf dirty flags into dirty/dirty_dynamic
+      radv: precompute existing legacy GS register values later
+      radv: precompute fragment shader register values
+      radv: precompute mesh shader register values
+      radv: precompute legacy GS register values
+      radv: precompute vertex shader register values
+      radv: precompute DB_SHADER_CONTROL for fragment shaders later
+      vulkan: Update XML and headers to 1.3.284
+
+Zan Dobersek (6):
+      fdperf: use snprintf instead of asprintf
+      fdperf: select_counter() should work with a countable value
+      fdperf: prettify logic around the reserved CP counter
+      fdperf: improve reads of counter values
+      fdperf: simplify counter value output
+      freedreno: add a7xx perfcounter support
 
