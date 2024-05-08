@@ -1,78 +1,93 @@
-Updating from cd3871e7a41eb516ab85a4b13203daa22257d8bf to e32828f5fc4d8fac717fab113ab5c837ea2e2bc6
+Updating from e32828f5fc4d8fac717fab113ab5c837ea2e2bc6 to d77a1762bd3da3216b7935ac856ba3f56c61f64d
 
-Christian Gmeiner (2):
-      clc: Always use spir for 32 bit
-      etnaviv: Zero init all srcs passed to etna_emit_alu(..)
+Boris Brezillon (3):
+      panfrost: Add the BO containing fragment program descriptor to the batch
+      pan/kmod: Fix a syncobj leak in the panthor backend
+      pan/kmod: Make default allocator thread-safe
 
-David Rosca (2):
-      frontends/va: Fix AV1 slice_data_offset with multiple slice data buffers
-      Revert "radeonsi/vcn: AV1 skip the redundant bs resize"
+Connor Abbott (3):
+      freedreno/crashdec: Initial a7xx support
+      freedreno: Update HLSQ_*_CMD registers for a7xx
+      docs/android: Fix example meson cross file again
 
-Eric Engestrom (1):
-      lavapipe/ci: skip two more timing out ray query tests
+Constantine Shablia (1):
+      panfrost: report correct MAX_VARYINGS
 
-Georg Lehmann (3):
-      aco/gfx11+: use v_cvt_pk_u8_f32 for 8bit constant copies
-      aco/gfx10: use v_add_u16 with literal for constant copies
-      aco/tests: simplify small constant copy test
+Danylo Piliaiev (2):
+      tu: Handle non-overlapping WaW hazard with buffer copy/fill/update
+      tu/a7xx: Don't set FLUSH_PER_OVERLAP_AND_OVERWRITE for feedback loops
 
-Juan A. Suarez Romero (2):
-      vc4/v3d/ci: update expected list
-      vc4: set src type on storing sample mask
+Echo J (1):
+      nvk: Add sha1_h as a dependency
 
-Karol Herbst (2):
-      nouveau: fix potential double-free in nouveau_drm_screen_create
-      nir: fix nir_shader_get_function_for_name for functions without names.
+Eric Engestrom (2):
+      ci: backport fix for gl_PointSize bug in CTS
+      lavapipe/ci: move a few skips out from under the "llvm jit" comment
 
-Lionel Landwerlin (5):
-      anv: fixup alloc failure handling in reserved_array_pool
-      anv: fix leak of custom border colors
-      anv: avoid requirement to put flush_data as first field
-      anv: move device initialization as the last step of vkCreateDevice
-      anv: move empty_vs_input to physical device
+Faith Ekstrand (3):
+      nouveau/class_parser.py: Fix the docs for --out-rs
+      nvk: Advertise VK_EXT_pipeline_robustness
+      nouveau/headers: Clean up the meson a bit
 
-Mike Blumenkrantz (1):
-      zink: clean up accidental debug print
+José Roberto de Souza (11):
+      intel/perf: Store pointer intel_device_info to in intel_perf_config
+      intel/perf: Add intel_perf_free()
+      intel/perf: Add intel_perf_free_context()
+      intel/ds: Free perf config and context
+      intel/ds: Nuke ralloc_ctx and ralloc_cfg
+      anv: Free intel_perf_config when destroying physical device
+      hasvk: Free intel_perf_config when destroying physical device
+      iris: Free intel_perf_config and intel_perf_context
+      crocus: Free intel_perf_config and intel_perf_context
+      intel/perf: Add and use a function to return platform OA format
+      intel/perf: Add function to open perf stream
 
-Mykhailo Skorokhodov (2):
-      egl/wayland: Fix sRGB format look up for config
-      ci/lima: expect fail of window_8888_colorspace_srgb on wayland
+Lionel Landwerlin (2):
+      anv: VK_EXT_legacy_vertex_attributes
+      docs: update anv features
 
-Oskar Viljasaar (4):
-      vulkan/properties: support Android in the property generator
-      v3dv: constify arguments of vendor/device id getters
-      v3dv: Use common runtime vk_properties
-      vulkan/properties: Document RENAMED_PROPERTIES in the property generator
+Mike Blumenkrantz (6):
+      dri: rename 'implicit' param from earlier series
+      tu: support VK_EXT_legacy_vertex_attributes
+      llvmpipe: add KHR-Single-GL45.arrays_of_arrays_gl.AtomicUsage skip
+      ci: disable lavapipe-vk-asan job
+      lavapipe: VK_EXT_legacy_vertex_attributes
+      zink: clamp buffer_indices_hashlist resets to used region
 
-Patrick Lerda (1):
-      clover: fix pipe_box update regression
+Oskar Viljasaar (2):
+      anv: Move completely over to common runtime GetPhysicalDeviceProperties2
+      hasvk: switch to use runtime physical device properties infrastructure
 
-Roman Stratiienko (6):
-      vulkan/android: Add basic u_gralloc support
-      vulkan/android: Add common vkGetSwapchainGrallocUsage{2}ANDROID
-      vulkan/android: Add android buffer classification to vk_image
-      vulkan/android: Add common helpers for the ANB extension
-      vulkan/android: Add common helpers for the AHB extension
-      vulkan/android: Add common vkGetAndroidHardwareBufferPropertiesANDROID
+Samuel Pitoiset (3):
+      aco: add support for remapping color attachments
+      radv: implement VK_KHR_dynamic_rendering_local_read
+      radv: advertise VK_KHR_dynamic_rendering_local_read
 
-Sagar Ghuge (1):
-      intel/compiler: Fix destination type for CMP/CMPN
+Sergi Blanch Torne (3):
+      mr-label-maker: specialize CI labels
+      ci: kernel stored in a different s3 bucket
+      ci: identify and label S3 buckets
 
-Samuel Pitoiset (8):
-      radv: split cmdbuf dirty flags into dirty/dirty_dynamic
-      radv: precompute existing legacy GS register values later
-      radv: precompute fragment shader register values
-      radv: precompute mesh shader register values
-      radv: precompute legacy GS register values
-      radv: precompute vertex shader register values
-      radv: precompute DB_SHADER_CONTROL for fragment shaders later
-      vulkan: Update XML and headers to 1.3.284
+Tapani Pälli (1):
+      iris: change stream uploader default size to 2MB
 
-Zan Dobersek (6):
-      fdperf: use snprintf instead of asprintf
-      fdperf: select_counter() should work with a countable value
-      fdperf: prettify logic around the reserved CP counter
-      fdperf: improve reads of counter values
-      fdperf: simplify counter value output
-      freedreno: add a7xx perfcounter support
+Timothy Arceri (1):
+      glsl: wrap nir_opt_loop in NIR_PASS()
+
+Vignesh Raman (1):
+      virtio/ci: separate hiden jobs to -inc.yml files
+
+Yusuf Khan (1):
+      nouveau/headers: Make nvk_cl**** turn to nv_push_cl****
+
+chiachih (9):
+      amd/vpelib: Resolve mismatch with shader
+      amd/vpelib: Remove linear_0_125 TF
+      amd/vpelib: Remove gamma cached table
+      amd/vpelib: Remove support for non-linear FP16
+      amd/vpelib: adding blend gamma bypass
+      amd/vpelib: Remove checks for pitch alignment
+      amd/vpelib: Fix Color Adjustment Failing Test Cases
+      amd/vpelib: Fix blndgam bypass flag assignment
+      amd/vpelib: Bypass de/regam on HLG
 
