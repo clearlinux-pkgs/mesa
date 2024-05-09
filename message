@@ -1,93 +1,84 @@
-Updating from e32828f5fc4d8fac717fab113ab5c837ea2e2bc6 to d77a1762bd3da3216b7935ac856ba3f56c61f64d
+Updating from d77a1762bd3da3216b7935ac856ba3f56c61f64d to c7634c25e4fe78cf993de65dd184d7155564eca2
 
-Boris Brezillon (3):
-      panfrost: Add the BO containing fragment program descriptor to the batch
-      pan/kmod: Fix a syncobj leak in the panthor backend
-      pan/kmod: Make default allocator thread-safe
+Alejandro Piñeiro (6):
+      v3dv/cmd_buffer: missing updates due PrimitiveTopology being dynamic now
+      v3dv: fixes StencilTestEnable handling
+      v3dv: PrimitiveRestartEnable is now dynamic.
+      v3dv: DepthBiasEnable is dynamic now
+      v3dv: SetRasterizerDiscardEnable is dynamic now
+      v3dv: enable VK_EXT_extended_dynamic_state2
 
-Connor Abbott (3):
-      freedreno/crashdec: Initial a7xx support
-      freedreno: Update HLSQ_*_CMD registers for a7xx
-      docs/android: Fix example meson cross file again
+David Heidelberg (2):
+      ci: fail pipeline for users who got access to restricted traces
+      ci/traces: majanes has no longer access to the restricted traces
 
-Constantine Shablia (1):
-      panfrost: report correct MAX_VARYINGS
+Eric Engestrom (5):
+      mr-label-maker: fix yaml syntax
+      docs: add release notes for 24.0.7
+      docs: update calendar for 24.0.7
+      docs: add sha256sum for 24.0.7
+      docs: update calendar for 24.1.0-rc3
 
-Danylo Piliaiev (2):
-      tu: Handle non-overlapping WaW hazard with buffer copy/fill/update
-      tu/a7xx: Don't set FLUSH_PER_OVERLAP_AND_OVERWRITE for feedback loops
+Georg Lehmann (1):
+      aco/gfx11+: optimize v_fma_mix throughput
 
-Echo J (1):
-      nvk: Add sha1_h as a dependency
+Juan A. Suarez Romero (1):
+      broadcom/compiler: remove unused parameters in vpm read
 
-Eric Engestrom (2):
-      ci: backport fix for gl_PointSize bug in CTS
-      lavapipe/ci: move a few skips out from under the "llvm jit" comment
+Karol Herbst (5):
+      rusticl: use stream uploader for cb0 if prefered
+      rusticl/kernel: properly handle grid and offsets being usize
+      rusticl: lower huge grids
+      rusticl: add RUSTICL_MAX_WORK_GROUPS
+      rusticl/event: use Weak refs for dependencies
 
-Faith Ekstrand (3):
-      nouveau/class_parser.py: Fix the docs for --out-rs
-      nvk: Advertise VK_EXT_pipeline_robustness
-      nouveau/headers: Clean up the meson a bit
+Lionel Landwerlin (4):
+      anv: fix ycbcr plane indexing with indirect descriptors
+      intel/hang_replay: use newer API of i915 execbuffer
+      intel/hang_replay: use hw image param
+      intel/tools: add README file
 
-José Roberto de Souza (11):
-      intel/perf: Store pointer intel_device_info to in intel_perf_config
-      intel/perf: Add intel_perf_free()
-      intel/perf: Add intel_perf_free_context()
-      intel/ds: Free perf config and context
-      intel/ds: Nuke ralloc_ctx and ralloc_cfg
-      anv: Free intel_perf_config when destroying physical device
-      hasvk: Free intel_perf_config when destroying physical device
-      iris: Free intel_perf_config and intel_perf_context
-      crocus: Free intel_perf_config and intel_perf_context
-      intel/perf: Add and use a function to return platform OA format
-      intel/perf: Add function to open perf stream
+Maíra Canal (1):
+      v3dv: Use errno when logging an error to stderr
 
-Lionel Landwerlin (2):
-      anv: VK_EXT_legacy_vertex_attributes
-      docs: update anv features
+Mike Blumenkrantz (21):
+      zink: delete GS conditional in update_so_info
+      zink: use zink_shader_key_optimal unions for pipeline state asserts
+      zink: use info.fs.uses_sample_qualifier instead of manual scan
+      zink: simplify confusing return in rewrite_tex_dest
+      zink: simplify flagging legacy shadow samplers
+      zink: rename zink_shader variable in create functions
+      zink: break out shadow sampler scanning
+      zink: always block the precompile threads when pruning shaders
+      zink: more effectively synchronize separate shader program precompiles
+      zink: use zink_shader type directly in zink_create_gfx_shader_state()
+      zink: split shader create into 2-stage functions
+      zink: reorder precompile_separate_shader_job() in file
+      zink: split generated tcs creation into 2-stage functions
+      zink: move gfx shader init to thread
+      zink: reorder some code in zink_create_gfx_program()
+      zink: reorder fencing in zink_create_gfx_program()
+      zink: split gfx program creation into 2-stage functions
+      zink: precompile_job() -> gfx_program_precompile_job()
+      zink: move blocking gfx program init functions to thread
+      ci: disable g52
+      egl/x11: disable dri3 with LIBGL_KOPPER_DRI2=1 as expected
 
-Mike Blumenkrantz (6):
-      dri: rename 'implicit' param from earlier series
-      tu: support VK_EXT_legacy_vertex_attributes
-      llvmpipe: add KHR-Single-GL45.arrays_of_arrays_gl.AtomicUsage skip
-      ci: disable lavapipe-vk-asan job
-      lavapipe: VK_EXT_legacy_vertex_attributes
-      zink: clamp buffer_indices_hashlist resets to used region
+Rob Clark (4):
+      tu: Add missing error path cleanup
+      tu: Fix a6xx lineWidthGranularity
+      freedreno/ir3: Skip DAG validation on release builds
+      llvmpipe: Fix build error with clang-18
 
-Oskar Viljasaar (2):
-      anv: Move completely over to common runtime GetPhysicalDeviceProperties2
-      hasvk: switch to use runtime physical device properties infrastructure
-
-Samuel Pitoiset (3):
-      aco: add support for remapping color attachments
-      radv: implement VK_KHR_dynamic_rendering_local_read
-      radv: advertise VK_KHR_dynamic_rendering_local_read
-
-Sergi Blanch Torne (3):
-      mr-label-maker: specialize CI labels
-      ci: kernel stored in a different s3 bucket
-      ci: identify and label S3 buckets
+Samuel Pitoiset (1):
+      radv: add a new mechanism for tracking registers per cmdbuf
 
 Tapani Pälli (1):
-      iris: change stream uploader default size to 2MB
+      anv: skip gfx push constants alloc optimization on gfx9/11
 
-Timothy Arceri (1):
-      glsl: wrap nir_opt_loop in NIR_PASS()
+Tvrtko Ursulin (1):
+      intel/hang_replay: fix batch address
 
-Vignesh Raman (1):
-      virtio/ci: separate hiden jobs to -inc.yml files
-
-Yusuf Khan (1):
-      nouveau/headers: Make nvk_cl**** turn to nv_push_cl****
-
-chiachih (9):
-      amd/vpelib: Resolve mismatch with shader
-      amd/vpelib: Remove linear_0_125 TF
-      amd/vpelib: Remove gamma cached table
-      amd/vpelib: Remove support for non-linear FP16
-      amd/vpelib: adding blend gamma bypass
-      amd/vpelib: Remove checks for pitch alignment
-      amd/vpelib: Fix Color Adjustment Failing Test Cases
-      amd/vpelib: Fix blndgam bypass flag assignment
-      amd/vpelib: Bypass de/regam on HLG
+Yiwei Zhang (1):
+      meson: disallow Venus debug + LTO build via GCC
 
