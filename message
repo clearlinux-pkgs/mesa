@@ -1,84 +1,89 @@
-Updating from d77a1762bd3da3216b7935ac856ba3f56c61f64d to c7634c25e4fe78cf993de65dd184d7155564eca2
+Updating from c7634c25e4fe78cf993de65dd184d7155564eca2 to c44e76676b7ff246b9d3455dcb1cd2f3a750535b
 
-Alejandro Piñeiro (6):
-      v3dv/cmd_buffer: missing updates due PrimitiveTopology being dynamic now
-      v3dv: fixes StencilTestEnable handling
-      v3dv: PrimitiveRestartEnable is now dynamic.
-      v3dv: DepthBiasEnable is dynamic now
-      v3dv: SetRasterizerDiscardEnable is dynamic now
-      v3dv: enable VK_EXT_extended_dynamic_state2
+Alexandre Marquet (1):
+      pan/mdg: quirk to disable auto32
 
-David Heidelberg (2):
-      ci: fail pipeline for users who got access to restricted traces
-      ci/traces: majanes has no longer access to the restricted traces
+Alyssa Rosenzweig (1):
+      vulkan: add helper to fill out spirv caps automatically
 
-Eric Engestrom (5):
-      mr-label-maker: fix yaml syntax
-      docs: add release notes for 24.0.7
-      docs: update calendar for 24.0.7
-      docs: add sha256sum for 24.0.7
-      docs: update calendar for 24.1.0-rc3
+Daniel Stone (1):
+      Revert "ci: disable g52"
+
+Faith Ekstrand (28):
+      spirv: Auto-generate spirv_info.h
+      spirv: Update the JSON and headers
+      spirv: Better handle duplicated enums in the JSON parser
+      spirv: Generate a spirv_capabilities struct
+      spirv: Record capabilities rather than ad-hoc bools
+      mesa: Stop pretending to support SPV_AMD_gcn_shader in OpenGL
+      spirv: Move the old AMD extensions out of capabilities
+      spirv: Move the printf enable out of capabilities
+      spirv: Add supported_capabilities to vtn_builder
+      spirv: Use supported_capabilities for various checks
+      spirv: Drop the SubgroupUniformControlFlow check
+      spirv: Add a table of all implemented capabilities
+      spirv: Check capabilities using the supported_capabilities table
+      spirv: Add support for specifying caps through the new struct
+      spirv: Use spirv_capabilities in tests
+      mesa: Flip the script on SPIR-V extension enabling
+      mesa: Use the new spirv_capabilities struct
+      clover: Use the new spirv_capabilities struct
+      rusticl: Use the new spirv_capabilities struct
+      vulkan: Set SPIR-V caps from supported features
+      radv: Use vk_physical_device_get_spirv_capabilities()
+      intel/kernel: Use the new capabilities struct
+      asahi/clc: Use the new spirv_capabilities struct
+      zink: Use the new spirv_capabilities struct
+      anv: Use spirv_capabilities for the float64 shader
+      ir3: Use spirv_capabilities in ir3_cmdline
+      microsoft: Use spirv_capabilities for spirv_to_dxil
+      spirv: Get rid of the old caps struct
 
 Georg Lehmann (1):
-      aco/gfx11+: optimize v_fma_mix throughput
+      zink: use bitcasts instead of pack/unpack double opcodes
+
+Iago Toral Quiroga (5):
+      broadcom/compiler: assert on array overflow
+      v3d: fix array_len when precompiling outputs for shader-db
+      broadcom/compiler: fix num_textures for precompiled shaders
+      broadcom/compiler: don't read excess channels on image loads
+      broadcom/compiler: simplify v3d_vir_emit_tex
+
+Ian Romanick (1):
+      spirv: Use fp16 fp_fast_math settings when lowering fp16 asin and acos
 
 Juan A. Suarez Romero (1):
-      broadcom/compiler: remove unused parameters in vpm read
+      broadcom/compiler: do not run lowering I/O for FS
 
-Karol Herbst (5):
-      rusticl: use stream uploader for cb0 if prefered
-      rusticl/kernel: properly handle grid and offsets being usize
-      rusticl: lower huge grids
-      rusticl: add RUSTICL_MAX_WORK_GROUPS
-      rusticl/event: use Weak refs for dependencies
+Karol Herbst (1):
+      rusticl/icd: remove CLObject
 
-Lionel Landwerlin (4):
-      anv: fix ycbcr plane indexing with indirect descriptors
-      intel/hang_replay: use newer API of i915 execbuffer
-      intel/hang_replay: use hw image param
-      intel/tools: add README file
+Mike Blumenkrantz (1):
+      zink: add a batch ref for committed sparse resources
 
-Maíra Canal (1):
-      v3dv: Use errno when logging an error to stderr
+Rhys Perry (1):
+      nir/dead_cf: stop reindexing blocks for each non-block cf node
 
-Mike Blumenkrantz (21):
-      zink: delete GS conditional in update_so_info
-      zink: use zink_shader_key_optimal unions for pipeline state asserts
-      zink: use info.fs.uses_sample_qualifier instead of manual scan
-      zink: simplify confusing return in rewrite_tex_dest
-      zink: simplify flagging legacy shadow samplers
-      zink: rename zink_shader variable in create functions
-      zink: break out shadow sampler scanning
-      zink: always block the precompile threads when pruning shaders
-      zink: more effectively synchronize separate shader program precompiles
-      zink: use zink_shader type directly in zink_create_gfx_shader_state()
-      zink: split shader create into 2-stage functions
-      zink: reorder precompile_separate_shader_job() in file
-      zink: split generated tcs creation into 2-stage functions
-      zink: move gfx shader init to thread
-      zink: reorder some code in zink_create_gfx_program()
-      zink: reorder fencing in zink_create_gfx_program()
-      zink: split gfx program creation into 2-stage functions
-      zink: precompile_job() -> gfx_program_precompile_job()
-      zink: move blocking gfx program init functions to thread
-      ci: disable g52
-      egl/x11: disable dri3 with LIBGL_KOPPER_DRI2=1 as expected
+Sagar Ghuge (1):
+      intel/disasm: Fix cache load/store disassembly for URB messages
 
-Rob Clark (4):
-      tu: Add missing error path cleanup
-      tu: Fix a6xx lineWidthGranularity
-      freedreno/ir3: Skip DAG validation on release builds
-      llvmpipe: Fix build error with clang-18
+Samuel Pitoiset (6):
+      radv: move common registers between VS/GS and NGG
+      radv: precompute NGG register values
+      radv: remove unused parameter to radv_pipeline_emit_pm4()
+      radv: stop recomputing the last VGT API stage when emitting graphics shaders
+      radv: do not emit non-context registers to radv_pipeline::ctx_cs
+      radv: track and bind more VRS states from the graphics pipeline
 
-Samuel Pitoiset (1):
-      radv: add a new mechanism for tracking registers per cmdbuf
+Saroj Kumar (2):
+      mesa: Add functions to print blake3
+      mesa: replace shader_info::source_sha1
 
-Tapani Pälli (1):
-      anv: skip gfx push constants alloc optimization on gfx9/11
+Sathishkumar S (3):
+      util/format: add planar3 y8_u8_v8_440 pipe format
+      frontends/va,gallium/vl: add support for yuv440 format
+      radeonsi/vcn: enable yuv440 jpeg decode
 
-Tvrtko Ursulin (1):
-      intel/hang_replay: fix batch address
-
-Yiwei Zhang (1):
-      meson: disallow Venus debug + LTO build via GCC
+Timothy Arceri (1):
+      glsl: use hash table when serializing resource data
 
