@@ -1,89 +1,239 @@
-Updating from c7634c25e4fe78cf993de65dd184d7155564eca2 to c44e76676b7ff246b9d3455dcb1cd2f3a750535b
+Updating from 63e17ccc0a2ed5e762aedfa71d9133672e77aa24 to 2f02af39b34c013b4829cfde626ab13b69c173b8
 
-Alexandre Marquet (1):
-      pan/mdg: quirk to disable auto32
+Alyssa Rosenzweig (106):
+      nir: add is_first_fan_agx sysval
+      nir: add texops for AGX border colour emulation
+      nir: add quad_ballot_agx intrinsic
+      nir,agx: add depth=never workaround
+      nir,agx: fix load_active_subgroup_index
+      compiler: add ACCESS_IN_BOUNDS_AGX
+      agx: optimize and/or with booleans
+      agx: enable more lowering
+      agx: fix query LOD of array
+      agx: fix some ms texture packing
+      agx: handle cross-workgroup memory barriers
+      agx: allow 8-bit bcsel
+      agx: fix phi translation corruption
+      agx: fix load_helper_invocation with sample shading
+      agx: fix frag sidefx with sample shading
+      agx: handle subgroup barriers
+      agx: fix spilling inside sample loop
+      agx: switch to demote internally
+      agx: lower nir_intrinsic_load_num_subgroups
+      agx: delete unreachable blocks
+      agx: model more subgroup ops
+      agx: lower shuffle
+      agx: handle non-immediate shuffles in divergent CF
+      agx: handle quad_broadcast
+      agx: handle quad swaps
+      agx: add missing b2b16 implementation
+      agx: forbid uniforms on ballots
+      agx: lower 8-bit subgroups
+      agx: flesh out subgroup lowering
+      agx: report uses_txf
+      agx: expose agx_link_libagx
+      agx: document another sample_mask restriction
+      agx: reserve scratch registers for mem<-->mem swaps
+      agx: optimize txf with lod 0
+      agx: fix bogus unit test
+      agx: stash early_fragment_test info
+      agx: handle quad reduce
+      agx: implement quad_ballot
+      agx: lower more quad ops
+      agx: optimize elect()
+      agx: fix UB in cursor comparison
+      ail: constify everything
+      asahi: mark eMRT loads as in-bounds
+      asahi: calculate validity when unpacking
+      asahi: agx_translate_sample_count
+      asahi: assert bo size > 0
+      asahi: unwrap pointless null check
+      asahi: implement PIPE_CAP_QUERY_MEMORY_INFO
+      asahi: rm unused #include
+      asahi: resize key
+      asahi: cleanup fs epilog link info
+      asahi: move agx_link_varyings_vs_fs
+      asahi: fix prolog emit
+      asahi: pack UVS key properly
+      asahi: plumb shader stage into info
+      asahi: get debug in common
+      asahi: rm deadcode
+      asahi: drop rgb10a2_sint rendering
+      asahi: add missing rgba4 format
+      asahi: fix 1D array atomics
+      asahi: fix txf/image_load robustness with arrays
+      asahi: rework VBO lower for divisor=0
+      asahi: mv AGX_MAX_OCCLUSION_QUERIES define
+      asahi: handle agx_ppp_fragment_face_2 with no info
+      asahi: clarify format code in image lowering
+      asahi: fix rgb565 blending
+      asahi: fix store_output component/offset
+      asahi: fix sample ID with multiblock epilogs
+      asahi: lower texture instructions with epilogs
+      asahi: fix cull unknown bits
+      asahi: simplify image atomic lowering
+      asahi: move primitive MSAA field
+      asahi: free libagx if we don't use a ralloc memctx
+      asahi: eliminate troublesome empty uniforms
+      asahi: rearrange VS uniforms
+      asahi: set src_type for store_output
+      asahi: rm dead code
+      asahi: add agx_index_size_to_B helper
+      asahi: move some GS lowering into lower_gs
+      asahi: don't use load_num_vertices in geometry shaders
+      asahi: mv vertex_id_for_topology_class into GS lowering
+      asahi: rm another num_vertices use
+      asahi: rm dated comment
+      asahi: rm unused lower
+      asahi: rm num_vertices uses
+      asahi: rm redundant input_vertices
+      asahi: mv initialization of grid z for indirect GS
+      asahi: rm more dead lowering
+      asahi: rm always true param
+      asahi: update comment
+      asahi: update comment for maint5
+      asahi: eliminate num_workgroups for VS->GS + VS->TCS
+      asahi: drop bogus assertion
+      asahi: pack tilebuffer usc word ahead-of-time
+      asahi: add agx_ppp_push_merged helper
+      asahi: use ppp_merge
+      asahi: don't allocate varyings ourselves
+      asahi: don't allocate for ppp updates
+      asahi: extend varying linking for tri fan weirdness
+      asahi: plumb tri fan flatshading through common
+      asahi: don't ralloc in agx_fast_link
+      asahi: extend epilog key for force early frag handling
+      asahi: don't reserve extra UVS space for layer
+      libagx: use sub_group_scan_inclusive_add
+      libagx: add query copy kernel
+      libagx: don't use get_group_id()
 
-Alyssa Rosenzweig (1):
-      vulkan: add helper to fill out spirv caps automatically
+Antoine Coutant (1):
+      drisw: fix build without dri3
 
-Daniel Stone (1):
-      Revert "ci: disable g52"
+Arthur Huillet (2):
+      nvk: update 3d classes for conservative raster
+      nvk: implement VK_EXT_conservative_rasterization
 
-Faith Ekstrand (28):
-      spirv: Auto-generate spirv_info.h
-      spirv: Update the JSON and headers
-      spirv: Better handle duplicated enums in the JSON parser
-      spirv: Generate a spirv_capabilities struct
-      spirv: Record capabilities rather than ad-hoc bools
-      mesa: Stop pretending to support SPV_AMD_gcn_shader in OpenGL
-      spirv: Move the old AMD extensions out of capabilities
-      spirv: Move the printf enable out of capabilities
-      spirv: Add supported_capabilities to vtn_builder
-      spirv: Use supported_capabilities for various checks
-      spirv: Drop the SubgroupUniformControlFlow check
-      spirv: Add a table of all implemented capabilities
-      spirv: Check capabilities using the supported_capabilities table
-      spirv: Add support for specifying caps through the new struct
-      spirv: Use spirv_capabilities in tests
-      mesa: Flip the script on SPIR-V extension enabling
-      mesa: Use the new spirv_capabilities struct
-      clover: Use the new spirv_capabilities struct
-      rusticl: Use the new spirv_capabilities struct
-      vulkan: Set SPIR-V caps from supported features
-      radv: Use vk_physical_device_get_spirv_capabilities()
-      intel/kernel: Use the new capabilities struct
-      asahi/clc: Use the new spirv_capabilities struct
-      zink: Use the new spirv_capabilities struct
-      anv: Use spirv_capabilities for the float64 shader
-      ir3: Use spirv_capabilities in ir3_cmdline
-      microsoft: Use spirv_capabilities for spirv_to_dxil
-      spirv: Get rid of the old caps struct
+Benjamin Lee (1):
+      vk/graphics_state: Add last bits for extraPrimitiveOverestimationSize
+
+Corentin Noël (1):
+      ci: Allow to override the virglrenderer render server
+
+Danylo Piliaiev (1):
+      tu/a750: Disable HW binning when there is GS
+
+Dave Airlie (1):
+      radv/video/encode: fix quality params on v2 hw.
+
+David Heidelberg (7):
+      freedreno/ci: move platform to the deqp toml file for a530
+      freedreno/ci: move the disabled jobs from include to the main file
+      freedreno/ci: Switch a306_* to deqp-runner
+      freedreno/ci: do not depend on single job rules for another jobs
+      freedreno/ci: switch a306 to weston
+      freedreno/ci: re-enable a306_piglit
+      ci/panfrost: disable G52 until machines gets fixed
+
+Eric Engestrom (2):
+      Revert "ci: fail pipeline for users who got access to restricted traces"
+      radeonsi/ci: document new crash (assert)
+
+Faith Ekstrand (22):
+      nvk/upload_queue: Only upload one line of data
+      nvk/upload_queue: Add some useful asserts
+      nvk/upload_queue: Add a _fill method
+      nvk: Use the upload queue for NVK_DEBUG=zero_memory
+      nvk: Improve the GetMemoryFdKHR error
+      nouveau/winsys: Take a reference to BOs found in the cache
+      nouveau/winsys: Make BO_LOCAL and BO_GART separate flags
+      nvk: Allow GART for dma-bufs
+      nil: Use the right PTE kind for Z32 pre-Turing
+      nvk: Set color/Z compression based on nil_image::compressed
+      nil: Default to NV_MMU_PTE_KIND_GENERIC_MEMORY on Turing+
+      nvk: Allow VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT
+      drm-uapi: Sync nouveau_drm.h
+      nouveau/winsys: Add back nouveau_ws_bo_new_tiled()
+      nvk: Support image creation with modifiers
+      nvk: Set tile mode and PTE kind on dedicated dma-buf BOs
+      nvk: Implement DRM format modifier queries
+      nvk: Advertise VK_EXT_queue_family_foreign
+      nvk: Advertise VK_EXT_image_drm_format_modifier
+      vulkan/wsi: Bind memory planes, not YCbCr planes.
+      nvk/wsi: Advertise modifier support
+      zink: Set workarounds.can_do_invalid_linear_modifier for NVK
 
 Georg Lehmann (1):
-      zink: use bitcasts instead of pack/unpack double opcodes
+      aco/gfx11: use v_swap_b16
 
-Iago Toral Quiroga (5):
-      broadcom/compiler: assert on array overflow
-      v3d: fix array_len when precompiling outputs for shader-db
-      broadcom/compiler: fix num_textures for precompiled shaders
-      broadcom/compiler: don't read excess channels on image loads
-      broadcom/compiler: simplify v3d_vir_emit_tex
+Ian Romanick (10):
+      intel/brw: Remove dsign optimization
+      intel/elk: Remove dsign optimization
+      intel/brw: Use fs_inst::resize_sources in brw_fs_opt_algebraic
+      intel/brw: Add support for fcsel opcodes
+      intel/brw: Handle fsign optimization in a NIR algebraic pass
+      intel/brw: Update CSEL source type validation
+      intel/brw: Combine constants and constant propagation for CSEL
+      intel/brw: Algebraic optimizations for CSEL
+      intel/brw: Implement more strictly correct fsign lowering
+      intel/brw: Use range analysis to optimize fsign
 
-Ian Romanick (1):
-      spirv: Use fp16 fp_fast_math settings when lowering fp16 asin and acos
+Juan A. Suarez Romero (4):
+      nir,v3d: rename tlb_color_v3d intrinsic
+      vc4: use tlb_color_brcm intrinsic
+      .gitignore: add .cache folder
+      vc4: use IO semantics for location
 
-Juan A. Suarez Romero (1):
-      broadcom/compiler: do not run lowering I/O for FS
+Mary Guillemard (3):
+      nvk, nak: Wire up conservative rasterization underestimate
+      docs/features: Add EXT_conservative_rasterization for NVK
+      agx: speed-up dce
 
-Karol Herbst (1):
-      rusticl/icd: remove CLObject
+Mike Blumenkrantz (2):
+      ci: bump VVL to snapshot-2024wk19
+      zink: hook up VK_EXT_legacy_vertex_attributes
 
-Mike Blumenkrantz (1):
-      zink: add a batch ref for committed sparse resources
+Mohamed Ahmed (4):
+      nil: Add a nil_image::compressed bit
+      nil: Add some helpers for DRM format modifiers
+      nil: Support creating images with DRM modifiers
+      nvk: enable rendering to DRM_FORMAT_MOD_LINEAR images
 
-Rhys Perry (1):
-      nir/dead_cf: stop reindexing blocks for each non-block cf node
+Patrick Lerda (1):
+      clover: fix memory leak related to optimize
 
-Sagar Ghuge (1):
-      intel/disasm: Fix cache load/store disassembly for URB messages
+Rhys Perry (6):
+      radv: keep track of unaligned dynamic vertex access
+      aco: form hard clauses in VS prologs
+      aco: copy VS prolog constants after loads
+      aco: support VS prologs with unaligned access
+      aco/util: improve small_vec assertion
+      radv: advertise VK_EXT_legacy_vertex_attributes
+
+Rob Clark (1):
+      freedreno/ci: Switch a618_piglit to deqp-runner
+
+Romain Naour (1):
+      glxext: don't try zink if not enabled in mesa
 
 Samuel Pitoiset (6):
-      radv: move common registers between VS/GS and NGG
-      radv: precompute NGG register values
-      radv: remove unused parameter to radv_pipeline_emit_pm4()
-      radv: stop recomputing the last VGT API stage when emitting graphics shaders
-      radv: do not emit non-context registers to radv_pipeline::ctx_cs
-      radv: track and bind more VRS states from the graphics pipeline
+      radeonsi: remove the _unused parameter in all radeon_xxx macros
+      radv: remove gfx10_emit_ge_pc_alloc()
+      radv: do not emit VGT_GS_OUT_PRIM_TYPE to ctx_cs on GFX11
+      radv: simplify radv_emit_hw_ngg() slightly
+      radv: simplify radv_emit_hw_vs() slightly
+      radv: simplify radv_emit_hw_gs() slightly
 
-Saroj Kumar (2):
-      mesa: Add functions to print blake3
-      mesa: replace shader_info::source_sha1
+Sergi Blanch Torne (2):
+      ci: disable Collabora's farm due to maintance
+      Revert "ci: disable Collabora's farm due to maintance"
 
-Sathishkumar S (3):
-      util/format: add planar3 y8_u8_v8_440 pipe format
-      frontends/va,gallium/vl: add support for yuv440 format
-      radeonsi/vcn: enable yuv440 jpeg decode
+Valentine Burley (1):
+      docs: Update VK_EXT_legacy_vertex_attributes entries
 
-Timothy Arceri (1):
-      glsl: use hash table when serializing resource data
+Yiwei Zhang (3):
+      turnip: msm: clean up iova on error path
+      turnip: msm: fix racy gem close for re-imported dma-buf
+      venus: drop the workaround for excessive dma-buf import oom on turnip
 
