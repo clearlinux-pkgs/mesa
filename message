@@ -1,140 +1,132 @@
-Updating from 2f02af39b34c013b4829cfde626ab13b69c173b8 to 90b0925588d42a367bdc34dea8856691b33a44ae
+Updating from 90b0925588d42a367bdc34dea8856691b33a44ae to 586bca76dd031c1abef718831aa9a77b00a5d0c6
 
-Chia-I Wu (2):
-      radv: check gs_copy_shader directly for executable props
-      radv: make radv_pipeline_has_ngg static
+Arthur Huillet (2):
+      nvk: import SPH headers files from open-gpu-doc
+      nvk: generate Rust bindings from SPH header files
 
-David Heidelberg (4):
-      ci: drop unused piglit-test and integrate it into piglit-traces-test
-      freedreno/ci: Drop duplicated include and add missing stages
-      freedreno/ci: Implement nightly piglit job for Adreno 630 and 618
-      ci/freedreno: update expectations from the nightly run
+Chia-I Wu (1):
+      drm-shim: intercept access as well
+
+Danylo Piliaiev (1):
+      freedreno/devices: Add support for Adreno A32 (G3x Gen 2)
 
 David Rosca (1):
-      frontends/va: Only increment slice offset after first slice parameters
+      radeonsi: Update buffer for other planes in si_alloc_resource
 
-Eric Engestrom (7):
-      util/format: add missing null check in util_format_is_srgb()
-      ci: drop default VKD3D_PROTON_RESULTS file name
-      ci: hardcode `-vkd3d` namespace for VKD3D_PROTON_RESULTS
-      amd/ci: track changes to VKD3D_PROTON_RESULTS files
-      mr-label-maker: mark *-vkd3d.txt files as CI results expectations files
-      ci: reuse dead .vkd3d-proton-test to make vkd3d less radv-specific
-      ci: fix section_end in debian-build-testing
+Eric Engestrom (17):
+      ci: rename debian version variable job to include the word "version"
+      ci: factor out all the deps to build the debian containers into .debian-container
+      ci: inherit the debian container building infra for test container images
+      ci/b2c: rename B2C_TIMEOUT_FIRST_* to B2C_TIMEOUT_FIRST_CONSOLE_ACTIVITY_*
+      ci/b2c: rename B2C_TIMEOUT_* to B2C_TIMEOUT_CONSOLE_ACTIVITY_*
+      ci/b2c: allow setting timeouts in seconds
+      ci: drop dead VK_CPU option
+      ci/piglit-traces: drop re-definition of VK_DRIVER_FILES
+      ci/init-stage2: set VK_DRIVER_FILES for both xorg and wayland
+      ci/vkd3d: un-hardcode architecture
+      ci/vkd3d: fix version sanity check
+      ci/vkd3d: fail job when failing to get driver version
+      ci/b2c: remove dead rules: that's always overwritten
+      ci/env: move dead-code-with-comment to the end of the list to make it clearer
+      zink/ci: rename .zink-lvp-venus-rules to .zink-venus-lvp-rules to match the rest of the names
+      README: update links to our own docs
+      docs: update calendar for 24.1.0-rc4
 
-Friedrich Vock (2):
-      aco/tests: Insert p_logical_start/end in reduce_temp tests
-      aco/spill: Insert p_start_linear_vgpr right after p_logical_end
+Faith Ekstrand (2):
+      nvk: Fix misc. whitespace and style issues
+      nvk: Go wide for query copies
 
-Hans-Kristian Arntzen (3):
-      vulkan: Update XML and headers to 1.3.285.
-      ac/surface: Add surface flags to prefer 4K and 64K alignment.
-      radv: Implement VK_MESA_image_alignment_control
+Francisco Jerez (12):
+      intel/brw/xe2+: Keep PS sample mask in the f1.0 register whether or not kill is used.
+      intel/brw: Don't emit Z coordinate interpolation if CPS isn't in use.
+      intel/brw/xe2+: Fix indirect extended descriptor setup for scratch space.
+      iris: Allocate fixed amount of space for blend state.
+      blorp: Allocate fixed amount of space for blend state.
+      intel/brw/xe2+: Don't use SEL peephole on 64-bit moves.
+      intel/brw/xe2+: Fix 64-bit subgroup scan intrinsics not to rely on SEL instructions.
+      intel/brw/xe2+: Lower 64-bit SHUFFLE and CLUSTER_BROADCAST.
+      intel/xe2+: Enable native 64-bit integer arithmetic.
+      nir: Add option to lower 64-bit uadd_sat.
+      intel/brw/xe2+: Lower 64-bit integer uadd_sat.
+      intel/brw/xe2+: Round up spill/unspill data size to nearest reg_size multiple.
 
-Iván Briano (1):
-      intel/brw: fix subgroup size of geometry stages for lnl+
+Iago Toral Quiroga (3):
+      broadcom/cle: fix up shader record for V3D 7.1.10 / 2712D0
+      v3d: support 2712D0
+      v3dv: support 2712D0
 
-Karol Herbst (3):
-      rusticl/spirv: enable more caps
-      Revert "rusticl/event: use Weak refs for dependencies"
-      event: break long dependency chains on drop
+Karol Herbst (9):
+      rusticl/device: add DeviceCaps and move timestamp stuff into it
+      rusticl/device/caps: move enough for has_images
+      rusticl/device: properly handle devices with no support for images
+      rusticl/mesa/context: flush context before destruction
+      rusticl: merge rusticl_nir and rusticl_mesa_bindings_inline_wrapper targets
+      rusticl: move mesa_version_string out of the inline wrapper
+      rusticl: bump bindgen req to 0.65
+      rusticl: bump meson req to 1.4
+      rusticl: make use of new `output_inline_wrapper` meson.rust.bindgen feature
 
-Konstantin Seurer (2):
-      radv/ci: Add back pipeline library flakes
-      radv/ci: Document recent flakes
+Lionel Landwerlin (12):
+      anv: fix push constant subgroup_id location
+      nir/divergence: add missing load_printf_buffer_address
+      nir: add a base offset for printf indexing
+      nir: add ptr_bit_size parameter to nir_lower_printf
+      nir: add a low level printf emission helper
+      intel/nir: remove unused prototypes
+      intel/nir: add reloc delta to load_reloc_const_intel intrinsic
+      intel/compiler: store u_printf_info in prog_data
+      intel/nir: add printf lowering
+      anv: add debug shader printf support
+      intel/clc: enable printfs support
+      anv: shader printf example
 
-Marek Olšák (18):
-      util: shift the mask in BITSET_TEST_RANGE_INSIDE_WORD to be relative to b
-      ac/llvm: improve/simplify/fix load_ssbo
-      radeonsi: serialize shader disassembly string to fix asm dumps for ACO
-      radeonsi: fix the size of the query result SSBO
-      radeonsi: validate the buffer range in si_set_shader_buffer
-      radeonsi: remove GDS tests
-      radeonsi: set flags directly instead of having needs_db_flush
-      radeonsi/gfx11: use a lighter workaround for Navi31 dEQP failures
-      radeonsi: get NIR options from si_screen instead of calling get_compiler_options
-      radeonsi: minor simplifications of clear/copy_buffer shaders
-      radeonsi: simplify the complex clear/copy_buffer shader
-      radeonsi: use set_work_size for all internal compute dispatches
-      radeonsi: replace the clear_12bytes_buffer shader with the DMA compute shader
-      radeonsi: remove slow code from si_msaa_resolve_blit_via_CB
-      radeonsi/ci: fix caselists for vk-gl-cts/main
-      radeonsi/ci: update failures for all generations
-      radeonsi/ci: remove some gfx11 flakes
-      radeonsi: constify struct pipe_vertex_buffer *
+Mary Guillemard (3):
+      nouveau: nvidia_header: Add AMPERE_B class generation
+      nak: Set SPH version to 4 on SM75+
+      nak: Migrate sph.rs to use SPH headers defintion
 
-Mary Guillemard (1):
-      panvk: Only clear UBOs descriptors when set isn't present
+Oskar Viljasaar (2):
+      vulkan: add a property struct setter function
+      venus: Use common physical device properties
 
-Mike Blumenkrantz (2):
-      zink: set all spirv caps for the vvl vtn pass
-      ci: bump VVL to v1.3.285
+Paulo Zanoni (12):
+      isl: add ISL_TILING_64_XE2 to isl_tiling_to_name()
+      anv/sparse: add the MSAA block shape tables
+      anv/sparse: we can't do multi-sampled depth/stencil sparse images
+      anv/sparse: properly reject sample counts we don't support
+      anv/sparse: reject all sample flags that non-sparse doesn't support
+      anv/sparse: fix block_size_B when the image is multi-sampled
+      anv/sparse: exclude Xe2's Tile64's non-standard block shapes
+      anv/sparse: flush the tile cache when resolving sparse images
+      anv/sparse: enable MSAA for Sparse when applicable
+      anv: check for VK_RENDERING_SUSPENDING_BIT once at CmdEndRendering
+      anv+zink/ci: add failures related to multi-sampled sparse binding
+      anv/sparse: assert a format can't be standard and non-standard
 
-Nanley Chery (3):
-      intel/isl: Add and use _isl_surf_info_supports_ccs
-      intel/isl: Reduce halign for disabled CCS on XeHP
-      intel/isl: Update quote for XeHP's CCS halign rule
-
-Rhys Perry (8):
-      aco: don't count certain pseudo towards VMEM_STORE_CLAUSE_MAX_GRAB_DIST
-      aco/tests: support GFX12
-      aco: add SFPU/ValuPseudoScalarTrans instr class
-      aco: add GFX11.5+ opcodes
-      aco: support GFX12 in assembler
-      aco/tests: add GFX12 assembler tests
-      aco: don't change prefetch mode on GFX11.5+
-      aco/gfx12: disable s_cmpk optimization
-
-Rob Clark (14):
-      vulkan/android: Add helper to probe AHB support
-      vulkan: Don't request Ycbcr conversion for rgb
-      vulkan: Add helper to resolve Android external format
-      tu: Skip YUV conversion for RGB formats
-      tu: Support VkExternalFormatANDROID
-      freedreno/ci: Remove some skips
-      freedreno/ci: Remove some obsolete skips
-      freedreno/ci: Refactor out common a6xx skips list
-      freedreno/ci: Skip unsupported legacy gl stuff
-      freedreno/ci: Skip max-texture-size
-      freedreno/ci: Add a common skips file to a618_piglit.
-      freedreno/ci: Skip built-in-functions VS/GS tests
-      freedreno/ci: Skip some slow tests
-      freedreno/ci: Increase a630/a618 piglit fraction
+Rohan Garg (5):
+      intel/brw: update Xe2 max SIMD message sizes
+      Revert "iris: slow clear higher miplevels on single sampled 8bpp resources that have TILE64"
+      intel/eu/xe2+: Fix src1 length bits of SEND instruction with UGM target.
+      intel/brw: Advertise fp64 atomic add's when we have 64 bit float support and a LSC
+      intel/brw: We no longer have atomic fmin/fmax ops for fp64 in xe2
 
 Roman Stratiienko (1):
-      turnip/android: Migrate to common ANB code
+      v3dv/android: Migrate ANB and AHB to use common helpers
 
-Samuel Pitoiset (7):
-      radv: fix the late scissor workaround for GFX9 since a recent refactoring
-      radv: make radv_conv_gl_prim_to_gs_out() a non-static function
-      radv: emit graphics pipelines directly from the cmdbuf
-      radv: add graphics shaders context registers that need to be tracked
-      radv: add more radeon_opt_set_xxx variants
-      radv: track all graphics shaders context registers
-      radv: simplify radv_emit_ps_inputs() slightly
+Samuel Pitoiset (4):
+      radv: stop using radv_physical_device for radeon helpers
+      radv: introduce radeon_set_reg_seq()
+      radv: remove redundant radeon_set_perfctr_reg() helper
+      radv: rename radeon perfctr uconfig helpers
 
-Tapani Pälli (5):
-      iris: ForceZeroRTAIndexEnable if last geom stage does not write layer id
-      vulkan/runtime: add a subpass bit for legacy dithering
-      anv: VK_EXT_legacy_dithering support
-      docs/features: add VK_EXT_legacy_dithering
-      ci: update failures list with angle for jsl, tgl
+Yiwei Zhang (6):
+      vulkan: cast to avoid -Wswitch for Android struct beyond VkStructureType
+      venus: directly use vk drm and pci props in renderer info
+      venus: move custom props fill from GPDP2 to props init
+      venus: move props sanitization to a separate helper
+      venus: define VN_SET_VK_PROPS(_EXT) to simplify vk props init
+      vulkan: drop redundant core props query and copy helpers
 
-Valentine Burley (2):
-      tu: Add missing VK_EXT_legacy_vertex_attributes feature
-      tu: Change commas to semicolons in VK_EXT_map_memory_placed features
-
-Weifeng Liu (1):
-      anv/anroid: Query gralloc for tiling mode
-
-Yiwei Zhang (3):
-      turnip: virtio: fix error path in virtio_bo_init
-      turnip: virtio: fix iova leak upon found already imported dmabuf
-      turnip: virtio: fix racy gem close for re-imported dma-buf
-
-tarsin (4):
-      turnip: Change tu_image to use common initialization helpers
-      turnip: Convert tu_device_memory to use vk_device_memory
-      turnip: Split tu_image_init to use layout setting logic separately
-      turnip: Support AHardwareBuffer
+Yusuf Khan (1):
+      nvk: remove NVK_MME_COPY_QUERIES
 
