@@ -1,132 +1,87 @@
-Updating from 90b0925588d42a367bdc34dea8856691b33a44ae to 586bca76dd031c1abef718831aa9a77b00a5d0c6
+Updating from 586bca76dd031c1abef718831aa9a77b00a5d0c6 to caca5e0de6079e888d68c09b436c01c0ec006207
 
-Arthur Huillet (2):
-      nvk: import SPH headers files from open-gpu-doc
-      nvk: generate Rust bindings from SPH header files
+Alyssa Rosenzweig (9):
+      asahi/decode: QoL improvements
+      asahi: track imports for decode
+      asahi: clean up bg/eot counts
+      asahi: rename meta -> bg/eot
+      asahi: don't allocate for USC words
+      asahi: split frag shader words
+      asahi: split CDM Launch words
+      asahi: unify naming for COUNTS structs
+      nir/tex_instr_result_size: handle subpass_ms
 
-Chia-I Wu (1):
-      drm-shim: intercept access as well
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 8a6ce9c6fc5c8039665655bca4904d5601c6dba0
 
-Danylo Piliaiev (1):
-      freedreno/devices: Add support for Adreno A32 (G3x Gen 2)
+Danylo Piliaiev (6):
+      util/u_trace: Allow mixing of ArgStruct and Arg
+      tu: Add more info to renderpass tracepoint
+      vulkan/wsi: Make current_frame usable in all cases
+      util/u_trace: Pass explicit frame_nr argument to delimit frames
+      tu: Use current_frame from vk device to delimit u_trace frames
+      anv: Use current_frame from vk device to delimit u_trace frames
 
-David Rosca (1):
-      radeonsi: Update buffer for other planes in si_alloc_resource
+David Heidelberg (4):
+      ci: bump ANGLE
+      ci: Revert "ci: update failures list with angle for jsl, tgl"
+      ci/intel: add new jsl flake
+      ci/panfrost: Revert "ci/panfrost: disable G52 until machines gets fixed"
 
-Eric Engestrom (17):
-      ci: rename debian version variable job to include the word "version"
-      ci: factor out all the deps to build the debian containers into .debian-container
-      ci: inherit the debian container building infra for test container images
-      ci/b2c: rename B2C_TIMEOUT_FIRST_* to B2C_TIMEOUT_FIRST_CONSOLE_ACTIVITY_*
-      ci/b2c: rename B2C_TIMEOUT_* to B2C_TIMEOUT_CONSOLE_ACTIVITY_*
-      ci/b2c: allow setting timeouts in seconds
-      ci: drop dead VK_CPU option
-      ci/piglit-traces: drop re-definition of VK_DRIVER_FILES
-      ci/init-stage2: set VK_DRIVER_FILES for both xorg and wayland
-      ci/vkd3d: un-hardcode architecture
-      ci/vkd3d: fix version sanity check
-      ci/vkd3d: fail job when failing to get driver version
-      ci/b2c: remove dead rules: that's always overwritten
-      ci/env: move dead-code-with-comment to the end of the list to make it clearer
-      zink/ci: rename .zink-lvp-venus-rules to .zink-venus-lvp-rules to match the rest of the names
-      README: update links to our own docs
-      docs: update calendar for 24.1.0-rc4
+David Rosca (4):
+      frontends/va: Store slice types for H264 decode
+      radeonsi/vcn: Ensure DPB has as many buffers as references
+      radeonsi/vcn: Allow duplicate buffers in DPB
+      radeonsi/vcn: Ensure at least one reference for H264 P/B frames
 
-Faith Ekstrand (2):
-      nvk: Fix misc. whitespace and style issues
-      nvk: Go wide for query copies
+Eric Engestrom (1):
+      mailmap: add entry to unify Roman Stratiienko's contributions
 
-Francisco Jerez (12):
-      intel/brw/xe2+: Keep PS sample mask in the f1.0 register whether or not kill is used.
-      intel/brw: Don't emit Z coordinate interpolation if CPS isn't in use.
-      intel/brw/xe2+: Fix indirect extended descriptor setup for scratch space.
-      iris: Allocate fixed amount of space for blend state.
-      blorp: Allocate fixed amount of space for blend state.
-      intel/brw/xe2+: Don't use SEL peephole on 64-bit moves.
-      intel/brw/xe2+: Fix 64-bit subgroup scan intrinsics not to rely on SEL instructions.
-      intel/brw/xe2+: Lower 64-bit SHUFFLE and CLUSTER_BROADCAST.
-      intel/xe2+: Enable native 64-bit integer arithmetic.
-      nir: Add option to lower 64-bit uadd_sat.
-      intel/brw/xe2+: Lower 64-bit integer uadd_sat.
-      intel/brw/xe2+: Round up spill/unspill data size to nearest reg_size multiple.
+Gert Wollny (1):
+      r600/sfn: Set bit size for newly created store intrinsic
 
-Iago Toral Quiroga (3):
-      broadcom/cle: fix up shader record for V3D 7.1.10 / 2712D0
-      v3d: support 2712D0
-      v3dv: support 2712D0
+Juston Li (2):
+      sync protocol for VkRingPriorityInfoMESA
+      venus: forward nice priority when creating ring
 
-Karol Herbst (9):
-      rusticl/device: add DeviceCaps and move timestamp stuff into it
-      rusticl/device/caps: move enough for has_images
-      rusticl/device: properly handle devices with no support for images
-      rusticl/mesa/context: flush context before destruction
-      rusticl: merge rusticl_nir and rusticl_mesa_bindings_inline_wrapper targets
-      rusticl: move mesa_version_string out of the inline wrapper
-      rusticl: bump bindgen req to 0.65
-      rusticl: bump meson req to 1.4
-      rusticl: make use of new `output_inline_wrapper` meson.rust.bindgen feature
+Karol Herbst (1):
+      nir/lower_cl_images: set binding also for samplers
 
-Lionel Landwerlin (12):
-      anv: fix push constant subgroup_id location
-      nir/divergence: add missing load_printf_buffer_address
-      nir: add a base offset for printf indexing
-      nir: add ptr_bit_size parameter to nir_lower_printf
-      nir: add a low level printf emission helper
-      intel/nir: remove unused prototypes
-      intel/nir: add reloc delta to load_reloc_const_intel intrinsic
-      intel/compiler: store u_printf_info in prog_data
-      intel/nir: add printf lowering
-      anv: add debug shader printf support
-      intel/clc: enable printfs support
-      anv: shader printf example
+Konstantin Seurer (1):
+      gitlab: Reference hang debugging documenttion
 
-Mary Guillemard (3):
-      nouveau: nvidia_header: Add AMPERE_B class generation
-      nak: Set SPH version to 4 on SM75+
-      nak: Migrate sph.rs to use SPH headers defintion
+Mike Blumenkrantz (10):
+      zink: make unassigned io variables unreachable
+      zink: minor tweaks to shader io assignment
+      zink: outdent assign_producer_var_io()
+      zink: outdent assign_consumer_var_io()
+      zink: pass a struct through io assignment functions
+      zink: track masks of io locations used during linking
+      zink: unify io assignment
+      zink: move 'reserved' into io assign struct
+      zink: split slot map between regular varyings and patch
+      zink: ci updates
 
-Oskar Viljasaar (2):
-      vulkan: add a property struct setter function
-      venus: Use common physical device properties
+Patrick Lerda (1):
+      r600: fix vertex state update clover regression
 
-Paulo Zanoni (12):
-      isl: add ISL_TILING_64_XE2 to isl_tiling_to_name()
-      anv/sparse: add the MSAA block shape tables
-      anv/sparse: we can't do multi-sampled depth/stencil sparse images
-      anv/sparse: properly reject sample counts we don't support
-      anv/sparse: reject all sample flags that non-sparse doesn't support
-      anv/sparse: fix block_size_B when the image is multi-sampled
-      anv/sparse: exclude Xe2's Tile64's non-standard block shapes
-      anv/sparse: flush the tile cache when resolving sparse images
-      anv/sparse: enable MSAA for Sparse when applicable
-      anv: check for VK_RENDERING_SUSPENDING_BIT once at CmdEndRendering
-      anv+zink/ci: add failures related to multi-sampled sparse binding
-      anv/sparse: assert a format can't be standard and non-standard
+Pierre-Eric Pelloux-Prayer (7):
+      radeonsi/sqtt: use ac_sqtt_get_shader_mask for spm counters
+      radeonsi/sqtt: cleanup si_sqtt_add_code_object a bit
+      radeonsi/sqtt: support sqtt buffer auto-resizing
+      radeonsi: add new si_shader_binary_upload_at method
+      radeonsi/sqtt: use si_shader_binary_upload_at to reupload shaders
+      radeonsi: allocate sqtt and spm buffers in GTT
+      radeonsi: add testmemperf mem bandwidth test
 
-Rohan Garg (5):
-      intel/brw: update Xe2 max SIMD message sizes
-      Revert "iris: slow clear higher miplevels on single sampled 8bpp resources that have TILE64"
-      intel/eu/xe2+: Fix src1 length bits of SEND instruction with UGM target.
-      intel/brw: Advertise fp64 atomic add's when we have 64 bit float support and a LSC
-      intel/brw: We no longer have atomic fmin/fmax ops for fp64 in xe2
-
-Roman Stratiienko (1):
-      v3dv/android: Migrate ANB and AHB to use common helpers
-
-Samuel Pitoiset (4):
-      radv: stop using radv_physical_device for radeon helpers
-      radv: introduce radeon_set_reg_seq()
-      radv: remove redundant radeon_set_perfctr_reg() helper
-      radv: rename radeon perfctr uconfig helpers
-
-Yiwei Zhang (6):
-      vulkan: cast to avoid -Wswitch for Android struct beyond VkStructureType
-      venus: directly use vk drm and pci props in renderer info
-      venus: move custom props fill from GPDP2 to props init
-      venus: move props sanitization to a separate helper
-      venus: define VN_SET_VK_PROPS(_EXT) to simplify vk props init
-      vulkan: drop redundant core props query and copy helpers
-
-Yusuf Khan (1):
-      nvk: remove NVK_MME_COPY_QUERIES
+Samuel Pitoiset (9):
+      radv: add a helper to configure ring buffer descriptors
+      radv: only enable VK_MESA_image_alignment_control on GFX9-11.5
+      radv: reject unsupported buffer formats earlier
+      ac,radv,radeonsi: add a helper to translate buffer numformat
+      ac,radv,radeonsi: add a helper to translate buffer dataformat
+      radv: simplify radv_emit_default_sample_locations()
+      radv: pass radv_physical_device to radv_emit_default_sample_locations()
+      radv: use float instead of double for viewport zscale/ztranslate
+      radv: add more helpers to emit viewports
 
