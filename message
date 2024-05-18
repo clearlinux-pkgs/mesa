@@ -1,87 +1,32 @@
-Updating from 586bca76dd031c1abef718831aa9a77b00a5d0c6 to caca5e0de6079e888d68c09b436c01c0ec006207
+Updating from caca5e0de6079e888d68c09b436c01c0ec006207 to b4bd3807045a5656848ced72ae5fbfa539b89d26
 
-Alyssa Rosenzweig (9):
-      asahi/decode: QoL improvements
-      asahi: track imports for decode
-      asahi: clean up bg/eot counts
-      asahi: rename meta -> bg/eot
-      asahi: don't allocate for USC words
-      asahi: split frag shader words
-      asahi: split CDM Launch words
-      asahi: unify naming for COUNTS structs
-      nir/tex_instr_result_size: handle subpass_ms
+Adrian Perez de Castro (1):
+      Revert "egl/wayland: Remove EGL_WL_create_wayland_buffer_from_image"
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 8a6ce9c6fc5c8039665655bca4904d5601c6dba0
+David Heidelberg (2):
+      ci/alpine: re-enable Mold linker
+      ci/etnaviv: add flakes from nightly runs
 
-Danylo Piliaiev (6):
-      util/u_trace: Allow mixing of ArgStruct and Arg
-      tu: Add more info to renderpass tracepoint
-      vulkan/wsi: Make current_frame usable in all cases
-      util/u_trace: Pass explicit frame_nr argument to delimit frames
-      tu: Use current_frame from vk device to delimit u_trace frames
-      anv: Use current_frame from vk device to delimit u_trace frames
+Faith Ekstrand (8):
+      nvk: Store descriptor set addresses in descriptor state
+      nvk: Add static asserts for nvk_buffer_address layout
+      nvk: Store an nvk_buffer_address for each set in the root table.
+      nvk: Advertise 32 descriptor sets
+      nvk: Move and better document set_dynamic_buffer_start
+      nvk: Add an NVK_MAX_SAMPLES #define
+      nvk: Refactor nvk_meta_begin() to use a desc helper
+      nvk/meta: Save and restore set_dynamic_buffer_start
 
-David Heidelberg (4):
-      ci: bump ANGLE
-      ci: Revert "ci: update failures list with angle for jsl, tgl"
-      ci/intel: add new jsl flake
-      ci/panfrost: Revert "ci/panfrost: disable G52 until machines gets fixed"
+Marek Olšák (1):
+      nir/algebraic: eliminate pack+unpack and unpack+pack pairs
 
-David Rosca (4):
-      frontends/va: Store slice types for H264 decode
-      radeonsi/vcn: Ensure DPB has as many buffers as references
-      radeonsi/vcn: Allow duplicate buffers in DPB
-      radeonsi/vcn: Ensure at least one reference for H264 P/B frames
+Mike Blumenkrantz (1):
+      egl/dri2: fix error returns on dri2_initialize_x11_dri3 fail
 
-Eric Engestrom (1):
-      mailmap: add entry to unify Roman Stratiienko's contributions
+Roman Stratiienko (1):
+      u_gralloc/fallback: Extract modifier from QCOM native_handle
 
-Gert Wollny (1):
-      r600/sfn: Set bit size for newly created store intrinsic
-
-Juston Li (2):
-      sync protocol for VkRingPriorityInfoMESA
-      venus: forward nice priority when creating ring
-
-Karol Herbst (1):
-      nir/lower_cl_images: set binding also for samplers
-
-Konstantin Seurer (1):
-      gitlab: Reference hang debugging documenttion
-
-Mike Blumenkrantz (10):
-      zink: make unassigned io variables unreachable
-      zink: minor tweaks to shader io assignment
-      zink: outdent assign_producer_var_io()
-      zink: outdent assign_consumer_var_io()
-      zink: pass a struct through io assignment functions
-      zink: track masks of io locations used during linking
-      zink: unify io assignment
-      zink: move 'reserved' into io assign struct
-      zink: split slot map between regular varyings and patch
-      zink: ci updates
-
-Patrick Lerda (1):
-      r600: fix vertex state update clover regression
-
-Pierre-Eric Pelloux-Prayer (7):
-      radeonsi/sqtt: use ac_sqtt_get_shader_mask for spm counters
-      radeonsi/sqtt: cleanup si_sqtt_add_code_object a bit
-      radeonsi/sqtt: support sqtt buffer auto-resizing
-      radeonsi: add new si_shader_binary_upload_at method
-      radeonsi/sqtt: use si_shader_binary_upload_at to reupload shaders
-      radeonsi: allocate sqtt and spm buffers in GTT
-      radeonsi: add testmemperf mem bandwidth test
-
-Samuel Pitoiset (9):
-      radv: add a helper to configure ring buffer descriptors
-      radv: only enable VK_MESA_image_alignment_control on GFX9-11.5
-      radv: reject unsupported buffer formats earlier
-      ac,radv,radeonsi: add a helper to translate buffer numformat
-      ac,radv,radeonsi: add a helper to translate buffer dataformat
-      radv: simplify radv_emit_default_sample_locations()
-      radv: pass radv_physical_device to radv_emit_default_sample_locations()
-      radv: use float instead of double for viewport zscale/ztranslate
-      radv: add more helpers to emit viewports
+Samuel Pitoiset (2):
+      radeonsi: refactor si_translate_border_color()
+      ac,radv,radeonsi: introduce a helper to build a sampler descriptor
 
