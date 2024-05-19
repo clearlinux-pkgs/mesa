@@ -1,32 +1,9 @@
-Updating from caca5e0de6079e888d68c09b436c01c0ec006207 to b4bd3807045a5656848ced72ae5fbfa539b89d26
+Updating from b4bd3807045a5656848ced72ae5fbfa539b89d26 to 08659a0baaae74dfec90f6a871005357cacfca3c
 
-Adrian Perez de Castro (1):
-      Revert "egl/wayland: Remove EGL_WL_create_wayland_buffer_from_image"
+David Heidelberg (1):
+      winsys/i915: depends on intel_wa.h
 
-David Heidelberg (2):
-      ci/alpine: re-enable Mold linker
-      ci/etnaviv: add flakes from nightly runs
-
-Faith Ekstrand (8):
-      nvk: Store descriptor set addresses in descriptor state
-      nvk: Add static asserts for nvk_buffer_address layout
-      nvk: Store an nvk_buffer_address for each set in the root table.
-      nvk: Advertise 32 descriptor sets
-      nvk: Move and better document set_dynamic_buffer_start
-      nvk: Add an NVK_MAX_SAMPLES #define
-      nvk: Refactor nvk_meta_begin() to use a desc helper
-      nvk/meta: Save and restore set_dynamic_buffer_start
-
-Marek Olšák (1):
-      nir/algebraic: eliminate pack+unpack and unpack+pack pairs
-
-Mike Blumenkrantz (1):
-      egl/dri2: fix error returns on dri2_initialize_x11_dri3 fail
-
-Roman Stratiienko (1):
-      u_gralloc/fallback: Extract modifier from QCOM native_handle
-
-Samuel Pitoiset (2):
-      radeonsi: refactor si_translate_border_color()
-      ac,radv,radeonsi: introduce a helper to build a sampler descriptor
+Mike Blumenkrantz (2):
+      nir/lower_aaline: fix for scalarized outputs
+      nir/linking: fix nir_assign_io_var_locations for scalarized dual blend
 
