@@ -1,9 +1,22 @@
-Updating from b4bd3807045a5656848ced72ae5fbfa539b89d26 to 08659a0baaae74dfec90f6a871005357cacfca3c
+Updating from 08659a0baaae74dfec90f6a871005357cacfca3c to 418fed1805a6fa4a5b12d384b74b726f956f9146
 
-David Heidelberg (1):
-      winsys/i915: depends on intel_wa.h
+Alejandro Piñeiro (3):
+      v3dv: add debug option to disable custom pipeline caches for meta operations
+      v3dv/meta_clear: take into account multiview for the custom clear pipeline caches
+      v3dv/meta_clear: use v3dv_renderpass used as parameter
 
-Mike Blumenkrantz (2):
-      nir/lower_aaline: fix for scalarized outputs
-      nir/linking: fix nir_assign_io_var_locations for scalarized dual blend
+Erico Nunes (1):
+      ci: lima farm maintenance
+
+Lionel Landwerlin (1):
+      anv: switch to vk_device::mem_cache field for default cache
+
+Rhys Perry (4):
+      aco: add GFX12 wait counters
+      aco/waitcnt: support GFX12 in waitcnt pass
+      aco/stats: support GFX12 in collect_preasm_stats()
+      aco: update VS prolog waitcnt for GFX12
+
+Timothy Arceri (1):
+      glsl: move geom input array sizing to nir linker
 
