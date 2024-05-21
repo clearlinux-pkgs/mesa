@@ -1,22 +1,59 @@
-Updating from 08659a0baaae74dfec90f6a871005357cacfca3c to 418fed1805a6fa4a5b12d384b74b726f956f9146
+Updating from 418fed1805a6fa4a5b12d384b74b726f956f9146 to cc404d45ff4fa7947cffdc75da0d2b773902a1e4
 
-Alejandro Piñeiro (3):
-      v3dv: add debug option to disable custom pipeline caches for meta operations
-      v3dv/meta_clear: take into account multiview for the custom clear pipeline caches
-      v3dv/meta_clear: use v3dv_renderpass used as parameter
+Dylan Baker (1):
+      meson: use glslang --depfile argument when possible
 
-Erico Nunes (1):
-      ci: lima farm maintenance
+Eric R. Smith (1):
+      panfrost: add a barrier when launching xfb jobs in CSF
 
-Lionel Landwerlin (1):
-      anv: switch to vk_device::mem_cache field for default cache
+Georg Lehmann (3):
+      aco/optimizer: remove ineffective vcc opt
+      aco/optimizer: remove ineffective undef opt
+      aco: remove perfwarn
 
-Rhys Perry (4):
-      aco: add GFX12 wait counters
-      aco/waitcnt: support GFX12 in waitcnt pass
-      aco/stats: support GFX12 in collect_preasm_stats()
-      aco: update VS prolog waitcnt for GFX12
+Juan A. Suarez Romero (2):
+      v3d: use BITSET for the masks
+      v3d: remove handled cases for devices <= 42
 
-Timothy Arceri (1):
-      glsl: move geom input array sizing to nir linker
+Juston Li (1):
+      zink: disable cpu_storage for PIPE_USAGE_STREAM
+
+Mike Blumenkrantz (4):
+      lavapipe: split out DGC into separate file
+      lavapipe: plumb print_cmds through NV DGC
+      lavapipe: lvp_indirect_command_layout -> lvp_indirect_command_layout_nv
+      zink: remove dgc debug mode
+
+Mike Lothian (2):
+      radeonsi,aco: Run ac_nir_lower_global_access pass
+      ac/llvm: Remove global access ops handling
+
+Rob Clark (2):
+      freedreno/ir3: Fix ldg/stg offset
+      egl/android: Fix sRGB visuals
+
+Samuel Pitoiset (19):
+      radv: stop checking the output value of radv_translate_tex_numformat
+      radv: use PIPE_FORMAT in radv_translate_tex_numformat()
+      ac,radv,radeonsi: add a function to translate tex numformat
+      radv: use PIPE_FORMAT in radv_translate_colorswap()
+      ac,radv,radeonsi: add a function to translate colorswap
+      radv: use PIPE_FORMAT in radv_translate_dbformat()
+      ac,radv,radeonsi: add a function to translate db format
+      ac,radv,radeonsi: add a function to get the color format endian swap
+      radv: allow 3d views with VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT
+      radv: simplify creating gfx10 texture descriptors for sliced 3d/2d view of 3d
+      radv: remove redundant check for VK_FORMAT_E5B9G9R9_UFLOAT_PACK32 on GFX6-10
+      radv: stop checking the return value of ac_get_cb_number_type()
+      radv: add radv_is_colorbuffer_format_blendable()
+      amd/common: move some format related helpers to ac_formats.c
+      ac,radv,radeonsi: add helper to know if a format is supported by CB
+      ac,radv,radeonsi: add helper to know if a format is supported by DB
+      ac,radv,radeonsi: introduce a helper to build a FMASK descriptor
+      radeonsi: reject some texture formats but only on GFX8/CARRIZO
+      radv: mark some formats as unsupported on GFX8/CARRIZO
+
+Sil Vilerino (2):
+      nir: Mark variable as ASSERTED to fix unused variable warning treated as error
+      d3d12: Video Encode - Fix inputs for older OS support query cap
 
