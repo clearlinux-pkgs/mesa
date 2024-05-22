@@ -1,59 +1,124 @@
-Updating from 418fed1805a6fa4a5b12d384b74b726f956f9146 to cc404d45ff4fa7947cffdc75da0d2b773902a1e4
+Updating from cc404d45ff4fa7947cffdc75da0d2b773902a1e4 to 3584fc64828ad2ad4d486572ec915aab8321aadd
 
-Dylan Baker (1):
-      meson: use glslang --depfile argument when possible
+Alyssa Rosenzweig (1):
+      nir/lower_point_size: support lowered i/o
 
-Eric R. Smith (1):
-      panfrost: add a barrier when launching xfb jobs in CSF
+Boris Brezillon (33):
+      panvk: clang-format fixups
+      panvk: Kill panvk_queue_get_device()
+      panvk: Get rid of panvk_descriptor_state::dirty
+      panvk: Move panvk_cmd_state::batch to panvk_cmd_buffer::cur_batch
+      panvk: Kill unused dynamic state bits
+      panvk: Get rid of special attribute support
+      panvk: Split the graphics and compute state at the cmd_buffer level
+      panvk: Split compute/graphics pipeline objects
+      panvk: Use memory pools to store pipeline shaders/descriptors
+      panvk: Kill the panvk_pipeline_builder object
+      panvk: Transition the graphics pipeline logic to vk_graphics_pipeline_state
+      panvk: Fully transition to vk_viewport_state
+      panvk: Fully transition to vk_rasterization_state
+      panvk: Fully transition to vk_input_assembly_state
+      panvk: Use vk_color_blend_state to fill our blend constant
+      panvk: Fully transition to vk_depth_stencil_state
+      panvk: Fully transition to vk_multisample_state
+      panvk: Set unused attribute buffers descriptors to zero
+      panvk: Rename non_vs_attribs into img_attribs
+      panvk: Prevent re-emission of image attributes used in vertex shaders
+      panvk: Move VS attribute/buffer state to panvk_cmd_graphics_state
+      panvk: Emit VS-accessible image attributes at a fixed offset
+      panvk: Leave holes in the attribute locations used by a shader
+      panvk: Fully transition to vk_vertex_binding_state
+      pan/blend: Move constant inlining out of pan_blend_create_shader()
+      pan/blend: Expose pan_blend_create_shader()
+      panvk: Add a blend library to deal blend shaders/descriptors
+      panvk: Don't pass the stage to shader_create()
+      panvk: Simplify shader initialization in the pipeline logic
+      panvk: Fix/simplify the shader linking logic
+      panvk: Replace the stages array in panvk_draw_info by vs/fs fields
+      panvk: Move fs_rsd fields to an fs sub-struct
+      panvk: Emit the fragment shader RSD dynamically
 
-Georg Lehmann (3):
-      aco/optimizer: remove ineffective vcc opt
-      aco/optimizer: remove ineffective undef opt
-      aco: remove perfwarn
+Constantine Shablia (1):
+      panvk: remove descriptor pool counters
 
-Juan A. Suarez Romero (2):
-      v3d: use BITSET for the masks
-      v3d: remove handled cases for devices <= 42
+David Heidelberg (1):
+      subprojects: uprev perfetto to v45.0
+
+Derek Foreman (1):
+      wsi/wayland: Fix use after free from improperly stored VkAllocationCallbacks
+
+Eric Engestrom (7):
+      nvk/ci: add nvk job on a GA106 (RTX 3060)
+      zink/ci: add zink+nvk glcts+piglit job on a GA106 (RTX 3060)
+      zink+nvk/ci: skip glx piglit tests as they all fail
+      zink+nvk/ci: skip timing out test
+      zink+nvk/ci: skip more tests that times out
+      zink+nvk/ci: document flakes seen during stress-testing
+      zink+nvk/ci: update expected failures
+
+Friedrich Vock (2):
+      radv: Use max_se instead of num_se where appropriate
+      radeonsi: Use max_se instead of num_se where appropriate
+
+Juan A. Suarez Romero (1):
+      ci: define SNMP base interface on runner
 
 Juston Li (1):
-      zink: disable cpu_storage for PIPE_USAGE_STREAM
+      venus: add missing sTypes for vk_set_physical_device_properties_struct
 
-Mike Blumenkrantz (4):
-      lavapipe: split out DGC into separate file
-      lavapipe: plumb print_cmds through NV DGC
-      lavapipe: lvp_indirect_command_layout -> lvp_indirect_command_layout_nv
-      zink: remove dgc debug mode
+Lionel Landwerlin (1):
+      anv: use weak_ref mode for global pipeline caches
 
-Mike Lothian (2):
-      radeonsi,aco: Run ac_nir_lower_global_access pass
-      ac/llvm: Remove global access ops handling
+Marek Olšák (4):
+      ac: move radv_mem_vectorize_callback to common code
+      ac/llvm: global stores should have no holes in the writemask
+      radeonsi: call nir_lower_int64 later to fix ACO failure with Tomb Raider
+      radeonsi: vectorize load/stores and shrink stores
+
+Maíra Canal (6):
+      drm-uapi: Update v3d_drm.h
+      broadcom/common: Add maximum number of perf counters to v3d_device_info
+      v3dv: Use DRM_IOCTL_V3D_GET_COUNTER to get perfcnt information
+      v3d: Use DRM_IOCTL_V3D_GET_COUNTER to get perfcnt information
+      broadcom/simulator: Add DRM_V3D_PARAM_MAX_PERF_COUNTERS parameter support
+      broadcom/simulator: Add DRM_IOCTL_V3D_GET_COUNTER to simulator
+
+Rhys Perry (5):
+      aco/lower_phis: create loop header phis for non-boolean loop exit phis
+      aco: create lcssa phis for continue_or_break loops when necessary
+      aco: use scalar phi lowering for lcssa workaround
+      aco: remove nir_to_aco
+      aco/lower_phis: don't create boolean loop header phis in some situations
 
 Rob Clark (2):
-      freedreno/ir3: Fix ldg/stg offset
-      egl/android: Fix sRGB visuals
+      docs/features: Add missing AHB for tu
+      tu: Don't advertise AHB handle time on non-android
 
-Samuel Pitoiset (19):
-      radv: stop checking the output value of radv_translate_tex_numformat
-      radv: use PIPE_FORMAT in radv_translate_tex_numformat()
-      ac,radv,radeonsi: add a function to translate tex numformat
-      radv: use PIPE_FORMAT in radv_translate_colorswap()
-      ac,radv,radeonsi: add a function to translate colorswap
-      radv: use PIPE_FORMAT in radv_translate_dbformat()
-      ac,radv,radeonsi: add a function to translate db format
-      ac,radv,radeonsi: add a function to get the color format endian swap
-      radv: allow 3d views with VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT
-      radv: simplify creating gfx10 texture descriptors for sliced 3d/2d view of 3d
-      radv: remove redundant check for VK_FORMAT_E5B9G9R9_UFLOAT_PACK32 on GFX6-10
-      radv: stop checking the return value of ac_get_cb_number_type()
-      radv: add radv_is_colorbuffer_format_blendable()
-      amd/common: move some format related helpers to ac_formats.c
-      ac,radv,radeonsi: add helper to know if a format is supported by CB
-      ac,radv,radeonsi: add helper to know if a format is supported by DB
-      ac,radv,radeonsi: introduce a helper to build a FMASK descriptor
-      radeonsi: reject some texture formats but only on GFX8/CARRIZO
-      radv: mark some formats as unsupported on GFX8/CARRIZO
+Samuel Pitoiset (17):
+      radv: set image view descriptors as buffer for non-graphics GPU
+      ac,radv,radeonsi: add a helper to get the tile mode index
+      radv: tidy up swizzle in radv_set_mutable_tex_desc_fields()
+      radv: tidy up custom pitch for gfx10.3 in radv_set_mutable_tex_desc_fields()
+      radv: tidy up meta_va in radv_set_mutable_tex_desc_fields()
+      radv: set ITERATE_256 for GFX10+ in radv_set_mutable_tex_desc_fields()
+      radv: stop clearing unnecessary bitfields in radv_set_mutable_tex_desc_fields()
+      ac,radv,radeonsi: add a helper to set mutable tex desc fields
+      ac,radv,radeonsi: add a function for getting border color swizzle
+      radv: only set ALPHA_IS_ON_MSB if the image has DCC on GFX6-9
+      radv: adjust determining if alpha should be on MSB
+      ac,radv,radeonsi: add function to determine if alpha should be on MSB
+      ac,radv,radeonsi: add a common helper for translating swizzle
+      amd/common: only pass gfx_level to ac_get_gfx10_format_table()
+      amd/common: add new helpers to build buffer descriptors
+      radv: use new common helpers for building buffer descriptor
+      aco: use new common helpers for building buffer descriptors
 
-Sil Vilerino (2):
-      nir: Mark variable as ASSERTED to fix unused variable warning treated as error
-      d3d12: Video Encode - Fix inputs for older OS support query cap
+Timur Kristóf (4):
+      nir: Add nir_opt_load_store_update_alignments.
+      radv: Add TES num_linked_patch_inputs.
+      radv: Add shader stats for inputs and outputs.
+      radv: Fix TCS -> TES I/O linking typo of VARYING_SLOT vs. BIT.
+
+Valentine Burley (1):
+      drm-shim: Stub syncobj reset ioctl
 
