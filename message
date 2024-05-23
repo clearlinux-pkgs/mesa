@@ -1,124 +1,76 @@
-Updating from cc404d45ff4fa7947cffdc75da0d2b773902a1e4 to 3584fc64828ad2ad4d486572ec915aab8321aadd
+Updating from 3584fc64828ad2ad4d486572ec915aab8321aadd to d0810d528c602cdc7e2b8dffdd2ec19800fb36e4
 
-Alyssa Rosenzweig (1):
-      nir/lower_point_size: support lowered i/o
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to e180f96239edba441f22f58dfc852cafb902844a
 
-Boris Brezillon (33):
-      panvk: clang-format fixups
-      panvk: Kill panvk_queue_get_device()
-      panvk: Get rid of panvk_descriptor_state::dirty
-      panvk: Move panvk_cmd_state::batch to panvk_cmd_buffer::cur_batch
-      panvk: Kill unused dynamic state bits
-      panvk: Get rid of special attribute support
-      panvk: Split the graphics and compute state at the cmd_buffer level
-      panvk: Split compute/graphics pipeline objects
-      panvk: Use memory pools to store pipeline shaders/descriptors
-      panvk: Kill the panvk_pipeline_builder object
-      panvk: Transition the graphics pipeline logic to vk_graphics_pipeline_state
-      panvk: Fully transition to vk_viewport_state
-      panvk: Fully transition to vk_rasterization_state
-      panvk: Fully transition to vk_input_assembly_state
-      panvk: Use vk_color_blend_state to fill our blend constant
-      panvk: Fully transition to vk_depth_stencil_state
-      panvk: Fully transition to vk_multisample_state
-      panvk: Set unused attribute buffers descriptors to zero
-      panvk: Rename non_vs_attribs into img_attribs
-      panvk: Prevent re-emission of image attributes used in vertex shaders
-      panvk: Move VS attribute/buffer state to panvk_cmd_graphics_state
-      panvk: Emit VS-accessible image attributes at a fixed offset
-      panvk: Leave holes in the attribute locations used by a shader
-      panvk: Fully transition to vk_vertex_binding_state
-      pan/blend: Move constant inlining out of pan_blend_create_shader()
-      pan/blend: Expose pan_blend_create_shader()
-      panvk: Add a blend library to deal blend shaders/descriptors
-      panvk: Don't pass the stage to shader_create()
-      panvk: Simplify shader initialization in the pipeline logic
-      panvk: Fix/simplify the shader linking logic
-      panvk: Replace the stages array in panvk_draw_info by vs/fs fields
-      panvk: Move fs_rsd fields to an fs sub-struct
-      panvk: Emit the fragment shader RSD dynamically
+Corentin Noël (2):
+      venus: sync protocol for VK_KHR_maintenance5
+      venus: enable VK_KHR_maintenance5
 
-Constantine Shablia (1):
-      panvk: remove descriptor pool counters
+Danylo Piliaiev (1):
+      freedreno: Make fd_pps_driver.h usable without including other FD sources
 
-David Heidelberg (1):
-      subprojects: uprev perfetto to v45.0
+Dave Airlie (1):
+      Revert "zink: use a slab allocator for zink_kopper_present_info"
 
-Derek Foreman (1):
-      wsi/wayland: Fix use after free from improperly stored VkAllocationCallbacks
+Eric Engestrom (20):
+      docs: add release notes for 24.0.8
+      docs: update calendar for 24.0.8
+      docs: add sha256sum for 24.0.8
+      docs: add release notes for 24.1.0
+      docs: add sha256sum for 24.1.0
+      docs: update calendar for 24.1.0
+      ci: fix build-kernel.sh -> download-prebuilt-kernel.sh
+      ci: drop dead variables (see previous commit)
+      ci: rename debian/arm*_test to debian/baremetal_arm*_test to be clear about which infra uses that
+      ci: prepare base debian test image for multi-arch
+      ci: prepare GL debian test image for multi-arch
+      ci: prepare VK debian test image for multi-arch
+      ci/image-tags: rename DEBIAN_X86_64_TEST_*_TAG to drop the x86 mention
+      ci: add debian/arm64_test images for gl & vk
+      zink/ci: rename zink-turnip collabora rule to make it unambiguous
+      ci/b2c: add aarch64 tests for gl & vk
+      turnip/ci: add vkcts jobs on the a750
+      turnip+zink/ci: add gl & gles CTS jobs on the a750
+      nvk/ci: adjust the regex for "dut is broken and needs to be rebooted"
+      nvk/ci: mark the job as failing in case of hangs, instead of silently rebooting
 
-Eric Engestrom (7):
-      nvk/ci: add nvk job on a GA106 (RTX 3060)
-      zink/ci: add zink+nvk glcts+piglit job on a GA106 (RTX 3060)
-      zink+nvk/ci: skip glx piglit tests as they all fail
-      zink+nvk/ci: skip timing out test
-      zink+nvk/ci: skip more tests that times out
-      zink+nvk/ci: document flakes seen during stress-testing
-      zink+nvk/ci: update expected failures
+Eric R. Smith (1):
+      get_color_read_type: make sure format/type combo is legal for gles
 
-Friedrich Vock (2):
-      radv: Use max_se instead of num_se where appropriate
-      radeonsi: Use max_se instead of num_se where appropriate
+Erik Faye-Lund (3):
+      panfrost: simplify panfrost_texture_num_elements
+      panfrost: explicitly loop over surfaces
+      panfrost: untangle faces from layers
 
-Juan A. Suarez Romero (1):
-      ci: define SNMP base interface on runner
+Jose Maria Casanova Crespo (6):
+      v3d: fix CLE MMU errors avoiding using last bytes of CL BOs.
+      v3dv: fix CLE MMU errors avoiding using last bytes of CL BOs.
+      v3d: Increase alignment to 16k on CL BO on RPi5
+      v3dv: Increase alignment to 16k on CL BO on RPi5
+      v3dv: V3D_CL_MAX_INSTR_SIZE bytes in last CL instruction not needed
+      v3dv/ci: Add more dEQP-VK subgroups that are currently skipped
 
-Juston Li (1):
-      venus: add missing sTypes for vk_set_physical_device_properties_struct
+Martin Roukala (né Peres) (1):
+      ci/b2c: Reduce the length of the kernel cmdline
 
-Lionel Landwerlin (1):
-      anv: use weak_ref mode for global pipeline caches
+Renato Pereyra (1):
+      anv: Attempt to compile all pipelines even after errors
 
-Marek Olšák (4):
-      ac: move radv_mem_vectorize_callback to common code
-      ac/llvm: global stores should have no holes in the writemask
-      radeonsi: call nir_lower_int64 later to fix ACO failure with Tomb Raider
-      radeonsi: vectorize load/stores and shrink stores
+Samuel Pitoiset (11):
+      radv: remove unused radv_translate_buffer_dataformat()
+      radv: remove useless check about FIXED formats
+      radv: simplify radv_is_vertex_buffer_format_supported()
+      radv: replace vk_to_non_srgb_format() by vk_format_no_srgb()
+      radv: fix setting a custom pitch for CB on GFX10_3+
+      radv: replace db_{z,stencil}_{read,write}_base by db_{depth,stencil}_base
+      radv: tidy up radv_initialise_ds_surface()
+      radv: separate non-mutable vs mutable fields for ds surface
+      amd/common: add a function to initialize ds surface
+      radv: use the common helper for initializing DS surfaces
+      radeonsi: use the common helper for initializing DS surfaces
 
-Maíra Canal (6):
-      drm-uapi: Update v3d_drm.h
-      broadcom/common: Add maximum number of perf counters to v3d_device_info
-      v3dv: Use DRM_IOCTL_V3D_GET_COUNTER to get perfcnt information
-      v3d: Use DRM_IOCTL_V3D_GET_COUNTER to get perfcnt information
-      broadcom/simulator: Add DRM_V3D_PARAM_MAX_PERF_COUNTERS parameter support
-      broadcom/simulator: Add DRM_IOCTL_V3D_GET_COUNTER to simulator
-
-Rhys Perry (5):
-      aco/lower_phis: create loop header phis for non-boolean loop exit phis
-      aco: create lcssa phis for continue_or_break loops when necessary
-      aco: use scalar phi lowering for lcssa workaround
-      aco: remove nir_to_aco
-      aco/lower_phis: don't create boolean loop header phis in some situations
-
-Rob Clark (2):
-      docs/features: Add missing AHB for tu
-      tu: Don't advertise AHB handle time on non-android
-
-Samuel Pitoiset (17):
-      radv: set image view descriptors as buffer for non-graphics GPU
-      ac,radv,radeonsi: add a helper to get the tile mode index
-      radv: tidy up swizzle in radv_set_mutable_tex_desc_fields()
-      radv: tidy up custom pitch for gfx10.3 in radv_set_mutable_tex_desc_fields()
-      radv: tidy up meta_va in radv_set_mutable_tex_desc_fields()
-      radv: set ITERATE_256 for GFX10+ in radv_set_mutable_tex_desc_fields()
-      radv: stop clearing unnecessary bitfields in radv_set_mutable_tex_desc_fields()
-      ac,radv,radeonsi: add a helper to set mutable tex desc fields
-      ac,radv,radeonsi: add a function for getting border color swizzle
-      radv: only set ALPHA_IS_ON_MSB if the image has DCC on GFX6-9
-      radv: adjust determining if alpha should be on MSB
-      ac,radv,radeonsi: add function to determine if alpha should be on MSB
-      ac,radv,radeonsi: add a common helper for translating swizzle
-      amd/common: only pass gfx_level to ac_get_gfx10_format_table()
-      amd/common: add new helpers to build buffer descriptors
-      radv: use new common helpers for building buffer descriptor
-      aco: use new common helpers for building buffer descriptors
-
-Timur Kristóf (4):
-      nir: Add nir_opt_load_store_update_alignments.
-      radv: Add TES num_linked_patch_inputs.
-      radv: Add shader stats for inputs and outputs.
-      radv: Fix TCS -> TES I/O linking typo of VARYING_SLOT vs. BIT.
-
-Valentine Burley (1):
-      drm-shim: Stub syncobj reset ioctl
+Timur Kristóf (2):
+      nir/opt_varyings: Print FS VEC4 type when debugging relocate_slot.
+      nir/opt_varyings: Don't promote flat inputs when moving post-dominator.
 
