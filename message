@@ -1,76 +1,36 @@
-Updating from 3584fc64828ad2ad4d486572ec915aab8321aadd to d0810d528c602cdc7e2b8dffdd2ec19800fb36e4
+Updating from 485d56ed8167b4491622dceef8e68cf1923e98ff to 930e4fa2833a2a53f6017cf87973aac42cd90f75
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to e180f96239edba441f22f58dfc852cafb902844a
+David Heidelberg (6):
+      ci: re-enable shader-db for nouveau
+      ci: do not build Nine in debian-build-testing
+      ci/piglit: be explicit about what we building
+      ci/lava: enable Piglit OpenCL tests so we can test rusticl on the HW
+      ci/lava: do not build Vulkan for armhf images
+      ci/lava: move wayland-protocols to the main section
 
-Corentin Noël (2):
-      venus: sync protocol for VK_KHR_maintenance5
-      venus: enable VK_KHR_maintenance5
+Eric R. Smith (2):
+      glsl: test both inputs when sorting varyings for xfb
+      glsl: make the xfb varying sort stable
 
-Danylo Piliaiev (1):
-      freedreno: Make fd_pps_driver.h usable without including other FD sources
+Faith Ekstrand (4):
+      nak: Emit !PT for carries on IADD3
+      nak: Add with -0 for fabs()
+      nak: Don't emit a plop3 for immediate shift sources
+      nak: Encode LDC directly
 
-Dave Airlie (1):
-      Revert "zink: use a slab allocator for zink_kopper_present_info"
+Martin Roukala (né Peres) (8):
+      nvk+zink/ci: rename the ga106 jobs to be more in line with RADV
+      nvk+zink/ci/ga106: make the expectations codename-specific
+      nvk+zink/ci: document more flakes in the ga106
+      turnip/ci: document a missing flake from the a750_vk job
+      turnip/ci: bump the a750_vk timeout
+      turnip+zink/ci: add more flakes to the expectations
+      radv+zink/ci: document recent flakes
+      radv/ci: add a bunch of flakes
 
-Eric Engestrom (20):
-      docs: add release notes for 24.0.8
-      docs: update calendar for 24.0.8
-      docs: add sha256sum for 24.0.8
-      docs: add release notes for 24.1.0
-      docs: add sha256sum for 24.1.0
-      docs: update calendar for 24.1.0
-      ci: fix build-kernel.sh -> download-prebuilt-kernel.sh
-      ci: drop dead variables (see previous commit)
-      ci: rename debian/arm*_test to debian/baremetal_arm*_test to be clear about which infra uses that
-      ci: prepare base debian test image for multi-arch
-      ci: prepare GL debian test image for multi-arch
-      ci: prepare VK debian test image for multi-arch
-      ci/image-tags: rename DEBIAN_X86_64_TEST_*_TAG to drop the x86 mention
-      ci: add debian/arm64_test images for gl & vk
-      zink/ci: rename zink-turnip collabora rule to make it unambiguous
-      ci/b2c: add aarch64 tests for gl & vk
-      turnip/ci: add vkcts jobs on the a750
-      turnip+zink/ci: add gl & gles CTS jobs on the a750
-      nvk/ci: adjust the regex for "dut is broken and needs to be rebooted"
-      nvk/ci: mark the job as failing in case of hangs, instead of silently rebooting
+Rob Clark (1):
+      vulkan/android: Fix suggestedYcbcrModel with !mapper4
 
-Eric R. Smith (1):
-      get_color_read_type: make sure format/type combo is legal for gles
-
-Erik Faye-Lund (3):
-      panfrost: simplify panfrost_texture_num_elements
-      panfrost: explicitly loop over surfaces
-      panfrost: untangle faces from layers
-
-Jose Maria Casanova Crespo (6):
-      v3d: fix CLE MMU errors avoiding using last bytes of CL BOs.
-      v3dv: fix CLE MMU errors avoiding using last bytes of CL BOs.
-      v3d: Increase alignment to 16k on CL BO on RPi5
-      v3dv: Increase alignment to 16k on CL BO on RPi5
-      v3dv: V3D_CL_MAX_INSTR_SIZE bytes in last CL instruction not needed
-      v3dv/ci: Add more dEQP-VK subgroups that are currently skipped
-
-Martin Roukala (né Peres) (1):
-      ci/b2c: Reduce the length of the kernel cmdline
-
-Renato Pereyra (1):
-      anv: Attempt to compile all pipelines even after errors
-
-Samuel Pitoiset (11):
-      radv: remove unused radv_translate_buffer_dataformat()
-      radv: remove useless check about FIXED formats
-      radv: simplify radv_is_vertex_buffer_format_supported()
-      radv: replace vk_to_non_srgb_format() by vk_format_no_srgb()
-      radv: fix setting a custom pitch for CB on GFX10_3+
-      radv: replace db_{z,stencil}_{read,write}_base by db_{depth,stencil}_base
-      radv: tidy up radv_initialise_ds_surface()
-      radv: separate non-mutable vs mutable fields for ds surface
-      amd/common: add a function to initialize ds surface
-      radv: use the common helper for initializing DS surfaces
-      radeonsi: use the common helper for initializing DS surfaces
-
-Timur Kristóf (2):
-      nir/opt_varyings: Print FS VEC4 type when debugging relocate_slot.
-      nir/opt_varyings: Don't promote flat inputs when moving post-dominator.
+Valentine Burley (1):
+      freedreno/ci: Update expectations
 
