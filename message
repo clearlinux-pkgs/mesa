@@ -1,36 +1,57 @@
-Updating from 485d56ed8167b4491622dceef8e68cf1923e98ff to 930e4fa2833a2a53f6017cf87973aac42cd90f75
+Updating from 930e4fa2833a2a53f6017cf87973aac42cd90f75 to 9b932aadf468835979b749f072f7ac27429a07df
 
-David Heidelberg (6):
-      ci: re-enable shader-db for nouveau
-      ci: do not build Nine in debian-build-testing
-      ci/piglit: be explicit about what we building
-      ci/lava: enable Piglit OpenCL tests so we can test rusticl on the HW
-      ci/lava: do not build Vulkan for armhf images
-      ci/lava: move wayland-protocols to the main section
+Cong Liu (1):
+      nir: Fix out-of-bounds access in ntt_emit_store_output()
 
-Eric R. Smith (2):
-      glsl: test both inputs when sorting varyings for xfb
-      glsl: make the xfb varying sort stable
+Danylo Piliaiev (1):
+      turnip/msm: Do rd dump only when there are commands in submission
 
-Faith Ekstrand (4):
-      nak: Emit !PT for carries on IADD3
-      nak: Add with -0 for fabs()
-      nak: Don't emit a plop3 for immediate shift sources
-      nak: Encode LDC directly
+David Heidelberg (1):
+      ci/freedreno: document new failure after piglit update
 
-Martin Roukala (né Peres) (8):
-      nvk+zink/ci: rename the ga106 jobs to be more in line with RADV
-      nvk+zink/ci/ga106: make the expectations codename-specific
-      nvk+zink/ci: document more flakes in the ga106
-      turnip/ci: document a missing flake from the a750_vk job
-      turnip/ci: bump the a750_vk timeout
-      turnip+zink/ci: add more flakes to the expectations
-      radv+zink/ci: document recent flakes
-      radv/ci: add a bunch of flakes
+David Rosca (2):
+      frontends/va: Fix leak when destroying VAEncCodedBufferType
+      radeonsi/vcn: Avoid copy when resizing bitstream buffer
 
-Rob Clark (1):
-      vulkan/android: Fix suggestedYcbcrModel with !mapper4
+Italo Nicola (1):
+      nir: add {load,store}_global_etna intrinsics
+
+José Roberto de Souza (10):
+      intel/perf: Fix return of read_oa_samples_until()
+      anv: Nuke perf_query_pass from anv_execbuf
+      intel/perf: Replace I915_OA_FORMAT_* usage by platform check
+      intel/perf: Move code that will be shared by both KMDs
+      intel/perf: Move i915 specific code from common code
+      intel/perf: Move i915 specific code to load configurations to i915 file
+      intel/perf: Allocate sseu in heap memory
+      intel/perf: Replace drm_i915_perf_record_header by intel_perf_record_header
+      intel/perf: Add a macro with header + sample length
+      intel/perf: Add intel_perf_stream_read_samples()
+
+Konstantin Seurer (1):
+      radv: Remove radv_cmd_dirty_dynamic_bits
+
+Rhys Perry (1):
+      radv: malloc graphics pipeline stages
+
+Samuel Pitoiset (7):
+      amd/common: add a helper to set the third word of buffer descriptor
+      ac,radv: add a stride parameter to ac_build_attr_ring_descriptor()
+      radeonsi: use common build buffer descriptor helpers
+      radv: align DCC control settings to RadeonSI for GFX8
+      amd/common: add a function to initialize cb surface
+      radv: use the common helper for initializing CB surfaces
+      radeonsi: use the common helper for initializing CB surfaces
+
+Sergi Blanch Torne (1):
+      ci: fix stress counter in run'n'monitor
+
+Tomeu Vizoso (1):
+      etnaviv: handle missing alu conversion opcodes
 
 Valentine Burley (1):
-      freedreno/ci: Update expectations
+      wsi: Guard DRM-dependent function implementations with HAVE_LIBDRM
+
+Yusuf Khan (1):
+      zink/query: begin time elapsed queries even if we arent in a rp
 
