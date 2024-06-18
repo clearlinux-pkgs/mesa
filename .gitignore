@@ -1,5 +1,6 @@
 .*~
 *~
+*.crate
 *.info
 *.mod
 *.swp
