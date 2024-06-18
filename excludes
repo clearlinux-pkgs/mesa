@@ -21,7 +21,3 @@
 /usr/include/GL/glext.h
 /usr/include/GL/glx.h
 /usr/include/GL/glxext.h
-
-
-/usr/share/vulkan/icd.d/intel_icd.i686.json
-/usr/share/vulkan/icd.d/radeon_icd.i686.json

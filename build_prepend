@@ -1,0 +1,6 @@
+deps_dir="./subprojects/packagefiles"
+
+for dir in "${deps_dir}"/*; do
+    name=$(basename "${dir}")
+    mv "${dir}/meson.build" ./subprojects/"${name}"-*
+done

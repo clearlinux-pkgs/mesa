@@ -4,3 +4,4 @@
 -Dglvnd=false
 -Dtools=""
 -Dintel-clc=system
+--cross-file lib32

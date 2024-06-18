@@ -5,7 +5,7 @@
 -Dgallium-va=enabled
 -Dgallium-xa=enabled
 -Dgallium-opencl=icd
--Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,swrast
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,swrast,nouveau
 -Dshared-glapi=enabled
 -Dglvnd=true
 -Dllvm=enabled
