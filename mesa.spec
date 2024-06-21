@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 24.1+2703.g23ee6ca801c
-Release  : 750
+Release  : 751
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/23ee6ca801cf9220dd544e6d659d683104f92c74/mesa-24.1+2703-g23ee6ca801c.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/23ee6ca801cf9220dd544e6d659d683104f92c74/mesa-24.1+2703-g23ee6ca801c.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
@@ -271,7 +271,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1718983243
+export SOURCE_DATE_EPOCH=1718986967
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
