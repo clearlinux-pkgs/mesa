@@ -1016,6 +1016,8 @@ libGLX_mesa.so.0:glTexStorage2D
 libGLX_mesa.so.0:glTexStorage2DMultisample
 libGLX_mesa.so.0:glTexStorage3D
 libGLX_mesa.so.0:glTexStorage3DMultisample
+libGLX_mesa.so.0:glTexStorageAttribs2DEXT
+libGLX_mesa.so.0:glTexStorageAttribs3DEXT
 libGLX_mesa.so.0:glTexSubImage1D
 libGLX_mesa.so.0:glTexSubImage2D
 libGLX_mesa.so.0:glTexSubImage3D
@@ -1299,12 +1301,6 @@ libGLX_mesa.so.0:glWindowPos3s
 libGLX_mesa.so.0:glWindowPos3sARB
 libGLX_mesa.so.0:glWindowPos3sv
 libGLX_mesa.so.0:glWindowPos3svARB
-libMesaOpenCL.so.1:_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJRKS5_EEEvDpOT_
-libMesaOpenCL.so.1:_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_
-libMesaOpenCL.so.1:_ZNSt6vectorIjSaIjEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPjS1_EEmRKj
-libMesaOpenCL.so.1:_ZNSt6vectorIjSaIjEE17_M_default_appendEm
-libMesaOpenCL.so.1:_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_S9_
-libMesaOpenCL.so.1:_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_OS8_
 libMesaOpenCL.so.1:clGetExtensionFunctionAddress
 libMesaOpenCL.so.1:clGetExtensionFunctionAddressForPlatform
 libMesaOpenCL.so.1:clGetPlatformInfo
@@ -2335,6 +2331,8 @@ libOSMesa.so.8:glTexStorage2D
 libOSMesa.so.8:glTexStorage2DMultisample
 libOSMesa.so.8:glTexStorage3D
 libOSMesa.so.8:glTexStorage3DMultisample
+libOSMesa.so.8:glTexStorageAttribs2DEXT
+libOSMesa.so.8:glTexStorageAttribs3DEXT
 libOSMesa.so.8:glTexSubImage1D
 libOSMesa.so.8:glTexSubImage2D
 libOSMesa.so.8:glTexSubImage3D
