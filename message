@@ -1,37 +1,111 @@
-Updating from b59ea3d63feafec5a0616e268d597aaf28981e59 to 21d3eacd234ed971248f2aac04f5616c2a9c90f5
+Updating from 21d3eacd234ed971248f2aac04f5616c2a9c90f5 to 8f2533c3561d86a0d5f681c0c4c21c678d2ef449
 
-Bas Nieuwenhuizen (1):
-      util/disk_cache: Fix cache marker refresh.
+Daniel Lundqvist (1):
+      radeonsi: Fix unused variable when LLVM is not used for AMD.
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to fdf3fc09deb6beecdf212e65a16c645112540b59
+Dave Airlie (5):
+      gallivm: move ppc denorm disable to inline
+      gallivm: split some code out from init module.
+      gallivm: make lp_bld_coro.h c++ include safe.
+      gallivm: export target init code for orc-jit to reuse
+      gallivm: split out generating LLVM Mattrs
 
-Karol Herbst (1):
-      radeonsi: set bo_size for user memory allocations
+Erik Faye-Lund (42):
+      docs: edgeflag -> edge flag
+      docs: zink -> Zink
+      docs: Anv -> ANV
+      docs: tgsi -> TGSI
+      docs: hw -> HW
+      docs: mooth -> smooth
+      docs: unify spelling of front/back-facing
+      docs: eg. -> e.g.
+      docs: url -> URL
+      docs: nabled -> enabled
+      docs: sommelier -> Sommelier
+      docs: remove apostrophe from uppercased
+      docs: utrace -> trace
+      docs: google -> Google
+      docs: Nvidia -> NVIDIA
+      docs: ssbo/ubo -> SSBO/UBO
+      docs: cpu -> CPU
+      docs: gpu -> GPU
+      docs: renderpass -> render pass
+      docs: spell out "stencil reference"
+      docs: submision -> submission
+      docs: Steamos -> SteamOS
+      docs: colour -> color
+      docs: occured -> occurred
+      docs: precidence -> precedence
+      docs: undifined behaviour -> undefined behavior
+      docs: debian -> Debian
+      docs: zink -> Zink
+      docs: vulkan -> Vulkan
+      docs: attachements -> attachments
+      docs: acress -> across
+      docs: pluggins -> plug-ins
+      docs: pusbuf -> pushbuf
+      docs: metadatas -> metadata
+      docs: use os.pardir
+      docs: allow out-of-tree docs build
+      meson: build html-docs
+      docs: automatically generate depfile
+      meson: error when missing hawkmoth
+      meson: allow specifying html-docs-path
+      ci: build docs using meson
+      panvk: support x11 wsi
 
-Mike Blumenkrantz (1):
-      radeonsi: enable compute pbo blits
+Job Noorman (2):
+      ir3: print rounding mode for cov
+      ir3: set rounding mode for all floating point conversions
 
-Nanley Chery (1):
-      intel/isl: Enable Tile4 for CPB surfaces
+José Roberto de Souza (6):
+      intel/perf: Change order of if blocks
+      intel/perf: Add assert to check if allocated enough query fiels
+      intel/dev: Add engine_class_supported_count to intel_device_info
+      intel/perf: Add LNL OA XML
+      intel/perf: Add INTEL_PERF_QUERY_FIELD_TYPE_SRM_OA_PEC
+      intel/perf: Extend intel_perf_query_result_read_gt_frequency() to gfx 20
 
-Samuel Pitoiset (7):
-      radv: cleanup getting AC_UD_TASK_RING_ENTRY for mesh shader
-      radv: use radv_shader_info::user_data_0 for task shaders
-      radv: remove dead mesh shader code for indirect draws
-      radv: remove useless masking in radv_cs_emit_indirect_mesh_draw_packet()
-      radv: remove useless draw_id to radv_emit_userdata_task()
-      radv: add the DGC preprocess BO to the cmdbuf BO list
-      radv/amdgpu: allow cs_execute_ib() to pass a VA instead of a BO
+Karol Herbst (2):
+      rusticl/queue: gracefully stop the worker thread
+      rusticl/queue: run rustfmt
 
-Tapani Pälli (2):
-      isl: fix condition for enabling sampler route to lsc
-      isl/iris/anv: provide drirc toggle intel_sampler_route_to_lsc
+Kenneth Graunke (3):
+      intel/brw: Delay liveness calculations in saturate propagation
+      intel/brw: Make an alu2 builder helper
+      intel/brw: Make bld.ADD(x, 0) emit no instructions and return x directly
 
-Valentine Burley (1):
-      tu: Advertise VK_KHR_shader_float_controls2
+Marek Olšák (3):
+      ac/nir/cdna: allow 16-bit coordinates
+      ac/nir/cdna: ignore image_descriptor intrinsics
+      ac/nir/cdna: don't use image_descriptor intrinsics if the src is a descriptor
 
-Zack Middleton (2):
-      gles1: fix GL_OES_vertex_array_object
-      gles1: fix glBufferSubData()
+Michel Dänzer (1):
+      egl/dri: Use packed pipe_format
+
+Paulo Zanoni (9):
+      anv/sparse: reject 1D sparse residency images
+      anv/sparse: fix the image property sizes for multi-sampled images
+      anv/sparse: fix reporting of VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT
+      intel/isl: pass struct isl_tile_info to choose_image_alignment_el()
+      anv/sparse: dump info about opaque binds when DEBUG_SPARSE
+      anv/sparse: fix TR-TT page table bo size and flags
+      anv/sparse: remove obsolete linear tiling code path
+      anv/sparse: unify and rework tile size calculation
+      anv/sparse: use ANV_SPARSE_BLOCK_SIZE instead of tile_size when possible
+
+Rhys Perry (1):
+      aco: use 1.5x vgprs for gfx1151 and gfx12
+
+Samuel Pitoiset (2):
+      radv/amdgpu: use the non-IB path for dumping CS with external IBs
+      ac/parse_ib: dump PKT3_DISPATCH_{TASKMESH_GFX,TASKMESH_DIRECT_ACE}
+
+Timothy Arceri (1):
+      glsl: remove unused symbol table functionality
+
+Yiwei Zhang (3):
+      venus: refactor vn_android_image_from_anb
+      venus: refactor to add vn_android_image_from_anb_internal
+      venus: support VK_ANDROID_NATIVE_BUFFER_SPEC_VERSION 8
 
