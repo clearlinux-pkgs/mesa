@@ -1,153 +1,116 @@
-Updating from 8f2533c3561d86a0d5f681c0c4c21c678d2ef449 to dd85b50d182a2bd1c67d9a8f858d93fc4dded91c
+Updating from dd85b50d182a2bd1c67d9a8f858d93fc4dded91c to 746f41e70514bcb896f90bd7c7e765e097902285
 
-Alyssa Rosenzweig (2):
-      nir: add nir_break_if helper
-      treewide: use nir_break_if
+Alexandre Marquet (1):
+      panfrost: implement SFBD raw format support on v4
 
-Connor Abbott (6):
-      ir3: Make sure constlen includes stc/ldc.k/ldg.k instructions
-      freedreno: Disable early preamble on a6xx gen4
-      ir3, tu, freedreno: Move early_preamble to ir3_shader
-      tu: Add early preamble statistic
-      ir3: Introduce elect_any_ir3
-      ir3: Use elect_any_ir3 in preambles
+Boris Brezillon (5):
+      pan/desc: Extend pan_emit_fbd() to support multilayer rendering
+      pan/desc: Prepare things for fragment job chaining
+      pan/blitter: Let pan_preload_fb() callers queue the jobs to the job chain
+      panvk: Use IDVS jobs when we can
+      panvk: Add support for layered rendering
 
-Daniel Schürmann (8):
-      aco/scheduler: fix register_demand validation debug code
-      aco/spill: Unconditionally add 2 SGPRs to live-in demand
-      aco: calculate register demand per instruction as maximum necessary to execute the instruction
-      aco: track and use the live-in register demand per basic block
-      aco: remove get_demand_before()
-      aco/live_var_analysis: slightly refactor handling of additional register demand for Operand copies
-      aco/live_var_analysis: ignore dead phis
-      aco/spill: don't remove spilled phis
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 647d0725024f72bc49bbc91c686c5f61168a1fe8
 
-Daniel Stone (3):
-      dri: Fix BGR format exclusion
-      egl/surfaceless: Enable RGBA configs
-      egl/gbm: Enable RGBA configs
+Dave Airlie (1):
+      llvmpipe: Introduce llvmpipe_memory_allocation
 
-Danylo Piliaiev (5):
-      freedreno: Describe LRZ feedback mechanism
-      freedreno/devices: Define and appropriately set has_lrz_feedback
-      tu: Use LRZ feedback in gmem
-      tu: Enable LRZ feedback in sysmem
-      freedreno: Use LRZ feedback in gmem
+Eli Schwartz (2):
+      meson: create libglsl declared dependency to propagate order-only deps
+      meson: add various generated header dependencies as order-only deps
 
-Erik Faye-Lund (6):
-      vulkan/runtime: tne -> the
-      vulkan/runtime: initizlie -> initialize
-      vulkan/runtime: abreviation -> abbreviation
-      vulkan/runtime: multiesample -> multisample
-      vulkan/runtime: implementaiton -> implementation
-      docs: fix bootstrap-extension
+Eric Engestrom (12):
+      docs/ci: fix indentation of list nested in a dict item
+      docs/ci: merge test-docs and test-docs-mr
+      docs/ci: auto-run test-docs in fork pipelines
+      docs/ci: drop .no_scheduled_pipelines-rules from test-docs
+      ci: reorder alpine/x86_64_build rules to fix the nightly pipelines
+      drm-shim: stub syncobj_timeline_signal ioctl
+      llvmpipe/ci: add comment for later on weird-looking code
+      llvmpipe/ci: fix indentation of list nested in a dict item
+      llvmpipe/ci: set rusticl variables in deqp-runner instead of passing them down from the job
+      ci: include rusticl in the arm64 build
+      llvmpipe,rusticl/ci: move rusticl files rule out of llvmpipe
+      v3d/ci: add nightly job for rusticl testing
 
-Ian Romanick (9):
-      intel/brw: Temporarily disable result=float16 matrix configs
-      intel/brw: Major rework of lower_cmat_load_store
-      intel/brw/xe2+: Catch invalid uses of writes_accumulator earlier
-      intel/brw/xe2+: Adjust size_read() for DPAS
-      intel/brw/xe2+: Scale size_written by reg_unit for DPAS
-      intel/brw/xe2+: Adjust DPAS lowering to DP4A to accommodate larger GRF and SIMD16
-      intel/brw/xe2+: Allow vec16 for cooperative matrix
-      nir: dpas_intel second source can have different number of components
-      intel/brw/xe2+: Add LNL cooperative matrix configurations
+Francisco Jerez (8):
+      intel/fs/xe2+: Ask driver for PS payload registers based on barycentric load intrinsics in use.
+      iris/gfx11+: Request PS payload fields for ALU-based interpolation via 3DSTATE_PS_EXTRA.
+      anv/gfx11+: Request PS payload fields for ALU-based interpolation via 3DSTATE_PS_EXTRA.
+      intel/fs/xe2+: Don't lower barycentric load offsets to fixed-point format on Xe2+.
+      intel/fs/xe2+: Add ALU-based implementation of barycentric interpolation at a per-channel offset.
+      intel/fs/xe2+: Add ALU-based implementation of barycentric interpolation at a per-channel sample.
+      intel/dev: Add GRF size information to the intel_device_info struct.
+      anv/xe2+: Align push constant ranges to GRF boundaries.
 
-Jianxun Zhang (19):
-      isl: Update render CMF mapping (xe2)
-      isl: Don't set clear values or their address (xe2)
-      blorp: Get fast clear rectangle of non-MSAA surfaces (xe2)
-      blorp: Pass down fast clear color value (xe2)
-      intel/genxml,blorp,common: Update 3DSTATE_PS command (xe2)
-      iris: Update aux state for color fast clears (xe2)
-      iris: Limit FCV_CCS_E to platforms that enable it
-      anv: Don't enable compression with modifiers (xe2)
-      iris: Add more restrictions on compression (Xe2)
-      anv: Don't enable compression on external bos (xe2)
-      iris: Disable PAT-based compression on depth surfaces (xe2)
-      anv: Disable PAT-based compression on depth images (xe2)
-      iris: Update synchronization of fast clear (xe2)
-      iris: Workaround: Don't allocate compressed bo from cache (xe2)
-      isl: Remove restriction of CCS_E support on formats (xe2)
-      blorp: Don't convert ccs_e formats for copy (xe2)
-      isl: Initialize the last usage in isl_encode_aux_mode[] (xe2)
-      anv: Update synchronization of fast clear (xe2)
-      iris: Disable predraw resolve (xe2)
+Georg Lehmann (11):
+      nir: add ford, funord, fneo, fequ, fltu, fgeu
+      aco: implement ford, funord, fneo, fequ, fltu, fgeu
+      ac/llvm: implement ford, funord, fneo, fequ, fltu, fgeu
+      ac/nir: enable ford, funord, fneo, fequ, fltu, fgeu
+      nir/opt_algebraic: look through fabs/fneg when matching fmulz/ffmaz
+      nir/optimize cmp(a, -0.0)
+      nir/opt_algebraic: optimize cmp(fneg(a), #b) and feq with fabs
+      nir/opt_algebraic: add various unordered/ordered patterns from aco
+      aco: remove ordered/unordered optimizations
+      aco/ir: remove unused vopc helpers
+      iris/ci: update trace checksums
 
-Jordan Justen (2):
-      isl: Move isl_get_render_compression_format in isl_genX_helpers.h
-      isl: Implement isl_get_render_compression_format for xe2
+Iago Toral Quiroga (4):
+      broadcom/compiler: don't spill in between multop and umul24
+      broadcom/compiler: fix per-quad spilling
+      broadcom/compiler: validate rtop + thrsw hazard
+      broadcom/compiler: drop multop if we dce umul24
 
-Julian Orth (1):
-      egl/wayland: ignore unsupported driver configs
+Ian Romanick (2):
+      intel/tools: Advertise I915_PARAM_HAS_EXEC_TIMELINE_FENCES
+      intel/brw: Test corner case CSE of ADD3 instructions
 
-Juston Li (1):
-      anv/android: set ANV_BO_ALLOC_EXTERNAL for imported AHW
+Jeremy Gebben (1):
+      radv: Return hang status from radv_check_gpu_hangs()
 
-Karol Herbst (25):
-      nir/lower_alu: support 8 and 16 bit bit_count
-      nir/opt_sink: add load_kernel_input
-      gallium: add PIPE_CAP_TEXTURE_SAMPLER_INDEPENDENT
-      rusticl/device: require PIPE_CAP_TEXTURE_SAMPLER_INDEPENDENT for image support
-      rusticl/mesa/context: handle clear_buffer not set by driver
-      rusticl/mesa/screen: handle get_timestamp not set by driver
-      rusticl/kernel/launch: fix global work offsets for 32 bit archs again
-      broadcom/compiler: add generated v3d_nir_lower_algebraic
-      broadcom/compiler: handle fp16 conversion ops
-      broadcom/compiler: fix iu2f32 for 8 and 16 bit inputs
-      broadcom/compiler: try handling 8/16 bit alu operations
-      broadcom/compiler: handle up to vec16 load_uniforms
-      broadcom/compiler: abort on unknown intrinsics
-      broadcom/compiler: implement load_kernel_input
-      broadcom/compiler: call nir_lower_64bit_phis
-      broadcom/compiler: handle variable shared memory
-      v3d: implement gallium APIs for OpenCL support
-      v3d: treat SHADER_KERNEL as SHADER_COMPUTE
-      v3d: lower CL alus
-      v3d: lower 64 bit ALUs
-      v3d: support variable shared memory
-      v3d: fix MAX_GLOBAL_SIZE and MAX_MEM_ALLOC_SIZE
-      v3d: never replace a mapped bo
-      rusticl: enable v3d
-      nir/schedule: add write dep also for shared_atomic
+Kenneth Graunke (1):
+      intel/brw: Support CSE of ADD3
 
-Mary Guillemard (10):
-      panvk: Skip dispatch on empty workgroup
-      panvk: Report proper workgroup invocation and size
-      panvk: Enable compute pipeline in CI for Mali-G52
-      panvk: Advertise VK_EXT_private_data
-      panvk: Do not emit blend shader when color_mask is 0
-      panvk: Run nir_lower_io_to_vector for fragment shader
-      panvk: Enable glsl.440.linkage in CI for Mali-G52
-      panvk: Implement and advertise anisotropy support
-      panvk: Advertise VK_KHR_sampler_mirror_clamp_to_edge
-      panvk: Enable texture filtering in CI for Mali-G52
+Konstantin Seurer (8):
+      util: Add a helper for querying sparse tile sizes
+      lavapipe: Do not allocate 0 sized buffers for descriptor sets
+      gallium: Add a memory range parameter to resource_bind_backing
+      llvmpipe: Use an anonymous file for memory allocations
+      lavapipe: Implement sparse buffers and images
+      lavapipe: Implement shaderResourceResidency
+      venus: Refactor hiding sparse features and properties
+      venus: Disable sparse binding on lavapipe
 
-Matt Coster (1):
-      docs: List VK_EXT_debug_utils
+Lionel Landwerlin (1):
+      anv: limit vertex fetch invalidation on indirect read
 
-Pierre-Eric Pelloux-Prayer (8):
-      radeonsi: handle DBG(TEX) after tc_compatible_htile is set
-      radeonsi/tests: don't match gfx10_3 baseline for gfx10 family
-      radeonsi/tests: add a shortcut to re-run only failing tests
-      ac/surface: reject modifiers with retile_dcc and bpe != 32
-      radeonsi: add gfx11 workaround for upgraded_depth
-      ac/nir: don't use the compute blit for PIPE_FORMAT_R5G6B5_UNORM
-      radeonsi/tests: update tests baseline
-      radeonsi/tests: clarify the output when results changes
+Mike Blumenkrantz (1):
+      ci: kill filament trace globally
 
-Qiang Yu (2):
-      nir: fix lower array to vec metadata preserve
-      nir: fix clip cull distance lowering metadata preserve
+Paulo Zanoni (1):
+      anv: properly store the engine_class_supported_count values
 
-Rhys Perry (1):
-      aco: skip continue_or_break LCSSA phis when not needed
+Samuel Pitoiset (8):
+      radv: add a helper to execute a DGC IB
+      radv: add support for computing the DGC ACE IB size
+      radv: prepare for DISPATCH_TASKMESH_GFX emission in the DGC shader
+      radv: prepare for DISPATCH_TASKMESH_DIRECT_ACE emission in the DGC shader
+      radv: refactor some DGC helpers in preparation for the ACE IB
+      radv: add a helper to pad DGC IB
+      radv: add support for preparing the ACE IB in DGC
+      radv: add support for executing the DGC ACE IB
 
-Samuel Pitoiset (1):
-      radv/amdgpu: fix chaining CS with external IBs on compute queue
+Tapani Pälli (1):
+      anv: move some pc was to batch_emit_pipe_control_write
 
-Valentine Burley (3):
-      tu: Use the common version of vkGetBufferMemoryRequirements2
-      tu: Move buffer related code to tu_buffer.cc/h
-      tu: Use the common version of vkQueueBindSparse
+Timothy Arceri (1):
+      glsl: remove out of date TODO
+
+Vinson Lee (1):
+      panvk: Remove duplicate variable src_idx
+
+Yiwei Zhang (1):
+      vulkan: properly ignore unsupported feature structs
 
