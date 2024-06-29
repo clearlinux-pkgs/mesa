@@ -1,92 +1,23 @@
-Updating from 746f41e70514bcb896f90bd7c7e765e097902285 to d0151df32223506f9077391a1c457f30925c70cb
+Updating from d0151df32223506f9077391a1c457f30925c70cb to 68215332a8cd87d8109ee4c3b50e04df223d9c83
 
-Alyssa Rosenzweig (2):
-      nir: fix miscompiles with rules with INT32_MIN
-      nir/algebraic: explicitly suffix constants
+David Heidelberg (1):
+      build: pass licensing information in SPDX form
 
-Caio Oliveira (2):
-      intel/brw: Reorganize lowering of LocalID/Index to handle Mesh/Task
-      anv: Use brw_nir_lower_cs_intrinsics for lowering Mesh/Task LocalID
-
-Connor Abbott (1):
-      freedreno: Fix RBBM_NC_MODE_CNTL variants
-
-David Rosca (2):
-      gallium/vl: Init shaders on first use
-      frontends/va: Don't require exact match for packed headers
-
-Dylan Baker (1):
-      intel/compiler: move predicated_break out of backend loop
-
-Eric Engestrom (2):
-      panfrost/ci: drop duplicate job rules
-      panfrost/ci: split gl & vk jobs rules
-
-Jesse Natalie (4):
-      d3d12: Use GetResourceAllocationInfo instead of GetCopyableFootprints for residency sizes
-      nir: Remove assert-only variable by inlining its single use
-      zink: Add ASSERTED to assert-only local variable
-      mesa: Add ASSERTED to assert-only local variable
-
-Jordan Justen (1):
-      intel/brw: Retype some regs to BRW_TYPE_UD for Xe2 indirect accesses
-
-José Expósito (1):
-      llvmpipe: Init eglQueryDmaBufModifiersEXT num_modifiers
-
-Juan A. Suarez Romero (1):
-      ci: disable Igalia farm
-
-Karol Herbst (1):
-      meson: rename with_gallium_opencl to with_gallium_clover
-
-Konstantin Seurer (8):
-      vulkan: Handle group stages in vk_.*_access2_for_pipeline_stage_flags2
-      vulkan: Add vk_expand_(dst|src)_access_flags2
-      radv: Use vk_expand_(src|dst)_access_flags2
-      radv: Remove no-op access flag handling
-      radv: Remove handling for expanded access flags
-      radv: Remove write access handling from radv_dst_access_flush
-      radv: Handle AS access bits like shader storage access bits
-      radv: Refactor radv_(dst|src)_access_flush
-
-Luc Ma (2):
-      gallium: properly propagate the usage of resource
-      gallium: inline trivial needs_pack()
-
-Maaz Mombasawala (1):
-      svga: Replace shared surface flag and simplify surface creation
-
-Mike Blumenkrantz (1):
-      zink: add a driver workaround to disable 2D_VIEW_COMPATIBLE+sparse
-
-Neha Bhende (1):
-      svga: Retrieve stride info from hwtnl->cmd.vdecl for swtnl draws
-
-Patrick Lerda (1):
-      clover: fix meson opencl-spirv option
-
-Rémi Bernon (1):
-      zink: Add VKAPI_PTR specifier to generated stub functions.
-
-Sagar Ghuge (1):
-      intel/compiler: Don't use half float param for sample_b
-
-Samuel Pitoiset (13):
-      radv: fix incorrect cache flushes before decompressing DCC on compute
-      radv: improve clarity of DGC offset computations
-      radv: pre-compute the base upload offset in radv_prepare_dgc()
-      radv: add a helper that determines if DGC uses task shaders
-      radv: split allocating and emitting push constants with DGC
-      radv: rework emitting push constants with DGC
-      radv: reserve space for push constants in the DGC ACE IB
-      radv: adjust the base upload offset when DGC uses task shaders
-      radv: emit push constant for task shaders with DGC
-      radv: disable conditional rendering with DGC and task shaders
-      radv: fix a synchronization issue with non-preprocessed DGC with task shader
-      radv: enable task shaders support with NV DGC
-      radv: suspend user conditional rendering when DGC has task shaders
+José Roberto de Souza (13):
+      intel: Sync xe_drm.h
+      intel/perf: Implement function that returns OA format for Xe KMD
+      intel/perf: Add function to check if OA/perf is supported by Xe KMD
+      intel/perf: Replace i915_perf_version and i915_query_supported by a feature bitmask
+      intel/perf: Refactor and add Xe KMD support to add and remove configs
+      intel/perf: Add Xe KMD perf stream open function
+      intel/perf: Refactor and add Xe KMD support to enable and disable perf stream
+      intel/perf: Refactor and add Xe KMD support to change stream metrics id
+      tool/pps: Add Xe KMD support
+      intel/perf: Remove i915_drm.h includes from common code
+      intel/perf: Implement Xe KMD perf stream read
+      anv: Implement Xe KMD query pools
+      intel/perf: Enable perf on Xe KMD
 
 Sushma Venkatesh Reddy (1):
-      drm-uapi: Sync i915_drm.h with a78313bb206e
+      anv/drirc: add option to provide low latency hint
 
