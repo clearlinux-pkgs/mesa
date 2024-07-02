@@ -1,23 +1,97 @@
-Updating from d0151df32223506f9077391a1c457f30925c70cb to 68215332a8cd87d8109ee4c3b50e04df223d9c83
+Updating from 68215332a8cd87d8109ee4c3b50e04df223d9c83 to de0d237ab0ba55ecb2dd3dfd4b28152c2963f022
 
-David Heidelberg (1):
-      build: pass licensing information in SPDX form
+Dylan Baker (1):
+      anv/grl: add some validation that we're not going to overflow
 
-José Roberto de Souza (13):
-      intel: Sync xe_drm.h
-      intel/perf: Implement function that returns OA format for Xe KMD
-      intel/perf: Add function to check if OA/perf is supported by Xe KMD
-      intel/perf: Replace i915_perf_version and i915_query_supported by a feature bitmask
-      intel/perf: Refactor and add Xe KMD support to add and remove configs
-      intel/perf: Add Xe KMD perf stream open function
-      intel/perf: Refactor and add Xe KMD support to enable and disable perf stream
-      intel/perf: Refactor and add Xe KMD support to change stream metrics id
-      tool/pps: Add Xe KMD support
-      intel/perf: Remove i915_drm.h includes from common code
-      intel/perf: Implement Xe KMD perf stream read
-      anv: Implement Xe KMD query pools
-      intel/perf: Enable perf on Xe KMD
+Eric Engestrom (1):
+      radeonsi/ci: mark test as fixed
 
-Sushma Venkatesh Reddy (1):
-      anv/drirc: add option to provide low latency hint
+Erik Faye-Lund (5):
+      docs/panfrost: fix numbered list
+      docs/panfrost: fix math-notation
+      docs/panfrost: use math-role more
+      docs/panfrost: use c:func-role for function
+      docs/panfrost: quote identifiers
+
+Juan A. Suarez Romero (13):
+      broadcom/compiler: use unsigned types when performing bitshifting
+      v3dv: do not access member of a NULL structure
+      v3dv: do not pass NULL pointer to function not expecting NULLs
+      v3dv: restrict to channels when encoding border color
+      v3dv: fix misalignment in descriptor layout structure
+      v3d: do not access member of a NULL structure
+      v3d: do not pass NULL pointer to function not expecting NULLs
+      vc4: use unsigned types when performing bitshifting
+      vc4: do not access member of a NULL structure
+      vc4: do not pass NULL pointer to function not expecting NULLs
+      vc4: do not create 0-bytes variable length arrays
+      vc4: fix out-of-bounds access to array
+      Revert "ci: disable Igalia farm"
+
+Kenneth Graunke (1):
+      intel/brw: Add a lower_csel pass and allow building it for all types
+
+Lionel Landwerlin (5):
+      anv: add a protected scratch pool
+      anv: prepare 2 variants of all shader instructions
+      anv: allocate compute scratch using the right scratch pool
+      anv: emit the right shader instruction for protected mode
+      anv: workaround flaky xfb query results on Gfx11
+
+Luc Ma (1):
+      meson: Build pipe-loader when build-tests is true
+
+Michel Dänzer (1):
+      dri: Go back to hard-coded list of RGBA formats
+
+Mike Blumenkrantz (4):
+      zink: free sparse page for miptail on uncommit
+      zink: remove adreno from broken_cache_semantics driver workaround
+      egl: deduplicate MESA_image_dma_buf_export enablement
+      egl: only enable MESA_image_dma_buf_export with PIPE_CAP_DMABUF
+
+Paulo Zanoni (1):
+      anv: LNL+ doesn't need the special flush for sparse
+
+Renato Pereyra (1):
+      intel/perf: Move sysmacros.h include from header to implementation
+
+Rhys Perry (10):
+      aco: use s_pack_ll_b32_b16 for pack_32_2x16_split
+      aco: combine extracts into s_pack_ll_b32_b16
+      aco: use s_pack_*_b32_b16 more in p_insert/p_extract lowering
+      aco: turn split(vec()) into p_parallelcopy instead of p_create_vector
+      aco: add missing isConstant()/isTemp() checks
+      aco: fix follow_operand with combined label_extract and label_split
+      aco: use alignment information in visit_load_constant()
+      aco: fix wmma raw hazard
+      aco: replace constant v_bfrev_b32 with v_mov_b32 to create vopd
+      aco/gfx11: don't use v_bfrev_b32 with wave64
+
+Sagar Ghuge (1):
+      intel/compiler: Add indirect mov lowering pass
+
+Samuel Pitoiset (10):
+      radv: rename radv_get_user_sgpr() to radv_get_user_sgpr_info()
+      radv: add radv_get_user_sgpr{_loc}() helpers
+      radv: use radv_get_user_sgpr_loc() for the GS copy shader too
+      radv: remove unused parameter to dgc_emit_draw_mesh_tasks_ace()
+      radv: do not emit compute userdata for empty dispatches
+      radv: cleanup using vtx_base_sgpr for userdata with DGC
+      radv: use radv_dgc_with_task_shader() more
+      radv: move radv_CmdPreprocessGeneratedCommandsNV() to radv_cmd_buffer.c
+      radv: use the graphics pipeline from the DGC info
+      radv: use radv_get_user_sgpr() more in DGC
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's farm due to maintenance
+      Revert "ci: disable Collabora's farm due to maintenance"
+
+Valentine Burley (6):
+      tu: Use vk_buffer_view
+      tu: Drop tu_buffer_view_init helper function
+      tu: Move buffer view related code to tu_buffer_view.cc/h
+      tu: Rename tu_query.cc/h to tu_query_pool.cc/h
+      tu: Use the common versions of vkBegin/EndQuery()
+      tu: Use vk_query_pool
 
