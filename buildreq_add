@@ -46,3 +46,9 @@ rustc
 rustc-extras-lib32
 rust-bindgen
 cbindgen
+libepoxy-dev
+pkgconfig(32epoxy)
+pkgconfig(epoxy)
+pkgconfig(gtk+-3.0)
+pkgconfig(valgrind)
+valgrind
