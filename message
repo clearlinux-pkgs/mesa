@@ -1,5 +1,5 @@
-Updating from eab5b453cd4ff5ff1f5d056f7a1fdb0cd7a6543e to fed08a4ac854bab8a7ea8549679093272df4d65b
+Updating from fed08a4ac854bab8a7ea8549679093272df4d65b to af15cceff44d7ecc234fe61d2d81bf811c9e2e66
 
-Sil Vilerino (1):
-      Fix definitions of PIPE_BIND_VIDEO_DECODE/ENCODE_DPB as they conflict with PIPE_BIND_SCANOUT and PIPE_BIND_SHARED
+Mohamed Ahmed (1):
+      nvk: Use stride in the explicit modifier case for linear images
 
