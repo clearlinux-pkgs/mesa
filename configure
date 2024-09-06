@@ -1,13 +1,13 @@
 -Dplatforms=wayland,x11
--Ddri3=enabled
+-Dglx=dri
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12
 -Dcpp_std=gnu++17
 -Dgallium-va=enabled
 -Dgallium-xa=enabled
 -Dgallium-opencl=icd
--Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,swrast,nouveau
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau
 -Dshared-glapi=enabled
--Dglvnd=true
+-Dglvnd=enabled
 -Dllvm=enabled
 -Dshared-llvm=enabled
 -Dselinux=false

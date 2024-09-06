@@ -1,7 +1,0 @@
-24.1+3155.gde0d237ab0b
-libepoxy-dev
-pkgconfig(32epoxy)
-pkgconfig(epoxy)
-pkgconfig(gtk+-3.0)
-pkgconfig(valgrind)
-valgrind

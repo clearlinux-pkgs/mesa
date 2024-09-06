@@ -39,7 +39,9 @@ llvm-staticdev
 nasm
 yasm
 SPIRV-Tools-dev
+SPIRV-Tools-dev32
 pypi-ply
+PyYAML
 libclc-dev
 mesa-bin
 rustc
