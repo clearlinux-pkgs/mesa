@@ -18,3 +18,4 @@
 -Dtools="intel-ui"
 -Dintel-clc=enabled
 -Dinstall-intel-clc=true
+-Dlegacy-x11=dri2
