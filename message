@@ -1,5 +1,22 @@
-Updating from af15cceff44d7ecc234fe61d2d81bf811c9e2e66 to 8bf75624163f5c2ce6316e9a78ad831ae002f65b
+Updating from 8bf75624163f5c2ce6316e9a78ad831ae002f65b to 1753bf599ccc9b499e810a18ae15d783ddde0571
 
-Boyuan Zhang (1):
-      radeonsi/vcn: fix loop filter across slices
+Alyssa Rosenzweig (18):
+      lima: set no_integers
+      etnaviv: set no_integers
+      freedreno/a2xx: set no_integers
+      svga: set no_integers
+      virgl: set no_integers
+      nir: use Horner's method for atan
+      nir: correct comment for atan range reduction
+      nir: simplify atan range reduction
+      nir: push down fabs for atan
+      nir: extend copysign for no-integer hw
+      nir: use copysign for atan
+      nir: simplify atan range reduction fixup
+      nir: negate an expression in atan
+      nir: fuse ffma for atan range fixup
+      nir: push up abs in atan2 calculation
+      nir: drop NaN fixup for atan
+      nir: CSE comparisons in atan2
+      ci: update traces
 
