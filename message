@@ -1,5 +1,5 @@
-Updating from fed08a4ac854bab8a7ea8549679093272df4d65b to af15cceff44d7ecc234fe61d2d81bf811c9e2e66
+Updating from af15cceff44d7ecc234fe61d2d81bf811c9e2e66 to 8bf75624163f5c2ce6316e9a78ad831ae002f65b
 
-Mohamed Ahmed (1):
-      nvk: Use stride in the explicit modifier case for linear images
+Boyuan Zhang (1):
+      radeonsi/vcn: fix loop filter across slices
 
