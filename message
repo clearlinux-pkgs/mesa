@@ -1,22 +1,19 @@
-Updating from 8bf75624163f5c2ce6316e9a78ad831ae002f65b to 1753bf599ccc9b499e810a18ae15d783ddde0571
+Updating from 1753bf599ccc9b499e810a18ae15d783ddde0571 to 2a5a12cb71b5d273283ede6df451aaf5fd59cfad
 
-Alyssa Rosenzweig (18):
-      lima: set no_integers
-      etnaviv: set no_integers
-      freedreno/a2xx: set no_integers
-      svga: set no_integers
-      virgl: set no_integers
-      nir: use Horner's method for atan
-      nir: correct comment for atan range reduction
-      nir: simplify atan range reduction
-      nir: push down fabs for atan
-      nir: extend copysign for no-integer hw
-      nir: use copysign for atan
-      nir: simplify atan range reduction fixup
-      nir: negate an expression in atan
-      nir: fuse ffma for atan range fixup
-      nir: push up abs in atan2 calculation
-      nir: drop NaN fixup for atan
-      nir: CSE comparisons in atan2
-      ci: update traces
+Caio Oliveira (1):
+      intel/executor: Small fixes to the help message
+
+David Rosca (3):
+      frontends/va: Parse more H264 PPS for transform_8x8_mode_flag
+      radeonsi/vcn: Stop hardcoding values in VCN version overrides
+      radeonsi/vcn: Add support for H264 8x8 transform on VCN5
+
+Marek Olšák (3):
+      ac: fix WAVES_PER_SH value for gfx12
+      ac/nir/meta: move the "skip compute if no DCC image stores" condition to common
+      ac,radeonsi: update comments related to the L2 cache, use "L2", not "TC"
+
+Mike Blumenkrantz (2):
+      ci: fix trace update script
+      ci: add --pipeline-url to trace update script
 
