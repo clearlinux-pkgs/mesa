@@ -1,19 +1,6 @@
-Updating from 1753bf599ccc9b499e810a18ae15d783ddde0571 to 2a5a12cb71b5d273283ede6df451aaf5fd59cfad
+Updating from 2a5a12cb71b5d273283ede6df451aaf5fd59cfad to 95d15406c4aa4ec46a132b53639ad340a7b57c5a
 
-Caio Oliveira (1):
-      intel/executor: Small fixes to the help message
-
-David Rosca (3):
-      frontends/va: Parse more H264 PPS for transform_8x8_mode_flag
-      radeonsi/vcn: Stop hardcoding values in VCN version overrides
-      radeonsi/vcn: Add support for H264 8x8 transform on VCN5
-
-Marek Olšák (3):
-      ac: fix WAVES_PER_SH value for gfx12
-      ac/nir/meta: move the "skip compute if no DCC image stores" condition to common
-      ac,radeonsi: update comments related to the L2 cache, use "L2", not "TC"
-
-Mike Blumenkrantz (2):
-      ci: fix trace update script
-      ci: add --pipeline-url to trace update script
+David Rosca (2):
+      radv/video: Don't use op_close in encode
+      radv/video: Don't use multiple tasks for one encode operation
 
