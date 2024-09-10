@@ -1,6 +1,103 @@
-Updating from 2a5a12cb71b5d273283ede6df451aaf5fd59cfad to 95d15406c4aa4ec46a132b53639ad340a7b57c5a
+Updating from 95d15406c4aa4ec46a132b53639ad340a7b57c5a to c5c349a690288c8f3a4caa888bea37cbb851d2f0
 
-David Rosca (2):
-      radv/video: Don't use op_close in encode
-      radv/video: Don't use multiple tasks for one encode operation
+Caio Oliveira (3):
+      spirv: Rename vtn_type::deref to vtn_type::pointed
+      spirv: Remove (pointed) type from vtn_pointer
+      spirv: Rename vtn_pointer::ptr_type to vtn_pointer::type
+
+Daniel Stone (16):
+      intel/tests: Reduce load from anv_tests
+      util/tests: Reduce load from sparse-array test
+      ci/angle: Clean up stray open-coded path
+      ci/lava: Fix path to structured logger
+      ci/lava: Make it easier to run pytest locally
+      ci/lava: Don't dump venv into .venv
+      ci/lava: Allow passing more args to pytest
+      ci/lava: Fix pytest not passing farm value
+      ci/lava: Fix fastboot tests
+      ci/alpine: Fix shellcheck errors
+      ci: Fix shellcheck warnings in firmware download
+      ci: Bring back yamllint and shellcheck
+      ci: Run pytest once for both LAVA and bin/ci
+      ci: Bring back shader-db and drop LTO
+      ci/intel-gpu-freq: Fix shellcheck warning
+      ci/vulkan: Backport dEQP commit to make it less OOMy
+
+Danylo Piliaiev (1):
+      ir3: Respect aligment of required consts when allocating ubo,preamble
+
+David Rosca (3):
+      ci: Disable building OMX driver
+      Remove OMX
+      docs: Remove OMX frontend
+
+Eric Engestrom (1):
+      docs: Fix linkcheck failures
+
+Georg Lehmann (1):
+      aco/ra: do not reuse killed vcc
+
+Jesse Natalie (1):
+      d3d12: Fix shader selector hash to hash array instead of pointer-to-array
+
+Jordan Justen (1):
+      intel/dev: Fix warning for max_threads_per_psd when devinfo->verx10 == 120
+
+Konstantin Seurer (3):
+      gallium,st/mesa: Add and set pipe_image_view::is_2d_view_of_3d
+      lavapipe: Implement VK_EXT_image_2d_view_of_3d with sparse textures
+      lavapipe: Do not adjust imageGranularity for different block sizes
+
+Lionel Landwerlin (1):
+      anv: selectively disable binding table usage on Gfx20
+
+Mary Guillemard (13):
+      panfrost: Update panfrost_drm.h
+      panfrost: Update panthor_drm.h
+      pan/kmod: Add timestamp uapi support
+      panfrost: Move occlusion query allocation to create_query
+      panfrost: Implement timer queries
+      docs: Mark timer queries as done on panfrost
+      panvk: Add atomic modifiers for r32 based formats
+      panvk: Reject SNORM only for color attachment and blend
+      panvk: Return proper buffer format feature flags
+      pan/lib: Simplify pan_blitter
+      panvk: Include new failures from VKCTS 1.3.9.1
+      panvk: Ensure to clear dirty dynamic state in panvk_cmd_draw
+      mr-label-maker: Add panvk
+
+Nanley Chery (1):
+      intel/isl: Always set EnableUnormPathInColorPipe
+
+Pierre-Eric Pelloux-Prayer (6):
+      gallium/ddebug: implement modifiers function
+      gallium/ddebug: implement set_inlinable_constants
+      gallium/ddebug: fix sampler_states handling
+      gallium: add pipe_screen::get_driver_pipe_screen
+      radeonsi: add si_screen helper
+      kopper, dri: remove trace_screen_unwrap
+
+Rohan Garg (2):
+      anv: enable the VK_KHR_shader_relaxed_extended_instruction feature
+      hasvk: enable VK_KHR_shader_relaxed_extended_instruction
+
+Samuel Pitoiset (1):
+      radv: disable shaders linking with ESO when nextStage of VS/TES isn't present
+
+Sid Pranjale (1):
+      glx: add a missing nullptr check
+
+Sil Vilerino (3):
+      d3d12: Fix setting of direct_8x8_inference_flag in the SPS
+      d3d12: Plumb constrained_intra_pred_flag and transform_8x8_mode_flag from pipe_h264_enc_pic_control
+      d3d12: Set HEVC GOP state before calling d3d12_video_encoder_negotiate_requested_features_and_d3d12_driver_caps
+
+Sviatoslav Peleshko (1):
+      brw: Fix mov cmod propagation when there's int signedness mismatch
+
+Vignesh Raman (1):
+      ci/deqp-runner: pass EXTRA_CARGO_ARGS
+
+Yinjie Yao (1):
+      radeonsi/vcn: Add support for QVBR rate control mode for VCN5
 
