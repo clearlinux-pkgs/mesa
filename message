@@ -1,103 +1,114 @@
-Updating from 95d15406c4aa4ec46a132b53639ad340a7b57c5a to c5c349a690288c8f3a4caa888bea37cbb851d2f0
+Updating from c5c349a690288c8f3a4caa888bea37cbb851d2f0 to 7ebb2d1dc8c244fd7e229634ce840995e2ababf9
 
-Caio Oliveira (3):
-      spirv: Rename vtn_type::deref to vtn_type::pointed
-      spirv: Remove (pointed) type from vtn_pointer
-      spirv: Rename vtn_pointer::ptr_type to vtn_pointer::type
+Bernhard Rosenkränzer (1):
+      dril: Fix return types of peglInitialize and peglTerminate
 
-Daniel Stone (16):
-      intel/tests: Reduce load from anv_tests
-      util/tests: Reduce load from sparse-array test
-      ci/angle: Clean up stray open-coded path
-      ci/lava: Fix path to structured logger
-      ci/lava: Make it easier to run pytest locally
-      ci/lava: Don't dump venv into .venv
-      ci/lava: Allow passing more args to pytest
-      ci/lava: Fix pytest not passing farm value
-      ci/lava: Fix fastboot tests
-      ci/alpine: Fix shellcheck errors
-      ci: Fix shellcheck warnings in firmware download
-      ci: Bring back yamllint and shellcheck
-      ci: Run pytest once for both LAVA and bin/ci
-      ci: Bring back shader-db and drop LTO
-      ci/intel-gpu-freq: Fix shellcheck warning
-      ci/vulkan: Backport dEQP commit to make it less OOMy
+Caio Oliveira (6):
+      vulkan: Update XML and headers to 1.3.295
+      spirv: Update headers and metadata from latest Khronos commit
+      spirv: Prefer symbols from Khronos extension for compute shader derivatives
+      nir: Allow Mesh/Task to use implicit LOD when DERIVATIVE_GROUP is set
+      spirv: Allow Mesh/Task to use derivative execution modes
+      anv: Advertise VK_KHR_compute_shader_derivatives
 
-Danylo Piliaiev (1):
-      ir3: Respect aligment of required consts when allocating ubo,preamble
+Christian Gmeiner (1):
+      etnaviv: Drop assignment of get_timestamp
 
-David Rosca (3):
-      ci: Disable building OMX driver
-      Remove OMX
-      docs: Remove OMX frontend
+Daniel Schürmann (4):
+      aco/live_var_analysis: Don't attempt to re-insert the same temporary twice into live set
+      aco: introduce new Operand flag 'Clobbered'
+      aco/live_var_analysis: use Clobbered flag to calculate additional operand demand
+      aco: introduce Operand flag 'CopyKill'
 
-Eric Engestrom (1):
-      docs: Fix linkcheck failures
+Dave Airlie (2):
+      vl/bitstream: use an int32_t for se encoding.
+      radv/anv/video: handling encoding both sps and pps in same buffer
 
-Georg Lehmann (1):
-      aco/ra: do not reuse killed vcc
+David Heidelberg (1):
+      nir_lower_mem_access_bit_sizes: Assert when 0 components or bits are requested
 
-Jesse Natalie (1):
-      d3d12: Fix shader selector hash to hash array instead of pointer-to-array
+David Rosca (8):
+      glx: Destroy base screen after deinitScreen
+      pipe: Add pipe_h264_nal_unit_type and pipe_h265_nal_unit_type enums
+      frontends/va: Support raw packed headers for H264 and HEVC
+      frontends/va: Allow multiple NALUs in coded buffer segments
+      radeonsi/vcn: Support raw packed headers for H264 and HEVC
+      radeonsi: Remove unused radeon_temporal.h
+      radeonsi/vcn: Don't copy the pipe enc structs
+      pipe: Remove video enc header_flags
 
-Jordan Justen (1):
-      intel/dev: Fix warning for max_threads_per_psd when devinfo->verx10 == 120
+Erik Faye-Lund (3):
+      mesa/main: add gles-compatible check helpers
+      mesa/main: tighten glsl-version checks
+      mesa/main: tighten gl-version checks
 
-Konstantin Seurer (3):
-      gallium,st/mesa: Add and set pipe_image_view::is_2d_view_of_3d
-      lavapipe: Implement VK_EXT_image_2d_view_of_3d with sparse textures
-      lavapipe: Do not adjust imageGranularity for different block sizes
+Faith Ekstrand (5):
+      nak: Add a NAK_SUBGROUP_SIZE #define
+      nak: Move subgroup_id and num_subgroups to lower_system_values
+      nak: Shuffle gl_LocalInvocationID for quad derivatives
+      nvk: Advertise VK_NV/KHR_compute_shader_derivatives
+      nvk: Only advertise compute_shader_derivatives when NAK is used
 
-Lionel Landwerlin (1):
-      anv: selectively disable binding table usage on Gfx20
+Ian Romanick (1):
+      nir/algebraic: Optimize more comparisons with b2f
 
-Mary Guillemard (13):
-      panfrost: Update panfrost_drm.h
-      panfrost: Update panthor_drm.h
-      pan/kmod: Add timestamp uapi support
-      panfrost: Move occlusion query allocation to create_query
-      panfrost: Implement timer queries
-      docs: Mark timer queries as done on panfrost
-      panvk: Add atomic modifiers for r32 based formats
-      panvk: Reject SNORM only for color attachment and blend
-      panvk: Return proper buffer format feature flags
-      pan/lib: Simplify pan_blitter
-      panvk: Include new failures from VKCTS 1.3.9.1
-      panvk: Ensure to clear dirty dynamic state in panvk_cmd_draw
-      mr-label-maker: Add panvk
+Iván Briano (1):
+      anv: be consistent about aux usage with modifiers
 
-Nanley Chery (1):
-      intel/isl: Always set EnableUnormPathInColorPipe
+Jiale Zhao (1):
+      llvmpipe: add loongarch util_get_cpu_caps function
 
-Pierre-Eric Pelloux-Prayer (6):
-      gallium/ddebug: implement modifiers function
-      gallium/ddebug: implement set_inlinable_constants
-      gallium/ddebug: fix sampler_states handling
-      gallium: add pipe_screen::get_driver_pipe_screen
-      radeonsi: add si_screen helper
-      kopper, dri: remove trace_screen_unwrap
+Karol Herbst (10):
+      rusticl/kernel: move dead_var options into constant space
+      rusticl/platform: add env variable to disable kernel variants
+      rusticl/mesa: add more workgroup_Size functions to NirShader
+      rusticl/mesa: implement Clone for NirShader
+      rusticl/kernel: move assign_locations into CompiledKernelArg
+      rusticl/kernel: split up nir compilation into various steps
+      rusticl/kernel: track if arg is dead inside CompiledKernelArg
+      rusticl/kernel: add CompilationResult to hold compilation artifacts
+      rusticl/kernel: add optimized Kernel variant
+      rusticl: add nir debugging option
 
-Rohan Garg (2):
-      anv: enable the VK_KHR_shader_relaxed_extended_instruction feature
-      hasvk: enable VK_KHR_shader_relaxed_extended_instruction
+Mike Blumenkrantz (1):
+      zink: delete erroneous kopper assert
 
-Samuel Pitoiset (1):
-      radv: disable shaders linking with ESO when nextStage of VS/TES isn't present
+Pavel Ondračka (3):
+      ttn: use nir_shader_get_entrypoint in nir_shader_gather_info
+      ttn: unconditionally call nir_shader_gather_info
+      r300: remove nir_opt_load_store_vectorize
 
-Sid Pranjale (1):
-      glx: add a missing nullptr check
+Pierre-Eric Pelloux-Prayer (1):
+      frontends/va: honor DRI_PRIME for VA_DISPLAY_WAYLAND
 
-Sil Vilerino (3):
-      d3d12: Fix setting of direct_8x8_inference_flag in the SPS
-      d3d12: Plumb constrained_intra_pred_flag and transform_8x8_mode_flag from pipe_h264_enc_pic_control
-      d3d12: Set HEVC GOP state before calling d3d12_video_encoder_negotiate_requested_features_and_d3d12_driver_caps
+Samuel Pitoiset (21):
+      Revert "radv: specialize push constant stages with DGC"
+      vulkan: Update XML and headers to 1.3.294
+      vulkan: skip the disk cache when disableInternalCache is true
+      radv: rework helpers for serialize/deserialize shaders
+      radv: store the SHA1 RT stage to the shaders cache
+      radv: store the number of RT stages per pipeline to the shaders cache
+      radv: store whether a RT pipeline is a library to the shaders cache
+      radv: make pipeline hashing functions non-static
+      radv: disable the in-memory cache when disableInternalCache is true
+      radv: add initial support for pipeline binaries
+      radv: add support for capturing pipeline binaries
+      radv: add support for importing pipeline binaries
+      radv: advertise VK_KHR_pipeline_binary
+      radv: rework emitting indirect compute pipelines with DGC
+      radv: cleanup some functions that emit shader user SGPRs
+      radv: store the indirect descriptor sets VA to the descriptor state
+      radv: rename radv_emit_descriptor_pointers() to radv_emit_descriptors_per_stage()
+      radv: unify emitting non-indirect/indirect descriptor sets
+      radv: make the helper that uploads indirect descriptors non-static
+      radv: stop allocating upload space for indirect descriptors with DGC
+      radv: use radv_upload_indirect_descriptor_sets() in DGC
 
-Sviatoslav Peleshko (1):
-      brw: Fix mov cmod propagation when there's int signedness mismatch
-
-Vignesh Raman (1):
-      ci/deqp-runner: pass EXTRA_CARGO_ARGS
-
-Yinjie Yao (1):
-      radeonsi/vcn: Add support for QVBR rate control mode for VCN5
+Sil Vilerino (6):
+      d3d12: Support for on demand vps, sps, pps, aud headers requests from frontend
+      pipe: Remove renew_headers_on_idr, insert_aud_nalu unused params
+      d3d12: Add HEVC support for on demand AUD NALUS
+      pipe: Add HEVC encode range extension caps, SPS and PPS params
+      d3d12: Add support for HEVC 4:4:4 video encode using AYUV format
+      d3d12: Add support for HEVC range extension header parameters
 
