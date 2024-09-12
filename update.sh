@@ -35,7 +35,7 @@ echo "ARCHVES = https://static.crates.io/crates/paste/paste-1.0.14.crate ./subpr
 echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
-make autospec
+make autospec CLEANUP=1
 git commit --amend -F message || :
 make koji
 nvr=$(rpmspec --srpm --query --queryformat='%{NVR}\n' mesa.spec)

@@ -2616,6 +2616,7 @@ libOSMesa.so.8:glWindowPos3s
 libOSMesa.so.8:glWindowPos3sARB
 libOSMesa.so.8:glWindowPos3sv
 libOSMesa.so.8:glWindowPos3svARB
+libgallium-24.3.0-devel.so:__vaDriverInit_1_22@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:ac_init_shared_llvm_once@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:amdgpu_winsys_create@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:ddebug_screen_create@@libgallium-24.3.0-devel.so
@@ -2714,6 +2715,7 @@ libgallium-24.3.0-devel.so:nouveau_drm_screen_create@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:radeon_drm_winsys_create@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:trace_screen_create@@libgallium-24.3.0-devel.so
 libgallium-24.3.0-devel.so:util_run_tests@@libgallium-24.3.0-devel.so
+libgallium-24.3.0-devel.so:vdp_imp_device_create_x11@@libgallium-24.3.0-devel.so
 libgbm.so.1:gbm_bo_create
 libgbm.so.1:gbm_bo_create_with_modifiers
 libgbm.so.1:gbm_bo_create_with_modifiers2
