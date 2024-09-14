@@ -1,71 +1,47 @@
-Updating from 7ebb2d1dc8c244fd7e229634ce840995e2ababf9 to 97624f99a141486267a9cdddfdb8d27353efac89
+Updating from 82946dc152e7b55d12b942e8060e695033ac1610 to c5ee7ca4d612d585abdbe46eeb6cce1aa5ad5b35
 
-Boris Brezillon (28):
-      pan/cs: Make sure we're not passed cs_now() to asynchronous instructions
-      pan/cs: Accept val=undef when cs_branch_label() condition is ALWAYS
-      pan/cs: Add helpers to emit match (AKA switch-case) blocks
-      pan/cs: Allow sparse register set passed to loads/stores
-      pan/cs: Add an optional load/store tracker to make sure we don't omit waits
-      pan/cs: Add inline specifiers to a bunch of cs_ helpers
-      pan/cs: Add a facility to restrict register access
-      pan/kmod: Don't cap VM bind operations to one
-      pan/desc: Add a struct for valhall/bifrost to the union in pan_tiler_context
-      pan/desc: Make vertex_count a Midgard field
-      panvk: Fix the varying pool label
-      panvk: Kill the set_dirty() macro
-      panvk: Drop the NO_MMAP flag when PANVK_DEBUG=trace
-      panvk: Fix valhall_pack_buf_idx()
-      panvk: Don't open-code vk_index_type_to_bytes()
-      panvk: Don't make panvk_device size gen dependent
-      panvk: Make sure push sets are reset when picked from the CommandPool
-      panvk: Prepare the panvk_device logic for CSF
-      panvk: Set the submit mode to THREADED_ON_DEMAND
-      panvk: Move Cmd{Bind,Push}DescriptorSets implementation to cmd_desc_state.c
-      panvk: Move cmd_bind_shaders() to panvk_vX_shader.c
-      panvk: Move CmdPushConstants2KHR to panvk_vX_cmd_push_constant.c
-      panvk: Be robust against allocation failures in a command buffer context
-      panvk: Don't pretend we can compile for v9
-      panvk: Transition to explicit VA assignment on v10+
-      panvk: Add a read-write non-cached memory pool for CSF events
-      panvk: Add a CSF backend for panvk_queue/cmd_buffer
-      panvk: Advertize v10 support
+Daniel Stone (16):
+      ci/virgl: Special-case llvmpipe parallelisation
+      ci: Avoid subshell for executing HWCI_TEST_SCRIPT
+      ci/bare-metal: Don't move structured log file
+      ci: Always create results dir from init
+      ci/android: Use common $RESULTS_DIR for cuttlefish
+      ci/deqp: Use common $RESULTS_DIR
+      ci/dxvk: Use common results dir
+      ci/piglit: Use common $RESULTS_DIR
+      ci/trace: Move trace cleanup to Piglit runner
+      ci/gtest: Use common $RESULTS_DIR
+      ci/kdl: Use common $RESULTS_DIR
+      ci/devcoredump: Use common $RESULTS_DIR
+      ci/xorg: Capture Xorg log in results artifacts
+      ci/kdl: Fix KDL install location
+      ci: Upgrade ci-kdl
+      ci: Use new arguments to ci-kdl to avoid child management
 
-Daniel Schürmann (2):
-      radv: promote VK_NV_compute_shader_derivatives -> VK_KHR_compute_shader_derivatives
-      aco/live_var_analysis: don't set lateKill for p_interp_gfx11 m0 operand
+David Heidelberg (2):
+      ci/freedreno: move disabled a530 entries back to main gitlab-ci.yml
+      ci/freedreno: mark jobs to be retested with patched 6.11 kernel
 
-Dave Airlie (3):
-      radv: Fix radeon_enc_code_ue with values over 2^16
-      radv/video: fix encode reference slot counting
-      radv/video/enc: report pps overrides in feedback for h265
+Dylan Baker (2):
+      iris: Run checks that do not require resources before creating them
+      anv: if queue is NULL in vm_bind return early
 
-David Heidelberg (1):
-      freedreno/ir3: Use nir_lower_mem_access_bit_sizes instead custom lowering
+Faith Ekstrand (1):
+      vulkan: Handle variable-length property arrays more generically
 
-David Rosca (3):
-      meson/megadriver: Add megadriver_libdir argument
-      targets/va: Build va driver into libgallium when building with dri
-      targets/vdpau: Build vdpau driver into libgallium when building with dri
+Jami Kettunen (1):
+      nouveau/headers: Fix build without rustfmt
 
-Eric R. Smith (1):
-      panfrost: improve swizzle inversion
+Konstantin Seurer (1):
+      radv: Work around broken terrain in Warhammer III
 
-Martin Roukala (né Peres) (3):
-      radv/ci: document more vkcts flakes
-      zink/ci: document more flakes
-      radv/ci: run vkcts-navi31-valve pre-merge
+Lucas Stach (5):
+      etnaviv: emit all PA shader attributes
+      etnaviv: support more VS outputs on halti5 GPUs
+      etnaviv: fix total varying count assertion
+      etnaviv: validate number of VS outputs against GPU limit
+      etnaviv: limit number of varyings to fit into VS outputs
 
-Mike Blumenkrantz (3):
-      zink: set resolve layout when inferring scanout resolves
-      zink: stop leaking inferred resolve surfaces
-      zink: fix sparse bo deallocation
-
-Nanley Chery (1):
-      anv,iris: Pack depth pixels into initialized arrays
-
-Rebecca Mckeever (1):
-      panvk: Add VkEvent support to the CSF backend
-
-Sviatoslav Peleshko (1):
-      mesa: Reset vbo attributes after flushing them to Current in glPopAttrib
+llyyr (1):
+      vulkan/wsi/wayland: fix suboptimal flag being ignored with explicit sync
 
