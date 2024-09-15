@@ -1,47 +1,41 @@
-Updating from 82946dc152e7b55d12b942e8060e695033ac1610 to c5ee7ca4d612d585abdbe46eeb6cce1aa5ad5b35
+Updating from c5ee7ca4d612d585abdbe46eeb6cce1aa5ad5b35 to 46b561b7cd703a438b4cffc213c9ef3162acf264
 
-Daniel Stone (16):
-      ci/virgl: Special-case llvmpipe parallelisation
-      ci: Avoid subshell for executing HWCI_TEST_SCRIPT
-      ci/bare-metal: Don't move structured log file
-      ci: Always create results dir from init
-      ci/android: Use common $RESULTS_DIR for cuttlefish
-      ci/deqp: Use common $RESULTS_DIR
-      ci/dxvk: Use common results dir
-      ci/piglit: Use common $RESULTS_DIR
-      ci/trace: Move trace cleanup to Piglit runner
-      ci/gtest: Use common $RESULTS_DIR
-      ci/kdl: Use common $RESULTS_DIR
-      ci/devcoredump: Use common $RESULTS_DIR
-      ci/xorg: Capture Xorg log in results artifacts
-      ci/kdl: Fix KDL install location
-      ci: Upgrade ci-kdl
-      ci: Use new arguments to ci-kdl to avoid child management
-
-David Heidelberg (2):
-      ci/freedreno: move disabled a530 entries back to main gitlab-ci.yml
-      ci/freedreno: mark jobs to be retested with patched 6.11 kernel
-
-Dylan Baker (2):
-      iris: Run checks that do not require resources before creating them
-      anv: if queue is NULL in vm_bind return early
-
-Faith Ekstrand (1):
-      vulkan: Handle variable-length property arrays more generically
-
-Jami Kettunen (1):
-      nouveau/headers: Fix build without rustfmt
-
-Konstantin Seurer (1):
-      radv: Work around broken terrain in Warhammer III
-
-Lucas Stach (5):
-      etnaviv: emit all PA shader attributes
-      etnaviv: support more VS outputs on halti5 GPUs
-      etnaviv: fix total varying count assertion
-      etnaviv: validate number of VS outputs against GPU limit
-      etnaviv: limit number of varyings to fit into VS outputs
-
-llyyr (1):
-      vulkan/wsi/wayland: fix suboptimal flag being ignored with explicit sync
+Marek Olšák (37):
+      radeonsi/gfx12: remove CP DMA workarounds because CP DMA is never used on gfx12
+      radeonsi/gfx12: disallow DCC for protected content
+      radeonsi/gfx11: disable RB+ when blending
+      radeonsi: use better OREO_MODE programming
+      radeonsi: tweak si_test_dma_perf for better experience
+      radeonsi: add a new PM4 helper radeon_event_write
+      radeonsi: remove SI_CONTEXT_VGT_STREAMOUT_SYNC, emit it directly
+      radeonsi: add ACQUIRE_MEM, RELEASE_MEM PWS packet helpers
+      radeonsi: add si_cp_acquire_mem helper and clean up its usage for gfx6-9
+      radeonsi: add gfx10+ support into si_cp_acquire_mem
+      radeonsi: use the correct cs for SQTT barriers for gfx9
+      radeonsi: add si_cp_pfp_sync_me
+      radeonsi: remove unused size parameter from get_cache_policy
+      radeonsi: don't use get_cache_policy in si_launch_grid_internal_ssbos
+      radeonsi: move get_cache_policy into si_cp_dma.c
+      radeonsi: don't use SI_COHERENCY_NONE in si_compute_shorten_ubyte_buffer
+      radeonsi: don't use SI_COHERENCY_CB_META
+      radeonsi: don't use SI_COHERENCY_CP
+      radeonsi: remove all SI_COHERENCY_* flags except SI_COHERENCY_SHADER
+      radeonsi: remove enum si_coherency
+      radeonsi: don't use si_get_flush_flags in si_launch_grid_internal_ssbos
+      radeonsi: move enum si_cache_policy and si_get_flush_flags into si_cp_dma.c
+      radeonsi: remove L2_STREAM enum
+      radeonsi: replace enum si_cache_policy with cp_dma_has_L2()
+      radeonsi: inline si_get_flush_flags
+      radeonsi: split si_launch_grid_internal to start preparing for barrier rework
+      radeonsi: move compute barrier calls up one level
+      radeonsi: move barrier code out of si_launch_grid_internal_ssbos/images
+      radeonsi: skip no-op si_compute_blit()
+      radeonsi: only set need_check_render_feedback if binding textures for PS
+      radeonsi: split image saving/binding/restoring from si_launch_grid_internal_images
+      radeonsi: do init/deinit for multi-dispatch compute blits only once
+      radeonsi: don't flag both VS and PS partial flush in si_barrier_before_internal_op
+      radeonsi: remove CP DMA code for GDS & L2 prefetch in the clear/copy_buffer path
+      radeonsi: use si_barrier_{before,after}_internal_op for CP DMA
+      radeonsi: remove SI_OP_SYNC_CPDMA_BEFORE, always sync CP DMA
+      radeonsi: fold si_improve_sync_flags logic into si_barrier_before_internal_op
 
