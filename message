@@ -1,41 +1,24 @@
-Updating from c5ee7ca4d612d585abdbe46eeb6cce1aa5ad5b35 to 46b561b7cd703a438b4cffc213c9ef3162acf264
+Updating from 46b561b7cd703a438b4cffc213c9ef3162acf264 to 9aa9f7211e681e4f2c77f6775f8a60b894f52d76
 
-Marek Olšák (37):
-      radeonsi/gfx12: remove CP DMA workarounds because CP DMA is never used on gfx12
-      radeonsi/gfx12: disallow DCC for protected content
-      radeonsi/gfx11: disable RB+ when blending
-      radeonsi: use better OREO_MODE programming
-      radeonsi: tweak si_test_dma_perf for better experience
-      radeonsi: add a new PM4 helper radeon_event_write
-      radeonsi: remove SI_CONTEXT_VGT_STREAMOUT_SYNC, emit it directly
-      radeonsi: add ACQUIRE_MEM, RELEASE_MEM PWS packet helpers
-      radeonsi: add si_cp_acquire_mem helper and clean up its usage for gfx6-9
-      radeonsi: add gfx10+ support into si_cp_acquire_mem
-      radeonsi: use the correct cs for SQTT barriers for gfx9
-      radeonsi: add si_cp_pfp_sync_me
-      radeonsi: remove unused size parameter from get_cache_policy
-      radeonsi: don't use get_cache_policy in si_launch_grid_internal_ssbos
-      radeonsi: move get_cache_policy into si_cp_dma.c
-      radeonsi: don't use SI_COHERENCY_NONE in si_compute_shorten_ubyte_buffer
-      radeonsi: don't use SI_COHERENCY_CB_META
-      radeonsi: don't use SI_COHERENCY_CP
-      radeonsi: remove all SI_COHERENCY_* flags except SI_COHERENCY_SHADER
-      radeonsi: remove enum si_coherency
-      radeonsi: don't use si_get_flush_flags in si_launch_grid_internal_ssbos
-      radeonsi: move enum si_cache_policy and si_get_flush_flags into si_cp_dma.c
-      radeonsi: remove L2_STREAM enum
-      radeonsi: replace enum si_cache_policy with cp_dma_has_L2()
-      radeonsi: inline si_get_flush_flags
-      radeonsi: split si_launch_grid_internal to start preparing for barrier rework
-      radeonsi: move compute barrier calls up one level
-      radeonsi: move barrier code out of si_launch_grid_internal_ssbos/images
-      radeonsi: skip no-op si_compute_blit()
-      radeonsi: only set need_check_render_feedback if binding textures for PS
-      radeonsi: split image saving/binding/restoring from si_launch_grid_internal_images
-      radeonsi: do init/deinit for multi-dispatch compute blits only once
-      radeonsi: don't flag both VS and PS partial flush in si_barrier_before_internal_op
-      radeonsi: remove CP DMA code for GDS & L2 prefetch in the clear/copy_buffer path
-      radeonsi: use si_barrier_{before,after}_internal_op for CP DMA
-      radeonsi: remove SI_OP_SYNC_CPDMA_BEFORE, always sync CP DMA
-      radeonsi: fold si_improve_sync_flags logic into si_barrier_before_internal_op
+David Rosca (2):
+      radeonsi: Fix reported minimum width for video encode
+      frontends/va: Remove fallback if app doesn't enable packed headers
+
+Ganesh Belgur Ramachandra (2):
+      amd: fix incorrect PIPE_INTERLEAVE_BYTES size for CDNA chips
+      radeonsi: fix decode corruptions with AMD_IMAGE_OPCODES=false on non-CDNA based chips
+
+Pierre-Eric Pelloux-Prayer (7):
+      radeonsi/tests: allow to run radeonsi-run-tests.py with AMD_DEBUG
+      radeonsi: include the shader key in the sqtt pipeline hash
+      radeonsi: check the pointer before adding an offset
+      radeonsi/sqtt: don't store the offsets in the pipeline
+      radeonsi/sqtt: use XXH64_update
+      radeonsi/sqtt: don't leak the pipeline bo
+      radeonsi/sqtt: don't store pipeline->bo in shader->bo
+
+Samuel Pitoiset (3):
+      radv,radeonsi: remove remaining occurrences of TCS epilog
+      aco,radv,radeonsi: move has_epilog to the fragment shader info
+      radv: merge radv_emit_epilog() with radv_emit_ps_epilog_state()
 
