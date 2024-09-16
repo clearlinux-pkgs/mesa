@@ -6,6 +6,7 @@
 -Dgallium-xa=enabled
 -Dgallium-opencl=icd
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau
+-Dvulkan-layers=device-select,intel-nullhw,overlay
 -Dshared-glapi=enabled
 -Dglvnd=enabled
 -Dllvm=enabled
