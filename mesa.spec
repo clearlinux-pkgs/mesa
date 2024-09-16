@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 24.2+2570.g9aa9f7211e6
-Release  : 771
+Release  : 772
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/9aa9f7211e681e4f2c77f6775f8a60b894f52d76/mesa-24.2+2570-g9aa9f7211e6.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/9aa9f7211e681e4f2c77f6775f8a60b894f52d76/mesa-24.2+2570-g9aa9f7211e6.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
@@ -268,7 +268,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1726489146
+export SOURCE_DATE_EPOCH=1726505184
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -290,6 +290,7 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
+-Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
 -Dglvnd=enabled \
 -Dllvm=enabled \
@@ -313,6 +314,7 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
+-Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
 -Dglvnd=enabled \
 -Dllvm=enabled \
@@ -341,6 +343,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dgallium-xa=enabled \
 -Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
+-Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
 -Dglvnd=enabled \
 -Dllvm=enabled \
@@ -469,12 +472,15 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/bin/intel_hang_replay
 /usr/bin/intel_hang_viewer
 /usr/bin/intel_sanitize_gpu
+/usr/bin/mesa-overlay-control.py
 
 %files data
 %defattr(-,root,root,-)
 /usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/drirc.d/00-radv-defaults.conf
 /usr/share/glvnd/egl_vendor.d/50_mesa.json
+/usr/share/vulkan/explicit_layer.d/VkLayer_INTEL_nullhw.json
+/usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json
 /usr/share/vulkan/icd.d/intel_hasvk_icd.i686.json
 /usr/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json
 /usr/share/vulkan/icd.d/intel_icd.i686.json
@@ -487,6 +493,7 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 /usr/share/vulkan/icd.d/virtio_icd.i686.json
 /usr/share/vulkan/icd.d/virtio_icd.x86_64.json
+/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
 
 %files dev
 %defattr(-,root,root,-)
@@ -538,6 +545,9 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /V3/usr/lib64/libGLX_mesa.so.0.0.0
 /V3/usr/lib64/libMesaOpenCL.so.1.0.0
 /V3/usr/lib64/libOSMesa.so.8.0.0
+/V3/usr/lib64/libVkLayer_INTEL_nullhw.so
+/V3/usr/lib64/libVkLayer_MESA_device_select.so
+/V3/usr/lib64/libVkLayer_MESA_overlay.so
 /V3/usr/lib64/libgallium-24.3.0-devel.so
 /V3/usr/lib64/libgbm.so.1.0.0
 /V3/usr/lib64/libglapi.so.0.0.0
@@ -588,6 +598,9 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/lib64/libOSMesa.so
 /usr/lib64/libOSMesa.so.8
 /usr/lib64/libOSMesa.so.8.0.0
+/usr/lib64/libVkLayer_INTEL_nullhw.so
+/usr/lib64/libVkLayer_MESA_device_select.so
+/usr/lib64/libVkLayer_MESA_overlay.so
 /usr/lib64/libgallium-24.3.0-devel.so
 /usr/lib64/libgbm.so
 /usr/lib64/libgbm.so.1
@@ -658,6 +671,9 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/lib32/libOSMesa.so
 /usr/lib32/libOSMesa.so.8
 /usr/lib32/libOSMesa.so.8.0.0
+/usr/lib32/libVkLayer_INTEL_nullhw.so
+/usr/lib32/libVkLayer_MESA_device_select.so
+/usr/lib32/libVkLayer_MESA_overlay.so
 /usr/lib32/libgallium-24.3.0-devel.so
 /usr/lib32/libgbm.so
 /usr/lib32/libgbm.so.1
