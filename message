@@ -1,24 +1,56 @@
-Updating from 46b561b7cd703a438b4cffc213c9ef3162acf264 to 9aa9f7211e681e4f2c77f6775f8a60b894f52d76
+Updating from 9aa9f7211e681e4f2c77f6775f8a60b894f52d76 to 0f6fa4679d6705660b83579a20fb50cfad2c0184
 
-David Rosca (2):
-      radeonsi: Fix reported minimum width for video encode
-      frontends/va: Remove fallback if app doesn't enable packed headers
+David Heidelberg (1):
+      ci/freedreno: re-enable piglit tests for Adreno 530 in nightly runs
 
-Ganesh Belgur Ramachandra (2):
-      amd: fix incorrect PIPE_INTERLEAVE_BYTES size for CDNA chips
-      radeonsi: fix decode corruptions with AMD_IMAGE_OPCODES=false on non-CDNA based chips
+Dylan Baker (6):
+      intel: replace `(uint64_t - uint64_t) > 0` with `uint64_t > uint64_t`
+      anv: assert we don't write past the end of an array
+      anv: enforce state->cmd_buffer is never null in emit_Simpler_shader_init_fragment
+      intel/elk: delete copy constructor and copy-assignment-operator
+      compiler/glsl: explicitly delete copy constructor and copy-assign
+      util/fossilize_db: don't use check_files_opened_successfully for foz_prepare
 
-Pierre-Eric Pelloux-Prayer (7):
-      radeonsi/tests: allow to run radeonsi-run-tests.py with AMD_DEBUG
-      radeonsi: include the shader key in the sqtt pipeline hash
-      radeonsi: check the pointer before adding an offset
-      radeonsi/sqtt: don't store the offsets in the pipeline
-      radeonsi/sqtt: use XXH64_update
-      radeonsi/sqtt: don't leak the pipeline bo
-      radeonsi/sqtt: don't store pipeline->bo in shader->bo
+Faith Ekstrand (3):
+      nil: Rework calculations of the sizes of miplevels
+      nil: Return a more accurate size in level_size_B
+      nil: Assert array_len == 0 in Extent4D<Bytes>::size_B()
 
-Samuel Pitoiset (3):
-      radv,radeonsi: remove remaining occurrences of TCS epilog
-      aco,radv,radeonsi: move has_epilog to the fragment shader info
-      radv: merge radv_emit_epilog() with radv_emit_ps_epilog_state()
+Hans-Kristian Arntzen (1):
+      radv: Always make sure to write the pipeline binary key.
+
+Jesse Natalie (4):
+      winsys/d3d12: Use the waitable object to decrease latency
+      wgl: Add driconf options for controlling latency and swap interval
+      winsys/d3d12: Implement the latency control option
+      driconf: Disable dzn for bg3.exe
+
+Lionel Landwerlin (3):
+      brw: remove (load|store)_raw_intel
+      brw: fix TGM messages to use cmask lsc opcodes
+      clc: find opencl headers from the installed llvm/clang location
+
+Pavel Ondračka (1):
+      r300/ci: update fails list with a recent fix
+
+Rohan Garg (9):
+      intel/compiler: version can never be above 11 due to the previous check
+      intel/compiler: use the correct cache enum for loads and stores
+      hk: enable VK_KHR_shader_relaxed_extended_instruction
+      nvk: enable VK_KHR_shader_relaxed_extended_instruction
+      radv: enable VK_KHR_shader_relaxed_extended_instruction
+      tu: enable VK_KHR_shader_relaxed_extended_instruction
+      v3dv: enable VK_KHR_shader_relaxed_extended_instruction
+      lvp: enable VK_KHR_shader_relaxed_extended_instruction
+      docs: update feature matrix for VK_KHR_shader_relaxed_extended_instruction
+
+Samuel Pitoiset (5):
+      radv/rt: skip shaders cache for pipelines created with the capture/replay flag
+      radv: fix copying the pipeline binary key
+      radv: compute shader hash for shaders created without internal cache
+      radv: enable more properties with VK_KHR_maintenance5
+      radv: fix lowering the view index to an input varying for FS
+
+Tapani Pälli (1):
+      iris: fix issues with memory object updates via glBufferSubData
 
