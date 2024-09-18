@@ -1,10 +1,9 @@
 ld-linux-x86-64.so.2
-ld-linux.so.2
-libLLVM-17.so
+libLLVM.so.18.1
 libSPIRV-Tools.so
 libX11.so.6
 libc.so.6
-libclang-cpp.so.17
+libclang-cpp.so.18.1
 libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1
