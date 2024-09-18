@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 24.2+2604.g0f6fa4679d6
-Release  : 773
+Release  : 774
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/0f6fa4679d6705660b83579a20fb50cfad2c0184/mesa-24.2+2604-g0f6fa4679d6.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/0f6fa4679d6705660b83579a20fb50cfad2c0184/mesa-24.2+2604-g0f6fa4679d6.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
