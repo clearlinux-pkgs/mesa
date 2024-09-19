@@ -12,7 +12,7 @@ option(
   type : 'array',
   value : ['auto'],
   choices : [
-    'auto', 'x11', 'wayland', 'haiku', 'android', 'windows',
+    'auto', 'x11', 'wayland', 'haiku', 'android', 'windows', 'macos',
   ],
   description : 'window systems to support. If this is set to `auto`, all ' +
                 'platforms applicable will be enabled.'
@@ -64,14 +64,6 @@ option(
   value : false,
   description : 'Do not include mesa version in libgallium DSO filename. ' +
                 'Do not enable unless you know what you are doing. Default: false'
-)
-
-option(
-  'dri-search-path',
-  type : 'string',
-  value : '',
-  description : 'Locations to search for dri drivers, passed as colon ' +
-                'separated list. Default: dri-drivers-path.'
 )
 
 option(

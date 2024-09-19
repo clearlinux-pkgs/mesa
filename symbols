@@ -325,6 +325,7 @@ libGLX_mesa.so.0:glFramebufferTexture3D
 libGLX_mesa.so.0:glFramebufferTexture3DEXT
 libGLX_mesa.so.0:glFramebufferTextureLayer
 libGLX_mesa.so.0:glFramebufferTextureLayerEXT
+libGLX_mesa.so.0:glFramebufferTextureMultiviewOVR
 libGLX_mesa.so.0:glFrontFace
 libGLX_mesa.so.0:glFrustum
 libGLX_mesa.so.0:glFrustumf
@@ -1642,6 +1643,7 @@ libOSMesa.so.8:glFramebufferTexture3D
 libOSMesa.so.8:glFramebufferTexture3DEXT
 libOSMesa.so.8:glFramebufferTextureLayer
 libOSMesa.so.8:glFramebufferTextureLayerEXT
+libOSMesa.so.8:glFramebufferTextureMultiviewOVR
 libOSMesa.so.8:glFrontFace
 libOSMesa.so.8:glFrustum
 libOSMesa.so.8:glFrustumf
