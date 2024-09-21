@@ -1,432 +1,62 @@
-Updating from 822139aefab3e98f5c4e4051e6a660bbe3d4fe57 to 80d60acb772a0cc59f38799de94914b7020f3da2
+Updating from 80d60acb772a0cc59f38799de94914b7020f3da2 to fd11bbbb90eba6b174371caf07a9b8ca51310730
 
-Aaron Germuth (1):
-      Add VK_EXT_host_query_reset to guest's allowed device extensions
+Boris Brezillon (6):
+      vk/meta: Make sure texel is 32-bit in build_buffer_to_image_cs()
+      panfrost: Don't turn 3D/cube images into 2D arrays
+      pan/decode: Interpret CS_BRANCH instructions
+      pan/desc: Add layer_offset field to pan_tiler_context::valhall
+      pan/genxml: Fix layer_offset definition on v9+
+      panvk/csf: Fix multi-layer rendering
 
-Aaron Ruby (15):
-      gfxstream: Advertise VK_KHR_external_semaphore_fd always on Linux/Android guests.
-      gfxstream: logging on Linux guests
-      gfxstream: Fix createResource call for Linux-guest VirtGpu layer
-      gfxstream: translate physicalDevices list in VkPhysicalDeviceGroupProperties to their gfxstream objects
-      gfxstream: Use vk_find_struct for other struct searches in gfxstream_vk_CreateDevice
-      Revert "Reland "Partial revert of aosp/2858589 to avoid Mesa layer for Android""
-      gfxstream: Add "transformList" method for VkFences, in addition to VkSemaphores
-      gfxstream: Clean up VK_KHR_external_memory_fd support for Linux
-      gfxstream: Revert all unnecessary gfxstream_vk_* object types and corresponding translations in functable.
-      gfxstream: Remove VkImage from functable handle translation
-      gfxstream: Change createResource to use stride instead of bpp
-      gfxstream: Switch to using scanout path with native DRM images for Linux WSI
-      gfxstream: Add linearPeerImage for Linux guests, to use for imageLayout queries
-      gfxstream: Add vkCmdPipelineBarrier2 implementation in VkDecoderGlobalState
-      gfxstream: ResourceTracker: Fix bug in return-code check for blob wait
+Corentin Noël (1):
+      ci: Allow to pass the PIGLIT_RUNNER_OPTIONS variable
 
-Andrew Woloszyn (2):
-      Added some fixes for zircon tests in the Android CTS.
-      Fix for dynamic rendering.
+Eric R. Smith (1):
+      panfrost: print human readable versions of some swizzle fields
 
-Antonio Ospite (1):
-      android: fix build by removing references to dri-search-path
+Faith Ekstrand (3):
+      nvk: Advertise VK_KHR_shader_float_controls2
+      nvk: Silence a maybe-uninitialized warning
+      nvk: Add an NVK_DEBUG=gart flag
 
-Bo Hu (1):
-      goldfish: handle null handle
+Jason Macnak (1):
+      gfxstream: fix log levels in descriptor handling
 
-Boris Brezillon (15):
-      pan/cs: Fix buffer overflow in cs_block_end()
-      pan/cs: Make sure we don't overflow the chunk capacity
-      pan/cs: Make sure cs_alloc_ins() is never passed num_instrs=0
-      pan/cs: Make the CS loop helpers more robust
-      pan/cs: Pass the block to end to cs_block_end()
-      pan/cs: Drop the cs_builder::blocks::cur field
-      pan/cs: Don't use a list for our block stack
-      pan/cs: Add helpers for if/else blocks
-      panvk/csf: Replace a cs_while() by a cs_if()
-      panvk/csf: Pass a non-zero flush-id to benefit from cache flush reduction
-      panvk/csf: Fix TLS pointer copy
-      panvk: Use nir_metadata_control_flow
-      panvk: Lower get_ssbo_size() on Valhall
-      panvk: Pass the robustness state to nir_lower_descriptors()
-      panvk: Hook up descriptor array bounds checking
+Marek Olšák (16):
+      radeonsi: check and update compute_is_busy in get_reduced_barrier_flags
+      radeonsi: don't sync VS and PS if they are idle
+      radeonsi: count VS/PS/CS/L2 flushes in get_reduced_barrier_flags
+      radeonsi: deduplicate code emitting VGT_FLUSH/PIPELINESTAT events
+      radeonsi: don't sync CS and PS before rendering if there are no FBO attachments
+      radeonsi: remove CB sync after FMASK and DCC decompression
+      radeonsi: wait for idle after end_query in si_test_blit_perf
+      radeonsi: don't pad esgs_vertex_stride if it's 0
+      radeonsi: adjust GFX12 checks in si_compute.c
+      radeonsi: clean up and make corrections to si_create_fmask_expand_cs
+      radeonsi/aco: fix asm dumps to debug output via radeonsi_debug_disassembly=true
+      radeonsi: move si_execute_clears barrier code into separate functions
+      radeonsi: move barriers out of si_execute_clears
+      radeonsi: execute clears at resource allocation using compute instead of gfx
+      radeonsi: remove barriers around clears using aux_context.compute_resource_init
+      radeonsi: don't use VS/PS/CS partial flushes if we use a TS event
 
-Craig Stout (13):
-      [guest] Check that the singleton VirtGpuDevice matches desired capset
-      Reapply "[guest] Check that the singleton VirtGpuDevice matches desired capset"
-      Fix dispatchable object layout on Fuchsia
-      Exclude Android entry points on Fuchsia
-      [guest] Fix Fuchsia build
-      [guest] Add skeleton Fuchsia VirtGpu implementation
-      [guest] Build fixes for Fuchsia
-      [guest] Fuchsia: include missing Vulkan entry points
-      [guest] Remove Fuchsia syslog_static dependency
-      [guest] Fix Fuchsia build, add missing header
-      [guest] Fuchsia: open magma device
-      [guest] Fuchsia: initialize queries
-      [guest] Fix Fuchsia build
+Mike Blumenkrantz (2):
+      mesa: fix sample count handling for MSRTT
+      mesa: OVR_multiview_multisampled_render_to_texture
 
-Daniel Stone (2):
-      ci: Make token parsing more robust
-      ci: Make common rules common
+Nanley Chery (5):
+      anv: Change params of anv_can_fast_clear_color_view
+      anv: Move and rename anv_can_fast_clear_color_view
+      anv: Move exec_ccs_op and exec_mcs_op higher up
+      anv: Support fast clears in anv_CmdClearColorImage
+      intel: Avoid no-op calls to anv_image_clear_color
 
-David Heidelberg (8):
-      panfrost/midgard: Implement nir_lower_mem_access_bit_sizes pass
-      panfrost/midgard: Support 64bit pack/unpack
-      panfrost/midgard: Lower fisnormal
-      panfrost/midgard: Lower *hadd instructions
-      ci/panfrost: Implement basic nightly OpenCL testing on T860
-      ci/panfrost: switch to 6.11 with timestamp patches for traces
-      ci/panfrost: update furmark checksum for T860 traces
-      ci/panfrost: update rock-5b from rc5 to rc7
-
-David Rosca (5):
-      radeonsi/vcn: Add rc_per_pic_ex encode command
-      ac: Fix typo RENCDOE -> RENCODE
-      ac: Add ac_vcn_init_enc_cmds
-      ac: Add remaining VCN encode defines
-      radeonsi/vcn: Use ac_vcn_enc_init_cmds and AV1 defines from ac
-
-Dylan Baker (1):
-      meson: use `add_project_arguments` instead of `global`
-
-Eric Engestrom (1):
-      v3dv/ci: drop skip of fixed test
-
-Erwin Jansen (1):
-      Enable GFXStream bazel build
-
-Georg Lehmann (6):
-      nir: add amd shared append/consume
-      amd/nir: add ac_nir_opt_shared_append
-      aco/assembler: support ds_append/ds_*_addtid
-      aco: implement nir_shared_append/consume_amd
-      aco: use ac_nir_opt_shared_append
-      aco/isel: use upper bound for v_mul_u32_u24
-
-Gurchetan Singh (134):
-      gfxstream: fix Linux guest build
-      gfxstream-guest: add precise virtio-gpu capabilities
-      gfxstream: use ASG for Vulkan streams only
-      gfxstream: gfxstreamCapset --> vulkanCapset
-      gfxstream: query non-Vulkan caps from the guest
-      gfxstream/guest: add GetRingParamsFromCapset function
-      gfxstream/guest: use GetRingParamsFromCapset
-      gfxstream: nuke unused functions
-      gfxstream: simplify VK_HOST_CONNECTION macro
-      gfxstream: don't use renderControlEnc for Vulkan
-      gfxstream: nuke ResourceTracker::Impl
-      gfxstream: fix meson build system issues
-      gfxstream/guest: pass through Android process names
-      gfxstream: import Vulkan-docs from 463f8c
-      gfxstream: vulkan-Docs: import the cerealgenerator
-      gfxstream: vulkan-docs: track feature type
-      gfxstream: vulkan-docs: add cereal generator
-      gfxstream: genvk: add support for vk_gfxstream.xml
-      gfxstream: vulkan-docs: don't auto-generate vk_android_native_buffer
-      gfxstream: add generate-gfxstream-vulkan.sh
-      gfxstream: add support for VK_KHR_maintenance5 + VK_EXT_host_image_copy
-      gfxstream: use standard Vulkan headers and new auto-gen flow
-      gfxstream: look for common/opengl headers
-      gfxstream: cereal: [moduleType] --> [(moduleType, moduleName)]
-      gfxstream: cereal: SUPPORTED_WRAPPERS --> SUPPORTED_MODULES
-      gfxstream: codegen EXT_swapchain_maintenance1 + KHR_swapchain host only
-      gfxstream: mesa: import Mesa
-      gfxstream: mega-change to support guest Linux WSI with gfxstream
-      gfxstream: nuke goldfish_vk_handlemap
-      gfxstream: use absolute path for some code
-      genvk: options.filename --> args.target
-      gfxstream: codegen: allow generating host/guest autogen separately
-      gfxstream: guest: cpp_args --> guest_cpp_args
-      gfxstream: reduce use of PLATFORM_SDK_VERSION
-      gfxstream: PLATFORM_SDK_VERSION --> ANDROID_API_LEVEL
-      gfxstream: don't forward declare ProcessResources
-      gfxstream: nuke VIRTIO_GPU flag
-      gfxstream: nuke HOST_BUILD
-      gfxstream: add GFXSTREAM_ENABLE_GUEST_GOLDFISH
-      gfxstream: add REQUIRED_TYPES list
-      gfxstream: always initialize rcEncoder and other things
-      gfxstream: build the test layer via Meson
-      gfxstream: generate development ICD for meson build
-      gfxstream: always advertise device memory extension guest side
-      gfxstream: convert some Vulkan to mesa_log(..)
-      gfxstream: valgrind fix
-      gfxstream: add VK_EXT_vertex_attribute_divisor
-      Revert^2 "gfxstream: add VK_EXT_vertex_attribute_divisor"
-      Revert "gfxstream: Add vkCmdPipelineBarrier2 implementation in VkDecoderGlobalState"
-      Revert "Revert "gfxstream: Add vkCmdPipelineBarrier2 implementat..."
-      gfxstream: ResourceTracker: fix mesa_loge(..)
-      gfxstream: guest: add VK_EXT_color_write_enable
-      gfxstream: guest: add XCB Surface support
-      gfxstream: guest: support blobCmd + blobCmdSize
-      gfxstream: don't define hasDedicatedImage + hasDedicatedBuffer multiple times
-      Revert "Add snapshot support for vkBindImageMemory2"
-      gfxstream: guest: enable virtio-gpu kumquat
-      gfxstream: host + guest: bump up version of the protocol
-      gfxstream: linux guest: support client-side blob allocations
-      gfxstream: guest: fix useless return statement
-      gfxstream: guest: simpler get param for kumquat
-      gfxstream: host: introduce vkGetSemaphoreGOOGLE
-      gfxstream: guest: add GFXSTREAM_ACQUIRE_SYNC protocol
-      gfxstream: guest: add experimental fence passing APIs
-      gfxstream: guest: mBlobId -> mAtomicId
-      gfxstream: guest: start using new vkGetSemaphoreGOOGLE apis
-      gfxstream: kumquat: unmap memory when needed
-      gfxstream: guest: fix kumquat build
-      gfxstream: vulkan: fix issue with GCC
-      gfxstream: guest: nuke AndroidLock
-      gfxstream: guest: nuke aemu/base/Optional.h
-      gfxstream: guest: nuke unused functions
-      gfxstream: guest: make sure signalSemaphoreValueCount is correct
-      gfxstream: guest: vk_CmdBeginTransformFeedbackEXT fix
-      gfxstream: host: don't abort when unbox fails
-      gfxstream: guest: add support VK_FORMAT_A2R10G10B10_UNORM_PACK32 Wayland buffers
-      gfxstream: guest: use MESA_SCOPE_TRACE
-      gfxstream: guest: nuke more AEMU base stuff
-      gfxstream: guest: kumquat: fixes in preparation for AOSP Kumquat testing
-      gfxstream: nuke set instance for testing
-      gfxstream: nuke libplatform stub
-      gfxstream: guest: plumb descriptor all the way through the HostConnection
-      gfxstream: connect to the specificied kumquat socket
-      gfxstream: guest: add vkInitializeKumquat
-      gfxstream: guest: nuke Android HealthMonitor
-      gfxstream: guest: plumb the descriptor everywhere
-      gfxstream: end2end: nuke RutabagaLayer, use kumquat for testing
-      gfxstream: simplify GLESv1/GLESv2/EGL/Vulkan builds
-      gfxstream: nuke ErrorLog.h
-      gfxstream: nuke AlignedBuf.h
-      gfxstream: nuke mWorkPool
-      gfxstream: guest: nuke vk_enum_string_helper.h
-      gfxstream: guest: nuke Fuchsia Goldfish Address Space
-      gfxstream: guest: nuke unnecessary Android properties
-      gfxstream: guest: nuke goldfish_address_space_android.impl
-      gfxstream: guest: mesa-ify GoldfishAddressSpace
-      gfxstream: guest: mesa-ify libplatform_virtgpu
-      gfxstream: guest: add virtgpu suffix
-      gfxstream: guest: remove EmulatorFeatureInfo dependency in libgfxstream_vulkan.so
-      gfxstream: guest: simplify Vulkan sequence number logic
-      gfxstream: sync command buffer api with Mesa upstream
-      gfxstream: move EmulatorFeatureInfo and ExtendedRenderControl
-      gfxstream: guest: remove dependency on EmulatorFeatureInfo
-      gfxstream: add processPipeInit and connect to IOStream
-      Reapply "gfxstream: nuke mWorkPool"
-      gfxstream: guest: fix timeout issues
-      gfxstream: guest: introduce Gralloc::getGrallocType()
-      gfxstream: guest: remove renderControl dependency from Gralloc
-      gfxstream: GrallocMinigbm uses platform_virtgpu
-      gfxstream: mesa-ify libgfxstream_android
-      gfxstream: delete duplicate virtgpu_drm.h
-      gfxstream: guest: don't rely on HostConnection for platform helpers
-      gfxstream: guest: introduce GfxStreamConnectionManager
-      gfxstream: guest: vulkan: use connection manager
-      gfxstream: guest: introduce QemuPipeStream stub
-      gfxstream: guest: fully mesa-ify vulkan_enc
-      gfxstream: guest: remove unnecessary includes in VkEncoder
-      gfxstream: guest: remove unneeded dependencies in meson build
-      gfxstream: guest: vulkan: use hardware/google/aemu
-      gfxstream: guest: vulkan: don't assume Android
-      gfxstream: guest: nuke android_compat directory
-      gfxstream: move goldfish sync
-      gfxstream: guest: Gralloc --> GfxStreamGralloc
-      gfxstream: don't assert without host
-      gfxstream: move include outside of ANDROID
-      gfxstream: codegen: don't require clang-format
-      gfxstream: delete unneccessary code
-      gfxstream: build time guest autogeneration
-      gfxstream: re-license files
-      gfxstream: re-license cereal
-      gfxstream: simplify codegen
-      gfxstream: moar relicense
-      mesa: gfxstream: nuke vk_icd_*
-      mesa: add gfxstream-experimental to -Dvulkan-drivers
-
-Hailin Zhang (1):
-      Vulkan: fix dstArrayElement index wrap issue
-
-Igor Chernyshev (4):
-      Add VK_EXT_debug_utils and VK_EXT_scalar_block_layout
-      Enable VK_KHR_create_renderpass2 in Guest
-      Move vkUpdateDescriptorSets to hand-written mode
-      Do not copy invalid descriptor set image view handles
-
-Jason Macnak (47):
-      Rename imported system directory to guest
-      Handle AHB and swapchain info in VkBindImageMemoryInfo
-      Move platform into guest
-      Move guest/shared/* to guest/*
-      Add error logging to aid debugging
-      Make VirtGpu* interfaces
-      Wrap interactions with sync fds in an interface
-      Update namespace in libandroidemu to gfxstream::guest
-      Update iostream namespace to gfxstream::guest
-      Enable building guest Gfxstream components on host
-      Wrap AHardwareBuffer_* interactions into Gralloc interface
-      Update VirtioGpuPipeStream to use VirtGpu abstraction
-      Move SyncHelper to platform
-      Revert "[guest] Check that the singleton VirtGpuDevice matches desired capset"
-      Move info maps into ResourceTracker
-      Promote testing framework to a proper platform backend
-      Use libbase's property getting functions
-      Add dispatch magic for Gfxstream linux ICD
-      Wrap some classes in "namespace gfxstream::guest {}"
-      Sort and dedup physical device extensions
-      Fix "-Werror=conversion" errors for RanchuHwc
-      Handle AHB R8 format conversions
-      Make RutabagaLayer shared between "guest impls"
-      Introduce Gfxstream Features to decouple Gfxstream from AEMU
-      Ensure glProgramBinary initializes uniform and attrib info
-      Add composition support to the end2end test framework
-      Update emulated gralloc to use AHB format
-      Rename VirtGpuBlob -> VirtGpuResource
-      Explicitly specify target/bind/bpp in resource creation
-      Partial revert of aosp/2858589 to avoid Mesa layer for Android
-      Revert "Partial revert of aosp/2858589 to avoid Mesa layer for Android"
-      Reland "Partial revert of aosp/2858589 to avoid Mesa layer for Android"
-      Update vkMapMemory to not hold lock when calling into enc
-      Remove extra semicolon in VkEncoder
-      Support BGRA render target in CompositorVk
-      Adds helper for tracking command buffers with device lost
-      Adds AHB import and sampling test
-      Add YUV AHB import and sample end2end tests
-      Demote some logs to debug only
-      Disable device groups
-      Ensure mesa struct is translated to gfxstream struct on Android
-      Handle DEPTH_STENCIL_ATTACHMENT_BIT in VK -> AHB usage
-      Handle null handles in vkFreeCommandBuffers
-      Fix vkAllocateCommandBuffers with failing allocation
-      Revert "gfxstream: nuke mWorkPool"
-      Handle external fences in vkGetFenceStatus()
-      Add perfetto tracing to host renderer
-
-Jean-Francois Thibert (4):
-      Add vkUpdateDescriptorSetWithTemplateKHR to resource tracker
-      gfxstream: Fix usage of encoder after release in vkResetCommandBuffer
-      gfxstream: move staging reset to end of reset command buffer
-      Provided supported formats through gfxstream caps
-
-Jean-François Thibert (1):
-      Add depth formats support to import/export
-
-Job Noorman (1):
-      ir3/legalize: resolve WAR hazards for stc
-
-Jose Maria Casanova Crespo (1):
-      v3d: avoid load/store of tile buffer on invalidated framebuffer
-
-Joshua Duong (1):
-      For goldfish pipe, compute colorBufferMemoryIndex the same as host.
-
-José Roberto de Souza (7):
-      anv: Add documentation to some fields in anv_query_pool
-      anv/query: Fix batch end value
-      anv: Improve readbility of khr_perf_query_availability_offset() and khr_perf_query_data_offset()
-      anv: Fix condition to clear query pool with blorp
-      intel: Split anv_xe_wait_exec_queue_idle() and move part of it to common/
-      iris: Use xe_queue_get_syncobj_for_idle()
-      anv: Optimize vkQueueWaitIdle() on Xe KMD
-
-Juan A. Suarez Romero (1):
-      v3d/ci: update expected results
-
-Lars Harrison (3):
-      Provide error message on unhandled VK structs
-      Always initialize gfxstream vulkan
-      Fix coherent memory allocation to use device
-
-Marcin Radomski (7):
-      Add missing includes
-      Enable VK_EXT_image_drm_format_modifier in cerealgenerator.py
-      Enable VK_EXT_image_drm_format_modifier on Linux guests
-      vkAllocateMemory: support DRM format modifiers for dmabuf memory
-      vkGetPhysicalDeviceImageFormatProperties2: support drm modifiers
-      vkCreateInfo: support VkImageDrmFormatModifierListCreateInfoEXT
-      Add mesa3d_platforms Soong config flag
-
-Mike Blumenkrantz (5):
-      lavapipe: bump mipmapPrecisionBits
-      zink: add screen create to match windows LUID
-      vl: rename/ifdef the x11 kopper functionality
-      vl: add Windows kopper support
-      va: support zink on Windows
-
-Mitchell Kember (1):
-      [fxbug.dev] Migrate bug numbers
-
-Nanley Chery (2):
-      intel/isl: Reduce miptail slot usage to allow CCS
-      intel/isl: Disable 3D Ys/Yf miptails for CCS
-
-PODISHETTY KUMAR (1):
-      Revert "gfxstream: add VK_EXT_vertex_attribute_divisor"
-
-Samuel Pitoiset (3):
-      zink/ci: update expected list of failures since recent piglit uprev
-      radv: stop emulating GS invocations for legacy GS on RDNA1-2
-      radv: only export KHR_video_maintenance1 with KHR_video_queue
-
-Serdar Kocdemir (15):
-      Reduce heap pressure on getPacketContents
-      Use append to chain memory pointer info
-      Add VK_EXT_debug_utils to host modules for codegen
-      Add VK_EXT_validation_features to host modules
-      Add support for VK_EXT_robustness2
-      Add VK_EXT_metal_objects support
-      Mark VK_MVK_moltenvk extension as supported on vulkan
-      Add VK_EXT_debug_report extension support
-      Remove direct usages of MoltenVK library functions
-      Remove empty ifdef blocks after the codegen
-      Show missing extension's name in the abort message
-      Handle all extensions for structure size calculation
-      Add extensions used in test applications
-      Add error messages for unhandled extensions
-      Add VK_EXT_external_memory_metal definitions
-
-Sergi Blanch Torne (1):
-      Uprev Piglit to e9ab30aeaed97b69868cf4d6d6a3f70f3b53c362
-
-Sergiu (1):
-      Tweaking YCBCR conversion to return correct VK Format
-
-Tapani Pälli (1):
-      blorp: assert that color depth is not 96 for Wa_16021021469
-
-Tom Cherry (1):
-      Do not pass std::shared_ptr when not transfering ownership
-
-Vignesh Raman (4):
-      ci: include exit code in test result output
-      ci/lava: handle non-zero exit codes
-      ci/lava: update unit tests
-      ci/bare-metal: handle non-zero exit codes
-
-Yahan Zhou (30):
-      Update vk.xml and code generator
-      Fix testAndroidBaselineProfile2021Support for host swiftshader
-      Add support for descriptor with inline uniform block
-      Implement vkQueueSubmit2 in the same way as vkQueueSubmit
-      Add some vk 1.3 extension strings
-      Create sync device before calling goldfish_sync_queue_work
-      Parse more ext structs in vkAllocateMemory and vkCreateBuffer
-      Disable compatible handle types for semaphore timeline
-      Fix dEQP-VK.wsi.android.maintenance1
-      VkImageCreateInfo should ignore queeu family indices in some situation
-      Use old en/decoding for vkQueueSignalReleaseImage
-      Add VK_EXT_vertex_attribute_divisor support for guest ANGLE
-      Declare AHB blob unsupported in Vulkan
-      Add VK_EXT_fragment_density_map for Chrome
-      Add snasphot support for vk coherent memory
-      Snapshot vk image content in common situation
-      Better track color buffer usage in Vulkan
-      Make it not crash during vk snapshot load
-      Fix corner cases where vk dependency graph breaks
-      Handle dependency by VkMemoryDedicatedAllocateInfo
-      Snapshot VkBuffer
-      Add snapshot for command buffer
-      Fix handle create mismatch for Vulkan snapshot
-      Add snapshot support for vkBindImageMemory2
-      Fix Vulkan snapshot with -guest-angle
-      Revert^2 "Add snapshot support for vkBindImageMemory2"
-      [Vulkan Snapshot] tryLock when an API might create extra handles
-      Signal the fence after color buffer copying
-      Revert "Signal the fence after color buffer copying"
-      [Vulkan Snapshot] Add dependency graphics pipeline -> render pass
-
-sergiuferentz (1):
-      Adding support for VK_EXT_external_memory_host extension
+Sil Vilerino (7):
+      pipe: Add temporal_id to pipe_h26x_enc_dpb_entry
+      d3d12: Support writing H264_SEI_SCALABILITY_INFO header on demand
+      d3d12: Support writing H264 temporal scalability prefix slice NAL on demand
+      d3d12: Report H264/HEVC support for 4 max temporal layers
+      d3d12: H264 Encode - Set SPS.gaps_in_frame_num_value_allowed_flag=1 when num_temporal_layers > 1
+      d3d12: d3d12_video_encoder_references_manager_h264 to use FrameDecodingOrderNumber as h264Pic->slice.frame_num
+      d3d12: Plumb H264/HEVC temporal_id from pipe params
 
