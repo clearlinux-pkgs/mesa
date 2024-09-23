@@ -1,62 +1,56 @@
-Updating from 80d60acb772a0cc59f38799de94914b7020f3da2 to fd11bbbb90eba6b174371caf07a9b8ca51310730
+Updating from fd11bbbb90eba6b174371caf07a9b8ca51310730 to bb51cb3f0eddb3936b00b7307d89b61430d47134
 
-Boris Brezillon (6):
-      vk/meta: Make sure texel is 32-bit in build_buffer_to_image_cs()
-      panfrost: Don't turn 3D/cube images into 2D arrays
-      pan/decode: Interpret CS_BRANCH instructions
-      pan/desc: Add layer_offset field to pan_tiler_context::valhall
-      pan/genxml: Fix layer_offset definition on v9+
-      panvk/csf: Fix multi-layer rendering
+Benjamin Otte (1):
+      nvk: Don't emit critical messages during init
 
-Corentin Noël (1):
-      ci: Allow to pass the PIGLIT_RUNNER_OPTIONS variable
+Boris Brezillon (2):
+      panvk: Protect access to the virtual address heap
+      pan/va: Fix nir_op_pack_uvec4_to_uint
 
-Eric R. Smith (1):
-      panfrost: print human readable versions of some swizzle fields
+Charmaine Lee (1):
+      svga: sync up with the latest svga include files
 
-Faith Ekstrand (3):
-      nvk: Advertise VK_KHR_shader_float_controls2
-      nvk: Silence a maybe-uninitialized warning
-      nvk: Add an NVK_DEBUG=gart flag
+Connor Abbott (1):
+      tu: Initial support for VK_KHR_calibrated_timestamps on a750
 
-Jason Macnak (1):
-      gfxstream: fix log levels in descriptor handling
+Eric Engestrom (3):
+      docs/release-calendar: add 24.3 branchpoint and rcs
+      zink+nvk/ci: document spec@egl_ext_surface_compression@create as crashing
+      zink+nvk/ci: add flakes seen recently
 
-Marek Olšák (16):
-      radeonsi: check and update compute_is_busy in get_reduced_barrier_flags
-      radeonsi: don't sync VS and PS if they are idle
-      radeonsi: count VS/PS/CS/L2 flushes in get_reduced_barrier_flags
-      radeonsi: deduplicate code emitting VGT_FLUSH/PIPELINESTAT events
-      radeonsi: don't sync CS and PS before rendering if there are no FBO attachments
-      radeonsi: remove CB sync after FMASK and DCC decompression
-      radeonsi: wait for idle after end_query in si_test_blit_perf
-      radeonsi: don't pad esgs_vertex_stride if it's 0
-      radeonsi: adjust GFX12 checks in si_compute.c
-      radeonsi: clean up and make corrections to si_create_fmask_expand_cs
-      radeonsi/aco: fix asm dumps to debug output via radeonsi_debug_disassembly=true
-      radeonsi: move si_execute_clears barrier code into separate functions
-      radeonsi: move barriers out of si_execute_clears
-      radeonsi: execute clears at resource allocation using compute instead of gfx
-      radeonsi: remove barriers around clears using aux_context.compute_resource_init
-      radeonsi: don't use VS/PS/CS partial flushes if we use a TS event
+Georg Lehmann (1):
+      aco/gfx10+: work around non uniform ds_append wave64 result
 
-Mike Blumenkrantz (2):
-      mesa: fix sample count handling for MSRTT
-      mesa: OVR_multiview_multisampled_render_to_texture
+Iago Toral Quiroga (1):
+      broadcom/compiler: skip small immediates optimization on vpm instructions
 
-Nanley Chery (5):
-      anv: Change params of anv_can_fast_clear_color_view
-      anv: Move and rename anv_can_fast_clear_color_view
-      anv: Move exec_ccs_op and exec_mcs_op higher up
-      anv: Support fast clears in anv_CmdClearColorImage
-      intel: Avoid no-op calls to anv_image_clear_color
+Juan A. Suarez Romero (1):
+      v3dv/ci: add new flake
 
-Sil Vilerino (7):
-      pipe: Add temporal_id to pipe_h26x_enc_dpb_entry
-      d3d12: Support writing H264_SEI_SCALABILITY_INFO header on demand
-      d3d12: Support writing H264 temporal scalability prefix slice NAL on demand
-      d3d12: Report H264/HEVC support for 4 max temporal layers
-      d3d12: H264 Encode - Set SPS.gaps_in_frame_num_value_allowed_flag=1 when num_temporal_layers > 1
-      d3d12: d3d12_video_encoder_references_manager_h264 to use FrameDecodingOrderNumber as h264Pic->slice.frame_num
-      d3d12: Plumb H264/HEVC temporal_id from pipe params
+Konstantin Seurer (1):
+      radv: Workaround apps using ray tracing when it is unsupported
+
+Lionel Landwerlin (5):
+      anv: fix missing tracking for alpha-to-coverage runtime changes
+      anv: Only flush render target cache when detecting RT changes
+      iris: ensure null render target for specific cases
+      brw: move null_rt control up a layer
+      brw: disable null_rt only if color output does not affect other outputs
+
+Patrick Lerda (2):
+      i915: fix vertex atan regression
+      iris: fix iris_ensure_indirect_generation_shader() memory leak
+
+Samuel Pitoiset (1):
+      radv: fix assigning mesh shader outputs when clip/cull distances are read in FS
+
+Thong Thai (1):
+      ci: partially emulate cdna devices using lower image opcodes
+
+Valentine Burley (5):
+      freedreno/ci: Skip timing out test on a630
+      freedreno/ci: Uprev kernel to 6.11
+      freedreno/ci: Update expectations after Piglit uprev
+      turnip/ci: Remove fixed test from a660 xfails
+      freedreno/ci: Document some a630 EGL flakes
 
