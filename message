@@ -1,56 +1,85 @@
-Updating from fd11bbbb90eba6b174371caf07a9b8ca51310730 to bb51cb3f0eddb3936b00b7307d89b61430d47134
+Updating from bb51cb3f0eddb3936b00b7307d89b61430d47134 to 087ef34b9ccef5beb671a65a2069c375574fb38d
 
 Benjamin Otte (1):
-      nvk: Don't emit critical messages during init
+      pvr: Don't emit critical warning all the time
 
-Boris Brezillon (2):
-      panvk: Protect access to the virtual address heap
-      pan/va: Fix nir_op_pack_uvec4_to_uint
+Caio Oliveira (1):
+      intel/brw: Only validate GRF boundary crossing restriction for GRFs
 
-Charmaine Lee (1):
-      svga: sync up with the latest svga include files
+David Rosca (3):
+      ac: Add VCN IB parser
+      radeonsi/vcn: Enable IB parsing with AMD_DEBUG=ib
+      radeonsi/vcn: Don't reuse context with multiple VCN instances
 
-Connor Abbott (1):
-      tu: Initial support for VK_KHR_calibrated_timestamps on a750
+Eric Engestrom (5):
+      lavapipe/ci: document regression
+      llvmpipe/ci: document regression
+      radeonsi/ci: document spec@egl_ext_surface_compression@create as crashing
+      radeonsi/ci: mark KHR-GL46.shader_image_load_store.basic-allTargets-atomic as fixed
+      ci/build: move debian-clang-release to priority build-for-tests stage
 
-Eric Engestrom (3):
-      docs/release-calendar: add 24.3 branchpoint and rcs
-      zink+nvk/ci: document spec@egl_ext_surface_compression@create as crashing
-      zink+nvk/ci: add flakes seen recently
+Eric R. Smith (1):
+      panfrost: Add back A8_UNORM format for valhall
 
-Georg Lehmann (1):
-      aco/gfx10+: work around non uniform ds_append wave64 result
+Hyunjun Ko (1):
+      zink: walk the chain of resources for multi-planar formats.
 
-Iago Toral Quiroga (1):
-      broadcom/compiler: skip small immediates optimization on vpm instructions
+Iván Briano (2):
+      anv: free shaders on rt pipeline compile error
+      anv: skip rt pipeline compile if we found all shaders
 
-Juan A. Suarez Romero (1):
-      v3dv/ci: add new flake
+Jason Macnak (1):
+      gfxstream: use gralloc metadata in vkGetAHBPropertiesANDROID
 
-Konstantin Seurer (1):
-      radv: Workaround apps using ray tracing when it is unsupported
+Kenneth Graunke (1):
+      intel/brw: Don't include sync.nop in INTEL_DEBUG instruction counts
 
-Lionel Landwerlin (5):
-      anv: fix missing tracking for alpha-to-coverage runtime changes
-      anv: Only flush render target cache when detecting RT changes
-      iris: ensure null render target for specific cases
-      brw: move null_rt control up a layer
-      brw: disable null_rt only if color output does not affect other outputs
+Konstantin Seurer (3):
+      lavapipe: Fix report_ray_intersection affecting terminated rays
+      lavapipe: Do not return in report_ray_intersection
+      radv: Fix report_ray_intersection affecting terminated rays
 
-Patrick Lerda (2):
-      i915: fix vertex atan regression
-      iris: fix iris_ensure_indirect_generation_shader() memory leak
+Lionel Landwerlin (1):
+      anv: add missing pipeline instance multiplier
 
-Samuel Pitoiset (1):
-      radv: fix assigning mesh shader outputs when clip/cull distances are read in FS
+Marek Olšák (5):
+      radeonsi: clean up set_log_context code for all aux contexts
+      radeonsi: use ACO on GFX11.5 with LLVM 18 or older to work around GPU hangs
+      radeonsi: don't insert any barrier after the copy for PIPE_MAP_READ
+      radeonsi: rename hw_level -> view_level
+      radeonsi: remove the make_texture_descriptor indirect function call
 
-Thong Thai (1):
-      ci: partially emulate cdna devices using lower image opcodes
+Michel Dänzer (2):
+      Revert "radeonsi: remove CB sync after FMASK and DCC decompression"
+      radeonsi: Revert to GLSL_SAMPLER_DIM_2D in si_create_fmask_expand_cs
 
-Valentine Burley (5):
-      freedreno/ci: Skip timing out test on a630
-      freedreno/ci: Uprev kernel to 6.11
-      freedreno/ci: Update expectations after Piglit uprev
-      turnip/ci: Remove fixed test from a660 xfails
-      freedreno/ci: Document some a630 EGL flakes
+Mike Blumenkrantz (1):
+      anv: fix video profile lists
+
+Nanley Chery (1):
+      anv: Require compression for fast-clears on gfx20+
+
+Rhys Perry (2):
+      radv/rt: align constant data by 64 when inlining shaders
+      radv/rt: don't split array/struct payload variables
+
+Rohan Garg (1):
+      intel/brw: lower math op regions for Xe2+
+
+Sagar Ghuge (1):
+      intel: uncached L1 to fix memory barrier issue in RT shader
+
+Samuel Pitoiset (6):
+      radv: emit all shader related user SGPR states in one place
+      radv: make sure to re-emit shader query state when a task shader is bound
+      radv: use only one user SGPR for all NGG state
+      radv: rename shader_query_state to task_state
+      radv: introduce dirty flags for shaders state
+      aco: fix descriptor leaking when printing assembly with CLRX
+
+Sviatoslav Peleshko (1):
+      anv: Update XeSS workaround executable names for Satisfactory 1.0
+
+Trigger Huang (1):
+      mesa: Fix AMD performance monitor implementation
 
