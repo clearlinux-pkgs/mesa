@@ -1,85 +1,93 @@
-Updating from bb51cb3f0eddb3936b00b7307d89b61430d47134 to 087ef34b9ccef5beb671a65a2069c375574fb38d
-
-Benjamin Otte (1):
-      pvr: Don't emit critical warning all the time
+Updating from 087ef34b9ccef5beb671a65a2069c375574fb38d to d12950539cdab2f8102e53fd8ef1498cfef01665
 
 Caio Oliveira (1):
-      intel/brw: Only validate GRF boundary crossing restriction for GRFs
+      intel/brw: Consider pipe when comparing SWSB in tests
 
-David Rosca (3):
-      ac: Add VCN IB parser
-      radeonsi/vcn: Enable IB parsing with AMD_DEBUG=ib
-      radeonsi/vcn: Don't reuse context with multiple VCN instances
+Georg Lehmann (1):
+      spirv: explicitly lower derivatives to zero
 
-Eric Engestrom (5):
-      lavapipe/ci: document regression
-      llvmpipe/ci: document regression
-      radeonsi/ci: document spec@egl_ext_surface_compression@create as crashing
-      radeonsi/ci: mark KHR-GL46.shader_image_load_store.basic-allTargets-atomic as fixed
-      ci/build: move debian-clang-release to priority build-for-tests stage
+Iago Toral Quiroga (5):
+      broadcom/compiler: rename is_ldunif_dst to try_rf0
+      broadcom/compiler: avoid register conflict with ldunif(a) and ldvary
+      broadcom/compiler: don't add const offset to unifa if it is 0
+      broadcom/compiler: don't use small immediates in geometry stages
+      v3d: support shader precompile for compute shaders
 
-Eric R. Smith (1):
-      panfrost: Add back A8_UNORM format for valhall
+Konstantin Seurer (2):
+      lavapipe: Implement clustered reductions
+      lavapipe: Implement VK_KHR_shader_subgroup_rotate
 
-Hyunjun Ko (1):
-      zink: walk the chain of resources for multi-planar formats.
+Lars-Ivar Hesselberg Simonsen (6):
+      panvk: Map device memory for PANVK_DEBUG=trace
+      panvk: Use the passed Vertex Attribute divisor
+      panvk: Only set index buffer size for DrawIndexed
+      panvk: Add get_tiler_idvs_flags
+      panvk: Split panvk_cmd_draw into prepare_draw
+      panvk: Add support for Draw[Indexed]Indirect
 
-Iván Briano (2):
-      anv: free shaders on rt pipeline compile error
-      anv: skip rt pipeline compile if we found all shaders
+Lionel Landwerlin (10):
+      brw: make sampler message emission more generic
+      brw: fix mask componentation for 16-bit sampler returns
+      brw: remove EOT handling from sampler messages
+      intel/decoder: constify functions not modifying instructions/fields
+      intel/decoder: add filter feature
+      intel/decoder: split state tracking handlers from printing ones
+      intel/decoder: decode the 8 BLEND_STATEs
+      anv: avoid setting up a null RT unless needed
+      anv: implement VK_KHR_dynamic_rendering_local_read
+      anv: expose VK_EXT_pipeline_protected_access
 
-Jason Macnak (1):
-      gfxstream: use gralloc metadata in vkGetAHBPropertiesANDROID
+Mary Guillemard (3):
+      panvk/ci: Update Mali-G52 status with full VKCTS
+      panvk/ci: Update to run full CTS on G52
+      panvk/ci: Make panfrost-g52-vk run at premerge
 
-Kenneth Graunke (1):
-      intel/brw: Don't include sync.nop in INTEL_DEBUG instruction counts
+Mike Blumenkrantz (12):
+      trace: add get_device_reset_status
+      gallium: delete pipe_screen::is_compression_modifier
+      egl/kopper: hook up EGL_EXT_surface_compression on wayland
+      zink: hook up compression control extensions
+      zink: store compression rate info for formats
+      zink: implement compression control
+      zink: move x8 format function to zink_format.c
+      zink: fix zink_format_is_voidable_rgba_variant()
+      zink: add X format variants for 30-bit formats
+      zink: add some other missing X format emulation variants
+      zink: add adl flake
+      vk/image: fix view creation for planar video aspects
 
-Konstantin Seurer (3):
-      lavapipe: Fix report_ray_intersection affecting terminated rays
-      lavapipe: Do not return in report_ray_intersection
-      radv: Fix report_ray_intersection affecting terminated rays
+Samuel Pitoiset (3):
+      radv: move emitting some RT user SGPRs when the RT pipeline is emitted
+      radv: move updating compute scratch for RT when stack size is emitted
+      radv: do not keep executable info when compiling shaders for ESO
 
-Lionel Landwerlin (1):
-      anv: add missing pipeline instance multiplier
+Timothy Arceri (22):
+      ci: disable gimark trace
+      mesa/glsl: add nir fields to the gl shader structs
+      glsl: add gl_nir_validate_intrastage_interface_blocks()
+      glsl: make gl_nir_validate_intrastage_arrays() more flexible
+      glsl: add support for converting global instructions to NIR
+      util/hash_table: add _mesa_string_hash_table_create() helper
+      nir: add max_ifc_array_access field to vars
+      nir: add nir_function_impl_clone_remap_globals()
+      glsl: move _mesa_glsl_can_implicitly_convert() to linker_util.cpp
+      nir: add function in/outs to variable modes
+      nir: serialize nir_parameter type
+      nir: store variable mode in nir_parameter
+      nir: add implicit_conversion_prohibited field to nir_parameter
+      glsl: add gl_nir_link_function_calls()
+      glsl: add gl_nir_linker_size_arrays()
+      nir: add nir_intrinsic_deref_implicit_array_length intrinsic
+      nir: handle wildcard array deref
+      glsl: add intrastage shader linking helpers for nir linker
+      glsl: add lower_derivatives_without_layout() helper
+      glsl: set blake3 hash in standalone scaffolding
+      glsl: switch to a full nir based linker
+      glsl: remove now unused linker code
 
-Marek Olšák (5):
-      radeonsi: clean up set_log_context code for all aux contexts
-      radeonsi: use ACO on GFX11.5 with LLVM 18 or older to work around GPU hangs
-      radeonsi: don't insert any barrier after the copy for PIPE_MAP_READ
-      radeonsi: rename hw_level -> view_level
-      radeonsi: remove the make_texture_descriptor indirect function call
-
-Michel Dänzer (2):
-      Revert "radeonsi: remove CB sync after FMASK and DCC decompression"
-      radeonsi: Revert to GLSL_SAMPLER_DIM_2D in si_create_fmask_expand_cs
-
-Mike Blumenkrantz (1):
-      anv: fix video profile lists
-
-Nanley Chery (1):
-      anv: Require compression for fast-clears on gfx20+
-
-Rhys Perry (2):
-      radv/rt: align constant data by 64 when inlining shaders
-      radv/rt: don't split array/struct payload variables
-
-Rohan Garg (1):
-      intel/brw: lower math op regions for Xe2+
-
-Sagar Ghuge (1):
-      intel: uncached L1 to fix memory barrier issue in RT shader
-
-Samuel Pitoiset (6):
-      radv: emit all shader related user SGPR states in one place
-      radv: make sure to re-emit shader query state when a task shader is bound
-      radv: use only one user SGPR for all NGG state
-      radv: rename shader_query_state to task_state
-      radv: introduce dirty flags for shaders state
-      aco: fix descriptor leaking when printing assembly with CLRX
-
-Sviatoslav Peleshko (1):
-      anv: Update XeSS workaround executable names for Satisfactory 1.0
-
-Trigger Huang (1):
-      mesa: Fix AMD performance monitor implementation
+Valentine Burley (4):
+      ci: Add a new build-only job without libdrm
+      freedreno/devices: Fix A740v3 from Quest 3
+      freedreno/devices: Unify magic_regs for A740 and A32
+      freedreno/devices: Document an alias for FD644
 
