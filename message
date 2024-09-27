@@ -1,93 +1,122 @@
-Updating from 087ef34b9ccef5beb671a65a2069c375574fb38d to d12950539cdab2f8102e53fd8ef1498cfef01665
+Updating from d12950539cdab2f8102e53fd8ef1498cfef01665 to 28ef0de25043907e206a0a9b5973998c4e8e8175
 
 Caio Oliveira (1):
-      intel/brw: Consider pipe when comparing SWSB in tests
+      intel/brw: Add SWSB MATH pipe to assembler
 
-Georg Lehmann (1):
-      spirv: explicitly lower derivatives to zero
+Colin Marc (2):
+      vulkan/video: set HEVC nuh_temporal_id_plus1 and nal_unit_type correctly
+      radv/video: set TemporalId correctly
 
-Iago Toral Quiroga (5):
-      broadcom/compiler: rename is_ldunif_dst to try_rf0
-      broadcom/compiler: avoid register conflict with ldunif(a) and ldvary
-      broadcom/compiler: don't add const offset to unifa if it is 0
-      broadcom/compiler: don't use small immediates in geometry stages
-      v3d: support shader precompile for compute shaders
+Dave Airlie (7):
+      radv/video: use the h264 defines for macroblock w/h
+      radv/video/enc: report pictureAccessGranularity of CTB size.
+      radv/video: add encode field for vcn4
+      radv/video: handle missing h265 feedback struct.
+      zink: free modifiers
+      zink: handle mutable check without crashing if format list not found
+      zink: whitespace fixups
 
-Konstantin Seurer (2):
-      lavapipe: Implement clustered reductions
-      lavapipe: Implement VK_KHR_shader_subgroup_rotate
+Dylan Baker (1):
+      anv: enable VK_EXT_ycbcr_2plane_444_formats
 
-Lars-Ivar Hesselberg Simonsen (6):
-      panvk: Map device memory for PANVK_DEBUG=trace
-      panvk: Use the passed Vertex Attribute divisor
-      panvk: Only set index buffer size for DrawIndexed
-      panvk: Add get_tiler_idvs_flags
-      panvk: Split panvk_cmd_draw into prepare_draw
-      panvk: Add support for Draw[Indexed]Indirect
+Eric Engestrom (3):
+      lavapipe/ci: document ray tracing regression
+      mr-label-maker: add gfxstream
+      ci/deqp: make sure the git commit hash of deqp is stable across rebuilds
 
-Lionel Landwerlin (10):
-      brw: make sampler message emission more generic
-      brw: fix mask componentation for 16-bit sampler returns
-      brw: remove EOT handling from sampler messages
-      intel/decoder: constify functions not modifying instructions/fields
-      intel/decoder: add filter feature
-      intel/decoder: split state tracking handlers from printing ones
-      intel/decoder: decode the 8 BLEND_STATEs
-      anv: avoid setting up a null RT unless needed
-      anv: implement VK_KHR_dynamic_rendering_local_read
-      anv: expose VK_EXT_pipeline_protected_access
+Eric R. Smith (2):
+      panfrost: fix SAMPLE_ALPHA_TO_ONE
+      panvk: Support blend shaders for alpha_to_one_enable
 
-Mary Guillemard (3):
-      panvk/ci: Update Mali-G52 status with full VKCTS
-      panvk/ci: Update to run full CTS on G52
-      panvk/ci: Make panfrost-g52-vk run at premerge
+Faith Ekstrand (16):
+      vulkan: Add a stages field to vk_pipeline
+      vulkan: Add a vk_pipeline_ops::get_shader method
+      vulkan/pipeline: Patch through INDIRECT_BINDABLE_BIT
+      nvk: Fill out shader push data at compile time
+      nvk: Use VkShaderStageFlags for shaders_dirty
+      nvk: Disable CBuf pushing when INDIRECT_BINDABLE_BIT is set
+      nvk: Add an implementation of VkIndirectExecutionSetEXT
+      nvk/nvkmd: Always map read/write for internal maps
+      nvk/nvkmd: Add a mechanism to track and look up nvkmd_mems
+      nvk: Track and dump device-generated commands if possible
+      nvk: Move flush_push_descriptors to the front of flush_state()
+      nvk: Export graphics state flushing helpers
+      nvk: Expose an nvk_cmd_flush_cs_qmd() helper
+      nvk: Implement CmdProcess/ExecuteGeneratedCommandsEXT
+      nvk: Handle indirect dispatch in pipeline barriers
+      nvk: Advertise VK_EXT_device_generated_commands
 
-Mike Blumenkrantz (12):
-      trace: add get_device_reset_status
-      gallium: delete pipe_screen::is_compression_modifier
-      egl/kopper: hook up EGL_EXT_surface_compression on wayland
-      zink: hook up compression control extensions
-      zink: store compression rate info for formats
-      zink: implement compression control
-      zink: move x8 format function to zink_format.c
-      zink: fix zink_format_is_voidable_rgba_variant()
-      zink: add X format variants for 30-bit formats
-      zink: add some other missing X format emulation variants
-      zink: add adl flake
-      vk/image: fix view creation for planar video aspects
+Georg Lehmann (6):
+      amd: add offset to is_subgroup_invocation_lt_amd
+      ac/lower_ngg: use is_subgroup_invocation_lt_amd offset
+      aco/ssa_elimination: don't check for VALU limitation when optimizing branching sequence
+      aco/ssa_elimination: optimize branching sequence with SALU that has multiple definitions
+      aco: optimize lanecount_to_mask
+      nir: sink is_subgroup_invocation_lt_amd
 
-Samuel Pitoiset (3):
-      radv: move emitting some RT user SGPRs when the RT pipeline is emitted
-      radv: move updating compute scratch for RT when stack size is emitted
-      radv: do not keep executable info when compiling shaders for ESO
+Iván Briano (1):
+      vulkan: use standard sample locations if there's no VkPipelineSampleLocationsStateCreateInfoEXT
 
-Timothy Arceri (22):
-      ci: disable gimark trace
-      mesa/glsl: add nir fields to the gl shader structs
-      glsl: add gl_nir_validate_intrastage_interface_blocks()
-      glsl: make gl_nir_validate_intrastage_arrays() more flexible
-      glsl: add support for converting global instructions to NIR
-      util/hash_table: add _mesa_string_hash_table_create() helper
-      nir: add max_ifc_array_access field to vars
-      nir: add nir_function_impl_clone_remap_globals()
-      glsl: move _mesa_glsl_can_implicitly_convert() to linker_util.cpp
-      nir: add function in/outs to variable modes
-      nir: serialize nir_parameter type
-      nir: store variable mode in nir_parameter
-      nir: add implicit_conversion_prohibited field to nir_parameter
-      glsl: add gl_nir_link_function_calls()
-      glsl: add gl_nir_linker_size_arrays()
-      nir: add nir_intrinsic_deref_implicit_array_length intrinsic
-      nir: handle wildcard array deref
-      glsl: add intrastage shader linking helpers for nir linker
-      glsl: add lower_derivatives_without_layout() helper
-      glsl: set blake3 hash in standalone scaffolding
-      glsl: switch to a full nir based linker
-      glsl: remove now unused linker code
+Job Noorman (6):
+      ir3/isa: add isaspec definition for shfl
+      ir3: add ir3_compiler::has_shfl for shfl support on a6xx+
+      ir3/print: add support for shfl
+      ir3: make backend aware of shfl:
+      ir3: add codegen for rotate
+      tu: advertise VK_KHR_shader_subgroup_rotate
 
-Valentine Burley (4):
-      ci: Add a new build-only job without libdrm
-      freedreno/devices: Fix A740v3 from Quest 3
-      freedreno/devices: Unify magic_regs for A740 and A32
-      freedreno/devices: Document an alias for FD644
+Juan A. Suarez Romero (1):
+      broadcom: do not include simulator if not available
+
+Kai Wasserbäch (1):
+      fix(FTBFS): clover: use `.getDataLayout()` with LLVM >= 20
+
+Lionel Landwerlin (1):
+      zink: avoid host transfer usage with sparse
+
+Lucas Stach (1):
+      gbm: mark surface buffers as explicit flushed
+
+Marek Olšák (1):
+      nir/opt_shrink_vectors: shrink memory loads, not just IO
+
+Mary Guillemard (4):
+      egl: Support NV_context_priority_realtime
+      panfrost: Update panthor_drm.h with latest
+      pan/kmod: Add priority query uapi support
+      panfrost: Implement context priority on v10
+
+Mike Blumenkrantz (7):
+      zink: only clamp samplerview aspect for zs formats
+      zink: fix planar image creation with mutable
+      zink: correctly handle disjoint image creation
+      zink: slightly refactor image tiling inference
+      zink: swap sampler conversion conditional with yuv check
+      zink: stop creating useless sampler conversions
+      zink: move some image ici init up
+
+Nikita Popov (1):
+      gallium: Don't pass avx512er and avx512pf features on LLVM 19
+
+Pohsiang (John) Hsu (1):
+      d3d12: fix incorrect memset in d3d12_video_encoder_references_manager_hevc
+
+Rob Clark (2):
+      freedreno/crashdec: Fix fault address handling
+      freedreno/register: A couple pm4 updates
+
+Sagar Ghuge (1):
+      anv: Track all the descriptor sets
+
+Samuel Pitoiset (1):
+      vulkan: Update XML and headers to 1.3.296
+
+Sil Vilerino (1):
+      d3d12: Fix HEVC chroma_format_idc, separate_colour_plane_flag and conf_win_*_offset for HEVC 444
+
+Thomas Wagner (4):
+      llvmpipe: Fix external memory object reference
+      llvmpipe: Unmap DMA buffer to release all resources
+      llvmpipe: properly save llvmpipe_memory_allocation in memory_object
+      llvmpipe: Remove unused struct member
 

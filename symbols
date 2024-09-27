@@ -2620,6 +2620,9 @@ libOSMesa.so.8:glWindowPos3s
 libOSMesa.so.8:glWindowPos3sARB
 libOSMesa.so.8:glWindowPos3sv
 libOSMesa.so.8:glWindowPos3svARB
+libRusticlOpenCL.so.1:clGetExtensionFunctionAddress
+libRusticlOpenCL.so.1:clGetPlatformInfo
+libRusticlOpenCL.so.1:clIcdGetPlatformIDsKHR
 libVkLayer_INTEL_nullhw.so:vkGetDeviceProcAddr
 libVkLayer_INTEL_nullhw.so:vkGetInstanceProcAddr
 libVkLayer_MESA_device_select.so:vkNegotiateLoaderLayerInterfaceVersion

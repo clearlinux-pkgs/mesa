@@ -3,4 +3,5 @@
 /etc/OpenCL:
 OpenCL
 mesa.icd
+rusticl.icd
 vendors
