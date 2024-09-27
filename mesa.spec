@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 24.2+3331.g28ef0de2504
-Release  : 783
+Release  : 784
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/28ef0de25043907e206a0a9b5973998c4e8e8175/mesa-24.2+3331-g28ef0de2504.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/28ef0de25043907e206a0a9b5973998c4e8e8175/mesa-24.2+3331-g28ef0de2504.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
@@ -39,6 +39,11 @@ BuildRequires : elfutils-dev32
 BuildRequires : expat-dev
 BuildRequires : expat-dev32
 BuildRequires : flex
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
 BuildRequires : glslang
 BuildRequires : libX11-dev32
 BuildRequires : libXv-dev32
@@ -135,6 +140,18 @@ Requires: libglvnd-dev
 dev components for the mesa package.
 
 
+%package dev32
+Summary: dev32 components for the mesa package.
+Group: Default
+Requires: mesa-lib32 = %{version}-%{release}
+Requires: mesa-bin = %{version}-%{release}
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-dev = %{version}-%{release}
+
+%description dev32
+dev32 components for the mesa package.
+
+
 %package lib
 Summary: lib components for the mesa package.
 Group: Libraries
@@ -144,6 +161,16 @@ Requires: mesa-license = %{version}-%{release}
 
 %description lib
 lib components for the mesa package.
+
+
+%package lib32
+Summary: lib32 components for the mesa package.
+Group: Default
+Requires: mesa-data = %{version}-%{release}
+Requires: mesa-license = %{version}-%{release}
+
+%description lib32
+lib32 components for the mesa package.
 
 
 %package libexec
@@ -191,10 +218,44 @@ cp -r %{_builddir}/unicode-ident-1.0.12/* %{_builddir}/mesa-28ef0de25043907e206a
 %patch -P 3 -p1
 %patch -P 4 -p1
 pushd ..
+cp -a mesa-28ef0de25043907e206a0a9b5973998c4e8e8175 build32
+popd
+pushd ..
 cp -a mesa-28ef0de25043907e206a0a9b5973998c4e8e8175 buildavx2
 popd
 
 %build
+## build_prepend_once content
+i686_dir="%{_builddir}/build32"
+deps_dir="${i686_dir}/subprojects/packagefiles"
+
+for dir in "${deps_dir}"/*; do
+name=$(basename "${dir}")
+mv "${dir}/meson.build" "${i686_dir}/subprojects/${name}"-*
+done
+
+cat > "${i686_dir}/lib32" <<END
+[binaries]
+c = ['gcc', '-m32']
+cpp = ['g++', '-m32']
+rust = ['rustc', '--target', 'i686-unknown-linux-gnu']
+pkgconfig = 'pkg-config'
+cups-config = 'cups-config'
+llvm-config = 'llvm-config'
+strip = 'strip'
+
+[built-in options]
+libdir = 'lib32'
+
+[host_machine]
+system = 'linux'
+subsystem = 'linux'
+kernel = 'linux'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'
+END
+## build_prepend_once end
 ## build_prepend content
 deps_dir="./subprojects/packagefiles"
 
@@ -207,7 +268,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1727395210
+export SOURCE_DATE_EPOCH=1727399446
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -270,6 +331,44 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dlegacy-x11=dri2 \
 -Dgallium-rusticl=true  builddiravx2
 ninja -v -C builddiravx2
+pushd ../build32/
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
+ASFLAGS="${CLEAR_INTERMEDIATE_ASFLAGS}${CLEAR_INTERMEDIATE_ASFLAGS:+ }--32"
+CFLAGS="${CLEAR_INTERMEDIATE_CFLAGS}${CLEAR_INTERMEDIATE_CFLAGS:+ }-m32 -mstackrealign"
+CXXFLAGS="${CLEAR_INTERMEDIATE_CXXFLAGS}${CLEAR_INTERMEDIATE_CXXFLAGS:+ }-m32 -mstackrealign"
+LDFLAGS="${CLEAR_INTERMEDIATE_LDFLAGS}${CLEAR_INTERMEDIATE_LDFLAGS:+ }-m32 -mstackrealign"
+meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
+-Dglx=dri \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
+-Dcpp_std=gnu++17 \
+-Dgallium-va=enabled \
+-Dgallium-xa=enabled \
+-Dgallium-opencl=icd \
+-Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
+-Dvulkan-layers=device-select,intel-nullhw,overlay \
+-Dshared-glapi=enabled \
+-Dglvnd=enabled \
+-Dllvm=enabled \
+-Dshared-llvm=enabled \
+-Dselinux=false \
+-Dosmesa=true \
+-Dzstd=enabled \
+-Dshader-cache=enabled \
+-Dopengl=true \
+-Dtools="intel-ui" \
+-Dintel-clc=enabled \
+-Dinstall-intel-clc=true \
+-Dlegacy-x11=dri2 \
+-Dgallium-rusticl=true -Dgallium-opencl=disabled \
+-Dasm=false \
+-Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
+-Dglvnd=false \
+-Dtools="" \
+-Dintel-clc=system \
+--cross-file lib32 \
+-Dgallium-rusticl=false builddir
+ninja -v -C builddir
+popd
 
 %install
 export GCC_IGNORE_WERROR=1
@@ -301,6 +400,21 @@ cp %{_builddir}/syn-2.0.68/LICENSE-MIT %{buildroot}/usr/share/package-licenses/m
 cp %{_builddir}/unicode-ident-1.0.12/LICENSE-APACHE %{buildroot}/usr/share/package-licenses/mesa/6e5c4711bcae04967d7f5b5e01cf56ae03bebe7a || :
 cp %{_builddir}/unicode-ident-1.0.12/LICENSE-MIT %{buildroot}/usr/share/package-licenses/mesa/ce3a2603094e799f42ce99c40941544dfcc5c4a5 || :
 cp %{_builddir}/unicode-ident-1.0.12/LICENSE-UNICODE %{buildroot}/usr/share/package-licenses/mesa/583a5eebcf6119730bd96922e8a0faecf7faf720 || :
+pushd ../build32/
+DESTDIR=%{buildroot} ninja -C builddir install
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+pushd %{buildroot}/usr/lib32/pkgconfig
+for i in *.pc ; do ln -s $i 32$i ; done
+popd
+fi
+if [ -d %{buildroot}/usr/share/pkgconfig ]
+then
+pushd %{buildroot}/usr/share/pkgconfig
+for i in *.pc ; do ln -s $i 32$i ; done
+popd
+fi
+popd
 GOAMD64=v3
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 GOAMD64=v2
@@ -371,11 +485,17 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/share/glvnd/egl_vendor.d/50_mesa.json
 /usr/share/vulkan/explicit_layer.d/VkLayer_INTEL_nullhw.json
 /usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json
+/usr/share/vulkan/icd.d/intel_hasvk_icd.i686.json
 /usr/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json
+/usr/share/vulkan/icd.d/intel_icd.i686.json
 /usr/share/vulkan/icd.d/intel_icd.x86_64.json
+/usr/share/vulkan/icd.d/lvp_icd.i686.json
 /usr/share/vulkan/icd.d/lvp_icd.x86_64.json
+/usr/share/vulkan/icd.d/nouveau_icd.i686.json
 /usr/share/vulkan/icd.d/nouveau_icd.x86_64.json
+/usr/share/vulkan/icd.d/radeon_icd.i686.json
 /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+/usr/share/vulkan/icd.d/virtio_icd.i686.json
 /usr/share/vulkan/icd.d/virtio_icd.x86_64.json
 /usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
 
@@ -393,6 +513,25 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/lib64/pkgconfig/gbm.pc
 /usr/lib64/pkgconfig/osmesa.pc
 /usr/lib64/pkgconfig/xatracker.pc
+
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/pkgconfig/32dri.pc
+/usr/lib32/pkgconfig/32egl.pc
+/usr/lib32/pkgconfig/32gbm.pc
+/usr/lib32/pkgconfig/32gl.pc
+/usr/lib32/pkgconfig/32glesv1_cm.pc
+/usr/lib32/pkgconfig/32glesv2.pc
+/usr/lib32/pkgconfig/32osmesa.pc
+/usr/lib32/pkgconfig/32xatracker.pc
+/usr/lib32/pkgconfig/dri.pc
+/usr/lib32/pkgconfig/egl.pc
+/usr/lib32/pkgconfig/gbm.pc
+/usr/lib32/pkgconfig/gl.pc
+/usr/lib32/pkgconfig/glesv1_cm.pc
+/usr/lib32/pkgconfig/glesv2.pc
+/usr/lib32/pkgconfig/osmesa.pc
+/usr/lib32/pkgconfig/xatracker.pc
 
 %files lib
 %defattr(-,root,root,-)
@@ -508,6 +647,76 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0
 /usr/lib64/vdpau/libvdpau_virtio_gpu.so.1.0.0
+
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/dri/crocus_dri.so
+/usr/lib32/dri/i915_dri.so
+/usr/lib32/dri/iris_dri.so
+/usr/lib32/dri/kms_swrast_dri.so
+/usr/lib32/dri/libdril_dri.so
+/usr/lib32/dri/nouveau_dri.so
+/usr/lib32/dri/nouveau_drv_video.so
+/usr/lib32/dri/r300_dri.so
+/usr/lib32/dri/r600_dri.so
+/usr/lib32/dri/r600_drv_video.so
+/usr/lib32/dri/radeonsi_dri.so
+/usr/lib32/dri/radeonsi_drv_video.so
+/usr/lib32/dri/swrast_dri.so
+/usr/lib32/dri/virtio_gpu_dri.so
+/usr/lib32/dri/virtio_gpu_drv_video.so
+/usr/lib32/dri/vmwgfx_dri.so
+/usr/lib32/gbm/dri_gbm.so
+/usr/lib32/libEGL.so
+/usr/lib32/libEGL.so.1
+/usr/lib32/libEGL.so.1.0.0
+/usr/lib32/libGL.so
+/usr/lib32/libGL.so.1
+/usr/lib32/libGL.so.1.2.0
+/usr/lib32/libGLESv1_CM.so
+/usr/lib32/libGLESv1_CM.so.1
+/usr/lib32/libGLESv1_CM.so.1.1.0
+/usr/lib32/libGLESv2.so
+/usr/lib32/libGLESv2.so.2
+/usr/lib32/libGLESv2.so.2.0.0
+/usr/lib32/libOSMesa.so
+/usr/lib32/libOSMesa.so.8
+/usr/lib32/libOSMesa.so.8.0.0
+/usr/lib32/libVkLayer_INTEL_nullhw.so
+/usr/lib32/libVkLayer_MESA_device_select.so
+/usr/lib32/libVkLayer_MESA_overlay.so
+/usr/lib32/libgallium-24.3.0-devel.so
+/usr/lib32/libgbm.so
+/usr/lib32/libgbm.so.1
+/usr/lib32/libgbm.so.1.0.0
+/usr/lib32/libglapi.so
+/usr/lib32/libglapi.so.0
+/usr/lib32/libglapi.so.0.0.0
+/usr/lib32/libvulkan_intel.so
+/usr/lib32/libvulkan_intel_hasvk.so
+/usr/lib32/libvulkan_lvp.so
+/usr/lib32/libvulkan_nouveau.so
+/usr/lib32/libvulkan_radeon.so
+/usr/lib32/libvulkan_virtio.so
+/usr/lib32/libxatracker.so
+/usr/lib32/libxatracker.so.2
+/usr/lib32/libxatracker.so.2.5.0
+/usr/lib32/vdpau/libvdpau_nouveau.so
+/usr/lib32/vdpau/libvdpau_nouveau.so.1
+/usr/lib32/vdpau/libvdpau_nouveau.so.1.0
+/usr/lib32/vdpau/libvdpau_nouveau.so.1.0.0
+/usr/lib32/vdpau/libvdpau_r600.so
+/usr/lib32/vdpau/libvdpau_r600.so.1
+/usr/lib32/vdpau/libvdpau_r600.so.1.0
+/usr/lib32/vdpau/libvdpau_r600.so.1.0.0
+/usr/lib32/vdpau/libvdpau_radeonsi.so
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1.0
+/usr/lib32/vdpau/libvdpau_radeonsi.so.1.0.0
+/usr/lib32/vdpau/libvdpau_virtio_gpu.so
+/usr/lib32/vdpau/libvdpau_virtio_gpu.so.1
+/usr/lib32/vdpau/libvdpau_virtio_gpu.so.1.0
+/usr/lib32/vdpau/libvdpau_virtio_gpu.so.1.0.0
 
 %files libexec
 %defattr(-,root,root,-)
