@@ -1,122 +1,96 @@
-Updating from d12950539cdab2f8102e53fd8ef1498cfef01665 to 28ef0de25043907e206a0a9b5973998c4e8e8175
+Updating from 28ef0de25043907e206a0a9b5973998c4e8e8175 to 210345cf09b9ebe0c8d27a1671b015899c70c4d6
 
-Caio Oliveira (1):
-      intel/brw: Add SWSB MATH pipe to assembler
+Caio Oliveira (3):
+      intel/brw: Add DUMP flag to brw_assemble
+      intel/executor: Dump both pre-processed source and assembly
+      intel/brw: Skip per-primitive inputs when computing flat input mask
 
-Colin Marc (2):
-      vulkan/video: set HEVC nuh_temporal_id_plus1 and nal_unit_type correctly
-      radv/video: set TemporalId correctly
+Connor Abbott (1):
+      freedreno/a6xx+: Add CP_CONTEXT_SWITCH_CNTL bitfields
 
-Dave Airlie (7):
-      radv/video: use the h264 defines for macroblock w/h
-      radv/video/enc: report pictureAccessGranularity of CTB size.
-      radv/video: add encode field for vcn4
-      radv/video: handle missing h265 feedback struct.
-      zink: free modifiers
-      zink: handle mutable check without crashing if format list not found
-      zink: whitespace fixups
+Daniel Svensson (1):
+      zink: add spirv_info_h dep to libzink.
 
-Dylan Baker (1):
-      anv: enable VK_EXT_ycbcr_2plane_444_formats
+Eric Engestrom (1):
+      ci: fix windows container jobs being missing on forks
 
-Eric Engestrom (3):
-      lavapipe/ci: document ray tracing regression
-      mr-label-maker: add gfxstream
-      ci/deqp: make sure the git commit hash of deqp is stable across rebuilds
-
-Eric R. Smith (2):
-      panfrost: fix SAMPLE_ALPHA_TO_ONE
-      panvk: Support blend shaders for alpha_to_one_enable
-
-Faith Ekstrand (16):
-      vulkan: Add a stages field to vk_pipeline
-      vulkan: Add a vk_pipeline_ops::get_shader method
-      vulkan/pipeline: Patch through INDIRECT_BINDABLE_BIT
-      nvk: Fill out shader push data at compile time
-      nvk: Use VkShaderStageFlags for shaders_dirty
-      nvk: Disable CBuf pushing when INDIRECT_BINDABLE_BIT is set
-      nvk: Add an implementation of VkIndirectExecutionSetEXT
-      nvk/nvkmd: Always map read/write for internal maps
-      nvk/nvkmd: Add a mechanism to track and look up nvkmd_mems
-      nvk: Track and dump device-generated commands if possible
-      nvk: Move flush_push_descriptors to the front of flush_state()
-      nvk: Export graphics state flushing helpers
-      nvk: Expose an nvk_cmd_flush_cs_qmd() helper
-      nvk: Implement CmdProcess/ExecuteGeneratedCommandsEXT
-      nvk: Handle indirect dispatch in pipeline barriers
-      nvk: Advertise VK_EXT_device_generated_commands
+Faith Ekstrand (4):
+      nvk: Handle aspects in D32_S8_UINT copies
+      nvk: Assume a GOB height of 8 for copies
+      nvk,nil: Replace gob_height_is_8 and is_tiled with a new GOBType enum
+      vulkan: Use SEVERITY_WARNING_BIT for vk_error*()
 
 Georg Lehmann (6):
-      amd: add offset to is_subgroup_invocation_lt_amd
-      ac/lower_ngg: use is_subgroup_invocation_lt_amd offset
-      aco/ssa_elimination: don't check for VALU limitation when optimizing branching sequence
-      aco/ssa_elimination: optimize branching sequence with SALU that has multiple definitions
-      aco: optimize lanecount_to_mask
-      nir: sink is_subgroup_invocation_lt_amd
+      nir: replace nir_opt_remove_phis_block with a single source version
+      nir: make nir_instr_clone usable with load_const and undef
+      nir/opt_remove_phis: rematerialize constants
+      radv: remove nir_opt_reuse_constants call
+      nir: delete nir_opt_reuse_constants
+      vc4/ci: documment new failure
+
+Guilherme Gallo (9):
+      ci/freedreno: Rebalance limozeen jobs
+      ci/freedreno: Replace 2 limozeen with kingoftown
+      ci/freedreno: Rebalance jobs via fraction and parallel
+      ci/freedreno: Add a618_gl_full
+      ci/amd: Rebalance radeonsi-stoney-gl:x86_64
+      ci/amd: Rebalance jobs via DEQP_FRACTION
+      ci/intel: Rebalance jobs via parallel
+      ci/anv: Introduce missing farm var for ADL jobs
+      ci/anv: Update xfiles
 
 Iván Briano (1):
-      vulkan: use standard sample locations if there's no VkPipelineSampleLocationsStateCreateInfoEXT
-
-Job Noorman (6):
-      ir3/isa: add isaspec definition for shfl
-      ir3: add ir3_compiler::has_shfl for shfl support on a6xx+
-      ir3/print: add support for shfl
-      ir3: make backend aware of shfl:
-      ir3: add codegen for rotate
-      tu: advertise VK_KHR_shader_subgroup_rotate
+      anv: allocate sparse descriptor buffers from the correct heap
 
 Juan A. Suarez Romero (1):
-      broadcom: do not include simulator if not available
-
-Kai Wasserbäch (1):
-      fix(FTBFS): clover: use `.getDataLayout()` with LLVM >= 20
+      v3d/ci: add new flakes and timeouts
 
 Lionel Landwerlin (1):
-      zink: avoid host transfer usage with sparse
+      blorp: convert fast clear color for unsupported formats
 
-Lucas Stach (1):
-      gbm: mark surface buffers as explicit flushed
+Marek Olšák (5):
+      ac: make sure VEGA20 and MI200 version ranges don't overlap with other chips
+      ac/nir: set .image_dim and .image_array for all opcodes
+      ac/llvm: use LLVM processor gfx942 for GFX940 when it's available
+      ac/llvm: don't use the 64-bit umul_hi workaround with LLVM 19.1
+      ac/gpu_info: print 32bpp modifiers
 
-Marek Olšák (1):
-      nir/opt_shrink_vectors: shrink memory loads, not just IO
+Mary Guillemard (1):
+      panvk/ci: Increase panfrost-g52-vk fraction
 
-Mary Guillemard (4):
-      egl: Support NV_context_priority_realtime
-      panfrost: Update panthor_drm.h with latest
-      pan/kmod: Add priority query uapi support
-      panfrost: Implement context priority on v10
+Matt Turner (1):
+      anv: Set shader_spilling_rate=15 by default
 
-Mike Blumenkrantz (7):
-      zink: only clamp samplerview aspect for zs formats
-      zink: fix planar image creation with mutable
-      zink: correctly handle disjoint image creation
-      zink: slightly refactor image tiling inference
-      zink: swap sampler conversion conditional with yuv check
-      zink: stop creating useless sampler conversions
-      zink: move some image ici init up
+Mike Blumenkrantz (14):
+      zink: check HAVE_LIBDRM for xf86drm.h include
+      zink: only use DISJOINT for planar images
+      zink: zink_modifier_prop -> zink_modifier_props
+      zink: wrap all access to format_props and modifier_props
+      zink: init format props dynamically
+      zink: fix some indentation
+      zink: delete redundant HIC usage check
+      zink: add HIC back if suboptimal check fails
+      zink: simplify some confusing modifier code
+      zink: stop passing modifier pointers internally
+      zink: rework modifier selection (again)
+      zink: rework HIC image creation checks
+      vk/runtime: add EXT DGC layout handling
+      lavapipe: EXT DGC
 
-Nikita Popov (1):
-      gallium: Don't pass avx512er and avx512pf features on LLVM 19
+Paulo Zanoni (2):
+      anv: fix compute engines when using ANV_QUEUE_OVERRIDE
+      anv/trtt: mark vk_sync_get_value()'s value as defined for Valgrind
 
-Pohsiang (John) Hsu (1):
-      d3d12: fix incorrect memset in d3d12_video_encoder_references_manager_hevc
-
-Rob Clark (2):
-      freedreno/crashdec: Fix fault address handling
-      freedreno/register: A couple pm4 updates
-
-Sagar Ghuge (1):
-      anv: Track all the descriptor sets
+Rhys Perry (1):
+      aco: do not use inline constants for 16-bit pseudo scalar trancendentals
 
 Samuel Pitoiset (1):
-      vulkan: Update XML and headers to 1.3.296
+      radv: simplify determining conformant products
 
-Sil Vilerino (1):
-      d3d12: Fix HEVC chroma_format_idc, separate_colour_plane_flag and conf_win_*_offset for HEVC 444
+Serdar Kocdemir (2):
+      gfxstream: Add VkPrivateDataSlot handle type
+      gfxstream: Handle tmp folder explicitly on codegen
 
-Thomas Wagner (4):
-      llvmpipe: Fix external memory object reference
-      llvmpipe: Unmap DMA buffer to release all resources
-      llvmpipe: properly save llvmpipe_memory_allocation in memory_object
-      llvmpipe: Remove unused struct member
+Sviatoslav Peleshko (1):
+      intel/brw: Don't apply discard_if condition opt if it can change results
 

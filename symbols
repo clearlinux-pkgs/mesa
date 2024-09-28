@@ -3443,6 +3443,7 @@ libvulkan_nouveau.so:nil_format_supports_storage
 libvulkan_nouveau.so:nil_format_supports_texturing
 libvulkan_nouveau.so:nil_format_to_color_target
 libvulkan_nouveau.so:nil_format_to_depth_stencil
+libvulkan_nouveau.so:nil_gob_type_height
 libvulkan_nouveau.so:nil_image_3d_level_as_2d_array
 libvulkan_nouveau.so:nil_image_fill_tic
 libvulkan_nouveau.so:nil_image_for_level
