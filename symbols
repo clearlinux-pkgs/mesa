@@ -3429,7 +3429,10 @@ libvulkan_nouveau.so:nak_shader_bin_destroy
 libvulkan_nouveau.so:nak_should_print_nir
 libvulkan_nouveau.so:nil_buffer_fill_tic
 libvulkan_nouveau.so:nil_choose_sample_layout
+libvulkan_nouveau.so:nil_copy_linear_to_tiled
+libvulkan_nouveau.so:nil_copy_tiled_to_linear
 libvulkan_nouveau.so:nil_drm_format_mods_for_format
+libvulkan_nouveau.so:nil_extent4d_px_to_B
 libvulkan_nouveau.so:nil_extent4d_px_to_el
 libvulkan_nouveau.so:nil_extent4d_px_to_tl
 libvulkan_nouveau.so:nil_fill_null_tic
@@ -3452,12 +3455,14 @@ libvulkan_nouveau.so:nil_image_level_depth_stride_B
 libvulkan_nouveau.so:nil_image_level_extent_px
 libvulkan_nouveau.so:nil_image_level_extent_sa
 libvulkan_nouveau.so:nil_image_level_layer_offset_B
+libvulkan_nouveau.so:nil_image_level_layer_size_B
 libvulkan_nouveau.so:nil_image_level_size_B
 libvulkan_nouveau.so:nil_image_level_z_offset_B
 libvulkan_nouveau.so:nil_image_mip_tail_offset_B
 libvulkan_nouveau.so:nil_image_mip_tail_size_B
 libvulkan_nouveau.so:nil_image_new
 libvulkan_nouveau.so:nil_msaa_image_as_sa
+libvulkan_nouveau.so:nil_offset4d_px_to_B
 libvulkan_nouveau.so:nil_offset4d_px_to_el
 libvulkan_nouveau.so:nil_offset4d_px_to_tl
 libvulkan_nouveau.so:nil_px_extent_sa
