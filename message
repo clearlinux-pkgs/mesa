@@ -1,21 +1,21 @@
-Updating from 210345cf09b9ebe0c8d27a1671b015899c70c4d6 to a74ebffc6a6193445231563cdaa4494933b6c281
-
-Faith Ekstrand (2):
-      nil: Add a couple Extent4D and Offset4D methods
-      nil: Add tiled memcpy helpers
+Updating from a74ebffc6a6193445231563cdaa4494933b6c281 to 9b51cb05d265ef7bfc27944ad524ba37a298b011
 
 GKraats (1):
-      X11: fix crash of gnome-shell if mesa is compiled with legacy-x11=dri2
+      i915g: fix texture3d npot mipmaps
 
-Martin Roukala (né Peres) (3):
-      radv/ci: document more vkcts flakes
-      zink/ci: document more radv flakes
-      zink/ci: bump the polaris10 timeout to 30 minutes
+Kai Wasserbäch (1):
+      fix(FTBFS): build: link OpenCL target with `dep_clang` from top-level
 
-Mohamed Ahmed (5):
-      nil: Expose px_to_B helpers to C
-      nil: Add level_layer_size_B() helper
-      nvk: Add host copy functions
-      nvk: Block off non-2D DRM format modifier images
-      nvk: Enable VK_EXT_host_image_copy
+Mike Blumenkrantz (2):
+      ci: bump gl cts versions
+      ci: bump VVL to current week
+
+Pavel Ondračka (3):
+      r300: use fake ADD instead of MOV for negative KIL source fixup
+      r300: preserve NaNs and denormals for MIN/MAX/CMP/CND
+      r300: get rid of unneeded CMP before KIL
+
+Valentine Burley (2):
+      egl: Fix missing libdrm check
+      ci: Build zink and llvmpipe in debian-no-libdrm
 
