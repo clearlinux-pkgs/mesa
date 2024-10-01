@@ -1,21 +1,78 @@
-Updating from a74ebffc6a6193445231563cdaa4494933b6c281 to 9b51cb05d265ef7bfc27944ad524ba37a298b011
+Updating from 9b51cb05d265ef7bfc27944ad524ba37a298b011 to bf013cf8ded9037f55a46214b387caa5f686a2f0
 
-GKraats (1):
-      i915g: fix texture3d npot mipmaps
+Corentin Noël (1):
+      virgl: Avoid a race condition on handle removal
 
-Kai Wasserbäch (1):
-      fix(FTBFS): build: link OpenCL target with `dep_clang` from top-level
+David Heidelberg (2):
+      freedreno/ir3: mad.x24 is not safe to lower
+      freedreno/ir3: Do not allow 16-bit mad.x24
 
-Mike Blumenkrantz (2):
-      ci: bump gl cts versions
-      ci: bump VVL to current week
+Eric R. Smith (1):
+      panfrost: fix earlyzs settings for alpha_to_coverage
 
-Pavel Ondračka (3):
-      r300: use fake ADD instead of MOV for negative KIL source fixup
-      r300: preserve NaNs and denormals for MIN/MAX/CMP/CND
-      r300: get rid of unneeded CMP before KIL
+Erik Faye-Lund (1):
+      mesa: make compressed-format emulation optional
 
-Valentine Burley (2):
-      egl: Fix missing libdrm check
-      ci: Build zink and llvmpipe in debian-no-libdrm
+Faith Ekstrand (1):
+      vulkan: Add a comment explainint SEVERITY_WARNING_BIT for vk_error*()
+
+Gert Wollny (2):
+      nir/opt_algebraic: Allow two-step lowering of ftrunc@64 to use ffract@64
+      Revert: r600/sfn: call nir_lower_doubles explicitely"
+
+Jesse (1):
+      amd/vpelib: Config Writer hook and CDC refinement
+
+Juan A. Suarez Romero (1):
+      vc4: handle nir_op_ult32 intrinsic
+
+Jude Shih (1):
+      amd/vpelib: Dynamic Command List Expansion
+
+Jules Blok (5):
+      vulkan: Add support for VK_EXT_depth_clamp_control
+      radv: Add support for VK_EXT_depth_clamp_control
+      anv: Add support for VK_EXT_depth_clamp_control
+      nvk: Add support for VK_EXT_depth_clamp_control
+      docs: Update status of VK_EXT_depth_clamp_control support
+
+Kenneth Graunke (1):
+      nir: Don't generate single iteration loops to zero-initialize memory
+
+Konstantin Seurer (2):
+      Revert "lavapipe: Do not return in report_ray_intersection"
+      lavapipe: Set minAccelerationStructureScratchOffsetAlignment to 8
+
+Mauro Rossi (1):
+      android: gbm: split the DRI backend into separate library
+
+Mike Blumenkrantz (1):
+      zink: revert compression control handling
+
+Patrick Lerda (2):
+      r600/sfn: fix class Shader object m_register_allocations memory leak
+      r600/sfn: fix class Shader object last_alu_with_indirect_reg memory leak
+
+Paulo Zanoni (2):
+      anv: remove duplicate pipe_control workaround
+      anv: remove another copy of the texture cache pipe_control workaround
+
+Rhys Perry (2):
+      aco/tests: update assembler tests for llvm
+      aco: workaround hazards in emit_long_jump
+
+Roy Chan (2):
+      amd/vpelib: Optimize the CPU usage by caching all the LUT configs
+      amd/vpelib: fix zero input handling
+
+Tapani Pälli (1):
+      anv: force StackIDControl value for Wa_14021821874
+
+Tomson Chang (2):
+      amd/vpelib: Fix color adjustment change detect hole
+      amd/vpelib: Only update cached adjustment when it is valid
+
+Vitaliy Triang3l Kuzmin (2):
+      r600: Add FMT_1_REVERSED to r600_formats.h
+      r600: Add missing formats to r600_colorformat_endian_swap
 
