@@ -1,78 +1,77 @@
-Updating from 9b51cb05d265ef7bfc27944ad524ba37a298b011 to bf013cf8ded9037f55a46214b387caa5f686a2f0
+Updating from 366f63fd888172f570862287c719a6fdabf84893 to c58b8db54752e857e553376455de361d766595ed
 
-Corentin Noël (1):
-      virgl: Avoid a race condition on handle removal
+Boris Brezillon (7):
+      panvk: Make sure RUN_IDVS has a valid tiler descriptor
+      panvk: Fix bounds checking in upload_shader_desc_info()
+      panvk/csf: Fix prepare_vp() when viewport->x is negative
+      panvk: Advertise KHR_create_renderpass2 support
+      vk/meta: Fix buffer -> image copy using a graphics pipeline
+      zink: Adjust the surface size of non-compressed views
+      vk/image: Fix the extent adjustment of non-compressed views
 
-David Heidelberg (2):
-      freedreno/ir3: mad.x24 is not safe to lower
-      freedreno/ir3: Do not allow 16-bit mad.x24
+David Heidelberg (1):
+      pvr: unify code into one condition
 
-Eric R. Smith (1):
-      panfrost: fix earlyzs settings for alpha_to_coverage
+Eric Engestrom (5):
+      ci/build: don't wait on the windows build anymore
+      turnip/ci: mark vkd3d test_planar_video_formats as fixed
+      zink+nvk/ci: mark spec@egl 1.4@egl-ext_egl_image_storage as fixed
+      zink+nvk/ci: document more flakes seen lately
+      egl: fix dri2_from_names() call
 
-Erik Faye-Lund (1):
-      mesa: make compressed-format emulation optional
+Erik Faye-Lund (8):
+      panfrost: unify compressed formats
+      panfrost: store texfeat_bit in panfrost_format
+      panfrost: check fmt.bitfeat_bit for compressed-support
+      panfrost: do not re-fetch compressed formats
+      panvk: check against texfeat_bit
+      panvk: implement KHR_get_memory_requirements2
+      panvk: drop needless function implementation
+      panvk: expose already-implemented KHR_maintenance1
 
-Faith Ekstrand (1):
-      vulkan: Add a comment explainint SEVERITY_WARNING_BIT for vk_error*()
+Faith Ekstrand (3):
+      nvk/nvkmd: Stop leaking the primary FD
+      nir: Add an option to lower quad vote
+      nak,nvk: Implement VK_KHR_shader_quad_control
 
-Gert Wollny (2):
-      nir/opt_algebraic: Allow two-step lowering of ftrunc@64 to use ffract@64
-      Revert: r600/sfn: call nir_lower_doubles explicitely"
-
-Jesse (1):
-      amd/vpelib: Config Writer hook and CDC refinement
+Job Noorman (10):
+      nir/load_store_vectorize: fix division by zero
+      nir/lower_int64: add nir_intrinsic_read_invocation_cond_ir3
+      nir/lower_int64: add nir_intrinsic_rotate
+      ir3: lower 64b intrinsics after generic 64b lowering
+      ir3: run 64b phi lowering together with other 64b lowerings
+      ir3: lower 64b SSBO accesses
+      ir3: make ir3_mem_access_size_align publically available
+      tu: lower 64b push constants before lowering IO
+      ir3: add support for 64b reductions
+      tu: advertise shaderInt64
 
 Juan A. Suarez Romero (1):
-      vc4: handle nir_op_ult32 intrinsic
+      v3dv/ci: move asan fail to skip
 
-Jude Shih (1):
-      amd/vpelib: Dynamic Command List Expansion
+LingMan (1):
+      nak/hw_tests: Use f32::to_bits()
 
-Jules Blok (5):
-      vulkan: Add support for VK_EXT_depth_clamp_control
-      radv: Add support for VK_EXT_depth_clamp_control
-      anv: Add support for VK_EXT_depth_clamp_control
-      nvk: Add support for VK_EXT_depth_clamp_control
-      docs: Update status of VK_EXT_depth_clamp_control support
+Lionel Landwerlin (3):
+      anv: limit 22018402687 to impacted platforms
+      anv: consolidate pre/post draw workaround in helpers
+      anv: optimize WA 16011107343/22018402687
 
-Kenneth Graunke (1):
-      nir: Don't generate single iteration loops to zero-initialize memory
+Marek Olšák (1):
+      nir/opt_vectorize_io: fix skipped output vectorization if inputs were vectorized
 
-Konstantin Seurer (2):
-      Revert "lavapipe: Do not return in report_ray_intersection"
-      lavapipe: Set minAccelerationStructureScratchOffsetAlignment to 8
+Mark Collins (2):
+      freedreno/registers: Document TPL1_2D_SRC_CNTL register
+      tu: Improve 2D buffer-to-image copies for A7XX
 
-Mauro Rossi (1):
-      android: gbm: split the DRI backend into separate library
+Samuel Pitoiset (6):
+      radv/amdgpu: do not use a constant value for the IB size in dwords
+      radv/amdgpu: add assertions to check the IB size
+      radv: use base mip level from vk_image_view
+      radv: stop passing redundant parameters to radv_image_view_make_descriptor()
+      radv: remove redundant assertions about image views
+      radv: stop passing image create flags to radv_image_view_init()
 
-Mike Blumenkrantz (1):
-      zink: revert compression control handling
-
-Patrick Lerda (2):
-      r600/sfn: fix class Shader object m_register_allocations memory leak
-      r600/sfn: fix class Shader object last_alu_with_indirect_reg memory leak
-
-Paulo Zanoni (2):
-      anv: remove duplicate pipe_control workaround
-      anv: remove another copy of the texture cache pipe_control workaround
-
-Rhys Perry (2):
-      aco/tests: update assembler tests for llvm
-      aco: workaround hazards in emit_long_jump
-
-Roy Chan (2):
-      amd/vpelib: Optimize the CPU usage by caching all the LUT configs
-      amd/vpelib: fix zero input handling
-
-Tapani Pälli (1):
-      anv: force StackIDControl value for Wa_14021821874
-
-Tomson Chang (2):
-      amd/vpelib: Fix color adjustment change detect hole
-      amd/vpelib: Only update cached adjustment when it is valid
-
-Vitaliy Triang3l Kuzmin (2):
-      r600: Add FMT_1_REVERSED to r600_formats.h
-      r600: Add missing formats to r600_colorformat_endian_swap
+Vignesh Raman (1):
+      ci/image-tags: add DEBIAN_PYUTILS_TAG
 
