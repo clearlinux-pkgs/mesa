@@ -1,77 +1,97 @@
-Updating from 366f63fd888172f570862287c719a6fdabf84893 to c58b8db54752e857e553376455de361d766595ed
+Updating from c58b8db54752e857e553376455de361d766595ed to 065b45e4dcd89d9ebb21d6ec2b4f3b1eca7653b8
 
-Boris Brezillon (7):
-      panvk: Make sure RUN_IDVS has a valid tiler descriptor
-      panvk: Fix bounds checking in upload_shader_desc_info()
-      panvk/csf: Fix prepare_vp() when viewport->x is negative
-      panvk: Advertise KHR_create_renderpass2 support
-      vk/meta: Fix buffer -> image copy using a graphics pipeline
-      zink: Adjust the surface size of non-compressed views
-      vk/image: Fix the extent adjustment of non-compressed views
+Boris Brezillon (11):
+      vk/meta: Support VkShaderExt objects to allow tracking internal shaders
+      vk/meta: Allow tracking of driver-specific objects in the meta list
+      vk/meta: Make some helpers public
+      panvk: Add a debug flag to force image copies through the gfx pipeline
+      panvk: Add an helper to create internal shaders
+      panvk: Keep our blend shaders in vk_meta_device
+      panvk: Keep our copy_desc shader in vk_meta_device
+      panvk: Emit textures needed for FB preload at image view creation time
+      panvk: Store attachment image views in the graphics state
+      panvk: Implement a custom FB preload logic
+      panfrost: Move pan_blitter.{c,h} to the gallium driver
 
-David Heidelberg (1):
-      pvr: unify code into one condition
+Danylo Piliaiev (1):
+      u_trace: Fix trace_payload_as_extra_func desync between drivers
 
-Eric Engestrom (5):
-      ci/build: don't wait on the windows build anymore
-      turnip/ci: mark vkd3d test_planar_video_formats as fixed
-      zink+nvk/ci: mark spec@egl 1.4@egl-ext_egl_image_storage as fixed
-      zink+nvk/ci: document more flakes seen lately
-      egl: fix dri2_from_names() call
+David Rosca (9):
+      frontends/va: Fix AV1 packed header parsing
+      pipe: Add video fence_wait
+      radeonsi/uvd: Implement fence_wait
+      radeonsi/vcn: Implement fence_wait
+      radeonsi/vpe: Implement fence_wait
+      d3d12: Implement fence_wait
+      r600/uvd: Implement fence_wait
+      frontends/va: Use fence_wait instead of get_*_fence
+      pipe: Remove video get_*_fence
 
-Erik Faye-Lund (8):
-      panfrost: unify compressed formats
-      panfrost: store texfeat_bit in panfrost_format
-      panfrost: check fmt.bitfeat_bit for compressed-support
-      panfrost: do not re-fetch compressed formats
-      panvk: check against texfeat_bit
-      panvk: implement KHR_get_memory_requirements2
-      panvk: drop needless function implementation
-      panvk: expose already-implemented KHR_maintenance1
+Eric Engestrom (3):
+      docs: add release notes for 24.2.4
+      docs: update calendar for 24.2.4
+      docs: add sha sum for 24.2.4
 
-Faith Ekstrand (3):
-      nvk/nvkmd: Stop leaking the primary FD
-      nir: Add an option to lower quad vote
-      nak,nvk: Implement VK_KHR_shader_quad_control
+Erico Nunes (1):
+      v3dv: match render and display device for wsi present
 
-Job Noorman (10):
-      nir/load_store_vectorize: fix division by zero
-      nir/lower_int64: add nir_intrinsic_read_invocation_cond_ir3
-      nir/lower_int64: add nir_intrinsic_rotate
-      ir3: lower 64b intrinsics after generic 64b lowering
-      ir3: run 64b phi lowering together with other 64b lowerings
-      ir3: lower 64b SSBO accesses
-      ir3: make ir3_mem_access_size_align publically available
-      tu: lower 64b push constants before lowering IO
-      ir3: add support for 64b reductions
-      tu: advertise shaderInt64
+Faith Ekstrand (8):
+      nvk: Fix a comment in SET_VIEWPORT_CLIP_CONTROL
+      vulkan/queue: Don't use vk_semaphore in threaded payload stealing
+      vulkan/queue: Move has_binary_permanent_semaphore_wait into the sumbit struct
+      vulkan/queue: Use _mem_signal_temp instead of signal_mem_sync
+      vulkan: Add a vk_queue_submit_has_bind() helper
+      vulkan/queue: Use a builder pattern for vk_queue_submit
+      vulkan/queue: Split vk_queue_submit into create and submit
+      vulkan/queue: Merge submits when possible
 
-Juan A. Suarez Romero (1):
-      v3dv/ci: move asan fail to skip
+Friedrich Vock (1):
+      radv/rt: Skip all AABB code when no_skip_aabbs is not set
 
-LingMan (1):
-      nak/hw_tests: Use f32::to_bits()
+Iago Toral Quiroga (5):
+      nir: make fclamp_pos_mali and fsat_signed_mali opcodes generic
+      broadcom: add missing opcodes for fmov on mul alu for V3D 7.x
+      broadcom: add helpers to identify availability of new unpack modifiers
+      broadcom/compiler: implement NIR mali opcodes for clamping
+      broadcom/compiler: generate mali opcodes for clamping on Pi5
 
-Lionel Landwerlin (3):
-      anv: limit 22018402687 to impacted platforms
-      anv: consolidate pre/post draw workaround in helpers
-      anv: optimize WA 16011107343/22018402687
+Mike Blumenkrantz (7):
+      zink: block all 2d view creation with sparse
+      zink: block dmabuf fallback into optimal tiling
+      zink: assert images aren't created with dmabuf export and optimal tiling
+      zink: also init format props when getting modifier props
+      zink: clamp out dmabuf exports from optimal tiling images
+      zink: fix external_only reporting for dmabuf formats
+      zink: block srgb with winsys imports
 
-Marek Olšák (1):
-      nir/opt_vectorize_io: fix skipped output vectorization if inputs were vectorized
+Nanley Chery (5):
+      anv: Use image formats when copying to/from buffers
+      intel/blorp: Choose some copy formats independently
+      intel/blorp: Use original surface format for some copies
+      anv: Prevent clear color modifier corruption with views
+      anv: Delete stale comment for BLORP clear color addr
 
-Mark Collins (2):
-      freedreno/registers: Document TPL1_2D_SRC_CNTL register
-      tu: Improve 2D buffer-to-image copies for A7XX
+Rhys Perry (3):
+      aco: stop using instructions in ra_ctx::vectors
+      aco: create vector affinities for phi operands
+      aco: fix is_vector_intact for GFX11 BVH
 
-Samuel Pitoiset (6):
-      radv/amdgpu: do not use a constant value for the IB size in dwords
-      radv/amdgpu: add assertions to check the IB size
-      radv: use base mip level from vk_image_view
-      radv: stop passing redundant parameters to radv_image_view_make_descriptor()
-      radv: remove redundant assertions about image views
-      radv: stop passing image create flags to radv_image_view_init()
+Samuel Pitoiset (1):
+      zink/ci: update expected list of failures on NAVI31
 
-Vignesh Raman (1):
-      ci/image-tags: add DEBIAN_PYUTILS_TAG
+Tapani Pälli (1):
+      anv: use mi_builder in CmdBeginTransformFeedbackEXT
+
+Tatsuyuki Ishi (1):
+      radv: Enable descriptorBufferCaptureReplay.
+
+Timothy Arceri (8):
+      glsl: fix gl_{Clip,Cull}Distance error messages
+      glsl/mesa: move uniform related shader structs to shader_types.h
+      glsl: move resource_name_updated() to linker_util.cpp
+      glsl/mesa: remove ir_uniform.h
+      glsl: move error and warning helpers to util file
+      glsl: move shader cache lookup call to st
+      glsl: rename link_shaders() -> link_shaders_init()
+      glsl: remove linker.cpp
 
