@@ -54,3 +54,4 @@ pkgconfig(epoxy)
 pkgconfig(gtk+-3.0)
 pkgconfig(valgrind)
 valgrind
+ocl-icd-dev

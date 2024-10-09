@@ -7,7 +7,7 @@
 #
 Name     : mesa
 Version  : 24.2+3874.g336f80137d2
-Release  : 791
+Release  : 792
 URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/336f80137d26230bd124f475bd4382a0c727004f/mesa-24.2+3874-g336f80137d2.tar.bz2
 Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/336f80137d26230bd124f475bd4382a0c727004f/mesa-24.2+3874-g336f80137d2.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
@@ -60,6 +60,7 @@ BuildRequires : mesa-bin
 BuildRequires : nasm
 BuildRequires : nettle-dev
 BuildRequires : nettle-dev32
+BuildRequires : ocl-icd-dev
 BuildRequires : pkgconfig(32dri3proto)
 BuildRequires : pkgconfig(32epoxy)
 BuildRequires : pkgconfig(32libdrm_intel)
@@ -268,7 +269,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1728416677
+export SOURCE_DATE_EPOCH=1728491647
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -304,7 +305,8 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true  builddir
+-Dgallium-rusticl=true \
+-Dgallium-opencl=icd  builddir
 ninja -v -C builddir
 GOAMD64=v3
 CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -march=x86-64-v3 " meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
@@ -329,7 +331,8 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true  builddiravx2
+-Dgallium-rusticl=true \
+-Dgallium-opencl=icd  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
@@ -359,7 +362,8 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true -Dgallium-opencl=disabled \
+-Dgallium-rusticl=true \
+-Dgallium-opencl=icd -Dgallium-opencl=disabled \
 -Dasm=false \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915 \
 -Dglvnd=false \
@@ -441,6 +445,10 @@ rm -f %{buildroot}*/usr/include/GL/glcorearb.h
 rm -f %{buildroot}*/usr/include/GL/glext.h
 rm -f %{buildroot}*/usr/include/GL/glx.h
 rm -f %{buildroot}*/usr/include/GL/glxext.h
+## install_append content
+mkdir -p  %{buildroot}/usr/share/OpenCL/
+mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
+## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
@@ -480,6 +488,8 @@ rm -f %{buildroot}*/usr/include/GL/glxext.h
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/OpenCL/vendors/mesa.icd
+/usr/share/OpenCL/vendors/rusticl.icd
 /usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/drirc.d/00-radv-defaults.conf
 /usr/share/glvnd/egl_vendor.d/50_mesa.json

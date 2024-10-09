@@ -1,0 +1,2 @@
+mkdir -p  %{buildroot}/usr/share/OpenCL/
+mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors

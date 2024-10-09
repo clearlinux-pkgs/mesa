@@ -21,3 +21,4 @@
 -Dinstall-intel-clc=true
 -Dlegacy-x11=dri2
 -Dgallium-rusticl=true
+-Dgallium-opencl=icd

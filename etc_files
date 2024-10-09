@@ -1,7 +1,3 @@
 /etc/:
-/etc/OpenCL/vendors:
 /etc/OpenCL:
 OpenCL
-mesa.icd
-rusticl.icd
-vendors
