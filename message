@@ -1,14 +1,147 @@
-Updating from 336f80137d26230bd124f475bd4382a0c727004f to 5d7f3753d7a565b16418dd34724e0f5e4efcbc18
+Updating from 5d7f3753d7a565b16418dd34724e0f5e4efcbc18 to ace38d8432441139dcdd979495e8e36470a82fa9
+
+Caio Oliveira (1):
+      spirv: Update SPIR-V grammar to use aliases
 
 Christian Gmeiner (1):
-      etnaviv: Improve split sampler check
+      etnaviv: blt: Convert assert to real if
 
-David Heidelberg (1):
-      ci/piglit: keep the include_test.h used for OpenCL testing
+Connor Abbott (12):
+      Reapply "ci/lima: Temporarily disable"
+      ir3, turnip: Support VK_*_compute_shader_derivatives on a7xx
+      tu: Don't WFI after initializing RB_CCU_CNTL on a7xx
+      tu: Split out register setting from tu6_init_hw()
+      tu: Write bin size for each bin
+      tu: Re-emit LRZ state before each bin
+      tu: Simplify device startup CS creation
+      tu: Emit CP_SET_AMBLE packets
+      freedreno: Bump kernel uapi
+      tu/virtio: Make virtio_simple_ioctl take a vdrm_device
+      tu: Allow being preempted on a7xx
+      tu: Add TU_DEBUG=hiprio
 
-Juan A. Suarez Romero (1):
-      v3d: add new flake
+Daniel Stone (24):
+      ci: Make setup-test-env safe for set -u
+      ci/piglit: Make build-piglit safe for set -u
+      ci/deqp: Make build-deqp safe for set -u
+      ci/apitrace: Make build-apitrace safe for set -u
+      ci/va: Make build-va-tools safe for set -u
+      ci/crosvm: Make build-crosvm safe for set -u
+      ci/wayland: Make build-wayland safe for set -u
+      ci/libdrm: Make build-libdrm safe for set -u
+      ci/windows: Make build-directx-headers safe for set -u
+      ci/wine: Make build-wine safe for set -u
+      ci/libclc: Make build-libclc safe for set -u
+      ci/vulkan: Make build-vulkan-validation safe for set -u
+      ci/vkd3d: Make Proton build safe for set -u
+      ci/angle: Make build-angle safe for set -u
+      ci/deqp-runner: Make build-deqp-runner safe for set -u
+      ci/skqp: Make build-skqp safe for set -u
+      ci/skqp: Reorder some things
+      ci/skqp: Don't hardcode LLVM version
+      ci/kernel: Make download-prebuilt-kernel safe for set -u
+      ci/swrast: Fix library paths for llvmpipe/softpipe
+      ci/swrast: Archive Xvfb logs
+      ci/zink: Fix library path
+      ci/virgl: Fix library path
+      ci/{b2c,swrast,layered}: Strip unnecessary things from runtime containers
 
-Zhang He (1):
-      iris, crocus: fix a typo and break comment line correctly
+Danylo Piliaiev (1):
+      tu/a750: Workaround GPU fault when fast-clearing R8G8 formats
+
+David Heidelberg (3):
+      ci/fedora: when doing non-LTO build, we need C_ARGS too
+      ci: enable IPO/LTO only for nightly builds
+      ci: restrict number of maximum threads
+
+David Rosca (12):
+      radeonsi/vcn: Fix some small coverity issues
+      radeonsi/vcn: Fix out of bounds write when invalidating QP map regions
+      radeonsi/vcn: Fix out of bounds read in H264 decode
+      frontends/va: Implement DPB management for AV1
+      frontends/va: Parse more AV1 frame and sequence header params
+      frontends/va: Support raw packed headers for AV1
+      radeonsi/vcn: Switch to app DPB management for AV1
+      frontends/va: Remove now unused ref fields for AV1 encode
+      radeonsi/vcn: Support raw packed headers for AV1
+      radeonsi/vcn: Fix coded size in sequence header on VCN5
+      radeonsi/vcn: Add support for VCN5 AV1 compound
+      radeonsi/vcn: Add support for VCN5 dpb tier2
+
+Erik Faye-Lund (3):
+      i915: do not calculate native instructions
+      mesa: remove superfluous "native" limits and stats
+      mesa: clean up setup of MaxAddressRegs constant
+
+Guilherme Gallo (1):
+      ci/lava: Make perf jobs use pyutils artifact
+
+Gurchetan Singh (5):
+      gfxstream: add clang-format
+      gfxstream: nuke util function
+      gfxstream: use util/libsync
+      util: add sync_fence_info
+      gfxstream: use sync_fence_info
+
+Iago Toral Quiroga (1):
+      broadcom: fix pairing tmu lookup with previous ldtmu
+
+Jonathan Marek (2):
+      freedreno: improve a6xx CP_SET_MARKER xml definition
+      freedreno/a6xx: add missing USES_GMEM flag and BIN_RENDER_END markers
+
+Jose Maria Casanova Crespo (1):
+      v3d: initialize job local key with the 8 color buffer available in v7.1+
+
+Karol Herbst (2):
+      asahi: implement get_cl_cts_version
+      rusticl: allow asahi to be enabled by default
+
+Lionel Landwerlin (6):
+      isl: remove duplicated copy for tileX/TileY
+      isl/tests: add more coordinates for full tiles testing
+      isl/tests: rename span variable to xt_sub_range_alignment
+      isl: Tile W memcpy support
+      iris: delete stencil mapping support
+      isl: add support of aux disable bit on hiz
+
+Maíra Canal (1):
+      v3d: Don't use performance counters names array with an older kernel
+
+Rhys Perry (3):
+      nir/divergence_analysis: disable phi undef optimization by default
+      aco: ensure phis uniformized by divergence analysis are SGPR
+      aco: skip uniformization of certain merge phis
+
+Rob Clark (9):
+      freedreno/a6xx: Only emit VFD/PC_POWER_CNTL for a6xx
+      freedreno/a6xx: De-open-code VFD_MODE_CNTL
+      freedreno/a6xx: Cleanup WFIs around RB_CCU_CNTL
+      freedreno/a6xx: Set bin size per bin
+      freedreno/a6xx: Move PC_TESSFACTOR_ADDR emit
+      freedreno/a6xx: Move static regs to preamble IB
+      freedreno/a6xx: Move more state emit per-bin
+      freedreno/a6xx: Emit CP_SET_AMBLE packets
+      freedreno/drm: Add preemption support
+
+Samuel Pitoiset (8):
+      radv: fix generating the global key for pipeline binaries
+      radv: move radv_compact_spi_shader_col_format() to radv_cmd_buffer.c
+      radv: add a helper to bind the color output state
+      radv: add PKT3_INDIRECT_BUFFER_BYTES in the DGC path
+      radv: implement IB chaining for DGC when it's executed on compute
+      radv/amdgpu: simplify cs_execute_ib()
+      radv/amdgpu: remove unused code about external IBs in the submit path
+      radv: rename 'gfx' to 'main' in the DGC path
+
+Tapani Pälli (3):
+      drirc/anv: force_vk_vendor=-1 for Silent Hill 2
+      intel/dev: update mesa_defs.json from workaround database
+      anv: set StackIDControlOverride_RTGlobals for 2 workarounds
+
+Vignesh Raman (1):
+      ci/lava: set exit code in exception case
+
+Zan Dobersek (1):
+      freedreno: sanitize device names for config name usage
 
