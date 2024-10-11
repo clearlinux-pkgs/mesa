@@ -1,147 +1,88 @@
-Updating from 5d7f3753d7a565b16418dd34724e0f5e4efcbc18 to ace38d8432441139dcdd979495e8e36470a82fa9
+Updating from ace38d8432441139dcdd979495e8e36470a82fa9 to 40557383dd66dfaa570b2564ad78a0b460ff262c
 
-Caio Oliveira (1):
-      spirv: Update SPIR-V grammar to use aliases
+Adam Jackson (1):
+      vtn: Handle SPV_INTEL_optnone
+
+Caio Oliveira (25):
+      intel/brw: Add ERROR helper variant that returns to EU validation
+      intel/brw: Create a struct to hold a decoded brw_inst in eu_validation
+      intel/brw: Add opcode to brw_hw_decoded_inst
+      intel/brw: Add num_sources to brw_hw_decoded_inst
+      intel/brw: Add has_dst to brw_hw_decoded_inst
+      intel/brw: Add exec_size to brw_hw_decoded_inst
+      intel/brw: Add access_mode to brw_hw_decoded_inst
+      intel/brw: Add dst/srcs reg file to brw_hw_decoded_inst
+      intel/brw: Add dst/srcs type to brw_hw_decoded_inst
+      intel/brw: Add pred/cmod/sat to brw_hw_decoded_inst
+      intel/brw: Add dst/src0 address_mode to brw_hw_decoded_inst
+      intel/brw: Add abs/negate to brw_hw_decoded_inst
+      intel/brw: Add dst/srcs register numbers to brw_hw_decoded_inst
+      intel/brw: Add vstride/width/hstride to brw_hw_decoded_inst
+      intel/brw: Remove the remaining DO_SRC macro from EU validation
+      intel/compiler: Rename shader_stats structs
+      intel: Add statistic for Non SSA registers after NIR to BRW
+      intel/brw: Print Non-SSA regs after NIR in debug output
+      intel/brw: Fix Gfx9 3-src validation to handle FIXED_GRF
+      intel/brw: Add phases to backend
+      intel/brw: Validate some instructions exists only up until some phases
+      intel/brw: Reduce scope of has_source_and_destination_hazard
+      intel/brw: Add SHADER_OPCODE_REDUCE
+      intel/brw: Add SHADER_OPCODE_*_SCAN
+      intel/brw: Move emit_scan/emit_scan_step near its usage
 
 Christian Gmeiner (1):
-      etnaviv: blt: Convert assert to real if
+      etnaviv: Implement ARB_draw_indirect
 
-Connor Abbott (12):
-      Reapply "ci/lima: Temporarily disable"
-      ir3, turnip: Support VK_*_compute_shader_derivatives on a7xx
-      tu: Don't WFI after initializing RB_CCU_CNTL on a7xx
-      tu: Split out register setting from tu6_init_hw()
-      tu: Write bin size for each bin
-      tu: Re-emit LRZ state before each bin
-      tu: Simplify device startup CS creation
-      tu: Emit CP_SET_AMBLE packets
-      freedreno: Bump kernel uapi
-      tu/virtio: Make virtio_simple_ioctl take a vdrm_device
-      tu: Allow being preempted on a7xx
-      tu: Add TU_DEBUG=hiprio
+Daniel Stone (1):
+      egl/x11: Downgrade warning to info
 
-Daniel Stone (24):
-      ci: Make setup-test-env safe for set -u
-      ci/piglit: Make build-piglit safe for set -u
-      ci/deqp: Make build-deqp safe for set -u
-      ci/apitrace: Make build-apitrace safe for set -u
-      ci/va: Make build-va-tools safe for set -u
-      ci/crosvm: Make build-crosvm safe for set -u
-      ci/wayland: Make build-wayland safe for set -u
-      ci/libdrm: Make build-libdrm safe for set -u
-      ci/windows: Make build-directx-headers safe for set -u
-      ci/wine: Make build-wine safe for set -u
-      ci/libclc: Make build-libclc safe for set -u
-      ci/vulkan: Make build-vulkan-validation safe for set -u
-      ci/vkd3d: Make Proton build safe for set -u
-      ci/angle: Make build-angle safe for set -u
-      ci/deqp-runner: Make build-deqp-runner safe for set -u
-      ci/skqp: Make build-skqp safe for set -u
-      ci/skqp: Reorder some things
-      ci/skqp: Don't hardcode LLVM version
-      ci/kernel: Make download-prebuilt-kernel safe for set -u
-      ci/swrast: Fix library paths for llvmpipe/softpipe
-      ci/swrast: Archive Xvfb logs
-      ci/zink: Fix library path
-      ci/virgl: Fix library path
-      ci/{b2c,swrast,layered}: Strip unnecessary things from runtime containers
+David Rosca (5):
+      frontends/va: Fix parsing HEVC st_ref_pic_set
+      frontends/va: Parse H264 prefix for temporal_id
+      frontends/va: Calculate VBV params for other layers relative to base layer
+      radeonsi/vcn: Implement per-layer rate control for HEVC
+      radeonsi/vcn: Select layer for rate control
 
-Danylo Piliaiev (1):
-      tu/a750: Workaround GPU fault when fast-clearing R8G8 formats
+Faith Ekstrand (23):
+      nouveau/mme: Test ifs with immediate parameters
+      nouveau/mme: Evaluate methods immediately in the Turing sim
+      nouveau/mme: Turing can't have emit and state in the same op
+      nil: Add a helper to get samples from a SampleLayout
+      nvk: Add an nvk_cmd_emit_sample_layout() helper
+      nvk: Rework setup of sample masks
+      nouveau/class_parser: Add more method arrays
+      nil: Add D3D sample layouts
+      nvk: Support D3D sample modes
+      nil: Use D3D sample modes by default
+      nvk: Implement GetPhysicalDeviceFragmentShadingRatesKHR()
+      nvk: Initialize VARIABLE_PIXEL_RATE_SAMPLE_ORDER
+      vulkan: Add a vk_fragment_shading_rate_is_disabled() helper
+      nvk: Rework setting of min_sample_shading
+      nvk: Emit FSR state
+      nvk: Add support for binding fragment shading rate images
+      nak: Get rid of some dead code warnings
+      nak: Rename SV_VERTEX_COUNT to PRIM_TYPE
+      nak: Add support for gl_ShadingRateEXT
+      nak: Pass a nak_compiler into sysval and attrib helpers
+      nak: Add support for gl_PrimitiveShadingRateEXT
+      nvk: Set VARIABLE_PIXEL_RATE_SHADING_TABLE_SELECT
+      nvk: Advertise VK_KHR_fragment_shading_rate
 
-David Heidelberg (3):
-      ci/fedora: when doing non-LTO build, we need C_ARGS too
-      ci: enable IPO/LTO only for nightly builds
-      ci: restrict number of maximum threads
+Ian Forbes (1):
+      driconf: Re-enable GLX_EXT_buffer_age on vmwgfx
 
-David Rosca (12):
-      radeonsi/vcn: Fix some small coverity issues
-      radeonsi/vcn: Fix out of bounds write when invalidating QP map regions
-      radeonsi/vcn: Fix out of bounds read in H264 decode
-      frontends/va: Implement DPB management for AV1
-      frontends/va: Parse more AV1 frame and sequence header params
-      frontends/va: Support raw packed headers for AV1
-      radeonsi/vcn: Switch to app DPB management for AV1
-      frontends/va: Remove now unused ref fields for AV1 encode
-      radeonsi/vcn: Support raw packed headers for AV1
-      radeonsi/vcn: Fix coded size in sequence header on VCN5
-      radeonsi/vcn: Add support for VCN5 AV1 compound
-      radeonsi/vcn: Add support for VCN5 dpb tier2
+Konstantin Seurer (1):
+      radv/meta: Do not pass NULL to vk_texcompress_astc_finish
 
-Erik Faye-Lund (3):
-      i915: do not calculate native instructions
-      mesa: remove superfluous "native" limits and stats
-      mesa: clean up setup of MaxAddressRegs constant
+Lucas Stach (1):
+      etnaviv: Update headers from rnndb
 
-Guilherme Gallo (1):
-      ci/lava: Make perf jobs use pyutils artifact
+Mike Blumenkrantz (1):
+      gallium/sw: make llvmpipe the "default" sw driver
 
-Gurchetan Singh (5):
-      gfxstream: add clang-format
-      gfxstream: nuke util function
-      gfxstream: use util/libsync
-      util: add sync_fence_info
-      gfxstream: use sync_fence_info
-
-Iago Toral Quiroga (1):
-      broadcom: fix pairing tmu lookup with previous ldtmu
-
-Jonathan Marek (2):
-      freedreno: improve a6xx CP_SET_MARKER xml definition
-      freedreno/a6xx: add missing USES_GMEM flag and BIN_RENDER_END markers
-
-Jose Maria Casanova Crespo (1):
-      v3d: initialize job local key with the 8 color buffer available in v7.1+
-
-Karol Herbst (2):
-      asahi: implement get_cl_cts_version
-      rusticl: allow asahi to be enabled by default
-
-Lionel Landwerlin (6):
-      isl: remove duplicated copy for tileX/TileY
-      isl/tests: add more coordinates for full tiles testing
-      isl/tests: rename span variable to xt_sub_range_alignment
-      isl: Tile W memcpy support
-      iris: delete stencil mapping support
-      isl: add support of aux disable bit on hiz
-
-Maíra Canal (1):
-      v3d: Don't use performance counters names array with an older kernel
-
-Rhys Perry (3):
-      nir/divergence_analysis: disable phi undef optimization by default
-      aco: ensure phis uniformized by divergence analysis are SGPR
-      aco: skip uniformization of certain merge phis
-
-Rob Clark (9):
-      freedreno/a6xx: Only emit VFD/PC_POWER_CNTL for a6xx
-      freedreno/a6xx: De-open-code VFD_MODE_CNTL
-      freedreno/a6xx: Cleanup WFIs around RB_CCU_CNTL
-      freedreno/a6xx: Set bin size per bin
-      freedreno/a6xx: Move PC_TESSFACTOR_ADDR emit
-      freedreno/a6xx: Move static regs to preamble IB
-      freedreno/a6xx: Move more state emit per-bin
-      freedreno/a6xx: Emit CP_SET_AMBLE packets
-      freedreno/drm: Add preemption support
-
-Samuel Pitoiset (8):
-      radv: fix generating the global key for pipeline binaries
-      radv: move radv_compact_spi_shader_col_format() to radv_cmd_buffer.c
-      radv: add a helper to bind the color output state
-      radv: add PKT3_INDIRECT_BUFFER_BYTES in the DGC path
-      radv: implement IB chaining for DGC when it's executed on compute
-      radv/amdgpu: simplify cs_execute_ib()
-      radv/amdgpu: remove unused code about external IBs in the submit path
-      radv: rename 'gfx' to 'main' in the DGC path
-
-Tapani Pälli (3):
-      drirc/anv: force_vk_vendor=-1 for Silent Hill 2
-      intel/dev: update mesa_defs.json from workaround database
-      anv: set StackIDControlOverride_RTGlobals for 2 workarounds
+Satadru Pramanik (1):
+      Update lp_bld_misc.cpp to support llvm-19+.
 
 Vignesh Raman (1):
-      ci/lava: set exit code in exception case
-
-Zan Dobersek (1):
-      freedreno: sanitize device names for config name usage
+      ci: prepare-artifacts-python: copy if src dir exist
 

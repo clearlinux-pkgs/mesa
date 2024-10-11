@@ -3466,6 +3466,7 @@ libvulkan_nouveau.so:nil_offset4d_px_to_B
 libvulkan_nouveau.so:nil_offset4d_px_to_el
 libvulkan_nouveau.so:nil_offset4d_px_to_tl
 libvulkan_nouveau.so:nil_px_extent_sa
+libvulkan_nouveau.so:nil_sample_layout_samples
 libvulkan_nouveau.so:nil_select_best_drm_format_mod
 libvulkan_nouveau.so:nil_sparse_block_extent_px
 libvulkan_nouveau.so:nil_tiling_size_B
