@@ -1,8 +1,11 @@
-Updating from 40557383dd66dfaa570b2564ad78a0b460ff262c to 3c0bf423818858f88bed9a0c252c0f8bdac734b2
+Updating from 3c0bf423818858f88bed9a0c252c0f8bdac734b2 to c7b126f6273eb4e60f3d36822593e90ad529251a
 
-Bas Nieuwenhuizen (1):
-      radv: Disable EXT BDA capture and replay.
+GKraats (1):
+      i915g: fix GL_TEXTURE_BASE_LEVEL MAX_LEVEL MIN_LOD and MAX_LOD
 
-David Heidelberg (1):
-      util: add aarch64 fast half-float to float conversion
+Pavel Ondračka (1):
+      r300: remove gl_ClipVertex early
+
+Rob Clark (1):
+      freedreno: Balance out u_blitter cb0 save/restore
 
