@@ -1,11 +1,60 @@
-Updating from 3c0bf423818858f88bed9a0c252c0f8bdac734b2 to c7b126f6273eb4e60f3d36822593e90ad529251a
+Updating from c7b126f6273eb4e60f3d36822593e90ad529251a to b0a378374bee3b8fda0aa693cdb9dd868153ac4c
 
-GKraats (1):
-      i915g: fix GL_TEXTURE_BASE_LEVEL MAX_LEVEL MIN_LOD and MAX_LOD
+Alejandro Piñeiro (2):
+      panfrost: add support for DRM_PANTHOR_DEV_QUERY_TIMESTAMP_INFO on drm-shim
+      panfrost: make DRM version panfrost/panthor conditional on drm-shim
 
-Pavel Ondračka (1):
-      r300: remove gl_ClipVertex early
+Alessandro Astone (1):
+      panvk: Add missing headers to android platform
 
-Rob Clark (1):
-      freedreno: Balance out u_blitter cb0 save/restore
+Chia-I Wu (4):
+      panvk: remove unused panvk_physical_device::master_fd
+      panvk: refactor panthor_kmod_dev creation
+      panvk: query device ids of drm device nodes
+      panvk: advertise VK_EXT_physical_device_drm
+
+Christian Gmeiner (3):
+      v3d: Add a few function traces
+      vc4: Add a few function traces
+      docs: Update the list of drivers with CPU tracepoints
+
+David Heidelberg (2):
+      amd: Pass addrlib cpp args to the tests
+      osmesa: Fix OSMesaGetDepthBuffer() test without depth
+
+Erik Faye-Lund (7):
+      panvk: implement and expose KHR_maintenance2
+      panvk: expose KHR_relaxed_block_layout support
+      panvk: expose KHR_bind_memory2 support
+      docs/features: fix bad sorting of drivers
+      panvk: expose KHR_external_semaphore and KHR_external_semaphore_capabilities
+      panvk: expose KHR_external_memory and KHR_external_memory_capabilities
+      panvk: expose KHR_external_fence and KHR_external_fence_capabilities
+
+Faith Ekstrand (1):
+      vulkan/queue: Check for _mem_signal_temp before we submit
+
+Jordan Justen (1):
+      intel/dev: Add 0xb640 ARL PCI id
+
+José Roberto de Souza (2):
+      intel/perf: Sync oa-lnl.xml
+      intel/perf: Add BMG OA support
+
+Konstantin Seurer (1):
+      nir/print: Fix the alignment of 8-bit definitions
+
+Pavel Ondračka (2):
+      r300/ci: share some common variables
+      r300/ci: add deqp and piglit on RV410
+
+Samuel Pitoiset (2):
+      radv: fix returning non-zero captured address without binding
+      radv: use app names instead of exec name for shader based drirc workarounds
+
+Sergi Blanch Torne (4):
+      ci: disable Collabora's farm due to maintenance
+      ci: shellcheck requires better 'boolean or' syntax
+      ci: run shellcheck when changes on scripts to check
+      Revert "ci: disable Collabora's farm due to maintenance"
 
