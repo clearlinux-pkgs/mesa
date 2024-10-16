@@ -1,60 +1,115 @@
-Updating from c7b126f6273eb4e60f3d36822593e90ad529251a to b0a378374bee3b8fda0aa693cdb9dd868153ac4c
+Updating from b0a378374bee3b8fda0aa693cdb9dd868153ac4c to 2272db2ac66561e4389d4101596480234378e00d
 
-Alejandro Piñeiro (2):
-      panfrost: add support for DRM_PANTHOR_DEV_QUERY_TIMESTAMP_INFO on drm-shim
-      panfrost: make DRM version panfrost/panthor conditional on drm-shim
+Aleksi Sapon (2):
+      llvmpipe: implement alpha-to-coverage dithering
+      lavapipe: enable alpha-to-coverage dithering
 
-Alessandro Astone (1):
-      panvk: Add missing headers to android platform
+Alyssa Rosenzweig (1):
+      nir: extract round component helper
 
-Chia-I Wu (4):
-      panvk: remove unused panvk_physical_device::master_fd
-      panvk: refactor panthor_kmod_dev creation
-      panvk: query device ids of drm device nodes
-      panvk: advertise VK_EXT_physical_device_drm
+Boris Brezillon (7):
+      panvk: Make panvk_pool_free_mem() error proof
+      panvk/csf: Fix no-fragment IDVS
+      panvk/csf: Fix dirty checking in prepare_ds()
+      panvk/csf: Fix cmd_emit_dcd() in the FB preload logic
+      panvk/csf: Fix a buffer/stack-overflow when PANVK_DEBUG=sync
+      panvk: Advertise dynamic rendering support
+      panvk/csf: Fix the clear-only RUN_FRAGMENT case
 
-Christian Gmeiner (3):
-      v3d: Add a few function traces
-      vc4: Add a few function traces
-      docs: Update the list of drivers with CPU tracepoints
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 7ce69da1199d12ed0ddaa251ed489750523798fb
 
-David Heidelberg (2):
-      amd: Pass addrlib cpp args to the tests
-      osmesa: Fix OSMesaGetDepthBuffer() test without depth
+Danylo Piliaiev (2):
+      freedreno/rnndec: Consider array length when finding by reg name
+      freedreno/cffdec: Add option to dump bindless descriptors
 
-Erik Faye-Lund (7):
-      panvk: implement and expose KHR_maintenance2
-      panvk: expose KHR_relaxed_block_layout support
-      panvk: expose KHR_bind_memory2 support
-      docs/features: fix bad sorting of drivers
-      panvk: expose KHR_external_semaphore and KHR_external_semaphore_capabilities
-      panvk: expose KHR_external_memory and KHR_external_memory_capabilities
-      panvk: expose KHR_external_fence and KHR_external_fence_capabilities
+Deborah Brouwer (1):
+      ci: remove xfail program@build@include-directories
 
-Faith Ekstrand (1):
-      vulkan/queue: Check for _mem_signal_temp before we submit
+Dylan Baker (1):
+      release: push 24.3 out two weeks
 
-Jordan Justen (1):
-      intel/dev: Add 0xb640 ARL PCI id
+Faith Ekstrand (6):
+      nvk: Add an nvkmd_engines bitfield to nvk_queue
+      nvk: Only set texture/sampler tables and SLM for enabled engines
+      nvk: Re-sort the features table
+      nvk: Advertise 64-bit atomics on buffer views
+      nak: Remove annotations before calc_instr_deps()
+      nak: Handle annotations in legalization
 
-José Roberto de Souza (2):
-      intel/perf: Sync oa-lnl.xml
-      intel/perf: Add BMG OA support
+Georg Lehmann (1):
+      radv: call nir_opt_remove_phis in radv_optimize_nir_algebraic
 
-Konstantin Seurer (1):
-      nir/print: Fix the alignment of 8-bit definitions
+Iago Toral Quiroga (2):
+      v3dv: drop device_id field
+      v3dv: rewrite device identification
 
-Pavel Ondračka (2):
-      r300/ci: share some common variables
-      r300/ci: add deqp and piglit on RV410
+Juston Li (1):
+      android: look for debug/vendor prefixed options
 
-Samuel Pitoiset (2):
-      radv: fix returning non-zero captured address without binding
-      radv: use app names instead of exec name for shader based drirc workarounds
+Karol Herbst (1):
+      zink: add CL CTS result
 
-Sergi Blanch Torne (4):
-      ci: disable Collabora's farm due to maintenance
-      ci: shellcheck requires better 'boolean or' syntax
-      ci: run shellcheck when changes on scripts to check
-      Revert "ci: disable Collabora's farm due to maintenance"
+Kenneth Graunke (6):
+      intel/brw: Fix spill/fill count for load/store_scratch in SIMD32
+      intel/brw: Delete Gfx7-8 code from emit_barrier()
+      intel/brw: Make a ubld temporary in emit_barrier()
+      intel/brw: Fix register and builder size in emit_barrier() for Xe2
+      intel/brw: Delete more Gfx8 code from brw_fs_combine_constants
+      intel/brw: Use whole 512-bit registers in constant combining on Xe2
+
+M Henning (1):
+      nak: Phi coalescing via biased register coloring
+
+Marek Olšák (9):
+      nir/opt_vectorize_io: fix stack buffer overflow with 16-bit output stores
+      nir/opt_load_store_vectorize: add entry::num_components
+      nir: add hole_size parameter into the vectorize callback
+      nir: reject unsupported component counts from all vectorize callbacks
+      nir/opt_load_store_vectorize: allow overfetching, merge overfetched loads
+      nir/opt_load_store_vectorize: allow a 4-byte hole between 2 loads
+      nir/opt_load_store_vectorize: vectorize load_smem_amd
+      gallium/u_threaded: fix crash in tc_create_image_handle due to resource == NULL
+      radeonsi: set the valid buffer range for bindless image buffers
+
+Mary Guillemard (1):
+      panvk: Define primitive size for RUN_TILER/RUN_IDVS
+
+Mike Blumenkrantz (4):
+      util/framebuffer: add viewmask compare for fb equal
+      iris: assert that viewmask is 0
+      gallium: delete duplicated viewmask member in draw info
+      llvmpipe: expose GL multiview extensions
+
+Paulo Zanoni (12):
+      anv/trtt: set every entry to NULL when we create an L2 table
+      anv/trtt: extract anv_trtt_first_bind_init()
+      anv/trtt: inline anv_trtt_init_queues_state()
+      anv/trtt: ensure all L3 entries are NULL-bound during init
+      anv/trtt: unset trtt->l3_addr if initialization fails
+      anv/trtt: fix error handling when adding binds
+      anv/trtt: don't submit empty batches when there are no binds to do
+      anv/trtt: decrement trtt->timeline_val when submission fails
+      anv/trtt: delay batch garbage collection
+      anv/trtt: remove TODO comment regarding the reloc list
+      anv/trtt: convert anv_trtt_bind arrays to util_dynarray
+      anv/trtt: extract anv_trtt_first_bind_init_queue()
+
+Pavel Ondračka (4):
+      r300: add .clang-format file for the compiler
+      r300: opt in to clang-format CI enforcement for the compiler
+      r300/compiler: reformat using default mesa .clang-format rules
+      r300/ci: update ci expectations after piglit uprev
+
+Serdar Kocdemir (1):
+      gfxstream: Use KHR version of the line_rasterization extension
+
+Tapani Pälli (1):
+      mesa: fix DXT1 support with EXT_texture_compression_dxt1
+
+Timothy Arceri (1):
+      nir/glsl: set cast mode for image during function inlining
+
+Utku Iseri (1):
+      st/mesa: clamp reported max lod bias
 
