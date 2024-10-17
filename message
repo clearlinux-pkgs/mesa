@@ -1,115 +1,128 @@
-Updating from b0a378374bee3b8fda0aa693cdb9dd868153ac4c to 2272db2ac66561e4389d4101596480234378e00d
+Updating from 2272db2ac66561e4389d4101596480234378e00d to 01586bc57e0f94d655bffa17a0beadc21a3cdbc5
 
-Aleksi Sapon (2):
-      llvmpipe: implement alpha-to-coverage dithering
-      lavapipe: enable alpha-to-coverage dithering
+Assadian, Navid (3):
+      amd/vpelib: Document public API structures
+      amd/vpelib: Add better rotation and mirror capability check
+      amd/vpelib: Add mirror & rotation capability check function for vpe1.1
 
-Alyssa Rosenzweig (1):
-      nir: extract round component helper
+Benjamin Lee (1):
+      panvk: don't dirty preloaded tiles for writeback
 
-Boris Brezillon (7):
-      panvk: Make panvk_pool_free_mem() error proof
-      panvk/csf: Fix no-fragment IDVS
-      panvk/csf: Fix dirty checking in prepare_ds()
-      panvk/csf: Fix cmd_emit_dcd() in the FB preload logic
-      panvk/csf: Fix a buffer/stack-overflow when PANVK_DEBUG=sync
-      panvk: Advertise dynamic rendering support
-      panvk/csf: Fix the clear-only RUN_FRAGMENT case
+Boris Brezillon (3):
+      pan/util: Discard depth/stencil writes when early fragment test is forced
+      panvk: Set .is_blit=true when compiling preload shaders
+      panvk: Fix the ZStencil descriptor initialization in the preload logic
 
-Collabora's Gfx CI Team (1):
-      Uprev Piglit to 7ce69da1199d12ed0ddaa251ed489750523798fb
+Brendan (3):
+      amd/vpelib: Multiple instance support in caching framework
+      amd/vpelib: Update configs to be per-pipe specific
+      amd/vpelib: Visual confirm on input
 
-Danylo Piliaiev (2):
-      freedreno/rnndec: Consider array length when finding by reg name
-      freedreno/cffdec: Add option to dump bindless descriptors
+Chia-I Wu (6):
+      panvk: fill in VkExternalBufferProperties
+      panvk: fill in VkExternalImageFormatProperties
+      panvk: remove panvk_GetPhysicalDeviceImageFormatProperties
+      panvk: advertise VK_KHR_external_memory_fd
+      panvk: advertise VK_EXT_external_memory_dma_buf
+      panvk: advertise VK_KHR_external_{fence,semaphore}_fd
 
-Deborah Brouwer (1):
-      ci: remove xfail program@build@include-directories
+Christian Gmeiner (2):
+      etnaviv: nir: Enforce stricter swizzle for virtual scalar x register
+      etnaviv: nir: Switch to derivative intrinsics
 
-Dylan Baker (1):
-      release: push 24.3 out two weeks
+Connor Abbott (12):
+      vulkan/state: Handle NULL in DS input attachment mapping correctly
+      vulkan/state: Track the input attachment count
+      v3dv: Don't misuse nir_variable::data.index
+      spirv: Make the default input attachment index ~0
+      nir/lower_input_attachments: Handle unscaled input attachments with no index
+      ir3: Fix non-bindless s2en texture/sampler order
+      tu: Support color attachment remapping
+      tu: Support dynamic input attachments
+      tu: Make input attachments always contain a real descriptor
+      tu: Fix flushes for feedback_invalidate case
+      tu: Track possible feedback loops for dynamic renderpasses
+      tu: Expose VK_KHR_dynamic_rendering_local_read
 
-Faith Ekstrand (6):
-      nvk: Add an nvkmd_engines bitfield to nvk_queue
-      nvk: Only set texture/sampler tables and SLM for enabled engines
-      nvk: Re-sort the features table
-      nvk: Advertise 64-bit atomics on buffer views
-      nak: Remove annotations before calc_instr_deps()
-      nak: Handle annotations in legalization
+Daniel Almeida (3):
+      util: memstream: add fflush support
+      nak: memstream: move into common code
+      util: u_memstream: add tests
 
-Georg Lehmann (1):
-      radv: call nir_opt_remove_phis in radv_optimize_nir_algebraic
+Daniel Stone (6):
+      ci: Disable trace jobs using old Wine
+      ci: Remove non-Proton Wine
+      ci/vk: Strip and optimise validation layers
+      ci: Strip yet more unnecessary things from the rootfs
+      ci/deqp: Flatten fraction/shard sed into a single pass
+      ci/deqp: Compress caselists with zstd
 
-Iago Toral Quiroga (2):
-      v3dv: drop device_id field
-      v3dv: rewrite device identification
+Danylo Piliaiev (1):
+      nir/opt_16b_tex_image: Sign extension should matter for texel buffer txf
 
-Juston Li (1):
-      android: look for debug/vendor prefixed options
+Deborah Brouwer (6):
+      ci: remove obsolete build-hang-detection script
+      ci/deqp-runner: fix option to build from a commit
+      ci/deqp-runner: print version info
+      ci/deqp-runner: update instructions for uprevving
+      ci/deqp-runner: uprev from 0.20.0 to 0.20.2
+      ci/deqp-runner: implement max-fails
 
-Karol Herbst (1):
-      zink: add CL CTS result
+Dylan Baker (2):
+      anv: assert that we don't read off the end color_att array
+      anv: when handling descriptor sets, layout cannot be NULL if dynamic_offets are used
 
-Kenneth Graunke (6):
-      intel/brw: Fix spill/fill count for load/store_scratch in SIMD32
-      intel/brw: Delete Gfx7-8 code from emit_barrier()
-      intel/brw: Make a ubld temporary in emit_barrier()
-      intel/brw: Fix register and builder size in emit_barrier() for Xe2
-      intel/brw: Delete more Gfx8 code from brw_fs_combine_constants
-      intel/brw: Use whole 512-bit registers in constant combining on Xe2
+Eric Engestrom (8):
+      docs: add release notes for 24.2.5
+      docs: update calendar for 24.2.5
+      docs: add sha sum for 24.2.5
+      ci: drop spec@egl_ext_surface_compression@create from the rest of the expected fails
+      zink+nvk/ci: document regression
+      zink+nvk/ci: document more flakes seen
+      zink+radv/ci: document more flakes seen
+      nvk/ci: document more flakes seen
 
-M Henning (1):
-      nak: Phi coalescing via biased register coloring
+Evan (2):
+      amd/vpelib: Color Keyer Implementation
+      amd/vpelib: Luma AND Color Keyer Full Support
 
-Marek Olšák (9):
-      nir/opt_vectorize_io: fix stack buffer overflow with 16-bit output stores
-      nir/opt_load_store_vectorize: add entry::num_components
-      nir: add hole_size parameter into the vectorize callback
-      nir: reject unsupported component counts from all vectorize callbacks
-      nir/opt_load_store_vectorize: allow overfetching, merge overfetched loads
-      nir/opt_load_store_vectorize: allow a 4-byte hole between 2 loads
-      nir/opt_load_store_vectorize: vectorize load_smem_amd
-      gallium/u_threaded: fix crash in tc_create_image_handle due to resource == NULL
-      radeonsi: set the valid buffer range for bindless image buffers
+Job Noorman (4):
+      nir: add shuffle_{xor,up,down}_uniform_ir3 intrinsics
+      ir3: add codegen for shuffle_{xor,up,down}_uniform_ir3
+      ir3: add helper to get glsl type for nir_def
+      ir3: optimize subgroup shuffles using shfl
 
-Mary Guillemard (1):
-      panvk: Define primitive size for RUN_TILER/RUN_IDVS
+Jude Shih (1):
+      amd/vpelib: Restructure CDC FE/BE
 
-Mike Blumenkrantz (4):
-      util/framebuffer: add viewmask compare for fb equal
-      iris: assert that viewmask is 0
-      gallium: delete duplicated viewmask member in draw info
-      llvmpipe: expose GL multiview extensions
+Konstantin Seurer (1):
+      radv: Remap 10 and 12 bit formats to 16 bit formats
 
-Paulo Zanoni (12):
-      anv/trtt: set every entry to NULL when we create an L2 table
-      anv/trtt: extract anv_trtt_first_bind_init()
-      anv/trtt: inline anv_trtt_init_queues_state()
-      anv/trtt: ensure all L3 entries are NULL-bound during init
-      anv/trtt: unset trtt->l3_addr if initialization fails
-      anv/trtt: fix error handling when adding binds
-      anv/trtt: don't submit empty batches when there are no binds to do
-      anv/trtt: decrement trtt->timeline_val when submission fails
-      anv/trtt: delay batch garbage collection
-      anv/trtt: remove TODO comment regarding the reloc list
-      anv/trtt: convert anv_trtt_bind arrays to util_dynarray
-      anv/trtt: extract anv_trtt_first_bind_init_queue()
+Leder, Brendan Steve (1):
+      amd/vpelib: Fix output_ctx gamma curve cache bug
 
-Pavel Ondračka (4):
-      r300: add .clang-format file for the compiler
-      r300: opt in to clang-format CI enforcement for the compiler
-      r300/compiler: reformat using default mesa .clang-format rules
-      r300/ci: update ci expectations after piglit uprev
+Martin Krastev (1):
+      svga/ci: disable vmware farm
 
-Serdar Kocdemir (1):
-      gfxstream: Use KHR version of the line_rasterization extension
+Roy Chan (1):
+      amd/vpelib: Add documentation
 
-Tapani Pälli (1):
-      mesa: fix DXT1 support with EXT_texture_compression_dxt1
+Samuel Pitoiset (3):
+      radv: stop recomputing the viewport xform for guarband/viewport
+      radv: optimize breaking batch when CB_TARGET_MASK change
+      radv: use radv_normalize_blend_factor() more
 
 Timothy Arceri (1):
-      nir/glsl: set cast mode for image during function inlining
+      nir/glsl: set deref cast mode for blocks during function inlining
 
-Utku Iseri (1):
-      st/mesa: clamp reported max lod bias
+Valentine Burley (9):
+      util/format: Add new 10-bit P010 RGB/planar formats
+      util/format: Add new 12-bit P012 RGB/planar formats
+      lavapipe: Remap 10 and 12 bit formats to 16 bit formats
+      nvk: Remap 10 and 12 bit formats to 16 bit formats
+      hk: Remap 10 and 12 bit formats to 16 bit formats
+      vulkan: Fix incorrect bpcs value for padded formats
+      tu: Fix incorrect bpcs value for padded formats
+      vulkan/format: Properly translate 10-bit and 12-bit formats
+      vulkan/format: Update vk_format_from_pipe_format with additional formats
 
