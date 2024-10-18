@@ -1,128 +1,135 @@
-Updating from 2272db2ac66561e4389d4101596480234378e00d to 01586bc57e0f94d655bffa17a0beadc21a3cdbc5
+Updating from 01586bc57e0f94d655bffa17a0beadc21a3cdbc5 to 7bea8ee8bb41b1e7aced38e3f283ebffd9c3942d
 
-Assadian, Navid (3):
-      amd/vpelib: Document public API structures
-      amd/vpelib: Add better rotation and mirror capability check
-      amd/vpelib: Add mirror & rotation capability check function for vpe1.1
+Aleksi Sapon (4):
+      llvmpipe: Fix anisotropic sampling aliasing bug
+      llvmpipe: Fix pmin calculation
+      softpipe: Fix anisotropic sampling aliasing bug
+      llvmpipe: update traces for aniso filtering fix
 
-Benjamin Lee (1):
-      panvk: don't dirty preloaded tiles for writeback
+Anil Hiranniah (1):
+      panfrost: Fix a memory leak in the CSF backend
 
-Boris Brezillon (3):
-      pan/util: Discard depth/stencil writes when early fragment test is forced
-      panvk: Set .is_blit=true when compiling preload shaders
-      panvk: Fix the ZStencil descriptor initialization in the preload logic
+Boris Brezillon (1):
+      panvk: Fix the hierarchy_mask selection
 
-Brendan (3):
-      amd/vpelib: Multiple instance support in caching framework
-      amd/vpelib: Update configs to be per-pipe specific
-      amd/vpelib: Visual confirm on input
+Connor Abbott (11):
+      ir3, tu: Plumb through support for per-shader robustness
+      tu: Implement VK_EXT_pipeline_robustness
+      freedreno/fdl: Extend 2bpp UBWC special case to 1bpp
+      freedreno/a6xx: Remove dead fd6_get_ubwc_blockwidth() call
+      freedreno/fdl: Add UBWC config struct
+      freedreno: Add default UBWC config values
+      virtio/drm: Update header
+      tu: Gather UBWC config
+      freedreno/fdl: Add tiling/untiling implementation for a6xx/a7xx
+      tu: Add a flag for cached non-coherent BOs
+      tu: Implement VK_EXT_host_image_copy
 
-Chia-I Wu (6):
-      panvk: fill in VkExternalBufferProperties
-      panvk: fill in VkExternalImageFormatProperties
-      panvk: remove panvk_GetPhysicalDeviceImageFormatProperties
-      panvk: advertise VK_KHR_external_memory_fd
-      panvk: advertise VK_EXT_external_memory_dma_buf
-      panvk: advertise VK_KHR_external_{fence,semaphore}_fd
+David Heidelberg (1):
+      ci/etnaviv: unify job naming with the rest of the CI
 
-Christian Gmeiner (2):
-      etnaviv: nir: Enforce stricter swizzle for virtual scalar x register
-      etnaviv: nir: Switch to derivative intrinsics
+Faith Ekstrand (7):
+      compiler/rust: Enable unit tests
+      compiler/rust: Add a unit test for the memstream abstraction
+      compiler/rust: Fix a bad cast in the memstream abstraction
+      nvk: Only wait on the upload queue if there are commands
+      nvk: Only submit the state pushbuf if there are commands
+      nvk: move nvk_queue_state_update to nvk_queue_submit_exec
+      nvk: Use nvk_queue_submit_simple() for nvk_queue_state_update()
 
-Connor Abbott (12):
-      vulkan/state: Handle NULL in DS input attachment mapping correctly
-      vulkan/state: Track the input attachment count
-      v3dv: Don't misuse nir_variable::data.index
-      spirv: Make the default input attachment index ~0
-      nir/lower_input_attachments: Handle unscaled input attachments with no index
-      ir3: Fix non-bindless s2en texture/sampler order
-      tu: Support color attachment remapping
-      tu: Support dynamic input attachments
-      tu: Make input attachments always contain a real descriptor
-      tu: Fix flushes for feedback_invalidate case
-      tu: Track possible feedback loops for dynamic renderpasses
-      tu: Expose VK_KHR_dynamic_rendering_local_read
+Georg Lehmann (15):
+      nir/opt_move_discards_to_top: handle ddx/ddy intrinsics
+      elk: remove alu fddx/fddy check
+      ir3: remove alu fddx/fddy check
+      spirv: remove alu fddx/fddy from comment
+      mesa/prog_to_nir: use derivative builder
+      nir: always emit ddx intrinsics
+      nir: remove uses_fddx_fddy
+      nir: remove alu ddx/ddy
+      nir: remove nir_op_is_derivative
+      aco/ir: add function to parse depctr waits
+      aco: do not track ALU delay across jumps
+      aco/insert_delay_alu: consider more implicit waits
+      aco/insert_delay_alu: do not delay lane mask fast forwarding
+      aco/statistics: update branch issue cycles
+      aco/print_ir: use parse_depctr_wait
 
-Daniel Almeida (3):
-      util: memstream: add fflush support
-      nak: memstream: move into common code
-      util: u_memstream: add tests
+Guilherme Gallo (8):
+      ci/zink: Add skips for zink-anv-(adl|tgl)
+      ci/radv: Rebalance stoney-vkcts
+      ci: Use merge-skips files during merge pipelines
+      ci/amd: Track merge-skips.txt changes
+      ci/amd: Reassign radv-raven-traces from zork to dalboz
+      ci/panfrost: Increment panfrost-g52-gl parallel no.
+      ci/freedreno: Rebalance limozeen jobs
+      ci/turnip: Rebalance kingoftown jobs
 
-Daniel Stone (6):
-      ci: Disable trace jobs using old Wine
-      ci: Remove non-Proton Wine
-      ci/vk: Strip and optimise validation layers
-      ci: Strip yet more unnecessary things from the rootfs
-      ci/deqp: Flatten fraction/shard sed into a single pass
-      ci/deqp: Compress caselists with zstd
+Iago Toral Quiroga (1):
+      v3dv: fix leak during device initialization
 
-Danylo Piliaiev (1):
-      nir/opt_16b_tex_image: Sign extension should matter for texel buffer txf
+Iván Briano (1):
+      hasvk: fix non matching image/view format attachment resolve
 
-Deborah Brouwer (6):
-      ci: remove obsolete build-hang-detection script
-      ci/deqp-runner: fix option to build from a commit
-      ci/deqp-runner: print version info
-      ci/deqp-runner: update instructions for uprevving
-      ci/deqp-runner: uprev from 0.20.0 to 0.20.2
-      ci/deqp-runner: implement max-fails
+Juan A. Suarez Romero (1):
+      v3d/ci: add OpenCL failures
 
-Dylan Baker (2):
-      anv: assert that we don't read off the end color_att array
-      anv: when handling descriptor sets, layout cannot be NULL if dynamic_offets are used
+Julia Zhang (1):
+      mesa/st: use drawable->ID as hash for drawable_ht
 
-Eric Engestrom (8):
-      docs: add release notes for 24.2.5
-      docs: update calendar for 24.2.5
-      docs: add sha sum for 24.2.5
-      ci: drop spec@egl_ext_surface_compression@create from the rest of the expected fails
-      zink+nvk/ci: document regression
-      zink+nvk/ci: document more flakes seen
-      zink+radv/ci: document more flakes seen
-      nvk/ci: document more flakes seen
+Lionel Landwerlin (9):
+      anv: use stage mask to deduce cs/pb-stall requirements
+      brw: remove unused prototype
+      brw: delay printf lowering
+      brw: avoid clashing nested loop indices
+      brw: remove rebuild single element special case
+      brw: fix mesh fence emission
+      brw/nir: rework inline_data_intel to work with compute
+      anv: stop using a binding table entry for gl_NumWorkgroups
+      elk: Don't apply discard_if condition opt if it can change results
 
-Evan (2):
-      amd/vpelib: Color Keyer Implementation
-      amd/vpelib: Luma AND Color Keyer Full Support
+Marek Olšák (2):
+      nir/opt_varyings: assign locations of no_varying IO for TCS outputs only
+      nir/opt_varyings: pack TCS inputs with cross-invocation access together
 
-Job Noorman (4):
-      nir: add shuffle_{xor,up,down}_uniform_ir3 intrinsics
-      ir3: add codegen for shuffle_{xor,up,down}_uniform_ir3
-      ir3: add helper to get glsl type for nir_def
-      ir3: optimize subgroup shuffles using shfl
+Mike Blumenkrantz (1):
+      zink: further improve image usage detection
 
-Jude Shih (1):
-      amd/vpelib: Restructure CDC FE/BE
+Rob Clark (17):
+      freedreno/a6xx: Add some missing a7xx bits
+      freedreno: Assert we aren't writing to 0x0
+      freedreno/decode: Fix UBO decode on a7xx
+      freedreno/ir3: Avoid draw/grid time input iteration
+      freedreno/ir3: Add assert about const emit
+      freedreno/ir3+tu: Convert driver-params to structs
+      freedreno/ir3: Indentation fix
+      freedreno/a6xx: Fix double SP_MODE_CONTROL emit
+      freedreno/a6xx: Move tess-bo emit
+      freedreno/ir3: Track # of app UBOs
+      freedreno/ir3: Fix need_driver_params for UBO case
+      freedreno: Rework indirect compute param emit
+      freedreno/a6xx: Add support to load driver-params via UBO
+      freedreno/a6xx: Fix color_cache_size
+      freedreno/a6xx: Don't open-code INVALID_REG
+      freedreno/a6xx: Add VPC hardware workaround for a750
+      freedreno/a6xx: Add missing GRAS_SU_DEPTH_CNTL
 
-Konstantin Seurer (1):
-      radv: Remap 10 and 12 bit formats to 16 bit formats
+Samuel Pitoiset (2):
+      radv do not force-disable hierarchical stencil testing
+      radv: fix emitting DB_RENDER_OVERRIDE on GFX12
 
-Leder, Brendan Steve (1):
-      amd/vpelib: Fix output_ctx gamma curve cache bug
+Sid Pranjale (2):
+      vulkan/util: add vk_format_has_float_depth()
+      nvk: implement VK_EXT_depth_clamp_zero_one
 
-Martin Krastev (1):
-      svga/ci: disable vmware farm
+Thomas H.P. Andersen (4):
+      dirconf: add a common vk_zero_vram
+      nvk: handle driconf for zeroing vram
+      driconf: set vk_zero_vram driconf for Path of Exile
+      driconf: set vk_zero_vram driconf for X4 Foundations
 
-Roy Chan (1):
-      amd/vpelib: Add documentation
+Zack Rusin (1):
+      svga: Redo the way generated files are handled
 
-Samuel Pitoiset (3):
-      radv: stop recomputing the viewport xform for guarband/viewport
-      radv: optimize breaking batch when CB_TARGET_MASK change
-      radv: use radv_normalize_blend_factor() more
-
-Timothy Arceri (1):
-      nir/glsl: set deref cast mode for blocks during function inlining
-
-Valentine Burley (9):
-      util/format: Add new 10-bit P010 RGB/planar formats
-      util/format: Add new 12-bit P012 RGB/planar formats
-      lavapipe: Remap 10 and 12 bit formats to 16 bit formats
-      nvk: Remap 10 and 12 bit formats to 16 bit formats
-      hk: Remap 10 and 12 bit formats to 16 bit formats
-      vulkan: Fix incorrect bpcs value for padded formats
-      tu: Fix incorrect bpcs value for padded formats
-      vulkan/format: Properly translate 10-bit and 12-bit formats
-      vulkan/format: Update vk_format_from_pipe_format with additional formats
+Zan Dobersek (1):
+      zink: fix bo_export caching
 
