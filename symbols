@@ -3133,6 +3133,8 @@ libvulkan_nouveau.so:compiler::nir::AsDef::as_load_const::h415f78d87d41e63e
 libvulkan_nouveau.so:compiler::nir::AsDef::bit_size::h2bfb6f3014cfb5b4
 libvulkan_nouveau.so:compiler::nir::AsDef::comp_as_int::hb23fe5746beccbba
 libvulkan_nouveau.so:compiler::nir::AsDef::comp_as_uint::h23f4ff633f1c18f6
+libvulkan_nouveau.so:compiler::nir_instr_printer::NirInstrPrinter::instr_to_string::hcf1a069554d649ea
+libvulkan_nouveau.so:compiler::nir_instr_printer::NirInstrPrinter::new::he09bba8bb95ea7da
 libvulkan_nouveau.so:core::ascii::escape_default::h1fd66f94bc070754
 libvulkan_nouveau.so:core::cell::panic_already_borrowed::h7b4c36f84729a849
 libvulkan_nouveau.so:core::cell::panic_already_mutably_borrowed::h74fc0b8e9ee82020
@@ -3498,6 +3500,7 @@ libvulkan_nouveau.so:nil_offset4d_px_to_el
 libvulkan_nouveau.so:nil_offset4d_px_to_tl
 libvulkan_nouveau.so:nil_px_extent_sa
 libvulkan_nouveau.so:nil_sample_layout_samples
+libvulkan_nouveau.so:nil_sample_offset
 libvulkan_nouveau.so:nil_select_best_drm_format_mod
 libvulkan_nouveau.so:nil_sparse_block_extent_px
 libvulkan_nouveau.so:nil_tiling_size_B

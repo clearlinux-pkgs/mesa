@@ -1,135 +1,101 @@
-Updating from 01586bc57e0f94d655bffa17a0beadc21a3cdbc5 to 7bea8ee8bb41b1e7aced38e3f283ebffd9c3942d
+Updating from 7bea8ee8bb41b1e7aced38e3f283ebffd9c3942d to 019770f026ad1e1a9b03ddacab2df252126fd636
 
-Aleksi Sapon (4):
-      llvmpipe: Fix anisotropic sampling aliasing bug
-      llvmpipe: Fix pmin calculation
-      softpipe: Fix anisotropic sampling aliasing bug
-      llvmpipe: update traces for aniso filtering fix
+Brendan (1):
+      amd/vpelib: Fix duplicate config writer bug
 
-Anil Hiranniah (1):
-      panfrost: Fix a memory leak in the CSF backend
+Caio Oliveira (3):
+      intel/brw: Add fs_builder::BROADCAST() helper
+      intel/brw: Ensure BROADCAST() value respect register alignment
+      intel/brw: Add SHADER_OPCODE_VOTE_*
 
-Boris Brezillon (1):
-      panvk: Fix the hierarchy_mask selection
+Chan, Roy (2):
+      amd/vpelib: Fix compilation warnings
+      amd/vpelib: Revise the config sharing handling
 
-Connor Abbott (11):
-      ir3, tu: Plumb through support for per-shader robustness
-      tu: Implement VK_EXT_pipeline_robustness
-      freedreno/fdl: Extend 2bpp UBWC special case to 1bpp
-      freedreno/a6xx: Remove dead fd6_get_ubwc_blockwidth() call
-      freedreno/fdl: Add UBWC config struct
-      freedreno: Add default UBWC config values
-      virtio/drm: Update header
-      tu: Gather UBWC config
-      freedreno/fdl: Add tiling/untiling implementation for a6xx/a7xx
-      tu: Add a flag for cached non-coherent BOs
-      tu: Implement VK_EXT_host_image_copy
+Christian Gmeiner (3):
+      compiler/rust: Copy NirInstrPrinter from NAK
+      etnaviv: isa: Add clamp0_max instruction
+      etnaviv: isa: Add img_load instruction
+
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 791e420b2628c1e35eea81b3bafdb1c904a141e8
+
+Craig Stout (2):
+      u_gralloc: include dep_android_mapper4 as needed
+      meson: add log dependency to dep_android
+
+Daniel Stone (2):
+      ci/angle: Update ANGLE, reduce build times
+      ci: Don't carry static libraries around for tests
 
 David Heidelberg (1):
-      ci/etnaviv: unify job naming with the rest of the CI
+      ci/freedreno: switch to dash instead of underscore, same as rest of the CI
 
-Faith Ekstrand (7):
-      compiler/rust: Enable unit tests
-      compiler/rust: Add a unit test for the memstream abstraction
-      compiler/rust: Fix a bad cast in the memstream abstraction
-      nvk: Only wait on the upload queue if there are commands
-      nvk: Only submit the state pushbuf if there are commands
-      nvk: move nvk_queue_state_update to nvk_queue_submit_exec
-      nvk: Use nvk_queue_submit_simple() for nvk_queue_state_update()
+Eric Engestrom (3):
+      ci: run shader-db only when one of the drivers it tests is modified
+      zink+nvk/ci: mark a few tests as fixed
+      zink+nvk/ci: document more flakes seen
 
-Georg Lehmann (15):
-      nir/opt_move_discards_to_top: handle ddx/ddy intrinsics
-      elk: remove alu fddx/fddy check
-      ir3: remove alu fddx/fddy check
-      spirv: remove alu fddx/fddy from comment
-      mesa/prog_to_nir: use derivative builder
-      nir: always emit ddx intrinsics
-      nir: remove uses_fddx_fddy
-      nir: remove alu ddx/ddy
-      nir: remove nir_op_is_derivative
-      aco/ir: add function to parse depctr waits
-      aco: do not track ALU delay across jumps
-      aco/insert_delay_alu: consider more implicit waits
-      aco/insert_delay_alu: do not delay lane mask fast forwarding
-      aco/statistics: update branch issue cycles
-      aco/print_ir: use parse_depctr_wait
+Faith Ekstrand (4):
+      nak/bindings: Use an enum for IOCTL numbers
+      nvk: Fix host copies for array images
+      nil: Add a nil_sample_offset() helper
+      nvk: Put a sample map in the descriptor for MSAA storage images
 
-Guilherme Gallo (8):
-      ci/zink: Add skips for zink-anv-(adl|tgl)
-      ci/radv: Rebalance stoney-vkcts
-      ci: Use merge-skips files during merge pipelines
-      ci/amd: Track merge-skips.txt changes
-      ci/amd: Reassign radv-raven-traces from zork to dalboz
-      ci/panfrost: Increment panfrost-g52-gl parallel no.
-      ci/freedreno: Rebalance limozeen jobs
-      ci/turnip: Rebalance kingoftown jobs
+Hsieh, Mike (1):
+      amd/vpelib: Refactor 3D LUT code
 
-Iago Toral Quiroga (1):
-      v3dv: fix leak during device initialization
+Jiali (1):
+      amd/vpelib: Enhance output format capabilities
 
-Iván Briano (1):
-      hasvk: fix non matching image/view format attachment resolve
+Job Noorman (3):
+      nir/lower_subgroups: move up some helper functions
+      nir/lower_subgroups: add build_cluster_mask helper
+      nir/lower_subgroups: scan/reduce for multiple ballot components
 
-Juan A. Suarez Romero (1):
-      v3d/ci: add OpenCL failures
-
-Julia Zhang (1):
-      mesa/st: use drawable->ID as hash for drawable_ht
+Leder, Brendan Steve (3):
+      amd/vpelib: Fix backend bug for multiple instances
+      amd/vpelib: Generalize visual confirm handling
+      amd/vpelib: Update chip headers
 
 Lionel Landwerlin (9):
-      anv: use stage mask to deduce cs/pb-stall requirements
-      brw: remove unused prototype
-      brw: delay printf lowering
-      brw: avoid clashing nested loop indices
-      brw: remove rebuild single element special case
-      brw: fix mesh fence emission
-      brw/nir: rework inline_data_intel to work with compute
-      anv: stop using a binding table entry for gl_NumWorkgroups
-      elk: Don't apply discard_if condition opt if it can change results
+      isl: fix range_B_tile end_tile_B value
+      isl/tests: add range_B_tile test
+      anv: allow subresource queries on non-linear images
+      anv: drop non host memory types for host-transfer on non-rebar
+      anv: disable pat compression for host images
+      anv: wrap binding address setting
+      anv: add a host map of image for host image copy usage
+      anv: factor out sanitizing mmap offset code
+      anv: add VK_EXT_host_image_copy support
 
-Marek Olšák (2):
-      nir/opt_varyings: assign locations of no_varying IO for TCS outputs only
-      nir/opt_varyings: pack TCS inputs with cross-invocation access together
+Mike Blumenkrantz (4):
+      zink: rewrite the high-IQ image tiling selection loop
+      device-select: only try wayland/x11 if the required vars are set
+      va: fail context create if driver does not support video
+      vdpau: fail context create if driver does not support video
 
-Mike Blumenkrantz (1):
-      zink: further improve image usage detection
+Paulo Zanoni (2):
+      anv/trtt: fix the creation of sparse buffers of size 2^32 on 32bit systems
+      anv/trtt: remove useless VK_RESULT checks
 
-Rob Clark (17):
-      freedreno/a6xx: Add some missing a7xx bits
-      freedreno: Assert we aren't writing to 0x0
-      freedreno/decode: Fix UBO decode on a7xx
-      freedreno/ir3: Avoid draw/grid time input iteration
-      freedreno/ir3: Add assert about const emit
-      freedreno/ir3+tu: Convert driver-params to structs
-      freedreno/ir3: Indentation fix
-      freedreno/a6xx: Fix double SP_MODE_CONTROL emit
-      freedreno/a6xx: Move tess-bo emit
-      freedreno/ir3: Track # of app UBOs
-      freedreno/ir3: Fix need_driver_params for UBO case
-      freedreno: Rework indirect compute param emit
-      freedreno/a6xx: Add support to load driver-params via UBO
-      freedreno/a6xx: Fix color_cache_size
-      freedreno/a6xx: Don't open-code INVALID_REG
-      freedreno/a6xx: Add VPC hardware workaround for a750
-      freedreno/a6xx: Add missing GRAS_SU_DEPTH_CNTL
+Pavel Ondračka (1):
+      nir/nir_group_loads: reduce chance of max_distance check overflow
 
-Samuel Pitoiset (2):
-      radv do not force-disable hierarchical stencil testing
-      radv: fix emitting DB_RENDER_OVERRIDE on GFX12
+Pierre-Eric Pelloux-Prayer (3):
+      radeonsi/gfx12: fill missing dcc tiling info
+      radeonsi: fix radeon_canonicalize_bo_flags domain handling
+      ac/surface: fix determination of gfx12_enable_dcc
 
-Sid Pranjale (2):
-      vulkan/util: add vk_format_has_float_depth()
-      nvk: implement VK_EXT_depth_clamp_zero_one
+Serdar Kocdemir (1):
+      Update decoder.py to use try_unbox on destroy calls
 
-Thomas H.P. Andersen (4):
-      dirconf: add a common vk_zero_vram
-      nvk: handle driconf for zeroing vram
-      driconf: set vk_zero_vram driconf for Path of Exile
-      driconf: set vk_zero_vram driconf for X4 Foundations
+Sergi Blanch Torne (1):
+      WIP: Re-enable Comet Lake
 
-Zack Rusin (1):
-      svga: Redo the way generated files are handled
+Valentine Burley (1):
+      ci: Add global ANGLE skips for its waiver
 
-Zan Dobersek (1):
-      zink: fix bo_export caching
+Wang, Kyle (1):
+      amd/vpelib: Add missing copyrights
 
