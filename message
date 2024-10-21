@@ -1,6 +1,41 @@
-Updating from 019770f026ad1e1a9b03ddacab2df252126fd636 to 4bc2d221c996f46bd747c7a79e6a7b5c72535e20
+Updating from 4bc2d221c996f46bd747c7a79e6a7b5c72535e20 to 10951bb11ab982941b5c80765e7be266eae20bd4
 
-Mary Guillemard (2):
-      winsys/nouveau: Rework to use u_pipe_screen_lookup_or_create
-      winsys/nouveau: Reformat to stop relying on tabs
+Daniel Stone (29):
+      ci/shellcheck: Don't overwrite SCRIPTS_DIR with relative path
+      ci/shellcheck: Don't exit on first failure
+      ci/python: Fix section emission
+      ci: Don't move results directory
+      ci: Don't print structured log data URL
+      ci/lava: Remove pointless messages
+      ci/lava: Quieten timestamp warnings from tar
+      ci/lava: Break section-header print into separate function
+      ci/lava: Add section for device wait
+      ci/lava: Rename lava_boot section
+      ci/lava: Hide more boot details into sections
+      ci/lava: Explicitly pass UTC timezone
+      ci/lava: Truncate printed times
+      ci/lava: Fix colour definitions
+      ci/lava: Be a little less enthusiastic with bold
+      ci/lava: Change default section colour to cyan
+      ci/hw: Wrap pre-test setup in collapsed section
+      ci/lava: Print relative timestamps in sections
+      ci/lava: Coalesce post-processed job information
+      ci/bare-metal: Move preparation steps into section
+      ci/bare-metal: Use section for boot messages from cros-servo
+      ci/bare-metal: Truncate printed times and prefixes
+      ci/bare-metal: Use section for boot messages from poe-powered
+      ci/crosvm: Make crosvm-runner safe for set +u
+      ci/crosvm: Replace SCRIPT_DIR with SCRIPTS_DIR
+      ci/traces: Use sections to quiet execution
+      ci: Quieten post-test cleanup
+      ci: Make section emission really quiet
+      ci: Quieten test execution
+
+David Heidelberg (1):
+      ci/alpine: stay trendy, Alpine flies on LLVM 19 now
+
+Georg Lehmann (3):
+      meson: remove selinux option
+      ci: remove selinux from containers
+      aco: fix 64bit extract_i8/extract_i16
 
