@@ -1,41 +1,80 @@
-Updating from 4bc2d221c996f46bd747c7a79e6a7b5c72535e20 to 10951bb11ab982941b5c80765e7be266eae20bd4
+Updating from 10951bb11ab982941b5c80765e7be266eae20bd4 to 0bffe8ec053f2a43795515b0f9c64cf98b5bd8b7
 
-Daniel Stone (29):
-      ci/shellcheck: Don't overwrite SCRIPTS_DIR with relative path
-      ci/shellcheck: Don't exit on first failure
-      ci/python: Fix section emission
-      ci: Don't move results directory
-      ci: Don't print structured log data URL
-      ci/lava: Remove pointless messages
-      ci/lava: Quieten timestamp warnings from tar
-      ci/lava: Break section-header print into separate function
-      ci/lava: Add section for device wait
-      ci/lava: Rename lava_boot section
-      ci/lava: Hide more boot details into sections
-      ci/lava: Explicitly pass UTC timezone
-      ci/lava: Truncate printed times
-      ci/lava: Fix colour definitions
-      ci/lava: Be a little less enthusiastic with bold
-      ci/lava: Change default section colour to cyan
-      ci/hw: Wrap pre-test setup in collapsed section
-      ci/lava: Print relative timestamps in sections
-      ci/lava: Coalesce post-processed job information
-      ci/bare-metal: Move preparation steps into section
-      ci/bare-metal: Use section for boot messages from cros-servo
-      ci/bare-metal: Truncate printed times and prefixes
-      ci/bare-metal: Use section for boot messages from poe-powered
-      ci/crosvm: Make crosvm-runner safe for set +u
-      ci/crosvm: Replace SCRIPT_DIR with SCRIPTS_DIR
-      ci/traces: Use sections to quiet execution
-      ci: Quieten post-test cleanup
-      ci: Make section emission really quiet
-      ci: Quieten test execution
+Adam Jackson (1):
+      rusticl: Enable out-of-order execution
 
-David Heidelberg (1):
-      ci/alpine: stay trendy, Alpine flies on LLVM 19 now
+Amber (4):
+      ir3: add encoding support for 64-bit atomics introduced in a7xx.
+      ir3: add support for 64 bit atomics
+      nir: add pass to lower atomic arithmetic to a loop with cmpxchg.
+      tu, ir3: Implement VK_KHR_shader_atomic_int64 for a7xx.
 
-Georg Lehmann (3):
-      meson: remove selinux option
-      ci: remove selinux from containers
-      aco: fix 64bit extract_i8/extract_i16
+Chia-I Wu (5):
+      panvk: remove panvk_GetImageDrmFormatModifierPropertiesEXT
+      panvk: fix VkDrmFormatModifierPropertiesListEXT query
+      panvk: check VkPhysicalDeviceImageDrmFormatModifierInfoEXT
+      panvk: advertise VK_KHR_image_format_list
+      panvk: advertise VK_EXT_image_drm_format_modifier
+
+Christian Gmeiner (1):
+      etnaviv: Enable ARB_framebuffer_no_attachments
+
+David Heidelberg (2):
+      build: Fix LTO with Android NDK
+      ci/build: debian-build-testing should follow same limit as other jobs
+
+Eric Engestrom (12):
+      ci/{deqp,piglit}-runner: make zstd respect FDO_CI_CONCURRENT when set, and fallback to the current "all the threads"
+      ci/prepare-artifacts: use more than one thread when compressing the install tarball
+      freedreno/ci: add {freedreno,turnip}{,-manual}-rules to simplify the rest of the code
+      freedreno/ci: use {freedreno,turnip}{,-manual}-rules
+      ci: rename "freedreno" farm to "google-freedreno"
+      {freedreno,intel}/ci: rename "premerge-skips.txt" to "merge-skips.txt" to accurately reflect what they are
+      {freedreno,intel}/ci: add missing tracking of `merge-skips.txt` files
+      ci: simplify ci-tron priority variable
+      ci: simplify setting lava job priority
+      ci: fix shader-db rules
+      ci/b2c: allow B2C_DTB_URL to be set to an empty string to unset it
+      ci/b2c: make initramfs & kernel urls optional
+
+Karol Herbst (1):
+      radeonsi: move si_compute::global_buffers to si_context
+
+Kenneth Graunke (1):
+      brw: Optimize 16-bit texture fetches later
+
+Louis-Francis Ratté-Boulianne (1):
+      panfrost: initialize all UBO and vertex buffer descriptors
+
+Marek Olšák (9):
+      ac/nir: rewrite ac_nir_lower_ps epilog to fix dual src blending with mono PS
+      nir: add shader_info::tess::tcs_same_invocation_inputs_read(_indirect)
+      mesa_interface: remove unused stuff
+      mesa_interface: replace opaque __DRIscreen with struct dri_screen everywhere
+      mesa_interface: replace opaque __DRIcontext with struct dri_context everywhere
+      mesa_interface: replace opaque __DRIdrawable with struct dri_drawable everywhere
+      mesa_interface: remove redundant __DRI*Rec types
+      mesa_interface: rename __DRIconfig to struct dri_config
+      mesa_interface: rename __DRIimage to struct dri_image
+
+Mary Guillemard (1):
+      nir: Move atomic_op_to_alu to common code
+
+Pavel Ondračka (1):
+      r300/ci: add new RV410 flakes
+
+Rebecca Mckeever (5):
+      panvk/csf: Set and clear vb.dirty flag
+      panvk/csf: Split tiler flags initialization into two steps
+      panvk: Track VkFormats for depth and stencil attachments
+      panvk: Move rendering info to panvk_rendering_state struct
+      panvk/csf: Implement vkCmdExecuteCommands
+
+Rhys Perry (3):
+      radv: fix output statistic for fragment shaders
+      radv: optimize VS input load components to constants earlier
+      radv: use explicitly sized types for some radv_shader_info members
+
+quic_lkondred (1):
+      freedreno: Add support for Adreno 663 GPU
 
