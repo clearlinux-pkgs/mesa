@@ -1,80 +1,88 @@
-Updating from 10951bb11ab982941b5c80765e7be266eae20bd4 to 0bffe8ec053f2a43795515b0f9c64cf98b5bd8b7
+Updating from 0bffe8ec053f2a43795515b0f9c64cf98b5bd8b7 to 1f9b82bb2a3f4ffcf00d5820a52ea48d0c695a08
 
-Adam Jackson (1):
-      rusticl: Enable out-of-order execution
-
-Amber (4):
-      ir3: add encoding support for 64-bit atomics introduced in a7xx.
-      ir3: add support for 64 bit atomics
-      nir: add pass to lower atomic arithmetic to a loop with cmpxchg.
-      tu, ir3: Implement VK_KHR_shader_atomic_int64 for a7xx.
-
-Chia-I Wu (5):
-      panvk: remove panvk_GetImageDrmFormatModifierPropertiesEXT
-      panvk: fix VkDrmFormatModifierPropertiesListEXT query
-      panvk: check VkPhysicalDeviceImageDrmFormatModifierInfoEXT
-      panvk: advertise VK_KHR_image_format_list
-      panvk: advertise VK_EXT_image_drm_format_modifier
+Chia-I Wu (2):
+      panvk: remove unused is_sampler and is_texture
+      panvk: fix descriptor set layout hash
 
 Christian Gmeiner (1):
-      etnaviv: Enable ARB_framebuffer_no_attachments
+      etnaviv: isa: Add img_store instruction
+
+Daniel Schürmann (5):
+      aco: introduce 'isPrecolored' flag for Operand and Definition
+      aco: set Precolored flag before register allocation
+      aco/live_var_analysis: check for isPrecolored flag rather than isFixed
+      aco/ra: make use of Precolored flag
+      aco/ra: always block register file for precolored operands
+
+Daniel Stone (10):
+      ci/lava: Source setup-test-env
+      ci/mold: Use appropriate parallelism and strip binaries
+      ci: Really remove Mesa drivers from rootfs
+      ci/firmware: Allow calling firmware as sourced script
+      ci/angle: Use relative paths
+      ci/skqp: Fix relative paths
+      ci: Use sections for test container builds
+      ci/skqp: Set $SKQP_ARCH from build-skqp.sh
+      ci/rpi: Add flakes seen in the wild
+      ci/fdno: Add flake seen in the wild
 
 David Heidelberg (2):
-      build: Fix LTO with Android NDK
-      ci/build: debian-build-testing should follow same limit as other jobs
+      ci/fedora: add workaround for buggy GCC warning triggered by r600
+      ci/build: Do not do LTO on any pre-merge job
 
-Eric Engestrom (12):
-      ci/{deqp,piglit}-runner: make zstd respect FDO_CI_CONCURRENT when set, and fallback to the current "all the threads"
-      ci/prepare-artifacts: use more than one thread when compressing the install tarball
-      freedreno/ci: add {freedreno,turnip}{,-manual}-rules to simplify the rest of the code
-      freedreno/ci: use {freedreno,turnip}{,-manual}-rules
-      ci: rename "freedreno" farm to "google-freedreno"
-      {freedreno,intel}/ci: rename "premerge-skips.txt" to "merge-skips.txt" to accurately reflect what they are
-      {freedreno,intel}/ci: add missing tracking of `merge-skips.txt` files
-      ci: simplify ci-tron priority variable
-      ci: simplify setting lava job priority
-      ci: fix shader-db rules
-      ci/b2c: allow B2C_DTB_URL to be set to an empty string to unset it
-      ci/b2c: make initramfs & kernel urls optional
+David Rosca (4):
+      frontends/va: Fix some small coverity issues
+      frontends/va: Fix NULL check in intra refresh params
+      frontends/va: Fix parsing leb128 when using more than 4 bytes
+      frontends/va: Don't relock mutex in vlVaEndPicture
 
-Karol Herbst (1):
-      radeonsi: move si_compute::global_buffers to si_context
+Eric Engestrom (2):
+      ci: move yaml-toml-shell-test out of build-for-tests stage
+      ci: move comment into the appropriate section
 
-Kenneth Graunke (1):
-      brw: Optimize 16-bit texture fetches later
+Georg Lehmann (8):
+      aco/insert_exec: don't pretend WQMState is a bit mask
+      aco/insert_exec: replace pair with a named struct
+      aco/insert_exec: remove stray break_cond variable
+      aco/insert_exec: untangle add_branch_code control flow
+      aco/insert_exec: remove unused includes
+      aco/ir: rework Operand equality to return true for equal fixed non-temp ops
+      aco/insert_exec: remove get_exec_op
+      nir/opt_algebraic: optimize -0.0 + a
 
-Louis-Francis Ratté-Boulianne (1):
-      panfrost: initialize all UBO and vertex buffer descriptors
+Gurchetan Singh (1):
+      gfxstream: move generate-gfxstream-vulkan.sh script
 
-Marek Olšák (9):
-      ac/nir: rewrite ac_nir_lower_ps epilog to fix dual src blending with mono PS
-      nir: add shader_info::tess::tcs_same_invocation_inputs_read(_indirect)
-      mesa_interface: remove unused stuff
-      mesa_interface: replace opaque __DRIscreen with struct dri_screen everywhere
-      mesa_interface: replace opaque __DRIcontext with struct dri_context everywhere
-      mesa_interface: replace opaque __DRIdrawable with struct dri_drawable everywhere
-      mesa_interface: remove redundant __DRI*Rec types
-      mesa_interface: rename __DRIconfig to struct dri_config
-      mesa_interface: rename __DRIimage to struct dri_image
+José Roberto de Souza (5):
+      intel/genxml: Append 'Z Async Throttle settings' to gfx125 definition of STATE_COMPUTE_MODE
+      anv: Set all async compute registers in STATE_COMPUTE_MODE
+      intel/genxml: Do small fixes in gfx20 definition of STATE_COMPUTE_MODE
+      anv: Set recommended values for gfx20 async compute registers in STATE_COMPUTE_MODE
+      iris: Program async compute registers of STATE_COMPUTE_MODE in compute engine
 
-Mary Guillemard (1):
-      nir: Move atomic_op_to_alu to common code
+Marek Olšák (1):
+      nir: add nir_gather_tcs_info, new gathering/analysis pass
 
-Pavel Ondračka (1):
-      r300/ci: add new RV410 flakes
+Rohan Garg (1):
+      anv: Xe2+ doesn't need the special flush for sparse
 
-Rebecca Mckeever (5):
-      panvk/csf: Set and clear vb.dirty flag
-      panvk/csf: Split tiler flags initialization into two steps
-      panvk: Track VkFormats for depth and stencil attachments
-      panvk: Move rendering info to panvk_rendering_state struct
-      panvk/csf: Implement vkCmdExecuteCommands
+Russell Greene (1):
+      wsi/wayland/perfetto: supply presentation clock to perfetto
 
-Rhys Perry (3):
-      radv: fix output statistic for fragment shaders
-      radv: optimize VS input load components to constants earlier
-      radv: use explicitly sized types for some radv_shader_info members
+Samuel Pitoiset (4):
+      radv: track more redundant DB related registers
+      radv: regroup and emit all DS related states in the same function
+      ci: uprev vkd3d-proton to 65b81403435576d882d9141ae3eb4a29373fba0e
+      radv: fix enabling/disabling user sample locations
 
-quic_lkondred (1):
-      freedreno: Add support for Adreno 663 GPU
+Serdar Kocdemir (1):
+      gfxstream: Check metal extension for external memory
+
+Tapani Pälli (2):
+      iris: implement VF_STATISTICS emit for Wa_16012775297
+      anv: implement VF_STATISTICS emit for Wa_16012775297
+
+Vignesh Raman (2):
+      ci: build KERNEL_IMAGE_BASE in before_script
+      ci: move rules from rules-anchors to workflow
 
