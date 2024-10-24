@@ -1,88 +1,137 @@
-Updating from 0bffe8ec053f2a43795515b0f9c64cf98b5bd8b7 to 1f9b82bb2a3f4ffcf00d5820a52ea48d0c695a08
+Updating from 1f9b82bb2a3f4ffcf00d5820a52ea48d0c695a08 to 87cb42f953236d546ff06c0da9cd5a9a84977aeb
 
-Chia-I Wu (2):
-      panvk: remove unused is_sampler and is_texture
-      panvk: fix descriptor set layout hash
+Adam Jackson (1):
+      glx: Fix the GLX_EXT_swap_control_tear drawable attributes
 
-Christian Gmeiner (1):
-      etnaviv: isa: Add img_store instruction
+Boris Brezillon (4):
+      panvk: Fix the maximum sampler LOD bias
+      pan/va: Don't set bit 26:27 on texture instructions
+      pan/va: Add support for nir_texop_lod
+      pan/bi: Add support for nir_texop_lod
 
-Daniel Schürmann (5):
-      aco: introduce 'isPrecolored' flag for Operand and Definition
-      aco: set Precolored flag before register allocation
-      aco/live_var_analysis: check for isPrecolored flag rather than isFixed
-      aco/ra: make use of Precolored flag
-      aco/ra: always block register file for precolored operands
+Chia-I Wu (1):
+      panvk: fix texture size/levels/samples query
 
-Daniel Stone (10):
-      ci/lava: Source setup-test-env
-      ci/mold: Use appropriate parallelism and strip binaries
-      ci: Really remove Mesa drivers from rootfs
-      ci/firmware: Allow calling firmware as sourced script
-      ci/angle: Use relative paths
-      ci/skqp: Fix relative paths
-      ci: Use sections for test container builds
-      ci/skqp: Set $SKQP_ARCH from build-skqp.sh
-      ci/rpi: Add flakes seen in the wild
-      ci/fdno: Add flake seen in the wild
+Constantine Shablia (1):
+      pan/va: Define the TEX_GRADIENT instruction
 
-David Heidelberg (2):
-      ci/fedora: add workaround for buggy GCC warning triggered by r600
-      ci/build: Do not do LTO on any pre-merge job
+Daniel Schürmann (15):
+      aco/live_var_analysis: check isFixed() for definitions in order to set needs_vcc
+      aco/spill: fix faulty assertions
+      aco/spill: use float division for score() calculation rather than integers
+      nir/divergence: separately indicate whether loops have divergent continues or breaks
+      nir/opt_uniform_atomics: don't preserve divergence information
+      nir: remove nir_update_instr_divergence()
+      nir: change signature of nir_src_is_divergent()
+      treewide: use nir_src_is_divergent() rather than checking the divergence of the SSA
+      nir/divergence: require nir_metadata_block_index
+      nir/divergence: Introduce and set nir_def::loop_invariant
+      nir: consider loop invariance in nir_src_is_divergent()
+      nir/divergence: calculate divergence without requiring LCSSA form
+      nir/divergence: skip expensive nir_src_is_divergent() check in most cases
+      nir/divergence: Don't assume that LCSSA phis are not loop-invariant
+      treewide: don't lower to LCSSA before calling nir_divergence_analysis()
 
-David Rosca (4):
-      frontends/va: Fix some small coverity issues
-      frontends/va: Fix NULL check in intra refresh params
-      frontends/va: Fix parsing leb128 when using more than 4 bytes
-      frontends/va: Don't relock mutex in vlVaEndPicture
+Donald Robson (2):
+      pvr: Stop creating waits when there are no waits
+      pvr: Fixed creation of waits in queue submission
 
-Eric Engestrom (2):
-      ci: move yaml-toml-shell-test out of build-for-tests stage
-      ci: move comment into the appropriate section
+Eric Engestrom (1):
+      zink+turnip/ci: update a750 results
 
-Georg Lehmann (8):
-      aco/insert_exec: don't pretend WQMState is a bit mask
-      aco/insert_exec: replace pair with a named struct
-      aco/insert_exec: remove stray break_cond variable
-      aco/insert_exec: untangle add_branch_code control flow
-      aco/insert_exec: remove unused includes
-      aco/ir: rework Operand equality to return true for equal fixed non-temp ops
-      aco/insert_exec: remove get_exec_op
-      nir/opt_algebraic: optimize -0.0 + a
+Frank Binns (9):
+      pvr: minor vulkan driver formatting fixes
+      pvr: drop 'Imagination' from deviceName
+      pvr: fix image size calculation when mipLevels is 1
+      pvr: fix bo refcounting for imported buffers
+      pvr: fix use of uninitialised value when setting up tex info swizzle
+      pvr: remove set but not used struct member
+      pvr: add handling for retry error in pvr_srv_rgx_submit_transfer2()
+      pvr: add handling for retry error in pvr_srv_rgx_kick_compute2()
+      pvr: ensure stencil clear value fits TA_STATE_ISPA.sref field
 
-Gurchetan Singh (1):
-      gfxstream: move generate-gfxstream-vulkan.sh script
+Georg Lehmann (6):
+      aco/ssa_elimination: also optimize branching sequence with s_and without saveexec
+      aco/insert_exec: avoid phis for masks in exec
+      aco/insert_exec: don't always reset top exec
+      aco/insert_exec: reuse old exec temp in loop pre-header
+      aco/insert_exec: reuse old exec temp instead using s_and_saveexec
+      aco/ssa_elimination: don't avoid saving exec when optimizing branching sequence
 
-José Roberto de Souza (5):
-      intel/genxml: Append 'Z Async Throttle settings' to gfx125 definition of STATE_COMPUTE_MODE
-      anv: Set all async compute registers in STATE_COMPUTE_MODE
-      intel/genxml: Do small fixes in gfx20 definition of STATE_COMPUTE_MODE
-      anv: Set recommended values for gfx20 async compute registers in STATE_COMPUTE_MODE
-      iris: Program async compute registers of STATE_COMPUTE_MODE in compute engine
+Iliyan Dinev (2):
+      pvr: fix mipmap alignment for non-32bpp textures
+      pvr: handle PVR_SRV_ERROR_RETRY pvr_srv_rgx_kick_render2()
 
-Marek Olšák (1):
-      nir: add nir_gather_tcs_info, new gathering/analysis pass
+Jordan Justen (4):
+      intel/dev: Rework DEVINFO_HWCONFIG; add DEVINFO_HWCONFIG_KV macro
+      intel/dev: Simplify DEVINFO_HWCONFIG_KV by adding should_apply_hwconfig_item()
+      intel/dev: Allow specifying a version when to always use hwconfig
+      intel/dev: Use hwconfig for urb min/max entry values
 
-Rohan Garg (1):
-      anv: Xe2+ doesn't need the special flush for sparse
+Karmjit Mahil (4):
+      pvr: Fix `barier`->`barrier` typo
+      pvr: Use a pixel size of `0` for invalid pbe accum formats
+      pvr: Regenerate all descriptor program data sections
+      pvr: Handle DISABLE_PIXELMERGE
 
-Russell Greene (1):
-      wsi/wayland/perfetto: supply presentation clock to perfetto
+Lionel Landwerlin (4):
+      anv: fix binding table entry count for compute shaders
+      anv: fix missing inline parameter emission
+      anv: reemit push constants on pipeline changes
+      anv: use UINT32_MAX to be consistent
 
-Samuel Pitoiset (4):
-      radv: track more redundant DB related registers
-      radv: regroup and emit all DS related states in the same function
-      ci: uprev vkd3d-proton to 65b81403435576d882d9141ae3eb4a29373fba0e
-      radv: fix enabling/disabling user sample locations
+Luigi Santivetti (4):
+      pvr: fix calculation for textures z position fractional part
+      pvr: fix when to emit ppp state uniform base address
+      pvr: for fragment stages only do not insert a barrier
+      pvr: really free memory in subpass render init
 
-Serdar Kocdemir (1):
-      gfxstream: Check metal extension for external memory
+Martin Krastev (1):
+      svga/ci: enable vmware farm
 
-Tapani Pälli (2):
-      iris: implement VF_STATISTICS emit for Wa_16012775297
-      anv: implement VF_STATISTICS emit for Wa_16012775297
+Matt Coster (3):
+      pvr: Fix ds subtile alignment NULL pointer dereference
+      pvr: Fix reordering of sub-cmds when performing ds subtile alignment
+      pvr: Use vk_buffer_view base
 
-Vignesh Raman (2):
-      ci: build KERNEL_IMAGE_BASE in before_script
-      ci: move rules from rules-anchors to workflow
+Oskar Rundgren (1):
+      pvr: improve buffer copy format selection
+
+Paulo Zanoni (1):
+      brw: don't emit instruction to add zero in spilling code
+
+Samuel Pitoiset (2):
+      ci: uprev vkd3d-proton to 59d6d4b5ed23766e69fe252408a3401d2fd52ce8
+      radv: fix initializing the HTILE buffer on transfer queue
+
+Simon Perretta (6):
+      pvr: Add missing feature check in compute cmd stream
+      pvr: Rescope msaa_mode
+      pvr: Add missing include for FALLTHROUGH
+      pvr: Inline xxhash header functions
+      pvr: rename pds unused reg constant
+      pvr: Make Vulkan driver depend only on nir headers, not library
+
+SoroushIMG (4):
+      pvr: fix intermediate size when configuring mrt setup
+      pvr: cleanup 2101010 int format handling
+      pvr: fix msaa setup for resolve TQs
+      pvr: fix texture address offset when base level >0
+
+Stéphane Cerveau (2):
+      anv: inline query for vulkan video encode
+      anv: check that inline query pool is VK_NULL_HANDLE
+
+Sviatoslav Peleshko (2):
+      intel/brw/gfx9: Implement WaClearArfDependenciesBeforeEot
+      intel/elk/chv: Implement WaClearArfDependenciesBeforeEot
+
+Tapani Pälli (1):
+      anv/iris: add note about Wa_18039438632 for RT flush after SBA
+
+Vignesh Raman (1):
+      ci/crosvm: Use default value for CROSVM_GALLIUM_DRIVER
+
+Vlad Schiller (1):
+      pvr: Minor code refactor
 

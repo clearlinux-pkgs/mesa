@@ -3300,9 +3300,9 @@ libvulkan_nouveau.so:core::option::Option<&T>::cloned::hae3ea2266a405b5a
 libvulkan_nouveau.so:core::option::Option<T>::map::h0c758687ff89abca
 libvulkan_nouveau.so:core::option::Option<T>::map::h320c1e8989431ec1
 libvulkan_nouveau.so:core::option::Option<T>::map::h34ed8fbd36b5211b
+libvulkan_nouveau.so:core::option::Option<T>::map::h65d95c6ae02b0a8f
 libvulkan_nouveau.so:core::option::Option<T>::map::h7d5e6d0452539c17
 libvulkan_nouveau.so:core::option::Option<T>::map::ha019f8584838f15c
-libvulkan_nouveau.so:core::option::Option<T>::map::hd3534427e7caed1a
 libvulkan_nouveau.so:core::option::Option<T>::unwrap_or::h612bf27fdb54b43f
 libvulkan_nouveau.so:core::option::expect_failed::h6b7654f61028f62e
 libvulkan_nouveau.so:core::option::unwrap_failed::h28ace2c60a514d41
@@ -3347,10 +3347,10 @@ libvulkan_nouveau.so:core::ptr::drop_in_place<alloc::vec::set_len_on_drop::SetLe
 libvulkan_nouveau.so:core::ptr::drop_in_place<compiler::bitset::BitSet>::hcefe37477acd07dd
 libvulkan_nouveau.so:core::ptr::drop_in_place<compiler::memstream::MemStream>::h6d8138d74a1a51fa
 libvulkan_nouveau.so:core::ptr::drop_in_place<core::pin::Pin<alloc::boxed::Box<compiler::memstream::MemStreamImpl>>>::h8f5b2ec677bf98dc
-libvulkan_nouveau.so:core::ptr::non_null::NonNull<T>::new::h0bf7ef4d8f79a5b7
 libvulkan_nouveau.so:core::ptr::non_null::NonNull<T>::new::h0c04b81db1c5ae1a
 libvulkan_nouveau.so:core::ptr::non_null::NonNull<T>::new::h5cfe25b90bcb6c5e
 libvulkan_nouveau.so:core::ptr::non_null::NonNull<T>::new::hc68e57fcf4e6a9f8
+libvulkan_nouveau.so:core::ptr::non_null::NonNull<T>::new::hffb1b7d88637c83a
 libvulkan_nouveau.so:core::result::Result<T,E>::expect::h943efbe7a3c8d881
 libvulkan_nouveau.so:core::result::Result<T,E>::map_err::h7a85dc9090b2e4b5
 libvulkan_nouveau.so:core::result::unwrap_failed::h9e269dc35a425fed
