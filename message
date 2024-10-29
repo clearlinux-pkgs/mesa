@@ -1,79 +1,111 @@
-Updating from 87cb42f953236d546ff06c0da9cd5a9a84977aeb to c66fd95d923b5956c76204a4569de7b9c471eea0
+Updating from 6775524c69c660a4585e3e5ed85f4d7b9129054f to 17096f87c1acc04504d8ff7917d61fb57e96bfb4
 
-Aditya Swarup (1):
-      anv: Use RCS engine for copying stencil resource for gfx125
+Benjamin Lee (1):
+      panvk: fix combined image/sampler descriptor arrays
 
-Chia-I Wu (2):
-      panvk: fix gl_VertexIndex
-      panvk: fix scissor box
-
-Connor Abbott (3):
-      freedreno: Add compute constlen quirk for X1-85
-      tu: Implement VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR
-      tu: Don't invalidate CS state for 3D blits
-
-Danylo Piliaiev (1):
-      util/vma: Fix util_vma_heap_get_max_free_continuous_size calculation
+Boris Brezillon (1):
+      pan/desc: Fix the CRC validity update when clean tiles are not written
 
 David Rosca (2):
-      pipe: Fix video enc max DPB size for H264
-      frontends/va: Evict unused surfaces from encode DPB
+      frontends/va: Add support for AV1 still picture encode
+      radeonsi/vcn: Add support for AV1 still picture encode
 
-Eric Engestrom (15):
-      docs: update link to `perf` wiki
-      nvk/ci: add back a crash that was mistakenly removed from the expectations
-      zink+nvk/ci: document ext_egl_image_storage regression in c06a55fd...2fb4aed9 (likely !31585)
-      all-drivers/ci: drop duplicate flakes lines
-      zink+nvk/ci: drop duplicate flakes lines
-      zink+nvk/ci: add flakes seen recently
-      turnip/ci: add more dEQP-VK.renderpass2.fragment_density_map.* flakes seen recently
-      nvk/ci: add flakes seen recently
-      lavapipe/ci: group & sort fails
-      lavapipe/ci: group & sort skips
-      lavapipe/ci: skip builtin ray query tests that take too long and time out
-      lavapipe/ci: document regression in the commit range 765d1c47...366f63fd
-      ci: move shellcheck options to .shellcheckrc
-      ci: rename "merge-skips" to "slow-skips" as they're about to be used outside of merge piplines
-      ci: skip slow tests on all non-"full" jobs
+Erik Faye-Lund (7):
+      panvk: avoid signed integer underflow
+      panvk: drop needless assert
+      panvk: put conditional outside of define
+      panvk: assert on missing vs
+      panvk/csf: only look at fs if it's required
+      panfrost: drop needless assign
+      panfrost: add an assert in render-target setup
 
-Erik Faye-Lund (1):
-      panvk: fix broken wsi
+Georg Lehmann (4):
+      ac/llvm: handle shared atomic base offset
+      nir,radv: optimize shared atomic offsets
+      nir/opt_algebraic: create ubfe with non constant mask
+      radv: use nir_opt_fragdepth
 
-Francisco Jerez (1):
-      intel/brw/xe2+: Adjust performance analysis divergence weight due to EU fusion removal.
+George Ouzounoudis (3):
+      d3d12: Split memory size info to device and system memory
+      d3d12: Keep track of size and number of evictions
+      d3d12: Add support for GL_NVX_gpu_memory_info and GL_ATI_meminfo
 
-Georg Lehmann (2):
-      radv: don't use v_mqsad_u32_u8 on gfx7
-      aco: remove heuristic that restricts VOP2/C with 2 sgprs
+José Roberto de Souza (2):
+      intel/dev/xe: Set max_eus_per_subslice using topology query
+      intel/dev: Fix max_cs_threads value on simulator
 
-Joshua Ashton (2):
-      radv: Enable variableSampleLocations
-      radv: Fix sample locations at 0 for X/Y
+Konstantin Seurer (1):
+      radv: Move ac_addrlib to the physical device
 
-Kenneth Graunke (1):
-      intel/brw: Allow immediates in the BFE instruction on Gfx12+
+Louis-Francis Ratté-Boulianne (12):
+      pan/cs: only flush block instrs if there is a pending `if` block
+      pan/cs: add block to handle registers backup in exception handler
+      pan/genxml: enable decoding for SET_EXCEPTION_HANDLER
+      pan/genxml: small fix to FINISH_FRAGMENT tracing
+      panfrost: add debug tracing for CSF context initialization
+      panfrost: create a backend-specific hook for `emit_fbds`
+      panfrost: add debug flag to enable extra CS checks
+      panfrost: add support for incremental rendering in CSF
+      panfrost: properly update data size of AFBC-packed resources
+      panfrost: disable CRC for AFBC-packed resources
+      panfrost: check the right discard property when selecting CRC target
+      panfrost: properly align CRC buffer size for prefetching
+
+Maaz Mombasawala (3):
+      svga: Ensure an active context exists for a vmw_screen
+      svga: Introduce userspace managed surfaces
+      svga: Support older define commands for userspace surfaces
+
+Nanley Chery (7):
+      anv: Add an array of view formats to anv_image
+      anv: Prepare dmabufs for clear color arrays
+      anv: Move code out of loop in anv_CmdClearColorImage
+      anv: Refactor clear color loading functions
+      anv: Access more colors in fast_clear_memory_range
+      anv: Load fast clear colors more often
+      anv: Allow more fast clear colors for layouts
 
 Patrick Lerda (1):
-      r600: fix spec ext_packed_depth_stencil getteximage
+      glsl: fix gl_nir_validate_intrastage_interface_blocks() memory leak
 
-Rhys Perry (8):
-      ac/llvm: cast to integer after derivative intrinsics
-      aco,radv,radeonsi: add aco_shader_info::ps::has_prolog
-      aco: split CounterMap off from VGPRCounterMap
-      aco: minor CounterMap::operator== fix
-      aco: workaround VALUReadSGPRHazard
-      aco/tests: add tests for VALUReadSGPRHazard
-      nir: fix shfr constant folding with zero src2
-      nir/algebraic: fix shfr optimization with zero src2
+Rob Clark (7):
+      ir3: Fix binning pass driver UBOs
+      ir3: Don't lower VS driver params to UBO
+      freedreno/a6xx: Don't try resolve blits
+      freedreno/a6xx: Stop exposing MSAA image load/store harder
+      freedreno: Fix tile-per-pipe debug overrides
+      freedreno/a6xx: Fix MSAA depth on a6xx gen1
+      freedreno/ci: Garbage collect some obsolete xfails
 
-Samuel Pitoiset (6):
-      radv: do not use MRT counters for images created for db capture&replay
-      radv: capture shader statistics when RGP is enabled
-      radv: fix emitting NGG culling state for ESO
-      radv: simplify determining if a graphics pipeline uses NGG culling
-      radv: do no emit PA_SC_CONSERVATIVE_RASTERIZATION_CNTL in the preamble on GFX12
-      amd: do not emit PA_SU_PRIM_FILTER_CNTL in the common GFX preamble
+Sagar Ghuge (1):
+      intel: Switch to COMPUTE_WALKER_BODY
 
-Yao Zi (1):
-      panvk: Link with --build-id explicitly
+Samuel Pitoiset (4):
+      radv: implement VK_EXT_device_generated_commands
+      radv: advertise VK_EXT_device_generated_commands on GFX8+
+      radv: track more redundant raster related registers
+      radv: regroup and emit all raster related states in the same function
+
+Semenov Herman (Семенов Герман) (2):
+      radv: fix memleaks in radv_sqtt_reloc_graphics_shaders()
+      radv: fix memleaks in radv_init_shader_upload_queue()
+
+Sil Vilerino (4):
+      d3d12: Wrap d3d12_video_encode_get_hevc_codec_support around #if VIDEO_CODEC_H265ENC
+      d3d12: fix incorrect memset in d3d12_video_encoder_references_manager_hevc::get_current_frame_picture_control_data
+      d3d12: Fix video encode metadata snapshot at frame submission, must include changes done by DPB manager begin_frame method
+      d3d12: Improve video encode intra-refresh logging
+
+Timur Kristóf (1):
+      nir/opt_algebraic: Add various bitfield extract patterns.
+
+YaoBing Xiao (1):
+      vulkan/x11: use xcb_connection_has_error to check for failue
+
+antonino (2):
+      pan/cs: add support for nop instruction
+      pan/genxml: fix SET_EXCEPTION_HANDLER instruction definition
+
+cheyang (1):
+      Android15 support gralloc IMapper5
 
