@@ -1,111 +1,162 @@
-Updating from 6775524c69c660a4585e3e5ed85f4d7b9129054f to 17096f87c1acc04504d8ff7917d61fb57e96bfb4
+Updating from 17096f87c1acc04504d8ff7917d61fb57e96bfb4 to 322a83f321ccd503e51f91ad03fbfb483ac5bab8
 
-Benjamin Lee (1):
-      panvk: fix combined image/sampler descriptor arrays
+Alyssa Rosenzweig (88):
+      nir/opt_algebraic: optimize patterns hit with OpenCL
+      util/ralloc: add total_size helper
+      nir: correct comment
+      nir/serialize: fix name
+      asahi: split out genxml header
+      asahi: fix spacing
+      asahi: assume compiler is not stupid
+      asahi: normalize enum formatting
+      asahi: migrate f-strings
+      asahi: fix indentation
+      asahi: cleanup validation
+      asahi: cleanup generate valid
+      asahi: drop extra new line
+      asahi: guard some apple code
+      asahi: guard darwin stuff
+      asahi: fix newlines
+      asahi: add exact fields to genxml
+      asahi: convert to exact
+      asahi: drop trailing
+      asahi: be explicit about LOD clamps
+      asahi: drop zero defaults
+      asahi: drop macOS defaults
+      asahi: drop PBE default
+      asahi: drop fragment face 2 defaults
+      asahi: set exact on some fixed? unknown fields
+      asahi: drop comment
+      asahi: drop comment about blob weirdness
+      asahi: drop dated comments
+      asahi: idetnify Clamp W
+      asahi: set clamp W? explicitly
+      asahi: drop unused default
+      asahi: be explicit about usc reg unk
+      asahi: be explicit about frag properties
+      asahi: automatically set default to encode to zero
+      asahi: drop implied defaults
+      asahi: get rid of default from the XML
+      asahi: make wrapping less silly
+      asahi: don't do extra runtime validation for exact
+      asahi: defer fixed->float to tess
+      asahi: rm tessellator branch
+      asahi,agx: clang-format
+      agx: split up f16 ops
+      agx: special case mov_imm
+      agx: drop encoding_16
+      agx: encoding_32 -> encoding
+      agx: consistent ffma name
+      asahi: presumably fix indirect indexed tess
+      libagx: extend indirect tess to handle indexed
+      hk: plumb indirect_local
+      hk: add mechanism to test indirects
+      hk: wire up indirect tess
+      hk: drop store_op_dontcare w/a
+      hk: switch to 64-bit queries
+      hk: use push size macro
+      hk: bump max push size
+      asahi: fix no16 flag
+      agx: fix uniform packing with local_load
+      agx: pack agx_cf_binding
+      agx: move binary_size into info
+      hk: fix alpha-to-coverage with sample shading
+      hk: allow tess modes in either stage
+      hk: make tess partitioning dynamic
+      libagx: fix missing statics
+      libagx: don't rely on loop unroll in txs
+      libagx: drop generated VDM tess path (for now?)
+      libagx: make points mode dynamic
+      libagx: always tessellate clockwise
+      asahi/clc: strip nir
+      asahi: drop unused
+      asahi: pad blit key
+      asahi: use indirect ptr helper more
+      asahi: add the BO even for internal dispatches
+      asahi: fix indirect buffer UAF
+      asahi: fix extremely subtle UAF
+      asahi: assert guard previously-subtle code
+      asahi: don't leak blit shaders
+      asahi: don't leak binaries
+      asahi: don't leak linked shaders
+      asahi: don't leak drm version
+      nir,agx: lower fmin/fmax in NIR
+      agx: optimize wait_pix a bit
+      agx: negate iadd/imsub constants
+      agx: test immediate packing opt
+      agx: run algebraic later
+      asahi,agx: rework constant promotion upload
+      agx: don't upload constant padding at the start
+      agx: fold more inots
+      hk: enable constant promotion
+
+Asahi Lina (1):
+      agx: Fix queue destroy op for virtgpu
+
+Benjamin Lee (2):
+      panvk: allow resuming secondary cmdbufs with dynamic rendering
+      panvk: flush sync point before executing secondary cmdbufs
 
 Boris Brezillon (1):
-      pan/desc: Fix the CRC validity update when clean tiles are not written
+      pan/cs: Fix lazy allocation support
 
-David Rosca (2):
-      frontends/va: Add support for AV1 still picture encode
-      radeonsi/vcn: Add support for AV1 still picture encode
+Chia-I Wu (1):
+      panvk: disable depth write when depth test is disabled
 
-Erik Faye-Lund (7):
-      panvk: avoid signed integer underflow
-      panvk: drop needless assert
-      panvk: put conditional outside of define
-      panvk: assert on missing vs
-      panvk/csf: only look at fs if it's required
-      panfrost: drop needless assign
-      panfrost: add an assert in render-target setup
+Connor Abbott (1):
+      ir3: Fix detection of nontrivial continues
 
-Georg Lehmann (4):
-      ac/llvm: handle shared atomic base offset
-      nir,radv: optimize shared atomic offsets
-      nir/opt_algebraic: create ubfe with non constant mask
-      radv: use nir_opt_fragdepth
+Daniel Schürmann (4):
+      aco/ssa_elimination: perform jump threading after parallelcopy insertion
+      aco/ssa_elimination: remove some redundant checks during jump threading
+      aco: move jump threading optimization into separate pass
+      aco/README: add descriptions of recently added passes
 
-George Ouzounoudis (3):
-      d3d12: Split memory size info to device and system memory
-      d3d12: Keep track of size and number of evictions
-      d3d12: Add support for GL_NVX_gpu_memory_info and GL_ATI_meminfo
+David Rosca (5):
+      radeonsi/uvd_enc: Implement fence_wait
+      radeonsi/vce: Implement fence_wait
+      radeonsi: Enable VIDEO_CAP_ENC_SUPPORTS_ASYNC_OPERATION on VCE/UVD
+      radeonsi/uvd_enc: Allocate session buffer in VRAM
+      radeonsi: Support HEVC features and block sizes for UVD
 
-José Roberto de Souza (2):
-      intel/dev/xe: Set max_eus_per_subslice using topology query
-      intel/dev: Fix max_cs_threads value on simulator
+Eric Engestrom (6):
+      egl: error out during setup if the configuration is invalid
+      freedreno/ci: abort a750 testing when a hang is detected
+      freedreno/ci: add nightly freedreno gl testing on a750
+      ci/build: deduplicate meson build command
+      ci/build: handle build timeout ourselves to give more time to nightly LTO builds
+      ci/build: lower most job's timeout from 30 to 15 min
 
-Konstantin Seurer (1):
-      radv: Move ac_addrlib to the physical device
+Erik Faye-Lund (6):
+      panvk: drop duplicate dirty-test
+      panvk/jm: respect depth-clip state
+      panvk/csf: respect depth-clip state
+      panvk: expose EXT_depth_clip_enable
+      docs/features: claim vk 1.0 for panvk
+      docs/features: mark off more panvk extensions
 
-Louis-Francis Ratté-Boulianne (12):
-      pan/cs: only flush block instrs if there is a pending `if` block
-      pan/cs: add block to handle registers backup in exception handler
-      pan/genxml: enable decoding for SET_EXCEPTION_HANDLER
-      pan/genxml: small fix to FINISH_FRAGMENT tracing
-      panfrost: add debug tracing for CSF context initialization
-      panfrost: create a backend-specific hook for `emit_fbds`
-      panfrost: add debug flag to enable extra CS checks
-      panfrost: add support for incremental rendering in CSF
-      panfrost: properly update data size of AFBC-packed resources
-      panfrost: disable CRC for AFBC-packed resources
-      panfrost: check the right discard property when selecting CRC target
-      panfrost: properly align CRC buffer size for prefetching
+Lu Yao (1):
+      ac/radeonsi: compute htile for tile mode RADEON_SURF_MODE_1D on GFX6-8
 
-Maaz Mombasawala (3):
-      svga: Ensure an active context exists for a vmw_screen
-      svga: Introduce userspace managed surfaces
-      svga: Support older define commands for userspace surfaces
+Marek Olšák (8):
+      nir: rename load_cull_small_primitives -> triangles, add load_cull_small_lines
+      nir: rename load_cull_small_primitive_precision -> triangle, add line_precision
+      nir: add cull_triangles_, cull_lines_ prefixes to viewport_xy_scale_and_offset
+      ac/nir,radeonsi: use load_cull_small_lines_enabled_amd
+      ac/nir,radeonsi: use load_cull_small_line_precision_amd
+      ac/nir,radeonsi: use load_cull_line_viewport_xy_scale_and_offset_amd
+      radeonsi: rewrite how small prim precision is passed to culling code
+      radeonsi: simplify util_rast_prim_is_lines_or_triangles
 
-Nanley Chery (7):
-      anv: Add an array of view formats to anv_image
-      anv: Prepare dmabufs for clear color arrays
-      anv: Move code out of loop in anv_CmdClearColorImage
-      anv: Refactor clear color loading functions
-      anv: Access more colors in fast_clear_memory_range
-      anv: Load fast clear colors more often
-      anv: Allow more fast clear colors for layouts
+Mary Guillemard (1):
+      hk: Fill deviceUUID
 
-Patrick Lerda (1):
-      glsl: fix gl_nir_validate_intrastage_interface_blocks() memory leak
+Samuel Pitoiset (3):
+      ac/spm: do not abort when the SPM BO is too small
+      radv: resize the SPM bo when it's too small
+      radv: fix wrong index in radv_skip_graphics_pipeline_compile()
 
-Rob Clark (7):
-      ir3: Fix binning pass driver UBOs
-      ir3: Don't lower VS driver params to UBO
-      freedreno/a6xx: Don't try resolve blits
-      freedreno/a6xx: Stop exposing MSAA image load/store harder
-      freedreno: Fix tile-per-pipe debug overrides
-      freedreno/a6xx: Fix MSAA depth on a6xx gen1
-      freedreno/ci: Garbage collect some obsolete xfails
-
-Sagar Ghuge (1):
-      intel: Switch to COMPUTE_WALKER_BODY
-
-Samuel Pitoiset (4):
-      radv: implement VK_EXT_device_generated_commands
-      radv: advertise VK_EXT_device_generated_commands on GFX8+
-      radv: track more redundant raster related registers
-      radv: regroup and emit all raster related states in the same function
-
-Semenov Herman (Семенов Герман) (2):
-      radv: fix memleaks in radv_sqtt_reloc_graphics_shaders()
-      radv: fix memleaks in radv_init_shader_upload_queue()
-
-Sil Vilerino (4):
-      d3d12: Wrap d3d12_video_encode_get_hevc_codec_support around #if VIDEO_CODEC_H265ENC
-      d3d12: fix incorrect memset in d3d12_video_encoder_references_manager_hevc::get_current_frame_picture_control_data
-      d3d12: Fix video encode metadata snapshot at frame submission, must include changes done by DPB manager begin_frame method
-      d3d12: Improve video encode intra-refresh logging
-
-Timur Kristóf (1):
-      nir/opt_algebraic: Add various bitfield extract patterns.
-
-YaoBing Xiao (1):
-      vulkan/x11: use xcb_connection_has_error to check for failue
-
-antonino (2):
-      pan/cs: add support for nop instruction
-      pan/genxml: fix SET_EXCEPTION_HANDLER instruction definition
-
-cheyang (1):
-      Android15 support gralloc IMapper5
+Sergio Lopez (2):
+      hk: limit the number of free BOs in each cmd pool
+      hk: allow overriding sysmem with an env var
 

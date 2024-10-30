@@ -1,1 +1,0 @@
-Compiler:  can't write 23 bytes to section .text._ZN3elk12vec4_visitor18nir_setup_uniformsEv of src/intel/compiler/elk/libintel_compiler_elk.a.p/elk_vec4_nir.cpp.o: 'No space left on device'
