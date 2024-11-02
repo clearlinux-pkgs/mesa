@@ -1,40 +1,21 @@
-Updating from 2d5b574b8d4d94fd0dae65fe0b0d504aac0e2f08 to 478b5aa050ed20ac0f165dc263353cac34285632
+Updating from 478b5aa050ed20ac0f165dc263353cac34285632 to 3a962a28e798460ae8c487bcb05e49fc4aaee2b2
 
-Casey Bowman (4):
-      vulkan/screenshot-layer: Fix image index selection
-      vulkan/screenshot-layer: Increase buffer sizes
-      vulkan/screenshot-layer: Fix memory leaks
-      vulkan/screenshot-layer: Remove extraneous malloc operations
+Alyssa Rosenzweig (2):
+      clc: add mesa_clc tool
+      asahi/clc: ingest spir-v
 
-David Rosca (1):
-      radeonsi/vcn: Enable VCN4 AV1 encode WA
+David Rosca (4):
+      radeonsi/vce: Remove dual instance support
+      frontends/va: Remove H264 encode delayed flush
+      frontends/va: Stop using PIPE_VIDEO_CAP_ENC_SUPPORTS_ASYNC_OPERATION
+      pipe: Remove PIPE_VIDEO_CAP_ENC_SUPPORTS_ASYNC_OPERATION
 
-Deborah Brouwer (1):
-      freedreno/ci: remove redundant skip files
+Patrick Lerda (1):
+      r600: fix sfn_nir_legalize_image_load_store cubearray behavior
 
-Job Noorman (1):
-      freedreno,computerator: add support for local memory
-
-Jordan Justen (1):
-      intel/dev: Set L3 bank count for Xe2+ from Xe KMD
-
-Mike Blumenkrantz (2):
-      zink: stop leaking precompiled generated tcs
-      zink: add VVL for RADV jobs
-
-Paulo Zanoni (1):
-      brw: add a NOP in between WHILE instructions on LNL
-
-Rob Clark (2):
-      freedreno/a6xx: Don't check dst coords
-      freedreno/a6xx: Random whitespace fix
-
-Samuel Pitoiset (7):
-      radv: add missing L2 non-coherent image case for mipmaps with DCC/HTILE on GFX11
-      ac: add ac_gpu_info::has_trap_handler_support
-      radv: check for has_trap_handler_support instead of asserting
-      radv: only emit the TBA/TMA registers on GFX8
-      radv: fix dumping the faulty shader detected by the trap handler on GFX9+
-      radv,aco: save SQ_WAVE_GPR_ALLOC from the trap handler
-      radv: add a struct that describes the trap handler layout
+Sviatoslav Peleshko (4):
+      intel/brw: List all instructions that have BranchCtrl bit
+      intel/brw_asm: Add BranchCtrl support
+      intel/elk: List all instructions that have BranchCtrl bit
+      intel/elk_asm: Add BranchCtrl support
 
