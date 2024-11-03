@@ -1,21 +1,5 @@
-Updating from 478b5aa050ed20ac0f165dc263353cac34285632 to 3a962a28e798460ae8c487bcb05e49fc4aaee2b2
+Updating from 3a962a28e798460ae8c487bcb05e49fc4aaee2b2 to 159fb9691d792594b91e0fbc4c7823e1a191620d
 
-Alyssa Rosenzweig (2):
-      clc: add mesa_clc tool
-      asahi/clc: ingest spir-v
-
-David Rosca (4):
-      radeonsi/vce: Remove dual instance support
-      frontends/va: Remove H264 encode delayed flush
-      frontends/va: Stop using PIPE_VIDEO_CAP_ENC_SUPPORTS_ASYNC_OPERATION
-      pipe: Remove PIPE_VIDEO_CAP_ENC_SUPPORTS_ASYNC_OPERATION
-
-Patrick Lerda (1):
-      r600: fix sfn_nir_legalize_image_load_store cubearray behavior
-
-Sviatoslav Peleshko (4):
-      intel/brw: List all instructions that have BranchCtrl bit
-      intel/brw_asm: Add BranchCtrl support
-      intel/elk: List all instructions that have BranchCtrl bit
-      intel/elk_asm: Add BranchCtrl support
+Lucas Fryzek (1):
+      lp: Only close udmabuf handle if its valid
 
