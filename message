@@ -1,5 +1,53 @@
-Updating from 3a962a28e798460ae8c487bcb05e49fc4aaee2b2 to 159fb9691d792594b91e0fbc4c7823e1a191620d
+Updating from 159fb9691d792594b91e0fbc4c7823e1a191620d to 07ca1bbb056e81cdef9d86d8799237083f13760a
 
-Lucas Fryzek (1):
-      lp: Only close udmabuf handle if its valid
+Benjamin Lee (1):
+      panvk: hack to improve depth clipping with small viewport depth range
+
+Chia-I Wu (2):
+      panvk: fix truncated access flags in collect_cs_deps
+      panvk: expand meta stage and access flags
+
+Danylo Piliaiev (1):
+      ir3: Fix cat5 parsing with a1.x src present
+
+Deborah Brouwer (3):
+      ci: simplify .baremetal-arm32-asan-test
+      ci: simplify .baremetal-arm64-asan-test
+      freedreno/ci: convert a630-gles-asan to toml suite
+
+Erik Faye-Lund (1):
+      docs/features: mark off missing panvk feature
+
+Felix DeGrood (2):
+      intel/measure: add nogl feature
+      intel/measure: defer file open until first write
+
+Georg Lehmann (6):
+      nir: add SYSTEM_VALUE_PIXEL_COORD
+      radv: add support for load_pixel_coord
+      ac/llvm: implement load_pixel_coord
+      aco: implement load_pixel_coord
+      nir: add nir_opt_frag_coord_to_pixel_coord
+      radv: use nir_opt_frag_coord_to_pixel_coord
+
+Marek Olšák (3):
+      radeonsi/gfx11: fix Z corruption for Blender
+      amd: move Tonga and Iceland TC-compat HTILE workarounds to ac_gpu_info.c
+      radeonsi/gfx12: fix AMD_DEBUG=nodcc not working
+
+Martin Krastev (1):
+      svga/ci: disable vmware farm
+
+Samuel Pitoiset (2):
+      aco: fix reading registers from the trap handler shader
+      aco: add support for the trap handler shader on GFX9-GFX10.3
+
+Sergi Blanch Torne (1):
+      ci: disable Collabora's farm due to maintenance
+
+Valentine Burley (1):
+      lavapipe: Block YCbCr formats from getting blit feature flags
+
+Vignesh Raman (1):
+      Revert "ci: disable Collabora's farm due to maintenance"
 
