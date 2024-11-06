@@ -1,53 +1,71 @@
-Updating from 159fb9691d792594b91e0fbc4c7823e1a191620d to 07ca1bbb056e81cdef9d86d8799237083f13760a
+Updating from 07ca1bbb056e81cdef9d86d8799237083f13760a to e3a00916383cbf8cdf1c2376582a8302d3cf35c7
 
-Benjamin Lee (1):
-      panvk: hack to improve depth clipping with small viewport depth range
+Boris Brezillon (1):
+      pan/bi: Expose the packed TextureOperationDescriptor in bifrost_texture_operation
 
-Chia-I Wu (2):
-      panvk: fix truncated access flags in collect_cs_deps
-      panvk: expand meta stage and access flags
+Constantine Shablia (2):
+      pan/va: Lower nir_texop_txd to TEX_GRADIENT with derivs followed by TEX_SINGLE
+      pan/bi: Lower nir_texop_txd to TEXC in GRDESC_DER mode followed by sampling TEXC
 
-Danylo Piliaiev (1):
-      ir3: Fix cat5 parsing with a1.x src present
+David Rosca (4):
+      frontends/va: Move encode fence to coded buffer
+      radeonsi/vcn: Don't try to override HEVC SPS conformance window
+      radeonsi/vcn: Gracefully handle encode errors and report to frontend
+      radeonsi/vcn: Rework encode padding and session init params
 
-Deborah Brouwer (3):
-      ci: simplify .baremetal-arm32-asan-test
-      ci: simplify .baremetal-arm64-asan-test
-      freedreno/ci: convert a630-gles-asan to toml suite
+Eric Engestrom (6):
+      ci: only end current section if there is a current section
+      ci: initialize state_x (tracking `set -x`)
+      ci: consistently restore `-x` after temporarily disabling it
+      ci: rename state_x to previous_state_x to be clear about what it contains
+      ci/b2c: properly escape double-quoted container command
+      ci/b2c: make dut boot quieter on ci-tron jobs
 
-Erik Faye-Lund (1):
-      docs/features: mark off missing panvk feature
+Georg Lehmann (8):
+      nir/opt_frag_coord_to_pixel_coord: optimize trunc/floor
+      nir/lower_wpos_ytransform: remove unnecessary state variable
+      nir/lower_wpos_ytransform: remove redundant state shader
+      nir/lower_wpos_ytransform: clean up baryc_at_offset
+      nir/lower_wpos_ytransform: clean up sample_pos
+      nir/lower_wpos_ytransform: clean up wpos_adjustment
+      nir/lower_wpos_ytransform: use more typical pass structure
+      nir/lower_wpos_ytransform: remove reference to long removed TGSI code
 
-Felix DeGrood (2):
-      intel/measure: add nogl feature
-      intel/measure: defer file open until first write
+José Roberto de Souza (5):
+      intel/perf: Add OA support to ARL
+      drm-uapi: Sync xe_drm.h
+      intel/perf: Extend intel_perf_stream_set_metrics_id() to syncronize metrics id changes
+      intel/perf: Add INTEL_PERF_FEATURE_METRIC_SYNC and check if KMD supports it
+      anv: Enable perf metrics id set syncronization
 
-Georg Lehmann (6):
-      nir: add SYSTEM_VALUE_PIXEL_COORD
-      radv: add support for load_pixel_coord
-      ac/llvm: implement load_pixel_coord
-      aco: implement load_pixel_coord
-      nir: add nir_opt_frag_coord_to_pixel_coord
-      radv: use nir_opt_frag_coord_to_pixel_coord
+Marek Olšák (8):
+      glsl: lower IO in the linker if enabled, don't lower it later
+      nir: rename nir_io_glsl_lower_derefs -> nir_io_has_io_intrinsics
+      nir: print interp_mode better
+      nir/lower_io: change INTERP_MODE_NONE to SMOOTH when NONE means SMOOTH
+      nir: add nir_clear_divergence_info, use it in nir_opt_varyings
+      gallium: set proper type for pipe_shader_state::ir::nir
+      st/mesa: fix incorrect types of shader CSOs
+      amd/ci: adjust stoney traces checksums
 
-Marek Olšák (3):
-      radeonsi/gfx11: fix Z corruption for Blender
-      amd: move Tonga and Iceland TC-compat HTILE workarounds to ac_gpu_info.c
-      radeonsi/gfx12: fix AMD_DEBUG=nodcc not working
+Pavel Ondračka (1):
+      ci: disable ondracka farm
 
-Martin Krastev (1):
-      svga/ci: disable vmware farm
+Samuel Pitoiset (7):
+      radv: set missing shader info values for the trap handler
+      radv,aco: dump all SGPRS from the trap handler
+      aco: fix validation for VOP1 instructions without any dest/src
+      aco: clear the current wave exception in the trap handler
+      aco: add support for the trap handler shader on GFX11
+      aco: use inlined constant offsets for storing SGPRs in the trap handler
+      radv: cleanup tools related resources when destroying logical device
 
-Samuel Pitoiset (2):
-      aco: fix reading registers from the trap handler shader
-      aco: add support for the trap handler shader on GFX9-GFX10.3
+itycodes (1):
+      intel: Fix a typo in intel_device_info.c:has_get_tiling
 
-Sergi Blanch Torne (1):
-      ci: disable Collabora's farm due to maintenance
-
-Valentine Burley (1):
-      lavapipe: Block YCbCr formats from getting blit feature flags
-
-Vignesh Raman (1):
-      Revert "ci: disable Collabora's farm due to maintenance"
+nyanmisaka (4):
+      intel/pci_ids: Update ADL device names
+      intel/pci_ids: Update RPL device names
+      intel/pci_ids: Update TGL device names
+      intel/pci_ids: Update DG1 device names
 
