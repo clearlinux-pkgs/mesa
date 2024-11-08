@@ -1,71 +1,44 @@
-Updating from 07ca1bbb056e81cdef9d86d8799237083f13760a to e3a00916383cbf8cdf1c2376582a8302d3cf35c7
+Updating from 71cc22504f4a06f2eed22e7f74eb69c24e8035a2 to 3ecf2a0518c076c4af6ebc238e4570d0e8deea4a
 
-Boris Brezillon (1):
-      pan/bi: Expose the packed TextureOperationDescriptor in bifrost_texture_operation
+Benjamin Herrenschmidt (1):
+      dril: Fixup order of pixel formats in drilConfigs
 
-Constantine Shablia (2):
-      pan/va: Lower nir_texop_txd to TEX_GRADIENT with derivs followed by TEX_SINGLE
-      pan/bi: Lower nir_texop_txd to TEXC in GRDESC_DER mode followed by sampling TEXC
+Chia-I Wu (2):
+      panvk: fix missing same-subqueue wait for CmdWaitEvents2
+      panvk: fix dummy sampler handle for vs
 
-David Rosca (4):
-      frontends/va: Move encode fence to coded buffer
-      radeonsi/vcn: Don't try to override HEVC SPS conformance window
-      radeonsi/vcn: Gracefully handle encode errors and report to frontend
-      radeonsi/vcn: Rework encode padding and session init params
+Christian Gmeiner (1):
+      etnaviv: Fix incorrect pipe_nn creation
 
-Eric Engestrom (6):
-      ci: only end current section if there is a current section
-      ci: initialize state_x (tracking `set -x`)
-      ci: consistently restore `-x` after temporarily disabling it
-      ci: rename state_x to previous_state_x to be clear about what it contains
-      ci/b2c: properly escape double-quoted container command
-      ci/b2c: make dut boot quieter on ci-tron jobs
+Daniel Stone (1):
+      build: Don't run wayland-protocols tests
 
-Georg Lehmann (8):
-      nir/opt_frag_coord_to_pixel_coord: optimize trunc/floor
-      nir/lower_wpos_ytransform: remove unnecessary state variable
-      nir/lower_wpos_ytransform: remove redundant state shader
-      nir/lower_wpos_ytransform: clean up baryc_at_offset
-      nir/lower_wpos_ytransform: clean up sample_pos
-      nir/lower_wpos_ytransform: clean up wpos_adjustment
-      nir/lower_wpos_ytransform: use more typical pass structure
-      nir/lower_wpos_ytransform: remove reference to long removed TGSI code
+David Heidelberg (1):
+      freedreno: python fixes
 
-José Roberto de Souza (5):
-      intel/perf: Add OA support to ARL
-      drm-uapi: Sync xe_drm.h
-      intel/perf: Extend intel_perf_stream_set_metrics_id() to syncronize metrics id changes
-      intel/perf: Add INTEL_PERF_FEATURE_METRIC_SYNC and check if KMD supports it
-      anv: Enable perf metrics id set syncronization
+Dylan Baker (3):
+      VERSION: bump to 25.0
+      docs: reset new_features.txt
+      docs/release-calendar: update one more time for pushed back release
 
-Marek Olšák (8):
-      glsl: lower IO in the linker if enabled, don't lower it later
-      nir: rename nir_io_glsl_lower_derefs -> nir_io_has_io_intrinsics
-      nir: print interp_mode better
-      nir/lower_io: change INTERP_MODE_NONE to SMOOTH when NONE means SMOOTH
-      nir: add nir_clear_divergence_info, use it in nir_opt_varyings
-      gallium: set proper type for pipe_shader_state::ir::nir
-      st/mesa: fix incorrect types of shader CSOs
-      amd/ci: adjust stoney traces checksums
+Eric Engestrom (9):
+      meson: drop variable initialized twice
+      meson: add dependencies needed by wsi_common_x11.c even on non-drm platforms
+      ci: drop unused extra args in build-vkd3d-proton.sh
+      ci: replace plain `meson` with explicit `meson setup`
+      meson: bump spirv-tools version needed to v2022.1
+      radeonsi/ci: add more flakes seen recently
+      radv/ci: add more flakes seen recently
+      broadcom/ci: add more flakes seen recently
+      freedreno/ci: add more flakes seen recently
 
-Pavel Ondračka (1):
-      ci: disable ondracka farm
+Lionel Landwerlin (1):
+      anv: fix extent computation in image->image host copies
 
-Samuel Pitoiset (7):
-      radv: set missing shader info values for the trap handler
-      radv,aco: dump all SGPRS from the trap handler
-      aco: fix validation for VOP1 instructions without any dest/src
-      aco: clear the current wave exception in the trap handler
-      aco: add support for the trap handler shader on GFX11
-      aco: use inlined constant offsets for storing SGPRs in the trap handler
-      radv: cleanup tools related resources when destroying logical device
+Mary Guillemard (1):
+      panvk: Ensure that render_info is not null in force_fb_preload
 
-itycodes (1):
-      intel: Fix a typo in intel_device_info.c:has_get_tiling
-
-nyanmisaka (4):
-      intel/pci_ids: Update ADL device names
-      intel/pci_ids: Update RPL device names
-      intel/pci_ids: Update TGL device names
-      intel/pci_ids: Update DG1 device names
+Samuel Pitoiset (2):
+      radv: save the trap handler report in the HOME directory
+      radv: mark some GFX6-7 GPUs as Vulkan 1.3 conformant
 
