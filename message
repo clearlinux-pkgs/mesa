@@ -1,44 +1,101 @@
-Updating from 71cc22504f4a06f2eed22e7f74eb69c24e8035a2 to 3ecf2a0518c076c4af6ebc238e4570d0e8deea4a
+Updating from 3ecf2a0518c076c4af6ebc238e4570d0e8deea4a to 0a81434adf44eaeeb246a57e2f00a00a01e0e67a
 
-Benjamin Herrenschmidt (1):
-      dril: Fixup order of pixel formats in drilConfigs
+Alyssa Rosenzweig (16):
+      nir/opt_algebraic: optimize patterns from Skia
+      nir/opt_algebraic: add more 64-bit patterns
+      nir/opt_algebraic: add another 64-bit pattern
+      nir: add amul flag
+      nir: add late_lower_int64 option
+      nir: add ilea_agx/ulea_agx opcodes
+      nir/builder: use amul over ishl on agx
+      nir/opt_algebraic: don't lower amul if requested
+      nir/lower_uniforms_to_ubo: use amul
+      rusticl: respect late_lower_int64
+      agx: vectorize SSBOs
+      agx: model IC dispatch
+      agx: fix bfeil timing
+      hk: reduce max SSBO size
+      libagx: promote math to use AGX address mode
+      agx: rewrite address mode lowering
 
-Chia-I Wu (2):
-      panvk: fix missing same-subqueue wait for CmdWaitEvents2
-      panvk: fix dummy sampler handle for vs
+Chia-I Wu (1):
+      panvk: ensure res table is restored after meta
 
-Christian Gmeiner (1):
-      etnaviv: Fix incorrect pipe_nn creation
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to eebe1b555f51dbb702f696d08ad5ae8153bcdcdd
 
-Daniel Stone (1):
-      build: Don't run wayland-protocols tests
+Corentin Noël (1):
+      virgl: Propagate the GL_MAX_stage_SHADER_STORAGE_BLOCKS for each stage
 
-David Heidelberg (1):
-      freedreno: python fixes
+David Rosca (7):
+      radeonsi/vcn: Fix coding AV1 render size
+      frontends/va: Add minus_1 to AV1 render_width/height
+      gallium: Add PIPE_VIDEO_CAP_SKIP_CLEAR_SURFACE
+      frontends/va: Support skip clear on surface creation
+      frontends/vdpau: Support skip clear on surface creation
+      radeonsi: Support PIPE_VIDEO_CAP_SKIP_CLEAR_SURFACE
+      radeonsi/vcn: Stop clearing decode internal buffers
 
-Dylan Baker (3):
-      VERSION: bump to 25.0
-      docs: reset new_features.txt
-      docs/release-calendar: update one more time for pushed back release
+Eric Engestrom (10):
+      ci: upgrade the fedora image from 38 to 41
+      ci/build: drop "verify after bump to F39" as that did not help
+      ci/build: add workaround for incorrect maybe-uninitialized error
+      ci: move error handling functions at the end
+      ci: use quiet alias for commands
+      ci: make error handling quieter
+      broadcom/ci: add flakes seen recently
+      freedreno/ci: add flakes seen recently
+      nvk+zink/ci: add flakes seen recently
+      radv+zink/ci: add flakes seen recently
 
-Eric Engestrom (9):
-      meson: drop variable initialized twice
-      meson: add dependencies needed by wsi_common_x11.c even on non-drm platforms
-      ci: drop unused extra args in build-vkd3d-proton.sh
-      ci: replace plain `meson` with explicit `meson setup`
-      meson: bump spirv-tools version needed to v2022.1
-      radeonsi/ci: add more flakes seen recently
-      radv/ci: add more flakes seen recently
-      broadcom/ci: add more flakes seen recently
-      freedreno/ci: add more flakes seen recently
+Gurchetan Singh (4):
+      util: add c++ guards to u_mm.h
+      gfxstream: move isHostVisible function
+      gfxstream: nuke android::base::SubAllocator
+      gfxstream: use vulkan_lite_runtime
 
-Lionel Landwerlin (1):
-      anv: fix extent computation in image->image host copies
+Hans-Kristian Arntzen (1):
+      vulkan/wsi/wayland: Use X11-style image count strategy when using FIFO.
 
-Mary Guillemard (1):
-      panvk: Ensure that render_info is not null in force_fb_preload
+Ian Romanick (8):
+      brw/emit: Add correct 3-source instruction assertions for each platform
+      brw/copy: Don't copy propagate through smaller entry dest size
+      brw/cse: Don't eliminate instructions that write flags
+      brw/lower: Don't emit spurious moves to or from NULL register
+      brw/opt: Always do copy prop, DCE, and register coalesce after lower_regioning
+      brw/opt: Always do both kinds of copy propagation before lower_load_payload
+      brw/build: Add scalar_group() helper
+      brw/lower: Lower invalid source conversion to better code
 
-Samuel Pitoiset (2):
-      radv: save the trap handler report in the HOME directory
-      radv: mark some GFX6-7 GPUs as Vulkan 1.3 conformant
+Iván Briano (1):
+      intel/rt: fix ray_query stack address calculation
+
+Jianxun Zhang (1):
+      anv,hasvk,genxml: Rename genxml files using verx10
+
+Karol Herbst (4):
+      nv/codegen: Do not use a zero immediate for tex instructions
+      nvc0: return NULL instead of asserting in nvc0_resource_from_user_memory
+      clover: drop support for nir drivers
+      gallium: drop PIPE_SHADER_IR_NIR_SERIALIZED
+
+Pierre-Eric Pelloux-Prayer (8):
+      radv: set info->family_overridden when RADV_FORCE_FAMILY is used
+      ac/surface: add flags to surface metadata
+      radeonsi: refuse to import texture with family_overriden being set
+      ac: rename ac_surface_test_common -> ac_fake_hw_db
+      ac: add 'polaris12' gpu to ac_fake_hw_db
+      ac: switch AMD_FORCE_FAMILY handling to using ac_fake_hw_db
+      radeonsi/tests: update expected results
+      ac/perfcounter: fix buffer overflow
+
+Samuel Pitoiset (8):
+      aco: cleanup using fixed registers in the trap handler shader
+      aco: save/restore SCC in the trap handler shader
+      aco: use scalar buffer stores for dumping SGPRS from the trap on GFX8
+      aco: add a helper to dump SGPR to memory for the trap handler
+      aco: fix storing SQ_WAVE_STATUS in the trap handler shader
+      aco: declare phys regs for tba_hi/tma_hi
+      radv,aco: dump m0 and exec from the trap handler
+      vulkan/runtime: return same cmdbuf level from the command pool freelist
 
