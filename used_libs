@@ -10,7 +10,6 @@ libclang-cpp.so.19.1
 libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1
-libdrm_radeon.so.1
 libelf.so.1
 libexpat.so.1
 libgcc_s.so.1
