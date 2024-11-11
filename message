@@ -1,13 +1,5 @@
-Updating from 0a81434adf44eaeeb246a57e2f00a00a01e0e67a to 1299f5c50a490fadeb60b61677596f13399ee136
+Updating from 1299f5c50a490fadeb60b61677596f13399ee136 to dc1fe83aa524f3297905d33841ca2420f84d8b93
 
-Deborah Brouwer (3):
-      freedreno/ci: add prefix for a630-vk-asan tests
-      ci: Remove duplicate slash before $RESULTS_DIR
-      ci/b2c: update RESULTS_DIR for .b2c-test jobs
-
-Marek Olšák (1):
-      gallium/radeon: import libdrm_radeon source code, drop the dependency
-
-Russell Greene (1):
-      perfetto: fix macos compile
+Martin Roukala (né Peres) (1):
+      zink/ci: document new-ish vangogh flakes
 
