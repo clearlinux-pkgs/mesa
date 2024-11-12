@@ -1,5 +1,95 @@
-Updating from 1299f5c50a490fadeb60b61677596f13399ee136 to dc1fe83aa524f3297905d33841ca2420f84d8b93
+Updating from dc1fe83aa524f3297905d33841ca2420f84d8b93 to b36a7ce0f1988dd93ec31059cd6ab0ccec32ee91
 
-Martin Roukala (né Peres) (1):
-      zink/ci: document new-ish vangogh flakes
+Alyssa Rosenzweig (30):
+      agx: change int conversion test
+      agx: add pseudo for signext
+      agx: optimize signext+iadd
+      agx: fold zext into int sources
+      agx: add tests for sign/zero-extend propagate
+      agx: fix atomics in tess count shaders
+      hk: don't advertise impossible modifiers
+      agx: optimize signext imad
+      agx: fuse iadd+large shift into imad
+      agx: make imad+ishl rules actually work
+      hk: drop assert
+      hk: fix meta shader name
+      libagx: fix cl warning
+      libagx: drop branch
+      libagx: drop dead code
+      libagx: vectorize triangle def'n
+      libagx: drop Clockwise
+      libagx: simplify index patch expression
+      libagx: don't key unroll to index size
+      libagx: fix unroll kernel constant qualifier
+      libagx: drop silliness in restart kernel
+      agx: fuse also 8-bit address math
+      asahi: extract agx_get_num_cores
+      asahi: correct core count, max freq
+      asahi: fix a2c with sample shading, harder
+      asahi: assert/cse resource valid
+      asahi: don't take compiled_shader in agx_build_internal_usc
+      asahi: drop dead param
+      asahi: factor out more compiled shader
+      asahi: move agx_gather_device_key
+
+Asahi Lina (10):
+      asahi: Add pipe bind flags to resource debug
+      asahi: Add PIPE_BIND_SHARED to imported resources
+      asahi: Extract agx_decompress_inplace()
+      asahi: Introduce batch->feedback to disable compression in PBE
+      asahi: In-place decompress shared resources for feedback loops
+      hk: Add virtio implicit sync support
+      hk: Fix DRM modifier selection for compressed surfaces
+      hk: Enable missing swapchainMaintenance1 support
+      asahi: Use 64bit size fields
+      hk: Bump up max buffer size
+
+Danylo Piliaiev (1):
+      ir3/parser: Print the line where parsing error occurred
+
+Georg Lehmann (1):
+      radv: run copy prop before vectorizing
+
+Job Noorman (1):
+      ir3/ra: prevent moving source intervals for shared collects
+
+Konstantin (1):
+      nir/lower_non_uniform_access: Group accesses using the same resource
+
+Konstantin Seurer (12):
+      util: Fix some brackets in util_dynarray_.*_ptr
+      nir: Add missing access flags to print_access
+      radv: Lower non-uniform access after vectorization
+      amd: Add ac_shader_debug_info
+      aco: Handle nir_debug_info_instr
+      aco: Pass debug information to the driver
+      radv: Add a helper for accessing the shader binary
+      radv: Store debug info inside radv_shader
+      radv: Dump nir shaders before compiling
+      nir: Add a first_line parameter to gather_debug_info
+      nir: Do not gather source locations for phis
+      radv: Add RADV_DEBUG=nirdebuginfo
+
+Leder, Brendan Steve (1):
+      amd/vpelib: Refactor OCSC and update missing check
+
+Mary Guillemard (1):
+      agx: Add support for EGL_NV_context_priority_realtime
+
+Matt Turner (1):
+      anv: Align anv_descriptor_pool::host_mem
+
+Samuel Pitoiset (4):
+      docs: add missing documentation for RADV_DEBUG=psocachestats
+      radv: remove unused parameter to radv_fill_nir_compiler_options()
+      radv: dump the trap handler shader with RADV_DEBUG=dump_trap_handler
+      aco: do not reorder s_trap instructions
+
+Visan, Tiberiu (2):
+      amd/vpelib: patch to match shader (#456)
+      amd/vpelib: remove luma offset (#459)
+
+Zan Dobersek (2):
+      fd/pps: specify counter group for each countable
+      fd/pps: provide derived counters on a7xx
 
