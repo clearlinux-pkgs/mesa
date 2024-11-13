@@ -1,95 +1,89 @@
-Updating from dc1fe83aa524f3297905d33841ca2420f84d8b93 to b36a7ce0f1988dd93ec31059cd6ab0ccec32ee91
+Updating from b36a7ce0f1988dd93ec31059cd6ab0ccec32ee91 to 79b34a6539dcfe7b09096af97f58bcd833fea3a9
 
-Alyssa Rosenzweig (30):
-      agx: change int conversion test
-      agx: add pseudo for signext
-      agx: optimize signext+iadd
-      agx: fold zext into int sources
-      agx: add tests for sign/zero-extend propagate
-      agx: fix atomics in tess count shaders
-      hk: don't advertise impossible modifiers
-      agx: optimize signext imad
-      agx: fuse iadd+large shift into imad
-      agx: make imad+ishl rules actually work
-      hk: drop assert
-      hk: fix meta shader name
-      libagx: fix cl warning
-      libagx: drop branch
-      libagx: drop dead code
-      libagx: vectorize triangle def'n
-      libagx: drop Clockwise
-      libagx: simplify index patch expression
-      libagx: don't key unroll to index size
-      libagx: fix unroll kernel constant qualifier
-      libagx: drop silliness in restart kernel
-      agx: fuse also 8-bit address math
-      asahi: extract agx_get_num_cores
-      asahi: correct core count, max freq
-      asahi: fix a2c with sample shading, harder
-      asahi: assert/cse resource valid
-      asahi: don't take compiled_shader in agx_build_internal_usc
-      asahi: drop dead param
-      asahi: factor out more compiled shader
-      asahi: move agx_gather_device_key
+Benjamin Otte (1):
+      vulkan/wsi: Support alpha swapchains on win32
 
-Asahi Lina (10):
-      asahi: Add pipe bind flags to resource debug
-      asahi: Add PIPE_BIND_SHARED to imported resources
-      asahi: Extract agx_decompress_inplace()
-      asahi: Introduce batch->feedback to disable compression in PBE
-      asahi: In-place decompress shared resources for feedback loops
-      hk: Add virtio implicit sync support
-      hk: Fix DRM modifier selection for compressed surfaces
-      hk: Enable missing swapchainMaintenance1 support
-      asahi: Use 64bit size fields
-      hk: Bump up max buffer size
+Boris Brezillon (1):
+      panvk: Enable CI on G610
 
-Danylo Piliaiev (1):
-      ir3/parser: Print the line where parsing error occurred
+Georg Lehmann (5):
+      nir/opt_16bit_tex_image: optimize extract half sources
+      nir: add nir_def_all_uses_ignore_sign_bit
+      pan/bi: use nir_def_all_uses_ignore_sign_bit
+      aco: use nir_def_all_uses_ignore_sign_bit
+      nir: handle fmul(a,a)/ffma(a,a,b) in nir_def_all_uses_ignore_sign_bit
 
-Georg Lehmann (1):
-      radv: run copy prop before vectorizing
+Gurchetan Singh (5):
+      gfxstream: nuke EntityManager.h include
+      gfxstream: aemu: vendor it
+      gfxstream: modify libaemu for Mesa use case
+      gfxstream: guest: use internal version of AEMU headers + impls
+      gfxstream: use canonical Mesa dependencies
 
-Job Noorman (1):
-      ir3/ra: prevent moving source intervals for shared collects
+Iván Briano (1):
+      intel/decoder: fix INTEL_DEBUG=bat
 
-Konstantin (1):
-      nir/lower_non_uniform_access: Group accesses using the same resource
+Jose Maria Casanova Crespo (1):
+      v3d: Enable Early-Z with discards when depth updates are disabled
 
-Konstantin Seurer (12):
-      util: Fix some brackets in util_dynarray_.*_ptr
-      nir: Add missing access flags to print_access
-      radv: Lower non-uniform access after vectorization
-      amd: Add ac_shader_debug_info
-      aco: Handle nir_debug_info_instr
-      aco: Pass debug information to the driver
-      radv: Add a helper for accessing the shader binary
-      radv: Store debug info inside radv_shader
-      radv: Dump nir shaders before compiling
-      nir: Add a first_line parameter to gather_debug_info
-      nir: Do not gather source locations for phis
-      radv: Add RADV_DEBUG=nirdebuginfo
+Karmjit Mahil (3):
+      tu: Fix push_set host memory leak on command buffer reset
+      tu: Fix potential alloc of 0 size
+      nir: Fix `no_lower_set` leak on early return
 
-Leder, Brendan Steve (1):
-      amd/vpelib: Refactor OCSC and update missing check
+Lionel Landwerlin (4):
+      anv: update shader descriptor resource limits
+      anv: split generated draw flags from mocs/dword-count
+      intel: make sure intel_wa.h can be included by opencl code
+      anv: implement Wa_16011107343/22018402687 for generated draws
 
-Mary Guillemard (1):
-      agx: Add support for EGL_NV_context_priority_realtime
+M Henning (4):
+      nvk/cmd_buffer: Pass count to set_root_array
+      nvk: Fix invalidation of NVK_CBUF_TYPE_DYNAMIC_UBO
+      nvk: Remove params for dirty_cbufs_for_descriptors
+      nvk: Fix two typos in comments
 
-Matt Turner (1):
-      anv: Align anv_descriptor_pool::host_mem
+Martin Roukala (né Peres) (1):
+      ci: disable mupuf's farm
 
-Samuel Pitoiset (4):
-      docs: add missing documentation for RADV_DEBUG=psocachestats
-      radv: remove unused parameter to radv_fill_nir_compiler_options()
-      radv: dump the trap handler shader with RADV_DEBUG=dump_trap_handler
-      aco: do not reorder s_trap instructions
+Mary Guillemard (3):
+      panfrost: Report default value for GROUP_PRIORITIES_INFO in drm-shim
+      pan/kmod: Expose medium priority on panfrost
+      panvk: Implement global priority extensions
 
-Visan, Tiberiu (2):
-      amd/vpelib: patch to match shader (#456)
-      amd/vpelib: remove luma offset (#459)
+Peyton Lee (2):
+      frontends/va: add support for VAProcColorStandardExplicit
+      frontends/va: add support for VAProcColorStandardExplicit
+
+Sagar Ghuge (1):
+      anv: Enable MCS_CCS compression on Gfx12+
+
+Samuel Pitoiset (18):
+      radv: cleanup printing SGPRS dumped from the trap handler
+      radv,aco: dump more SQ_WAVE regs from the trap handler
+      radv,aco: add a separate function to compile the trap handler shader
+      aco: simplify postprocessing the trap handler shader
+      radv,aco: use the trap handler layout struct while compiling the shader
+      radv: fix the TMA descriptor size
+      radv: compute the TMA BO size instead of using a constant
+      radv,aco: save/restore overwritten VGPRs in the trap handler shader
+      nir: add nir_intrinsic_debug_break instruction
+      spirv: handle NonSemantic.DebugBreak to emit nir_debug_break()
+      aco: emit nir_intrinsic_debug_break
+      radv: emit nir_debug_break instructions when the trap handler is enabled
+      radv: do not always invalidate L2 for GPUs with non-coherent RBs on GFX10+
+      radv: move the GFX11 special case for mips to radv_image_is_pipe_misaligned()
+      radv: determine the first mip that is pipe misaligned on GFX10+
+      radv: use vk_image_view_subresource_range() when possible
+      radv: pass the image subresource range to radv_{src,dst}_access_flush()
+      radv: optimize the pipe misaligned L2 cache invalidation on GFX11
+
+Tapani Pälli (3):
+      intel/dev: update mesa_defs.json from workaround database
+      anv: utilize ray query bo per queue for Wa_14022863161
+      anv: extend Wa_14017794102 with lineage Wa_14023061436
 
 Zan Dobersek (2):
-      fd/pps: specify counter group for each countable
-      fd/pps: provide derived counters on a7xx
+      freedreno/registers: update RB_BLIT_INFO, RB_CCU_CNTL
+      tu/a7xx: use concurrent resolve groups
 
