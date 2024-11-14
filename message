@@ -1,89 +1,95 @@
-Updating from b36a7ce0f1988dd93ec31059cd6ab0ccec32ee91 to 79b34a6539dcfe7b09096af97f58bcd833fea3a9
-
-Benjamin Otte (1):
-      vulkan/wsi: Support alpha swapchains on win32
+Updating from 79b34a6539dcfe7b09096af97f58bcd833fea3a9 to d13bcd1dafac0c3e3907b8d7b6c884225be5dd13
 
 Boris Brezillon (1):
-      panvk: Enable CI on G610
+      pan/ci: Move g610-vk jobs to post-merge CI
 
-Georg Lehmann (5):
-      nir/opt_16bit_tex_image: optimize extract half sources
-      nir: add nir_def_all_uses_ignore_sign_bit
-      pan/bi: use nir_def_all_uses_ignore_sign_bit
-      aco: use nir_def_all_uses_ignore_sign_bit
-      nir: handle fmul(a,a)/ffma(a,a,b) in nir_def_all_uses_ignore_sign_bit
+Caio Oliveira (1):
+      intel/executor: Fix exec_size in @read macro for Xe2
 
-Gurchetan Singh (5):
-      gfxstream: nuke EntityManager.h include
-      gfxstream: aemu: vendor it
-      gfxstream: modify libaemu for Mesa use case
-      gfxstream: guest: use internal version of AEMU headers + impls
-      gfxstream: use canonical Mesa dependencies
+David Heidelberg (5):
+      util: Drop 3Dnow optimisation leftovers
+      util: Remove MMX/MMXext detection code
+      util: Drop ancient Intel CPU detection
+      util: drop XOP detection code
+      llvmpipe: align with u_cpu_detect struct changes
 
-Iván Briano (1):
-      intel/decoder: fix INTEL_DEBUG=bat
+David Rosca (6):
+      radv/video: Fix H264 slice control
+      radv/video: Fix HEVC slice control
+      radv/video: Report correct encodeInputPictureGranularity
+      radv/video: Avoid selecting rc layer over maximum
+      radv/video: Use 64x16 alignment for HEVC encode
+      radv/video: Override pic_init_qp_minus26 in PPS
 
-Jose Maria Casanova Crespo (1):
-      v3d: Enable Early-Z with discards when depth updates are disabled
+Eric Engestrom (12):
+      ci: raise priority of release manager pipelines
+      ci: reduce priority of nightly pipeline jobs from 50 to 45
+      meson: move openmp block out of the middle of the x11 deps block
+      meson: define only once the versions of the x11 deps
+      radv/ci: document flakes seen recently
+      broadcom/ci: document flakes seen recently
+      nvk/ci: document flakes seen recently
+      freedreno/ci: document flakes seen recently
+      docs: update calendar for 24.2.7
+      docs: add release notes for 24.2.7
+      docs: add sha sum for 24.2.7
+      turnip/ci: document regression
 
-Karmjit Mahil (3):
-      tu: Fix push_set host memory leak on command buffer reset
-      tu: Fix potential alloc of 0 size
-      nir: Fix `no_lower_set` leak on early return
+Erik Faye-Lund (2):
+      panvk: drop unused include
+      panfrost: use mesa_log infra instead of stdio
 
-Lionel Landwerlin (4):
-      anv: update shader descriptor resource limits
-      anv: split generated draw flags from mocs/dword-count
-      intel: make sure intel_wa.h can be included by opencl code
-      anv: implement Wa_16011107343/22018402687 for generated draws
+Matt Turner (4):
+      vulkan: Skip memcpy() call if passed null pointers
+      anv: Protect memcpy/memset/qsort calls against NULL arguments
+      anv: Avoid null ptr dereference
+      intel: Avoid unaligned pointer access
 
-M Henning (4):
-      nvk/cmd_buffer: Pass count to set_root_array
-      nvk: Fix invalidation of NVK_CBUF_TYPE_DYNAMIC_UBO
-      nvk: Remove params for dirty_cbufs_for_descriptors
-      nvk: Fix two typos in comments
+Rhys Perry (14):
+      nir: add more intrinsics to nir_intrinsic_can_reorder
+      nir/algebraic: optimize bcsel(ieq(b, 0), a, shift(a, b))
+      nir/algebraic: optimize ushr(a, ishl(iand(b, 3), 3))
+      ac/nir: add ACCESS_CAN_REORDER to lowered load_global_constant
+      aco: optimize nir_op_shfr with <32 src1
+      nir,aco,ac/llvm: add nir_op_alignbyte_amd
+      nir_lower_mem_access_bit_sizes: support 64-bit offsets
+      nir_lower_mem_access_bit_sizes: add nir_mem_access_shift_method
+      nir_lower_mem_access_bit_sizes: pass access to callback
+      nir_lower_mem_access_bit_sizes: support load_constant
+      aco,ac/nir: flag loads to use smem in NIR
+      radv,ac/nir: lower sub-dword loads using nir_lower_mem_access_bit_sizes
+      aco: remove load byte_align
+      radv,ac/nir: split global access using nir_lower_mem_access_bit_sizes
 
-Martin Roukala (né Peres) (1):
-      ci: disable mupuf's farm
+Samuel Pitoiset (9):
+      aco: fix saving/restoring VGPRS in the trap handler on GFX9
+      aco: use a 64-bit mov to save exec in the trap handler shader
+      aco: add a new variant for vop1() with two operands
+      aco: fix validation for v_movrels_b32 and friends
+      aco: restore m0/exec before exiting the trap handler
+      aco: use all invocations from the current wave in the trap handler
+      aco: save/restore VGPRS on GFX8 in the trap handler shader
+      aco: drop the second M0 operand for s_set_gpr_idx_on
+      radv,aco: dump VGPRS from the trap handler shader
 
-Mary Guillemard (3):
-      panfrost: Report default value for GROUP_PRIORITIES_INFO in drm-shim
-      pan/kmod: Expose medium priority on panfrost
-      panvk: Implement global priority extensions
+Timothy Arceri (1):
+      glsl/nir: fix function cloning at link time
 
-Peyton Lee (2):
-      frontends/va: add support for VAProcColorStandardExplicit
-      frontends/va: add support for VAProcColorStandardExplicit
-
-Sagar Ghuge (1):
-      anv: Enable MCS_CCS compression on Gfx12+
-
-Samuel Pitoiset (18):
-      radv: cleanup printing SGPRS dumped from the trap handler
-      radv,aco: dump more SQ_WAVE regs from the trap handler
-      radv,aco: add a separate function to compile the trap handler shader
-      aco: simplify postprocessing the trap handler shader
-      radv,aco: use the trap handler layout struct while compiling the shader
-      radv: fix the TMA descriptor size
-      radv: compute the TMA BO size instead of using a constant
-      radv,aco: save/restore overwritten VGPRs in the trap handler shader
-      nir: add nir_intrinsic_debug_break instruction
-      spirv: handle NonSemantic.DebugBreak to emit nir_debug_break()
-      aco: emit nir_intrinsic_debug_break
-      radv: emit nir_debug_break instructions when the trap handler is enabled
-      radv: do not always invalidate L2 for GPUs with non-coherent RBs on GFX10+
-      radv: move the GFX11 special case for mips to radv_image_is_pipe_misaligned()
-      radv: determine the first mip that is pipe misaligned on GFX10+
-      radv: use vk_image_view_subresource_range() when possible
-      radv: pass the image subresource range to radv_{src,dst}_access_flush()
-      radv: optimize the pipe misaligned L2 cache invalidation on GFX11
-
-Tapani Pälli (3):
-      intel/dev: update mesa_defs.json from workaround database
-      anv: utilize ray query bo per queue for Wa_14022863161
-      anv: extend Wa_14017794102 with lineage Wa_14023061436
-
-Zan Dobersek (2):
-      freedreno/registers: update RB_BLIT_INFO, RB_CCU_CNTL
-      tu/a7xx: use concurrent resolve groups
+Tomeu Vizoso (16):
+      etnaviv/ml: Fix includes
+      etnaviv/nn: Fix use of etna_core_info
+      etnaviv/ci: Add expectation files for the VIPNano-SI+ NPU
+      etnaviv/ml: Rework the dumping of tensors
+      etnaviv: Add script to decode weights in Huffman format
+      etnaviv/ml: Split V7 coefficient encoding to a new file
+      etnaviv/ml: Add encoding of coefficients for V8
+      etnaviv/ml: Fix padding for convolutions in V8
+      etnaviv/ml: Implement tiling for V8
+      etnaviv/ml: Set two bits in the NN instruction for V8
+      etnaviv/ml: Disable caching on V8
+      etnaviv/ml: Fix reshuffle TP jobs on V8
+      etnaviv/ml: Only reshuffle when needed on V8
+      etnaviv/ml: Make use of the new depthwise support in V8
+      etnaviv/ci: Update expectations for the NPU in the A311D
+      etnaviv/ml: Zero out the NN config
 
