@@ -3225,11 +3225,6 @@ libvulkan_nouveau.so:core::intrinsics::mir::Variant::panic_cold_explicit::h08967
 libvulkan_nouveau.so:core::intrinsics::mir::__debuginfo::panic_cold_explicit::h62d59173a2202a4f
 libvulkan_nouveau.so:core::intrinsics::mir::__internal_make_place::panic_cold_explicit::h27f1e5095197cde7
 libvulkan_nouveau.so:core::iter::traits::exact_size::ExactSizeIterator::len::hc4549e9b52edb6ad
-libvulkan_nouveau.so:core::mem::size_of_val::h8ef1cd933bf7fae9
-libvulkan_nouveau.so:core::mem::size_of_val::ha7ddc90d72f75dbd
-libvulkan_nouveau.so:core::mem::size_of_val::hcb8ef53f662d2f2f
-libvulkan_nouveau.so:core::mem::size_of_val::he82c0b188471792a
-libvulkan_nouveau.so:core::mem::size_of_val::hec56e1eedefe0fa9
 libvulkan_nouveau.so:core::num::bignum::Big32x40::add::h61e29f5de9f19735
 libvulkan_nouveau.so:core::num::bignum::Big32x40::add_small::h20d9b9b80e2bc4b2
 libvulkan_nouveau.so:core::num::bignum::Big32x40::bit_length::h14fe5a32f414945b
@@ -3294,9 +3289,6 @@ libvulkan_nouveau.so:core::num::overflow_panic::shl::h4bc2d020e7a873f4
 libvulkan_nouveau.so:core::num::overflow_panic::shr::hf91e56b7b5da4afb
 libvulkan_nouveau.so:core::num::overflow_panic::sub::h67305eeaceaba7de
 libvulkan_nouveau.so:core::ops::range::Range<Idx>::is_empty::hb8884ad915158a35
-libvulkan_nouveau.so:core::ops::range::RangeBounds::contains::h2aee2f4158ddc979
-libvulkan_nouveau.so:core::ops::range::RangeInclusive<Idx>::contains::h966c2f296eedb7bd
-libvulkan_nouveau.so:core::ops::range::RangeInclusive<Idx>::new::h73afde806e420089
 libvulkan_nouveau.so:core::option::Option<&T>::cloned::he1ae06a9f2c6dca9
 libvulkan_nouveau.so:core::option::Option<T>::map::h0c490157d8783ee0
 libvulkan_nouveau.so:core::option::Option<T>::map::h6dfba8b458d5ceb9
