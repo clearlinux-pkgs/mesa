@@ -1,1 +1,0 @@
-Compiler:  can't write 31 bytes to section .text.color_equals of src/gallium/drivers/iris/libiris.a.p/iris_border_color.c.o: 'No space left on device'

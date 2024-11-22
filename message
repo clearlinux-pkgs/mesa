@@ -1,128 +1,117 @@
-Updating from 957db02fed592bfe80fa5aa6ca1e2a269ae5a2ef to 83c2d82637d2b7d37a8d32d3ddcab28160fce04d
+Updating from db2806cf521b0f20e3ddb645605bf94646cbbfeb to 2e49448a433e30a0648b3986381f356335211ae9
+
+Aleksi Sapon (3):
+      draw: primitive ID is per-patch
+      llvmpipe: spec@arb_tessellation_shader@execution@gs-primitiveid-instanced is fixed
+      zink: spec@arb_tessellation_shader@execution@gs-primitiveid-instanced is fixed
+
+Alyssa Rosenzweig (1):
+      nir/lower_system_values: add ID to 32-bit lowering
+
+Boris Brezillon (1):
+      panvk/ci: Update CI expectations to have a green CI
 
 Caio Oliveira (4):
-      intel/common: Properly dispose resources in mi_builder tests
-      intel/common: Prepare mi_builder tests to support Xe KMD
-      intel/common: Implement Xe KMD in mi_builder tests
-      intel/common: Enable mi_builder test for PTL
+      intel/brw: Add SHADER_OPCODE_BALLOT
+      intel/brw: Add SHADER_OPCODE_QUAD_SWAP
+      intel/brw: Omit type and region in payload sources when printing IR
+      intel/brw: Use <V,W,H> notation for FIXED_GRF and ARF source when printing IR
 
-Chia-I Wu (4):
-      panvk: fix base_workgroup_id sysval
-      ci: update the comment on MESA_VK_ABORT_ON_DEVICE_LOSS
-      panvk: report queue lost timely when PANVK_DEBUG=sync
-      panvk: implement check_status on v10+
+Chia-I Wu (2):
+      panvk: minor clean up to prepare_blend
+      panvk: fix dirty check for prepare_blend
 
-Daniel Schürmann (4):
-      aco/ra: set Pseudo_instruction::scratch_sgpr to SCC if it doesn't need to be preserved
-      aco/ra: use bitset for sgpr_operands_alias_defs
-      aco/ra: explicitly assign scratch SGPR for linear phis
-      aco: remove Pseudo_instruction::tmp_in_scc
+Daniel Schürmann (3):
+      aco/insert_NOPs: implement vector-based RegCounterMap as replacement for VGPRCounterMap
+      aco/insert_NOPs: use RegCounterMap as replacement for the CounterMap implementation
+      aco/insert_NOPs: add early exit to handle_valu_partial_forwarding_hazard_instr
 
-David Rosca (11):
-      radeonsi: Check all supported formats in si_vid_is_target_buffer_supported
-      frontends/va: Create surfaces with correct fourcc for RT format
-      frontends/va: Stop reallocating to prefered format in EndPicture
-      frontends/va: Stop reallocating from progressive to interlaced in EndPicture
-      frontends/va: Stop reallocating buffers for protected playback
-      frontends/va: Stop reallocating according to JPEG sampling factor
-      frontends/va: Check if target buffer is supported in EndPicture
-      frontends/va: Stop reallocating buffers in EndPicture
-      frontends/va: Use compositor blit with different number of planes
-      frontends/va: Only use interlaced surfaces when progressive is not supported
-      pipe: Remove video update_decoder_target
+Danylo Piliaiev (7):
+      freedreno/registers: Define Fragment Shading Rate registers
+      ir3,tu: Add support for Fragment Shading Rate and plumb it into Turnip
+      tu/a7xx: Implement VK_KHR_fragment_shading_rate
+      ir3/parser: Add fullnop and fullsync sections for debugging
+      tu: Enable UBWC for 3D images without mipmaps
+      freedreno/fdl: Pass fd_dev_info to fdl6_layout
+      tu,freedreno: Enable linear mipmap tail for UBWC images
 
-Eric Engestrom (2):
-      docs: fix invalid expression in new pipe cap
-      docs: fix invalid expression in teflon docs
+Dave Airlie (2):
+      v3dv: report correct error on failure to probe
+      venus: handle device probing properly.
 
-Erik Faye-Lund (5):
-      panfrost: use 64-bits for layout calculations
-      panvk: set correct max extents for images
-      panvk: support binding swapchain memory
-      panvk: wire up swapchain image creation
-      panvk: remove duplicate property
+David Rosca (5):
+      frontends/va: Return correct pixel formats in surface attributes query
+      frontends/va: Change default fourcc for RGB 10bit to X2R10G10B10
+      gallium/vl: Implement rendering to 3-plane YUV formats
+      gallium/vl: Don't support planar RGB as video format
+      frontends/va: Enable 3-plane YUV formats as postproc output
 
-Job Noorman (1):
-      ir3: fold shared movs into other movs
+Derek Foreman (3):
+      vulkan/wsi/wayland: Fix time calculation
+      vulkan/wsi/wayland: Avoid spurious discard event at startup
+      vulkan/wsi/wayland: Move timing calculations to the swapchain
 
-Jose Maria Casanova Crespo (2):
-      vc4/ci: fails udpate after last piglit uprev
-      rpi4/ci: Increase timeout for rusticl jobs.
+Dylan Baker (4):
+      docs: add release notes for 24.3.0
+      docs/relnotes/24.3.0: Add SHA sums
+      docs/release-calendar: remove 24.3 RC dates
+      docs: Add calendar entries for 24.3 release.
 
-Lina Versace (3):
-      anv: Sort extensions in enablement table
-      anv: Update features.txt
-      anv: Fix feature pipelineProtectedAccess
+Eric Engestrom (35):
+      ci/container: move deqp build section into the script itself
+      ci/container: move apitrace build section into the script itself
+      ci/container: move crosvm build section into the script itself
+      ci/container: move deqp-runner build section into the script itself
+      ci/container: move fossilize build section into the script itself
+      ci/container: move gfxreconstruct build section into the script itself
+      ci/container: move kdl build section into the script itself
+      ci/container: move libclc build section into the script itself
+      ci/container: move llvm-spirv build section into the script itself
+      ci/container: move mold build section into the script itself
+      ci/container: move ninetests build section into the script itself
+      ci/container: move piglit build section into the script itself
+      ci/container: move rust build section into the script itself
+      ci/container: move vkd3d-proton build section into the script itself
+      ci/container: move vulkan-validation build section into the script itself
+      ci/container: move wayland build section into the script itself
+      ci/container: add sections around the other build scripts
+      ci/container: close debian_{setup,cleanup} sections
+      ci/lava: add setup-test-env.sh to the rootfs
+      ci/container: add section around strip-rootfs.sh
+      ci: bump image tags
+      zink+nvk/ci: fix deqp binary used for gles tests
+      zink+radv/ci: fix deqp binary used for gles tests
+      ci/deqp: move testlog-to-* tools to /deqp
+      ci/deqp: only compress caselists when they exist
+      ci/deqp: build testlog tools on android
+      ci/deqp: fetch & checkout exactly the commit/tag/branch requested
+      ci/deqp: avoid downloading 1.47 GiB multiple times
+      ci/deqp: error out in case of invalid build API
+      ci/deqp: build glcts in gles build, for gles*-khr tests
+      ci/deqp: add build of `main` branch
+      ci/deqp: make sure the main commit is actually from the main branch
+      ci/deqp: fully isolate deqp builds
+      ci: bump image tags
+      ci/container: setup sections in all image builds
 
-Lionel Landwerlin (1):
-      anv: prevent access to destroyed vk_sync objects post submission
+Lionel Landwerlin (4):
+      anv: track allocated descriptor pool sizes
+      anv: indent driconf code
+      anv: add a workaround for X4 Foundations
+      anv: document the X4 Foundations workaround a bit more
 
-Lucas Stach (3):
-      etnaviv: drm: properly handle BO list member
-      etnaviv: drm: assert mutual exclusivity between cache and zombie list
-      etnaviv: drm: use list_first_entry
+Ruijing Dong (1):
+      radeosi/vcn: enable EFC for VCN5.0+ when gfx >= 12
 
-Marek Olšák (11):
-      nir/print: print fb_fetch_output for variables
-      nir/lower_pntc_ytransform: handle lowered IO
-      nir/lower_clip: fixes for lowered IO without compact arrays
-      nir/lower_clip: rewrite find_output to handle vec2/3 and make it readable
-      nir/lower_fragcoord_wtrans: handle trimmed fragcoord loads
-      nir/lower_two_sided_color: fix for lowered IO
-      nir: add nir_io_semantics::fb_fetch_output_coherent
-      nir: rename nir_io_glsl_opt_varyings to nir_io_dont_optimize and deprecate it
-      nir: add nir_io_separate_clip_cull_distance_arrays to replace PIPE_CAP
-      vc4/lower_blend: don't read non-existent channels
-      nir: make use_interpolated_input_intrinsics a nir_lower_io parameter
+Tapani Pälli (2):
+      intel/dev: update mesa_defs.json from workaround database
+      intel/dev: lower amount of max gs threads for Wa_18040209780
 
-Martin Roukala (né Peres) (1):
-      ci: disable mupuf's farm
-
-Mary Guillemard (4):
-      panvk: Enable depthClamp and depthBiasClamp
-      panvk: Enable shaderInt16
-      panvk: Advertise VK_KHR_index_type_uint8
-      panvk: Advertise VK_KHR_map_memory2
-
-Matt Turner (1):
-      nir: Get correct number of components
-
-Peyton Lee (1):
-      frontends/va: function process_frame has return value
-
-Philipp Zabel (4):
-      teflon: Use correct convolution params struct
-      teflon: Mark dilated convolutions and fused activation as not supported
-      teflon: Support fused ReLU activation
-      etnaviv/nn: Enable fused ReLU activation
-
-Rhys Perry (7):
-      nir/algebraic: fix iabs(ishr(iabs(a), b)) optimization
-      nir/algebraic: check bit sizes in lowered unpack(pack()) optimization
-      nir/lcssa: fix premature exit of loop after rematerializing derefs
-      glsl/list: add comments above foreach macros
-      glsl/list: add and use helpers in foreach_list_typed macros
-      glsl/list: remove parenthesis in foreach_list_typed macros
-      glsl/list: remove underscores in foreach_list_typed macros
-
-Samuel Pitoiset (3):
-      radv,aco: dump LDS from the trap handler
-      radv: remove VK_VALVE_descriptor_set_host_mapping
-      radv: fix skipping on-disk shaders cache when not useful
-
-Timothy Arceri (1):
-      glsl: fix compiler global temp collisions
-
-Timur Kristóf (11):
-      radv: Mark GS copy shaders as internal.
-      radv: Add ability to dump shaders based on stage.
-      aco: Separate options for printing IR and recording disassembly.
-      radv: Separate option to dump NIR.
-      radv: Separate option to print shader disassembly.
-      radv: Separate option to dump backend IR.
-      radv: Refactor RADV_DEBUG=shaders to be a combination of other options.
-      radv: Slightly reword preoptir debug flag.
-      radv: Also allow filtering SPIR-V dump per stage.
-      radv: Set dump flags in a smarter way by default.
-      amd: Rename GFX1103_R1/R2 to PHOENIX/2
+Timur Kristóf (6):
+      radv: Add a flush postamble on GFX6.
+      radv: Don't flush at the end of each command buffer on GFX6.
+      ac/nir/ngg: Don't emit dead code with dot_op.
+      ac/nir/ngg: Trade 1 VALU shift for 2 SALU add.
+      ac/nir/cull: Slightly refactor control flow for small primitive culling.
+      ac/nir/ngg: Slightly refactor workgroup scan.
 
