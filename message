@@ -1,117 +1,36 @@
-Updating from db2806cf521b0f20e3ddb645605bf94646cbbfeb to 2e49448a433e30a0648b3986381f356335211ae9
+Updating from 2e49448a433e30a0648b3986381f356335211ae9 to 6088a4373c695811745f070a805ecf1890a735b0
 
-Aleksi Sapon (3):
-      draw: primitive ID is per-patch
-      llvmpipe: spec@arb_tessellation_shader@execution@gs-primitiveid-instanced is fixed
-      zink: spec@arb_tessellation_shader@execution@gs-primitiveid-instanced is fixed
-
-Alyssa Rosenzweig (1):
-      nir/lower_system_values: add ID to 32-bit lowering
-
-Boris Brezillon (1):
-      panvk/ci: Update CI expectations to have a green CI
+Alyssa Rosenzweig (3):
+      nir: add nir_fixup_is_exported pass
+      vtn: introduce vtn_bindgen tool
+      libagx: switch to vtn_bindgen
 
 Caio Oliveira (4):
-      intel/brw: Add SHADER_OPCODE_BALLOT
-      intel/brw: Add SHADER_OPCODE_QUAD_SWAP
-      intel/brw: Omit type and region in payload sources when printing IR
-      intel/brw: Use <V,W,H> notation for FIXED_GRF and ARF source when printing IR
+      intel/executor: Enable PTL
+      intel/brw: Fix decoding of cond_modifier and saturate in EU validation
+      intel/brw: Fix SWSB output when printing IR
+      intel/brw: Dump IR after lower scoreboard pass
 
-Chia-I Wu (2):
-      panvk: minor clean up to prepare_blend
-      panvk: fix dirty check for prepare_blend
+Chia-I Wu (1):
+      panvk: expand top-of-pipe and bottom-of-pipe
 
-Daniel Schürmann (3):
-      aco/insert_NOPs: implement vector-based RegCounterMap as replacement for VGPRCounterMap
-      aco/insert_NOPs: use RegCounterMap as replacement for the CounterMap implementation
-      aco/insert_NOPs: add early exit to handle_valu_partial_forwarding_hazard_instr
+Deborah Brouwer (2):
+      ci: add a tool to summarize a failed pipeline
+      ci/pipeline_message: add unit tests for tool
 
-Danylo Piliaiev (7):
-      freedreno/registers: Define Fragment Shading Rate registers
-      ir3,tu: Add support for Fragment Shading Rate and plumb it into Turnip
-      tu/a7xx: Implement VK_KHR_fragment_shading_rate
-      ir3/parser: Add fullnop and fullsync sections for debugging
-      tu: Enable UBWC for 3D images without mipmaps
-      freedreno/fdl: Pass fd_dev_info to fdl6_layout
-      tu,freedreno: Enable linear mipmap tail for UBWC images
+Eric Engestrom (1):
+      radv/ci: document regression of test_shader_sm66_is_helper_lane in 7469f99e...25b8f4f7
 
-Dave Airlie (2):
-      v3dv: report correct error on failure to probe
-      venus: handle device probing properly.
+Karol Herbst (3):
+      rusticl: check for overrun status when deserializing
+      rusticl/kernel: convert name and type_name to Option<CString>
+      rusticl/mesa: make driver_name() return a &CStr
 
-David Rosca (5):
-      frontends/va: Return correct pixel formats in surface attributes query
-      frontends/va: Change default fourcc for RGB 10bit to X2R10G10B10
-      gallium/vl: Implement rendering to 3-plane YUV formats
-      gallium/vl: Don't support planar RGB as video format
-      frontends/va: Enable 3-plane YUV formats as postproc output
+Mike Lothian (1):
+      gallium/radeon: Fix r600_pci_ids.h include
 
-Derek Foreman (3):
-      vulkan/wsi/wayland: Fix time calculation
-      vulkan/wsi/wayland: Avoid spurious discard event at startup
-      vulkan/wsi/wayland: Move timing calculations to the swapchain
-
-Dylan Baker (4):
-      docs: add release notes for 24.3.0
-      docs/relnotes/24.3.0: Add SHA sums
-      docs/release-calendar: remove 24.3 RC dates
-      docs: Add calendar entries for 24.3 release.
-
-Eric Engestrom (35):
-      ci/container: move deqp build section into the script itself
-      ci/container: move apitrace build section into the script itself
-      ci/container: move crosvm build section into the script itself
-      ci/container: move deqp-runner build section into the script itself
-      ci/container: move fossilize build section into the script itself
-      ci/container: move gfxreconstruct build section into the script itself
-      ci/container: move kdl build section into the script itself
-      ci/container: move libclc build section into the script itself
-      ci/container: move llvm-spirv build section into the script itself
-      ci/container: move mold build section into the script itself
-      ci/container: move ninetests build section into the script itself
-      ci/container: move piglit build section into the script itself
-      ci/container: move rust build section into the script itself
-      ci/container: move vkd3d-proton build section into the script itself
-      ci/container: move vulkan-validation build section into the script itself
-      ci/container: move wayland build section into the script itself
-      ci/container: add sections around the other build scripts
-      ci/container: close debian_{setup,cleanup} sections
-      ci/lava: add setup-test-env.sh to the rootfs
-      ci/container: add section around strip-rootfs.sh
-      ci: bump image tags
-      zink+nvk/ci: fix deqp binary used for gles tests
-      zink+radv/ci: fix deqp binary used for gles tests
-      ci/deqp: move testlog-to-* tools to /deqp
-      ci/deqp: only compress caselists when they exist
-      ci/deqp: build testlog tools on android
-      ci/deqp: fetch & checkout exactly the commit/tag/branch requested
-      ci/deqp: avoid downloading 1.47 GiB multiple times
-      ci/deqp: error out in case of invalid build API
-      ci/deqp: build glcts in gles build, for gles*-khr tests
-      ci/deqp: add build of `main` branch
-      ci/deqp: make sure the main commit is actually from the main branch
-      ci/deqp: fully isolate deqp builds
-      ci: bump image tags
-      ci/container: setup sections in all image builds
-
-Lionel Landwerlin (4):
-      anv: track allocated descriptor pool sizes
-      anv: indent driconf code
-      anv: add a workaround for X4 Foundations
-      anv: document the X4 Foundations workaround a bit more
-
-Ruijing Dong (1):
-      radeosi/vcn: enable EFC for VCN5.0+ when gfx >= 12
-
-Tapani Pälli (2):
-      intel/dev: update mesa_defs.json from workaround database
-      intel/dev: lower amount of max gs threads for Wa_18040209780
-
-Timur Kristóf (6):
-      radv: Add a flush postamble on GFX6.
-      radv: Don't flush at the end of each command buffer on GFX6.
-      ac/nir/ngg: Don't emit dead code with dot_op.
-      ac/nir/ngg: Trade 1 VALU shift for 2 SALU add.
-      ac/nir/cull: Slightly refactor control flow for small primitive culling.
-      ac/nir/ngg: Slightly refactor workgroup scan.
+Nanley Chery (3):
+      intel/blorp: Assert 3D Ys fast-clear restriction
+      intel/isl: Allow CCS on 3D 64bpp+ Tile64
+      intel: Allow CCS on 3D surfaces for gfx120
 
