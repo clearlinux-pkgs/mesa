@@ -1,36 +1,44 @@
-Updating from 2e49448a433e30a0648b3986381f356335211ae9 to 6088a4373c695811745f070a805ecf1890a735b0
+Updating from 6088a4373c695811745f070a805ecf1890a735b0 to 42be38a8fb0f7c1d9b65769dca17d50f1dcec5b1
 
-Alyssa Rosenzweig (3):
-      nir: add nir_fixup_is_exported pass
-      vtn: introduce vtn_bindgen tool
-      libagx: switch to vtn_bindgen
+Alyssa Rosenzweig (27):
+      libagx: move out of lib/
+      libagx: DCE
+      asahi: drop dead ACCESS
+      asahi,agx: move texture lowering into the compiler
+      asahi: drop desc align alloc
+      asahi/decode: disasm 3D helper progs
+      asahi/clc: drop getopt
+      agx: vectorize scratch access
+      agx: gather workgroup size
+      asahi,hk: reenable rgb32 buffer textures
+      hk: generalize internal launch
+      hk: expose missing eds3 feature
+      hk: handle mismatching colour vs z/s dimensions
+      hk: implement EXT_depth_bias_control
+      hk: be robust against invalid MSAA inputs
+      hk: do not increment GS queries for passthru GS
+      hk: use common wg size
+      hk: add cmd buffer to hk_cs
+      hk: dce
+      libagx: fix return type
+      libagx: don't export vertex_id_for_top
+      asahi/genxml: fix 0 encoding for groups
+      asahi/genxml: fix 128-bit in CL path
+      asahi/genxml: optimize out masking with shr
+      asahi/genxml: define missing macros
+      asahi: add XML for cdm stream link with return
+      asahi: refmt
 
-Caio Oliveira (4):
-      intel/executor: Enable PTL
-      intel/brw: Fix decoding of cond_modifier and saturate in EU validation
-      intel/brw: Fix SWSB output when printing IR
-      intel/brw: Dump IR after lower scoreboard pass
+Benjamin Lee (2):
+      nir: clamp small W in nir_lower_viewport_transform
+      nir: document order requirement for nir_lower_viewport_transform
 
-Chia-I Wu (1):
-      panvk: expand top-of-pipe and bottom-of-pipe
+Gert Wollny (1):
+      radeon/evergreen: ensure equal sizes for depth-stencil npot textures
 
-Deborah Brouwer (2):
-      ci: add a tool to summarize a failed pipeline
-      ci/pipeline_message: add unit tests for tool
+Tapani Pälli (1):
+      anv/android: always create 2 graphics and compute capable queues
 
-Eric Engestrom (1):
-      radv/ci: document regression of test_shader_sm66_is_helper_lane in 7469f99e...25b8f4f7
-
-Karol Herbst (3):
-      rusticl: check for overrun status when deserializing
-      rusticl/kernel: convert name and type_name to Option<CString>
-      rusticl/mesa: make driver_name() return a &CStr
-
-Mike Lothian (1):
-      gallium/radeon: Fix r600_pci_ids.h include
-
-Nanley Chery (3):
-      intel/blorp: Assert 3D Ys fast-clear restriction
-      intel/isl: Allow CCS on 3D 64bpp+ Tile64
-      intel: Allow CCS on 3D surfaces for gfx120
+liuqiang (1):
+      lavapipe: Resolved write to pointer after free
 
