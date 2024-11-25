@@ -1,44 +1,98 @@
-Updating from 6088a4373c695811745f070a805ecf1890a735b0 to 42be38a8fb0f7c1d9b65769dca17d50f1dcec5b1
+Updating from 42be38a8fb0f7c1d9b65769dca17d50f1dcec5b1 to 96b38119ea3fe6ef11b5e024389640c6f7973cb2
 
-Alyssa Rosenzweig (27):
-      libagx: move out of lib/
-      libagx: DCE
-      asahi: drop dead ACCESS
-      asahi,agx: move texture lowering into the compiler
-      asahi: drop desc align alloc
-      asahi/decode: disasm 3D helper progs
-      asahi/clc: drop getopt
-      agx: vectorize scratch access
-      agx: gather workgroup size
-      asahi,hk: reenable rgb32 buffer textures
-      hk: generalize internal launch
-      hk: expose missing eds3 feature
-      hk: handle mismatching colour vs z/s dimensions
-      hk: implement EXT_depth_bias_control
-      hk: be robust against invalid MSAA inputs
-      hk: do not increment GS queries for passthru GS
-      hk: use common wg size
-      hk: add cmd buffer to hk_cs
-      hk: dce
-      libagx: fix return type
-      libagx: don't export vertex_id_for_top
-      asahi/genxml: fix 0 encoding for groups
-      asahi/genxml: fix 128-bit in CL path
-      asahi/genxml: optimize out masking with shr
-      asahi/genxml: define missing macros
-      asahi: add XML for cdm stream link with return
-      asahi: refmt
+Alyssa Rosenzweig (2):
+      vtn: ignore SpvFunctionParameterAttributeSret
+      nir/pack_bits: handle 8-bit vec8 -> 64-bit
 
-Benjamin Lee (2):
-      nir: clamp small W in nir_lower_viewport_transform
-      nir: document order requirement for nir_lower_viewport_transform
+Boris Brezillon (10):
+      panfrost: Increase AFBC body alignment requirement on v6+
+      panfrost: Add a helper to expose the maximum effective tile size
+      panfrost: Add the concept of render block
+      panfrost: Add support for AFBC(split)
+      panfrost: Advertise support for AFBC(32x8,sparse,split)
+      pan/decode: Flush the dump file before crashing
+      panvk/csf: Keep a cache of the CS reg file at the panvk_queue level
+      panvk/csf: Fix cross command buffer render pass suspend/resume
+      panvk/csf: Explain why the tiler is set to 0xdeadbeefdeadbeef
+      panvk: Fix panvk_plane_index() for D32_SFLOAT_S8_UINT
 
-Gert Wollny (1):
-      radeon/evergreen: ensure equal sizes for depth-stencil npot textures
+Chia-I Wu (1):
+      panvk: use u_foreach_bit to loop over mask bits
 
-Tapani Pälli (1):
-      anv/android: always create 2 graphics and compute capable queues
+Eric R. Smith (5):
+      util: rename PIPE_FORMAT_Y8_U8V8_422_UNORM
+      dri, mesa: fix NV16 texture format
+      egl, mesa: add support for NV15 and NV20 textures
+      dri: fix NV15 and NV20 definitions to make sure they will be used
+      panfrost: add panfrost support for NV15, NV16 and NV20
 
-liuqiang (1):
-      lavapipe: Resolved write to pointer after free
+Erik Faye-Lund (7):
+      docs: mark GL_ARB_shader_subroutine as always supported
+      docs: mark GL_ARB_get_program_binary as always supported
+      docs: update GL_OES_shader_image_atomic support
+      docs: update GL_ARB_multi_draw_indirect support
+      docs: refer to panfrost by version
+      docs: fixup a few mistakes with panfrost
+      docs: add missing panfrost extensions
+
+Georg Lehmann (2):
+      nir/move_discards_to_top: don't move across is_helper_invocation
+      radv/ci: document test_shader_sm66_is_helper_lane as fixed
+
+Hans-Kristian Arntzen (1):
+      radv: Fix missing gang barriers for task shaders.
+
+Louis-Francis Ratté-Boulianne (2):
+      panfrost: Split up allocation and packing of tiler descriptor
+      panfrost: Select the effective tile size as part of pan_fb_info
+
+Manuel Dun (3):
+      gfxstream: Using DETECT_OS_ANDROID from util instead of __ANDROID__
+      gfxstream: Using DETECT_OS_FUCHSIA from util instead of __Fushsia__
+      gfxstream: Using DETECT_OS_LINUX from util instead of __linux__
+
+Marek Olšák (1):
+      r300: don't lower sin/cos in finalize_nir
+
+Mary Guillemard (3):
+      panvk: Disable integer array indices clamping
+      panvk: Advertise VK_EXT_image_robustness
+      panvk: Advertise VK_EXT_pipeline_robustness
+
+Patrick Lerda (4):
+      r600: fix the evergreen sampler when the minification and the magnification are not identical
+      r600: restructure r600_create_vertex_fetch_shader() to remove memcpy()
+      r600: ensure that the last vertex is always processed on evergreen
+      r600: evergreen stencil/depth mipmap blit workaround
+
+Pavel Ondračka (2):
+      r300: run nir_opt_algebraic in the backend
+      r300: always transform sin/cos input for fs
+
+Rebecca Mckeever (3):
+      panvk: Use vk_image::drm_format_mod instead of pan_image::layout.modifier
+      panvk: Replace tab with spaces
+      panvk: Enable multiplane images and image views
+
+Rhys Perry (6):
+      aco: add SSA repair pass
+      aco: use repair pass for LCSSA workaround
+      aco: require WQM after demote in control flow
+      aco: skip code if exec is empty
+      aco/tests: add tests for empty exec masks
+      aco: don't use uniform continues if exec might be empty
+
+Roman Stratiienko (1):
+      v3dv/android: Suppress AHB-related log spam
+
+Samuel Pitoiset (4):
+      radv: fix dumping debug/perftest options when there are holes
+      radv: add a pipeline helper to skip shaders cache
+      radv: fix dumping the trap handler shader disassembly
+      radv: fix printing with RADV_DEBUG=psocachestats
+
+Timur Kristóf (3):
+      ac/nir/ngg: Pass wg_repack_result as pointer instead of returning it.
+      ac/nir/ngg: Workgroup scan over two bools.
+      ac/nir/ngg: Implement optional primitive compaction.
 
