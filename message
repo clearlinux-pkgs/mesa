@@ -1,98 +1,106 @@
-Updating from 42be38a8fb0f7c1d9b65769dca17d50f1dcec5b1 to 96b38119ea3fe6ef11b5e024389640c6f7973cb2
-
-Alyssa Rosenzweig (2):
-      vtn: ignore SpvFunctionParameterAttributeSret
-      nir/pack_bits: handle 8-bit vec8 -> 64-bit
+Updating from 96b38119ea3fe6ef11b5e024389640c6f7973cb2 to b192c6927b007ae38495c34d99f46508b8faad1a
 
 Boris Brezillon (10):
-      panfrost: Increase AFBC body alignment requirement on v6+
-      panfrost: Add a helper to expose the maximum effective tile size
-      panfrost: Add the concept of render block
-      panfrost: Add support for AFBC(split)
-      panfrost: Advertise support for AFBC(32x8,sparse,split)
-      pan/decode: Flush the dump file before crashing
-      panvk/csf: Keep a cache of the CS reg file at the panvk_queue level
-      panvk/csf: Fix cross command buffer render pass suspend/resume
-      panvk/csf: Explain why the tiler is set to 0xdeadbeefdeadbeef
-      panvk: Fix panvk_plane_index() for D32_SFLOAT_S8_UINT
+      pan/cs: Add cs_exception_handler_ctx
+      pan/cs: Align exception handlers with NOPs
+      pan/cs: Add dynamic save_reg to exception handler
+      pan/cs: Add block macro for exception handler
+      panvk/csf: Fix register overlap in issue_fragment_jobs()
+      pan/cs: Return the dump region size when an exception handler is defined
+      pan/cs: Return exception handler size/address
+      panfrost: Add cs_exception_handler_def() to the ForEachMacros list
+      panvk/csf: Use the information returned by cs_exception_handler_def()
+      panfrost: Use the handler size returned by cs_exception_handler_def()
 
-Chia-I Wu (1):
-      panvk: use u_foreach_bit to loop over mask bits
+Chia-I Wu (11):
+      panvk: fix vs image support
+      panvk: add panvk_queue_submit_init
+      panvk: add panvk_queue_submit_init_storage
+      panvk: add panvk_queue_submit_init_waits
+      panvk: add panvk_queue_submit_init_cmdbufs
+      panvk: add panvk_queue_submit_init_signals
+      panvk: add panvk_queue_submit_ioctl
+      panvk: add panvk_queue_submit_process_signals
+      panvk: add panvk_queue_submit_process_debug
+      panvk: clean up panvk_queue_submit
+      panvk: move pandecode_next_frame a bit earlier
 
-Eric R. Smith (5):
-      util: rename PIPE_FORMAT_Y8_U8V8_422_UNORM
-      dri, mesa: fix NV16 texture format
-      egl, mesa: add support for NV15 and NV20 textures
-      dri: fix NV15 and NV20 definitions to make sure they will be used
-      panfrost: add panfrost support for NV15, NV16 and NV20
+Danylo Piliaiev (2):
+      tu: Disable fragmentShadingRateWithShaderSampleMask due to issues
+      tu,ir3: Add workaround for reading shading rate on A7XX gen1,gen2
 
-Erik Faye-Lund (7):
-      docs: mark GL_ARB_shader_subroutine as always supported
-      docs: mark GL_ARB_get_program_binary as always supported
-      docs: update GL_OES_shader_image_atomic support
-      docs: update GL_ARB_multi_draw_indirect support
-      docs: refer to panfrost by version
-      docs: fixup a few mistakes with panfrost
-      docs: add missing panfrost extensions
+Eric Engestrom (6):
+      meson: simplify logic a bit
+      meson: drop unused variables
+      meson: reuse variable
+      meson/megadriver: s/_/-/ in an argument name to be consistent
+      meson/megadriver: simplify setting common megadriver arguments
+      meson/megadriver: support various lib suffixes
 
-Georg Lehmann (2):
-      nir/move_discards_to_top: don't move across is_helper_invocation
-      radv/ci: document test_shader_sm66_is_helper_lane as fixed
+Georg Lehmann (4):
+      freedreno/ci: update a630 KSP checksum
+      nir/opt_intrinsic: rework sample mask opt with vector alu
+      nir/opt_intrinsic: fix sample mask opt with demote
+      radv: optimize sample mask comparisons
 
-Hans-Kristian Arntzen (1):
-      radv: Fix missing gang barriers for task shaders.
+Ian Romanick (1):
+      Fix copy-and-paste bug in nir_lower_aapoint_impl
 
-Louis-Francis Ratté-Boulianne (2):
-      panfrost: Split up allocation and packing of tiler descriptor
-      panfrost: Select the effective tile size as part of pan_fb_info
+Lars-Ivar Hesselberg Simonsen (4):
+      pan/genxml: Fix decode of exception_handler 0x0
+      pan/cs: Add mask support for reg_perm
+      panvk: Build cmd_fb_preload on explicit fb_info
+      panvk: Add incremental rendering support on v10+
 
-Manuel Dun (3):
-      gfxstream: Using DETECT_OS_ANDROID from util instead of __ANDROID__
-      gfxstream: Using DETECT_OS_FUCHSIA from util instead of __Fushsia__
-      gfxstream: Using DETECT_OS_LINUX from util instead of __linux__
+Lionel Landwerlin (16):
+      anv: move helpers out of genX_pipeline.c/anv_private.h
+      anv: remove 3DSTATE_RASTER from pipeline
+      anv: remove 3DSTATE_MULTISAMPLE from the pipeline
+      anv: remove 3DSTATE_VF_STATISTICS from pipeline
+      anv: pass anv_device to batch_set_preemption
+      anv: rework vertex input helper
+      anv: split vertex buffer emission in a different function
+      anv: move gfx tracking values to anv_cmd_graphics_state
+      anv: move tracking of tcs_input_vertices/fs_msaa_flags to hw state
+      anv: split runtime flushing code for reuse
+      brw: change fs_msaa flags checks to test compiled flag first
+      brw: rename brw_sometimes to intel_sometimes
+      brw: move barycentric_mode enum to intel_shader_enums.h
+      brw: move fs_msaa_flags logic to intel_shader_enums.h
+      fix
+      Revert in correct commit "fix"
 
-Marek Olšák (1):
-      r300: don't lower sin/cos in finalize_nir
+Marek Olšák (8):
+      nir/opt_varyings: use a hash table to make cloning SSA faster
+      amd: import libdrm_amdgpu ioctl wrappers
+      util,amd: add inlinable versions of drmIoctl/drmCommandWrite*
+      nir: allow cloning indirect array derefs in nir_clone_deref_instr
+      nir/lower_io_to_temporaries: fix interp_deref_at_* lowering
+      radeonsi: don't call set_framebuffer_state in si_destroy_context
+      radeonsi: handle a failure to create gfx_cs
+      winsys/amdgpu: fix FD mismatch
 
-Mary Guillemard (3):
-      panvk: Disable integer array indices clamping
-      panvk: Advertise VK_EXT_image_robustness
-      panvk: Advertise VK_EXT_pipeline_robustness
+Mauro Rossi (3):
+      nvk/android: Avoid building error in nak bindings
+      nvk/android: Advertise Vulkan 1.1 for Android 12L and lower
+      nvk/android: Add support for ANDROID_native_buffer
 
-Patrick Lerda (4):
-      r600: fix the evergreen sampler when the minification and the magnification are not identical
-      r600: restructure r600_create_vertex_fetch_shader() to remove memcpy()
-      r600: ensure that the last vertex is always processed on evergreen
-      r600: evergreen stencil/depth mipmap blit workaround
+Maíra Canal (2):
+      v3dv: delete `v3dv_debug.h`
+      v3dv: use Mesa log infrastructure instead of using stderr
 
-Pavel Ondračka (2):
-      r300: run nir_opt_algebraic in the backend
-      r300: always transform sin/cos input for fs
+Tapani Pälli (1):
+      iris: allow bo cache for compressed bos on verx10 == 200
 
-Rebecca Mckeever (3):
-      panvk: Use vk_image::drm_format_mod instead of pan_image::layout.modifier
-      panvk: Replace tab with spaces
-      panvk: Enable multiplane images and image views
+Timothy Arceri (4):
+      glsl: don't copy symbol table to shaders
+      glsl: drop _mesa_glsl_copy_symbols_from_table()
+      glsl: use symbol table directly for builtin functions
+      glsl: drop unused symbol table from gl_shader
 
-Rhys Perry (6):
-      aco: add SSA repair pass
-      aco: use repair pass for LCSSA workaround
-      aco: require WQM after demote in control flow
-      aco: skip code if exec is empty
-      aco/tests: add tests for empty exec masks
-      aco: don't use uniform continues if exec might be empty
+Timur Kristóf (1):
+      ac/nir/ngg: Remove erroneous NUW addition from workgroup scan.
 
-Roman Stratiienko (1):
-      v3dv/android: Suppress AHB-related log spam
-
-Samuel Pitoiset (4):
-      radv: fix dumping debug/perftest options when there are holes
-      radv: add a pipeline helper to skip shaders cache
-      radv: fix dumping the trap handler shader disassembly
-      radv: fix printing with RADV_DEBUG=psocachestats
-
-Timur Kristóf (3):
-      ac/nir/ngg: Pass wg_repack_result as pointer instead of returning it.
-      ac/nir/ngg: Workgroup scan over two bools.
-      ac/nir/ngg: Implement optional primitive compaction.
+Yinjie Yao (1):
+      radeonsi/vcn: Disable 2pass encode for VCN 5.0.
 
