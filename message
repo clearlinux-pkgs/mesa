@@ -1,78 +1,90 @@
-Updating from b192c6927b007ae38495c34d99f46508b8faad1a to 1a7c54b84090b4dac1a7ff0387c09e7fb319496f
+Updating from 1a7c54b84090b4dac1a7ff0387c09e7fb319496f to 25c0a11cf7223a5c31ed8ecd06173aa76ad395c8
 
-Alyssa Rosenzweig (9):
-      nir: add nir_lower_calls_to_builtins pass
-      asahi/clc: switch to nir_lower_calls_to_builtins
-      nir: add nir_foreach_entrypoint macros
-      nir: add workgroup size to functions
-      vtn: plumb through OpEntryPoint
-      vtn: gather workgroup size in libraries
-      nir: add nir_function::pass_flags
-      nir: add nir_remove_entrypoints helper
-      nir: add nir_lower_constant_to_temp helper
+Alyssa Rosenzweig (2):
+      nir: add helpers for precompiled shaders
+      asahi,vtn: precompile kernels
 
-Antonio Ospite (1):
-      ci/deqp: replace local android patches with upstream solution
+Boris Brezillon (11):
+      panvk: Filter out input-attachment usage on non renderable formats
+      pan/decode: Untangle CS disassembling and interpretation
+      pan/decode: s/interpret_ceu/interpret_cs/
+      pan/decode: Rename pandecode_cs() into pandecode_interpret_cs()
+      pan/decode: Add a helper to print CS binaries without interpreting them
+      pan/decode: Provide a helper to print messages outside of the decoding path
+      pan/cs: Add a LOAD_IP pseudo instruction
+      pan/cs: Add an event-based tracing mechanism
+      panvk/csf: Use event-based CS tracing
+      panvk/csf: Don't disable SIMULTANEOUS_USE when tracing is enabled
+      panvk: Add a flag to force SIMULTANEOUS_USE
 
-Eric Engestrom (10):
-      ci/deqp: simplify paths since we are already in /deqp-$deqp_api/
-      ci/deqp: fix the "is this a build on main?" check
-      ci/deqp: support having commit backports and local patches for main too
-      ci/deqp: simplify generating the version description file
-      ci/deqp: mention the deqp api in the version string
-      ci/deqp: only print the commit list header when the list is not empty
-      ci/lava: turn the $BUILD_VK check into a proper if block
-      ci/deqp: add a deqp-vk build on the `main` branch
-      ci: bump image tags
-      radv/ci: use deqp-vk-main in radv jobs
+Caio Oliveira (1):
+      util/ra: Remove unimplemented function declaration
 
-Eric R. Smith (1):
-      panvk: fix depth bias calculation
+Caterina Shablia (2):
+      Revert "nir: lower INSTANCE_{ID,INDEX} to an offset load_instance_{index,id} respectively"
+      Revert "nir: introduce instance_index system value"
 
-Georg Lehmann (1):
-      aco/optimizer: label fcanonicalize like a copy if there is nothing to flush
+Danylo Piliaiev (1):
+      tu: Handle cmdbuf and rp_blit flags of TU_DEBUG_STALE_REGS_FLAGS
 
-Konstantin (2):
-      radv/printf: Guard against helper invocations
-      radv: Do not overwrite VRS rates when doing fast clears
+David Rosca (1):
+      radeonsi/vcn: Support tiling for JPEG decode
 
-Lionel Landwerlin (6):
-      anv: move primitive_topology to anv_gfx_dynamic_state
-      anv: try to avoid using cmd_buffer in gfx runtime flushing
-      anv: reuse device local variable in hw state emission
-      anv: rework Wa_18038825448 to track state on anv_gfx_dynamic_state
-      anv: avoid using cmd_buffer for TBIMR state computation
-      anv: avoid using cmd_buffer for flushing runtime
+Eric Engestrom (3):
+      docs: update calendar for 24.2.8
+      docs: add release notes for 24.2.8
+      docs: add sha sum for 24.2.8
 
-Marek Olšák (1):
-      Revert "gbm: mark surface buffers as explicit flushed"
+Erik Faye-Lund (6):
+      lima: fixup typo
+      lima: add assert to validate list-lenght
+      lima: avoid memleak on error
+      panfrost: sanity-check alignment
+      panvk: correct signedness of timestamps
+      panvk: widen type before multiplying
 
-Mary Guillemard (2):
-      panvk: Call vk_free on queue array instead of vk_object_free
-      panvk: Use vk_zalloc for queue array allocation
+Job Noorman (8):
+      nir: add ir3-specific bitwise triop opcodes
+      nir/search: make is_only_used_by_iadd reusable
+      nir/search: add is_only_used_by_{iand,ior} helpers
+      ir3: fix backend support for bitwise triops
+      ir3: add codegen for bitwise triops
+      ir3: add pass to select bitwise triops
+      ir3/isa: allow rpt6/rpt7
+      ir3: add workaround for predication hardware bug
 
-Pierre-Eric Pelloux-Prayer (6):
-      dri: Remove unused function
-      radeonsi/gfx12: disable display dcc for front buffer rendering
-      radeonsi: disable DCC for PIPE_BIND_USE_FRONT_RENDERING
-      glx: return BadMatch for invalid reset notification strategy
-      ac/nir: remove prim_stride_ret arg from ngg_build_streamout_buffer_info
-      radeonsi: use bytes units in streamout
+Marek Olšák (9):
+      nir/lower_clip: don't set cursor to fix crashes due to removed instructions
+      nir/lower_clip: separate code for IO variables and intrinsics
+      nir/lower_clip: set clip_distance_array_size outside of create_clipdist_vars
+      nir/lower_clip: convert nir_lower_clip_gs to nir_shader_intrinsics_pass
+      nir/lower_clip: implement ClipVertex lowering for GS + lowered IO correctly
+      vc4: lower clip planes in st/mesa
+      nir/opt_varyings: always call remove_dead_varyings in init_linkage
+      nir/opt_varyings: add a default callback for varying_estimate_instr_cost
+      nir/opt_varyings: replace options::lower_varying_from_uniform with a cost number
 
-Samuel Pitoiset (3):
-      radv: only pass relevant stages when emitting DGC push constants
-      radv: capture shader executable info at shader creation time
-      radv: allow shaders caching with RADV_DEBUG=hang and the trap handler
+Rhys Perry (2):
+      aco: make small_vec copyable
+      aco: use small_vec in RegCounterMap
 
-Timothy Arceri (4):
-      glsl: disable function return lowering in glsl ir
-      glsl: remove return lowering from glsl ir
-      glsl: drop last remaining lower jump test
-      glsl: remove now unused ir reader
+Rob Clark (1):
+      vdrm+tu+fd: Make cross-device optional
 
-Vignesh Raman (1):
-      ci: Uprev crosvm
+Samuel Pitoiset (4):
+      vulkan: add MESA_VK_TRACE_PER_SUBMIT
+      radv: finish tools after cleaning meta resources
+      radv: add new start/stop sqtt helpers for capturing with SQTT
+      radv: add support for capturing RGP per-submit
 
-Zan Dobersek (1):
-      tu/a7xx: support 8x MSAA
+Scott Moreau (1):
+      dri: Fix hardware cursor for cards without modifier support
+
+Timur Kristóf (6):
+      radv: Reorder potentially per-primitive FS builtins.
+      radv: Slightly simplify potentially per-primitive FS inputs.
+      radv, aco: Consolidate num_interp + num_prim_interp into num_inputs.
+      radv: Emit SPI_PS_IN_CONTROL when emitting PS inputs on GFX10.3.
+      radv: Remove now unused num_prim_interp from shader_info.
+      radv: Use default 0 for undefined builtin PS inputs.
 
