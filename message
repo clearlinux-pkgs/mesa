@@ -1,90 +1,135 @@
-Updating from 1a7c54b84090b4dac1a7ff0387c09e7fb319496f to 25c0a11cf7223a5c31ed8ecd06173aa76ad395c8
+Updating from 25c0a11cf7223a5c31ed8ecd06173aa76ad395c8 to 379de4cdcebcb5131d3b61362b886cbc8cebefc1
 
-Alyssa Rosenzweig (2):
-      nir: add helpers for precompiled shaders
-      asahi,vtn: precompile kernels
+Benjamin Cheng (3):
+      ac/vcn: allow sq signature package to be skipped
+      radv/video: support event for pre-VCN4 encode queues
+      radv/video: support event for pre-VCN4 decode queues
 
-Boris Brezillon (11):
-      panvk: Filter out input-attachment usage on non renderable formats
-      pan/decode: Untangle CS disassembling and interpretation
-      pan/decode: s/interpret_ceu/interpret_cs/
-      pan/decode: Rename pandecode_cs() into pandecode_interpret_cs()
-      pan/decode: Add a helper to print CS binaries without interpreting them
-      pan/decode: Provide a helper to print messages outside of the decoding path
-      pan/cs: Add a LOAD_IP pseudo instruction
-      pan/cs: Add an event-based tracing mechanism
-      panvk/csf: Use event-based CS tracing
-      panvk/csf: Don't disable SIMULTANEOUS_USE when tracing is enabled
-      panvk: Add a flag to force SIMULTANEOUS_USE
+David (Ming Qiang) Wu (3):
+      frontends/va: adding PIPE_FORMAT_P012
+      frontends/va: add PIPE_VIDEO_PROFILE_AV1_PROFILE2
+      radeonsi/vcn: support 12bit YUV420 AV1 decoding
 
-Caio Oliveira (1):
-      util/ra: Remove unimplemented function declaration
+Erik Faye-Lund (7):
+      mesa/main: properly check for EXT_memory_object
+      mesa/main: properly check for EXT_memory_object_fd
+      mesa/main: properly check for EXT_memory_object_win32
+      mesa/main: properly check for EXT_semaphore
+      mesa/main: properly check for EXT_semaphore_win32
+      st/mesa: check requirements for MESA_texture_const_bandwidth
+      mesa: error-check GL_TEXTURE_TILING_EXT params
 
-Caterina Shablia (2):
-      Revert "nir: lower INSTANCE_{ID,INDEX} to an offset load_instance_{index,id} respectively"
-      Revert "nir: introduce instance_index system value"
+Frank Binns (2):
+      pvr: add TI j721s2 as a supported device
+      pvr: add 36.53.104.796 (BXS-4-64) to the list of supported GPUs
 
-Danylo Piliaiev (1):
-      tu: Handle cmdbuf and rp_blit flags of TU_DEBUG_STALE_REGS_FLAGS
+Hans-Kristian Arntzen (2):
+      radv/winsys: Report VA mappings in bo_log too.
+      radv: Add sparse mappings to radv_check_va.py.
 
-David Rosca (1):
-      radeonsi/vcn: Support tiling for JPEG decode
+Job Noorman (14):
+      nir/lower_subgroups: support unknown subgroup size
+      ir3: use generic lowering for 64b scan/reduce
+      ir3: remove unused ir3_nir_lower_64b_subgroups
+      nir: add read_getlast_ir3 intrinsic
+      ir3: add codegen for read_getlast_ir3
+      ir3: add helper to get the subgroup size
+      ir3: rename cluster_size to brcst_cluster_size
+      nir/lower_subgroups: add extra filter data to options
+      nir/lower_subgroups: disable boolean reduce when not supported
+      ir3: add support for clustered subgroup reductions
+      tu: advertise VK_SUBGROUP_FEATURE_CLUSTERED_BIT
+      nir/lower_subgroups: add option to only lower clustered rotates
+      ir3: lower clustered rotates to shuffles
+      tu: advertise VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR
 
-Eric Engestrom (3):
-      docs: update calendar for 24.2.8
-      docs: add release notes for 24.2.8
-      docs: add sha sum for 24.2.8
+Peyton Lee (1):
+      radeonsi/vpe: optimize software functions
 
-Erik Faye-Lund (6):
-      lima: fixup typo
-      lima: add assert to validate list-lenght
-      lima: avoid memleak on error
-      panfrost: sanity-check alignment
-      panvk: correct signedness of timestamps
-      panvk: widen type before multiplying
+Philipp Zabel (7):
+      teflon: Add is_signed parameter to ml_subgraph_invoke and ml_subgraph_read_output
+      etnaviv/nn: Add support for signed 8-bit tensors
+      teflon/tests: prep test executor for signed convolutions
+      teflon/tests: Enable int8 tests
+      etnaviv/ml: Create combined input tensors for addition first
+      teflon: Reject per-axis quantization
+      teflon: Support fused ReLU6 activation via output saturation
 
-Job Noorman (8):
-      nir: add ir3-specific bitwise triop opcodes
-      nir/search: make is_only_used_by_iadd reusable
-      nir/search: add is_only_used_by_{iand,ior} helpers
-      ir3: fix backend support for bitwise triops
-      ir3: add codegen for bitwise triops
-      ir3: add pass to select bitwise triops
-      ir3/isa: allow rpt6/rpt7
-      ir3: add workaround for predication hardware bug
+Robert Mader (1):
+      freedreno: Support offset query for multi-planar planes
 
-Marek Olšák (9):
-      nir/lower_clip: don't set cursor to fix crashes due to removed instructions
-      nir/lower_clip: separate code for IO variables and intrinsics
-      nir/lower_clip: set clip_distance_array_size outside of create_clipdist_vars
-      nir/lower_clip: convert nir_lower_clip_gs to nir_shader_intrinsics_pass
-      nir/lower_clip: implement ClipVertex lowering for GS + lowered IO correctly
-      vc4: lower clip planes in st/mesa
-      nir/opt_varyings: always call remove_dead_varyings in init_linkage
-      nir/opt_varyings: add a default callback for varying_estimate_instr_cost
-      nir/opt_varyings: replace options::lower_varying_from_uniform with a cost number
+Simon Perretta (69):
+      pvr: add initial pco stub/boilerplate
+      pvr, pco: Add new compiler framework and shader gen stubs
+      pco: add env debug option parsing
+      pco: stubs for SPIR-V/NIR compilation options
+      pvr: connect basic pco functions to the driver
+      pvr: remove pipeline shader hard-coding support
+      pvr: add device info and functions for calculating available temps
+      pvr: add shader compilation stubs
+      pvr: track pipeline flags
+      pvr: add device info for additional iterator features
+      pvr: fix GetInstanceProcAddr ubsan warning when _instance == NULL
+      pvr: drop PVRX macro
+      pco: suppress warning for functions passing structs
+      pco: pygen stubs
+      pco, pygen: enum emit support, define some enums and op/ref mods/types
+      pco, pygen: define basic isa field types
+      pco, pygen: define and emit isa instruction group header variant fields
+      pco, pygen: isa instruction group header validation and encoding support
+      pco, pygen: isa lower source definitions
+      pco, pygen: isa upper sources definitions
+      pco, pygen: isa internal source selector definitions
+      pco, pygen: isa destination definitions
+      pco, pygen: isa main alu ops
+      pco, pygen: isa backend alu ops
+      pco, pygen: isa bitwise alu ops
+      pco, pygen: isa control alu ops
+      pco, pygen: query bytes required for each variant
+      pco, pygen: generate op and mod info
+      pco: define data structures and basic builder implementation with ops
+      pco: NIR translation and PCO IR pass boilerplate
+      pco: printing and validation boilerplate
+      pco, pygen: generate string representations of enum elements
+      pco: basic instruction printing
+      pco, pygen: move unnamed tuple structs into classes
+      pco, pygen: add bitset support for op mods
+      pco, pygen: common underscore replacement for op names
+      pco: add verbose printing debug option
+      pco, pygen: distinguish hw ops that are built directly into instruction groups
+      pco, pygen: instruction to instruction group mapping, printing
+      pco: additional ref functions
+      pco: boilerplate nir lowering passes
+      pco, pygen: add initial uvsw op boilerplate
+      pco, pygen: add better exception messages
+      pco: adjust align padding to be per-function instead of per-shader
+      pco, pygen: support querying ref mods, if op/ref mods have been set
+      pco: set up and tear down glsl type singleton with context
+      pco, pygen: add support for instructions with variable srcs/dests
+      pco, pygen: re-order some mods to match their evaluation order
+      pco: print ranges of non-ssa refs with >1 channel, datatypes for immediates
+      pco, pygen: drop unspecified bit sizes for references
+      pco, pygen: add defs and mappings for common ops
+      pco, pygen: restructure igrp alu components into arrays
+      pco, pygen: amend bitfield assertion messages
+      pco, pygen: isa ditr op
+      pco, pygen: isa itrsmp op
+      pco: initial implementation of translation and passes
+      pco: add public print wrappers
+      pco: vector component tracking, vector collation when ingesting NIR
+      pco: re-indexing debug option and additional vector and component tracking
+      pco: add mappings and translation for ditr
+      pco: temporarily add hardcoded vs/fs I/O for testing, BXS-4-64 iteration support
+      pco: add helpers for overriding ref chans and offsetting vals
+      pco: vec coalescing improvement to register allocation
+      pco: add opt subpass for propagating comps referencing hw regs
+      pco: track the number of bytes encoded for each function
+      pvr, pco: rewrite compiler/driver interface for vs & fs I/O
+      pco: modifier propagation optimization, shared opt context boilerplate
+      pco: initial validation boilerplate and SSA checks
+      CODEOWNERS: update for new pco compiler tree
 
-Rhys Perry (2):
-      aco: make small_vec copyable
-      aco: use small_vec in RegCounterMap
-
-Rob Clark (1):
-      vdrm+tu+fd: Make cross-device optional
-
-Samuel Pitoiset (4):
-      vulkan: add MESA_VK_TRACE_PER_SUBMIT
-      radv: finish tools after cleaning meta resources
-      radv: add new start/stop sqtt helpers for capturing with SQTT
-      radv: add support for capturing RGP per-submit
-
-Scott Moreau (1):
-      dri: Fix hardware cursor for cards without modifier support
-
-Timur Kristóf (6):
-      radv: Reorder potentially per-primitive FS builtins.
-      radv: Slightly simplify potentially per-primitive FS inputs.
-      radv, aco: Consolidate num_interp + num_prim_interp into num_inputs.
-      radv: Emit SPI_PS_IN_CONTROL when emitting PS inputs on GFX10.3.
-      radv: Remove now unused num_prim_interp from shader_info.
-      radv: Use default 0 for undefined builtin PS inputs.
+Timothy Arceri (2):
+      glsl: move _mesa_glsl_compile_shader() declaration
+      glsl: remove glsl/program.h
 
