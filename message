@@ -1,26 +1,164 @@
-Updating from 379de4cdcebcb5131d3b61362b886cbc8cebefc1 to 6ca81adffc4ac087abb3255e7882249bf2684769
+Updating from 6ca81adffc4ac087abb3255e7882249bf2684769 to fd431a5b71c5d3b808fffcb4990099c8b871b92a
 
-Arseny Kapoulkine (1):
-      radv: On GFX11, use box sorting heuristic based on ray flags
+Alyssa Rosenzweig (23):
+      libagx: increase wg size for query copy
+      asahi: crash on fault
+      hk: fix incorrect index size translate
+      hk: fix z bias perf regression
+      hk: implement hack for layered no attachments
+      hk: clarify bounds check calculations
+      agx: disable bounds check optimization
+      agx: reduce preamble/main alignment
+      asahi: drop dead pool stuff
+      asahi: don't leak rodata
+      hk,asahi,libagx: unify a bit of code
+      asahi: drop dead
+      asahi: fix page size alignment
+      asahi: fix u_blitter related leaks
+      asahi: label individual pools
+      asahi,hk: mmap BO on first use
+      asahi: add more asserts around bo add
+      asahi: fix agx_batch_add_bo
+      asahi: add =bodump debug help
+      asahi: fix agxdecode memory mapping
+      hk: implement timestamps
+      hk: claim 1.4
+      zink: fix gl_PrimitiveID reads with quads
+
+Antonino Maniscalco (1):
+      nir,zink,asahi: support passing through gl_PrimitiveID
+
+Asahi Lina (4):
+      asahi: UAPI update to add GET_TIME & cleanup
+      asahi: Fix agx_gpu_time_to_ns & implement DRM_ASAHI_GET_TIME
+      asahi: UAPI update to add support for user timestamp buffers
+      asahi: Add timestamp buffer ops
+
+Bas Nieuwenhuizen (1):
+      util/perf: Fix some warnings.
+
+Benjamin Cheng (1):
+      radv/video: enable by default on vcn2/3 with latest fw
+
+Boris Brezillon (5):
+      pan/texture: Move the plane info retrieval logic to a helper function
+      pan/texture: Stop passing the view format around
+      pan/texture: s/index/plane_index/ in panfrost_emit_plane()
+      pan/texture: Stop passing a layout to panfrost_emit_plane()
+      pan/texture: Pass pan_image_section_info around
+
+Caterina Shablia (3):
+      panvk: add panvk_image_init helper
+      panvk: implement vkGetDeviceImageMemoryRequirements
+      panvk: enable shaderInt8, VK_KHR_8bit_storage and VK_KHR_shader_float16_int8
+
+Christian Gmeiner (8):
+      broadcom/common: Make v3d_device_info.h usable for C++
+      v3d: Move v3d_ioctl(..) to src/broadcom/common
+      v3dv: Switch to v3d_ioctl(..)
+      v3d: Move v3d_X(..) to src/broadcom/common
+      v3dv: Switch to v3d_X(..)
+      broadcom: Add perfcount library
+      v3d: Switch to use libbroadcom_perfcntrs
+      v3dv: Switch to use libbroadcom_perfcntr
+
+Collabora's Gfx CI Team (1):
+      Uprev Piglit to 468221c722481c470e6a23760b914c33143c2af6
 
 Connor Abbott (3):
-      vulkan/runtime: Add driver callbacks for BVH building
-      vulkan/runtime,radv: Add shared BVH building framework
-      vulkan/runtime,radv: Add shared BVH building framework
+      ir3: Fix reload_live_out() in shared RA
+      tu: Add Vulkan 1.4 features and properties
+      tu: Expose Vulkan 1.4 on a7xx
 
-Dave Airlie (1):
-      vulkan: update to 302 headers for av1 encode
+Constantine Shablia (3):
+      panvk: replace vkGetBufferMemoryRequirements2 with vkGetDeviceBufferMemoryRequirements
+      panvk: never prefer or require dedicated allocation for buffers
+      panvk: never require dedicated allocation for images
 
-Job Noorman (5):
-      ir3: don't update builder cursor for IR3_CURSOR_AFTER_BLOCK
-      ir3: add ir3_after_instr_and_phis helper
-      ir3: use generic INSTR0 implementation for ir3_NOP
-      ir3: refactor builders to use ir3_builder API
-      ir3: reformat after refactoring in previous commit
+David Rosca (6):
+      radv/video: Fix IB signature checksum
+      radv/video: Always use setup reference slot when valid
+      ac/surface: Add RADEON_SURF_VIDEO_REFERENCE
+      radeonsi: Support PIPE_BIND_VIDEO_DECODE/ENCODE_DPB
+      radeonsi/vcn: Create decode DPB surfaces with PIPE_BIND_VIDEO_DECODE_DPB
+      radeonsi/vcn: Create encode DPB surfaces with PIPE_BIND_VIDEO_ENCODE_DPB
 
-Konstantin (1):
-      vulkan/meta: Add a pipeline cache
+Dylan Baker (5):
+      anv: advertise Vulkan 1.4
+      anv: bump max number of push constants to 256
+      anv: Add new Vulkan 1.4 features and properties
+      anv: bump conformance version to 1.4
+      maintainer-scripts: Bump Vulkan release version to 1.4
+
+Eric R. Smith (2):
+      panfrost: add a perf warning when resources need to be converted
+      panfrost: convert resources before binding them to images
+
+Faith Ekstrand (11):
+      vulkan: Allow the same item to show up twice in core version <requires>
+      vulkan: Add Vulkan 1.4 feature aliases
+      treewide: Stop putting enum in front of Vulkan enum types
+      vulkan: Update XML and headers to 1.4.303
+      nvk: Increase push constant space to 256B
+      nvk: No-op implement VK_KHR_global_priority
+      nvk: Add new Vulkan 1.4 features and properties
+      nvk: Advertise Vulkan 1.4
+      nvk: Only support Vulkan 1.4 on Turing+
+      nvk: Move Vulkan 1.4 features to the 1.4 section
+      nvk: Move Vulkan 1.4 properties to the 1.4 section
+
+Jesse Natalie (1):
+      microsoft/compiler: Put holes in driver_location based on I/O variable sizes
+
+Job Noorman (1):
+      ir3: add reformatting commits to .git-blame-ignore-revs
+
+Kenneth Graunke (11):
+      nir/algebraic: Reassociate fadd into fmul in DP4-like pattern
+      brw: Drop image deref handling from brw_analyze_ubo_ranges
+      brw: Drop "regular uniform" concept from UBO push analysis
+      brw: Drop a few crocus references in comments
+      brw: Use nir_combined_align in brw_nir_should_vectorize_mem
+      brw: Only consider components read for UBO loads
+      brw: Only consider components read for UBO push analysis
+      brw: Simplify choose_oword_block_size_dwords()
+      nir: Allow large overfetching holes in the load store vectorizer
+      anv: Don't consider nir_var_mem_global for vectorizer robustness checks
+      brw: Tune vectorizer conditions to allow overfetching with holes
+
+Lionel Landwerlin (1):
+      anv/iris: leave 4k alignments for clear colors with modifiers
+
+Marek Olšák (4):
+      nir/algebraic: use is_used_once in a few iand/ior patterns
+      nir/algebraic: optimize (a & b) & (a & c) ==> (a & b) & c
+      nir/algebraic: optimize (a | b) | (a | c) ==> (a | b) | c
+      nir/algebraic: optimize (a & b) | (a | c) => a | c, (a & b) & (a | c) => a & b
+
+Michel Dänzer (2):
+      Revert "winsys/amdgpu: fix FD mismatch"
+      winsys/amdgpu: Always use amdgpu_device_get_fd for aws->fd
+
+Rebecca Mckeever (6):
+      pan/texture: s/pan_image_view_get_zs_image/pan_image_view_get_zs_plane/
+      pan/texture: s/pan_image_view_get_rt_image/pan_image_view_get_color_plane/
+      pan/texture: Accept holes in the pan_image_view::planes array
+      pan/desc: Pass an image to pan_force_clean_write_rt()
+      pan/desc: Add a pan_image_view_get_s_plane() helper and use it
+      panvk: Support D32_S8 as a multiplanar format
+
+Rhys Perry (3):
+      nir/tests: fix SSA dominance in opt_if_merge tests
+      aco/gfx12: insert wait between VMEM WaW
+      aco: force linear for event_vmem_sample and event_vmem_bvh
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's farm due to maintenance
+      Revert "ci: disable Collabora's farm due to maintenance"
+
+Simon Ser (1):
+      dri: revert INVALID modifier special-casing
 
 Timothy Arceri (1):
-      nir: allow loops with unknown induction var initialiser to unroll
+      glsl: drop unused ir_equals.cpp
 
