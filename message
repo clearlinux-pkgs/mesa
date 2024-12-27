@@ -1,48 +1,23 @@
-Updating from e129d242f60ad7a28bd678a1d29545745701bc4d to 5b4b195f1b741b1374113dc8913fc99ce9f5ebc8
+Updating from 5b4b195f1b741b1374113dc8913fc99ce9f5ebc8 to 5e4aeb3ad798a0ea3dee30e7942d71c49087b8ec
 
-Chen, Phoebe (1):
-      amd/vpelib: Refactor YUV format check
-
-Evan (1):
-      amd/vpelib: Shaper Refactor
+David Rosca (2):
+      ac/parse_ib: Parse VCN IB_COMMON_OP_WRITEMEMORY
+      radv/amdgpu: Set VCN version for ac_parse_ib
 
 Georg Lehmann (1):
-      nir: optimize unpacking 8bit values from a 64bit source
+      aco/isel: skip and(exec) for top level demote_if/terminate_if
 
-Hsieh, Mike (1):
-      amd/vpelib: Refactor 3D LUT parameters
+Lionel Landwerlin (1):
+      anv: fix index buffer size changes
 
-Ian Romanick (24):
-      brw: Add devinfo parameter to fs_inst::regs_read
-      brw: Basic infrastructure to store convergent values as scalars
-      brw/lower: Allow uniform and scalar sources to many kinds of SEND
-      brw/nir: Fix up handling of sources that might be convergent vectors
-      brw/lower: Adjust source stride on DF is_scalar sources to MAD on Gfx9
-      brw/lower: Properly handle UNIFORM globals address in lower_trace_ray_logical_send
-      brw/emit: Allow scalar sources to HF math instructions on Xe2
-      brw/nir: Prepare try_rebuild_source for scalar values
-      brw/build: Prepare BROADCAST for scalar values
-      brw/nir: Treat load_const as convergent
-      brw/nir: Treat some load_uniform as convergent
-      brw/nir: Treat load_workgroup_id as convergent
-      brw/nir: Treat some ALU results as convergent
-      brw/nir: Treat some load_ubo as convergent
-      brw/nir: Treat load_inline_data_intel as convergent
-      brw/nir: Treat load_reloc_const_intel as convergent
-      brw/nir: Treat load_btd_{global,local}_arg_addr_intel and load_btd_shader_type_intel as convergent
-      brw/nir: Treat load_*_uniform_block_intel as convergent
-      brw/nir: Treat some resource_intel as convergent
-      brw/nir: Eliminate nir_to_brw_state::uniform_values
-      brw/nir: Don't try optimize around emit_uniformize
-      brw/nir: Simplify get_nir_image_intrinsic_image and get_nir_buffer_intrinsic_index
-      brw/nir: Treat some ballot as convergent
-      brw/nir: Don't generate scalar byte to float conversions on DG2+ in optimize_extract_to_float
+Marek Olšák (1):
+      amd: update addrlib
 
-Marek Olšák (6):
-      ac: remove unused code
-      ac/llvm: remove unused code
-      radeonsi/ci: update failures
-      radeonsi: fix a TCS regression
-      radeonsi: switch si_get_blitter_vs to IO intrinsics
-      radeonsi: remove unused code
+Qiang Yu (6):
+      radeonsi: fix OpenCL shader compile fail
+      ac/nir: lower access for shared and scratch memory
+      ac,radv: move ac_nir_lower_bit_size_callback to common place
+      radeonsi: fix OpenCL piglit tests fails when using ACO
+      radeonsi: replace ac_nir_lower_subdword_loads
+      ac: remove ac_nir_lower_subdword_loads
 
