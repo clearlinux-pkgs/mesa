@@ -1,23 +1,24 @@
-Updating from 5b4b195f1b741b1374113dc8913fc99ce9f5ebc8 to 5e4aeb3ad798a0ea3dee30e7942d71c49087b8ec
+Updating from 5e4aeb3ad798a0ea3dee30e7942d71c49087b8ec to de2cb4a7d3558dc6f18b18f5fbe52ceea8c64d48
 
-David Rosca (2):
-      ac/parse_ib: Parse VCN IB_COMMON_OP_WRITEMEMORY
-      radv/amdgpu: Set VCN version for ac_parse_ib
+David Rosca (1):
+      frontends/va: Fix deinterlace filter
 
-Georg Lehmann (1):
-      aco/isel: skip and(exec) for top level demote_if/terminate_if
-
-Lionel Landwerlin (1):
-      anv: fix index buffer size changes
-
-Marek Olšák (1):
-      amd: update addrlib
-
-Qiang Yu (6):
-      radeonsi: fix OpenCL shader compile fail
-      ac/nir: lower access for shared and scratch memory
-      ac,radv: move ac_nir_lower_bit_size_callback to common place
-      radeonsi: fix OpenCL piglit tests fails when using ACO
-      radeonsi: replace ac_nir_lower_subdword_loads
-      ac: remove ac_nir_lower_subdword_loads
+Timur Kristóf (17):
+      ac/nir/ngg: Use ac_nir_prerast_out in mesh shader lowering.
+      ac/nir/ngg: Simplify updating mesh shader output info.
+      ac/nir: Pass ac_nir_prerast_out to ac_nir_export_parameters.
+      ac/nir: Pass ac_nir_prerast_out to ac_nir_export_position.
+      ac/nir: Introduce ac_nir_store_parameters_to_attr_ring.
+      ac/nir/ngg: Refactor VS/TES attribute ring stores.
+      ac/nir/ngg: Refactor GS attribute ring stores.
+      ac/nir/ngg: Refactor export_pos0_wait_attr_ring.
+      ac/nir/ngg: Remove dead code for attribute ring stores.
+      ac/nir/ngg: Move wait attr ring workaround for GS to better place.
+      ac/nir/ngg: Move emitting GS vertex param exports to if.
+      ac/nir/ngg: Refactor storing per-primitive primitive ID to attribute ring.
+      ac/nir: Mark when pre-rast output is used as varying or sysval.
+      ac/nir: Split GS output usage masks to varying and sysval masks.
+      ac/nir: Only export positions when they are really system values.
+      ac/nir: Only export parameters when they are actually varying.
+      ac/nir: Only store params to attribute ring that are varying.
 
