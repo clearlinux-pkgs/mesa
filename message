@@ -1,24 +1,25 @@
-Updating from 5e4aeb3ad798a0ea3dee30e7942d71c49087b8ec to de2cb4a7d3558dc6f18b18f5fbe52ceea8c64d48
+Updating from de2cb4a7d3558dc6f18b18f5fbe52ceea8c64d48 to bf7a0285cfd2cc2f8bf97fd19273e921efdbf3e8
 
-David Rosca (1):
-      frontends/va: Fix deinterlace filter
-
-Timur Kristóf (17):
-      ac/nir/ngg: Use ac_nir_prerast_out in mesh shader lowering.
-      ac/nir/ngg: Simplify updating mesh shader output info.
-      ac/nir: Pass ac_nir_prerast_out to ac_nir_export_parameters.
-      ac/nir: Pass ac_nir_prerast_out to ac_nir_export_position.
-      ac/nir: Introduce ac_nir_store_parameters_to_attr_ring.
-      ac/nir/ngg: Refactor VS/TES attribute ring stores.
-      ac/nir/ngg: Refactor GS attribute ring stores.
-      ac/nir/ngg: Refactor export_pos0_wait_attr_ring.
-      ac/nir/ngg: Remove dead code for attribute ring stores.
-      ac/nir/ngg: Move wait attr ring workaround for GS to better place.
-      ac/nir/ngg: Move emitting GS vertex param exports to if.
-      ac/nir/ngg: Refactor storing per-primitive primitive ID to attribute ring.
-      ac/nir: Mark when pre-rast output is used as varying or sysval.
-      ac/nir: Split GS output usage masks to varying and sysval masks.
-      ac/nir: Only export positions when they are really system values.
-      ac/nir: Only export parameters when they are actually varying.
-      ac/nir: Only store params to attribute ring that are varying.
+Samuel Pitoiset (21):
+      radv: add support for VK_PRIMITIVE_TOPOLOGY_META_RECT_LIST_MESA
+      radv: use VK_PRIMITIVE_TOPOLOGY_META_RECT_LIST_MESA for meta pipelines
+      radv: pass extra graphics pipeline create info using pNext
+      radv/meta: rework creating meta pipelines for query resolves
+      radv/meta: convert the copy/fill pipelines to vk_meta
+      radv/meta: convert the copy VRS to HTILE pipelines to vk_meta
+      radv/meta: convert the FMASK expand pipelines to vk_meta
+      radv/meta: convert the FMASK copy pipelines to vk_meta
+      radv/meta: convert the DCC retile pipelines to vk_meta
+      radv/meta: convert the HTILE expand CS pipelines to vk_meta
+      radv/meta: convert the DCC decompress CS pipelines to vk_meta
+      radv/meta: convert the clear HTILE mask pipelines to vk_meta
+      radv/meta: convert the DCC comp-to-single pipelines to vk_meta
+      radv/meta: convert DGC pipeline layout to vk_meta
+      radv/meta: convert the query resolve pipelines to vk_meta
+      radv/meta: convert the image-to-buffer pipelines to vk_meta
+      radv/meta: convert the buffer-to-image pipelines to vk_meta
+      radv/meta: convert the image-to-image pipelines to vk_meta
+      radv/meta: convert the clear image pipelines to vk_meta
+      radv/meta: convert the compute resolve pipelines to vk_meta
+      radv/meta: remove radv_meta_create_compute_pipeline()
 
