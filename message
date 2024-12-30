@@ -1,25 +1,51 @@
-Updating from de2cb4a7d3558dc6f18b18f5fbe52ceea8c64d48 to bf7a0285cfd2cc2f8bf97fd19273e921efdbf3e8
+Updating from bf7a0285cfd2cc2f8bf97fd19273e921efdbf3e8 to e112e2b0477fc36280a695c5d31e5345770b362f
 
-Samuel Pitoiset (21):
-      radv: add support for VK_PRIMITIVE_TOPOLOGY_META_RECT_LIST_MESA
-      radv: use VK_PRIMITIVE_TOPOLOGY_META_RECT_LIST_MESA for meta pipelines
-      radv: pass extra graphics pipeline create info using pNext
-      radv/meta: rework creating meta pipelines for query resolves
-      radv/meta: convert the copy/fill pipelines to vk_meta
-      radv/meta: convert the copy VRS to HTILE pipelines to vk_meta
-      radv/meta: convert the FMASK expand pipelines to vk_meta
-      radv/meta: convert the FMASK copy pipelines to vk_meta
-      radv/meta: convert the DCC retile pipelines to vk_meta
-      radv/meta: convert the HTILE expand CS pipelines to vk_meta
-      radv/meta: convert the DCC decompress CS pipelines to vk_meta
-      radv/meta: convert the clear HTILE mask pipelines to vk_meta
-      radv/meta: convert the DCC comp-to-single pipelines to vk_meta
-      radv/meta: convert DGC pipeline layout to vk_meta
-      radv/meta: convert the query resolve pipelines to vk_meta
-      radv/meta: convert the image-to-buffer pipelines to vk_meta
-      radv/meta: convert the buffer-to-image pipelines to vk_meta
-      radv/meta: convert the image-to-image pipelines to vk_meta
-      radv/meta: convert the clear image pipelines to vk_meta
-      radv/meta: convert the compute resolve pipelines to vk_meta
-      radv/meta: remove radv_meta_create_compute_pipeline()
+Caio Oliveira (9):
+      intel/brw: Rename brw_inst.h to brw_eu_inst.h
+      intel/brw: Rename brw_inst to brw_eu_inst
+      intel/brw: Rename brw_compact_inst to brw_eu_compact_inst
+      intel/brw: Rename brw_inst_bits/set_bits to brw_eu_inst_bits/set_bits
+      intel/brw: Rename brw_inst_* helpers to brw_eu_inst_*
+      intel/brw: Rename brw_compact_inst_* helpers to brw_eu_compact_inst_*
+      intel/brw: Gather brw_reg related implementations in brw_reg.cpp
+      intel/brw: Add missing call to invalidate analysis
+      intel/brw: Move two NIR passes to brw_nir.c
+
+Georg Lehmann (10):
+      aco: rename p_early_exit_if to if_not
+      aco: allow p_exit_early_if_not with exec condition
+      aco/insert_exec: exit shader using exec for top level discard
+      aco: create v_cmpx with s_andn2(exec, v_cmp)
+      nir: sink/move alu with two identical, non constant sources.
+      amd: switch to FRONT_FACE_ALL_BITS(0)
+      nir: add load_front_face_fsign
+      amd: support load_front_face_fsign
+      nir: add nir_alu_srcs_negative_equal_typed
+      nir,amd: optimize front_face ? a : -a
+
+Juan A. Suarez Romero (5):
+      v3d: fix BO allocation
+      v3d: remove intermediate variable
+      v3d: find linear modifier when required
+      vc4: find linear modifier when required
+      v3d/ci: clean some asan failures
+
+Pavel Ondračka (1):
+      r300: disable microtiling for scanout buffers
+
+Qiang Yu (3):
+      radeonsi: fix global access ACO compile fail when OpenCL
+      radeonsi: enable ACO by default for pre-GFX10 GPUs
+      radeonsi: unify disk cache id no matter use_aco or not
+
+Rob Clark (1):
+      freedreno/registers: Add GMU_CORE_FW_VERSION
+
+Valentine Burley (6):
+      panvk/ci: Move the fractions out of suites
+      panvk/ci: Bump the number of tests per group for G52
+      lavapipe/ci: Bump the number of tests per group
+      lavapipe/ci: Update expectations
+      venus/ci: Bump the number of tests per group
+      venus/ci: Update expectations
 
