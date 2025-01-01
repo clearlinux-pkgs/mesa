@@ -1,51 +1,52 @@
-Updating from bf7a0285cfd2cc2f8bf97fd19273e921efdbf3e8 to e112e2b0477fc36280a695c5d31e5345770b362f
+Updating from e112e2b0477fc36280a695c5d31e5345770b362f to 3ba3e007503c1c94f079c9d78d541ae722031add
 
-Caio Oliveira (9):
-      intel/brw: Rename brw_inst.h to brw_eu_inst.h
-      intel/brw: Rename brw_inst to brw_eu_inst
-      intel/brw: Rename brw_compact_inst to brw_eu_compact_inst
-      intel/brw: Rename brw_inst_bits/set_bits to brw_eu_inst_bits/set_bits
-      intel/brw: Rename brw_inst_* helpers to brw_eu_inst_*
-      intel/brw: Rename brw_compact_inst_* helpers to brw_eu_compact_inst_*
-      intel/brw: Gather brw_reg related implementations in brw_reg.cpp
-      intel/brw: Add missing call to invalidate analysis
-      intel/brw: Move two NIR passes to brw_nir.c
+Caio Oliveira (1):
+      gallium/meson: Ensure all needed sym_config are set.
 
-Georg Lehmann (10):
-      aco: rename p_early_exit_if to if_not
-      aco: allow p_exit_early_if_not with exec condition
-      aco/insert_exec: exit shader using exec for top level discard
-      aco: create v_cmpx with s_andn2(exec, v_cmp)
-      nir: sink/move alu with two identical, non constant sources.
-      amd: switch to FRONT_FACE_ALL_BITS(0)
-      nir: add load_front_face_fsign
-      amd: support load_front_face_fsign
-      nir: add nir_alu_srcs_negative_equal_typed
-      nir,amd: optimize front_face ? a : -a
+Marek Olšák (1):
+      radeonsi: fix a front face regression (crash)
 
-Juan A. Suarez Romero (5):
-      v3d: fix BO allocation
-      v3d: remove intermediate variable
-      v3d: find linear modifier when required
-      vc4: find linear modifier when required
-      v3d/ci: clean some asan failures
+Martin Roukala (né Peres) (8):
+      ci/test: make the .b2c-${arch}-test-* jobs provide a default b2c
+      ci/tests: de-duplicate the b2c version between architectures
+      ci/test: uprev to b2c v0.9.14
+      freedreno/ci: use the default b2c
+      r300/ci: use the default b2c
+      i915g/ci: use the default b2c version
+      ci/b2c: modernize the job description to use run_*
+      ci/b2c: run the machine registration check before the test container
 
-Pavel Ondračka (1):
-      r300: disable microtiling for scanout buffers
+Sagar Ghuge (3):
+      intel/genxml: Update SAMPLER_STATE structure
+      anv: Switch to ANISOTROPIC_FAST filter mode
+      iris: Switch to ANISOTROPIC_FAST filter mode
 
-Qiang Yu (3):
-      radeonsi: fix global access ACO compile fail when OpenCL
-      radeonsi: enable ACO by default for pre-GFX10 GPUs
-      radeonsi: unify disk cache id no matter use_aco or not
+Samuel Pitoiset (17):
+      vulkan: add a new vk_meta option to use the rect list pipeline path
+      vulkan: use the meta pipeline cache for graphics pipelines
+      radv/meta: convert the HTILE expand GFX pipelines to vk_meta
+      radv/meta: convert the HW resolve GFX pipelines to vk_meta
+      radv/meta: convert the fast-clear GFX pipelines to vk_meta
+      radv/meta: convert the blit GFX pipelines to vk_meta
+      radv/meta: convert the clear GFX pipelines to vk_meta
+      radv/meta: convert the resolve GFX pipelines to vk_meta
+      radv/meta: use only one push constant range for blit2d pipelines
+      radv/meta: convert the blit2d GFX pipelines to vk_meta
+      radv/meta: remove unused radv_meta_create_xxx() helpers
+      radv: fix destroying DGC pipelines
+      radv: disable RT with LLVM completely
+      radv/meta: remove a workaround for building accel structs with LLVM
+      radv/meta: always initialize emulated etc2 on-demand
+      radv/meta: move initializing emulated astc to radv_device_init_meta()
+      radv/meta: stop initializing RT accel structs
 
-Rob Clark (1):
-      freedreno/registers: Add GMU_CORE_FW_VERSION
+Timur Kristóf (2):
+      aco: Update documentation
+      radv: Add some documentation.
 
-Valentine Burley (6):
-      panvk/ci: Move the fractions out of suites
-      panvk/ci: Bump the number of tests per group for G52
-      lavapipe/ci: Bump the number of tests per group
+Valentine Burley (4):
+      angle/ci: Update expectations
+      zink/ci: Update expectations for ANV
+      turnip/ci: Document flake
       lavapipe/ci: Update expectations
-      venus/ci: Bump the number of tests per group
-      venus/ci: Update expectations
 
