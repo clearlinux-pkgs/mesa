@@ -1,52 +1,8 @@
-Updating from e112e2b0477fc36280a695c5d31e5345770b362f to 3ba3e007503c1c94f079c9d78d541ae722031add
-
-Caio Oliveira (1):
-      gallium/meson: Ensure all needed sym_config are set.
+Updating from 3ba3e007503c1c94f079c9d78d541ae722031add to 76e542e92a17baf3ec250b8e2c09c8b6ccfe0730
 
 Marek Olšák (1):
-      radeonsi: fix a front face regression (crash)
+      nir/opt_load_store_vectorize: make hole_size signed to indicate overlapping loads
 
-Martin Roukala (né Peres) (8):
-      ci/test: make the .b2c-${arch}-test-* jobs provide a default b2c
-      ci/tests: de-duplicate the b2c version between architectures
-      ci/test: uprev to b2c v0.9.14
-      freedreno/ci: use the default b2c
-      r300/ci: use the default b2c
-      i915g/ci: use the default b2c version
-      ci/b2c: modernize the job description to use run_*
-      ci/b2c: run the machine registration check before the test container
-
-Sagar Ghuge (3):
-      intel/genxml: Update SAMPLER_STATE structure
-      anv: Switch to ANISOTROPIC_FAST filter mode
-      iris: Switch to ANISOTROPIC_FAST filter mode
-
-Samuel Pitoiset (17):
-      vulkan: add a new vk_meta option to use the rect list pipeline path
-      vulkan: use the meta pipeline cache for graphics pipelines
-      radv/meta: convert the HTILE expand GFX pipelines to vk_meta
-      radv/meta: convert the HW resolve GFX pipelines to vk_meta
-      radv/meta: convert the fast-clear GFX pipelines to vk_meta
-      radv/meta: convert the blit GFX pipelines to vk_meta
-      radv/meta: convert the clear GFX pipelines to vk_meta
-      radv/meta: convert the resolve GFX pipelines to vk_meta
-      radv/meta: use only one push constant range for blit2d pipelines
-      radv/meta: convert the blit2d GFX pipelines to vk_meta
-      radv/meta: remove unused radv_meta_create_xxx() helpers
-      radv: fix destroying DGC pipelines
-      radv: disable RT with LLVM completely
-      radv/meta: remove a workaround for building accel structs with LLVM
-      radv/meta: always initialize emulated etc2 on-demand
-      radv/meta: move initializing emulated astc to radv_device_init_meta()
-      radv/meta: stop initializing RT accel structs
-
-Timur Kristóf (2):
-      aco: Update documentation
-      radv: Add some documentation.
-
-Valentine Burley (4):
-      angle/ci: Update expectations
-      zink/ci: Update expectations for ANV
-      turnip/ci: Document flake
-      lavapipe/ci: Update expectations
+Mel Henning (1):
+      nak: Add nak_nir_mark_lcssa_invariants
 
