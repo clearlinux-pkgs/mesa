@@ -1,8 +1,140 @@
-Updating from 3ba3e007503c1c94f079c9d78d541ae722031add to 76e542e92a17baf3ec250b8e2c09c8b6ccfe0730
+Updating from 76e542e92a17baf3ec250b8e2c09c8b6ccfe0730 to 3474978d523b3e8c28bf27afd229af0cc0e2c205
 
-Marek Olšák (1):
-      nir/opt_load_store_vectorize: make hole_size signed to indicate overlapping loads
+Antonio Ospite (30):
+      ci: set GIT_COMMITTER_DATE in a locale-agnostic format
+      ci/deqp: refresh some patches to apply on top of recent VK-GL-CTS
+      ci/deqp: cherry-pick fixes for building GL and GLES deqp on Android
+      ci/deqp: enable building testlog tools on Android too
+      ci/deqp: collect the mustpass lists also for the android target
+      ci/android: fix problem with deqp version file when building for Android
+      ci/android: build deqp for DEQP_API=VK
+      ci/android: build llvmpipe driver for Android by forcing llvm fallback
+      ci/android: don't copy the DRI drivers which are not needed anymore
+      ci/android: restart all services after copying the new mesa libraries
+      ci/android: handle premature exit of .gitlab-ci/cuttlefish-runner.sh
+      ci/android: update version of cuttlefish host tools
+      ci/android: add sudo to EPHEMERAL deps for debian/x86_64_test-android.sh
+      ci/android: get custom cuttlefish images from the S3
+      ci/android: make cuttlefish-runner.sh more robust against different Android images
+      ci/android: better separate host and guest mesa artifacts
+      ci/android: use a custom kernel when launching cuttlefish
+      ci/android: fix warning when using chown
+      ci/android: fix result dir for Android guest execution of deqp-runner
+      ci/android: don't call cuttlefish-host-resources script
+      ci/android: reorder PATH and LD_LIBRARY_PATH values to clarify priority
+      ci/android: also copy mesa vulkan libraries to the Android guest
+      ci/android: update list of deqp files pushed to the guest system
+      ci/android: use a native adb connection
+      ci/android: set XDG_CACHE_HOME and pass --shader-cache-dir to deqp-runner
+      ci/android: use a /data/deqp subdirectory on guest to store dEQP files
+      ci/android: set VK_DRIVER_FILES before launching cuttlefish
+      ci/android: add ci rules to test llvmpipe on Android
+      ci/android: add ci rules to test venus on Android
+      ci/android: upgrade DEBIAN_TEST_ANDROID_TAG
 
-Mel Henning (1):
-      nak: Add nak_nir_mark_lcssa_invariants
+Caio Oliveira (2):
+      intel/brw: Remove 'fs' prefix from passes filenames
+      intel/brw: Remove 'fs' prefix from passes and related functions
+
+David Rosca (5):
+      radeonsi/vcn: Change required FW version for rc_per_pic_ex on VCN3
+      radv/video: Fix DPB tier2 surface params
+      radv/video: Use correct array index for decode target and DPB images
+      radv/video: Remove dt_field_mode handling code
+      radv: Fix sampling from image layers of video decode target
+
+Dylan Baker (2):
+      intel/tests: Fix coverity warning about possibly leaked memory
+      intel/tests: Fix missing assignment of error condition
+
+Eric Engestrom (2):
+      ci/meson: make meson wrap fallback list more readable
+      ci/meson: add FORCE_FALLBACK_FOR variable for build jobs to use
+
+Erik Faye-Lund (5):
+      docs: fixup broken markup
+      docs: fixup link in radv docs
+      docs/ci: treat warnings as errors
+      docs: update panvk status
+      panvk/ci: drop needless envvar
+
+Georg Lehmann (2):
+      aco/optimizer: fix signed extract of sub dword temps with SDWA
+      aco/insert_exec: reset top exec for p_discard_if
+
+Janne Grunau (1):
+      panvk: Silence warning on incompatible DRM render devices
+
+José Roberto de Souza (1):
+      iris: Add support for damage region
+
+Konstantin Seurer (1):
+      radv: Fix encoding empty acceleration structures
+
+Lionel Landwerlin (1):
+      anv: limit the memcpy data for push constants
+
+Marek Olšák (32):
+      radv: reduce maxGeometryShaderInvocations to 32
+      ac/nir: handle disabled PS VGPRs in ac_nir_load_arg_at_offset
+      amd: lower load_pixel_coord in NIR
+      amd: lower load_frag_coord in NIR
+      amd: lower load_local_invocation_id in NIR
+      amd: lower load_first_vertex/base_instance/draw_id/view_index in NIR
+      amd: lower load_invocation_id in NIR
+      amd: lower load_sample_id in NIR
+      amd: lower load_sample_pos in NIR
+      amd: lower load_frag_shading_rate in NIR
+      amd: lower load_front_face in NIR
+      ac,radeonsi: move load_vector_arg flags to common code
+      amd: lower load_barycentric_pixel/centroid/sample in NIR
+      amd: lower load_barycentric_at_offset in NIR
+      amd: lower load_gs_wave_id_amd in NIR
+      amd: lower load_vertex_id/instance_id and overwrite_vs_arguments in NIR
+      radeonsi: don't return 0 from si_get_max_workgroup_size
+      ac/nir: extract a load_subgroup_id lowered helper
+      amd: lower load_local_invocation_index in NIR
+      amd: lower load_subgroup_invocation in NIR
+      amd: lower load_tess_rel_patch_id/primitive_id/tess_coord and overwrite.. in NIR
+      ac/llvm: remove already lowered cases
+      ac/nir: lower more loads in ac_nir_lower_intrinsics_to_args instead of drivers
+      ac/nir: clean up ac_nir_lower_indirect_derefs
+      ac/nir: add helper ac_nir_load_arg_upper_bound
+      ac/nir: set arg_upper_bound_u32 for vs_rel_patch_id
+      ac/nir: split local_invocation_ids to 3 separate VGPR inputs
+      ac/nir: set upper ranges for range analysis while lowering system values
+      radeonsi: lower sysval intrinsics as late as possible
+      amd: optimize atomics before lowering intrinsics
+      radeonsi: use nir_opt_sink
+      radeonsi: use nir_opt_move
+
+Mel Henning (12):
+      compiler/rust/bitset: Fix the bitset iterator
+      compiler/rust: Fix running tests
+      compiler/rust/bitset: Add a basic test
+      compiler/rust/bitset: Removed unused start param
+      compiler/rust/bitset: Make BitSetIter private
+      compiler/rust/bitset: impl FromIterator
+      compiler/rust/bitset: Remove impl Not
+      compiler/rust/bitset: Add a lazy expression API
+      compiler/rust/bitset: Take a stream in union_with
+      nak: Migrate liveness to new bitset expression api
+      compiler/rust/bitset: Don't expose words
+      compiler/rust/bitset: Test next_unset()
+
+Rob Clark (4):
+      freedreno/a6xx: Align lrz setup with tu
+      freedreno/a6xx: Add nolrzfc debug option
+      freedreno/a6xx: Align lrz height to 32
+      tu: Align lrz height to 32
+
+Tapani Pälli (1):
+      dri: remove GLsync typedef
+
+Timur Kristóf (5):
+      radv: Implement FS layer ID input as a system value.
+      Revert "nir/opt_varyings: Add workaround for RADV mesh shader multiview."
+      ac/nir/ngg: Don't mark multiview layer output as varying.
+      amd: Set lower_layer_fs_input_to_sysval in common code, not in drivers.
+      radv: Rename layer_input to reads_layer in PS info.
 
