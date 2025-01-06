@@ -1,5 +1,11 @@
-Updating from fb59a9fb08629b6871a87983e1feabdfd032e5ff to e33452a6d36338f7fc5b3931844afc84c91192a5
+Updating from e33452a6d36338f7fc5b3931844afc84c91192a5 to 5ecea6ec4a63d6a8fe083452f5e2914eadb8162b
 
-David Rosca (1):
-      ac/surface: Don't force linear for VIDEO_REFERENCE with emulated image opcodes
+Erik Faye-Lund (2):
+      pan/ci: update t760 checksum
+      pan/ci: update opencl expectations
+
+Hyunjun Ko (3):
+      anv: define ANV_VIDEO_H264_MAX_DPB_SLOTS
+      anv: Enable remapping picture ID
+      anv: handle negative value of slot index for h265 decoding.
 
