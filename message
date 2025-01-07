@@ -1,11 +1,116 @@
-Updating from e33452a6d36338f7fc5b3931844afc84c91192a5 to 5ecea6ec4a63d6a8fe083452f5e2914eadb8162b
+Updating from 5ecea6ec4a63d6a8fe083452f5e2914eadb8162b to 3800f0af412542be83e42c57edf780f0b9f9a093
 
-Erik Faye-Lund (2):
-      pan/ci: update t760 checksum
-      pan/ci: update opencl expectations
+Alyssa Rosenzweig (1):
+      glsl: fix glsl_get_word_size_align_bytes
 
-Hyunjun Ko (3):
-      anv: define ANV_VIDEO_H264_MAX_DPB_SLOTS
-      anv: Enable remapping picture ID
-      anv: handle negative value of slot index for h265 decoding.
+Chia-I Wu (9):
+      vulkan: add vk_device_get_timestamp
+      vulkan: add common GetPhysicalDeviceCalibrateableTimeDomainsKHR
+      vulkan: add common GetCalibratedTimestampsKHR
+      anv: use common calibrated timestamp support partially
+      hasvk: use common calibrated timestamp support
+      radv: use common calibrated timestamp support
+      tu: use common calibrated timestamp support
+      nvk: use common calibrated timestamp support
+      hk: remove calibrated timestamp support
+
+David Rosca (8):
+      frontends/va: Get buffer feedback with locked mutex in MapBuffer
+      radeonsi/vcn: Use compute only context
+      gallium/vl: Fix unbinding sampler views
+      gallium/vl: Create sampler state also when gfx is not supported
+      gallium/vl: Add rgba compute shader
+      gallium/vl: Add param to create compute only vl_compositor
+      gallium: Add param to create compute only multimedia context
+      frontends/va: Use compute only context if driver prefers compute
+
+Deborah Brouwer (8):
+      ci: pipeline_message: catch module loading errors
+      ci: pipeline_message: improve job list formatting
+      ci: pipeline_message: add test to parse error logs
+      ci: pipeline_message: ignore `error_type` errors
+      ci: pipeline_message: ignore harmless build logs
+      ci: pipeline_message: ignore `generated` errors
+      ci: pipeline_message: parse `fatal` messages
+      ci: pipeline_message: reset empty errors
+
+Feng Jiang (1):
+      virgl: Ensure that PIPE_SHADER_CAP_MAX_CONST_BUFFERS is less than PIPE_MAX_CONSTANT_BUFFERS
+
+Icenowy Zheng (1):
+      zink: do not set transform feedback bits when not available
+
+José Roberto de Souza (1):
+      anv: Allow larger SLM sizes for task and mesh shader
+
+Karol Herbst (3):
+      rusticl/device: fix CL_DEVICE_HALF_FP_CONFIG query
+      rusticl/device: fix default device enumeration
+      rusticl/kernel: take set kernel arguments into account for CL_KERNEL_LOCAL_MEM_SIZE
+
+Kenneth Graunke (4):
+      brw: Limit maximum push UBO ranges to 64 registers in the NIR pass.
+      brw: Don't shrink UBO push ranges in the backend
+      brw: Delete pull constant lowering
+      brw: Delete assign_constant_locations and push_constant_loc[]
+
+Konstantin Seurer (5):
+      llvmpipe: Disable anisotropic filtering for explicit lod
+      llvmpipe: Use a simpler and faster AF implementation
+      llvmpipe: Remove unused AF code
+      llvmpipe: Move max_anisotropy to static sampler state
+      lavapipe: Advertise vulkan 1.4
+
+Marek Olšák (33):
+      nir: set nir_io_semantics::num_slots to at least 1 in build helpers
+      nir: set src_type and dest_type to float implicitly for IO build helpers
+      nir: don't set num_slots/src/dest_type/write_mask when they're set automatically
+      nir: flip the early exit condition in nir_lower_io_temporaries
+      nir: remove redundant option linker_ignore_precision
+      nir: use IO intrinsics in nir_lower_bitmap
+      nir: use IO intrinsics in nir_lower_drawpixels
+      mesa: remove unused PROGRAM_SYSTEM_VALUE
+      mesa: remove unused PROGRAM_WRITE_ONLY
+      st/mesa: fold st_translate_prog_to_nir into prog_to_nir
+      st/mesa: run DCE before st_unlower_io_to_vars
+      st/mesa: use IO intrinsics in st_nir_lower_fog
+      st/mesa: use IO intrinsics in st_nir_lower_position_invariant
+      st/mesa: switch ATI_fs to IO intrinsics
+      st/mesa: unlower IO for internal shaders if needed
+      st/mesa: switch Z/S DrawPixels shaders to IO intrinsics
+      st/mesa: switch GL_SELECT shader to IO intrinsics
+      st/mesa: switch st_nir_make_passthrough_shader to IO intrinsics
+      st/mesa: switch st_pbo_create_vs and st_pbo_create_gs to IO intrinsics
+      st/mesa: switch PBO create_fs to IO intrinsics
+      st/mesa: switch st_nir_make_clearcolor_shader to IO intrinsics
+      st/mesa: don't use nir_copy_var
+      st/mesa: recompute IO bases for ARB_vp/fp
+      glsl: remove unused code
+      glsl: fix corruption due to blake3 hash not being set for nir_opt_undef
+      radeonsi: ignore PIPE_RESOURCE_FLAG_TEXTURING_MORE_LIKELY for TC-compatible HTILE
+      radeonsi: simplify and fix enable_tc_compatible_htile_next_clear logic
+      radeonsi: re-enable non-TC-compatible HTILE for write-only Z/S
+      mesa: switch ARB_vp/fp to IO intrinsics
+      mesa: switch fixed-func fragment program to IO intrinsics
+      nir/algebraic: use is_used_once for comparison patterns
+      nir/algebraic: add and improve pack/unpack patterns
+      nir/algebraic: optimize pack_split(unpack(a).x, unpack(a).y) -> a
+
+Martin Krastev (1):
+      svga/ci: enable vmware farm
+
+Martin Roukala (né Peres) (3):
+      radeonsi/ci: update the vangogh expectations
+      radeonsi/ci: run on ACO changes
+      radeonsi/ci: run a fraction of glcts-vangogh in pre-merge
+
+Patrick Lerda (1):
+      winsys/radeon: fix radeon_winsys_bo_from_handle() related race condition
+
+Pavel Ondračka (1):
+      r300/ci: update CI expectations
+
+Tapani Pälli (2):
+      anv: handle mesh in sbe_primitive_id_override
+      iris: initialize whole pipe_box struct for memcmp
 
