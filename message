@@ -1,40 +1,72 @@
-Updating from 35f175301db430440599698774f73ec4378becdc to 8ac4744706be59246611d044bcccc2e17a81a881
+Updating from 8ac4744706be59246611d044bcccc2e17a81a881 to 58b604abdf4094d6c0cb22334a2e56475e4b643f
 
-Boris Brezillon (2):
-      panvk: Don't invalidate the viewport on cull mode updates
-      panvk/jm: Fix depth clipping with small viewport depth range
+Aleksi Sapon (1):
+      meson: fix finding Python on Windows
 
-Christian Gmeiner (2):
-      etnaviv: isa: Support src2 for texld
-      etnaviv: isa: Support src2 for texldb and texldl
+Alyssa Rosenzweig (2):
+      nir: pass a callback to nir_lower_robust_access
+      nir/lower_robust_access: fix robustness with atomic swap
 
-Daniel Schürmann (1):
-      nir/divergence: change nir_has_divergent_loop() to return true only for divergent breaks
+David Heidelberg (6):
+      docs: remove deprecated component list and licenses
+      docs: Clarify project name and include Mesa3D
+      docs: move license(s) to licenses directory
+      c11: use SPDX-License-Identifier header
+      licenses: add missing licenses
+      drm-uapi: update licenses statement
 
-Friedrich Vock (1):
-      aco: Fix dead instruction/index handling for try_insert_saveexec_out_of_loop
+Eric Engestrom (2):
+      docs/release-calendar: add 25.0 branchpoint and RCs schedule
+      docs/release-calendar: fixup sed fail
 
-Georg Lehmann (2):
-      radv: run peephole_select in optimize_nir_algebraic
-      nir/peephole_select: allow load_vector/scalar_arg_amd
+Eric R. Smith (3):
+      panfrost: Allow ATEST input to be a FAU index
+      panfrost: ensure sample_mask is written before color
+      panvk: re-enable fragmentStoresAndAtomics for v10
 
-Lucas Stach (6):
-      etnaviv: isa: fix typo in SRC2_USE map
-      etnaviv: Update headers from rnndb
-      etnaviv: clean up component use setting in linker
-      etnaviv: fix flatshading
-      etnaviv: emit full varying component use
-      ci/etnaviv: drop GC2000 flat shading fails
+Erik Faye-Lund (1):
+      docs/panfrost: document vulkan support
 
-Mary Guillemard (7):
-      util/bitpack_helpers: Use UINT64_MAX instead of ~0ULL
-      util/bitpack_helpers: Make fixed packs CL safe
-      nir,agx: Allow nir_precomp_print_blob to print a static array
-      libcl: Respect NDEBUG for assert
-      panforst: Update ForEachMacros
-      pan/genxml: Move pack_header to an external file
-      libcl: Add VkQueryType and VkQueryResultFlagBits definitions
+José Roberto de Souza (2):
+      anv: Check VkResult of perf query batch buffer
+      anv: Check VkResult main batch buffer before start companion batch buffer
 
-Rhys Perry (1):
-      aco/tests: fix skip_lines=True with remaining characters in matches
+Juan A. Suarez Romero (7):
+      freedreno: a2xx: fix maybe uninitialized variable
+      radeonsi/vcn: fix maybe uninitialized
+      v3d: fix format overflow error
+      virgl: fix member access to a NULL pointer struct
+      etnaviv: cast assertion
+      ci/build: add ubsan build jobs
+      broadcom/ci: add ubsan jobs for broadcom drivers
+
+Lionel Landwerlin (2):
+      anv: use the correct MOCS for depth destinations
+      intel: fix generation shader on Gfx9
+
+Matt Turner (1):
+      intel/decoder: Avoid duplicate symbols when expat is not available
+
+Mike Blumenkrantz (2):
+      zink: restrict implicit feedback loop detection using miplevels/layers
+      mesa: use default params for clearbuffer functions
+
+Samuel Pitoiset (3):
+      radv: program DB_RENDER_OVERRIDE correctly on GFX12
+      ac/nir: fix lowering subgroup ID for compute shaders on GFX12
+      ac/nir: fix a comment typo in load_subgroup_id_lowered()
+
+Valentine Burley (8):
+      virgl/ci: Disable virgl-iris-traces-performance
+      virgl/ci: Migrate the two iris jobs to 1130g7-volteer
+      anv/ci: Increase anv-tgl-angle parallelism to 2
+      zink/ci: Migrate the two TGL traces jobs to 1130g7-volteer
+      zink/ci: Increase zink-anv-tgl parallelism to 4
+      ci: Add Valentine to the restricted traces access list
+      freedreno/ci: Update a630-traces-restricted checksums
+      zink/ci: Skip crashing trace in zink-anv-tgl-traces-restricted
+
+Vinson Lee (2):
+      vulkan: Add missing va_end
+      intel/elk: Fix assert with side effect
 
