@@ -1,72 +1,109 @@
-Updating from 8ac4744706be59246611d044bcccc2e17a81a881 to 58b604abdf4094d6c0cb22334a2e56475e4b643f
+Updating from 58b604abdf4094d6c0cb22334a2e56475e4b643f to 7fadd864dd8eb12968b86ae8f820718e793ef6e3
 
-Aleksi Sapon (1):
-      meson: fix finding Python on Windows
+Boris Brezillon (6):
+      panvk: Fix an alignment issue on x86
+      panvk: Fix panvk_priv_mem_bo() on 32-bit platforms
+      panfrost/ci: Add panvk and panfrost to the debian-x86_32 job
+      pan/genxml: s/PAN_PAN_HELPERS_H/PAN_PACK_HELPERS_H/
+      pan/genxml: Include pan_pack_helpers.h instead of copying it
+      pan/genxml: Generate MALI_XXX_PACKED_T macros
 
-Alyssa Rosenzweig (2):
-      nir: pass a callback to nir_lower_robust_access
-      nir/lower_robust_access: fix robustness with atomic swap
+Caio Oliveira (7):
+      intel/compiler: Use INFINITY spill cost to represent no_spill
+      util: Add operator new[] to linear context helper declarations
+      intel/compiler: Use linear allocator for ACP trees in copy-prop
+      intel/brw: Remove uses of VLAs
+      intel/elk: Add ELK_MAX_MRF_ALL for static allocating arrays
+      intel/elk: Remove uses of VLAs
+      intel/elk: Fix typo in assertion
 
-David Heidelberg (6):
-      docs: remove deprecated component list and licenses
-      docs: Clarify project name and include Mesa3D
-      docs: move license(s) to licenses directory
-      c11: use SPDX-License-Identifier header
-      licenses: add missing licenses
-      drm-uapi: update licenses statement
+David Rosca (2):
+      radeonsi/vcn: Fix crash when failing to allocate internal buffers
+      frontends/va: Only report surface alignment when non-zero
 
-Eric Engestrom (2):
-      docs/release-calendar: add 25.0 branchpoint and RCs schedule
-      docs/release-calendar: fixup sed fail
-
-Eric R. Smith (3):
-      panfrost: Allow ATEST input to be a FAU index
-      panfrost: ensure sample_mask is written before color
-      panvk: re-enable fragmentStoresAndAtomics for v10
+Eric Engestrom (1):
+      docs/release-calendar: push the 25.0 branchpoint back by 2 weeks
 
 Erik Faye-Lund (1):
-      docs/panfrost: document vulkan support
+      docs: update panvk status
 
 José Roberto de Souza (2):
-      anv: Check VkResult of perf query batch buffer
-      anv: Check VkResult main batch buffer before start companion batch buffer
+      iris: Drop BO_ALLOC_COHERENT from iris_utrace_create_ts_buffer()
+      iris: Rename BO_ALLOC_COHERENT to BO_ALLOC_CACHED_COHERENT
 
-Juan A. Suarez Romero (7):
-      freedreno: a2xx: fix maybe uninitialized variable
-      radeonsi/vcn: fix maybe uninitialized
-      v3d: fix format overflow error
-      virgl: fix member access to a NULL pointer struct
-      etnaviv: cast assertion
-      ci/build: add ubsan build jobs
-      broadcom/ci: add ubsan jobs for broadcom drivers
+Karol Herbst (7):
+      rusticl/kernel: fix image_size of 1D buffer images
+      rusticl/mesa: set take_ownership to true for set_sampler_views
+      rusticl/mesa: add PipeSamplerView wrapper
+      rusticl/mesa: use PipeSamplerView over the raw type
+      rusticl/kernel: create the sampler views earlier
+      rusticl/mem: add functions to create sampler and image views to Image
+      rusticl/mesa: rework image and sampler view creation APIs
 
-Lionel Landwerlin (2):
-      anv: use the correct MOCS for depth destinations
-      intel: fix generation shader on Gfx9
+Konstantin Seurer (3):
+      meson: Require glslangValidator when building lavapipe
+      lavapipe: Check the pool type in handle_reset_query_pool
+      meson: Include the loader subdir when building lavapipe
 
-Matt Turner (1):
-      intel/decoder: Avoid duplicate symbols when expat is not available
+Lucas Stach (3):
+      etnaviv: split dummy RT backing store from reloc
+      etnaviv: fix rendering without vertex buffers/attributes
+      ci/etnaviv: drop failures caused by missing vertex attributes
 
-Mike Blumenkrantz (2):
-      zink: restrict implicit feedback loop detection using miplevels/layers
-      mesa: use default params for clearbuffer functions
+Lukas Lipp (1):
+      wsi: Fix wrong function name for lvp wsi metal surface
 
-Samuel Pitoiset (3):
-      radv: program DB_RENDER_OVERRIDE correctly on GFX12
-      ac/nir: fix lowering subgroup ID for compute shaders on GFX12
-      ac/nir: fix a comment typo in load_subgroup_id_lowered()
+M Henning (1):
+      nak/hw_runner: Skip copy call for empty buffer
 
-Valentine Burley (8):
-      virgl/ci: Disable virgl-iris-traces-performance
-      virgl/ci: Migrate the two iris jobs to 1130g7-volteer
-      anv/ci: Increase anv-tgl-angle parallelism to 2
-      zink/ci: Migrate the two TGL traces jobs to 1130g7-volteer
-      zink/ci: Increase zink-anv-tgl parallelism to 4
-      ci: Add Valentine to the restricted traces access list
-      freedreno/ci: Update a630-traces-restricted checksums
-      zink/ci: Skip crashing trace in zink-anv-tgl-traces-restricted
+Marek Olšák (14):
+      ac/nir: sort xfb info to facilitate vectorization of xfb stores
+      ac/nir: vectorize streamout stores for legacy pipeline optimally
+      ac/nir/ngg: vectorize streamout stores for NGG optimally
+      ac/nir/ngg: fold so_vertex_index * so_stride into immediate offset
+      ac/nir/ngg: export positions after streamout to improve performance
+      ac,radeonsi: scalarize overfetching loads
+      radeonsi: lower descriptors sooner to allow vectorizing descriptor loads
+      amd: vectorize SMEM loads aggressively, allow overfetching for ACO
+      radeonsi: don't set BREAK_PRIMGRP/WAVE_AT_EOI when tessellation is disabled
+      radeonsi: only set BREAK_PRIMGRP/WAVE_AT_EOI when TES/GS need PrimID sysval after TES
+      radeonsi/gfx12: enable alt_hiz_logic
+      radeonsi/gfx12: set DIS_PG_SIZE_ADJUST_FOR_STRIP after shader compilation
+      radeonsi/gfx12: use ACO if LLVM is 19 or older
+      radeonsi/gfx12: use ACO for streamout because it's faster
 
-Vinson Lee (2):
-      vulkan: Add missing va_end
-      intel/elk: Fix assert with side effect
+Mary Guillemard (7):
+      pan/genxml: Switch unpack to use uint32_t
+      pan/genxml: Emit struct details before pack function
+      pan/genxml: Move [un]pack internals to use packed structs
+      pan/genxml: Enforce explicit packed types on pan_[un]pack
+      pan/genxml: Switch pan_section_ptr to cast to packed type
+      pan/genxml: Switch [un]pack codegen to macros
+      pan/genxml: Switch __gen_unpack to macros
+
+Mel Henning (2):
+      nak: Add ShaderModel::hw_reserved_gprs()
+      nak: Add gpr_limit_from_local_size
+
+Michael Cheng (1):
+      intel : Expose Shader hashes for utrace and Perfetto
+
+Mike Blumenkrantz (4):
+      zink: rework query result checking
+      zink: use internal map flag for qbos
+      glsl: make gl_ViewID_OVR visible to all shader stages
+      glsl: enable OVR_multiview if OVR_multiview2 is enabled
+
+Rhys Perry (2):
+      aco/util: fix bit_reference::operator&=
+      aco: use VOP3 v_mov_b16 if necessary
+
+Sagar Ghuge (4):
+      intel/genxml: Update URB related instructions and structures
+      iris: Use 3DSTATE_URB_ALLOC_* instructions
+      blorp: Use 3DSTATE_URB_ALLOC_* instructions
+      anv: Use 3DSTATE_URB_ALLOC_* instructions
+
+Timur Kristóf (1):
+      radv: Only print "testing use only" message on GFX12+.
 
