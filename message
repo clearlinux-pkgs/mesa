@@ -1,32 +1,108 @@
-Updating from bed748d5f6db4e583bc97e28d1045913d54dee86 to d37cbfad66d324c225ac81aa2166638e980ba8fd
+Updating from d37cbfad66d324c225ac81aa2166638e980ba8fd to 5bd9693578f35f4a4e73d9d3f00a8150d84cd17e
 
-Brian Paul (1):
-      svga: fix printing 64-bit value for 32-bit build
+Alyssa Rosenzweig (2):
+      libagx: add agx_barrier enum
+      nir,asahi,hk: add barrier argument to MESA_DISPATCH_PRECOMP
 
-Caio Oliveira (4):
-      util/ra: Move less used data out of ra_node
-      util/ra: Don't store a pointer to graph per ra_node
-      util/ra: Bump the initial size of adjacency lists
-      util/ra: Don't store a pointer to a ra_regs per ra_reg
+Antonio Ospite (1):
+      ci/android: fix meson C++ cross-compiler argument detection
 
-David Rosca (1):
-      frontends/va: Allow creating DRM PRIME surfaces without surface descriptor
+Bo Hu (3):
+      gfxstream-guest: update offset to correct value
+      update decoder.py to clean up un-used ApiCallInfo
+      remove the mReconstructionMutex in load
 
-Job Noorman (1):
-      ir3: emit uniform iadd3 as two adds
+Caio Oliveira (2):
+      intel/brw: Rename brw_fs_validate to brw_validate
+      docs: Update syntax on Performance tips page
 
-Nanley Chery (1):
-      anv: Slow clear if fast-clear cost is not mitigated
+Caleb Callaway (1):
+      docs: Intel GPU performance tips
+
+Chia-I Wu (8):
+      panvk: no need to zero availability on query create
+      panvk: no need to check query count on query create
+      panvk: no need to zero results on query reset
+      panvk/csf: no need to sb wait on query begin
+      panvk/csf: no need to sb wait on query end
+      panvk/csf: no need to sb wait on query copy
+      panvk/csf: no need to flush caches after query copy
+      panvk/csf: add a comment on query synchronization
+
+Christopher Michael (5):
+      v3d: Add check to see if v3d supports cpu_queue
+      v3d: Add check to see if v3d supports multisync
+      v3d: Add support for timestamp queries
+      v3d: Add support for time elapsed queries
+      v3d: Add support for PIPE_QUERY_TIMESTAMP_DISJOINT
+
+Danylo Piliaiev (5):
+      ir3: Make allocation of consts more generic and order independent
+      ir3: Use generic consts alloc for driver params
+      tu,ir3: Make push consts be able to start from higher than c0.x offsets
+      ir3: Use generic const alloc for everything and call it once
+      tu: Allocate consts for driver params as early as possible
+
+Jason Macnak (3):
+      Simplify ApiInfo
+      Pass VkSnapshotApiCallInfo-s through VkDecoderGlobalState
+      Update VkDecoderSnapshot locking
+
+Marek Olšák (2):
+      ac/nir: remove broadcast_last_cbuf because it can be deduced from NIR
+      ac/nir: split ac_nir_lower_ps into 2 passes
+
+Matthew Brost (1):
+      anv/xe: Bind queue per anv_queue
+
+Nanley Chery (8):
+      iris: Reduce fast-clear post-amble flushes
+      iris: Use L3 Fabric flush in fast-clear post-amble on TGL
+      anv: Reduce fast-clear post-amble synchronization
+      anv: Use L3 Fabric flush in fast-clear post-amble on TGL
+      anv: Drop bpc check for non-zero fast clears
+      Revert "anv: turn off non zero fast clears for CCS_E"
+      anv: Inline can_fast_clear_with_non_zero_color
+      anv: Allow more single subresource fast-clears with FCV
 
 Samuel Pitoiset (3):
-      ac/gpu_info: add cp_dma_use_L2
-      radv: fix CP DMA clears/copies on GFX12
-      aco: always use ds_bpermute for shuffle/rotate on GFX12
+      radv: fix configuring the attribute ring size on GFX12
+      radv: rename attr_ring to ge_rings
+      radv: change the BASE_HI field for VGT_TF_MEMORY_BASE_HI on GFX12
 
-Sergi Blanch Torne (2):
-      ci: disable Collabora's farm due to maintenance
-      Revert "ci: disable Collabora's farm due to maintenance"
+Serdar Kocdemir (4):
+      Change C style cast on extension structs
+      Wrap queue related functions on codegen
+      The BumpPool of VkStream is not freeAll'ed
+      gfxstream: add VK_DRIVER_FILES to devenv
 
-Zan Dobersek (1):
-      freedreno/registers: fix RBBM_PRIMCTR understanding and usage
+Timur Kristóf (22):
+      ac/nir: Move ac_nir_lower_bit_size_callback to ac_nir.c
+      ac/nir: Move ac_nir_get_mem_access_flags to ac_nir.c
+      ac/nir: Move ac_nir callback functions to ac_nir.c
+      ac/nir: Move ac_set_nir_options to ac_nir.c
+      ac: Stop including nir.h in ac_shader_util.h
+      ac/nir: Rename emit_streamout to ac_nir_emit_legacy_streamout
+      ac: Move ac_nir_config struct to ac_nir.h
+      ac/nir: Move ac_nir_create_gs_copy_shader to separate file.
+      ac/nir: Expose ac_nir_unpack_value in ac_nir_helpers.h
+      ac/nir: Move ac_nir_lower_intrinsics_to_args to separate file.
+      ac/nir: Move ac_nir_lower_legacy_vs to separate file.
+      ac/nir: Move ac_nir_lower_legacy_gs to separate file.
+      ac/nir: Move ac_nir_gs_shader_query declaration to ac_nir_helpers.h
+      ac/nir: Move ac_nir_opt_pack_half to separate file.
+      ac/nir: Move ac_nir_lower_mem_access_bit_sizes to separate file.
+      ac/nir: Move ac_nir_lower_sin_cos to separate file.
+      ac/nir: Move pre-rasterization related utilities in separate file.
+      ac/nir: Rename ac_nir_lower_ngg_ms to ac_nir_lower_ngg_mesh.
+      ac/nir: Move ac_nir_lower_ngg_mesh to separate file.
+      ac: Move AC_HS_MSG_VOTE_LDS_BYTES to ac_shader_util.h
+      ac: Stop including ac_nir.h from ac_shader_util.c
+      ac/nir: Move all ac_nir_* files to a new folder.
+
+Vinson Lee (1):
+      hk: Fix build error with static_assert
+
+sergiuferentz (1):
+      Use try_unbox in VkDescriptorBufferInfo
 
