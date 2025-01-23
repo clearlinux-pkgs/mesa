@@ -6,10 +6,10 @@
 # autospec commit: 94c6be0
 #
 Name     : mesa
-Version  : 24.3+3129.g09aa19fb641
-Release  : 857
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/mesa-24.3+3129-g09aa19fb641.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/mesa-24.3+3129-g09aa19fb641.tar.bz2
+Version  : 24.3+3232.gef3091736c3
+Release  : 858
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/mesa-24.3+3232-gef3091736c3.tar.bz2
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/mesa-24.3+3232-gef3091736c3.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
 Source2  : https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.86.crate
 Source3  : https://static.crates.io/crates/quote/quote-1.0.33.crate
@@ -192,7 +192,7 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8
+%setup -q -n mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f
 cd %{_builddir}
 tar xf %{_sourcedir}/paste-1.0.14.crate
 cd %{_builddir}
@@ -203,26 +203,26 @@ cd %{_builddir}
 tar xf %{_sourcedir}/quote-1.0.33.crate
 cd %{_builddir}
 tar xf %{_sourcedir}/unicode-ident-1.0.12.crate
-cd %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8
+cd %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f
 mkdir -p ./subprojects/paste-1.0.14
-cp -r %{_builddir}/paste-1.0.14/* %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/./subprojects/paste-1.0.14
+cp -r %{_builddir}/paste-1.0.14/* %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/./subprojects/paste-1.0.14
 mkdir -p ./subprojects/syn-2.0.68
-cp -r %{_builddir}/syn-2.0.68/* %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/./subprojects/syn-2.0.68
+cp -r %{_builddir}/syn-2.0.68/* %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/./subprojects/syn-2.0.68
 mkdir -p ./subprojects/proc-macro2-1.0.86
-cp -r %{_builddir}/proc-macro2-1.0.86/* %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/./subprojects/proc-macro2-1.0.86
+cp -r %{_builddir}/proc-macro2-1.0.86/* %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/./subprojects/proc-macro2-1.0.86
 mkdir -p ./subprojects/quote-1.0.33
-cp -r %{_builddir}/quote-1.0.33/* %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/./subprojects/quote-1.0.33
+cp -r %{_builddir}/quote-1.0.33/* %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/./subprojects/quote-1.0.33
 mkdir -p ./subprojects/unicode-ident-1.0.12
-cp -r %{_builddir}/unicode-ident-1.0.12/* %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/./subprojects/unicode-ident-1.0.12
+cp -r %{_builddir}/unicode-ident-1.0.12/* %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/./subprojects/unicode-ident-1.0.12
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
 pushd ..
-cp -a mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8 build32
+cp -a mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f build32
 popd
 pushd ..
-cp -a mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8 buildavx2
+cp -a mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f buildavx2
 popd
 
 %build
@@ -269,7 +269,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1737539440
+export SOURCE_DATE_EPOCH=1737629907
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -388,11 +388,11 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/licenses/Apache-2.0 %{buildroot}/usr/share/package-licenses/mesa/ef39856b9b4ca101d453780fa97b117064273142 || :
-cp %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
-cp %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/src/vulkan/runtime/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8/src/vulkan/screenshot-layer/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/c9e89168faf085da40190d78ade18b3a5d826c76 || :
+cp %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/licenses/Apache-2.0 %{buildroot}/usr/share/package-licenses/mesa/ef39856b9b4ca101d453780fa97b117064273142 || :
+cp %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/src/vulkan/runtime/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-ef3091736c3ec63303e483d8f3cb0924b4a4fa4f/src/vulkan/screenshot-layer/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/c9e89168faf085da40190d78ade18b3a5d826c76 || :
 cp %{_builddir}/paste-1.0.14/LICENSE-APACHE %{buildroot}/usr/share/package-licenses/mesa/6e5c4711bcae04967d7f5b5e01cf56ae03bebe7a || :
 cp %{_builddir}/paste-1.0.14/LICENSE-MIT %{buildroot}/usr/share/package-licenses/mesa/ce3a2603094e799f42ce99c40941544dfcc5c4a5 || :
 cp %{_builddir}/proc-macro2-1.0.86/LICENSE-APACHE %{buildroot}/usr/share/package-licenses/mesa/6e5c4711bcae04967d7f5b5e01cf56ae03bebe7a || :
@@ -566,7 +566,6 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /V3/usr/lib64/libVkLayer_MESA_overlay.so
 /V3/usr/lib64/libgallium-25.0.0-devel.so
 /V3/usr/lib64/libgbm.so.1.0.0
-/V3/usr/lib64/libglapi.so.0.0.0
 /V3/usr/lib64/libvulkan_intel.so
 /V3/usr/lib64/libvulkan_intel_hasvk.so
 /V3/usr/lib64/libvulkan_lvp.so
@@ -625,9 +624,6 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /usr/lib64/libgbm.so
 /usr/lib64/libgbm.so.1
 /usr/lib64/libgbm.so.1.0.0
-/usr/lib64/libglapi.so
-/usr/lib64/libglapi.so.0
-/usr/lib64/libglapi.so.0.0.0
 /usr/lib64/libvulkan_intel.so
 /usr/lib64/libvulkan_intel_hasvk.so
 /usr/lib64/libvulkan_lvp.so
@@ -699,9 +695,6 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /usr/lib32/libgbm.so
 /usr/lib32/libgbm.so.1
 /usr/lib32/libgbm.so.1.0.0
-/usr/lib32/libglapi.so
-/usr/lib32/libglapi.so.0
-/usr/lib32/libglapi.so.0.0.0
 /usr/lib32/libvulkan_intel.so
 /usr/lib32/libvulkan_intel_hasvk.so
 /usr/lib32/libvulkan_lvp.so
