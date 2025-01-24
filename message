@@ -1,143 +1,90 @@
-Updating from 09aa19fb64134b6eb8ee8fb030e5222bcc21b8e8 to ef3091736c3ec63303e483d8f3cb0924b4a4fa4f
+Updating from ef3091736c3ec63303e483d8f3cb0924b4a4fa4f to 7ddb49653d4f0e90681be37eb98c7a1954eb82eb
 
-Caterina Shablia (9):
-      pan/bi: fix a typo
-      pan/va: fix WMASK packing
-      pan/bi: handle read_invocation
-      pan/bi: handle ballot, ballot_relaxed and as_uniform
-      pan/bi: lower some subgroup intrinsics
-      pan/bi: lower the rest of subgroup ops using nir_lower_subgroups
-      pan/bi: add a MEMORY_BARRIER pseudo-instruction
-      pan/bi: handle barriers with SUBGROUP scope
-      panvk: enable subgroupSizeControl
+Benjamin Lee (3):
+      panfrost: remove incorrect usage of MALI_PIXEL_KILL_STRONG_EARLY
+      panfrost: fix hang by using MALI_PIXEL_KILL_WEAK_EARLY in color preload
+      panfrost: remove is_blit flag
 
-Connor Abbott (6):
-      vk/bvh: Add default stubs for unsupported entrypoints
-      anv: Delete acceleration structure stubs
-      radv: Delete acceleration structure stubs
-      tu: Use image view format for sysmem resolves
-      tu: Handle non-identity GMEM swaps when resolving
-      tu: Handle non-identity GMEM swaps for input attachments
+Caio Oliveira (2):
+      intel/brw: Rely on existing helper for dispatch width of geometry stages
+      intel/elk: Fix wrong destination to memset
 
-Daniel Schürmann (11):
-      aco/jump_threading: don't remove loop preheaders
-      aco/assembler: Find loop exits using the successor's loop nest depth
-      aco: consider s_cbranch_exec* instructions in needs_exec_mask()
-      aco/lower_branches: do eliminate_useless_exec_writes_in_block() during branch lowering.
-      aco/lower_branches: implement try_remove_simple_block() in lower_branches()
-      aco: move try_merge_break_with_continue() to lower_branches()
-      aco/lower_branches: allow for non-fallthrough loop exits in try_merge_break_with_continue()
-      aco: delete aco_jump_threading.cpp
-      aco/lower_branches: stitch linear blocks if there is exactly one successor with one predecessor
-      nir/from_ssa: only consider divergence if requested
-      Revert "nir: add nir_clear_divergence_info, use it in nir_opt_varyings"
+Connor Abbott (3):
+      tu, freedreno: Write PC_DGEN_SU_CONSERVATIVE_RAS_CNTL
+      tu: Stop setting binning fields on a7xx
+      tu: Support VK_EXT_conservative_rasterization on a7xx
 
-Danylo Piliaiev (1):
-      ir3: Consider const alloc alignment in free space size calcs
+Corentin Noël (1):
+      virgl/ci: Remove screen size arguments
 
-David Rosca (13):
-      gallium/vl: Fix sampler view components for Y8_400 format
-      gallium/vl: Add vl compositor layer mirror
-      gallium/vl: Clear remaining planes in YUV conversion
-      gallium/vl: Use matrix for scale and crop in cs compositor
-      gallium/vl: Implement rotation and mirror in cs compositor
-      frontends/va: Simplify format check in PutSurface
-      frontends/va: Disable color conversion for luma-only source formats
-      frontends/va: Stop using util_compute_blit
-      frontends/va: Refactor vlVaPostProcCompositor to be usable outside processing
-      frontends/va: Support rotation and mirror for processing
-      frontends/va: Implement format conversions in PutImage/GetImage
-      gallium/auxiliary: Remove util_compute_blit
-      radeonsi: Fix reporting support for AV1 Profile2
+Erik Faye-Lund (2):
+      panvk: do not expose EXT_subgroup_size_control on bifrost
+      panvk/ci: update expected failures
 
-Eric Engestrom (4):
-      docs: update calendar for 24.3.4
-      docs: add release notes for 24.3.4
-      docs: add sha sum for 24.3.4
-      docs/release-calendar: push back the 24.3.x releases by one week
+Igor Torrente (1):
+      Zink: Add NVK to the non `driver_workarounds.implicit_sync` list
 
-Erik Faye-Lund (9):
-      panfrost: reuse tiler hierarchy mask selection from panvk
-      panfrost: limit maximum texture size
-      panfrost: do not artificially limit texture-sizes
-      pan/midgard: use macros for mir_prev_op / mir_next_op
-      pan/midgard: constify pointers
-      pan/compiler: don't pass midgard_instruction by value
-      panvk: expose subgroup operations
-      panvk: expose vk1.1 on v10 hardware
-      pan/bi: bump iter_count to 2000
+Job Noorman (1):
+      ir3: disable alias.rt pre-a750
 
-Job Noorman (26):
-      ir3/parser: fix parsing integer as float
-      ir3/a7xx: properly handle alias scope and type
-      ir3/a7xx: disasm halfness of alias dst
-      ir3/a7xx: implement and document unknown alias field
-      ir3/a7xx: handle alias.rt dst
-      ir3/a7xx: document alias.rt
-      ir3/print: add support for alias
-      ir3: teach backend about alias
-      ir3: introduce alias goups
-      ir3: add validation for alias
-      ir3: add ir3_compiler::has_alias
-      ir3: add support for alias.tex
-      ir3: optimize alias register allocation by reusing GPRs
-      ir3/legalize: insert (ss) to read consts after stc
-      ir3/legalize: insert (sy) to read consts after ldc.k
-      ir3/dce: support partial writes from collects
-      ir3: add some preamble helpers
-      ir3: make find_end a global helper
-      tu,ir3: inform ir3 of dynamically remapped FS slots
-      ir3: make shader output struct non-anonymous
-      ir3: reuse ir3_find_output in ir3_find_output_regid
-      tu: add chip param to tu6_emit_fs_outputs
-      tu: add support for aliased render target components
-      freedreno: add chip param to emit_fs_output
-      freedreno: add support for aliased render target components
-      ir3: add support for alias.rt
+José Roberto de Souza (2):
+      anv: Return scanout PAT entry for scanout and external buffers in discrete GPUs
+      anv: Allow WSI blit_src Image to be kept compressed when transitioning to VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
 
-Jose Maria Casanova Crespo (1):
-      v3d: Apply FBO resources invalidations on job creation
+Karmjit Mahil (1):
+      tu: Free pre_chain patchpoint data
 
-Lars-Ivar Hesselberg Simonsen (6):
-      panvk: Fix valgrind issue in nir_lower_descriptors
-      panvk: Fix valgrind issue in panvk_compile_shaders
-      pan/genxml: Fix vertex_packet Attribute on v9+
-      panvk: Use LD_VAR[_IMM] + ADs for varyings
-      panvk: Limit AD allocation to max var loads in v9+
-      panvk: Use LD_VAR_BUF[_IMM] when possible
+Konstantin Seurer (3):
+      llvmpipe: Fix half-pixel sample offset with AF
+      llvmpipe: Avoid a crash when using 5 coords with AF
+      radv/rmv: Use radv_rmv_log_resource_destroy more
 
-Lucas Stach (1):
-      etnaviv: track TS flushed status as bool
+Lars-Ivar Hesselberg Simonsen (1):
+      panvk: Fix barriers in secondary cmdbufs w/o rp's
 
-Marek Olšák (6):
-      zink/ci: skip KHR-Single-GL46...SizedDeclarationsPrimitive due to random timeout
-      dri: put shared-glapi into libgallium.*.so
-      glapi: stop using the remap table
-      glapi: remove the remap table
-      loader: improve the existing loader-libgallium non-matching version error
-      glapi: rename exported symbols so as not to conflict with old libglapi
+Lionel Landwerlin (5):
+      brw: fix CSE with negation
+      anv: don't look at pipelines to figure out CPS values
+      compiler: add VARYING_BIT_PRIMITIVE_COUNT
+      anv/Wa_18019110168: copy the primitive count writes
+      anv/brw: rework primitive count writing
 
-Martin Roukala (né Peres) (3):
-      zink/ci: update nvk expectations
-      zink/ci: update RADV expectations
-      radeonsi/ci: update the vangogh expectations
+Mike Blumenkrantz (4):
+      zink: add radv ci fail
+      zink: disable shader objects when viewmask is set
+      zink: fix replacing incompatible pipelines
+      egl: never select swrast for vmwgfx
 
-Mike Blumenkrantz (1):
-      zink: fix viewport detection when switching last stage shaders
-
-Pierre-Eric Pelloux-Prayer (2):
-      amd: add ac_drm_device_get_cookie
-      radeonsi: use ac_drm_device_get_cookie
+Rhys Perry (12):
+      v3dv: fix SSA dominance error
+      microsoft/compiler: invalidate loop analysis in dxil_nir_lower_double_math
+      microsoft/compiler: repair SSA in dxil_nir_split_tess_ctrl
+      d3d12: fix phi handling in d3d12_lower_primitive_id
+      d3d12: store only once in d3d12_emit_points
+      nir: rerun loop analysis if the parameters change
+      nir/loop_analyze: use a sparse array and stop indexing SSA defs
+      nir/gcm: stop preserving nir_metadata_loop_analysis
+      nir/liveness: stop requiring instr indices
+      nir/validate: validate metadata
+      nir/validate: preserve dominance during SSA validation
+      nir/validate: validate ssa dominance by default
 
 Samuel Pitoiset (1):
-      radv: re-emit streamout state for GFX12 when the user SGPR changes
+      radv: exclude layer when recomputing FS input bases
 
-Valentine Burley (1):
-      freedreno/ci: Update expectations
+Sergi Blanch Torne (1):
+      ci: disable Collabora's farm due to unexpected power cut
 
-Vignesh Raman (1):
-      ci: use CI_PROJECT_NAME for artifacts name
+Tapani Pälli (1):
+      anv: set dependency between SF_CLIP and CC_PTR states
 
-duncan.hopkins (1):
-      zink: stop zink_set_primitive_emulation_keys producing geometry shaders on platforms that do not support them.
+Timothy Arceri (2):
+      glsl: fix num_views validation message
+      glsl: fix num_views linker error
+
+Valentine Burley (4):
+      panfrost/ci: Revert to 6.6 kernel on G57
+      amd/ci: Add lava-hp-x360-14a-cb0001xx-zork and use it for VA-API testing
+      amd/ci: Run full radeonsi-raven-va job pre-merge
+      freedreno/ci: Update expectations again
 
