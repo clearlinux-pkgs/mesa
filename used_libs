@@ -1,5 +1,4 @@
 ld-linux-x86-64.so.2
-ld-linux.so.2
 libLLVM.so.19.1
 libSPIRV-Tools-link.so
 libSPIRV-Tools-opt.so
@@ -11,8 +10,13 @@ libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1
 libelf.so.1
+libepoxy.so.0
 libexpat.so.1
 libgcc_s.so.1
+libgdk-3.so.0
+libglib-2.0.so.0
+libgobject-2.0.so.0
+libgtk-3.so.0
 libm.so.6
 libstdc++.so.6
 libudev.so.1
