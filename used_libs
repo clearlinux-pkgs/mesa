@@ -1,11 +1,11 @@
 ld-linux-x86-64.so.2
-libLLVM.so.19.1
+libLLVM.so.20.1
 libSPIRV-Tools-link.so
 libSPIRV-Tools-opt.so
 libSPIRV-Tools.so
 libX11.so.6
 libc.so.6
-libclang-cpp.so.19.1
+libclang-cpp.so.20.1
 libdrm.so.2
 libdrm_amdgpu.so.1
 libdrm_intel.so.1

@@ -1,0 +1,29 @@
+i686_dir="%{_builddir}/build32"
+deps_dir="${i686_dir}/subprojects/packagefiles"
+
+for dir in "${deps_dir}"/*; do
+    name=$(basename "${dir}")
+    mv "${dir}/meson.build" "${i686_dir}/subprojects/${name}"-*
+done
+
+cat > "${i686_dir}/lib32" <<END
+[binaries]
+c = ['gcc', '-m32']
+cpp = ['g++', '-m32']
+rust = ['rustc', '--target', 'i686-unknown-linux-gnu']
+pkgconfig = 'pkg-config'
+cups-config = 'cups-config'
+llvm-config = 'llvm-config'
+strip = 'strip'
+
+[built-in options]
+libdir = 'lib32'
+
+[host_machine]
+system = 'linux'
+subsystem = 'linux'
+kernel = 'linux'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'
+END
