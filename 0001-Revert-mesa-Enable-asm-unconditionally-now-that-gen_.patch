@@ -11,8 +11,8 @@ This reverts commit 20294dceebc23236e33b22578245f7e6f41b6997.
  2 files changed, 67 insertions(+), 33 deletions(-)
 
 diff -purN mesa-mesa-20.2.3.org/meson_options.txt mesa-mesa-20.2.3/meson_options.txt
---- mesa-mesa-20.2.3.org/meson_options.txt	2020-11-23 19:03:03.000000000 +0000
-+++ mesa-mesa-20.2.3/meson_options.txt	2020-11-24 18:30:29.806314331 +0000
+--- mesa-mesa-20.2.3.org/meson.options	2020-11-23 19:03:03.000000000 +0000
++++ mesa-mesa-20.2.3/meson.options	2020-11-24 18:30:29.806314331 +0000
 @@ -249,6 +249,12 @@ option(
    description : 'Enable GLVND support.'
  )
