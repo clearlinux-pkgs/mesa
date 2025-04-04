@@ -6,3 +6,4 @@
 -Dintel-clc=system
 --cross-file lib32
 -Dgallium-rusticl=false
+-Dmesa-clc=system
