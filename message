@@ -1,9 +1,50 @@
-Updating from 9f9233c033bd42f0c3d6c55d7c090cffbee2739c to d8782db3a48205f71c03feaf7ddfb092b8a523b2
+Updating from d8782db3a48205f71c03feaf7ddfb092b8a523b2 to c1ce2dcc66df091026a87c9e2ed58a75b8fcf67a
 
-Caio Oliveira (2):
-      brw: Fix invalid memory access in scoreboard test
-      brw: Fix memory leak in EU validation tests
+Antonio Ospite (1):
+      meson: pass --no-pager to `meson configure` command
 
-Timothy Arceri (1):
-      glsl: fix regression in ubo cloning
+Ashley Smith (1):
+      pan/bi: Enable ARB_shader_clock extension support
+
+Caio Oliveira (1):
+      intel/executor: Fix check for open() failure
+
+Georg Lehmann (1):
+      spirv: fix cooperative matrix by value function params
+
+Juan A. Suarez Romero (1):
+      v3dv: don't check if DRM device is master
+
+Marek Olšák (8):
+      glsl: return failure from gl_nir_validate_first_and_last_interface_explicit_locations
+      glsl: return failure from varying_matches_assign_locations
+      glsl: return failure from remove_unused_io_vars
+      glsl: stop calling nir_opt_combine_stores (redundant with nir_opt_vectorize_io)
+      glsl: remove a deprecated comment about nir_compact_varyings
+      glsl: always return true at the end of link_varyings
+      glsl: move code after link_varyings into link_varyings
+      st/mesa: don't do nir_remove_dead_variables on in/out twice
+
+Patrick Lerda (3):
+      r600: move stores to the end of shader when required
+      r600: fix clear_depth_stencil refcnt imbalance
+      r600: fix textures with swizzles limited to zero and one
+
+Samuel Pitoiset (12):
+      ac,radv: remove has_scheduled_fence_dependency
+      ac/gpu_info: bump required DRM minor version to 3.42.0 (kernel 5.15+)
+      radv: remove useless FDCC_ENABLE bitfield clear on GFX12
+      radv: tidy up radv_emit_raster_state()
+      radv: restore DB_DFSM_CONTROL properly when POPS isn't used
+      radv: tidy up radv_emit_db_shader_control()
+      radv: split framebuffer color state emission for GFX12
+      radv: split framebuffer depth/stencil state emission for GFX12
+      radv: split null framebuffer state emission for GFX12
+      radv: stop emitting CB_FDCC_CONTROL to zero on GFX11-GFX11.5
+      radv: do not emit the VRS surface VA when it's not enabled
+      radv: add a fuction to emit the VRS surface on GFX11
+
+Sergi Blanch Torne (2):
+      ci: disable Collabora's farm due to maintenance
+      Revert "ci: disable Collabora's farm due to maintenance"
 
