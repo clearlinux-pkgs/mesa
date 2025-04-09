@@ -1,111 +1,58 @@
-Updating from c1ce2dcc66df091026a87c9e2ed58a75b8fcf67a to 5c11b4a03971e1f09bb86d026447d04e9522ef33
+Updating from 5c11b4a03971e1f09bb86d026447d04e9522ef33 to b148f57daddd575f8ab41e8baa96ed3dcf39a098
 
-Alyssa Rosenzweig (1):
-      glsl_to_nir: upcast array indices
+Alyssa Rosenzweig (13):
+      nir/lower_blend: refactor logicop variables
+      nir/lower_blend: disable logic ops for unsupported formats
+      nir/lower_tex: use vector_insert_imm
+      vk/meta: generalize 3D blit code
+      asahi,hk: disentangle logicop_enable
+      agx: optimize nonuniform offset
+      hk: drop dead todo
+      hk: fix last VGT output component limits
+      hk: support colour <--> z/s copies
+      hk: advertise VK_EXT_queue_family_foreign
+      hk: advertise maintenance7
+      hk: advertise maintenance8
+      bin: add rebase mode
+
+Benjamin Lee (1):
+      panfrost/va: remove dead code for packing BRANCHZI.i16 lane mod
 
 Caio Oliveira (1):
-      brw: Properly handle cooperative matrices created with constants
+      spirv: Take a separate data_type when creating a new vtn_variable
 
-Collabora's Gfx CI Team (1):
-      Uprev ANGLE to 3818d37d5e94317f01810053b8f28c1f1e8b98e6
+Faith Ekstrand (2):
+      nak: Allow predicates in nir_intrinsic_as_uniform
+      nak: Add a NAK_DEBUG=panic option
 
-Corentin Noël (1):
-      ci: Uprev virglrenderer to latest version on time
+Felix DeGrood (9):
+      vk/overlay-layer: fix regression in non-control pathway
+      intel/brw: support for dumping shader line numbers
+      anv: add INTEL_DEBUG=shaders-lineno
+      iris: add INTEL_DEBUG=shaders-lineno
+      drm-uapi: add eu_stall uapi
+      intel/perf: remove unnused argument from xe_perf_stream_read_error
+      intel/perf: add eu stall sampling support
+      util: add hash functions for u64 data type
+      intel/tools: create intel_monitor for sampling eu stalls
 
-Eric R. Smith (1):
-      panfrost,lima: use index size in panfrost minmax_cache
+K900 (1):
+      meson: support building with system libgbm
 
-Erik Faye-Lund (1):
-      docs/features: update panvk support
+Lionel Landwerlin (2):
+      brw: fix shuffle with scalar/uniform index
+      anv: relax restriction on variable count descriptors
 
-Faith Ekstrand (5):
-      intel/compiler: Use nir_split_conversions()
-      nak: Add a ChannelMask type
-      nak: Add support for suld/st.b
-      nak,nir: Add an image_load_raw_nv intrinsic
-      nak: Use suld.b on Kepler if we have a format
+Natalie Vock (5):
+      aco: Fix RT VGPR limit on Navi31/32, GFX11.5, GFX12
+      aco: Make private_segment_buffer/scratch_offset per-resume
+      radv: Add radv_emulate_rt drirc and enable for Indiana Jones TGC
+      radv: Add radv_enable_float16_gfx8 drirc and enable for Indiana Jones TGC
+      radv/ci: Test FP16 for GFX8
 
-Georg Lehmann (2):
-      aco/gfx10: simpler solution to avoid store instructions in clauses
-      aco: form mixed MTBUF/MUBUF clauses
+Renato Pereyra (1):
+      perfetto/android: align datasource names with tooling expectations
 
-Ian Romanick (7):
-      brw/nir: Fix source handling of nir_intrinsic_load_barycentric_at_offset
-      brw/nir: Eliminate default parameter to get_nir_src
-      brw/algebraic: Optimize derivative of convergent value
-      brw/copy: Refactor source modifier type checking
-      brw/copy: Copy prop -X into Y&1
-      brw/nir: Optimize b2f(not(X)) using logical operations instead of arithmetic
-      brw/nir: Allow b2f(not(X)) optimization on Gfx12.5+
-
-Lars-Ivar Hesselberg Simonsen (2):
-      vulkan/wsi/wayland: Avoid duplicate colorspace entry
-      panvk: Add barrier for interleaved ZS copy cmds
-
-Marek Olšák (12):
-      nir/opt_algebraic: lower 16-bit imul_high & umul_high
-      ac: define physical VGPRs for fake hw overrides
-      ac/nir/cull: rename skip_viewport_culling -> skip_viewport_state_culling
-      ac/nir/cull: always do frustum culling, skip only small prim culling
-      ac/surface: remove 64K_2D modifier with 64B max compressed blocks for gfx12
-      radeonsi: work around a primitive restart bug on gfx10-10.3
-      radeonsi: always use ACO callbacks to scalarize/vectorize 16-bit ALU
-      radeonsi: expose 16-bit NIR types for ALU, MEM, and LDS (no inputs/outputs)
-      radeonsi/ci: update gfx11 failures
-      radeonsi/ci: don't run GTF tests (they have been removed from glcts)
-      radeonsi: lower load/store bit sizes before load/store vectorization
-      radeonsi: add a VOP3P swizzle requirement for 16-bit packed math
-
-Mel Henning (2):
-      nvk: SET_PS_{REGISTER,WARP}_WATERMARKS
-      nvk: Support blackwell in max_warps_per_mp_for_sm
-
-Mike Blumenkrantz (1):
-      tu: check for valid descriptor set when binding descriptors
-
-Patrick Lerda (7):
-      r600: implement EXT_window_rectangles
-      r600: remove deprecated NIR_PASS_V
-      r600: fallback to util_blitter_draw_rectangle when required
-      r600: fix pa_su_vtx_cntl rounding mode
-      r600: fix points clipping
-      r600: enable ARB_compute_variable_group_size
-      r600: clean up not used fields detected by clang
-
-Rob Clark (9):
-      ir3: Comment re-indent
-      tu/vdrm: Fix userspace fence cmds
-      tu: Avoid extraneous set_iova
-      tu: Add some func traces
-      util: Add drmSyncobj shim
-      panvk: Remove dependency on vk_device::drm_fd
-      vulkan: Use syncobj shim
-      virtio/vdrm: Add vtest backend
-      tu: vdrm vtest support
-
-Samuel Pitoiset (10):
-      radv: determine if HiZ/HiS is enabled earlier on GFX12
-      radv: add a workaround for buggy HiZ/HiS on GFX12
-      radv: apply the workaround for buggy HiZ/HiS on GFX12 for DGC
-      radv: add before/after draw functions for DGC
-      radv: move emitting raster and depth/stencil state slightly earlier
-      radv: emit conservative raster mode as part of the MSAA state
-      radv: configure COVERAGE_TO_SHADER_SELECT only if conservative rast is enabled
-      radv: track more MSAA related register writes
-      radv: regroup emitting all MSAA states in one function
-      radv: add clip rects state bit for emitting discard rectangles
-
-Sergi Blanch Torne (1):
-      Uprev Piglit to ebdf60e0d4b0dc23e79373cb923fdee023eb3b2b
-
-Valentine Burley (5):
-      ci/container: Disable debian/arm32_test-vk container
-      ci/container: Remove double build sections in test-* containers
-      ci/container: Move calling strip-rootfs.sh to common scripts
-      ci/android: Add build section for uninstalling build software
-      ci/container: Drop unnecessary variables for image paths
-
-Xaver Hugl (2):
-      vulkan/wsi: validate HDR metadata to not cause protocol errors
-      vulkan/wsi: warn once when HDR metadata is skipped because of protocol errors
+Tapani Pälli (1):
+      intel/dev: update mesa_defs.json from internal database
 
