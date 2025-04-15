@@ -1,151 +1,74 @@
-Updating from b148f57daddd575f8ab41e8baa96ed3dcf39a098 to 28e2d9088cd1f12805aa432b7ca64aee301c7300
+Updating from fc7badeac09f88ba4fe204cba79cde5bee64c986 to 384bf8e58ed5e149e157c91bc934482fbb0151c8
 
-Alyssa Rosenzweig (8):
-      drm-uapi: add asahi uapi
-      asahi: disable virtio gpu for upstream
-      asahi: port to stable uAPI
-      asahi: remove unstable uapi header
-      gallium: wire up asahi driver
-      asahi: fix i/a queries with tess
-      panfrost: invert and rename no_ubo_to_push flag
-      panfrost: do not push "true" UBOs
+Adam Jackson (1):
+      meson: Simplify the power8 optimization logic
 
-Benjamin Lee (18):
-      driconf: add uint64 type
-      panvk: add core mask driconf options
-      panfrost: add core mask driconf options
-      pan/va: add roundmode modifier to additional instructions
-      panfrost: implement float controls rounding mode
-      pan/va: preserve signed zero in f32->f16 conversions
-      pan/bi: refactor bi_instr_ftz to allow dontcare FTZ states
-      pan/bi: ignore ftz mode when scheduling int instructions
-      pan/bi: implement denorm behavior float controls
-      panvk/va: don't advertise independent denorm behavior
-      panvk: advertise VK_KHR_shader_float_controls
-      panvk: advertise VK_KHR_float_controls2
-      panfrost: define bi_swizzle alias values
-      panfrost: add bi_swizzle values for unused swizzles
-      panfrost/va: use 'lane' modifier for MKVEC.v2i8
-      panfrost: use bifrost instruction table for bi_lower_swizzle
-      panfrost/va: valhall-specific swizzle lowering
-      panvk: enable uniformAndStorageBuffer8BitAccess and storagePushConstant8
+Boris Brezillon (1):
+      pan/earlyzs: Fix the read-only ZS optimization
 
-Bo Hu (1):
-      gfxstream: update code generator for simplified dep graph
+Caio Oliveira (5):
+      intel: Add intel_device_info::has_systolic
+      intel: Disable has_bfloat16 for MTL
+      brw: Allow DPAS with BF on Gfx125
+      brw: Update EU validation to allow packed BF mixed with packed F
+      intel/executor: Update bfloat example
 
-Boris Brezillon (20):
-      vulkan/state: Fix input attachment map state initialization/copy
-      vk/pass: Add input attachment location info
-      vulkan/state: Fix default input attachment map values
-      panvk/jm: Don't force a preload if the previous batch didn't have draws
-      pan/bi: Allow depth/stencil tile buffer access using LD_TILE
-      pan/bi: Pass load_converted_output_pan target through a source
-      pan/bi: Pass an explicit sampleid to load_converted_output_pan
-      panvk/csf: Set invalidate_inherited_ctx only if the render pass is inherited
-      panvk: Re-order things in panvk_deserialize_shader()
-      panvk: Isolate CS specific bits in panvk_shader
-      panvk: Generate the earlyzs LUT at shader creation time
-      pan/earlyzs: Support the shader ZS read-only case and its optimization on v10+
-      panvk/jm: Move cmd_prepare_draw_sysvals() out of the layer loop
-      panvk: Support color attachment remapping
-      pan/bi: Introduce two intrinsics to support input attachment remapping
-      panvk: Optimize input attachment loads when we can
-      panvk: Skip BY_REGION barriers if we're in a render pass
-      panvk: Advertise KHR_dynamic_rendering_local_read support
-      pan/va: Support relaxed waits on read-only render targets
-      panvk/csf: Optimize read-only tile buffer access
+Connor Abbott (4):
+      ir3: Pass through access flags when lowering global accesses
+      nir/opt_preamble: Handle load_global_ir3
+      ir3: Move load/store vectorization to finalize
+      ir3: Vectorize shared memory loads/stores
 
-Caio Oliveira (9):
-      brw: Add a few basic tests for register coalesce
-      brw: Clean up saturate propagation after non-defs version removal
-      brw: Add brw_range struct
-      brw: Use brw_range in IP ranges analysis
-      brw: Use brw_range when operating with live ranges
-      brw: Use brw_range to store VGRF ranges
-      brw: Use brw_range to store Vars ranges
-      brw: Use brw_range::last() to explicit get the last valid IP
-      brw: Make brw_range use half-open ranges
+Eric R. Smith (1):
+      panfrost: fix transaction elimination crc valid calculation
 
-Caleb Callaway (1):
-      intel/tools: fix 32b build for EU stall tool
+Erik Faye-Lund (2):
+      nir/lower_tex: use texture_mask instead of shifting on use
+      nir/lower_tex: avoid undefined-behavior
 
-Caterina Shablia (4):
-      panfrost: don't overwrite push uniforms and sysvals UBO with user's UBO
-      panfrost: update nr_uniform_buffers before dispatching XFB
-      panfrost: require buffer_count and pushed_words to be passed to panfrost_emit_const_buf
-      panfrost: move the comment closer to what it's about
+Job Noorman (4):
+      ir3: remove spaces in shader stats
+      ir3/cp: add option to disable immediate to const lowering
+      ir3/cp: ignore alias sources for sam.s2en
+      ir3: run cp after ir3_imm_const_to_preamble
 
-Corentin Noël (2):
-      virgl: Close handle on resource info failure
-      virgl: Use drmCloseBufferHandle instead of calling dmIoctl directly
+Jose Maria Casanova Crespo (1):
+      v3dv: avoid TFU reading unmapped pages beyond the end of the buffers
 
-Daniel Stone (1):
-      doc/ci: Update nginx caching snippets
+Marek Olšák (5):
+      radeonsi/ci: add gfx12 failures and flakes
+      radeonsi: make si_shader_selector::main_shader_part_* an iterable union
+      radeonsi: add ACO-specific main shader parts
+      winsys/amdgpu: don't add VM_ALWAYS_VALID buffers into the BO list
+      radeonsi: determine VM_ALWAYS_VALID accurately
 
-Dave Airlie (3):
-      nvk: update nvidia class header files.
-      nvk: add ADA compute class to nv_push_dump
-      nvk: add hopper support to nv_push_dump
+Maíra Canal (2):
+      broadcom/simulator: Expose V3D revision number in the simulator interface
+      broadcom/simulator: Fix Indirect CSD jobs for V3D 7.1.6+
 
-Faith Ekstrand (1):
-      nvk: Call vk_device_finish() last in nvk_DestroyDevice()
+Mike Blumenkrantz (4):
+      zink: don't set shared block stride without KHR_workgroup_memory_explicit_layout
+      zink: stop setting ArrayStride on image arrays
+      zink: use implicit stride in ntv for temp vars
+      ci: update VVL to current week
 
-Ian Romanick (1):
-      brw/nir: Use offset() for all uses of offs in emit_pixel_interpolater_alu_at_offset
+Philipp Zabel (3):
+      etnaviv/ml: Drop duplicated function reorder_for_hw_depthwise()
+      etnaviv/ml: Fix padding input/output tensor zero points
+      teflon: Log (un)supported operations
 
-Jason Macnak (2):
-      gfxstream: Update variable names to avoid -Wshadow error
-      gfxstream: Remove extra dispatch variable
+Samuel Pitoiset (4):
+      radv: add macros for paired context registers on GFX12
+      radv: use paired context regs when optimal on GFX12
+      radv: only enable DCC for invisible VRAM on GFX12
+      ci: update VKCTS main to 76c1572eaba42d7ddd9bb8eb5788e52dd932068e
 
-Jeongik Cha (1):
-      gfxstream: Add AHARDWAREBUFFER_FORMAT_B8G8R8A8_UNORM in android_format_is_yuv
+Saroj Kumar (1):
+      radeonsi: Move buffer descriptor slot to the beginning
 
-Lars-Ivar Hesselberg Simonsen (1):
-      vk/sync: Fix execution only barriers
+Trigger Huang (1):
+      radeonsi: Change program seqnece for perf counters
 
-Lionel Landwerlin (2):
-      anv: fix self dependency computation
-      brw: fix Wa_22013689345 emission
-
-Ludvig Lindau (1):
-      panvk: Get flush_id once per submit
-
-Martin Krastev (1):
-      docs/svga: Add steps how to get VMware Workstation Pro on Linux
-
-Mike Blumenkrantz (2):
-      meson: deprecate gallium-nine
-      meson: deprecate gallium-xa
-
-Patrick Lerda (4):
-      i915: fix i915_set_vertex_buffers() related refcnt imbalance and remove redundancies
-      i915: fix slab_create() related memory leaks
-      i915: fix nir_to_tgsi() related memory leak
-      i915: fix draw_create_fragment_shader() related memory leak
-
-Paulo Zanoni (4):
-      intel/i915: restrict the RAM size restrictions to Anv
-      anv/xe: detect the newer xe.ko memory reporting model and act accordingly
-      anv: restore the old behavior of up to 75% of RAM for the system heap
-      anv: add ANV_SYS_MEM_LIMIT for debugging system memory restrictions
-
-Samuel Pitoiset (8):
-      radv: remove an old workaround for D3D9 with DXVK 2.3.0 and older
-      radv: move the disable_trunc_coord drirc at instance/pdev level
-      radv: move emitting more fb registers when rendering begins
-      radv: use consecutive registers for PA_SC_WINDOW_SCISSOR_{TL,BR}
-      radv: track redundant DB_RENDER_OVERRRIDE register writes on GFX12
-      radv: reduce the number of emitted DWORDS for MSAA 8x user sample locs
-      radv: tidy up radv_emit_raster_state()
-      radv: tidy up radv_emit_hw_ngg()
-
-Serdar Kocdemir (4):
-      gfxstream: track pipeline layouts on decoder
-      gfxstream: wrap semaphore functions on the host
-      gfxstream: Add dispatcher validity checks
-      gfxstream: Wrap vkEnumerateInstanceExtensionProperties for host
-
-Tapani Pälli (2):
-      mesa: clamp texbuf query size to MAX_TEXTURE_BUFFER_SIZE
-      mesa: various fixes for ClearTexImage/ClearTexSubImage
+Vignesh Raman (1):
+      ci: Uprev kernel to 6.14
 
