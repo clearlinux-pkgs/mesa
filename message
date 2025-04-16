@@ -1,74 +1,142 @@
-Updating from fc7badeac09f88ba4fe204cba79cde5bee64c986 to 384bf8e58ed5e149e157c91bc934482fbb0151c8
+Updating from 384bf8e58ed5e149e157c91bc934482fbb0151c8 to e783930b105c3fde643800d47532720c47d5e96e
 
-Adam Jackson (1):
-      meson: Simplify the power8 optimization logic
+Aleksi Sapon (1):
+      llvmpipe: improve aniso filtering
 
-Boris Brezillon (1):
-      pan/earlyzs: Fix the read-only ZS optimization
+Alyssa Rosenzweig (6):
+      util/simple_mtx: fix duplicate definition
+      nir: unvendor lod_bias(_agx)
+      nir: handle mismatched bias/lod bitsizes
+      nir: add sampler LOD bias lowering
+      hk: handle lod/min_lod size mismatch
+      agx: switch to common LOD bias lowering
 
-Caio Oliveira (5):
-      intel: Add intel_device_info::has_systolic
-      intel: Disable has_bfloat16 for MTL
-      brw: Allow DPAS with BF on Gfx125
-      brw: Update EU validation to allow packed BF mixed with packed F
-      intel/executor: Update bfloat example
+Collabora's Gfx CI Team (2):
+      Uprev Piglit to 0ecdebb0f592
+      Uprev ANGLE to a3f2545f6bb3
 
-Connor Abbott (4):
-      ir3: Pass through access flags when lowering global accesses
-      nir/opt_preamble: Handle load_global_ir3
-      ir3: Move load/store vectorization to finalize
-      ir3: Vectorize shared memory loads/stores
+Dave Airlie (1):
+      nak: add F2FP to sm75 instr latencies
 
-Eric R. Smith (1):
-      panfrost: fix transaction elimination crc valid calculation
+David Rosca (4):
+      radeonsi/vpe: Don't try to flush cs from buffer_map
+      radeonsi/vcn: Don't try to flush cs from buffer_map
+      radeonsi/uvd,vce: Don't try to flush cs from buffer_map
+      radeonsi/video: Remove cs argument from si_video_resize_buffer
 
-Erik Faye-Lund (2):
-      nir/lower_tex: use texture_mask instead of shifting on use
-      nir/lower_tex: avoid undefined-behavior
+Eric Engestrom (7):
+      docs/ci: replace deprecated `pages` job with `pages: true`
+      docs/ci: add link to the website preview for convenience
+      docs/ci: add comment explaining what that long rule actually does
+      docs/ci: split pre-merge & merge pipeline rules
+      docs/ci: follow convention of only running jobs by default for Marge
+      ci: fix image tags indentation
+      ci/deqp: fix vulkan video build
 
-Job Noorman (4):
-      ir3: remove spaces in shader stats
-      ir3/cp: add option to disable immediate to const lowering
-      ir3/cp: ignore alias sources for sam.s2en
-      ir3: run cp after ir3_imm_const_to_preamble
+Erik Faye-Lund (12):
+      panvk: set shared_addr_format
+      panvk: enable KHR_spirv_1_4 on v10+
+      panvk: claim official conformance on v10
+      docs/panfrost: use anonymous hyperlinks
+      panvk: enable dualSrcBlend
+      docs/panvk: fixup extension support
+      docs/panvk: remove disabled extension
+      docs/panvk: fixup docs around float controls
+      docs/panvk: add VK_-prefix for extension name
+      docs/panvk: document ycbr in terms of extensions
+      docs/panvk: document EXT extension aswell
+      docs/panvk: add missing new features
 
-Jose Maria Casanova Crespo (1):
-      v3dv: avoid TFU reading unmapped pages beyond the end of the buffers
+Faith Ekstrand (16):
+      nak/hw_tests: Feed predicate/carry sources with 0/1 data
+      nak: Add a plop2 test
+      nak: Add False and True to IntCmpOp
+      nak: Lower texture inputs for Kepler B
+      nak/legalize: Add a helper for lowering ineg
+      nak: Add stubs for Kepler B
+      nak: Add stubs for Fermi and Kepler A
+      nak: Move some legalization helpers from sm50 to common code
+      nak/sm50: Add zero_reg() and true_reg() helpers
+      nak/sm70: Add zero_reg() and true_reg() helpers
+      nak: Get rid of RegRef::zero
+      nvk: Disable VK_EXT_descriptor_buffer pre-Maxwell
+      nak/qmd: Rework cbuf size suffix handling
+      nak/qmd: Add support for shifted cbuf addresses
+      nak/qmd: Add QMD version 4.0 for Hopper
+      nvk: Handle shifted QMD cbuf addrs in indirect command processing
 
-Marek Olšák (5):
-      radeonsi/ci: add gfx12 failures and flakes
-      radeonsi: make si_shader_selector::main_shader_part_* an iterable union
-      radeonsi: add ACO-specific main shader parts
-      winsys/amdgpu: don't add VM_ALWAYS_VALID buffers into the BO list
-      radeonsi: determine VM_ALWAYS_VALID accurately
+Guilherme Gallo (1):
+      ci: Add some unit tests for the duration field
 
-Maíra Canal (2):
-      broadcom/simulator: Expose V3D revision number in the simulator interface
-      broadcom/simulator: Fix Indirect CSD jobs for V3D 7.1.6+
+Ian Romanick (5):
+      nir/algebraic: Allow fmin(a,a) optimization when flush denorm to zero is not set
+      brw/algebraic: Clear condition modifier on optimized SEL instruction
+      brw/algebraic: Don't optimize float SEL.CMOD to MOV
+      elk/algebraic: Clear condition modifier on optimized SEL instruction
+      elk/algebraic: Don't optimize float SEL.CMOD to MOV
 
-Mike Blumenkrantz (4):
-      zink: don't set shared block stride without KHR_workgroup_memory_explicit_layout
-      zink: stop setting ArrayStride on image arrays
-      zink: use implicit stride in ntv for temp vars
-      ci: update VVL to current week
+Job Noorman (2):
+      ir3/ra: add helper for getting a dst interval
+      ir3/ra: ignore phis handled by shared RA
 
-Philipp Zabel (3):
-      etnaviv/ml: Drop duplicated function reorder_for_hw_depthwise()
-      etnaviv/ml: Fix padding input/output tensor zero points
-      teflon: Log (un)supported operations
+Juan A. Suarez Romero (1):
+      ci: include duration in the CustomLogger
 
-Samuel Pitoiset (4):
-      radv: add macros for paired context registers on GFX12
-      radv: use paired context regs when optimal on GFX12
-      radv: only enable DCC for invisible VRAM on GFX12
-      ci: update VKCTS main to 76c1572eaba42d7ddd9bb8eb5788e52dd932068e
+Karol Herbst (7):
+      iris: remove all clover support code
+      freedreno: remove all clover support code
+      llvmpipe: remove all clover support code
+      gallium: stop filling ir_target in various drivers
+      gallium: stop using PIPE_BIND_COMPUTE_RESOURCE in drivers
+      gallium: stop implementing set_compute_resources in various drivers
+      nouveau: ignore req_input_mem
 
-Saroj Kumar (1):
-      radeonsi: Move buffer descriptor slot to the beginning
+Loïc Molinari (5):
+      perfetto: Let MESA_TRACE_FUNC() take printf-like format arguments
+      panfrost: Add CPU traces
+      pan/kmod: Add drmIoctl() wrapper pan_kmod_ioctl() with CPU trace
+      docs: Add Panfrost to the list of drivers with CPU traces
+      mesa: Add CPU traces
 
-Trigger Huang (1):
-      radeonsi: Change program seqnece for perf counters
+Mary Guillemard (27):
+      pan/bi: Lower IADD.v4s8 in algebraic on v11+
+      pan/bi: Allow no_psiz variant with IDVS2
+      pan/genxml: Rename UMIN32 opcode to COMPARE_SELECT32
+      pan/genxml: Add v12 definition
+      pan/genxml: Add v13 definition
+      pan/genxml: Build libpanfrost_decode for v12
+      pan/genxml: Build libpanfrost_decode for v13
+      pan/lib: Build for v12
+      pan/lib: Build for v13
+      pan/clc: Build for v12
+      pan/clc: Build for v13
+      panvk: Support 64x64 meta tile size for v12 in cmd_preload_render_area_border
+      pan/lib: Adapt CRC calculation to align to 64x64 on v12+
+      panfrost: Disable hierarchy levels based on multiple of tile_size
+      panvk: Use spd variant instead of pos_points when checking for vs shader presence
+      pan/earlyzs: Default to FORCE_EARLY for ZS update on v11+
+      panvk: Implement Z/S dependency tracking on v11+
+      panvk: Add v12 support
+      panvk: Add v13 support
+      panfrost: Add v12 support to the Gallium driver
+      panfrost: Add v13 support to the Gallium driver
+      panfrost/ci: Add Mali-G720 current expectations
+      panfrost/ci: Add Mali-G725 current expectations
+      panfrost: Advertize Mali-G720 support
+      panfrost: Advertize Mali-G725 support
+      panfrost: Update the release note to mention G720/G725 addition
+      panvk: Fix inverted ZS read flags in DCD2 on v11+
 
-Vignesh Raman (1):
-      ci: Uprev kernel to 6.14
+Ryan Mckeever (5):
+      pan/format: Update format flags to follow HW spec
+      pan/format: Add PAN_BIND_STORAGE_IMAGE flag
+      panvk: Enable KHR_format_feature_flags2 and use them
+      panvk: shaderStorageImageReadWithoutFormat support
+      panvk: shaderStorageImageWriteWithoutFormat support
+
+Samuel Pitoiset (1):
+      radv: allocate the SPM BO in GTT for faster readback
+
+Valentine Burley (1):
+      zink/ci: Work around recent OOM issues in zink-anv-tgl
 
