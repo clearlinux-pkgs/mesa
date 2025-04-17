@@ -4,7 +4,6 @@
 -Dcpp_std=gnu++17
 -Dgallium-va=enabled
 -Dgallium-xa=enabled
--Dgallium-opencl=icd
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau
 -Dvulkan-layers=device-select,intel-nullhw,overlay
 -Dshared-glapi=enabled
@@ -21,4 +20,3 @@
 -Dinstall-intel-clc=true
 -Dlegacy-x11=dri2
 -Dgallium-rusticl=true
--Dgallium-opencl=icd

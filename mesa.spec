@@ -6,10 +6,10 @@
 # autospec commit: a88ffdc
 #
 Name     : mesa
-Version  : 25.0.3215.ge783930b105
-Release  : 870
-URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/e783930b105c3fde643800d47532720c47d5e96e/mesa-25.0+3215-ge783930b105.tar.bz2
-Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/e783930b105c3fde643800d47532720c47d5e96e/mesa-25.0+3215-ge783930b105.tar.bz2
+Version  : 25.1.67.9fde960e64
+Release  : 871
+URL      : https://gitlab.freedesktop.org/mesa/mesa/-/archive/a9fde960e64f777c134449e57a160591e6e9547d/mesa-25.1+67-ga9fde960e64.tar.bz2
+Source0  : https://gitlab.freedesktop.org/mesa/mesa/-/archive/a9fde960e64f777c134449e57a160591e6e9547d/mesa-25.1+67-ga9fde960e64.tar.bz2
 Source1  : https://static.crates.io/crates/paste/paste-1.0.14.crate
 Source2  : https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.86.crate
 Source3  : https://static.crates.io/crates/quote/quote-1.0.33.crate
@@ -193,7 +193,7 @@ license components for the mesa package.
 
 
 %prep
-%setup -q -n mesa-e783930b105c3fde643800d47532720c47d5e96e
+%setup -q -n mesa-a9fde960e64f777c134449e57a160591e6e9547d
 cd %{_builddir}
 tar xf %{_sourcedir}/paste-1.0.14.crate
 cd %{_builddir}
@@ -204,26 +204,26 @@ cd %{_builddir}
 tar xf %{_sourcedir}/quote-1.0.33.crate
 cd %{_builddir}
 tar xf %{_sourcedir}/unicode-ident-1.0.12.crate
-cd %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e
+cd %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d
 mkdir -p ./subprojects/paste-1.0.14
-cp -r %{_builddir}/paste-1.0.14/. %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/./subprojects/paste-1.0.14
+cp -r %{_builddir}/paste-1.0.14/. %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/./subprojects/paste-1.0.14
 mkdir -p ./subprojects/syn-2.0.68
-cp -r %{_builddir}/syn-2.0.68/. %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/./subprojects/syn-2.0.68
+cp -r %{_builddir}/syn-2.0.68/. %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/./subprojects/syn-2.0.68
 mkdir -p ./subprojects/proc-macro2-1.0.86
-cp -r %{_builddir}/proc-macro2-1.0.86/. %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/./subprojects/proc-macro2-1.0.86
+cp -r %{_builddir}/proc-macro2-1.0.86/. %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/./subprojects/proc-macro2-1.0.86
 mkdir -p ./subprojects/quote-1.0.33
-cp -r %{_builddir}/quote-1.0.33/. %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/./subprojects/quote-1.0.33
+cp -r %{_builddir}/quote-1.0.33/. %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/./subprojects/quote-1.0.33
 mkdir -p ./subprojects/unicode-ident-1.0.12
-cp -r %{_builddir}/unicode-ident-1.0.12/. %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/./subprojects/unicode-ident-1.0.12
+cp -r %{_builddir}/unicode-ident-1.0.12/. %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/./subprojects/unicode-ident-1.0.12
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
 pushd ..
-cp -a mesa-e783930b105c3fde643800d47532720c47d5e96e build32
+cp -a mesa-a9fde960e64f777c134449e57a160591e6e9547d build32
 popd
 pushd ..
-cp -a mesa-e783930b105c3fde643800d47532720c47d5e96e buildavx2
+cp -a mesa-a9fde960e64f777c134449e57a160591e6e9547d buildavx2
 popd
 
 %build
@@ -270,7 +270,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1744769029
+export SOURCE_DATE_EPOCH=1744904611
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fno-lto "
@@ -290,7 +290,6 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
--Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
 -Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
@@ -306,8 +305,7 @@ meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true \
--Dgallium-opencl=icd  builddir
+-Dgallium-rusticl=true  builddir
 ninja -v -C builddir
 GOAMD64=v3
 CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -march=x86-64-v3 " meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
@@ -316,7 +314,6 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
--Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
 -Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
@@ -332,8 +329,7 @@ CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true \
--Dgallium-opencl=icd  builddiravx2
+-Dgallium-rusticl=true  builddiravx2
 ninja -v -C builddiravx2
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
@@ -347,7 +343,6 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dcpp_std=gnu++17 \
 -Dgallium-va=enabled \
 -Dgallium-xa=enabled \
--Dgallium-opencl=icd \
 -Dvulkan-drivers=intel,amd,intel_hasvk,swrast,virtio,nouveau \
 -Dvulkan-layers=device-select,intel-nullhw,overlay \
 -Dshared-glapi=enabled \
@@ -363,9 +358,7 @@ meson --libdir=lib32 --prefix=/usr --buildtype=plain -Dplatforms=wayland,x11 \
 -Dintel-clc=enabled \
 -Dinstall-intel-clc=true \
 -Dlegacy-x11=dri2 \
--Dgallium-rusticl=true \
--Dgallium-opencl=icd -Dgallium-opencl=disabled \
--Dasm=false \
+-Dgallium-rusticl=true -Dasm=false \
 -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,i915 \
 -Dglvnd=false \
 -Dtools="" \
@@ -390,11 +383,11 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
 mkdir -p %{buildroot}/usr/share/package-licenses/mesa
-cp %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/licenses/Apache-2.0 %{buildroot}/usr/share/package-licenses/mesa/ef39856b9b4ca101d453780fa97b117064273142 || :
-cp %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
-cp %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
-cp %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/src/vulkan/runtime/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
-cp %{_builddir}/mesa-e783930b105c3fde643800d47532720c47d5e96e/src/vulkan/screenshot-layer/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/c9e89168faf085da40190d78ade18b3a5d826c76 || :
+cp %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/licenses/Apache-2.0 %{buildroot}/usr/share/package-licenses/mesa/ef39856b9b4ca101d453780fa97b117064273142 || :
+cp %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/src/imgui/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/1871c6c7ddab444838aa6a57e6fa085d4e4de683 || :
+cp %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/src/mapi/glapi/gen/license.py %{buildroot}/usr/share/package-licenses/mesa/98d051673de64cfd533ded6d75f1526f5f4f27af || :
+cp %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/src/vulkan/runtime/radix_sort/LICENSE %{buildroot}/usr/share/package-licenses/mesa/46aace8adc5b06990d9ee2b6bd555ea03c4df7a1 || :
+cp %{_builddir}/mesa-a9fde960e64f777c134449e57a160591e6e9547d/src/vulkan/screenshot-layer/LICENSE.txt %{buildroot}/usr/share/package-licenses/mesa/c9e89168faf085da40190d78ade18b3a5d826c76 || :
 cp %{_builddir}/paste-1.0.14/LICENSE-APACHE %{buildroot}/usr/share/package-licenses/mesa/6e5c4711bcae04967d7f5b5e01cf56ae03bebe7a || :
 cp %{_builddir}/paste-1.0.14/LICENSE-MIT %{buildroot}/usr/share/package-licenses/mesa/ce3a2603094e799f42ce99c40941544dfcc5c4a5 || :
 cp %{_builddir}/proc-macro2-1.0.86/LICENSE-APACHE %{buildroot}/usr/share/package-licenses/mesa/6e5c4711bcae04967d7f5b5e01cf56ae03bebe7a || :
@@ -490,7 +483,6 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/OpenCL/vendors/mesa.icd
 /usr/share/OpenCL/vendors/rusticl.icd
 /usr/share/drirc.d/00-mesa-defaults.conf
 /usr/share/drirc.d/00-radv-defaults.conf
@@ -545,23 +537,14 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/dri/libdril_dri.so
-/V3/usr/lib64/gallium-pipe/pipe_crocus.so
-/V3/usr/lib64/gallium-pipe/pipe_i915.so
-/V3/usr/lib64/gallium-pipe/pipe_iris.so
-/V3/usr/lib64/gallium-pipe/pipe_nouveau.so
-/V3/usr/lib64/gallium-pipe/pipe_r300.so
-/V3/usr/lib64/gallium-pipe/pipe_r600.so
-/V3/usr/lib64/gallium-pipe/pipe_radeonsi.so
-/V3/usr/lib64/gallium-pipe/pipe_vmwgfx.so
 /V3/usr/lib64/gbm/dri_gbm.so
 /V3/usr/lib64/libEGL_mesa.so.0.0.0
 /V3/usr/lib64/libGLX_mesa.so.0.0.0
-/V3/usr/lib64/libMesaOpenCL.so.1.0.0
 /V3/usr/lib64/libRusticlOpenCL.so.1.0.0
 /V3/usr/lib64/libVkLayer_INTEL_nullhw.so
 /V3/usr/lib64/libVkLayer_MESA_device_select.so
 /V3/usr/lib64/libVkLayer_MESA_overlay.so
-/V3/usr/lib64/libgallium-25.1.0-devel.so
+/V3/usr/lib64/libgallium-25.2.0-devel.so
 /V3/usr/lib64/libgbm.so.1.0.0
 /V3/usr/lib64/libvulkan_intel.so
 /V3/usr/lib64/libvulkan_intel_hasvk.so
@@ -587,14 +570,6 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /usr/lib64/dri/virtio_gpu_drv_video.so
 /usr/lib64/dri/vmwgfx_dri.so
 /usr/lib64/dri/zink_dri.so
-/usr/lib64/gallium-pipe/pipe_crocus.so
-/usr/lib64/gallium-pipe/pipe_i915.so
-/usr/lib64/gallium-pipe/pipe_iris.so
-/usr/lib64/gallium-pipe/pipe_nouveau.so
-/usr/lib64/gallium-pipe/pipe_r300.so
-/usr/lib64/gallium-pipe/pipe_r600.so
-/usr/lib64/gallium-pipe/pipe_radeonsi.so
-/usr/lib64/gallium-pipe/pipe_vmwgfx.so
 /usr/lib64/gbm/dri_gbm.so
 /usr/lib64/libEGL_mesa.so
 /usr/lib64/libEGL_mesa.so.0
@@ -602,16 +577,13 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /usr/lib64/libGLX_mesa.so
 /usr/lib64/libGLX_mesa.so.0
 /usr/lib64/libGLX_mesa.so.0.0.0
-/usr/lib64/libMesaOpenCL.so
-/usr/lib64/libMesaOpenCL.so.1
-/usr/lib64/libMesaOpenCL.so.1.0.0
 /usr/lib64/libRusticlOpenCL.so
 /usr/lib64/libRusticlOpenCL.so.1
 /usr/lib64/libRusticlOpenCL.so.1.0.0
 /usr/lib64/libVkLayer_INTEL_nullhw.so
 /usr/lib64/libVkLayer_MESA_device_select.so
 /usr/lib64/libVkLayer_MESA_overlay.so
-/usr/lib64/libgallium-25.1.0-devel.so
+/usr/lib64/libgallium-25.2.0-devel.so
 /usr/lib64/libgbm.so
 /usr/lib64/libgbm.so.1
 /usr/lib64/libgbm.so.1.0.0
@@ -677,7 +649,7 @@ mv %{buildroot}/etc/OpenCL/vendors %{buildroot}/usr/share/OpenCL/vendors
 /usr/lib32/libVkLayer_INTEL_nullhw.so
 /usr/lib32/libVkLayer_MESA_device_select.so
 /usr/lib32/libVkLayer_MESA_overlay.so
-/usr/lib32/libgallium-25.1.0-devel.so
+/usr/lib32/libgallium-25.2.0-devel.so
 /usr/lib32/libgbm.so
 /usr/lib32/libgbm.so.1
 /usr/lib32/libgbm.so.1.0.0
