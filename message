@@ -1,6 +1,57 @@
-Updating from 9409595c325dae8ec19861ed6081931cf3e6bb81 to a9fde960e64f777c134449e57a160591e6e9547d
+Updating from 0140b7ba577a37654e3f000db45b16e247ae96af to 9855467ed0c11305ad785676217de27b0ec96bac
 
-Tomeu Vizoso (2):
-      teflon: Skip unsupported FullyConvolution operations
-      etnaviv/ml: Support FullyConnected with signed weights
+Alyssa Rosenzweig (3):
+      hk: fix patch count = 0 handling
+      agx: delete more inots
+      asahi: fix possible null deref
+
+Arunpravin Paneer Selvam (1):
+      amdgpu: Add queue id support to the user queue wait IOCTL
+
+Daniel Lang (2):
+      etnaviv: hwdb: update gc_feature_database from ST
+      etnaviv: hwdb: update gc_feature_database from NXP
+
+David Heidelberg (2):
+      docs: Drop distro unmaintained and deprecated file.
+      docs: Rename distro to distribution
+
+Faith Ekstrand (16):
+      nak/sm20: Add initial SM20 encoding
+      nak/sm20: Add float ops
+      nak/sm20: Add integer ops
+      nak: Lower 64-bit shifts in NIR on Kepler A and earlier
+      nak: Record and set DOES_FP64 in the SPH
+      nak/sm20: Add conversion ops
+      nak/nir: Use Maxwell input interpolation for SM20+
+      nak/sm20: Add shader I/O ops
+      nak/sm20: Add control-flow ops
+      nak/nir: Use Kepler texture source ordering on SM30
+      nak/sm20: Add texture ops
+      nak/sm20: Add more memory ops
+      nak/sm20: Add subgroup ops
+      nak/sm20: Add double ops
+      nak/sm20: Implement OpBar
+      nvk: Return an error for Kepler storage images instead of asserting
+
+Iván Briano (1):
+      anv: expose promoted KHR_depth_clamp_zero_one
+
+Job Noorman (2):
+      nir/opt_shrink_vectors: enable for load_ubo_vec4
+      ir3: use opt_shrink_vectors
+
+Lorenzo Rossi (2):
+      nak: Add OpTexDepBar
+      nak: Add a new OpFSwz and use it for derivatives on Kepler
+
+Samuel Pitoiset (5):
+      radv/meta: simplify dealing with image layouts for blits/resolves
+      radv/meta: remove unused functions/prototypes
+      radv/meta: rename more buffer->memory for fill/copy/update operations
+      radv/meta: remove unnecessary radv_meta_blit2d_buffer::bs
+      radv/meta: remove redundant parameter to blit_surf_for_image_level_layer()
+
+Sushma Venkatesh Reddy (1):
+      intel/compiler: Always run opt_algebraic after descriptor_lowering
 
