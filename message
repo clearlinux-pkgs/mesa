@@ -1,57 +1,37 @@
-Updating from 0140b7ba577a37654e3f000db45b16e247ae96af to 9855467ed0c11305ad785676217de27b0ec96bac
+Updating from 9855467ed0c11305ad785676217de27b0ec96bac to 0b8359e159db0c016e5d3e704de2bc6c274784af
 
-Alyssa Rosenzweig (3):
-      hk: fix patch count = 0 handling
-      agx: delete more inots
-      asahi: fix possible null deref
+Faith Ekstrand (4):
+      nak/sm20: Improve folding of ffma and dfma
+      nak/sm20: Use the correct index field for OpS2R
+      nak: Handle OpFRnd in is_fp64()
+      nak/sm20: Fix legalization of float source types
 
-Arunpravin Paneer Selvam (1):
-      amdgpu: Add queue id support to the user queue wait IOCTL
+Janne Grunau (2):
+      venus: Do not use instance pointer before NULL check
+      venus: virtgpu: Require stable wire format
 
-Daniel Lang (2):
-      etnaviv: hwdb: update gc_feature_database from ST
-      etnaviv: hwdb: update gc_feature_database from NXP
+Lorenzo Rossi (1):
+      nak: Use s2r for SV_CLOCK on Kepler
 
-David Heidelberg (2):
-      docs: Drop distro unmaintained and deprecated file.
-      docs: Rename distro to distribution
+Marek Olšák (14):
+      ac/gpu_info: clean up ac_get_hs_info, use standard terms like workgroup
+      ac/gpu_info: add total_tess_ring_size
+      radv: move the tess factor ring after the tess offchip ring
+      ac/gpu_info: move HS info into radeon_info
+      ac: use HS offchip wg size from radeon_info in ac_compute_num_tess_patches
+      ac: minor cleanup of ac_compute_num_tess_patches
+      ac/gpu_info: print tessellation ring info
+      ac/nir: don't include TCS offchip size in LDS_SIZE
+      ac/gpu_info: compute the tess factor ring size proportionately to the CU count
+      ac/gpu_info: reduce the tess offchip ring size and compute it proportionately
+      ac/nir: remove shader_info parameter from ac_nir_compute_tess_wg_info
+      ac/nir: don't store tess levels for TES in TCS if no_varying is set
+      ac/gpu_info: rename tess ring variables, fold double_offchip_wg
+      radv: fix incorrect patch_outputs_read for TCS with dynamic state
 
-Faith Ekstrand (16):
-      nak/sm20: Add initial SM20 encoding
-      nak/sm20: Add float ops
-      nak/sm20: Add integer ops
-      nak: Lower 64-bit shifts in NIR on Kepler A and earlier
-      nak: Record and set DOES_FP64 in the SPH
-      nak/sm20: Add conversion ops
-      nak/nir: Use Maxwell input interpolation for SM20+
-      nak/sm20: Add shader I/O ops
-      nak/sm20: Add control-flow ops
-      nak/nir: Use Kepler texture source ordering on SM30
-      nak/sm20: Add texture ops
-      nak/sm20: Add more memory ops
-      nak/sm20: Add subgroup ops
-      nak/sm20: Add double ops
-      nak/sm20: Implement OpBar
-      nvk: Return an error for Kepler storage images instead of asserting
+Pierre-Eric Pelloux-Prayer (1):
+      radeonsi/tests: use proper skip file
 
-Iván Briano (1):
-      anv: expose promoted KHR_depth_clamp_zero_one
-
-Job Noorman (2):
-      nir/opt_shrink_vectors: enable for load_ubo_vec4
-      ir3: use opt_shrink_vectors
-
-Lorenzo Rossi (2):
-      nak: Add OpTexDepBar
-      nak: Add a new OpFSwz and use it for derivatives on Kepler
-
-Samuel Pitoiset (5):
-      radv/meta: simplify dealing with image layouts for blits/resolves
-      radv/meta: remove unused functions/prototypes
-      radv/meta: rename more buffer->memory for fill/copy/update operations
-      radv/meta: remove unnecessary radv_meta_blit2d_buffer::bs
-      radv/meta: remove redundant parameter to blit_surf_for_image_level_layer()
-
-Sushma Venkatesh Reddy (1):
-      intel/compiler: Always run opt_algebraic after descriptor_lowering
+Yiwei Zhang (1):
+      venus: fix missing renderer destructions
 
