@@ -1,37 +1,20 @@
-Updating from 9855467ed0c11305ad785676217de27b0ec96bac to 0b8359e159db0c016e5d3e704de2bc6c274784af
+Updating from 0b8359e159db0c016e5d3e704de2bc6c274784af to c643f6263315912659ccf9a2da1cef468cb93feb
 
-Faith Ekstrand (4):
-      nak/sm20: Improve folding of ffma and dfma
-      nak/sm20: Use the correct index field for OpS2R
-      nak: Handle OpFRnd in is_fp64()
-      nak/sm20: Fix legalization of float source types
+David Rosca (3):
+      radeonsi/vcn: Fix decode target index for H264 interlaced streams
+      radeonsi/vce: Move all code to radeon_vce.c
+      radeonsi/uvd_enc: Move all code to radeon_uvd_enc.c
 
-Janne Grunau (2):
-      venus: Do not use instance pointer before NULL check
-      venus: virtgpu: Require stable wire format
+Eric Engestrom (5):
+      ci/vkd3d: drop unused 32-bit build
+      turnip/ci: drop skip of test_vrs_depth_write_dxbc as it no longer hangs
+      ci: uprev vkd3d-proton
+      aco: help clang 20 do some additions and subtractions
+      ci: bump to fedora 42
 
-Lorenzo Rossi (1):
-      nak: Use s2r for SV_CLOCK on Kepler
+Faith Ekstrand (1):
+      nak/sm20: Use the immediates instead of rZ in OpShfl
 
-Marek Olšák (14):
-      ac/gpu_info: clean up ac_get_hs_info, use standard terms like workgroup
-      ac/gpu_info: add total_tess_ring_size
-      radv: move the tess factor ring after the tess offchip ring
-      ac/gpu_info: move HS info into radeon_info
-      ac: use HS offchip wg size from radeon_info in ac_compute_num_tess_patches
-      ac: minor cleanup of ac_compute_num_tess_patches
-      ac/gpu_info: print tessellation ring info
-      ac/nir: don't include TCS offchip size in LDS_SIZE
-      ac/gpu_info: compute the tess factor ring size proportionately to the CU count
-      ac/gpu_info: reduce the tess offchip ring size and compute it proportionately
-      ac/nir: remove shader_info parameter from ac_nir_compute_tess_wg_info
-      ac/nir: don't store tess levels for TES in TCS if no_varying is set
-      ac/gpu_info: rename tess ring variables, fold double_offchip_wg
-      radv: fix incorrect patch_outputs_read for TCS with dynamic state
-
-Pierre-Eric Pelloux-Prayer (1):
-      radeonsi/tests: use proper skip file
-
-Yiwei Zhang (1):
-      venus: fix missing renderer destructions
+Job Noorman (1):
+      ir3/isa: add nop encoding for bary.f/flat.b
 
