@@ -1,20 +1,119 @@
-Updating from 0b8359e159db0c016e5d3e704de2bc6c274784af to c643f6263315912659ccf9a2da1cef468cb93feb
+Updating from ee10938beed3840b9583ad4d67ff96052a9daaf1 to 9822fa3ef311a98b3ce79c111201a84782a91b3e
 
-David Rosca (3):
-      radeonsi/vcn: Fix decode target index for H264 interlaced streams
-      radeonsi/vce: Move all code to radeon_vce.c
-      radeonsi/uvd_enc: Move all code to radeon_uvd_enc.c
+Alyssa Rosenzweig (13):
+      util: optimize bitcount on OpenCL
+      asahi: clang-format
+      agx: use abi.h defines
+      agx: plumb vertex_id_zero_base
+      agx/nir_lower_gs: fix type confusion
+      agx/nir_lower_gs: avoid redundant sr read's
+      agx/nir_lower_gs: don't use nir_def_rewrite_uses
+      agx/nir_lower_gs: rework gs rast shape handling
+      agx/nir_lower_gs: compact static topologies
+      agx/nir_lower_gs: bound static topologies
+      libagx: do not include heap in geometry params
+      libagx: rename agx_geometry_state to agx_heap
+      libagx: use common heap alloc for tessellator
 
-Eric Engestrom (5):
-      ci/vkd3d: drop unused 32-bit build
-      turnip/ci: drop skip of test_vrs_depth_write_dxbc as it no longer hangs
-      ci: uprev vkd3d-proton
-      aco: help clang 20 do some additions and subtractions
-      ci: bump to fedora 42
+Boris Brezillon (12):
+      panvk/csf: Pass less arguments to emit_vs_attrib()
+      panvk/csf: Fix instance attribute offseting
+      panvk: Advertise support for VK_EXT_vertex_attribute_divisor
+      panvk: Set supportsNonZeroFirstInstance=true
+      panvk: Advertise support for VK_KHR_maintenance4
+      panvk: Implement CmdBindIndexBuffer2()
+      panvk: Pass a const image to is_disjoint()
+      panvk: Don't pass a dev to panvk_image_init()
+      panvk: Call vk_image_finish() in GetDeviceImageMemoryRequirements()
+      panvk: Implement GetImageSubresourceLayout2 and GetDeviceImageSubresourceLayoutKHR()
+      pan/format: Disable image storage on A8_UNORM
+      panvk: Advertise support for VK_KHR_maintenance5
 
-Faith Ekstrand (1):
-      nak/sm20: Use the immediates instead of rZ in OpShfl
+Christoph Pillmayer (4):
+      panfrost: Enable more than 16 varyings on v9+
+      panfrost: Remove fixed_varying_mask from uncompiled_shader
+      panfrost: Use LD_VAR_BUF if possible on v9+
+      panfrost/ci: Update spec@ext_transform_feedback@max-varyings result
 
-Job Noorman (1):
-      ir3/isa: add nop encoding for bary.f/flat.b
+Collabora's Gfx CI Team (2):
+      Uprev ANGLE to f355e2b37ed43939e2753fc7dacccf75abb4c1a3
+      Uprev Piglit to c50d9aa54f85e0af9d72fab86c73f89356d96399
+
+Danylo Piliaiev (1):
+      tu,freedreno: Don't fallback to LINEAR with DRM_FORMAT_MOD_QCOM_COMPRESSED
+
+Ella Stanforth (8):
+      asahi/lib: Move alpha_to_one and alpha_to_coverage lowering to common code.
+      v3d/compiler: Fixup output types for all 8 outputs
+      v3d/compiler: Only lower logic ops for color buffers that exist
+      nir/alpha_to_coverage: Add an intrinsic for better dithering
+      v3d/compiler: Implement software blend lowering
+      v3d: Implement dual source blending
+      v3dv: Implement dual source blending
+      v3d/ci: move depthstencil-default_fb-drawpixels-24_8 samples=4 to flakes
+
+Eric Engestrom (1):
+      docs: update calendar for 25.1.0-rc2
+
+Faith Ekstrand (3):
+      docs/nvk: Update conformance and hardware support information
+      nak/sm20: Call copy_alu_src_if_fabs() first
+      nak/sm20: Fix legalization of IAdd and IMul
+
+Georg Lehmann (2):
+      aco/insert_exec: only restore wqm mask after control flow if necessary
+      aco/insert_exec: reset temporary when recreating wqm mask from exact mask
+
+Guilherme Gallo (4):
+      ci: Extract target job handling in CI monitor script
+      bin/ci: crnm: Improve job enabling robustness
+      bin/ci: crnm: Improve timer display formatting
+      bin/ci: crnm: Fix job duration calculation
+
+José Roberto de Souza (2):
+      intel: Fix the MOCS values in XY_FAST_COLOR_BLT for Xe2+
+      intel: Fix the MOCS values in XY_BLOCK_COPY_BLT for Xe2+
+
+Karol Herbst (4):
+      ac/llvm: use mul24 intrinsics
+      rusticl/device: fix panic when disabling 3D image write support
+      rusticl: allow packagers to enable radeonsi by default
+      nir_lower_mem_access_bit_sizes: fix negative chunk offsets
+
+Lionel Landwerlin (1):
+      intel: fixup a few debugging option checks
+
+Marek Olšák (4):
+      nir: add gathering passes that gather which inputs affect specific outputs
+      nir/opt_varyings: group TES inputs based on whether they are used by POS or VAR
+      radeonsi: initialize use_ngg* sooner
+      radeonsi: enable nir_io_compaction_groups_tes_inputs_into_pos_and_var_groups
+
+Mel Henning (1):
+      wsi/headless: Override finish_create
+
+Michael Cheng (3):
+      intel: Switch debug flags to enums to prep for bitset conversion
+      intel: Switch uint64_t intel_debug to a bitset
+      anv: Add new debug flag to show shader stage
+
+Pierre-Eric Pelloux-Prayer (4):
+      radeonsi: fix potential use after free in si_set_debug_callback
+      ac/nir: init blake3 for cs blit shader
+      radeonsi: skip blit incompatible scenarios
+      radeonsi: init use_aco properly when llvm is disabled
+
+Rhys Perry (2):
+      aco: use v_perm_b32 for do_pack_2x16 on gfx10+
+      aco: use v_perm_b32 for byte swaps within a VGPR on gfx10
+
+Sergi Blanch Torne (2):
+      bin/ci: crnm: bug while stressing a single job
+      bin/ci: crnm: bug stress mode retry formula
+
+Yinjie Yao (1):
+      frontends/va: Handle properly when decoding more slices than limit
+
+Yurii Kolesnykov (1):
+      Get rid of 5 remaining references to glapitable.h
 
