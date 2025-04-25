@@ -1,75 +1,37 @@
-Updating from 9822fa3ef311a98b3ce79c111201a84782a91b3e to 1d1187282841366828ca813ab8d9300346e3be10
+Updating from 1d1187282841366828ca813ab8d9300346e3be10 to d39e2869a8dffc42085033d2e4a2e25a7d57911c
 
-Alyssa Rosenzweig (1):
-      asahi: do not use "Null" layout
+Boris Brezillon (2):
+      panvk: Implement CmdBindVertexBuffers2()
+      panvk: Advertise support for VK_EXT_extended_dynamic_state[2]
 
-Brian Paul (1):
-      svga: handle null target pointers in svga_set_stream_output_targets()
+Caleb Callaway (1):
+      driconf: Jusant needs force_vk_vendor=-1 on Intel devices
 
-Christian Gmeiner (4):
-      etnaviv: isa: Add txf instruction
-      etnaviv: nir: Legalize txf lod src
-      etnaviv: nir: Add support for txf texture operation
-      etnaviv: nir: Use nir_shader_tex_pass(..)
+Eric Engestrom (14):
+      ci/build: drop b2c files from the builds artifacts
+      ci/build: drop expectation files from python-artifacts
+      ci/build: drop lava scripts from builds artifacts
+      ci/build: drop unused VERSION from python-artifacts
+      ci/build: split git commit sha command out of echo
+      ci/build: rename variable to avoid changing the meaning of existing variable
+      ci/build: drop unnecessary shellcheck disables
+      ci/test: fix annoying yamllint warning about 2 spaces before comments
+      amd/ci: ci yaml indentation
+      radv/ci: move radv-kabini-vkd3d out of gitlab-ci-inc.yml
+      ci/test: rename .b2c-vkd3d-proton-test to .test-vkd3d-proton
+      ci/ci-tron: default HWCI_TEST_SCRIPT to deqp-runner, as it's almost always what's run
+      ci/test: make generic fdo runner test jobs use the S3 artifacts too
+      ci/build: drop install.tar from gitlab artifacts
 
-Dmitry Baryshkov (1):
-      mesa-clc: add an option to force inclusion of OpenCL headers
+Erik Faye-Lund (2):
+      panvk: support vulkan 1.2 on v10+
+      panvk: re-enable KHR_shader_quad_control on v10+
 
-Dmitry Osipenko (1):
-      util/disk_cache: Re-enable multi-file cache by default
+Rhys Perry (3):
+      aco/gfx11: create waitcnt for workgroup vmem barriers
+      aco/ra: update_renames() before add_subdword_definition()
+      aco/ra: use a correct stride for subdword get_reg_impl
 
-Eric Engestrom (9):
-      ci/vkd3d: drop misguided "something failed" error message
-      ci/vkd3d: fix test failure list when no test failed
-      ci/vkd3d: quieten the mesa version check
-      ci/vkd3d: only keep logs of failed tests
-      ci/vkd3d: fix RESULTS_DIR variable name
-      ci/vkd3d: treat reading undefined variables as an error
-      ci/vkd3d: fail shell pipeline when part of it fails
-      ci: drop dead wgetrc as there are no uses of wget in our CI images
-      ci: use curl instead of wget in download-git-cache.sh
-
-Georg Lehmann (4):
-      radv/nir/lower_cmat: use radv_nir_cmat_bits consistently
-      radv/nir/lower_cmat: use cmat_mul instead of duplicating hw details for type conversion
-      radv/nir/lower_cmat: tightly pack 8bit gfx11 acc matrix
-      aco/insert_exec: disable empty quads when leaving divergent control, even if not top level
-
-John Anthony (1):
-      panvk: Enable VK_EXT_direct_mode_display
-
-Juan A. Suarez Romero (2):
-      v3d/vc4/ci: update fraction and parallel values
-      v3d/vc4/ci: Add -gl suffix to the GL suite names
-
-Lionel Landwerlin (1):
-      anv: use companion batch for operations with HIZ/STC_CCS destination
-
-Mary Guillemard (4):
-      panvk: Take rasterization sample into account in indirect draw on v10+
-      panvk: Emit sample count and tile size when emitting framebuffer/tiler descriptors
-      panfrost: Allow max effective tile size of 64x64 on v12+
-      panvk: Take resource index in valhall_lower_get_ssbo_size
-
-Olivia Lee (1):
-      panfrost: allow promoting sysval UBO to push constants
-
-Seán de Búrca (6):
-      rusticl/device: set maximum work dimension to match implicit bounds
-      rusticl: align memory utilities with std
-      rusticl: improve internal typing
-      rusticl: verify validity of property names and values
-      rusticl: improve use of Rust idioms
-      rusticl: remove unnecessary check for device in kernel list
-
-Tapani Pälli (1):
-      intel/dev: add note about PAT entries and Wa_18038669374
-
-Timur Kristóf (2):
-      radv: Clear dirty flag for MSAA state after emitting it.
-      radv: Clear dirty flag for clip rects state after emitting it.
-
-Valentine Burley (2):
-      ci: Update ci-fairy to use shared ref from ci-templates
-      ci: Use hyphens in make-git-archive job name
+Valentine Burley (1):
+      ci: Update kernel to fix GPU recovery issues on sm8350
 
