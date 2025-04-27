@@ -1,37 +1,9 @@
-Updating from 1d1187282841366828ca813ab8d9300346e3be10 to d39e2869a8dffc42085033d2e4a2e25a7d57911c
+Updating from d39e2869a8dffc42085033d2e4a2e25a7d57911c to 3493500abb78a4dc22aba14840bba5c777fde745
 
-Boris Brezillon (2):
-      panvk: Implement CmdBindVertexBuffers2()
-      panvk: Advertise support for VK_EXT_extended_dynamic_state[2]
+Eric Engestrom (1):
+      ci: take google-freedreno farm offline
 
-Caleb Callaway (1):
-      driconf: Jusant needs force_vk_vendor=-1 on Intel devices
-
-Eric Engestrom (14):
-      ci/build: drop b2c files from the builds artifacts
-      ci/build: drop expectation files from python-artifacts
-      ci/build: drop lava scripts from builds artifacts
-      ci/build: drop unused VERSION from python-artifacts
-      ci/build: split git commit sha command out of echo
-      ci/build: rename variable to avoid changing the meaning of existing variable
-      ci/build: drop unnecessary shellcheck disables
-      ci/test: fix annoying yamllint warning about 2 spaces before comments
-      amd/ci: ci yaml indentation
-      radv/ci: move radv-kabini-vkd3d out of gitlab-ci-inc.yml
-      ci/test: rename .b2c-vkd3d-proton-test to .test-vkd3d-proton
-      ci/ci-tron: default HWCI_TEST_SCRIPT to deqp-runner, as it's almost always what's run
-      ci/test: make generic fdo runner test jobs use the S3 artifacts too
-      ci/build: drop install.tar from gitlab artifacts
-
-Erik Faye-Lund (2):
-      panvk: support vulkan 1.2 on v10+
-      panvk: re-enable KHR_shader_quad_control on v10+
-
-Rhys Perry (3):
-      aco/gfx11: create waitcnt for workgroup vmem barriers
-      aco/ra: update_renames() before add_subdword_definition()
-      aco/ra: use a correct stride for subdword get_reg_impl
-
-Valentine Burley (1):
-      ci: Update kernel to fix GPU recovery issues on sm8350
+Guilherme Gallo (2):
+      ci: bump apitrace version
+      ci: Update build-apitrace.sh header with the right tag
 
