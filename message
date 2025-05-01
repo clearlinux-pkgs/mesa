@@ -1,174 +1,85 @@
-Updating from 3493500abb78a4dc22aba14840bba5c777fde745 to 29d7b90cfcb67ecc2ff3e422dd7b38898abb1bbe
+Updating from 29d7b90cfcb67ecc2ff3e422dd7b38898abb1bbe to 615d0c9669595adf114a705f5b8ee88277aa99f2
 
-Alyssa Rosenzweig (1):
-      hk: advertise VK_KHR_shader_quad_control
+Christian Gmeiner (4):
+      etnaviv: compiler: Handle f2f16 and f2f32
+      etnaviv: compiler: Call nir_lower_alu_width(..)
+      etnaviv: compiler: Enable more pack/unpack lowerings
+      lima: Move fdot lowering from NIR to lima
 
-Boris Brezillon (5):
-      panvk: Advertise support for VK_KHR_shader_terminate_invocation
-      pan/bi: Fix and improve the !abs && !coarse case in bi_emit_derivative()
-      pan/bi: Lower is_helper_invocation
-      pan/{bi,va}: Lower terminate to demote
-      panvk: Advertise VK_EXT_shader_demote_to_helper_invocation support
+Connor Abbott (5):
+      freedreno: Add compute_lb_size device info
+      freedreno/a6xx: Define CONSTANTRAMMODE
+      freedreno/a6xx, turnip: Set CONSTANTRAMMODE correctly
+      ir3: Take LB restriction on constlen into account on a7xx
+      freedreno: Remove compute_constlen_quirk
 
-Caio Oliveira (18):
-      intel/executor: Fix bfloat example for converting F to packed BF
-      util: Add functions to convert float to/from bfloat16
-      nir: Add opcodes for BFloat16
-      brw, nir: Use glsl_base_type instead of nir_alu_type for @dpas_intel
-      brw: Implement support for BFloat16 ALU opcodes
-      brw: Consider bfloat16 in copy propagation
-      brw: Consider bfloat16 in lower regioning pass
-      brw: Consider bfloat16 in lower simd width pass
-      brw/cmat: Store more information about cmat slices
-      brw/cmat: Extract emit_packed_alu1() function
-      brw/cmat: Support different src/dst packing factors in emit_packed_alu1
-      brw/cmat: Implement conversion from/to BFloat16
-      spirv: Move Convert opcodes handling to its own function
-      spirv: Refactor to use glsl_type to pick ALU ops
-      spirv: Add bfloat16 support to SpecConstantOp
-      spirv: Implement Conversions to/from bfloat16
-      spirv: Use bfdot for SpvOpDot with BFloat16
-      intel: Add support for BFloat16 as cooperative matrix source
-
-Christian Gmeiner (1):
-      etnaviv: nir: Legalize txd derivatives src's
-
-Daniel Stone (3):
-      ci: Add firmware to test-base container
-      ci: Add packages for hardware CI testing
-      ci: Add ci-kdl to test-base container
-
-Danylo Piliaiev (1):
-      ir3: VARYING_SLOT_LAYER output is used for binning
+Danylo Piliaiev (2):
+      tu: Don't enable secondary command buffer tracepoint by default
+      tu: Add total renderpasses,dispatches to cmdbuf tracepoint
 
 Eric Engestrom (4):
-      ci: use https:// to install ci-fairy
-      ci: rename misleading *-postmerge stages to *-nightly
-      amd/ci: disable retry on nightly radeonsi-vangogh-glcts-full job
-      amd/ci: document regression in e612e840...e210b79c
+      docs: update calendar for 25.1.0-rc3
+      docs: update calendar for 25.0.5
+      docs: add release notes for 25.0.5
+      docs: add sha sum for 25.0.5
 
-Erik Faye-Lund (1):
-      docs/features: mark off missing panvk extensions
+Felix DeGrood (1):
+      anv: Do conservative oversubscription of pages to 2MB
 
-Guilherme Gallo (3):
-      ci: Update setup-rootfs.sh for test-* containers
-      ci: Keep important packages for rootfs
-      ci: Add rootfs export script
+Iago Toral Quiroga (1):
+      frontend/dri: don't call set_damage_region with a null resource
 
-Ian Romanick (7):
-      brw/algebraic: Greatly simplify brw_opt_constant_fold_instruction
-      brw/cmod: Delete some stale comment text
-      brw/algebraic: Convert some NOT to MOV
-      brw/cmod: Remove special handling of NOT
-      brw/cmod: Fix some errors when propagating from CMP to ADD.SAT
-      brw/cmod: Don't propagate from CMP to possible Inf + (-Inf)
-      brw/cmod: Allow integer CMP to ADD propagation only for Z and NZ
+Janne Grunau (4):
+      asahi: build asahi_clc for -Dtools=asahi
+      asahi: Drop unnecessary idep_mesaclc dependency
+      panfrost: build panfrost_compile for -Dtools=panfrost
+      ci: Switch cross-builds to '-D tools=panfrost'
 
-Iván Briano (1):
-      brw: make HALT instruction act as barrier in new CSE pass
+José Roberto de Souza (19):
+      intel: Add has_partial_mmap_offset to intel_device_info
+      gallium: Remove pb_buffer.h include from pb_slab.h
+      util: Move pb_slab from gallium to util
+      anv: Export anv_bo_is_small_heap()
+      anv: Move VMA alignment requirements to its own function
+      anv: Add the base infrastructure to support memory pool
+      anv: Implement anv_slab_bo and enable memory pool
+      anv: Add support for ANV_BO_ALLOC_AUX_CCS in anv_slab_bo
+      anv: Add support for ANV_BO_ALLOC_DESCRIPTOR_POOL in anv_slab_bo
+      anv: Add support for ANV_BO_ALLOC_DYNAMIC_VISIBLE_POOL in anv_slab_bo
+      anv: Skip anv_bo_pool if memory pool is enabled
+      anv: Add support for batch buffers in anv_slab_bo in Xe KMD
+      anv: Add support for batch buffers in anv_slab_bo in i915
+      anv: Remove useless if block
+      anv: Always grow fixed address pools by 2MB in platforms that there is a performance gain
+      anv: Align size of bos larger than 1MB to 64k to enable 64k pages
+      iris: Remove iris_slab_free cast
+      anv: Fix assert failure in discrete GPUs when allocating a LMEM+SMEM slab parent
+      anv: Remove ANV_BO_ALLOC_HOST_CACHED from ANV_BO_ALLOC_MAPPED assert() on anv_device_alloc_bo()
 
-Job Noorman (1):
-      ir3: don't use VS input regs for binning variant
+Juan A. Suarez Romero (2):
+      Revert "ci: disable Igalia's farm"
+      ci/baremetal: fix ubsan gl target
 
-Konstantin Seurer (1):
-      lavapipe: Fix ray tracing position fetch with multiple geometries
+Karmjit Mahil (2):
+      tu: Fix segfault in fail_submit KGSL path
+      anv,tu: Bypass RMV pcie_family_id check
 
-Mary Guillemard (3):
-      panvk: Advertise VK_EXT_shader_replicated_composites
-      panvk: Advertise VK_EXT_depth_bias_control
-      pan/bi: Properly lower add/sub with saturation on v11+
+Karol Herbst (1):
+      nak: fix handling of delays > 15
 
-Maíra Canal (1):
-      ci: disable Igalia's farm
+Lionel Landwerlin (3):
+      anv: update Wa_22019225126 check
+      anv: add ability to mmap at offset
+      anv: force fragment shader execution when occlusion queries are active
 
-Mel Henning (3):
-      nak: Remove hfma2 src 1 modifiers
-      nak/sm70_encode: Encode fneg/fabs for hfma2 src 2
-      nak/sm70_encode: Remove unused has_mod parameter
-
-Rhys Perry (14):
-      aco: fix get_temp_reg_changes with clobbered operands
-      aco: improve spilling of clobbered operands
-      aco/ra: change sorting in compact_relocate_vars
-      aco/ra: don't require alignment for NPOT SGPR temporaries
-      aco: fix compact_relocate_vars fallback with scc/exec/m0 precolored regs
-      aco/ra: cleanup compact_relocate_vars fallback path
-      aco/ra: add ra_test_policy::use_compact_relocate
-      aco/tests: add pseudo-scalar transcendental and fallback path RA tests
-      aco/gfx12: use s_add_u64
-      aco/gfx12: use s_sub_u64
-      aco: increase max_const_offset_plus_one for SMEM load_global
-      aco/gfx12: increase maximum smem offset
-      aco/gfx12: increase maximum global/scratch offset
-      aco/gfx12: increase maximum vbuffer offset
-
-Ricardo Garcia (1):
-      radv: Ignore image barrier queue families if equal
-
-Rob Clark (1):
-      ci: Re enable fd-farm
-
-Rohan Garg (4):
-      compiler/types: add a bfloat16 type
-      spirv: construct a bfloat16 from the given SPIR-V bitsize and encoding
-      spirv: Enable bfloat16 capabilities
-      anv: enable VK_KHR_shader_bfloat16
-
-Romaric Jodin (1):
-      panvk: Advertise support for VK_KHR_shader_integer_dot_product
-
-Ryan Mckeever (5):
-      panvk: Prepare cmd_prepare_push_uniforms() for multiDrawIndirect
-      panvk: Prepare cmd_prepare_shader_res_table() for multiDrawIndirect
-      panvk: Implement multiDrawIndirect for v10+
-      panvk: Implement CmdDraw[Indexed]IndirectCount for v10+
-      panvk: Advertise KHR_draw_indirect_count for v10+
-
-Sagar Ghuge (1):
-      intel/compiler: Fix stackIDs on Xe2+
-
-Samuel Pitoiset (2):
-      radv: set radv_disable_dcc=true for WWE 2k23
-      radv: fix re-emitting VRS state when rendering begins
+Mike Blumenkrantz (6):
+      vk/cmd_queue: try to fix some indentation
+      vk/cmd_queue: stop generating weird casts for free functions
+      vk/cmd_queue: generate copies for struct-ptr members
+      vk/cmd_queue: generate copies for string struct members
+      egl: rename dri2_load_driver -> dri2_detect_swrast
+      egl: fix sw fallback rejection in non-sw EGL_PLATFORM=device
 
 Tapani Pälli (1):
-      anv: put parenthesis to the set_sampler_size equation
-
-Valentine Burley (36):
-      ci/android: Use aapt from Debian packages
-      ci/android: Collapse more build sections
-      ci/angle: Collapse build section
-      ci/deqp: Collapse build section
-      ci/rust: Collapse build section
-      ci/deqp-runner: Collapse build section
-      ci/android: Remove redundant android-tools folder
-      ci: Uprev ci-templates to get FDO_DISTRIBUTION_POST_EXEC and S3 fixes
-      ci/lava: Ensure firmware directory exists before downloading a660_zap.mbn
-      ci: Export the rootfs from the test-* containers
-      ci/container: Include ANGLE in the x86_64 test-gl container
-      ci/container: Include SkQP in the test-gl containers
-      ci/lava: Add job definitions using the test-* containers
-      ci/lava: Use rootfs exported from test-* containers
-      ci/lava: Use the new container based rootfs for piglit traces
-      ci/lava: Move rootfs handling for Fluster out of build script
-      ci/va: Collapse build section for va-tools
-      ci/va: Add /va/bin to PATH for test-video container
-      ci/container: Add new container for libva and fluster testing
-      ci: Include Fluster vectors in the rootfs
-      ci/lava: Use the new test-video-based rootfs for VA-API jobs
-      ci/amd: Convert to using the new container based rootfs
-      ci/freedreno: Convert to using the new container based rootfs
-      ci/panfrost: Convert to using the new container based rootfs
-      ci/etnaviv: Convert to using the new container based rootfs
-      ci/lima: Convert to using the new container based rootfs
-      ci/svga: Convert to using the new container based rootfs
-      ci/intel: Convert to using the new container based rootfs
-      ci/lava: Remove job definitions using kernel+rootfs jobs
-      ci: Add a workaround for finding deqp-runner on Broadcom
-      ci/baremetal: Remove legacy support for unused devices
-      ci/baremetal: Split baremetal_arm64_test to -gl and -vk
-      ci/baremetal: Use container rootfs
-      ci: Delete the kernel+rootfs jobs
-      docs: Move the docs about caching downloads to LAVA from bare-metal
-      docs: Remove the docs for setting up bare-metal devices
+      intel/dev: update mesa_defs.json from internal database
 
