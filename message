@@ -1,85 +1,34 @@
-Updating from 29d7b90cfcb67ecc2ff3e422dd7b38898abb1bbe to 615d0c9669595adf114a705f5b8ee88277aa99f2
+Updating from 615d0c9669595adf114a705f5b8ee88277aa99f2 to ec3011ed0470d90987a35cb3be751cd20c64f0ca
 
-Christian Gmeiner (4):
-      etnaviv: compiler: Handle f2f16 and f2f32
-      etnaviv: compiler: Call nir_lower_alu_width(..)
-      etnaviv: compiler: Enable more pack/unpack lowerings
-      lima: Move fdot lowering from NIR to lima
+Eric Engestrom (1):
+      ci: drop tracking of removed folder
 
-Connor Abbott (5):
-      freedreno: Add compute_lb_size device info
-      freedreno/a6xx: Define CONSTANTRAMMODE
-      freedreno/a6xx, turnip: Set CONSTANTRAMMODE correctly
-      ir3: Take LB restriction on constlen into account on a7xx
-      freedreno: Remove compute_constlen_quirk
+José Roberto de Souza (1):
+      intel/tools: Fix batch buffer decoder
 
-Danylo Piliaiev (2):
-      tu: Don't enable secondary command buffer tracepoint by default
-      tu: Add total renderpasses,dispatches to cmdbuf tracepoint
+Karol Herbst (16):
+      r600: fix r600_buffer_from_user_memory for rusticl
+      r600: remove all clover related code
+      radeonsi: remove more clover related code
+      nv50: move pipe_grid_info::input into the driver
+      nvc0: remove support for pipe_grid_info::input
+      gallium: remove pipe_binary_program_header
+      gallium: remove pipe_compute_caps::max_block_size_clover
+      gallium: remove pipe_compute_caps::max_threads_per_block_clover
+      gallium: remove pipe_compute_caps::ir_target
+      gallium: remove pipe_compute_caps::images_supported
+      gallium: remove pipe_compute_caps::max_private_size
+      gallium: remove pipe_compute_caps::max_input_size
+      gallium: remove pipe_compute_state::req_input_mem
+      gallium: remove pipe_context::set_compute_resources and PIPE_BIND_COMPUTE_RESOURCE
+      gallium: remove pipe_grid_info::pc and PIPE_SHADER_IR_NATIVE
+      gallium: remove pipe_grid_info::input
 
-Eric Engestrom (4):
-      docs: update calendar for 25.1.0-rc3
-      docs: update calendar for 25.0.5
-      docs: add release notes for 25.0.5
-      docs: add sha sum for 25.0.5
+Lionel Landwerlin (1):
+      intel: fix null render target setup logic
 
-Felix DeGrood (1):
-      anv: Do conservative oversubscription of pages to 2MB
-
-Iago Toral Quiroga (1):
-      frontend/dri: don't call set_damage_region with a null resource
-
-Janne Grunau (4):
-      asahi: build asahi_clc for -Dtools=asahi
-      asahi: Drop unnecessary idep_mesaclc dependency
-      panfrost: build panfrost_compile for -Dtools=panfrost
-      ci: Switch cross-builds to '-D tools=panfrost'
-
-José Roberto de Souza (19):
-      intel: Add has_partial_mmap_offset to intel_device_info
-      gallium: Remove pb_buffer.h include from pb_slab.h
-      util: Move pb_slab from gallium to util
-      anv: Export anv_bo_is_small_heap()
-      anv: Move VMA alignment requirements to its own function
-      anv: Add the base infrastructure to support memory pool
-      anv: Implement anv_slab_bo and enable memory pool
-      anv: Add support for ANV_BO_ALLOC_AUX_CCS in anv_slab_bo
-      anv: Add support for ANV_BO_ALLOC_DESCRIPTOR_POOL in anv_slab_bo
-      anv: Add support for ANV_BO_ALLOC_DYNAMIC_VISIBLE_POOL in anv_slab_bo
-      anv: Skip anv_bo_pool if memory pool is enabled
-      anv: Add support for batch buffers in anv_slab_bo in Xe KMD
-      anv: Add support for batch buffers in anv_slab_bo in i915
-      anv: Remove useless if block
-      anv: Always grow fixed address pools by 2MB in platforms that there is a performance gain
-      anv: Align size of bos larger than 1MB to 64k to enable 64k pages
-      iris: Remove iris_slab_free cast
-      anv: Fix assert failure in discrete GPUs when allocating a LMEM+SMEM slab parent
-      anv: Remove ANV_BO_ALLOC_HOST_CACHED from ANV_BO_ALLOC_MAPPED assert() on anv_device_alloc_bo()
-
-Juan A. Suarez Romero (2):
-      Revert "ci: disable Igalia's farm"
-      ci/baremetal: fix ubsan gl target
-
-Karmjit Mahil (2):
-      tu: Fix segfault in fail_submit KGSL path
-      anv,tu: Bypass RMV pcie_family_id check
-
-Karol Herbst (1):
-      nak: fix handling of delays > 15
-
-Lionel Landwerlin (3):
-      anv: update Wa_22019225126 check
-      anv: add ability to mmap at offset
-      anv: force fragment shader execution when occlusion queries are active
-
-Mike Blumenkrantz (6):
-      vk/cmd_queue: try to fix some indentation
-      vk/cmd_queue: stop generating weird casts for free functions
-      vk/cmd_queue: generate copies for struct-ptr members
-      vk/cmd_queue: generate copies for string struct members
-      egl: rename dri2_load_driver -> dri2_detect_swrast
-      egl: fix sw fallback rejection in non-sw EGL_PLATFORM=device
-
-Tapani Pälli (1):
-      intel/dev: update mesa_defs.json from internal database
+Rhys Perry (3):
+      aco: fix max_const_offset_plus_one overflow
+      aco: replace max_const_offset_plus_one with max_const_offset
+      vtn: use nir_const_value_for_raw_uint for bfloat SpecConstantOp/FConvert
 
