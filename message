@@ -1,29 +1,13 @@
-Updating from ec3011ed0470d90987a35cb3be751cd20c64f0ca to 7f0de1a51212881c9a7614327bf3e1fbc9784ddb
+Updating from 7f0de1a51212881c9a7614327bf3e1fbc9784ddb to e7ce35f3c503e547b48499c3a5b2391382c579a7
 
-Danylo Piliaiev (5):
-      freedreno/percntr: Expose LRZ derived counters
-      freedreno/regs: Document fast border color in sampler
-      tu: Implement fast border colors in sampler
-      tu: Remove builtin border color logic
-      freedreno/a6xx: Implement fast border colors in sampler
-
-Iván Briano (1):
-      anv, hasvk: ignore QFOT if both src and dst queue families are equal
-
-Marek Olšák (2):
-      amd: stop using CLEAR_STATE on gfx11
-      ac: remove gfx11_emulate_clear_state
-
-Paul Gofman (1):
-      radv/amdgpu: Fix hash key in radv_amdgpu_winsys_destroy().
-
-Philip Rebohle (1):
-      radv: Remove offset parameter from radv_make_texel_buffer_descriptor.
-
-Sergi Blanch Torne (1):
-      ci: angle: fix depot-tools dependency release
-
-Vignesh Raman (2):
-      ci: add libproc2-0
-      virgl/ci: update flakes
+Valentine Burley (9):
+      ci/test: Move and rename .lava-fluster to .test-fluster
+      amd/ci: Rename .radeonsi-raven-vaapi-fluster to .radeonsi-vaapi-fluster-rules
+      ci/fluster: Move the fluster-runner.sh script
+      ci/fluster: Add sections to job logs
+      ci/fluster: Move Fluster to its own subfolder in the test-video container
+      ci/fluster: Use structured tagging for Fluster
+      ci/fluster: Use the structured tag as the Fluster vector version
+      amd/ci: Remove increased timeout for radeonsi-raven-vaapi-fluster job
+      ci/fluster: Fix and rename S3_PATH_FLUSTER to S3_FLUSTER_TAR
 
