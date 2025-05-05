@@ -1,13 +1,19 @@
-Updating from 7f0de1a51212881c9a7614327bf3e1fbc9784ddb to e7ce35f3c503e547b48499c3a5b2391382c579a7
+Updating from e7ce35f3c503e547b48499c3a5b2391382c579a7 to 06f5d1a1052a1f7fb2c530ea22b1fc6e261d1821
 
-Valentine Burley (9):
-      ci/test: Move and rename .lava-fluster to .test-fluster
-      amd/ci: Rename .radeonsi-raven-vaapi-fluster to .radeonsi-vaapi-fluster-rules
-      ci/fluster: Move the fluster-runner.sh script
-      ci/fluster: Add sections to job logs
-      ci/fluster: Move Fluster to its own subfolder in the test-video container
-      ci/fluster: Use structured tagging for Fluster
-      ci/fluster: Use the structured tag as the Fluster vector version
-      amd/ci: Remove increased timeout for radeonsi-raven-vaapi-fluster job
-      ci/fluster: Fix and rename S3_PATH_FLUSTER to S3_FLUSTER_TAR
+Ella Stanforth (2):
+      nir/printf: break out va_list handling
+      nir/printf: add new helper to printf at a specific pixel.
+
+Michel Dänzer (1):
+      ci: Drop obsolete -Wno-error= stanzas
+
+Samuel Pitoiset (2):
+      radv: do not clear unwritten color attachments with dual-source blending
+      radv: disable SINGLE clear codes to workaround a hw bug with DCC on GFX11
+
+Timothy Arceri (1):
+      util/driconf: add force_gl_depth_component_type_int workaround
+
+Yiwei Zhang (1):
+      venus: expose WSI on renderer without dma-buf support
 
