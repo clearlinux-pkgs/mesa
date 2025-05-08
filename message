@@ -1,19 +1,147 @@
-Updating from e7ce35f3c503e547b48499c3a5b2391382c579a7 to 06f5d1a1052a1f7fb2c530ea22b1fc6e261d1821
+Updating from d1b42e6f3a37df9990b0411e4112c2376046ddce to fa2627aefbc2a553b988451a32e1040e58b710fb
 
-Ella Stanforth (2):
-      nir/printf: break out va_list handling
-      nir/printf: add new helper to printf at a specific pixel.
+Alyssa Rosenzweig (1):
+      vtn: remove spurious texel buffer warning
 
-Michel Dänzer (1):
-      ci: Drop obsolete -Wno-error= stanzas
+Collabora's Gfx CI Team (1):
+      Uprev ANGLE to 3540a326ec8497700523eb2d3eca90ae21806e8e
 
-Samuel Pitoiset (2):
-      radv: do not clear unwritten color attachments with dual-source blending
-      radv: disable SINGLE clear codes to workaround a hw bug with DCC on GFX11
+Ella Stanforth (6):
+      v3d/compiler: remove int/uint tracking
+      v3d/compiler: remove return_channels from the shader key
+      v3d/compiler: remove unused texture swizzle
+      v3d/compiler: remove num_samplers_used from shader key
+      v3d/compiler: use mask for 16bit and 32bit return values
+      v3d/compiler: remove requirement for format information for fbfetch
+
+Emma Anholt (13):
+      wsi: Label the WSI blit command buffer with a name.
+      zink: Add debug names to our command buffers.
+      perfetto: Create a common MesaRenderpassIncrementalState.
+      perfetto: Move the debug_markers to the incremental state.
+      intel/ds: Move "have we already sent initial state?" into the helper.
+      perfetto: Allow tracepoint args to map to native perfetto fields.
+      anv/ds: Associate the VkCommandBuffer some anv-only renderstage events.
+      perfetto: Add helpers for passing VkDebugUtilsObjectNameInfoEXT to perfetto.
+      anv/ds: Forward VkDebugUtilsObjectNameInfoEXT to perfetto.
+      intel/ds: Fix formatting of stage index.
+      tu/perfetto: Attach VkCommandBuffer handles to the GPU events.
+      tu/perfetto: Move "have we already sent initial state?" into the helper.
+      tu/perfetto: Forward VkDebugUtilsObjectNameInfoEXT to perfetto.
+
+Eric Engestrom (25):
+      turnip/ci: document a750 fixed tests
+      radv/ci: add recent flakes
+      etnaviv/ci: add recent flakes
+      r300/ci: add recent flakes
+      lavapipe/ci: add recent flakes
+      docs: update calendar for 25.1.0
+      docs: add release notes for 25.1.0
+      docs: add sha sum for 25.1.0
+      docs: add calendar for 25.1.x releases
+      ci/b2c: drop dead /runner-before-script.sh code
+      ci/vkd3d: stop supressing vulkaninfo errors
+      etnaviv/ci: split model and revision tags
+      etnaviv/ci: introduce common .austriancoder-ci-tron
+      ci/ci-tron: deduplicate setting the runner tags for most jobs
+      amd/ci: simplify radeonsi-vangogh-glcts jobs definition
+      radv/ci: inline .vkcts-test-valve
+      radv/ci: fix inheritance/override order
+      zink+turnip/ci: fix inheritance/override order
+      ci/ci-tron: add check that the required variables are set
+      ci/ci-tron: print all the variables
+      ci/build: stop uploading python-artifacts to gitlab artifacts
+      radv/ci: increase swap size on kabini to 16g
+      radv/ci: set swap size for all amd jobs to 16g
+      radv/ci: rename .test-radv to .ci-tron-test-radv
+      ci/ci-tron: uprev b2c to 0.9.15.1
+
+Ganesh Belgur Ramachandra (1):
+      radeonsi: change do_update_shaders boolean to a bitmask
+
+Jesse.Zhang (1):
+      winsys/amdgpu: Add support for queue priority in Mesa
+
+Job Noorman (2):
+      nir/lower_io_to_vector: remove can_read_output assert
+      tu: scalarize IO before linking
+
+Juan A. Suarez Romero (1):
+      v3d/v3dv/ci: update expected results
+
+Lionel Landwerlin (29):
+      compiler: add VARYING_BIT_CULL_PRIMITIVE
+      compiler: add VARYING_BIT_PRIMITIVE_INDICES
+      anv: remove tbimr workaround check
+      anv: lower input vertices for TCS unconditionally
+      brw: add helpers to check if a fragment shader execution is dynamic
+      brw: store input_vertices on tcs_prog_data
+      anv: switch to use the tcs_prog_data for dynamic input vertices
+      anv: switch to brw helpers to figure out if a fragment is dynamic
+      brw: improve VUE printout
+      brw: add new helper to print out FS URB setup
+      brw: move helper to brw_nir.c
+      brw: use newer NIR constructs
+      brw/nir: use a new intrinsic for fs_msaa_flag
+      anv/brw: shrink FS varying payload
+      anv: tidy up (CLIP|SBE)_MESH emission
+      brw: use VARYING_BIT_* macros more
+      brw: document some brw_wm_prog_data fields
+      brw: fix brw_nir_move_interpolation_to_top
+      anv/brw: use separate_shader to deduced MUE compaction
+      brw/nir: add intrinsics to read attribute payload register indirectly
+      brw: add documentation pointers to FS attribute layout
+      intel: prepare VUE layout for more than 2 layouts
+      intel: introduce new VUE layout for separate compiled shader with mesh
+      anv/brw: handle pipeline libraries with mesh
+      panvk/ci: add more flaky tests
+      vulkan/runtime: store index of the push descriptor in pipeline layout
+      vulkan/runtime: track dynamics descriptor in a set layout
+      vulkan/runtime: fixup assert with link_geom_stages
+      vulkan/runtime: add a multialloc variant for pipeline create
+
+Marek Olšák (8):
+      nir: add shader_info::tess::tcs_cross_invocation_outputs_written
+      nir: split *_accessed_indirectly* bitmasks into *_read/written_indirectly*
+      ac/nir/tess: remove unused variables
+      ac/nir/tess: don't pass nir_intrinsic_instr to VMEM IO calc helpers
+      ac/nir/tess: don't pass nir_intrinsic_instr to hs_output_lds_offset
+      radeonsi: remove dead gfx12 tess code from a gfx6-11 function
+      aco: remove unused aco_shader_info::tcs_offchip_layout
+      ac: adjust maximum HS workgroup size
+
+Martin Roukala (né Peres) (5):
+      radv/ci: move the vangogh timeouts to the jobs
+      radv/ci: drop redundant renoir timeouts
+      ci/ci-tron: switch to the upstream ci-tron template
+      ci: rename all the .b2c- jobs into .ci-tron-
+      panfrost/ci: document new t860 flakes
+
+Mary Guillemard (1):
+      panfrost: Ensure printf buffer size is lowered
+
+Rob Clark (3):
+      tu: Add TU_DEBUG=comm
+      tu/virtio: Use util_get_command_line() helper
+      freedreno/virtio: Use util_get_command_line() helper
+
+Sagar Ghuge (1):
+      anv: Fix untyped data port cache pipe control dump output
 
 Timothy Arceri (1):
-      util/driconf: add force_gl_depth_component_type_int workaround
+      mesa: fix color material tracking
 
-Yiwei Zhang (1):
-      venus: expose WSI on renderer without dma-buf support
+Valentine Burley (7):
+      zink/ci: Properly source setup-test-env.sh in zink-venus-lvp
+      ci/crosvm: Fix image tags in build-crosvm.sh header
+      ci/crosvm: Collapse build section
+      ci/crosvm: Use structured tagging for crosvm
+      ci: Don't include the kernel in test-base image
+      ci: Replace HWCI_KVM with HWCI_ENABLE_X86_KVM
+      ci: Refactor structured tagging component definitions
+
+Zan Dobersek (3):
+      ir3: fix display of dot-product instructions
+      ir3: fix parsing of texture prefetch headers
+      ir3: allow asm roundtrip testing of compiled shader variants
 
