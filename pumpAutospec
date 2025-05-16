@@ -1,1 +1,2 @@
-Compiler:  ‘D3D12_FEATURE_DATA_VIDEO_ENCODER_RESOLUTION_SUPPORT_LIMITS1’ does not name a type; did you mean ‘D3D12_FEATURE_DATA_VIDEO_ENCODER_RESOLUTION_SUPPORT_LIMITS’?
+Cannot resolve dependency name: pkgconfig(32rustc-hash)
+Cannot resolve dependency name: pkgconfig(rustc-hash)
