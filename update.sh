@@ -1,6 +1,38 @@
 #!/bin/bash
 set -e -o pipefail -x
 
+get_crates() {
+  # Rust crates for NVK, used as Meson subprojects
+  local crates
+  declare -A crates=(
+    equivalent      1.0.1
+    hashbrown       0.14.1
+    indexmap        2.2.6
+    once_cell       1.8.0
+    paste           1.0.14
+    pest            2.8.0
+    pest_derive     2.8.0
+    pest_generator  2.8.0
+    pest_meta       2.8.0
+    proc-macro2     1.0.86
+    quote           1.0.33
+    roxmltree       0.20.0
+    rustc-hash      2.1.1
+    syn             2.0.68
+    ucd-trie        0.1.6
+    unicode-ident   1.0.12
+  )
+
+  local aline="ARCHIVES ="
+  for crate in "${!crates[@]}"; do
+    local ver="${crates[$crate]}"
+    local nv="${crate}-${ver}"
+    aline="${aline} https://static.crates.io/crates/${crate}/${nv}.crate ./subprojects/${nv}"
+  done
+
+  echo "$aline"
+}
+
 if ! test `find "timestamp" -mmin +1500`
 then
     echo "not old enough"
@@ -31,7 +63,7 @@ echo `git shortlog $OLDVERSION..$VERSION >> message`
 
 echo "PKG_NAME := mesa" > Makefile
 echo "URL := $BASE_URL$VERSION/mesa-$DESCRIPTION.tar.bz2" >> Makefile
-echo "ARCHVES = https://static.crates.io/crates/paste/paste-1.0.14.crate ./subprojects/paste-1.0.14 https://static.crates.io/crates/syn/syn-2.0.68.crate ./subprojects/syn-2.0.68 https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.86.crate ./subprojects/proc-macro2-1.0.86 https://static.crates.io/crates/quote/quote-1.0.33.crate ./subprojects/quote-1.0.33 https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.12.crate ./subprojects/unicode-ident-1.0.12 " >> Makefile
+echo get_crates >> Makefile
 echo "" >> Makefile
 echo "" >> Makefile
 echo "include ../common/Makefile.common" >> Makefile
